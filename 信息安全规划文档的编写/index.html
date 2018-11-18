@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+
+  <title>信息安全规划文档的编写  （转发） | Pa55w0rd &#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="组织安全部门建立到运行一段的时间，工作阶段从救火到标准化的过程就需要考虑编制和实施适合自己组织的安全规划了。编写安全规划主要为以后的工作进行合理的估计和安排，从结构上提升组织的安全水平，大概是从杂牌军到正规军的转变，也有可能现有的方法满足不了实际业务的需求，需要重新规划、设计。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信息安全规划文档的编写  （转发）">
+<meta property="og:url" content="http://blog.pa55w0rd.club/信息安全规划文档的编写/index.html">
+<meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
+<meta property="og:description" content="组织安全部门建立到运行一段的时间，工作阶段从救火到标准化的过程就需要考虑编制和实施适合自己组织的安全规划了。编写安全规划主要为以后的工作进行合理的估计和安排，从结构上提升组织的安全水平，大概是从杂牌军到正规军的转变，也有可能现有的方法满足不了实际业务的需求，需要重新规划、设计。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/xss/7.png">
+<meta property="og:updated_time" content="2018-11-02T14:49:49.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="信息安全规划文档的编写  （转发）">
+<meta name="twitter:description" content="组织安全部门建立到运行一段的时间，工作阶段从救火到标准化的过程就需要考虑编制和实施适合自己组织的安全规划了。编写安全规划主要为以后的工作进行合理的估计和安排，从结构上提升组织的安全水平，大概是从杂牌军到正规军的转变，也有可能现有的方法满足不了实际业务的需求，需要重新规划、设计。">
+<meta name="twitter:image" content="http://blog.pa55w0rd.club/assets/img/xss/7.png">
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+  
+    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+  
+
+
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+
+
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/scrollReveal.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
+  <script src="/js/algolia-search.js" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  
+  
+
+
+
+
+
+
+  
+  
+  <!-- 
+  
+  
+  
+  
+   -->
+
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "",
+          apiKey: "",
+          adminApiKey: "",
+          indexName: "",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+
+</head>
+
+
+</html>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div data-scroll-reveal="enter top" id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pa55w0rd &#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+        
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-about" aria-hidden="true"></i>about</a>
+        
+          <a class="main-nav-link" href="/categories"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
+        
+          <a class="main-nav-link" href="/tags"><i class="fa fa-tags" aria-hidden="true"></i>标签</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        
+        <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      </nav>
+        <div id="local-search-input"></div>
+      <!-- 百度搜索 -->
+     <!-- <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="blog.pa55w0rd.club">
+        </form>
+      </div>
+      -->
+   
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-信息安全规划文档的编写" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/信息安全规划文档的编写/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-29T03:37:20.000Z" itemprop="datePublished">2018-10-29</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/安全建设/">安全建设</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>信息安全规划文档的编写  （转发）
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <blockquote>
+<p>转自 ：<a href="https://xz.aliyun.com/t/2424" target="_blank" rel="noopener">https://xz.aliyun.com/t/2424</a></p>
+</blockquote>
+<ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="0x00-安全规划的目的"><a href="#0x00-安全规划的目的" class="headerlink" title="0x00 安全规划的目的"></a>0x00 安全规划的目的</h2><p>组织安全部门建立到运行一段的时间，工作阶段从救火到标准化的过程就需要考虑编制和实施适合自己组织的安全规划了。</p>
+<p>编写安全规划主要为以后的工作进行合理的估计和安排，从结构上提升组织的安全水平，大概是从杂牌军到正规军的转变，也有可能现有的方法满足不了实际业务的需求，需要重新规划、设计。</p>
+<p><img src="\assets\img\xss\7.png" alt="1"></p>
+<h2 id="0x01-安全规划应该包含的内容"><a href="#0x01-安全规划应该包含的内容" class="headerlink" title="0x01 安全规划应该包含的内容"></a>0x01 安全规划应该包含的内容</h2><p>安全现状从国际、国内、行业和本组织的安全情况，引出安全需求；需求上分析合规性要求和业务要求，引出安全的整体策略和目标。</p>
+<p>用一个房子图描述安全整体规划和保障体系，后面整体描述用什么方法和计划完成这个规划。</p>
+<p>安全规划通常包含技术方案和管理方案，要保证方案能够落地再加上安全运行/运营，从传统安全来说，物理安全、网络安全、主机安全、应用安全、数据安全各种技术和管理的措施要到位。</p>
+<p>办公网安全和生产网安全区别很大，可以考虑单独分析。</p>
+<p>安全规划要提供可供执行、能够落地的工作计划，安全规划通常3年一个周期，缘起计划可以简略，但是需要列出本年度的详细工作计划。</p>
+<p>最后是信息安全工作的执行考核和改进。</p>
+<h2 id="0x02-如何做好安全规划"><a href="#0x02-如何做好安全规划" class="headerlink" title="0x02 如何做好安全规划"></a>0x02 如何做好安全规划</h2><p>关键的几点：</p>
+<ol>
+<li>组织内的安全部门有明确的职责和权利，安全部门的活动有组织高层的行动支持；</li>
+<li>目标合理，可执行性高；</li>
+<li>根据组织安全的实际情况编写，前期做好风险评估、威胁建模、攻击面分析，<strong>防护方案以满足实际需要为主，控制好成本支出</strong>；</li>
+<li>管理和技术的安全措施参考 ISO 27001 和等级保护，重点偏安全运行；</li>
+<li>一定要有人员的培训和考核，将纸面上的规划落实成实际的效果。</li>
+</ol>
+<h3 id="管理和技术上的要求"><a href="#管理和技术上的要求" class="headerlink" title="管理和技术上的要求"></a>管理和技术上的要求</h3><p>管理方面参考 ISO 27001 的要求、等级保护的要求行业监管的要求，对策略、规程、标准、流程和记录，选择适用自己组织的管理要求。</p>
+<h4 id="技术要求示例"><a href="#技术要求示例" class="headerlink" title="技术要求示例"></a>技术要求示例</h4><p><strong>应用安全</strong></p>
+<ul>
+<li><p>概述：采用安全技术确保应用系统本身的防护，以及对于应用间数据接口、远程终端的数据访问的安全防护。</p>
+</li>
+<li><p>范围：</p>
+<ul>
+<li>Web 容器、中间件、Web 服务器</li>
+<li>Web 应用</li>
+</ul>
+</li>
+<li><p>防护目标:</p>
+<ul>
+<li>通过采取身份认证、访问控制等安全措施，保证系统自身的安全性以及与其他系统数据进行数据交换时所传输数据的安全性。</li>
+<li>建立软件安全的输入控制，确保输入数据符合系统设定要求，提供软件自动保护功能，当故障发生时保护自动保护当前所有状态</li>
+<li>采取审计措施实施在安全事件发生前发现入侵意图、在安全事件发生时进行告警提示和在安全事件发生后能进行审计追踪。</li>
+</ul>
+</li>
+<li><p>防护要点：</p>
+<ul>
+<li>身份鉴别：应提供专用的登录控制模块对登录用户进行身份标识和鉴别；应对同一用户采用2种以上的组合鉴别技术实现用户身份鉴别；提供用户身份标识的唯一性和鉴别信息复杂度检查功能；提供登录失败处理功能，可采取结束会话、限制非法登录次数和自动退出等机制；启用软件中的安全功能，并根据安全策略配相关参数。</li>
+<li>访问控制：应提供访问控制功能，依据安全策略控制用户对文件、数据库表等客体的访问；应由授权主体配置访问控制策略，并严格限制默认账户的访问权限；应授予不同账户为完成各自承担任务所需的最小权限，并在他们之间形成相互制约的关系；应对有重要信息资源设置敏感标签的功能。应依据安全策略严格控制用户对敏感标记重要信息资源的操作。</li>
+<li>安全审计：应提供覆盖到每个用户的安全审计功能，对应用系统重要安全事件进行审计；应确保无法单独终端审计进程，无法删除、修改、覆盖审计记录；应对审计的数据进行统计、查询、分析以及生成审计报表的功能。</li>
+<li>剩余信息保护：保证用户鉴别信息所在的存储空间在被释放或重新分配给其他用户之前完全清除，无论在硬盘还是内存中；应保证系统内的文件、目录和数据库记录等资源空间被释放或重新分配给其他用户前得到完全清除。</li>
+<li>通信完整性：采用密码技术保证通信过程中数据的完整性。</li>
+<li>通信保密性：在通信双方建立连接之前，应用系统利用密码技术进行初始化会话验证；应对通信过程的报文或会话信息过程进行加密。</li>
+<li>抗抵赖：应具有在请求的情况下为数据原发者或接收者提供数据原发证据和数据接收证据的功能。</li>
+<li>软件容错：应提供数据有效性检验功能，通过人机接口输入或通过通信接口输入的数据格式和长度符合系统的设定要求；应提供自我保护功能，当故障发生时自动保护当前的所有状态，保证系统能够恢复。</li>
+<li>资源控制：当应用系统的通信耍弄福冈中等乙方在一段时间内未作任何响应，另一方应能够自动结束会话；应能对系统的最大并发会话连接数和单个账户的多重并发会话进行限制；应能对一个时间段可能的并发会话连接数进行限制；应能对一个访问账户或一个请求进程所申请的资源数进行控制；应能够检测SLA水平，到达预设值时进行告警。</li>
+</ul>
+</li>
+<li><p>防护设备：</p>
+<ul>
+<li>4A：提供身份识别、认证、访问控制和审核功能。</li>
+<li>Web 应用防火墙：提供数据输入验证和审核功能。</li>
+<li>网页防篡改</li>
+<li>抗 DDoS 设备</li>
+<li>Web 漏洞扫描</li>
+</ul>
+</li>
+<li><p>防护技术：</p>
+<ul>
+<li>4A</li>
+<li>代码审计</li>
+<li>基线检查和加固</li>
+<li>渗透测试</li>
+</ul>
+</li>
+</ul>
+<h4 id="管理文档列表（示例）"><a href="#管理文档列表（示例）" class="headerlink" title="管理文档列表（示例）"></a>管理文档列表（示例）</h4><p>等保的文档体系或 ISO 27001 的文档体系，自己找找吧。</p>
+<h3 id="安全运行"><a href="#安全运行" class="headerlink" title="安全运行"></a>安全运行</h3><p>购买了安全产品，编写了相关的管理文档，制定了各种工作流程，后面主要的工作就是安全运行/运营，实际上就是用好已有的安全控制措施。</p>
+<p>简单以资产管理为例：</p>
+<ul>
+<li>概述：通过资产管理，确定当前的资产状态，可以快速确认攻击面和某个软件版本缺陷的影响范围。</li>
+<li>范围：组织所有 IT 设备，内外网 IP、端口</li>
+<li>防护目标：及时发现新启用的 IP 和端口，业务系统所依赖重要的软件和版本的变更。</li>
+<li>防护要点：<ul>
+<li>结合网络拓扑，对组织内的物理设备和系统进行清查；</li>
+<li>梳理组织使用的软件和版本信息，需要确切了解用于支持业务系统的各种软件名称和详细版本；</li>
+<li>映射组织的（业务）通信和数据流，确定哪些业务会涉及使用到哪些设备；</li>
+<li>资源（例如，硬件，设备，数据和软件）的分类，重要性和商业价值</li>
+<li>资产负责人信息、外部供应商信息、外包运维信息。</li>
+</ul>
+</li>
+<li>管理制度和流程<ul>
+<li>资产管理制度</li>
+<li>业务上线/下线流程</li>
+<li>网络端口开放或变更流程</li>
+</ul>
+</li>
+<li>设备或系统支持：<ul>
+<li>资产管理系统</li>
+<li>IP 端口扫描工具</li>
+</ul>
+</li>
+<li>工作输出：<ul>
+<li>当前资产表</li>
+<li>IP、端口监控告警历史</li>
+</ul>
+</li>
+</ul>
+<h2 id="0x03-安全规划的执行"><a href="#0x03-安全规划的执行" class="headerlink" title="0x03 安全规划的执行"></a>0x03 安全规划的执行</h2><h3 id="人员培训"><a href="#人员培训" class="headerlink" title="人员培训"></a>人员培训</h3><p>整块信息安全工作并不是安全部门自己的事情，需要其他部门的配合，并且增加了其他部门的实际工作量。这就需要以合适的方式让安全部门外的成员理解信息安全工作，获取工作所需要的安全技能，通常是通过培训和考核进行。</p>
+<p>这块很重要，通过培训和交流让其他成员支持信息安全工作。</p>
+<h3 id="工作任务分解"><a href="#工作任务分解" class="headerlink" title="工作任务分解"></a>工作任务分解</h3><p>根据安全评估了解目前最缺乏的安全措施，那就是最优先需要解决的工作，所以最开始还是梳理资产，评估威胁、漏洞、风险，确认目前急需提升的安全防护措施。</p>
+<p>根据现有安全部门组织结构安排工作，涉及部门和人员最少，最有效果的安全措施优先安排，需要其他部门配合的安全措施要与关联部门和人员讨论后进行安排。</p>
+<h2 id="0x04-安全规划示例（目录）"><a href="#0x04-安全规划示例（目录）" class="headerlink" title="0x04 安全规划示例（目录）"></a>0x04 安全规划示例（目录）</h2><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">目录</span><br><span class="line">信息安全规划  <span class="number">1</span></span><br><span class="line"><span class="number">1</span>   概述  <span class="number">1</span></span><br><span class="line"><span class="number">1.1</span> 整体安全形势分析    <span class="number">1</span></span><br><span class="line"><span class="number">1.2</span> 行业安全形势分析    <span class="number">1</span></span><br><span class="line"><span class="number">1.3</span> 内部信息安全概况    <span class="number">1</span></span><br><span class="line"><span class="number">2</span>   信息安全需求分析    <span class="number">2</span></span><br><span class="line"><span class="number">2.1</span> 合规性要求   <span class="number">2</span></span><br><span class="line"><span class="number">2.2</span> 集团要求    <span class="number">2</span></span><br><span class="line"><span class="number">2.3</span> 业务需求    <span class="number">2</span></span><br><span class="line"><span class="number">3</span>   信息安全策略和目标   <span class="number">3</span></span><br><span class="line"><span class="number">3.1</span> 信息安全策略  <span class="number">4</span></span><br><span class="line"><span class="number">3.2</span> 信息安全目标  <span class="number">4</span></span><br><span class="line"><span class="number">4</span>   信息安全保障体系    <span class="number">4</span></span><br><span class="line"><span class="number">4.1</span> 设计原则    <span class="number">4</span></span><br><span class="line"><span class="number">4.2</span> 安全建设的层次 <span class="number">3</span></span><br><span class="line"><span class="number">4.3</span> 安全保障体系  <span class="number">5</span></span><br><span class="line"><span class="number">5</span>   信息安全组织和职能   <span class="number">6</span></span><br><span class="line"><span class="number">5.1</span> 安全组织设置  <span class="number">6</span></span><br><span class="line"><span class="number">5.1</span><span class="number">.1</span>   安全协调组织  <span class="number">6</span></span><br><span class="line"><span class="number">5.1</span><span class="number">.2</span>   安全响应中心  <span class="number">6</span></span><br><span class="line"><span class="number">5.1</span><span class="number">.3</span>   各分支机构安全组织   <span class="number">7</span></span><br><span class="line"><span class="number">5.2</span> 安全组织职责  <span class="number">7</span></span><br><span class="line"><span class="number">5.2</span><span class="number">.1</span>   安全协调组织职责    <span class="number">7</span></span><br><span class="line"><span class="number">5.2</span><span class="number">.2</span>   安全响应中心职责    <span class="number">8</span></span><br><span class="line"><span class="number">5.2</span><span class="number">.3</span>   各分支机构安全组织职责 <span class="number">8</span></span><br><span class="line"><span class="number">5.3</span> 安全人员管理  <span class="number">9</span></span><br><span class="line"><span class="number">6</span>   安全防护重点风险分析  <span class="number">10</span></span><br><span class="line"><span class="number">7</span>   信息安全保障体系建设  <span class="number">10</span></span><br><span class="line"><span class="number">7.1</span> 信息安全管理体系建设  <span class="number">10</span></span><br><span class="line"><span class="number">7.1</span><span class="number">.1</span>   组织结构    <span class="number">10</span></span><br><span class="line"><span class="number">7.1</span><span class="number">.2</span>   安全培训    <span class="number">10</span></span><br><span class="line"><span class="number">7.1</span><span class="number">.3</span>   标准、制度和流程    <span class="number">24</span></span><br><span class="line"><span class="number">7.1</span><span class="number">.4</span>   外部联系工作  <span class="number">24</span></span><br><span class="line"><span class="number">7.2</span> 信息安全技术体系建设  <span class="number">24</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.1</span>   物理安全    <span class="number">24</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.2</span>   网络安全    <span class="number">25</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.3</span>   主机安全    <span class="number">25</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.4</span>   云安全 <span class="number">25</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.5</span>   应用安全    <span class="number">26</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.6</span>   数据安全    <span class="number">26</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.7</span>   业务安全    <span class="number">26</span></span><br><span class="line"><span class="number">7.2</span><span class="number">.8</span>   隐私保护    <span class="number">26</span></span><br><span class="line"><span class="number">7.3</span> 信息安全运行体系建设  <span class="number">27</span></span><br><span class="line"><span class="number">7.3</span><span class="number">.1</span>   资产和漏洞生命周期管理 <span class="number">27</span></span><br><span class="line"><span class="number">7.3</span><span class="number">.2</span>   发布和变更管理 <span class="number">28</span></span><br><span class="line"><span class="number">7.3</span><span class="number">.3</span>   信息安全事件管理和应急演练   <span class="number">28</span></span><br><span class="line"><span class="number">7.3</span><span class="number">.4</span>   重要时期信息安全保障  <span class="number">31</span></span><br><span class="line"><span class="number">7.3</span><span class="number">.5</span>   日常工作和迎检工作   <span class="number">31</span></span><br><span class="line"><span class="number">7.3</span><span class="number">.6</span>   软件安全开发生命周期  <span class="number">31</span></span><br><span class="line"><span class="number">8</span>   办公网安全   <span class="number">32</span></span><br><span class="line"><span class="number">8.1</span> 网络安全    <span class="number">32</span></span><br><span class="line"><span class="number">8.1</span><span class="number">.1</span>   边界控制    <span class="number">32</span></span><br><span class="line"><span class="number">8.1</span><span class="number">.2</span>   安全域划分   <span class="number">32</span></span><br><span class="line"><span class="number">8.1</span><span class="number">.3</span>   入侵检测    <span class="number">33</span></span><br><span class="line"><span class="number">8.1</span><span class="number">.4</span>   上网行为管理  <span class="number">33</span></span><br><span class="line"><span class="number">8.1</span><span class="number">.5</span>   远程访问    <span class="number">33</span></span><br><span class="line"><span class="number">8.2</span> 终端安全    <span class="number">33</span></span><br><span class="line"><span class="number">8.2</span><span class="number">.1</span>   杀毒软件管理  <span class="number">33</span></span><br><span class="line"><span class="number">8.2</span><span class="number">.2</span>   补丁管理    <span class="number">33</span></span><br><span class="line"><span class="number">8.2</span><span class="number">.3</span>   主机加固    <span class="number">33</span></span><br><span class="line"><span class="number">8.3</span> 无线和手机设备安全   <span class="number">34</span></span><br><span class="line"><span class="number">8.3</span><span class="number">.1</span>   无线安全    <span class="number">34</span></span><br><span class="line"><span class="number">8.3</span><span class="number">.2</span>   移动设备管理  <span class="number">34</span></span><br><span class="line"><span class="number">8.4</span> 数据防泄密   <span class="number">34</span></span><br><span class="line"><span class="number">8.5</span> 内部系统安全  <span class="number">34</span></span><br><span class="line"><span class="number">9</span>   重点信息安全风险与保障体系对应关系   <span class="number">34</span></span><br><span class="line"><span class="number">9.1</span> 风险与保障体系对应关系 <span class="number">34</span></span><br><span class="line"><span class="number">9.2</span> 保障体系与合规性对应关系    <span class="number">35</span></span><br><span class="line"><span class="number">10</span>  工作规划和计划 <span class="number">35</span></span><br><span class="line"><span class="number">10.1</span>    工作分解思路  <span class="number">35</span></span><br><span class="line"><span class="number">10.2</span>    重点系统开发计划    <span class="number">36</span></span><br><span class="line"><span class="number">10.3</span>    长期工作规划  <span class="number">36</span></span><br><span class="line"><span class="number">10.4</span>    本年度工作计划 <span class="number">36</span></span><br><span class="line"><span class="number">11</span>  信息安全工作度量    <span class="number">36</span></span><br><span class="line"><span class="number">11.1</span>    评价体系和原则 <span class="number">37</span></span><br><span class="line"><span class="number">11.1</span><span class="number">.1</span>  评价体系    <span class="number">37</span></span><br><span class="line"><span class="number">11.1</span><span class="number">.2</span>  选拔机制    <span class="number">37</span></span><br><span class="line"><span class="number">11.1</span><span class="number">.3</span>  管理者的权利和义务   <span class="number">37</span></span><br><span class="line"><span class="number">11.2</span>    考核对象和考核方法   <span class="number">38</span></span><br><span class="line"><span class="number">11.2</span><span class="number">.1</span>  团队考核    <span class="number">38</span></span><br><span class="line"><span class="number">11.2</span><span class="number">.2</span>  个人考核    <span class="number">38</span></span><br><span class="line"><span class="number">11.2</span><span class="number">.3</span>  安全设备、系统效果评估 <span class="number">39</span></span><br><span class="line"><span class="number">11.2</span><span class="number">.4</span>  安全策略、安全程序效果评估   <span class="number">40</span></span><br><span class="line"><span class="number">11.3</span>    考核时间    <span class="number">40</span></span><br><span class="line"><span class="number">11.4</span>    奖励和问责   <span class="number">40</span></span><br><span class="line"><span class="number">12</span>  持续改进    <span class="number">40</span></span><br><span class="line"><span class="number">13</span>  附录  <span class="number">41</span></span><br></pre></td></tr></table></figure>
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.pa55w0rd.club/信息安全规划文档的编写/" data-id="cjomw7cj00016k6ul6wkad4bw" class="article-share-link" data-share="baidu" data-title="信息安全规划文档的编写  （转发）">分享到</a>
+      
+
+      
+        <a href="http://blog.pa55w0rd.club/信息安全规划文档的编写/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/非web型xss注入漏洞/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">看！这里有三种非Web型的XSS注入漏洞 （转发）</div>
+    </a>
+  
+  
+    <a href="/web应用安全测试备忘录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          Web应用安全测试备忘录 By legend
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <div id="gitalk-container"></div>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/aaaa/">aaaa</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/test1-md/">test1.md</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/test/">test</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/lynis/">Lynis</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/git_edit_remoteurl/">Git修改远程URL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  <script>
+  $(document).on("click", "ul.category-list li.category-list-item", function () {
+    window.location.href = $(this).find('a').attr('href')
+  })
+  </script>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
+    <div class="widget">
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+<script>
+$(document).on("click", "ul.archive-list li.archive-list-item", function () {
+  window.location.href = $(this).find('a').attr('href')
+})
+</script>
+
+  
+    
+  <style>
+  *{ margin: 0; padding: 0;}
+  .tooltips{ border-width: 1px; border-style: solid; position: absolute; display: none; border-radius: 3px; opacity: 0; filter:alpha( opacity = 0) ; z-index: 999;}
+  .tooltips p.content{ padding: 5px; }
+  .tooltips .triangle-front,.tooltips .triangle-back{ width: 0; height: 0; overflow: hidden; border-width: 8px; border-style: solid; position: absolute; border-color: transparent ; top: 100%; left: 50%; margin-left: -8px;}
+  .tooltips .triangle-back{ margin-top: -1px;}
+
+  .toolTipInfo{ border-color: #000; background-color: #EEEEEE;}
+  .toolTipInfo .triangle-front{ border-top-color: #EEEEEE;}
+  .toolTipInfo .triangle-back{ border-top-color: #EEEEEE;}
+
+
+  .icoSize{font-size: 2em}
+  </style>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-link"></i>链接</h3>
+    <div class="widget" style="z-index: 1;">
+
+
+
+
+
+      <!-- <ul> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+                  <a id="github-alt-icon-color" class="weight-icon-link" target="_blank" href="https://github.com/Pa55w0rd">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+                  <a id="envelope-o-icon-color" class="weight-icon-link" target="_blank" href="mailto:pa55w0rd@aliyun.com" data-toggle="tooltip" data-placement="top" title="请多多交流！">
+                  <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope-o  fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+
+          <!-- </li> -->
+        
+      <!-- </ul> -->
+    </div>
+  </div>
+
+
+  <script>
+  $.fn.extend({
+    hoverTips : function (){
+      var self = $(this);
+      var sw = self.get(0).switch;
+      if( !sw ) {
+        sw = true;
+        var content = self.attr("tooltips");
+        var htmlDom = $("<div class='tooltips'>")
+            .addClass("toolTipInfo")
+            .html("<p class='content'></p>"
+                + "<p class='triangle-front'></p>"
+                + "<p class='triangle-back'></p>");
+        htmlDom.find("p.content").html( content );
+      }
+      self.on("mouseover",function(){
+        $("body").append( htmlDom );
+        var left = self.offset().left - htmlDom.outerWidth()/2 + self.outerWidth()/2;
+        var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".triangle-front").css("border-width"));
+        htmlDom.css({"left":left,"top":top - 10,"display":"block"});
+        htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
+      });
+      self.on("mouseout",function(){
+        var top = parseInt(htmlDom.css("top"));
+        htmlDom.stop().animate({ "top" : top - 10 ,"opacity" : 0},300,function(){
+          htmlDom.remove();
+          sw = false;
+        });
+      });
+    },
+
+  });
+
+  $("#weixin-icon-color").hoverTips();
+  $("#qq-icon-color").hoverTips();
+  </script>
+
+
+
+  
+    
+    <div class="widget-wrap">
+  
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友链</h3>
+      <div class="widget">
+        <ul>
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="https://firexun.github.io/"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  
+  
+  
+</aside>
+
+      
+    </div>
+    <footer id="footer">
+  
+  <div data-scroll-reveal="enter bottom" class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Pa55w0rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
+    </div>
+
+    <div id="footer-info" class="inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv"> 访问量
+      <font color="#FF3030"><i class="fa fa-heartbeat"></i></font>
+      <span id="busuanzi_value_site_pv"></span>次</span>
+
+      <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257415698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257415698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    </div>
+  </div>
+
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+  
+    <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/betop.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+
+  <script>
+    var disqus_shortname = 'rapcoder';
+    if (page.permalink){ 
+      var disqus_url = 'http://blog.pa55w0rd.club/信息安全规划文档的编写/';
+     } 
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>
+
+
+
+<div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+window.scrollReveal = new scrollReveal({ reset: true});
+//
+})
+</script>

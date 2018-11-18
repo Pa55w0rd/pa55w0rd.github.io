@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+
+  <title>Wireshark使用 | Pa55w0rd &#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料。Wireshark使用WinPCAP作为接口，直接与网卡进行数据报文交换。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wireshark使用">
+<meta property="og:url" content="http://blog.pa55w0rd.club/wireshark使用/index.html">
+<meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
+<meta property="og:description" content="Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料。Wireshark使用WinPCAP作为接口，直接与网卡进行数据报文交换。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/1.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/2.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/3.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/4.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/5.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/6.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/7.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/8.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/9.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/10.png">
+<meta property="og:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/11.png">
+<meta property="og:updated_time" content="2018-10-22T14:51:23.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wireshark使用">
+<meta name="twitter:description" content="Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料。Wireshark使用WinPCAP作为接口，直接与网卡进行数据报文交换。">
+<meta name="twitter:image" content="http://blog.pa55w0rd.club/assets/img/wireshark/1.png">
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+  
+    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+  
+
+
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+
+
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/scrollReveal.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
+  <script src="/js/algolia-search.js" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  
+  
+
+
+
+
+
+
+  
+  
+  <!-- 
+  
+  
+  
+  
+   -->
+
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "",
+          apiKey: "",
+          adminApiKey: "",
+          indexName: "",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+
+</head>
+
+
+</html>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div data-scroll-reveal="enter top" id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pa55w0rd &#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+        
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-about" aria-hidden="true"></i>about</a>
+        
+          <a class="main-nav-link" href="/categories"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
+        
+          <a class="main-nav-link" href="/tags"><i class="fa fa-tags" aria-hidden="true"></i>标签</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        
+        <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      </nav>
+        <div id="local-search-input"></div>
+      <!-- 百度搜索 -->
+     <!-- <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="blog.pa55w0rd.club">
+        </form>
+      </div>
+      -->
+   
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-wireshark使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/wireshark使用/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-09T02:10:35.000Z" itemprop="datePublished">2018-10-09</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>Wireshark使用
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料。Wireshark使用WinPCAP作为接口，直接与网卡进行数据报文交换。大家可以用它来排查故障、分析攻击类型等，可以更快理解和发现问题</p>
+<h2 id="0x01-工作流程"><a href="#0x01-工作流程" class="headerlink" title="0x01 工作流程"></a>0x01 工作流程</h2><ol>
+<li>确定Wireshark的位置。如果没有一个正确的位置，启动Wireshark后会花费很长的时间捕获一些与自己无关的数据。</li>
+<li>选择捕获接口。一般都是选择连接到Internet网络的接口，这样才可以捕获到与网络相关的数据。否则，捕获到的其它数据对自己也没有任何帮助。</li>
+<li>使用捕获过滤器。通过设置捕获过滤器，可以避免产生过大的捕获文件。这样用户在分析数据时，也不会受其它数据干扰。而且，还可以为用户节约大量的时间。</li>
+<li>使用显示过滤器。通常使用捕获过滤器过滤后的数据，往往还是很复杂。为了使过滤的数据包再更细致，此时使用显示过滤器进行过滤。</li>
+<li>使用着色规则。通常使用显示过滤器过滤后的数据，都是有用的数据包。如果想更加突出的显示某个会话，可以使用着色规则高亮显示。</li>
+<li>构建图表。如果用户想要更明显的看出一个网络中数据的变化情况，使用图表的形式可以很方便的展现数据分布情况。</li>
+<li>重组数据。Wireshark的重组功能，可以重组一个会话中不同数据包的信息，或者是一个重组一个完整的图片或文件。由于传输的文件往往较大，所以信息分布在多个数据包中。为了能够查看到整个图片或文件，这时候就需要使用重组数据的方法来实现。</li>
+</ol>
+<h2 id="0x02-使用技巧"><a href="#0x02-使用技巧" class="headerlink" title="0x02 使用技巧"></a>0x02 使用技巧</h2><h3 id="TCP流绘制"><a href="#TCP流绘制" class="headerlink" title="TCP流绘制"></a>TCP流绘制</h3><p>为了便于理解在整个TCP会话期间，TCP 的Seq号和Ack号的工作过程，可使用Wireshark的绘制流功能，选择菜单栏中的<code>统计 -&gt;流量图 -&gt;TCP flows</code>，会自动创建一个TCP流的图形。</p>
+<p>每行代表一个数据包，左边列显示时间，中间列显示包的方向、TCP端口、包的负载长度和设置的标志位，右边列以10进制的方式显示相关Seq号/Ack号。</p>
+<p><img src="/assets/img/wireshark/1.png" alt="tcp流绘制"></p>
+<p>Wireshark默认展示的是相对Seq号/Ack号，相对Seq号/Ack号是和TCP会话的初始序列号相关联的。跟真实Seq号/Ack号相比，跟踪更小的相对Seq号/Ack号会相对容易一些。</p>
+<p>如果想要关闭相对序列号/确认号，可以选择Wireshark菜单栏中的<code>编辑 -&gt; 首选项 -&gt;protocols -&gt;TCP</code>，取消勾选<code>Relative sequence number</code>选项即可。</p>
+<h3 id="包的拼接与拆解"><a href="#包的拼接与拆解" class="headerlink" title="包的拼接与拆解"></a>包的拼接与拆解</h3><p><strong>包的拆解</strong>：在数据包保存时，<code>文件 -&gt; 导出特定分组</code>在对话框下面有一些保存选项，这里可以设置按什么方将包拆解。选好后填好文件名保存即可完成拆解。</p>
+<p><img src="/assets/img/wireshark/2.png" alt="包拆解"></p>
+<p><strong>包的拼接</strong>：<code>文件 -&gt; 合并（merge）</code> 然后选中一个将要被拼接的包，在该对话框下面设置接接方式和显示过滤器等</p>
+<p><img src="/assets/img/wireshark/3.png" alt="包拼接"></p>
+<h3 id="相对时间显示"><a href="#相对时间显示" class="headerlink" title="相对时间显示"></a>相对时间显示</h3><p>以一个数据包的时间为基准，后面的数据包显示都是以这个数据包的时间作为基准，这种方式常用于对网络延时的响应判断，是判断服务器还是客户端还是线路的延迟，来解决网络速度问题。有时数据包丢失并非延迟造成，当两台主机间通信很慢时，并没有TCP 重传或者重复ACK 特征，这时需要查看初始连接握手以及接下来的两个数据包。以相对时间显示来查看数据包的延迟情况。</p>
+<p><img src="/assets/img/wireshark/4.png" alt="相对时间显示"></p>
+<h3 id="协议统计分层信息"><a href="#协议统计分层信息" class="headerlink" title="协议统计分层信息"></a>协议统计分层信息</h3><p>使用<code>统计 –&gt; 协议分级</code>，此信息显示的是抓包文件包含的所有协议的树状分支。数据包通常会包含许多协议，有很多协议会在每个包中被统计。End Packets，End Bytes，End Mbit/s列是该层在抓包中作为最后一层协议的统计数据，按分组百分比参照的是相同协议层的百分比。</p>
+<p><img src="/assets/img/wireshark/5.png" alt="协议分级统计"></p>
+<h3 id="网络会话列表"><a href="#网络会话列表" class="headerlink" title="网络会话列表"></a>网络会话列表</h3><p>网络会话是两个指定终端之间的数据流，使用<code>统计 —&gt; 对话</code>统计功能分析协议，通过对话列表，能看出很多网络问题。</p>
+<p>第3层IP统计数据，IP会话是两个IP地址之间的所有数据流，观察源ip和目的ip分布规律可知道ip地址请求报文分布，点击每列表头可得到排序；也可知道包大小，字节大小。通过字节分布，看看是小包攻击还是应用层攻击。</p>
+<p>第4层TCP或UDP统计数据：看看主要是tcp攻击还是udp数据包，此列表主要分析tcp的链接次数、源端口和目的端口分布规律，是固定还是随机的。比如每一个PC合理的连接数是10到20个，上百个则是不正常的。</p>
+<p><img src="/assets/img/wireshark/6.png" alt="会话列表"></p>
+<h3 id="网络端点列表"><a href="#网络端点列表" class="headerlink" title="网络端点列表"></a>网络端点列表</h3><p>选择菜单栏中的<code>统计 -&gt; 端点</code>，分析IP地址的pps和bps，以及统计每个端点的地址、发送或收到的数据包的数量和字节。少量IP终端节点与大量TCP终端节点：可能的情况是每一台主机有很多个TCP连接，进而推测可能是网络攻击。</p>
+<p><img src="/assets/img/wireshark/7.png" alt="端点列表"></p>
+<h3 id="IP地址统计列表"><a href="#IP地址统计列表" class="headerlink" title="IP地址统计列表"></a>IP地址统计列表</h3><p>使用<code>统计 —IP Statistics—all addresss</code>，分析IP地址的排序和百分比</p>
+<p><img src="/assets/img/wireshark/8.png" alt="ip地址统计"></p>
+<h3 id="应用层数据包分析"><a href="#应用层数据包分析" class="headerlink" title="应用层数据包分析"></a>应用层数据包分析</h3><p>使用<code>统计 -http-分组计数器</code>、可以看到http get和post数据包分布规律，发现数据包大部分是get。</p>
+<p><img src="/assets/img/wireshark/9.png" alt="应用层统计"></p>
+<p>使用<code>统计 -http-请求</code>可以看到请求url分布过来，发现get请求的url集中在极个别的url上面，url带有明显特征。</p>
+<p><img src="/assets/img/wireshark/10.png" alt="应用层统计"></p>
+<h3 id="数据包着色"><a href="#数据包着色" class="headerlink" title="数据包着色"></a>数据包着色</h3><p>Wireshark地彩色高亮有助于快速标识协议。将数据包进行彩色高亮，可以让你很快地讲不通协议的数据包分开，而不需要对每个数据包都查看Packet List面板中地协议列，举例来说，如果觉得网络上有一个恶意的DHCP服务器在分发IP，可以简单地修改DHCP协议的着色规则，使其呈现黄色（或者其他便于辨认地颜色）。这可以能够更快地找出所有DHCP流量，数据包分析工作更有效率。使用<code>视图 - 着色规则</code>来修改</p>
+<p><img src="/assets/img/wireshark/11.png" alt="着色规则"></p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://blog.pa55w0rd.club/wireshark使用/" data-id="cjomw7cir000fk6uln0w3rf61" class="article-share-link" data-share="baidu" data-title="Wireshark使用">分享到</a>
+      
+
+      
+        <a href="http://blog.pa55w0rd.club/wireshark使用/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/ubuntu安装xunfeng/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">ubuntu搭建xunfeng资产扫描系统</div>
+    </a>
+  
+  
+    <a href="/mysql-python安装时提示mysql_config not fount/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          mysql-python安装时mysql_config not found
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <div id="gitalk-container"></div>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/aaaa/">aaaa</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/test1-md/">test1.md</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/test/">test</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/lynis/">Lynis</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/git_edit_remoteurl/">Git修改远程URL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  <script>
+  $(document).on("click", "ul.category-list li.category-list-item", function () {
+    window.location.href = $(this).find('a').attr('href')
+  })
+  </script>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
+    <div class="widget">
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+<script>
+$(document).on("click", "ul.archive-list li.archive-list-item", function () {
+  window.location.href = $(this).find('a').attr('href')
+})
+</script>
+
+  
+    
+  <style>
+  *{ margin: 0; padding: 0;}
+  .tooltips{ border-width: 1px; border-style: solid; position: absolute; display: none; border-radius: 3px; opacity: 0; filter:alpha( opacity = 0) ; z-index: 999;}
+  .tooltips p.content{ padding: 5px; }
+  .tooltips .triangle-front,.tooltips .triangle-back{ width: 0; height: 0; overflow: hidden; border-width: 8px; border-style: solid; position: absolute; border-color: transparent ; top: 100%; left: 50%; margin-left: -8px;}
+  .tooltips .triangle-back{ margin-top: -1px;}
+
+  .toolTipInfo{ border-color: #000; background-color: #EEEEEE;}
+  .toolTipInfo .triangle-front{ border-top-color: #EEEEEE;}
+  .toolTipInfo .triangle-back{ border-top-color: #EEEEEE;}
+
+
+  .icoSize{font-size: 2em}
+  </style>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-link"></i>链接</h3>
+    <div class="widget" style="z-index: 1;">
+
+
+
+
+
+      <!-- <ul> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+                  <a id="github-alt-icon-color" class="weight-icon-link" target="_blank" href="https://github.com/Pa55w0rd">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+                  <a id="envelope-o-icon-color" class="weight-icon-link" target="_blank" href="mailto:pa55w0rd@aliyun.com" data-toggle="tooltip" data-placement="top" title="请多多交流！">
+                  <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope-o  fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+
+          <!-- </li> -->
+        
+      <!-- </ul> -->
+    </div>
+  </div>
+
+
+  <script>
+  $.fn.extend({
+    hoverTips : function (){
+      var self = $(this);
+      var sw = self.get(0).switch;
+      if( !sw ) {
+        sw = true;
+        var content = self.attr("tooltips");
+        var htmlDom = $("<div class='tooltips'>")
+            .addClass("toolTipInfo")
+            .html("<p class='content'></p>"
+                + "<p class='triangle-front'></p>"
+                + "<p class='triangle-back'></p>");
+        htmlDom.find("p.content").html( content );
+      }
+      self.on("mouseover",function(){
+        $("body").append( htmlDom );
+        var left = self.offset().left - htmlDom.outerWidth()/2 + self.outerWidth()/2;
+        var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".triangle-front").css("border-width"));
+        htmlDom.css({"left":left,"top":top - 10,"display":"block"});
+        htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
+      });
+      self.on("mouseout",function(){
+        var top = parseInt(htmlDom.css("top"));
+        htmlDom.stop().animate({ "top" : top - 10 ,"opacity" : 0},300,function(){
+          htmlDom.remove();
+          sw = false;
+        });
+      });
+    },
+
+  });
+
+  $("#weixin-icon-color").hoverTips();
+  $("#qq-icon-color").hoverTips();
+  </script>
+
+
+
+  
+    
+    <div class="widget-wrap">
+  
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友链</h3>
+      <div class="widget">
+        <ul>
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="https://firexun.github.io/"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  
+  
+  
+</aside>
+
+      
+    </div>
+    <footer id="footer">
+  
+  <div data-scroll-reveal="enter bottom" class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Pa55w0rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
+    </div>
+
+    <div id="footer-info" class="inner">
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv"> 访问量
+      <font color="#FF3030"><i class="fa fa-heartbeat"></i></font>
+      <span id="busuanzi_value_site_pv"></span>次</span>
+
+      <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257415698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257415698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+
+    </div>
+  </div>
+
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+  
+    <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/about.html" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/betop.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+
+  <script>
+    var disqus_shortname = 'rapcoder';
+    if (page.permalink){ 
+      var disqus_url = 'http://blog.pa55w0rd.club/wireshark使用/';
+     } 
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>
+
+
+
+<div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+window.scrollReveal = new scrollReveal({ reset: true});
+//
+})
+</script>

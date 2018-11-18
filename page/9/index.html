@@ -158,16 +158,16 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-野路子企业安全架构设计" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-如何进行安全设计评审" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/野路子企业安全架构设计/" class="article-date">
+    <a href="/pa55w0rd-new.github.io/如何进行安全设计评审/" class="article-date">
   <i class="fa fa-calendar"></i>
   <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/安全建设/">安全建设</a>
+    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/开发安全/">开发安全</a>
   </div>
 
 
@@ -181,8 +181,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/野路子企业安全架构设计/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>野路子企业安全架构设计（转发）</a>
+      <a class="article-title" href="/pa55w0rd-new.github.io/如何进行安全设计评审/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>如何进行安全设计评审（转发）</a>
     </h1>
   
 
@@ -197,28 +197,93 @@
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="转发自-https-github-com-mylamour-blog-issues-33"><a href="#转发自-https-github-com-mylamour-blog-issues-33" class="headerlink" title="转发自 https://github.com/mylamour/blog/issues/33"></a>转发自 <a href="https://github.com/mylamour/blog/issues/33" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/33</a></h2><p><img src="https://user-images.githubusercontent.com/12653147/43885348-37bde086-9beb-11e8-8406-3b34d9d96700.png" alt="default"><br>首先，知道业务有哪些，有多少资产，然后是数据的流向，知道要分析哪些流量。想要发现什么，阻止什么。其实Google的OKR也可以在这里应用。例如，安全架构的OKR可以这样：</p>
-<p>O:  发现入侵者，减缓或者阻断攻击，以及取证。</p>
-<p>KR: 资产管理系统   ——— 19%</p>
-<p>KR: 入侵检测系统   ——— 19%</p>
-<p>KR: 日志收集系统   ——— 19%</p>
-<p>KR: 关联分析系统   ——— 19%</p>
-<p>KR: 应急响应系统   ——— 19%</p>
-<p>但，即便都做了，也不能100%保证不出问题，还需要做定期的渗透测试。我们先按照这种思路，画出类似的OKR图</p>
-<p>O: 日志收集</p>
-<p>KR: 明确数据流向   ——— 50%</p>
-<p>KR: 明确收集类型   ——— 40%</p>
-<p>KR: 明确收集方式   ——— 5%</p>
-<p>KR: 明确存储方式   ——— 5%</p>
-<p>其实我之前画的时候，是先画的脑图，分析下当前系统拥有的哪些资产以及所需的对应的措施。然后绘制的。下图就是结合现状列出的日志列表。</p>
-<p><a href="https://user-images.githubusercontent.com/12653147/43366971-1ba02b82-9378-11e8-86af-9a69002bf42f.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43366971-1ba02b82-9378-11e8-86af-9a69002bf42f.png" alt="image"></a></p>
-<p>明确了各个部分之后，其实整个系统就有点呼之如出了。但是即便如此，之后还是需要进行修改，此时可以去继续和其他部门进行沟通，比如说我之前就先和区块链代理组沟通对方的架构，和产品经理沟通关键业务有哪些，又和运维沟通，让其统计出相应的资产。跨职能沟通并不是一件容易的事，碰到sb的话就更困难了。</p>
-<p>下面看一个V1版本的设计<br><a href="https://user-images.githubusercontent.com/12653147/43367427-2ea05d7c-937f-11e8-8d5a-6c923c6b99a3.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43367427-2ea05d7c-937f-11e8-8d5a-6c923c6b99a3.png" alt="image"></a></p>
-<p>这是一个V2的版本设计，修改后的，明显的对比是增加了蜜罐系统，复用威胁情报，以及补上了内网的IDS系统。</p>
-<p><a href="https://user-images.githubusercontent.com/12653147/43367453-ad736694-937f-11e8-96c0-b492feca5d96.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43367453-ad736694-937f-11e8-96c0-b492feca5d96.png" alt="image"></a></p>
-<p>当然具体到落地实现，还需要不少东西，比如说，是否是要修改开源ids，使agent监听某个服务，一旦更新规则，自动发送到每台机器。或者说ossec、suricata已具有这些功能，以及关联分析的时候，怎么选择适应的算法，并降低误报和漏报，引流到蜜罐系统等等，不一而足。以及自动化的部署更新。每个模块其实都需要一个人或者几个人去负责，但是作为一个人的安全部，能做的就是按照轻重缓急，自己排期进行。</p>
-<p>你应该还能看到这里其实还缺少SDL相关的设计以及落地。还有就是切记不能忘了安全系统本身的漏洞问题，不要因为具有高权限的安全系统本身有问题，导致从该点被攻破。在日常的设计中，20%的防御做好就能抵挡住80%的攻击。 比如说 生产环境的CDN + WAF 1+ WAF 2 + IDS。测试环境的ACL,这些最基本的防护足以抵挡80%的攻击，甚至90%。但是作为一个安全人员，我不希望看到的是，做到这20%就结束了，出现问题就跑路(引咎辞职其实是很不负责的行为), 而是应该专注于剩下的80%，怎么做好，做的更好。不仅从工具上(很多人喜欢安装一套又一套的系统，以其展现的报表去谋得赞扬。而不是通过跨职能的沟通和设计适合自己系统的安全架构和SDL流程去做剩下的80%)。</p>
-<p>但是在现在这样的环境里，很多事情都是步步维艰。只求做好自己的事情了。</p>
+        <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
+<ul>
+<li>目录<br>{:toc}<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1></li>
+</ul>
+<p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。<br><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png" alt="image"></p>
+<p>那么在安全设计评审这一阶段，应该怎么去做。我们可以先看下唯品会的SDL中在落地安全设计这一块怎么做的。</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45603582-d4398900-ba5f-11e8-97c3-41704aa37024.png" alt="image"></p>
+<p>就我自身而言。是按照以下这个流程进行的。</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536539-66f5e000-b834-11e8-929b-6b5fcc5cdb98.png" height="400"></p>
+<p>看着一大堆乱七八糟，自上而下的流程，但是做起来其实很快的。此处默认安全人员熟悉各种基本的开发过程中的安全规范以及一些<code>Checklist</code>(必须要了解公司开发语言对应的安全开发规范)，举例： <code>web</code>安全开发规范，<code>Python</code>安全编码规范，<code>Flask</code>安全， <code>Django</code>安全,常用的安全配置，面临哪些攻击点等等。<br>ps: 明确逻辑是非常重要的，可以说最为重要，如果连逻辑都不明白，谈什么设计评审。</p>
+<p>一些比较基础的: </p>
+<ul>
+<li>HTTPS Everywhere</li>
+<li>Bcypt 存储Hash</li>
+<li>OTP</li>
+<li>频率限制</li>
+<li>盐不要硬编码</li>
+<li>secret 和 auth-token 不要硬编码</li>
+<li>服务器间调用的api不要在app出现</li>
+<li>CSP, CSRF, HSTS, X-FRAME-OPTIONS, X-XSS-PROTECTION</li>
+<li>过滤输入<br>等等等….</li>
+</ul>
+<p>下面以<code>C2C</code>平台交易部分为例进行说明，可以简单的想一下，在智联买一张火车票，打开了支付宝进行支付。:<br><img src="https://user-images.githubusercontent.com/12653147/45537646-67dc4100-b837-11e8-9154-a3f78020d931.png" alt="image"></p>
+<p>然后，你知道数字签名当然是很基础的部分了。那么接下来，你就要细化支付流程过程中出现哪些操作，针对这些操作需要做什么样的防护措施。下图是针对用户商户支付方之间的流程：</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45538041-84c54400-b838-11e8-9426-f8e2074c78ca.png" alt="image"></p>
+<p>针对每个输入点，自身可控的输入输出的地方，进行过滤，校验等操作。</p>
+<p>所以那么问题来了，如果只单单是用户和支付方之间的呢?<br><img src="https://user-images.githubusercontent.com/12653147/45539501-88f36080-b83c-11e8-8b18-26a204eaf0a9.png" alt="image"></p>
+<p>你也可以思考一下如何进行。</p>
+<p>并且在<code>OWASP</code>应用安全设计中，详细指出了其他一些问题(中文版 Version 1.0 5):</p>
+<ul>
+<li><p>数据流:</p>
+<ul>
+<li><p>用户输入是否被直接用于引用业务逻辑的类或函数? </p>
+</li>
+<li><p>是否有一个数据绑定缺陷?</p>
+</li>
+<li><p>是否暴露任何后门参数来调用业务逻辑?</p>
+</li>
+<li><p>应用程序的执行流程是否正确?</p>
+</li>
+</ul>
+</li>
+<li><p>身份验证和访问控制:</p>
+<ul>
+<li><p>是否对所有文件实现访问控制?</p>
+</li>
+<li><p>是否安全地处理会话?</p>
+</li>
+<li><p>是否存在单点登录?单点登录是否留下后门?</p>
+</li>
+</ul>
+</li>
+<li><p>已有或内置的安全控制:</p>
+<ul>
+<li><p>在现有任意安全控制中的弱点; </p>
+</li>
+<li><p>安全控制的部署是否正确?</p>
+</li>
+</ul>
+</li>
+<li><p>架构:</p>
+<ul>
+<li><p>对所有的输入是否有验证?</p>
+</li>
+<li><p>到外部服务器的连接是安全的吗?</p>
+</li>
+</ul>
+</li>
+<li><p>配置或代码文件和数据存储:</p>
+<ul>
+<li><p>配置文件中是否含有敏感数据?</p>
+</li>
+<li><p>是否支持任何不安全的数据源?</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>下图(来自OWASP官方文档)详列上述条目以及其他需要检查的地方。<br><img src="https://user-images.githubusercontent.com/12653147/45603390-385b4d80-ba5e-11e8-9135-5b8352202820.png" alt="image"><br><img src="https://user-images.githubusercontent.com/12653147/45603400-47420000-ba5e-11e8-9ac6-07ff0aedcc90.png" alt="image"></p>
+<p>但是其实并不需要按照上述所有清单做自检，或者说是当你和开发团队在讨论的过程中不需要涉及全部的checklist，可能只需要在架构上，设计上进行检验，以及身份验证和数据检验上。当然，都是需要根据自己的业务场景去实现，因地制宜。</p>
+<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h1><ul>
+<li><a href="https://www.microsoft.com/en-us/SDL/process/design.aspx" target="_blank" rel="noopener">Mircosoft SDL lifecycle: Desing</a></li>
+<li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener">API Security Checklist</a></li>
+<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener">The Security Checklist</a></li>
+<li><a href="https://gist.github.com/mylamour/702d9d6e24a27699d8759967e6eb9f4f" target="_blank" rel="noopener">Part of FLASK Security</a></li>
+<li><a href="https://gist.github.com/mylamour/311299cc7fb80ad9f6674b2cf4ca02a4" target="_blank" rel="noopener">Part of Django Security</a></li>
+</ul>
 
       
 
@@ -230,11 +295,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/野路子企业安全架构设计/" data-id="cjomwa5ob000rl9ulxjlcsb35" class="article-share-link" data-share="baidu" data-title="野路子企业安全架构设计（转发）">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/如何进行安全设计评审/" data-id="cjomwkvc2000rnuulh3q1gq3b" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
       
 
       
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/野路子企业安全架构设计/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/如何进行安全设计评审/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -449,7 +514,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/androidchecklist/" data-id="cjomwa5nw0009l9ul7pqvofvn" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/androidchecklist/" data-id="cjomwkvbl0003nuulhwdajab9" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
       
 
       
@@ -589,7 +654,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/Android进程注入/" data-id="cjomwa5nu0006l9ulicc81hzf" class="article-share-link" data-share="baidu" data-title="Android进程注入">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/Android进程注入/" data-id="cjomwkvbz000mnuul74cokkhc" class="article-share-link" data-share="baidu" data-title="Android进程注入">分享到</a>
       
 
       
@@ -674,7 +739,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/安卓模拟器安装证书/" data-id="cjomwa5nv0007l9uliv7gbq2l" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/安卓模拟器安装证书/" data-id="cjomwkvds002lnuul4292oysv" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
       
 
       
@@ -775,7 +840,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/ruby换源/" data-id="cjomwa5mg0000l9ulgvdpd90w" class="article-share-link" data-share="baidu" data-title="ruby换源、安装jekyll">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/ruby换源/" data-id="cjomwkvbc0000nuulw44osp88" class="article-share-link" data-share="baidu" data-title="ruby换源、安装jekyll">分享到</a>
       
 
       

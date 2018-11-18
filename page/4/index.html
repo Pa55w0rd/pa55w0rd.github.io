@@ -243,7 +243,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/非web型xss注入漏洞/" data-id="cjomwa5ol001bl9ulaz6tdiao" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/非web型xss注入漏洞/" data-id="cjomwkvca0013nuulmqo3o5v1" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
       
 
       
@@ -483,7 +483,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/甲方安全建设的一些思路和思考/" data-id="cjomwa5ok0019l9ulvccu6xdu" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/甲方安全建设的一些思路和思考/" data-id="cjomwkvc80011nuulgzepxn1v" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
       
 
       
@@ -870,11 +870,236 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/代码自动化扫描系统建设/" data-id="cjomwa5oe000wl9ulbyx1sqcs" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/代码自动化扫描系统建设/" data-id="cjomwkvcu0020nuulx05h1jic" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
         <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-quick-SQL-cheatsheet" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/pa55w0rd-new.github.io/quick-SQL-cheatsheet/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pa55w0rd-new.github.io/quick-SQL-cheatsheet/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>SQL 速查表</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<!--
+# 内容 
+1. [ 查找数据的查询 ](#find)
+2. [ 修改数据的查询 ](#modify)
+3. [ 聚合查询 ](#report)
+4. [ 连接查询 ](#joins)
+5. [ 视图查询 ](#view)
+6. [ 修改表的查询 ](#alter) 
+https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
+-->
+<p><a name="find"></a></p>
+<h1 id="1-查找数据的查询"><a href="#1-查找数据的查询" class="headerlink" title="1. 查找数据的查询"></a>1. 查找数据的查询</h1><h3 id="SELECT-用于从数据库中选择数据"><a href="#SELECT-用于从数据库中选择数据" class="headerlink" title="SELECT: 用于从数据库中选择数据"></a><strong>SELECT</strong>: 用于从数据库中选择数据</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> table_name;</li>
+</ul>
+<h3 id="DISTINCT-用于过滤掉重复的值并返回指定列的行"><a href="#DISTINCT-用于过滤掉重复的值并返回指定列的行" class="headerlink" title="DISTINCT: 用于过滤掉重复的值并返回指定列的行"></a><strong>DISTINCT</strong>: 用于过滤掉重复的值并返回指定列的行</h3><ul>
+<li><code>SELECT DISTINCT</code> column_name;</li>
+</ul>
+<h3 id="WHERE-用于过滤记录-行"><a href="#WHERE-用于过滤记录-行" class="headerlink" title="WHERE: 用于过滤记录/行"></a><strong>WHERE</strong>: 用于过滤记录/行</h3><ul>
+<li><code>SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> condition2;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>OR</code> condition2;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE NOT</code> condition;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> (condition2 <code>OR</code> condition3);</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE EXISTS</code> (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
+</ul>
+<h3 id="ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）"><a href="#ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）" class="headerlink" title="ORDER BY: 用于结果集的排序，升序（ASC）或者降序（DESC）"></a><strong>ORDER BY</strong>: 用于结果集的排序，升序（ASC）或者降序（DESC）</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column <code>DESC</code>;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column1 <code>ASC</code>, column2 <code>DESC</code>;</li>
+</ul>
+<h3 id="SELECT-TOP-用于指定从表顶部返回的记录数"><a href="#SELECT-TOP-用于指定从表顶部返回的记录数" class="headerlink" title="SELECT TOP: 用于指定从表顶部返回的记录数"></a><strong>SELECT TOP</strong>: 用于指定从表顶部返回的记录数</h3><ul>
+<li><code>SELECT TOP</code> number columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>SELECT TOP</code> percent columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+<li>并非所有数据库系统都支持<code>SELECT TOP</code>。 MySQL 中是<code>LIMIT</code>子句</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>LIMIT</code> offset, count;</li>
+</ul>
+<h3 id="LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符"><a href="#LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符" class="headerlink" title="LIKE: 用于搜索列中的特定模式，WHERE 子句中使用的运算符"></a><strong>LIKE</strong>: 用于搜索列中的特定模式，WHERE 子句中使用的运算符</h3><ul>
+<li>% (percent sign) 是一个表示零个，一个或多个字符的通配符</li>
+<li>_ (underscore) 是一个表示单个字符通配符</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>LIKE</code> pattern;</li>
+<li><code>LIKE</code> ‘a%’    （查找任何以“a”开头的值）</li>
+<li><code>LIKE</code> ‘%a’    （查找任何以“a”结尾的值）</li>
+<li><code>LIKE</code> ‘%or%’  （查找任何包含“or”的值）</li>
+<li><code>LIKE</code> ‘_r%’   （查找任何第二位是“r”的值）</li>
+<li><code>LIKE</code> ‘a_%_%’ （查找任何以“a”开头且长度至少为3的值）</li>
+<li><code>LIKE</code> ‘[a-c]%’（查找任何以“a”或“b”或“c”开头的值）</li>
+</ul>
+<h3 id="IN-用于在-WHERE-子句中指定多个值的运算符"><a href="#IN-用于在-WHERE-子句中指定多个值的运算符" class="headerlink" title="IN: 用于在 WHERE 子句中指定多个值的运算符"></a><strong>IN</strong>: 用于在 WHERE 子句中指定多个值的运算符</h3><ul>
+<li>本质上，IN运算符是多个OR条件的简写</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (value1, value2, …);</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (<code>SELECT STATEMENT</code>);</li>
+</ul>
+<h3 id="BETWEEN-用于过滤给定范围的值的运算符"><a href="#BETWEEN-用于过滤给定范围的值的运算符" class="headerlink" title="BETWEEN: 用于过滤给定范围的值的运算符"></a><strong>BETWEEN</strong>: 用于过滤给定范围的值的运算符</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>BETWEEN</code> value1 <code>AND</code> value2;</li>
+<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> (column_name <code>BETWEEN</code> value1 <code>AND</code> value2) <code>AND NOT</code> column_name2 <code>IN</code> (value3, value4);</li>
+<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> column_name <code>BETWEEN</code> #01/07/1999# AND #03/12/1999#;</li>
+</ul>
+<h3 id="NULL-代表一个字段没有值"><a href="#NULL-代表一个字段没有值" class="headerlink" title="NULL: 代表一个字段没有值"></a><strong>NULL</strong>: 代表一个字段没有值</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NULL</code>;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NOT NULL</code>;</li>
+</ul>
+<h3 id="AS-用于给表或者列分配别名"><a href="#AS-用于给表或者列分配别名" class="headerlink" title="AS: 用于给表或者列分配别名"></a><strong>AS</strong>: 用于给表或者列分配别名</h3><ul>
+<li><code>SELECT</code> column_name <code>AS</code> alias_name <code>FROM</code> table_name;</li>
+<li><code>SELECT</code> column_name <code>FROM</code> table_name <code>AS</code> alias_name;</li>
+<li><code>SELECT</code> column_name <code>AS</code> alias_name1, column_name2 <code>AS</code> alias_name2;</li>
+<li><code>SELECT</code> column_name1, column_name2 + ‘, ‘ + column_name3 <code>AS</code> alias_name;</li>
+</ul>
+<h3 id="UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符"><a href="#UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符" class="headerlink" title="UNION: 用于组合两个或者多个 SELECT 语句的结果集的运算符"></a><strong>UNION</strong>: 用于组合两个或者多个 SELECT 语句的结果集的运算符</h3><ul>
+<li>每个 SELECT 语句必须拥有相同的列数</li>
+<li>列必须拥有相似的数据类型</li>
+<li>每个 SELECT 语句中的列也必须具有相同的顺序</li>
+<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>UNION SELECT</code> column_name <code>FROM</code> table2;</li>
+<li><code>UNION</code> 仅允许选择不同的值, <code>UNION ALL</code> 允许重复</li>
+</ul>
+<h3 id="ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符"><a href="#ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符" class="headerlink" title="ANY|ALL: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符"></a><strong>ANY|ALL</strong>: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符</h3><ul>
+<li><code>ANY</code> 如果任何子查询值满足条件，则返回 true。</li>
+<li><code>ALL</code> 如果任何子查询值满足条件，则返回 true。</li>
+<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>WHERE</code> column_name operator (<code>ANY</code>|<code>ALL</code>) (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
+</ul>
+<h3 id="GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"><a href="#GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列" class="headerlink" title="GROUP BY: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"></a><strong>GROUP BY</strong>: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列</h3><ul>
+<li><code>SELECT</code> column_name1, COUNT(column_name2) <code>FROM</code> table_name <code>WHERE</code> condition <code>GROUP BY</code> column_name1 <code>ORDER BY</code> COUNT(column_name2) DESC;</li>
+</ul>
+<h3 id="HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。"><a href="#HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。" class="headerlink" title="HAVING: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。"></a><strong>HAVING</strong>: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。</h3><ul>
+<li><code>SELECT</code> <code>COUNT</code>(column_name1), column_name2 <code>FROM</code> table <code>GROUP BY</code> column_name2 <code>HAVING</code> <code>COUNT(</code>column_name1<code>)</code> &gt; 5;</li>
+</ul>
+<p><a name="modify"></a></p>
+<h1 id="2-修改数据的查询"><a href="#2-修改数据的查询" class="headerlink" title="2. 修改数据的查询"></a>2. 修改数据的查询</h1><h3 id="INSERT-INTO-用于在表中插入新记录-行"><a href="#INSERT-INTO-用于在表中插入新记录-行" class="headerlink" title="INSERT INTO: 用于在表中插入新记录/行"></a><strong>INSERT INTO</strong>: 用于在表中插入新记录/行</h3><ul>
+<li><code>INSERT INTO</code> table_name (column1, column2) <code>VALUES</code> (value1, value2);</li>
+<li><code>INSERT INTO</code> table_name <code>VALUES</code> (value1, value2 …);</li>
+</ul>
+<h3 id="UPDATE-用于修改表中的现有记录-行"><a href="#UPDATE-用于修改表中的现有记录-行" class="headerlink" title="UPDATE: 用于修改表中的现有记录/行"></a><strong>UPDATE</strong>: 用于修改表中的现有记录/行</h3><ul>
+<li><code>UPDATE</code> table_name <code>SET</code> column1 = value1, column2 = value2 <code>WHERE</code> condition;</li>
+<li><code>UPDATE</code> table_name <code>SET</code> column_name = value;</li>
+</ul>
+<h3 id="DELETE-用于删除表中的现有记录-行"><a href="#DELETE-用于删除表中的现有记录-行" class="headerlink" title="DELETE: 用于删除表中的现有记录/行"></a><strong>DELETE</strong>: 用于删除表中的现有记录/行</h3><ul>
+<li><code>DELETE FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>DELETE</code> * <code>FROM</code> table_name;</li>
+</ul>
+<p><a name="report"></a></p>
+<h1 id="3-聚合查询"><a href="#3-聚合查询" class="headerlink" title="3. 聚合查询"></a>3. 聚合查询</h1><h3 id="COUNT-返回出现次数"><a href="#COUNT-返回出现次数" class="headerlink" title="COUNT: 返回出现次数"></a><strong>COUNT</strong>: 返回出现次数</h3><ul>
+<li><code>SELECT COUNT (DISTINCT</code> column_name<code>)</code>;</li>
+</ul>
+<h3 id="MIN-and-MAX-返回所选列的最小-最大值"><a href="#MIN-and-MAX-返回所选列的最小-最大值" class="headerlink" title="MIN() and MAX(): 返回所选列的最小/最大值"></a><strong>MIN() and MAX()</strong>: 返回所选列的最小/最大值</h3><ul>
+<li><code>SELECT MIN (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>SELECT MAX (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<h3 id="AVG-返回数字列的平均值"><a href="#AVG-返回数字列的平均值" class="headerlink" title="AVG(): 返回数字列的平均值"></a><strong>AVG()</strong>: 返回数字列的平均值</h3><ul>
+<li><code>SELECT AVG (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<h3 id="SUM-返回数值列的总和"><a href="#SUM-返回数值列的总和" class="headerlink" title="SUM(): 返回数值列的总和"></a><strong>SUM()</strong>: 返回数值列的总和</h3><ul>
+<li><code>SELECT SUM (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<p><a name="joins"></a></p>
+<h1 id="4-连接查询"><a href="#4-连接查询" class="headerlink" title="4. 连接查询"></a>4. 连接查询</h1><h3 id="INNER-JOIN-内连接，返回在两张表中具有匹配值的记录"><a href="#INNER-JOIN-内连接，返回在两张表中具有匹配值的记录" class="headerlink" title="INNER JOIN: 内连接，返回在两张表中具有匹配值的记录"></a><strong>INNER JOIN</strong>: 内连接，返回在两张表中具有匹配值的记录</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>INNER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+<li><code>SELECT</code> table1.column_name1, table2.column_name2, table3.column_name3 <code>FROM</code> ((table1 <code>INNER JOIN</code> table2 <code>ON</code> relationship) <code>INNER JOIN</code> table3 <code>ON</code> relationship);</li>
+</ul>
+<h3 id="LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"><a href="#LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）" class="headerlink" title="LEFT (OUTER) JOIN: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"></a><strong>LEFT (OUTER) JOIN</strong>: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>LEFT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+</ul>
+<h3 id="RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"><a href="#RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录" class="headerlink" title="RIGHT (OUTER) JOIN: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"></a><strong>RIGHT (OUTER) JOIN</strong>: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>RIGHT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+</ul>
+<h3 id="FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。"><a href="#FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。" class="headerlink" title="FULL (OUTER) JOIN: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。"></a><strong>FULL (OUTER) JOIN</strong>: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>FULL OUTER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+</ul>
+<h3 id="Self-JOIN-自连接，表自身连接"><a href="#Self-JOIN-自连接，表自身连接" class="headerlink" title="Self JOIN: 自连接，表自身连接"></a><strong>Self JOIN</strong>: 自连接，表自身连接</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 T1, table1 T2 <code>WHERE</code> condition;</li>
+</ul>
+<p><a name="view"></a></p>
+<h1 id="5-视图查询"><a href="#5-视图查询" class="headerlink" title="5. 视图查询"></a>5. 视图查询</h1><h3 id="CREATE-创建视图"><a href="#CREATE-创建视图" class="headerlink" title="CREATE: 创建视图"></a><strong>CREATE</strong>: 创建视图</h3><ul>
+<li><code>CREATE VIEW</code> view_name <code>AS SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<h3 id="SELECT-检索视图"><a href="#SELECT-检索视图" class="headerlink" title="SELECT: 检索视图"></a><strong>SELECT</strong>: 检索视图</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> view_name;</li>
+</ul>
+<h3 id="DROP-删除视图"><a href="#DROP-删除视图" class="headerlink" title="DROP: 删除视图"></a><strong>DROP</strong>: 删除视图</h3><ul>
+<li><code>DROP VIEW</code> view_name;</li>
+</ul>
+<p><a name="alter"></a></p>
+<h1 id="6-修改表的查询"><a href="#6-修改表的查询" class="headerlink" title="6. 修改表的查询"></a>6. 修改表的查询</h1><h3 id="ADD-添加字段"><a href="#ADD-添加字段" class="headerlink" title="ADD: 添加字段"></a><strong>ADD</strong>: 添加字段</h3><ul>
+<li><code>ALTER TABLE</code> table_name <code>ADD</code> column_name column_definition;</li>
+</ul>
+<h3 id="MODIFY-修改字段数据类型"><a href="#MODIFY-修改字段数据类型" class="headerlink" title="MODIFY: 修改字段数据类型"></a><strong>MODIFY</strong>: 修改字段数据类型</h3><ul>
+<li><code>ALTER TABLE</code> table_name <code>MODIFY</code> column_name column_type;</li>
+</ul>
+<h3 id="DROP-删除字段"><a href="#DROP-删除字段" class="headerlink" title="DROP: 删除字段"></a><strong>DROP</strong>: 删除字段</h3><ul>
+<li><code>ALTER TABLE</code> table_name <code>DROP COLUMN</code> column_name;</li>
+</ul>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/quick-SQL-cheatsheet/" data-id="cjomwkvco001onuulc4w2rs2s" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
+      
+
+      
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -1165,236 +1390,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/fileupload/" data-id="cjomwa5ou001tl9ulqgm94ony" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/fileupload/" data-id="cjomwkvcn001mnuulsyfh9plw" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
       
 
       
         <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/fileupload/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-quick-SQL-cheatsheet" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/quick-SQL-cheatsheet/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/note/">note</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/quick-SQL-cheatsheet/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>SQL 速查表</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<!--
-# 内容 
-1. [ 查找数据的查询 ](#find)
-2. [ 修改数据的查询 ](#modify)
-3. [ 聚合查询 ](#report)
-4. [ 连接查询 ](#joins)
-5. [ 视图查询 ](#view)
-6. [ 修改表的查询 ](#alter) 
-https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
--->
-<p><a name="find"></a></p>
-<h1 id="1-查找数据的查询"><a href="#1-查找数据的查询" class="headerlink" title="1. 查找数据的查询"></a>1. 查找数据的查询</h1><h3 id="SELECT-用于从数据库中选择数据"><a href="#SELECT-用于从数据库中选择数据" class="headerlink" title="SELECT: 用于从数据库中选择数据"></a><strong>SELECT</strong>: 用于从数据库中选择数据</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name;</li>
-</ul>
-<h3 id="DISTINCT-用于过滤掉重复的值并返回指定列的行"><a href="#DISTINCT-用于过滤掉重复的值并返回指定列的行" class="headerlink" title="DISTINCT: 用于过滤掉重复的值并返回指定列的行"></a><strong>DISTINCT</strong>: 用于过滤掉重复的值并返回指定列的行</h3><ul>
-<li><code>SELECT DISTINCT</code> column_name;</li>
-</ul>
-<h3 id="WHERE-用于过滤记录-行"><a href="#WHERE-用于过滤记录-行" class="headerlink" title="WHERE: 用于过滤记录/行"></a><strong>WHERE</strong>: 用于过滤记录/行</h3><ul>
-<li><code>SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> condition2;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>OR</code> condition2;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE NOT</code> condition;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> (condition2 <code>OR</code> condition3);</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE EXISTS</code> (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
-</ul>
-<h3 id="ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）"><a href="#ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）" class="headerlink" title="ORDER BY: 用于结果集的排序，升序（ASC）或者降序（DESC）"></a><strong>ORDER BY</strong>: 用于结果集的排序，升序（ASC）或者降序（DESC）</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column <code>DESC</code>;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column1 <code>ASC</code>, column2 <code>DESC</code>;</li>
-</ul>
-<h3 id="SELECT-TOP-用于指定从表顶部返回的记录数"><a href="#SELECT-TOP-用于指定从表顶部返回的记录数" class="headerlink" title="SELECT TOP: 用于指定从表顶部返回的记录数"></a><strong>SELECT TOP</strong>: 用于指定从表顶部返回的记录数</h3><ul>
-<li><code>SELECT TOP</code> number columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT TOP</code> percent columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li>并非所有数据库系统都支持<code>SELECT TOP</code>。 MySQL 中是<code>LIMIT</code>子句</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>LIMIT</code> offset, count;</li>
-</ul>
-<h3 id="LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符"><a href="#LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符" class="headerlink" title="LIKE: 用于搜索列中的特定模式，WHERE 子句中使用的运算符"></a><strong>LIKE</strong>: 用于搜索列中的特定模式，WHERE 子句中使用的运算符</h3><ul>
-<li>% (percent sign) 是一个表示零个，一个或多个字符的通配符</li>
-<li>_ (underscore) 是一个表示单个字符通配符</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>LIKE</code> pattern;</li>
-<li><code>LIKE</code> ‘a%’    （查找任何以“a”开头的值）</li>
-<li><code>LIKE</code> ‘%a’    （查找任何以“a”结尾的值）</li>
-<li><code>LIKE</code> ‘%or%’  （查找任何包含“or”的值）</li>
-<li><code>LIKE</code> ‘_r%’   （查找任何第二位是“r”的值）</li>
-<li><code>LIKE</code> ‘a_%_%’ （查找任何以“a”开头且长度至少为3的值）</li>
-<li><code>LIKE</code> ‘[a-c]%’（查找任何以“a”或“b”或“c”开头的值）</li>
-</ul>
-<h3 id="IN-用于在-WHERE-子句中指定多个值的运算符"><a href="#IN-用于在-WHERE-子句中指定多个值的运算符" class="headerlink" title="IN: 用于在 WHERE 子句中指定多个值的运算符"></a><strong>IN</strong>: 用于在 WHERE 子句中指定多个值的运算符</h3><ul>
-<li>本质上，IN运算符是多个OR条件的简写</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (value1, value2, …);</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (<code>SELECT STATEMENT</code>);</li>
-</ul>
-<h3 id="BETWEEN-用于过滤给定范围的值的运算符"><a href="#BETWEEN-用于过滤给定范围的值的运算符" class="headerlink" title="BETWEEN: 用于过滤给定范围的值的运算符"></a><strong>BETWEEN</strong>: 用于过滤给定范围的值的运算符</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>BETWEEN</code> value1 <code>AND</code> value2;</li>
-<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> (column_name <code>BETWEEN</code> value1 <code>AND</code> value2) <code>AND NOT</code> column_name2 <code>IN</code> (value3, value4);</li>
-<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> column_name <code>BETWEEN</code> #01/07/1999# AND #03/12/1999#;</li>
-</ul>
-<h3 id="NULL-代表一个字段没有值"><a href="#NULL-代表一个字段没有值" class="headerlink" title="NULL: 代表一个字段没有值"></a><strong>NULL</strong>: 代表一个字段没有值</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NULL</code>;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NOT NULL</code>;</li>
-</ul>
-<h3 id="AS-用于给表或者列分配别名"><a href="#AS-用于给表或者列分配别名" class="headerlink" title="AS: 用于给表或者列分配别名"></a><strong>AS</strong>: 用于给表或者列分配别名</h3><ul>
-<li><code>SELECT</code> column_name <code>AS</code> alias_name <code>FROM</code> table_name;</li>
-<li><code>SELECT</code> column_name <code>FROM</code> table_name <code>AS</code> alias_name;</li>
-<li><code>SELECT</code> column_name <code>AS</code> alias_name1, column_name2 <code>AS</code> alias_name2;</li>
-<li><code>SELECT</code> column_name1, column_name2 + ‘, ‘ + column_name3 <code>AS</code> alias_name;</li>
-</ul>
-<h3 id="UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符"><a href="#UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符" class="headerlink" title="UNION: 用于组合两个或者多个 SELECT 语句的结果集的运算符"></a><strong>UNION</strong>: 用于组合两个或者多个 SELECT 语句的结果集的运算符</h3><ul>
-<li>每个 SELECT 语句必须拥有相同的列数</li>
-<li>列必须拥有相似的数据类型</li>
-<li>每个 SELECT 语句中的列也必须具有相同的顺序</li>
-<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>UNION SELECT</code> column_name <code>FROM</code> table2;</li>
-<li><code>UNION</code> 仅允许选择不同的值, <code>UNION ALL</code> 允许重复</li>
-</ul>
-<h3 id="ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符"><a href="#ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符" class="headerlink" title="ANY|ALL: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符"></a><strong>ANY|ALL</strong>: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符</h3><ul>
-<li><code>ANY</code> 如果任何子查询值满足条件，则返回 true。</li>
-<li><code>ALL</code> 如果任何子查询值满足条件，则返回 true。</li>
-<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>WHERE</code> column_name operator (<code>ANY</code>|<code>ALL</code>) (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
-</ul>
-<h3 id="GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"><a href="#GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列" class="headerlink" title="GROUP BY: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"></a><strong>GROUP BY</strong>: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列</h3><ul>
-<li><code>SELECT</code> column_name1, COUNT(column_name2) <code>FROM</code> table_name <code>WHERE</code> condition <code>GROUP BY</code> column_name1 <code>ORDER BY</code> COUNT(column_name2) DESC;</li>
-</ul>
-<h3 id="HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。"><a href="#HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。" class="headerlink" title="HAVING: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。"></a><strong>HAVING</strong>: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。</h3><ul>
-<li><code>SELECT</code> <code>COUNT</code>(column_name1), column_name2 <code>FROM</code> table <code>GROUP BY</code> column_name2 <code>HAVING</code> <code>COUNT(</code>column_name1<code>)</code> &gt; 5;</li>
-</ul>
-<p><a name="modify"></a></p>
-<h1 id="2-修改数据的查询"><a href="#2-修改数据的查询" class="headerlink" title="2. 修改数据的查询"></a>2. 修改数据的查询</h1><h3 id="INSERT-INTO-用于在表中插入新记录-行"><a href="#INSERT-INTO-用于在表中插入新记录-行" class="headerlink" title="INSERT INTO: 用于在表中插入新记录/行"></a><strong>INSERT INTO</strong>: 用于在表中插入新记录/行</h3><ul>
-<li><code>INSERT INTO</code> table_name (column1, column2) <code>VALUES</code> (value1, value2);</li>
-<li><code>INSERT INTO</code> table_name <code>VALUES</code> (value1, value2 …);</li>
-</ul>
-<h3 id="UPDATE-用于修改表中的现有记录-行"><a href="#UPDATE-用于修改表中的现有记录-行" class="headerlink" title="UPDATE: 用于修改表中的现有记录/行"></a><strong>UPDATE</strong>: 用于修改表中的现有记录/行</h3><ul>
-<li><code>UPDATE</code> table_name <code>SET</code> column1 = value1, column2 = value2 <code>WHERE</code> condition;</li>
-<li><code>UPDATE</code> table_name <code>SET</code> column_name = value;</li>
-</ul>
-<h3 id="DELETE-用于删除表中的现有记录-行"><a href="#DELETE-用于删除表中的现有记录-行" class="headerlink" title="DELETE: 用于删除表中的现有记录/行"></a><strong>DELETE</strong>: 用于删除表中的现有记录/行</h3><ul>
-<li><code>DELETE FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>DELETE</code> * <code>FROM</code> table_name;</li>
-</ul>
-<p><a name="report"></a></p>
-<h1 id="3-聚合查询"><a href="#3-聚合查询" class="headerlink" title="3. 聚合查询"></a>3. 聚合查询</h1><h3 id="COUNT-返回出现次数"><a href="#COUNT-返回出现次数" class="headerlink" title="COUNT: 返回出现次数"></a><strong>COUNT</strong>: 返回出现次数</h3><ul>
-<li><code>SELECT COUNT (DISTINCT</code> column_name<code>)</code>;</li>
-</ul>
-<h3 id="MIN-and-MAX-返回所选列的最小-最大值"><a href="#MIN-and-MAX-返回所选列的最小-最大值" class="headerlink" title="MIN() and MAX(): 返回所选列的最小/最大值"></a><strong>MIN() and MAX()</strong>: 返回所选列的最小/最大值</h3><ul>
-<li><code>SELECT MIN (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT MAX (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="AVG-返回数字列的平均值"><a href="#AVG-返回数字列的平均值" class="headerlink" title="AVG(): 返回数字列的平均值"></a><strong>AVG()</strong>: 返回数字列的平均值</h3><ul>
-<li><code>SELECT AVG (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="SUM-返回数值列的总和"><a href="#SUM-返回数值列的总和" class="headerlink" title="SUM(): 返回数值列的总和"></a><strong>SUM()</strong>: 返回数值列的总和</h3><ul>
-<li><code>SELECT SUM (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<p><a name="joins"></a></p>
-<h1 id="4-连接查询"><a href="#4-连接查询" class="headerlink" title="4. 连接查询"></a>4. 连接查询</h1><h3 id="INNER-JOIN-内连接，返回在两张表中具有匹配值的记录"><a href="#INNER-JOIN-内连接，返回在两张表中具有匹配值的记录" class="headerlink" title="INNER JOIN: 内连接，返回在两张表中具有匹配值的记录"></a><strong>INNER JOIN</strong>: 内连接，返回在两张表中具有匹配值的记录</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>INNER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-<li><code>SELECT</code> table1.column_name1, table2.column_name2, table3.column_name3 <code>FROM</code> ((table1 <code>INNER JOIN</code> table2 <code>ON</code> relationship) <code>INNER JOIN</code> table3 <code>ON</code> relationship);</li>
-</ul>
-<h3 id="LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"><a href="#LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）" class="headerlink" title="LEFT (OUTER) JOIN: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"></a><strong>LEFT (OUTER) JOIN</strong>: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>LEFT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"><a href="#RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录" class="headerlink" title="RIGHT (OUTER) JOIN: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"></a><strong>RIGHT (OUTER) JOIN</strong>: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>RIGHT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。"><a href="#FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。" class="headerlink" title="FULL (OUTER) JOIN: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。"></a><strong>FULL (OUTER) JOIN</strong>: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>FULL OUTER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="Self-JOIN-自连接，表自身连接"><a href="#Self-JOIN-自连接，表自身连接" class="headerlink" title="Self JOIN: 自连接，表自身连接"></a><strong>Self JOIN</strong>: 自连接，表自身连接</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 T1, table1 T2 <code>WHERE</code> condition;</li>
-</ul>
-<p><a name="view"></a></p>
-<h1 id="5-视图查询"><a href="#5-视图查询" class="headerlink" title="5. 视图查询"></a>5. 视图查询</h1><h3 id="CREATE-创建视图"><a href="#CREATE-创建视图" class="headerlink" title="CREATE: 创建视图"></a><strong>CREATE</strong>: 创建视图</h3><ul>
-<li><code>CREATE VIEW</code> view_name <code>AS SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="SELECT-检索视图"><a href="#SELECT-检索视图" class="headerlink" title="SELECT: 检索视图"></a><strong>SELECT</strong>: 检索视图</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> view_name;</li>
-</ul>
-<h3 id="DROP-删除视图"><a href="#DROP-删除视图" class="headerlink" title="DROP: 删除视图"></a><strong>DROP</strong>: 删除视图</h3><ul>
-<li><code>DROP VIEW</code> view_name;</li>
-</ul>
-<p><a name="alter"></a></p>
-<h1 id="6-修改表的查询"><a href="#6-修改表的查询" class="headerlink" title="6. 修改表的查询"></a>6. 修改表的查询</h1><h3 id="ADD-添加字段"><a href="#ADD-添加字段" class="headerlink" title="ADD: 添加字段"></a><strong>ADD</strong>: 添加字段</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>ADD</code> column_name column_definition;</li>
-</ul>
-<h3 id="MODIFY-修改字段数据类型"><a href="#MODIFY-修改字段数据类型" class="headerlink" title="MODIFY: 修改字段数据类型"></a><strong>MODIFY</strong>: 修改字段数据类型</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>MODIFY</code> column_name column_type;</li>
-</ul>
-<h3 id="DROP-删除字段"><a href="#DROP-删除字段" class="headerlink" title="DROP: 删除字段"></a><strong>DROP</strong>: 删除字段</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>DROP COLUMN</code> column_name;</li>
-</ul>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/quick-SQL-cheatsheet/" data-id="cjomwa5os001ql9ull6lgkvnp" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
-      
-
-      
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">评论</a>
       
 
       

@@ -158,11 +158,11 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-aaaa" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-jekyll迁移hexo" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/aaaa/" class="article-date">
+    <a href="/pa55w0rd-new.github.io/jekyll迁移hexo/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-11-18T12:51:57.000Z" itemprop="datePublished">2018-11-18</time>
+  <time datetime="2018-11-19T08:19:09.000Z" itemprop="datePublished">2018-11-19</time>
 </a>
 
     
@@ -177,8 +177,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/aaaa/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>aaaa</a>
+      <a class="article-title" href="/pa55w0rd-new.github.io/jekyll迁移hexo/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>jekyll迁移hexo</a>
     </h1>
   
 
@@ -193,93 +193,98 @@
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/aaaa/" data-id="cjomwkvdl002dnuulklw1nfim" class="article-share-link" data-share="baidu" data-title="aaaa">分享到</a>
-      
-
-      
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/aaaa/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-test1-md" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/test1-md/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-11-18T11:28:39.000Z" itemprop="datePublished">2018-11-18</time>
-</a>
-
-    
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/test1-md/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>test1.md</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><p>asdfasd</p>
-<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>asdad</p>
-<h2 id="3"><a href="#3" class="headerlink" title="3"></a>3</h2><p>asdfasf</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"hello"</span></span><br></pre></td></tr></table></figure>
-<h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><table>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>操作系统：Windows 10 子系统 Ubuntu 18.04 </p>
+<p>使用apt install nodejs &amp;&amp; apt install npm 安装之后npm不能用</p>
+<p>通过源码安装，npm也不能用</p>
+<p>node还好，npm就是不能用，最后通过nvm安装成功</p>
+<h3 id="安装node-npm"><a href="#安装node-npm" class="headerlink" title="安装node + npm"></a>安装node + npm</h3><ul>
+<li><p>安装nvm</p>
+  <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># source ~/.bashrc</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用nvm</p>
+  <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># nvm ls-remote   <span class="comment">//列出远程所有可用版本</span></span><br><span class="line"># nvm install <span class="number">10.13</span><span class="number">.0</span> <span class="comment">//目前稳定LTS版</span></span><br><span class="line"># nvm ls <span class="comment">//查看已安装版本</span></span><br><span class="line"># nvm use <span class="number">10.13</span><span class="number">.0</span> <span class="comment">//切换到版本</span></span><br><span class="line"><span class="comment">//如果想把某个版本设为默认，可以这么做：</span></span><br><span class="line"># nvm alias <span class="section">default</span> <span class="number">10.13</span><span class="number">.0</span></span><br><span class="line"># nvm use <span class="section">default</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>换源</p>
+<p>  官方源可能会被墙，需要换源</p>
+<p>  使用源管理工具 nrm</p>
+  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm i -g nrm</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># nrm ls</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">npm</span> <span class="bullet">----</span> <span class="attr">https://registry.npmjs.org/</span></span><br><span class="line">  <span class="string">cnpm</span> <span class="meta">---</span> <span class="attr">http://r.cnpmjs.org/</span></span><br><span class="line">  <span class="string">taobao</span> <span class="bullet">-</span> <span class="attr">https://registry.npm.taobao.org/</span></span><br><span class="line">  <span class="string">nj</span> <span class="bullet">-----</span> <span class="attr">https://registry.nodejitsu.com/</span></span><br><span class="line">  <span class="string">rednpm</span> <span class="bullet">-</span> <span class="attr">http://registry.mirror.cqupt.edu.cn/</span></span><br><span class="line">  <span class="string">npmMirror</span>  <span class="attr">https://skimdb.npmjs.com/registry/</span></span><br><span class="line">  <span class="string">edunpm</span> <span class="bullet">-</span> <span class="attr">http://registry.enpmjs.org/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># nrm use taobao  //切换淘宝源</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><pre><code><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># apt-get install git</span></span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><pre><code><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-<span class="keyword">cli</span></span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><h3 id="初始化-init"><a href="#初始化-init" class="headerlink" title="初始化 init"></a>初始化 init</h3><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hexo init &lt;folder&gt;</span></span><br><span class="line"><span class="meta"># cd &lt;folder&gt;</span></span><br><span class="line"><span class="meta"># npm install</span></span><br></pre></td></tr></table></figure></p>
+<p>新建完成后，指定文件夹的目录如下：</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="variable">_config</span>.yml     <span class="comment">//配置信息</span></span><br><span class="line">├── package.json    <span class="comment">//应用程序信息</span></span><br><span class="line">├── scaffolds       <span class="comment">//模板文件夹</span></span><br><span class="line">├── source      <span class="comment">//资源文件夹</span></span><br><span class="line">|   ├── <span class="variable">_drafts</span></span><br><span class="line">|   └── <span class="variable">_posts</span>  <span class="comment">//文章</span></span><br><span class="line">└── themes      <span class="comment">//主题文件夹</span></span><br></pre></td></tr></table></figure>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>创建 Hexo 主题非常容易，您只要在 themes 文件夹内，新增一个任意名称的文件夹，并修改 _config.yml 内的 theme 设定，即可切换主题。一个主题可能会有以下的结构：<br><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── languages</span><br><span class="line">├── <span class="keyword">layout</span></span><br><span class="line">├── scripts</span><br><span class="line">└── <span class="keyword">source</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>_config.yml</strong></p>
+<p>主题的配置文件。修改时会自动更新，无需重启服务器。</p>
+<h3 id="新建文章-new"><a href="#新建文章-new" class="headerlink" title="新建文章 new"></a>新建文章 new</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hexo new [layout] <span class="meta-string">&lt;title&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>新建一篇文章。如果没有设置 layout 的话，默认使用 _config.yml 中的 default_layout 参数代替。如果标题包含空格的话，请使用引号括起来。</p>
+<h3 id="生成静态文件-generate"><a href="#生成静态文件-generate" class="headerlink" title="生成静态文件 generate"></a>生成静态文件 generate</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hexo <span class="keyword">generate</span></span><br></pre></td></tr></table></figure>
+<table>
 <thead>
 <tr>
-<th>aa</th>
-<th>aa</th>
+<th>选项</th>
+<th>描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>aa</td>
-<td>aa</td>
+<td>-d, –deploy</td>
+<td>文件生成后立即部署网站</td>
+</tr>
+<tr>
+<td>-w, –watch</td>
+<td>监视文件变动</td>
 </tr>
 </tbody>
 </table>
+<h3 id="启动本地服务器-server"><a href="#启动本地服务器-server" class="headerlink" title="启动本地服务器 server"></a>启动本地服务器 server</h3><p>hexo3.0 把服务器独立成单独的模块，需要先安装才能使用<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># npm install hexo-server --save</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># hexo server</span></span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p, –port</td>
+<td>重设端口</td>
+</tr>
+<tr>
+<td>-s, –static</td>
+<td>只使用静态文件</td>
+</tr>
+<tr>
+<td>-l, –log</td>
+<td>启动日记记录，使用覆盖记录格式</td>
+</tr>
+</tbody>
+</table>
+<h3 id="部署-deploy"><a href="#部署-deploy" class="headerlink" title="部署 deploy"></a>部署 deploy</h3><p>Hexo 提供了快速方便的一键部署功能，让您只需一条命令就能将网站部署到服务器上。</p>
+<p>先安装<code>hexo-deployer-git</code>模块</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># npm install hexo-deployer-git --save</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># hexo deploy</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-g, –generate</td>
+<td>部署之前预先生成静态文件</td>
+</tr>
+</tbody>
+</table>
+<p>在 <code>_config.yml</code> 中修改参数，可以同时使用多个deployer<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line">  <span class="attribute">type</span>: git</span><br><span class="line">  <span class="attribute">message</span>: <span class="string">"Update My Blog"</span></span><br><span class="line">  <span class="attribute">branch</span>: master</span><br><span class="line">  <span class="attribute">repository</span>: git<span class="variable">@github</span>.<span class="attribute">com</span>:Pa55w0rd/pa55w0rd-new.github.io.git</span><br></pre></td></tr></table></figure></p>
+<h3 id="清除-clean"><a href="#清除-clean" class="headerlink" title="清除 clean"></a>清除 clean</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hexo clean</span></span><br></pre></td></tr></table></figure>
+<h3 id="命令简写"><a href="#命令简写" class="headerlink" title="命令简写"></a>命令简写</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hexo g</span></span><br><span class="line"><span class="meta"># hexo s</span></span><br><span class="line"><span class="meta"># hexo d</span></span><br></pre></td></tr></table></figure>
+<h2 id="jekyll-迁移至hexo"><a href="#jekyll-迁移至hexo" class="headerlink" title="jekyll 迁移至hexo"></a>jekyll 迁移至hexo</h2><p>把<code>_posts</code>文件夹内的所有文件复制到<code>source/_posts</code> 文件夹，并在<code>_config.yml</code>中修改 <code>new_post_name</code>参数。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">new_post_name:</span> <span class="symbol">:year-</span><span class="symbol">:month-</span><span class="symbol">:day-</span><span class="symbol">:title</span>.md</span><br></pre></td></tr></table></figure>
 
       
 
@@ -291,83 +296,16 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/test1-md/" data-id="cjomwkvdm002enuul3ln6h7jt" class="article-share-link" data-share="baidu" data-title="test1.md">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/jekyll迁移hexo/" data-id="cjoo67gfi001idxt6a3s3xt68" class="article-share-link" data-share="baidu" data-title="jekyll迁移hexo">分享到</a>
       
 
       
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/test1-md/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/jekyll迁移hexo/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/pa55w0rd-new.github.io/tags/note/">note</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/test/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-11-18T11:19:58.000Z" itemprop="datePublished">2018-11-18</time>
-</a>
-
-    
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/test/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>test</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/test/" data-id="cjomwkvdn002gnuulf06q6mm4" class="article-share-link" data-share="baidu" data-title="test">分享到</a>
-      
-
-      
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/test/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
 
     </footer>
   </div>
@@ -434,7 +372,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/lynis/" data-id="cjomwkvcl001knuul30z4q04y" class="article-share-link" data-share="baidu" data-title="Lynis">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/lynis/" data-id="cjoo67gfb001edxt6kemhhpde" class="article-share-link" data-share="baidu" data-title="Lynis">分享到</a>
       
 
       
@@ -526,7 +464,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/git_edit_remoteurl/" data-id="cjomwkvce001anuul8zctsx8s" class="article-share-link" data-share="baidu" data-title="Git修改远程URL">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/git_edit_remoteurl/" data-id="cjoo67gf6001adxt69334hk0u" class="article-share-link" data-share="baidu" data-title="Git修改远程URL">分享到</a>
       
 
       
@@ -549,9 +487,170 @@
 
 
   
+    <article id="post-linux_firefox_error" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/pa55w0rd-new.github.io/linux_firefox_error/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-11-06T09:03:11.000Z" itemprop="datePublished">2018-11-06</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pa55w0rd-new.github.io/linux_firefox_error/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>Centos 7 运行firefox出错</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>Centos 7 在firefox官网下载了最新的安装包，运行后提示</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># firefox</span><br><span class="line">XPCOMGlueLoad <span class="keyword">error</span> <span class="keyword">for</span> <span class="keyword">file</span> /root/fuzzingbox/firefox/libmozgtk.<span class="keyword">so</span>:</span><br><span class="line">libgtk-3.<span class="keyword">so</span>.0: cannot <span class="keyword">open</span> shared object <span class="keyword">file</span>: <span class="keyword">No</span> such <span class="keyword">file</span> or directory</span><br><span class="line">Couldn't load XPCOM.</span><br></pre></td></tr></table></figure>
+<p>提示缺少libgtk-3.so库<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> gtk3</span><br></pre></td></tr></table></figure></p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/linux_firefox_error/" data-id="cjoo67gft001udxt6542qczjb" class="article-share-link" data-share="baidu" data-title="Centos 7 运行firefox出错">分享到</a>
+      
+
+      
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/linux_firefox_error/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-mongodb_auth" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/pa55w0rd-new.github.io/mongodb_auth/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-11-01T05:35:11.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pa55w0rd-new.github.io/mongodb_auth/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>mongodb开启认证</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>修改配置文件，开启认证</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vi /etc/mongod.conf</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure>
+<p>创建密码</p>
+<ul>
+<li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
+<li><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的<ul>
+<li>管理员账户的 role是 userAdminAnyDatabase，‘userAdmin’代表用户管理身份，’AnyDatabase’ 代表可以管理任何数据库。</li>
+<li>dbOwner 代表数据库所有者角色，拥有最高该数据库最高权限。比如新建索引等</li>
+<li>readWrite 该用户用于该数据的读写，只拥有读写权限。</li>
+</ul>
+</li>
+</ul>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/mongodb_auth/" data-id="cjoo67gfg001gdxt6v6xed1ve" class="article-share-link" data-share="baidu" data-title="mongodb开启认证">分享到</a>
+      
+
+      
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/mongodb_auth/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/pa55w0rd-new.github.io/page/2/">2</a><a class="page-number" href="/pa55w0rd-new.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/pa55w0rd-new.github.io/page/10/">10</a><a class="extend next" rel="next" href="/pa55w0rd-new.github.io/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/pa55w0rd-new.github.io/page/2/">2</a><a class="page-number" href="/pa55w0rd-new.github.io/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/pa55w0rd-new.github.io/page/9/">9</a><a class="extend next" rel="next" href="/pa55w0rd-new.github.io/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -567,15 +666,7 @@
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/pa55w0rd-new.github.io/aaaa/">aaaa</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/pa55w0rd-new.github.io/test1-md/">test1.md</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/pa55w0rd-new.github.io/test/">test</a>
+            <a id="recentpost_item" href="/pa55w0rd-new.github.io/jekyll迁移hexo/">jekyll迁移hexo</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
@@ -584,6 +675,14 @@
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/pa55w0rd-new.github.io/git_edit_remoteurl/">Git修改远程URL</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/pa55w0rd-new.github.io/linux_firefox_error/">Centos 7 运行firefox出错</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/pa55w0rd-new.github.io/mongodb_auth/">mongodb开启认证</a>
           </li>
         
       </ul>
@@ -609,14 +708,21 @@
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/pa55w0rd-new.github.io/tags/note/" style="font-size: 10px;">note</a>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">十一月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">2018年11月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -832,18 +938,19 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
   <script>
-    var disqus_shortname = 'rapcoder';
-    if (page.permalink){ 
-      var disqus_url = '';
-     } 
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+    const gitalk = new Gitalk({
+      clientID: "992fba235eb173826494",
+      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
+      repo: "",
+      owner: "",
+      admin: "",
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: "",      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
   </script>
+
 
 
 

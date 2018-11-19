@@ -158,385 +158,6 @@
     <div class="outer">
       <section id="main">
   
-    <article id="post-如何进行安全设计评审" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/如何进行安全设计评审/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/开发安全/">开发安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/如何进行安全设计评审/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>如何进行安全设计评审（转发）</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
-<ul>
-<li>目录<br>{:toc}<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1></li>
-</ul>
-<p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。<br><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png" alt="image"></p>
-<p>那么在安全设计评审这一阶段，应该怎么去做。我们可以先看下唯品会的SDL中在落地安全设计这一块怎么做的。</p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45603582-d4398900-ba5f-11e8-97c3-41704aa37024.png" alt="image"></p>
-<p>就我自身而言。是按照以下这个流程进行的。</p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45536539-66f5e000-b834-11e8-929b-6b5fcc5cdb98.png" height="400"></p>
-<p>看着一大堆乱七八糟，自上而下的流程，但是做起来其实很快的。此处默认安全人员熟悉各种基本的开发过程中的安全规范以及一些<code>Checklist</code>(必须要了解公司开发语言对应的安全开发规范)，举例： <code>web</code>安全开发规范，<code>Python</code>安全编码规范，<code>Flask</code>安全， <code>Django</code>安全,常用的安全配置，面临哪些攻击点等等。<br>ps: 明确逻辑是非常重要的，可以说最为重要，如果连逻辑都不明白，谈什么设计评审。</p>
-<p>一些比较基础的: </p>
-<ul>
-<li>HTTPS Everywhere</li>
-<li>Bcypt 存储Hash</li>
-<li>OTP</li>
-<li>频率限制</li>
-<li>盐不要硬编码</li>
-<li>secret 和 auth-token 不要硬编码</li>
-<li>服务器间调用的api不要在app出现</li>
-<li>CSP, CSRF, HSTS, X-FRAME-OPTIONS, X-XSS-PROTECTION</li>
-<li>过滤输入<br>等等等….</li>
-</ul>
-<p>下面以<code>C2C</code>平台交易部分为例进行说明，可以简单的想一下，在智联买一张火车票，打开了支付宝进行支付。:<br><img src="https://user-images.githubusercontent.com/12653147/45537646-67dc4100-b837-11e8-9154-a3f78020d931.png" alt="image"></p>
-<p>然后，你知道数字签名当然是很基础的部分了。那么接下来，你就要细化支付流程过程中出现哪些操作，针对这些操作需要做什么样的防护措施。下图是针对用户商户支付方之间的流程：</p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45538041-84c54400-b838-11e8-9426-f8e2074c78ca.png" alt="image"></p>
-<p>针对每个输入点，自身可控的输入输出的地方，进行过滤，校验等操作。</p>
-<p>所以那么问题来了，如果只单单是用户和支付方之间的呢?<br><img src="https://user-images.githubusercontent.com/12653147/45539501-88f36080-b83c-11e8-8b18-26a204eaf0a9.png" alt="image"></p>
-<p>你也可以思考一下如何进行。</p>
-<p>并且在<code>OWASP</code>应用安全设计中，详细指出了其他一些问题(中文版 Version 1.0 5):</p>
-<ul>
-<li><p>数据流:</p>
-<ul>
-<li><p>用户输入是否被直接用于引用业务逻辑的类或函数? </p>
-</li>
-<li><p>是否有一个数据绑定缺陷?</p>
-</li>
-<li><p>是否暴露任何后门参数来调用业务逻辑?</p>
-</li>
-<li><p>应用程序的执行流程是否正确?</p>
-</li>
-</ul>
-</li>
-<li><p>身份验证和访问控制:</p>
-<ul>
-<li><p>是否对所有文件实现访问控制?</p>
-</li>
-<li><p>是否安全地处理会话?</p>
-</li>
-<li><p>是否存在单点登录?单点登录是否留下后门?</p>
-</li>
-</ul>
-</li>
-<li><p>已有或内置的安全控制:</p>
-<ul>
-<li><p>在现有任意安全控制中的弱点; </p>
-</li>
-<li><p>安全控制的部署是否正确?</p>
-</li>
-</ul>
-</li>
-<li><p>架构:</p>
-<ul>
-<li><p>对所有的输入是否有验证?</p>
-</li>
-<li><p>到外部服务器的连接是安全的吗?</p>
-</li>
-</ul>
-</li>
-<li><p>配置或代码文件和数据存储:</p>
-<ul>
-<li><p>配置文件中是否含有敏感数据?</p>
-</li>
-<li><p>是否支持任何不安全的数据源?</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>下图(来自OWASP官方文档)详列上述条目以及其他需要检查的地方。<br><img src="https://user-images.githubusercontent.com/12653147/45603390-385b4d80-ba5e-11e8-9135-5b8352202820.png" alt="image"><br><img src="https://user-images.githubusercontent.com/12653147/45603400-47420000-ba5e-11e8-9ac6-07ff0aedcc90.png" alt="image"></p>
-<p>但是其实并不需要按照上述所有清单做自检，或者说是当你和开发团队在讨论的过程中不需要涉及全部的checklist，可能只需要在架构上，设计上进行检验，以及身份验证和数据检验上。当然，都是需要根据自己的业务场景去实现，因地制宜。</p>
-<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h1><ul>
-<li><a href="https://www.microsoft.com/en-us/SDL/process/design.aspx" target="_blank" rel="noopener">Mircosoft SDL lifecycle: Desing</a></li>
-<li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener">API Security Checklist</a></li>
-<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener">The Security Checklist</a></li>
-<li><a href="https://gist.github.com/mylamour/702d9d6e24a27699d8759967e6eb9f4f" target="_blank" rel="noopener">Part of FLASK Security</a></li>
-<li><a href="https://gist.github.com/mylamour/311299cc7fb80ad9f6674b2cf4ca02a4" target="_blank" rel="noopener">Part of Django Security</a></li>
-</ul>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/如何进行安全设计评审/" data-id="cjomwkvc2000rnuulh3q1gq3b" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
-      
-
-      
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/如何进行安全设计评审/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-androidchecklist" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/pa55w0rd-new.github.io/androidchecklist/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-27T07:37:59.000Z" itemprop="datePublished">2018-09-27</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/移动安全/">移动安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/pa55w0rd-new.github.io/androidchecklist/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Android APP安全checklist</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h1 id="Checklist整理"><a href="#Checklist整理" class="headerlink" title="Checklist整理"></a>Checklist整理</h1><h2 id="一、静态扫描"><a href="#一、静态扫描" class="headerlink" title="一、静态扫描"></a>一、静态扫描</h2><h3 id="1-文件信息"><a href="#1-文件信息" class="headerlink" title="1 文件信息"></a>1 文件信息</h3><h3 id="2-证书检测"><a href="#2-证书检测" class="headerlink" title="2 证书检测"></a>2 证书检测</h3><h3 id="3-权限信息检测"><a href="#3-权限信息检测" class="headerlink" title="3 权限信息检测"></a>3 权限信息检测</h3><h3 id="4-so文件检测"><a href="#4-so文件检测" class="headerlink" title="4 so文件检测"></a>4 so文件检测</h3><h3 id="5-第三方库-SDK-组件检测"><a href="#5-第三方库-SDK-组件检测" class="headerlink" title="5 第三方库/SDK/组件检测"></a>5 第三方库/SDK/组件检测</h3><ul>
-<li>第三方开源库/SDK检测</li>
-</ul>
-<h3 id="6-manifest文件检测"><a href="#6-manifest文件检测" class="headerlink" title="6 manifest文件检测"></a>6 manifest文件检测</h3><ul>
-<li>6.1   AndroidManifest文件中PermissionGroup检测 </li>
-<li>6.2   AndroidManifest文件中系统权限使用检测 </li>
-<li>6.3   AndroidManifest危险ProtectionLevel权限检测 </li>
-<li>6.4   AndroidManifest sharedUserId 检测 </li>
-<li>6.5   AndroidManifest allowBackup标志检测 </li>
-<li>6.6   AndroidManifest文件Debuggable配置检测 </li>
-<li>6.7   非必要权限检测 </li>
-<li>6.8   app最低版本检测 </li>
-</ul>
-<h3 id="7-组件安全检测"><a href="#7-组件安全检测" class="headerlink" title="7 组件安全检测"></a>7 组件安全检测</h3><ul>
-<li>7.1   Activity、activity-alias、service、receiver组件导出检测 </li>
-<li>7.2   ContentProvider组件导出检测 </li>
-<li>7.3   ContentProvider目录遍历漏洞检测 </li>
-<li>7.4   Implicit Service漏洞检测 </li>
-<li>7.5   Provider：grant-uri-permission属性检测 </li>
-<li>7.6   Intent-Based攻击检测 </li>
-<li>7.7   Intent Scheme URI漏洞攻击检测 </li>
-<li>7.8   应用本地拒绝服务漏洞检测 </li>
-<li>7.9   manifest中定义组件未实现检测 </li>
-<li>7.10   Debug或Test敏感测试组件泄露检测 </li>
-<li>7.11   Intent不安全反射风险检测 </li>
-</ul>
-<h3 id="8-webview组件安全检测"><a href="#8-webview组件安全检测" class="headerlink" title="8 webview组件安全检测"></a>8 webview组件安全检测</h3><ul>
-<li>8.1   WebView远程执行漏洞检测 </li>
-<li>8.2   WebView潜在XSS攻击检测 </li>
-<li>8.3   WebView本地文件访问漏洞检测 </li>
-<li>8.4   WebView密码明文存储漏洞检测 </li>
-<li>8.5   主机名弱校验检测 </li>
-<li>8.6   证书弱校验检测 </li>
-<li>8.7   中间人攻击漏洞检测 </li>
-<li>8.8   WebView不校验证书漏洞检测 </li>
-<li>8.9   WebView组件系统隐藏接口未移除漏洞 </li>
-</ul>
-<h3 id="9-sqlite安全检测"><a href="#9-sqlite安全检测" class="headerlink" title="9 sqlite安全检测"></a>9 sqlite安全检测</h3><ul>
-<li>9.1   SQLite数据库加密(SQLCipher)检测 </li>
-<li>9.2   SQLite数据库(SQLite Encryption Extension (SEE)) 检测 </li>
-<li>9.3   SQLite数据库的对称密钥(PRAGMA key) 检测 </li>
-<li>9.4   SQLiteDatabase Transaction Deprecated检测 </li>
-<li>9.5   Databases任意读写漏洞检测 </li>
-</ul>
-<h3 id="10-网络通信安全检测"><a href="#10-网络通信安全检测" class="headerlink" title="10 网络通信安全检测"></a>10 网络通信安全检测</h3><ul>
-<li>10.1   SSL连接检测 </li>
-<li>10.2   SSL不安全组件检测 </li>
-<li>10.3   HttpHost检测 </li>
-<li>10.4   HttpURLConnection漏洞检测 </li>
-<li>10.5   网络端口开放威胁检测 </li>
-</ul>
-<h3 id="11-弱加密风险检测"><a href="#11-弱加密风险检测" class="headerlink" title="11 弱加密风险检测"></a>11 弱加密风险检测</h3><ul>
-<li>11.1   弱加密算法风险检测 </li>
-<li>11.2   不安全的密钥长度风险检测 </li>
-<li>11.3   ECB弱加密模式风险检测 </li>
-<li>11.4   IVParameterSpec不安全初始化向量风险检测 </li>
-<li>11.5   RSA中不使用Padding风险检测 </li>
-<li>11.6   检测keystore是否使用密码保护 </li>
-</ul>
-<h3 id="12-数据安全检测"><a href="#12-数据安全检测" class="headerlink" title="12 数据安全检测"></a>12 数据安全检测</h3><ul>
-<li>12.1   敏感信息检测 </li>
-<li>12.2   剪贴板敏感信息泄露风险检测 </li>
-<li>12.3   Intent敏感数据泄露风险检测 </li>
-<li>12.4   PendingIntent误用风险 </li>
-<li>12.5   密钥硬编码风险检测 </li>
-<li>12.6   数据或程序加载检查 </li>
-<li>12.7   BASE64安全检测 </li>
-<li>12.8   文件全局读写漏洞检测 </li>
-<li>12.9   日志泄露风险检测 </li>
-<li>12.10   外部加载Dex检测 </li>
-<li>12.11   外部存储路径检测 </li>
-<li>12.12   明文数字证书风险 </li>
-<li>12.13 第三方oauth敏感信息泄露</li>
-</ul>
-<h3 id="13-敏感函数调用检测"><a href="#13-敏感函数调用检测" class="headerlink" title="13 敏感函数调用检测"></a>13 敏感函数调用检测</h3><ul>
-<li>13.1   安全相关的函数检测 </li>
-<li>13.2   安全相关的类检测 </li>
-<li>13.3   运行命令检测 </li>
-<li>13.4   Native Library加载检测 </li>
-<li>13.5   外部动态加载DEX检测 </li>
-<li>13.6   root代码检测 </li>
-<li>13.7   获取IMEI 和Device ID敏感信息代码检测 </li>
-<li>13.8   获取Android ID敏感信息代码检测 </li>
-<li>13.9   发送SMS敏感代码检测 </li>
-<li>13.10   文件删除代码检测 </li>
-<li>13.11   signature代码检测 </li>
-</ul>
-<h3 id="14-加固检测"><a href="#14-加固检测" class="headerlink" title="14 加固检测"></a>14 加固检测</h3><ul>
-<li>14.1 dex加固检测</li>
-<li>14.2 So文件加固检测</li>
-<li>14.3 资源文件加固检测</li>
-<li>14.4 混淆率检测</li>
-</ul>
-<h3 id="15-系统漏洞检测"><a href="#15-系统漏洞检测" class="headerlink" title="15 系统漏洞检测"></a>15 系统漏洞检测</h3><ul>
-<li>15.1   fragment注入漏洞检测 </li>
-<li>15.2   sqlite数据库日志泄露漏洞检测 </li>
-<li>15.3   随机数生成漏洞检测 </li>
-</ul>
-<h3 id="16-其他"><a href="#16-其他" class="headerlink" title="16 其他"></a>16 其他</h3><ul>
-<li>通用签名风险检测</li>
-</ul>
-<h2 id="二、动态扫描"><a href="#二、动态扫描" class="headerlink" title="二、动态扫描"></a>二、动态扫描</h2><h3 id="1-服务端漏洞检测"><a href="#1-服务端漏洞检测" class="headerlink" title="1 服务端漏洞检测"></a>1 服务端漏洞检测</h3><ul>
-<li><p>1.1 基于http代理</p>
-<ul>
-<li>水平权限风险检测</li>
-<li>垂直权限风险检测</li>
-<li>sql注入漏洞检测</li>
-<li>XSS漏洞检测</li>
-<li>敏感信息检测（硬编码、用户密码、银行卡、身份证等明文传输）</li>
-</ul>
-</li>
-<li><p>1.2 基于tcp或udp(socket)代理</p>
-<ul>
-<li>敏感信息检测（硬编码、用户密码、银行卡、身份证等明文传输）</li>
-</ul>
-</li>
-<li><p>1.3 html5漏洞检测</p>
-</li>
-</ul>
-<h3 id="2-hook技术检测"><a href="#2-hook技术检测" class="headerlink" title="2 hook技术检测"></a>2 hook技术检测</h3><ul>
-<li>2.1 SQLite Database存储信息检测</li>
-<li>2.2 SharePreferences存储信息检测</li>
-<li>2.3 Contert Provider存储信息检测</li>
-<li>2.4 File存储信息检测</li>
-<li>2.5 Intent数据内容检测</li>
-<li>2.6 Log日志打印检测</li>
-<li>2.7 System.print*输出检测</li>
-<li>2.8 剪贴板敏感信息检测</li>
-</ul>
-<h3 id="3-DDOS攻击检测"><a href="#3-DDOS攻击检测" class="headerlink" title="3 DDOS攻击检测"></a>3 DDOS攻击检测</h3><ul>
-<li><p>3.1 组件DDOS攻击检测</p>
-<ul>
-<li>Activity组件通用crash</li>
-<li>Receiver组件通用crash</li>
-<li>Service组件通用crash</li>
-</ul>
-</li>
-<li><p>3.2 native crash检测</p>
-</li>
-<li>3.3 java crash检测</li>
-</ul>
-<h3 id="4-provider注入漏洞检测"><a href="#4-provider注入漏洞检测" class="headerlink" title="4 provider注入漏洞检测"></a>4 provider注入漏洞检测</h3><h3 id="5-网络端口开放威胁检测"><a href="#5-网络端口开放威胁检测" class="headerlink" title="5 网络端口开放威胁检测"></a>5 网络端口开放威胁检测</h3><h2 id="三、业务安全扫描"><a href="#三、业务安全扫描" class="headerlink" title="三、业务安全扫描"></a>三、业务安全扫描</h2><p>未整理，欢迎大家补充</p>
-<h2 id="四、Checklist脑图："><a href="#四、Checklist脑图：" class="headerlink" title="四、Checklist脑图："></a>四、Checklist脑图：</h2><p><img src="\assets\img\android_pic\checklist.jpg" alt="checklist-logo"></p>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/androidchecklist/" data-id="cjomwkvbl0003nuulhwdajab9" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
-      
-
-      
-        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/androidchecklist/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Android进程注入" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
     <a href="/pa55w0rd-new.github.io/Android进程注入/" class="article-date">
@@ -654,7 +275,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/Android进程注入/" data-id="cjomwkvbz000mnuul74cokkhc" class="article-share-link" data-share="baidu" data-title="Android进程注入">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/Android进程注入/" data-id="cjoo67gf20018dxt6zsy04oyv" class="article-share-link" data-share="baidu" data-title="Android进程注入">分享到</a>
       
 
       
@@ -739,7 +360,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/安卓模拟器安装证书/" data-id="cjomwkvds002lnuul4292oysv" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/安卓模拟器安装证书/" data-id="cjoo67gdd000ddxt6o1686sw3" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
       
 
       
@@ -840,7 +461,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/ruby换源/" data-id="cjomwkvbc0000nuulw44osp88" class="article-share-link" data-share="baidu" data-title="ruby换源、安装jekyll">分享到</a>
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/ruby换源/" data-id="cjoo67gbs0000dxt6mew1ic4h" class="article-share-link" data-share="baidu" data-title="ruby换源、安装jekyll">分享到</a>
       
 
       
@@ -863,9 +484,173 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
 
   
+    <article id="post-win10-install-linux" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/pa55w0rd-new.github.io/win10-install-linux/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-09-25T08:15:07.000Z" itemprop="datePublished">2018-09-25</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pa55w0rd-new.github.io/win10-install-linux/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>win10安装linux子系统</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题</p>
+<h2 id="0x01-启用linux子系统"><a href="#0x01-启用linux子系统" class="headerlink" title="0x01 启用linux子系统"></a>0x01 启用linux子系统</h2><p><img src="/assets/img/use_linux1.png" alt="启用1"></p>
+<p><img src="/assets/img/use_linux2.png" alt="启用2"></p>
+<h2 id="0x02-安装linux子系统"><a href="#0x02-安装linux子系统" class="headerlink" title="0x02 安装linux子系统"></a>0x02 安装linux子系统</h2><p>打开win10应用商店，搜索linux，选择ubuntu安装</p>
+<p><img src="/assets/img/install_linux.png" alt="安装"></p>
+<h2 id="0x03-win10安装linux子系统报错0x8007019e解决办法"><a href="#0x03-win10安装linux子系统报错0x8007019e解决办法" class="headerlink" title="0x03 win10安装linux子系统报错0x8007019e解决办法"></a>0x03 win10安装linux子系统报错0x8007019e解决办法</h2><p><strong>原因：</strong> 未安装Windows子系统支持</p>
+<ol>
+<li>win+x，选择Windows PowerShell（管理员）</li>
+<li>输入 <figure class="highlight plain"><figcaption><span>-Online -FeatureName Microsoft-Windows-Subsystem-Linux```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3. 回车，输入Y，重启系统后重新打开安装的对应子系统即可</span><br><span class="line"></span><br><span class="line">## 0x04 开始使用</span><br><span class="line"></span><br><span class="line">### 换源</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="1-备份原来的数据源配置文件"><a href="#1-备份原来的数据源配置文件" class="headerlink" title="1.备份原来的数据源配置文件"></a>1.备份原来的数据源配置文件</h1><p>cp /etc/apt/sources.list /etc/apt/sources.list_backup</p>
+<h1 id="2-编辑数据源配置文件"><a href="#2-编辑数据源配置文件" class="headerlink" title="2.编辑数据源配置文件"></a>2.编辑数据源配置文件</h1><p>vi /etc/apt/sources.list<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用[<span class="string">中科大的源</span>](<span class="link">"http://mirrors.ustc.edu.cn/help/ubuntu.html#id1"</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="lsb-release-a"><a href="#lsb-release-a" class="headerlink" title="lsb_release -a"></a>lsb_release -a</h1><p>No LSB modules are available.<br>Distributor ID: Ubuntu<br>Description:    Ubuntu 18.04.1 LTS<br>Release:        18.04<br>Codename:       bionic<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure></p>
+<h3 id="读取宿主机文件"><a href="#读取宿主机文件" class="headerlink" title="读取宿主机文件"></a>读取宿主机文件</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># df -h</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">rootfs          101G   62G   39G  62% /</span><br><span class="line">none            101G   62G   39G  62% /dev</span><br><span class="line">none            101G   62G   39G  62% /run</span><br><span class="line">none            101G   62G   39G  62% /run/lock</span><br><span class="line">none            101G   62G   39G  62% /run/shm</span><br><span class="line">none            101G   62G   39G  62% /run/user</span><br><span class="line">C:              101G   62G   39G  62% /mnt/c</span><br><span class="line">D:              279G   54G  225G  20% /mnt/d</span><br><span class="line">E:              278G   38G  240G  14% /mnt/e</span><br><span class="line">F:              277G  191G   87G  69% /mnt/f</span><br></pre></td></tr></table></figure>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/win10-install-linux/" data-id="cjoo67gcx0005dxt6lmfj6zit" class="article-share-link" data-share="baidu" data-title="win10安装linux子系统">分享到</a>
+      
+
+      
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/win10-install-linux/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-other" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/pa55w0rd-new.github.io/other/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-01-16T07:57:42.000Z" itemprop="datePublished">2018-01-16</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/pa55w0rd-new.github.io/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/pa55w0rd-new.github.io/other/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>杂七杂八</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>Lynis是一款面向Linux、Mac OS X、BSD以及Solaris等Unix类系统的安全审计与强化工具。它能够深入扫描并检测系统中的问题、存在漏洞的软件包以及配置设置，并提出相关解决建议。Lynis能够轻松实现安全评估、合规性测试、漏洞检测、配置管理以及补丁管理。 </p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="https://www.pa55w0rd.club/pa55w0rd-new.github.io/other/" data-id="cjoo67gfn001ndxt6i5kndk6b" class="article-share-link" data-share="baidu" data-title="杂七杂八">分享到</a>
+      
+
+      
+        <a href="https://www.pa55w0rd.club/pa55w0rd-new.github.io/other/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/pa55w0rd-new.github.io/page/8/">&laquo; Prev</a><a class="page-number" href="/pa55w0rd-new.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/pa55w0rd-new.github.io/page/7/">7</a><a class="page-number" href="/pa55w0rd-new.github.io/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/pa55w0rd-new.github.io/page/10/">10</a><a class="extend next" rel="next" href="/pa55w0rd-new.github.io/page/10/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/pa55w0rd-new.github.io/page/8/">&laquo; Prev</a><a class="page-number" href="/pa55w0rd-new.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/pa55w0rd-new.github.io/page/7/">7</a><a class="page-number" href="/pa55w0rd-new.github.io/page/8/">8</a><span class="page-number current">9</span>
     </nav>
   
 
@@ -881,15 +666,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/pa55w0rd-new.github.io/aaaa/">aaaa</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/pa55w0rd-new.github.io/test1-md/">test1.md</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/pa55w0rd-new.github.io/test/">test</a>
+            <a id="recentpost_item" href="/pa55w0rd-new.github.io/jekyll迁移hexo/">jekyll迁移hexo</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
@@ -898,6 +675,14 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/pa55w0rd-new.github.io/git_edit_remoteurl/">Git修改远程URL</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/pa55w0rd-new.github.io/linux_firefox_error/">Centos 7 运行firefox出错</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/pa55w0rd-new.github.io/mongodb_auth/">mongodb开启认证</a>
           </li>
         
       </ul>
@@ -923,14 +708,21 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/pa55w0rd-new.github.io/tags/note/" style="font-size: 10px;">note</a>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">十一月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">2018年11月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/pa55w0rd-new.github.io/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1146,18 +938,19 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
   <script>
-    var disqus_shortname = 'rapcoder';
-    if (page.permalink){ 
-      var disqus_url = '';
-     } 
-    (function(){
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+    const gitalk = new Gitalk({
+      clientID: "992fba235eb173826494",
+      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
+      repo: "",
+      owner: "",
+      admin: "",
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: "",      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
   </script>
+
 
 
 

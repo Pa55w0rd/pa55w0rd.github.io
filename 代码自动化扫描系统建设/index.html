@@ -14,42 +14,42 @@
   <meta name="description" content="代码审计一直是企业白盒测试的重要一环，面对市场上众多商业与开源的审计工具，你是否想过集众家之所长来搭建一套自动化的扫描系统呢？也许这篇文章会给你一些思路：）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码自动化扫描系统的建设（转发）">
-<meta property="og:url" content="http://www.pa55w0rd.club/代码自动化扫描系统建设/index.html">
+<meta property="og:url" content="http://pa55w0rd.github.io/代码自动化扫描系统建设/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="代码审计一直是企业白盒测试的重要一环，面对市场上众多商业与开源的审计工具，你是否想过集众家之所长来搭建一套自动化的扫描系统呢？也许这篇文章会给你一些思路：）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/1.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/2.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/3.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/4.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/5.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/6.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/7.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/8.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/9.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/10.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/11.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/12.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/13.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/14.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/15.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/16.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/17.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/18.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/19.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/20.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/21.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/22.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/23.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/24.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/25.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/26.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/27.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/1.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/2.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/3.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/4.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/5.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/6.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/7.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/8.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/9.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/10.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/11.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/12.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/13.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/14.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/15.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/16.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/17.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/18.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/19.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/20.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/21.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/22.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/23.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/24.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/25.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/26.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/27.png">
 <meta property="og:updated_time" content="2018-10-22T14:51:23.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码自动化扫描系统的建设（转发）">
 <meta name="twitter:description" content="代码审计一直是企业白盒测试的重要一环，面对市场上众多商业与开源的审计工具，你是否想过集众家之所长来搭建一套自动化的扫描系统呢？也许这篇文章会给你一些思路：）">
-<meta name="twitter:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/1.png">
+<meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/1.png">
 
   
 
@@ -175,7 +175,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="www.pa55w0rd.club">
+          <input type="hidden" name="si" value="pa55w0rd.github.io">
         </form>
       </div>
       -->
@@ -548,11 +548,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/代码自动化扫描系统建设/" data-id="cjop6hb0c002qoqt6iyesupfm" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjop6sw0m002mq9t65ef5qekm" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -890,7 +890,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     const gitalk = new Gitalk({
       clientID: "992fba235eb173826494",
       clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
-      repo: "www.pa55w0rd.club",
+      repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50

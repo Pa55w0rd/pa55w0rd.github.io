@@ -14,82 +14,82 @@
   <meta name="description" content="来源于网络，回馈于网络。以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安全运维那些洞-Aerfa">
-<meta property="og:url" content="http://www.pa55w0rd.club/安全运维那些洞/index.html">
+<meta property="og:url" content="http://pa55w0rd.github.io/安全运维那些洞/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="来源于网络，回馈于网络。以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_3d03e9ebaafe6524.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_fc4bacc7b391f84f.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_e8776ff5ccdeee62.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_158b89f932faeb71.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_86a6c0dd0ec67cd3.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_d6ea7f3e9ce65313.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_93d8b6936279365a.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_d416cd4216771f91.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_29db8cfd2f6f9255.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_7ba40be2f34f1334.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_ac23219ff525104.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_c97ac1aa5603d31e.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_afd89947e3e3b0f4.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_a09bb089c1c3b312.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_6d6c9016367bb35b.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_3493c9640cf370ac.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_ba1e3acff7df0d95.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_cf68ba09dbca62df.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_63592e979d64fae2.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_b9a7ba7d2ab3078c.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_d3ed608fe971124a.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_6ea978c38fc505e6.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_eae0acb1c41ca212.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_60b78b69da695ec6.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_30d1210394b8be38.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_f8671774fb643b0f.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_880a526fcaa8650a.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_25d3715c70e27e3d.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_790c103cd138a9e2.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_7505e63d7f39ad25.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_41e07a3a71e3e362.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_e1c2ee9745806f6d.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_7d72e064c94b344c.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_7624c1251b81f7c6.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_da7cf1ecb96eb2d.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_9c42e03c9ee49942.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_4baa431beadedd58.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_c53a22d32c38834b.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_6a5593fbd445e703.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_ba1df478b9b7aee9.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_df926128a0be01ea.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_7ca4d6381121d244.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_8e55e3f044ed0364.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_90d6709742b78542.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_28bdb02a0cb5a373.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_d6a528da8f01270e.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_fa352df195521efa.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_5acfb48291d0131b.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_b4b2160d26750158.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_cc69a4e856862c50.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_6201bba2e6c4598.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_15bb592501eaeab4.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_51cd584709c21a49.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_ce74e6ffdf131681.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_228e2132d6117e7e.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_520647a32422e3a2.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_f6f6157ae371b472.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_9f1eec4d60316f17.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_af31540eed427f60.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_933d6e56d127adb.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_83a0c3790ea4b0cf.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_f0a10558018436fa.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_29c9a47e91a7ef0a.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_63de4b8b96d21dcd.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_9f3274155b1132f6.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_41469a6a25a8a31a.png">
-<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_3a3e383932a1596a.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_3d03e9ebaafe6524.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_fc4bacc7b391f84f.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_e8776ff5ccdeee62.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_158b89f932faeb71.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_86a6c0dd0ec67cd3.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_d6ea7f3e9ce65313.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_93d8b6936279365a.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_d416cd4216771f91.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_29db8cfd2f6f9255.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_7ba40be2f34f1334.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_ac23219ff525104.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_c97ac1aa5603d31e.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_afd89947e3e3b0f4.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_a09bb089c1c3b312.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_6d6c9016367bb35b.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_3493c9640cf370ac.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_ba1e3acff7df0d95.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_cf68ba09dbca62df.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_63592e979d64fae2.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_b9a7ba7d2ab3078c.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_d3ed608fe971124a.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_6ea978c38fc505e6.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_eae0acb1c41ca212.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_60b78b69da695ec6.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_30d1210394b8be38.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_f8671774fb643b0f.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_880a526fcaa8650a.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_25d3715c70e27e3d.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_790c103cd138a9e2.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_7505e63d7f39ad25.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_41e07a3a71e3e362.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_e1c2ee9745806f6d.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_7d72e064c94b344c.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_7624c1251b81f7c6.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_da7cf1ecb96eb2d.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_9c42e03c9ee49942.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_4baa431beadedd58.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_c53a22d32c38834b.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_6a5593fbd445e703.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_ba1df478b9b7aee9.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_df926128a0be01ea.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_7ca4d6381121d244.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_8e55e3f044ed0364.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_90d6709742b78542.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_28bdb02a0cb5a373.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_d6a528da8f01270e.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_fa352df195521efa.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_5acfb48291d0131b.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_b4b2160d26750158.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_cc69a4e856862c50.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_6201bba2e6c4598.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_15bb592501eaeab4.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_51cd584709c21a49.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_ce74e6ffdf131681.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_228e2132d6117e7e.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_520647a32422e3a2.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_f6f6157ae371b472.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_9f1eec4d60316f17.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_af31540eed427f60.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_933d6e56d127adb.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_83a0c3790ea4b0cf.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_f0a10558018436fa.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_29c9a47e91a7ef0a.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_63de4b8b96d21dcd.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_9f3274155b1132f6.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_41469a6a25a8a31a.png">
+<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_3a3e383932a1596a.png">
 <meta property="og:updated_time" content="2018-11-02T14:49:49.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安全运维那些洞-Aerfa">
 <meta name="twitter:description" content="来源于网络，回馈于网络。以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。">
-<meta name="twitter:image" content="http://www.pa55w0rd.club/assets/img/安全运维/file_html_3d03e9ebaafe6524.png">
+<meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/安全运维/file_html_3d03e9ebaafe6524.png">
 
   
 
@@ -215,7 +215,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="www.pa55w0rd.club">
+          <input type="hidden" name="si" value="pa55w0rd.github.io">
         </form>
       </div>
       -->
@@ -911,11 +911,11 @@ weblogic</code></p>
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/安全运维那些洞/" data-id="cjop6hb29002uoqt6ke99f42t" class="article-share-link" data-share="baidu" data-title="安全运维那些洞-Aerfa">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/安全运维那些洞/" data-id="cjop6sw21002qq9t6nsmy8fdj" class="article-share-link" data-share="baidu" data-title="安全运维那些洞-Aerfa">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/安全运维那些洞/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/安全运维那些洞/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -932,11 +932,11 @@ weblogic</code></p>
     </a>
   
   
-    <a href="/互联网企业的等级保护建设之路/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/企业安全建设中评估业务潜在风险的思路/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          互联网企业的等级保护建设之路（转发）
+          企业安全建设中评估业务潜在风险的思路（转发）
         
       </div>
     </a>
@@ -1253,7 +1253,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     const gitalk = new Gitalk({
       clientID: "992fba235eb173826494",
       clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
-      repo: "www.pa55w0rd.club",
+      repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50

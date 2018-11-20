@@ -78,16 +78,17 @@
   
   
   
+  
    -->
 
   <script>
    var CONFIG = {
     root: '/',
     algolia: {
-          applicationID: "",
-          apiKey: "",
-          adminApiKey: "",
-          indexName: "",
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
           hits: {"per_page":10},
           labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
         }
@@ -122,9 +123,7 @@
         
           <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
         
-          <a class="main-nav-link" href="/about"><i class="fa fa-about" aria-hidden="true"></i>about</a>
-        
-          <a class="main-nav-link" href="/categories"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
+          <a class="main-nav-link" href="/category"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
         
           <a class="main-nav-link" href="/tags"><i class="fa fa-tags" aria-hidden="true"></i>标签</a>
         
@@ -157,6 +156,164 @@
 
     <div class="outer">
       <section id="main">
+  
+    <article id="post-应用系统开发安全" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/应用系统开发安全/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-09-28T09:37:59.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/开发安全/">开发安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/应用系统开发安全/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>应用系统开发安全</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="一、安全原则"><a href="#一、安全原则" class="headerlink" title="一、安全原则"></a>一、安全原则</h2><ol>
+<li>保护最薄弱的环节原则：保护最易受攻击影响的部分；</li>
+<li>纵深防御原则：不同层面、不同角度之间需要相互配合；</li>
+<li>最小权限原则：只授予执行操作所需的最小权限； </li>
+<li>最小共享原则：使共享文件资源尽可能少；</li>
+<li>权限分离原则：授予不同用户所需的最小权限，并在它们之间形成相互制约的关系；</li>
+</ol>
+<hr>
+<h2 id="二、需求管理阶段"><a href="#二、需求管理阶段" class="headerlink" title="二、需求管理阶段"></a>二、需求管理阶段</h2><ol>
+<li>根据业务目标分析并制定系统安全目标；</li>
+<li>确认安全需求规格说明。</li>
+</ol>
+<hr>
+<h2 id="三、系统设计阶段"><a href="#三、系统设计阶段" class="headerlink" title="三、系统设计阶段"></a>三、系统设计阶段</h2><ol>
+<li>根据安全目标执行威胁建模，识别威胁和风险；</li>
+<li>根据威胁建模制定对应开发安全任务：<ul>
+<li>确定安全体系架构，设计安全协议和安全接口；</li>
+<li>确定访问控制与身份鉴别机制，定义主体角色和权限；</li>
+<li>信息输入的安全过滤，信息输出的校验和控制；</li>
+<li>数据结构安全设计，选择加密方法和算法；</li>
+<li>确定敏感数据保护方法；</li>
+<li>内部处理逻辑安全设计；</li>
+<li>评估内部通信机制，确定完整性机制。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="四、系统实现阶段"><a href="#四、系统实现阶段" class="headerlink" title="四、系统实现阶段"></a>四、系统实现阶段</h2><ol>
+<li>开发环境安全管理要求：<ul>
+<li>软件系统开发、测试禁止在生产环境中进行；</li>
+<li>开发环境中的开发用机应进行统一安全配置及时进行系统补丁升级和漏洞修复；</li>
+<li>软件程序不得篡改应用软件所运行的环境或平台中任何安全配置、安全文件和安全程序。</li>
+</ul>
+</li>
+<li>编码安全要求（后面会有详细讲解）：<ul>
+<li>遵循代码编写安全规范，根据代码编写安全规范以及安全设计方案进行系统开发；</li>
+<li>遵循通用安全编程准则，包括输入验证、缓存溢出、安全调用组件和程序编译等；</li>
+<li>遵循机密性要求，保护用户访问信息的机密性，严禁在客户端存放敏感数据</li>
+<li>避免内存溢出，严格检查和验证输入输出信息等；</li>
+<li>遵循结构化异常处理机制，捕捉并处理程序异常，防止系统信息泄露 </li>
+<li>遵循代码脆弱性防范要求，包括缓冲区溢出、SQL注入、跨站脚本攻击、XML注入攻击、HTTP HEAD注入等。</li>
+</ul>
+</li>
+<li>开发流程安全要求：<ul>
+<li>开发过程中应对阶段性开发成果进行有效管理；</li>
+<li>开发过程中应定期进行代码静态分析，使用代码审核工具对源代码进行检测，并报告源代码中存在的安全弱点；</li>
+<li>开发人员不得超越其规定权限进行开发，不得在程序中设置后门或恶意代码程序。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="五、系统测试阶段"><a href="#五、系统测试阶段" class="headerlink" title="五、系统测试阶段"></a>五、系统测试阶段</h2><ol>
+<li>测试内容应包括代码的安全测试和安全功能测试；</li>
+<li>代码的安全测试是指使用代码测试工具或渗透测试来识别代码的安全脆弱性，并应按照其提供的修复建议进行修复；</li>
+<li>安全功能测试主要包括身份认证和访问控制的功能测试；</li>
+<li>测试系统环境应尽可能模拟生产环境并与生产环境进行安全隔离；</li>
+<li>真实数据不得直接在测试环境中使用，须进行适当修改或屏蔽，在测试完成之后须立即从测试应用系统清除运行信息；</li>
+<li>测试人员编制安全测试方案，构造安全测试用例；</li>
+<li>验收测试不得由开发人员兼岗。</li>
+</ol>
+<hr>
+<h2 id="六、系统上线阶段"><a href="#六、系统上线阶段" class="headerlink" title="六、系统上线阶段"></a>六、系统上线阶段</h2><ol>
+<li>系统上线须在内部验收通过后进行；</li>
+<li>需进行上线前试运行，确认应用系统是否符合上线要求；</li>
+<li>上线成功后，记录上线的日期和内容。</li>
+</ol>
+<hr>
+<h2 id="七、文档管理"><a href="#七、文档管理" class="headerlink" title="七、文档管理"></a>七、文档管理</h2><ol>
+<li>源代码的变更和版本发布进行统一控制，对程序资源库的任何修改、更新和发布都需经部门主管领导授权和批准；</li>
+<li>应指定专人妥善保管程序源代码及相关技术文档。</li>
+</ol>
+<hr>
+<h2 id="八、外包管理"><a href="#八、外包管理" class="headerlink" title="八、外包管理"></a>八、外包管理</h2><ol>
+<li>应与外包开发单位签署相关知识产权保护协议和保密协议；</li>
+<li>外包开发单位进行系统开发过程中须严格遵循本制度的相关安全要求；</li>
+<li>在系统开发过程中须指派专人监督审核外包开发单位在各个阶段安全要求的执行情况；</li>
+<li>外包开发单位在系统开发完成后提供程序源代码和相关技术文档，不得将计算机系统采用的关键安全技术措施和核心安全功能设计对外公开；</li>
+<li>应对开发完成后的应用软件进行审查或检测。</li>
+</ol>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/应用系统开发安全/" data-id="cjopecdg500051it6ss3s9kli" class="article-share-link" data-share="baidu" data-title="应用系统开发安全">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/应用系统开发安全/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
   
     <article id="post-应用系统安全通用技术要求" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
@@ -508,11 +665,272 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/应用系统安全通用技术要求/" data-id="cjop6svzz002hq9t6xy032ut2" class="article-share-link" data-share="baidu" data-title="应用系统安全通用技术要求（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/应用系统安全通用技术要求/" data-id="cjopecdnu002h1it6xqgf9jo4" class="article-share-link" data-share="baidu" data-title="应用系统安全通用技术要求（转发）">分享到</a>
       
 
       
         <a href="http://pa55w0rd.github.io/应用系统安全通用技术要求/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-如何进行安全设计评审" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/如何进行安全设计评审/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/开发安全/">开发安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/如何进行安全设计评审/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>如何进行安全设计评审（转发）</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
+<ul>
+<li>目录<br>{:toc}<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1></li>
+</ul>
+<p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。<br><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png" alt="image"></p>
+<p>那么在安全设计评审这一阶段，应该怎么去做。我们可以先看下唯品会的SDL中在落地安全设计这一块怎么做的。</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45603582-d4398900-ba5f-11e8-97c3-41704aa37024.png" alt="image"></p>
+<p>就我自身而言。是按照以下这个流程进行的。</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536539-66f5e000-b834-11e8-929b-6b5fcc5cdb98.png" height="400"></p>
+<p>看着一大堆乱七八糟，自上而下的流程，但是做起来其实很快的。此处默认安全人员熟悉各种基本的开发过程中的安全规范以及一些<code>Checklist</code>(必须要了解公司开发语言对应的安全开发规范)，举例： <code>web</code>安全开发规范，<code>Python</code>安全编码规范，<code>Flask</code>安全， <code>Django</code>安全,常用的安全配置，面临哪些攻击点等等。<br>ps: 明确逻辑是非常重要的，可以说最为重要，如果连逻辑都不明白，谈什么设计评审。</p>
+<p>一些比较基础的: </p>
+<ul>
+<li>HTTPS Everywhere</li>
+<li>Bcypt 存储Hash</li>
+<li>OTP</li>
+<li>频率限制</li>
+<li>盐不要硬编码</li>
+<li>secret 和 auth-token 不要硬编码</li>
+<li>服务器间调用的api不要在app出现</li>
+<li>CSP, CSRF, HSTS, X-FRAME-OPTIONS, X-XSS-PROTECTION</li>
+<li>过滤输入<br>等等等….</li>
+</ul>
+<p>下面以<code>C2C</code>平台交易部分为例进行说明，可以简单的想一下，在智联买一张火车票，打开了支付宝进行支付。:<br><img src="https://user-images.githubusercontent.com/12653147/45537646-67dc4100-b837-11e8-9154-a3f78020d931.png" alt="image"></p>
+<p>然后，你知道数字签名当然是很基础的部分了。那么接下来，你就要细化支付流程过程中出现哪些操作，针对这些操作需要做什么样的防护措施。下图是针对用户商户支付方之间的流程：</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45538041-84c54400-b838-11e8-9426-f8e2074c78ca.png" alt="image"></p>
+<p>针对每个输入点，自身可控的输入输出的地方，进行过滤，校验等操作。</p>
+<p>所以那么问题来了，如果只单单是用户和支付方之间的呢?<br><img src="https://user-images.githubusercontent.com/12653147/45539501-88f36080-b83c-11e8-8b18-26a204eaf0a9.png" alt="image"></p>
+<p>你也可以思考一下如何进行。</p>
+<p>并且在<code>OWASP</code>应用安全设计中，详细指出了其他一些问题(中文版 Version 1.0 5):</p>
+<ul>
+<li><p>数据流:</p>
+<ul>
+<li><p>用户输入是否被直接用于引用业务逻辑的类或函数? </p>
+</li>
+<li><p>是否有一个数据绑定缺陷?</p>
+</li>
+<li><p>是否暴露任何后门参数来调用业务逻辑?</p>
+</li>
+<li><p>应用程序的执行流程是否正确?</p>
+</li>
+</ul>
+</li>
+<li><p>身份验证和访问控制:</p>
+<ul>
+<li><p>是否对所有文件实现访问控制?</p>
+</li>
+<li><p>是否安全地处理会话?</p>
+</li>
+<li><p>是否存在单点登录?单点登录是否留下后门?</p>
+</li>
+</ul>
+</li>
+<li><p>已有或内置的安全控制:</p>
+<ul>
+<li><p>在现有任意安全控制中的弱点; </p>
+</li>
+<li><p>安全控制的部署是否正确?</p>
+</li>
+</ul>
+</li>
+<li><p>架构:</p>
+<ul>
+<li><p>对所有的输入是否有验证?</p>
+</li>
+<li><p>到外部服务器的连接是安全的吗?</p>
+</li>
+</ul>
+</li>
+<li><p>配置或代码文件和数据存储:</p>
+<ul>
+<li><p>配置文件中是否含有敏感数据?</p>
+</li>
+<li><p>是否支持任何不安全的数据源?</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>下图(来自OWASP官方文档)详列上述条目以及其他需要检查的地方。<br><img src="https://user-images.githubusercontent.com/12653147/45603390-385b4d80-ba5e-11e8-9135-5b8352202820.png" alt="image"><br><img src="https://user-images.githubusercontent.com/12653147/45603400-47420000-ba5e-11e8-9ac6-07ff0aedcc90.png" alt="image"></p>
+<p>但是其实并不需要按照上述所有清单做自检，或者说是当你和开发团队在讨论的过程中不需要涉及全部的checklist，可能只需要在架构上，设计上进行检验，以及身份验证和数据检验上。当然，都是需要根据自己的业务场景去实现，因地制宜。</p>
+<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h1><ul>
+<li><a href="https://www.microsoft.com/en-us/SDL/process/design.aspx" target="_blank" rel="noopener">Mircosoft SDL lifecycle: Desing</a></li>
+<li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener">API Security Checklist</a></li>
+<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener">The Security Checklist</a></li>
+<li><a href="https://gist.github.com/mylamour/702d9d6e24a27699d8759967e6eb9f4f" target="_blank" rel="noopener">Part of FLASK Security</a></li>
+<li><a href="https://gist.github.com/mylamour/311299cc7fb80ad9f6674b2cf4ca02a4" target="_blank" rel="noopener">Part of Django Security</a></li>
+</ul>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/如何进行安全设计评审/" data-id="cjopecdf600001it6y9k9bzvk" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/如何进行安全设计评审/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-野路子企业安全架构设计" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/野路子企业安全架构设计/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/安全建设/">安全建设</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/野路子企业安全架构设计/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>野路子企业安全架构设计（转发）</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="转发自-https-github-com-mylamour-blog-issues-33"><a href="#转发自-https-github-com-mylamour-blog-issues-33" class="headerlink" title="转发自 https://github.com/mylamour/blog/issues/33"></a>转发自 <a href="https://github.com/mylamour/blog/issues/33" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/33</a></h2><p><img src="https://user-images.githubusercontent.com/12653147/43885348-37bde086-9beb-11e8-8406-3b34d9d96700.png" alt="default"><br>首先，知道业务有哪些，有多少资产，然后是数据的流向，知道要分析哪些流量。想要发现什么，阻止什么。其实Google的OKR也可以在这里应用。例如，安全架构的OKR可以这样：</p>
+<p>O:  发现入侵者，减缓或者阻断攻击，以及取证。</p>
+<p>KR: 资产管理系统   ——— 19%</p>
+<p>KR: 入侵检测系统   ——— 19%</p>
+<p>KR: 日志收集系统   ——— 19%</p>
+<p>KR: 关联分析系统   ——— 19%</p>
+<p>KR: 应急响应系统   ——— 19%</p>
+<p>但，即便都做了，也不能100%保证不出问题，还需要做定期的渗透测试。我们先按照这种思路，画出类似的OKR图</p>
+<p>O: 日志收集</p>
+<p>KR: 明确数据流向   ——— 50%</p>
+<p>KR: 明确收集类型   ——— 40%</p>
+<p>KR: 明确收集方式   ——— 5%</p>
+<p>KR: 明确存储方式   ——— 5%</p>
+<p>其实我之前画的时候，是先画的脑图，分析下当前系统拥有的哪些资产以及所需的对应的措施。然后绘制的。下图就是结合现状列出的日志列表。</p>
+<p><a href="https://user-images.githubusercontent.com/12653147/43366971-1ba02b82-9378-11e8-86af-9a69002bf42f.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43366971-1ba02b82-9378-11e8-86af-9a69002bf42f.png" alt="image"></a></p>
+<p>明确了各个部分之后，其实整个系统就有点呼之如出了。但是即便如此，之后还是需要进行修改，此时可以去继续和其他部门进行沟通，比如说我之前就先和区块链代理组沟通对方的架构，和产品经理沟通关键业务有哪些，又和运维沟通，让其统计出相应的资产。跨职能沟通并不是一件容易的事，碰到sb的话就更困难了。</p>
+<p>下面看一个V1版本的设计<br><a href="https://user-images.githubusercontent.com/12653147/43367427-2ea05d7c-937f-11e8-8d5a-6c923c6b99a3.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43367427-2ea05d7c-937f-11e8-8d5a-6c923c6b99a3.png" alt="image"></a></p>
+<p>这是一个V2的版本设计，修改后的，明显的对比是增加了蜜罐系统，复用威胁情报，以及补上了内网的IDS系统。</p>
+<p><a href="https://user-images.githubusercontent.com/12653147/43367453-ad736694-937f-11e8-96c0-b492feca5d96.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43367453-ad736694-937f-11e8-96c0-b492feca5d96.png" alt="image"></a></p>
+<p>当然具体到落地实现，还需要不少东西，比如说，是否是要修改开源ids，使agent监听某个服务，一旦更新规则，自动发送到每台机器。或者说ossec、suricata已具有这些功能，以及关联分析的时候，怎么选择适应的算法，并降低误报和漏报，引流到蜜罐系统等等，不一而足。以及自动化的部署更新。每个模块其实都需要一个人或者几个人去负责，但是作为一个人的安全部，能做的就是按照轻重缓急，自己排期进行。</p>
+<p>你应该还能看到这里其实还缺少SDL相关的设计以及落地。还有就是切记不能忘了安全系统本身的漏洞问题，不要因为具有高权限的安全系统本身有问题，导致从该点被攻破。在日常的设计中，20%的防御做好就能抵挡住80%的攻击。 比如说 生产环境的CDN + WAF 1+ WAF 2 + IDS。测试环境的ACL,这些最基本的防护足以抵挡80%的攻击，甚至90%。但是作为一个安全人员，我不希望看到的是，做到这20%就结束了，出现问题就跑路(引咎辞职其实是很不负责的行为), 而是应该专注于剩下的80%，怎么做好，做的更好。不仅从工具上(很多人喜欢安装一套又一套的系统，以其展现的报表去谋得赞扬。而不是通过跨职能的沟通和设计适合自己系统的安全架构和SDL流程去做剩下的80%)。</p>
+<p>但是在现在这样的环境里，很多事情都是步步维艰。只求做好自己的事情了。</p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/野路子企业安全架构设计/" data-id="cjopecdg800071it6ugq02l3c" class="article-share-link" data-share="baidu" data-title="野路子企业安全架构设计（转发）">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/野路子企业安全架构设计/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -988,7 +1406,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/安全设计Checklist/" data-id="cjop6svzy002gq9t617z9mkte" class="article-share-link" data-share="baidu" data-title="安全设计Checklist（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/安全设计Checklist/" data-id="cjopecdns002g1it61mmmajav" class="article-share-link" data-share="baidu" data-title="安全设计Checklist（转发）">分享到</a>
       
 
       
@@ -1014,492 +1432,9 @@
 
 
   
-    <article id="post-野路子企业安全架构设计" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/野路子企业安全架构设计/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/安全建设/">安全建设</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/野路子企业安全架构设计/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>野路子企业安全架构设计（转发）</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <h2 id="转发自-https-github-com-mylamour-blog-issues-33"><a href="#转发自-https-github-com-mylamour-blog-issues-33" class="headerlink" title="转发自 https://github.com/mylamour/blog/issues/33"></a>转发自 <a href="https://github.com/mylamour/blog/issues/33" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/33</a></h2><p><img src="https://user-images.githubusercontent.com/12653147/43885348-37bde086-9beb-11e8-8406-3b34d9d96700.png" alt="default"><br>首先，知道业务有哪些，有多少资产，然后是数据的流向，知道要分析哪些流量。想要发现什么，阻止什么。其实Google的OKR也可以在这里应用。例如，安全架构的OKR可以这样：</p>
-<p>O:  发现入侵者，减缓或者阻断攻击，以及取证。</p>
-<p>KR: 资产管理系统   ——— 19%</p>
-<p>KR: 入侵检测系统   ——— 19%</p>
-<p>KR: 日志收集系统   ——— 19%</p>
-<p>KR: 关联分析系统   ——— 19%</p>
-<p>KR: 应急响应系统   ——— 19%</p>
-<p>但，即便都做了，也不能100%保证不出问题，还需要做定期的渗透测试。我们先按照这种思路，画出类似的OKR图</p>
-<p>O: 日志收集</p>
-<p>KR: 明确数据流向   ——— 50%</p>
-<p>KR: 明确收集类型   ——— 40%</p>
-<p>KR: 明确收集方式   ——— 5%</p>
-<p>KR: 明确存储方式   ——— 5%</p>
-<p>其实我之前画的时候，是先画的脑图，分析下当前系统拥有的哪些资产以及所需的对应的措施。然后绘制的。下图就是结合现状列出的日志列表。</p>
-<p><a href="https://user-images.githubusercontent.com/12653147/43366971-1ba02b82-9378-11e8-86af-9a69002bf42f.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43366971-1ba02b82-9378-11e8-86af-9a69002bf42f.png" alt="image"></a></p>
-<p>明确了各个部分之后，其实整个系统就有点呼之如出了。但是即便如此，之后还是需要进行修改，此时可以去继续和其他部门进行沟通，比如说我之前就先和区块链代理组沟通对方的架构，和产品经理沟通关键业务有哪些，又和运维沟通，让其统计出相应的资产。跨职能沟通并不是一件容易的事，碰到sb的话就更困难了。</p>
-<p>下面看一个V1版本的设计<br><a href="https://user-images.githubusercontent.com/12653147/43367427-2ea05d7c-937f-11e8-8d5a-6c923c6b99a3.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43367427-2ea05d7c-937f-11e8-8d5a-6c923c6b99a3.png" alt="image"></a></p>
-<p>这是一个V2的版本设计，修改后的，明显的对比是增加了蜜罐系统，复用威胁情报，以及补上了内网的IDS系统。</p>
-<p><a href="https://user-images.githubusercontent.com/12653147/43367453-ad736694-937f-11e8-96c0-b492feca5d96.png" target="_blank" rel="noopener"><img src="https://user-images.githubusercontent.com/12653147/43367453-ad736694-937f-11e8-96c0-b492feca5d96.png" alt="image"></a></p>
-<p>当然具体到落地实现，还需要不少东西，比如说，是否是要修改开源ids，使agent监听某个服务，一旦更新规则，自动发送到每台机器。或者说ossec、suricata已具有这些功能，以及关联分析的时候，怎么选择适应的算法，并降低误报和漏报，引流到蜜罐系统等等，不一而足。以及自动化的部署更新。每个模块其实都需要一个人或者几个人去负责，但是作为一个人的安全部，能做的就是按照轻重缓急，自己排期进行。</p>
-<p>你应该还能看到这里其实还缺少SDL相关的设计以及落地。还有就是切记不能忘了安全系统本身的漏洞问题，不要因为具有高权限的安全系统本身有问题，导致从该点被攻破。在日常的设计中，20%的防御做好就能抵挡住80%的攻击。 比如说 生产环境的CDN + WAF 1+ WAF 2 + IDS。测试环境的ACL,这些最基本的防护足以抵挡80%的攻击，甚至90%。但是作为一个安全人员，我不希望看到的是，做到这20%就结束了，出现问题就跑路(引咎辞职其实是很不负责的行为), 而是应该专注于剩下的80%，怎么做好，做的更好。不仅从工具上(很多人喜欢安装一套又一套的系统，以其展现的报表去谋得赞扬。而不是通过跨职能的沟通和设计适合自己系统的安全架构和SDL流程去做剩下的80%)。</p>
-<p>但是在现在这样的环境里，很多事情都是步步维艰。只求做好自己的事情了。</p>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://pa55w0rd.github.io/野路子企业安全架构设计/" data-id="cjop6svvy0007q9t69abz5d6a" class="article-share-link" data-share="baidu" data-title="野路子企业安全架构设计（转发）">分享到</a>
-      
-
-      
-        <a href="http://pa55w0rd.github.io/野路子企业安全架构设计/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-如何进行安全设计评审" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/如何进行安全设计评审/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/开发安全/">开发安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/如何进行安全设计评审/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>如何进行安全设计评审（转发）</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
-<ul>
-<li>目录<br>{:toc}<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1></li>
-</ul>
-<p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。<br><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png" alt="image"></p>
-<p>那么在安全设计评审这一阶段，应该怎么去做。我们可以先看下唯品会的SDL中在落地安全设计这一块怎么做的。</p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45603582-d4398900-ba5f-11e8-97c3-41704aa37024.png" alt="image"></p>
-<p>就我自身而言。是按照以下这个流程进行的。</p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45536539-66f5e000-b834-11e8-929b-6b5fcc5cdb98.png" height="400"></p>
-<p>看着一大堆乱七八糟，自上而下的流程，但是做起来其实很快的。此处默认安全人员熟悉各种基本的开发过程中的安全规范以及一些<code>Checklist</code>(必须要了解公司开发语言对应的安全开发规范)，举例： <code>web</code>安全开发规范，<code>Python</code>安全编码规范，<code>Flask</code>安全， <code>Django</code>安全,常用的安全配置，面临哪些攻击点等等。<br>ps: 明确逻辑是非常重要的，可以说最为重要，如果连逻辑都不明白，谈什么设计评审。</p>
-<p>一些比较基础的: </p>
-<ul>
-<li>HTTPS Everywhere</li>
-<li>Bcypt 存储Hash</li>
-<li>OTP</li>
-<li>频率限制</li>
-<li>盐不要硬编码</li>
-<li>secret 和 auth-token 不要硬编码</li>
-<li>服务器间调用的api不要在app出现</li>
-<li>CSP, CSRF, HSTS, X-FRAME-OPTIONS, X-XSS-PROTECTION</li>
-<li>过滤输入<br>等等等….</li>
-</ul>
-<p>下面以<code>C2C</code>平台交易部分为例进行说明，可以简单的想一下，在智联买一张火车票，打开了支付宝进行支付。:<br><img src="https://user-images.githubusercontent.com/12653147/45537646-67dc4100-b837-11e8-9154-a3f78020d931.png" alt="image"></p>
-<p>然后，你知道数字签名当然是很基础的部分了。那么接下来，你就要细化支付流程过程中出现哪些操作，针对这些操作需要做什么样的防护措施。下图是针对用户商户支付方之间的流程：</p>
-<p><img src="https://user-images.githubusercontent.com/12653147/45538041-84c54400-b838-11e8-9426-f8e2074c78ca.png" alt="image"></p>
-<p>针对每个输入点，自身可控的输入输出的地方，进行过滤，校验等操作。</p>
-<p>所以那么问题来了，如果只单单是用户和支付方之间的呢?<br><img src="https://user-images.githubusercontent.com/12653147/45539501-88f36080-b83c-11e8-8b18-26a204eaf0a9.png" alt="image"></p>
-<p>你也可以思考一下如何进行。</p>
-<p>并且在<code>OWASP</code>应用安全设计中，详细指出了其他一些问题(中文版 Version 1.0 5):</p>
-<ul>
-<li><p>数据流:</p>
-<ul>
-<li><p>用户输入是否被直接用于引用业务逻辑的类或函数? </p>
-</li>
-<li><p>是否有一个数据绑定缺陷?</p>
-</li>
-<li><p>是否暴露任何后门参数来调用业务逻辑?</p>
-</li>
-<li><p>应用程序的执行流程是否正确?</p>
-</li>
-</ul>
-</li>
-<li><p>身份验证和访问控制:</p>
-<ul>
-<li><p>是否对所有文件实现访问控制?</p>
-</li>
-<li><p>是否安全地处理会话?</p>
-</li>
-<li><p>是否存在单点登录?单点登录是否留下后门?</p>
-</li>
-</ul>
-</li>
-<li><p>已有或内置的安全控制:</p>
-<ul>
-<li><p>在现有任意安全控制中的弱点; </p>
-</li>
-<li><p>安全控制的部署是否正确?</p>
-</li>
-</ul>
-</li>
-<li><p>架构:</p>
-<ul>
-<li><p>对所有的输入是否有验证?</p>
-</li>
-<li><p>到外部服务器的连接是安全的吗?</p>
-</li>
-</ul>
-</li>
-<li><p>配置或代码文件和数据存储:</p>
-<ul>
-<li><p>配置文件中是否含有敏感数据?</p>
-</li>
-<li><p>是否支持任何不安全的数据源?</p>
-</li>
-</ul>
-</li>
-</ul>
-<p>下图(来自OWASP官方文档)详列上述条目以及其他需要检查的地方。<br><img src="https://user-images.githubusercontent.com/12653147/45603390-385b4d80-ba5e-11e8-9135-5b8352202820.png" alt="image"><br><img src="https://user-images.githubusercontent.com/12653147/45603400-47420000-ba5e-11e8-9ac6-07ff0aedcc90.png" alt="image"></p>
-<p>但是其实并不需要按照上述所有清单做自检，或者说是当你和开发团队在讨论的过程中不需要涉及全部的checklist，可能只需要在架构上，设计上进行检验，以及身份验证和数据检验上。当然，都是需要根据自己的业务场景去实现，因地制宜。</p>
-<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h1><ul>
-<li><a href="https://www.microsoft.com/en-us/SDL/process/design.aspx" target="_blank" rel="noopener">Mircosoft SDL lifecycle: Desing</a></li>
-<li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener">API Security Checklist</a></li>
-<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener">The Security Checklist</a></li>
-<li><a href="https://gist.github.com/mylamour/702d9d6e24a27699d8759967e6eb9f4f" target="_blank" rel="noopener">Part of FLASK Security</a></li>
-<li><a href="https://gist.github.com/mylamour/311299cc7fb80ad9f6674b2cf4ca02a4" target="_blank" rel="noopener">Part of Django Security</a></li>
-</ul>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://pa55w0rd.github.io/如何进行安全设计评审/" data-id="cjop6svvw0005q9t6gofephtf" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
-      
-
-      
-        <a href="http://pa55w0rd.github.io/如何进行安全设计评审/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-androidchecklist" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/androidchecklist/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-27T07:37:59.000Z" itemprop="datePublished">2018-09-27</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/移动安全/">移动安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/androidchecklist/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Android APP安全checklist</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h1 id="Checklist整理"><a href="#Checklist整理" class="headerlink" title="Checklist整理"></a>Checklist整理</h1><h2 id="一、静态扫描"><a href="#一、静态扫描" class="headerlink" title="一、静态扫描"></a>一、静态扫描</h2><h3 id="1-文件信息"><a href="#1-文件信息" class="headerlink" title="1 文件信息"></a>1 文件信息</h3><h3 id="2-证书检测"><a href="#2-证书检测" class="headerlink" title="2 证书检测"></a>2 证书检测</h3><h3 id="3-权限信息检测"><a href="#3-权限信息检测" class="headerlink" title="3 权限信息检测"></a>3 权限信息检测</h3><h3 id="4-so文件检测"><a href="#4-so文件检测" class="headerlink" title="4 so文件检测"></a>4 so文件检测</h3><h3 id="5-第三方库-SDK-组件检测"><a href="#5-第三方库-SDK-组件检测" class="headerlink" title="5 第三方库/SDK/组件检测"></a>5 第三方库/SDK/组件检测</h3><ul>
-<li>第三方开源库/SDK检测</li>
-</ul>
-<h3 id="6-manifest文件检测"><a href="#6-manifest文件检测" class="headerlink" title="6 manifest文件检测"></a>6 manifest文件检测</h3><ul>
-<li>6.1   AndroidManifest文件中PermissionGroup检测 </li>
-<li>6.2   AndroidManifest文件中系统权限使用检测 </li>
-<li>6.3   AndroidManifest危险ProtectionLevel权限检测 </li>
-<li>6.4   AndroidManifest sharedUserId 检测 </li>
-<li>6.5   AndroidManifest allowBackup标志检测 </li>
-<li>6.6   AndroidManifest文件Debuggable配置检测 </li>
-<li>6.7   非必要权限检测 </li>
-<li>6.8   app最低版本检测 </li>
-</ul>
-<h3 id="7-组件安全检测"><a href="#7-组件安全检测" class="headerlink" title="7 组件安全检测"></a>7 组件安全检测</h3><ul>
-<li>7.1   Activity、activity-alias、service、receiver组件导出检测 </li>
-<li>7.2   ContentProvider组件导出检测 </li>
-<li>7.3   ContentProvider目录遍历漏洞检测 </li>
-<li>7.4   Implicit Service漏洞检测 </li>
-<li>7.5   Provider：grant-uri-permission属性检测 </li>
-<li>7.6   Intent-Based攻击检测 </li>
-<li>7.7   Intent Scheme URI漏洞攻击检测 </li>
-<li>7.8   应用本地拒绝服务漏洞检测 </li>
-<li>7.9   manifest中定义组件未实现检测 </li>
-<li>7.10   Debug或Test敏感测试组件泄露检测 </li>
-<li>7.11   Intent不安全反射风险检测 </li>
-</ul>
-<h3 id="8-webview组件安全检测"><a href="#8-webview组件安全检测" class="headerlink" title="8 webview组件安全检测"></a>8 webview组件安全检测</h3><ul>
-<li>8.1   WebView远程执行漏洞检测 </li>
-<li>8.2   WebView潜在XSS攻击检测 </li>
-<li>8.3   WebView本地文件访问漏洞检测 </li>
-<li>8.4   WebView密码明文存储漏洞检测 </li>
-<li>8.5   主机名弱校验检测 </li>
-<li>8.6   证书弱校验检测 </li>
-<li>8.7   中间人攻击漏洞检测 </li>
-<li>8.8   WebView不校验证书漏洞检测 </li>
-<li>8.9   WebView组件系统隐藏接口未移除漏洞 </li>
-</ul>
-<h3 id="9-sqlite安全检测"><a href="#9-sqlite安全检测" class="headerlink" title="9 sqlite安全检测"></a>9 sqlite安全检测</h3><ul>
-<li>9.1   SQLite数据库加密(SQLCipher)检测 </li>
-<li>9.2   SQLite数据库(SQLite Encryption Extension (SEE)) 检测 </li>
-<li>9.3   SQLite数据库的对称密钥(PRAGMA key) 检测 </li>
-<li>9.4   SQLiteDatabase Transaction Deprecated检测 </li>
-<li>9.5   Databases任意读写漏洞检测 </li>
-</ul>
-<h3 id="10-网络通信安全检测"><a href="#10-网络通信安全检测" class="headerlink" title="10 网络通信安全检测"></a>10 网络通信安全检测</h3><ul>
-<li>10.1   SSL连接检测 </li>
-<li>10.2   SSL不安全组件检测 </li>
-<li>10.3   HttpHost检测 </li>
-<li>10.4   HttpURLConnection漏洞检测 </li>
-<li>10.5   网络端口开放威胁检测 </li>
-</ul>
-<h3 id="11-弱加密风险检测"><a href="#11-弱加密风险检测" class="headerlink" title="11 弱加密风险检测"></a>11 弱加密风险检测</h3><ul>
-<li>11.1   弱加密算法风险检测 </li>
-<li>11.2   不安全的密钥长度风险检测 </li>
-<li>11.3   ECB弱加密模式风险检测 </li>
-<li>11.4   IVParameterSpec不安全初始化向量风险检测 </li>
-<li>11.5   RSA中不使用Padding风险检测 </li>
-<li>11.6   检测keystore是否使用密码保护 </li>
-</ul>
-<h3 id="12-数据安全检测"><a href="#12-数据安全检测" class="headerlink" title="12 数据安全检测"></a>12 数据安全检测</h3><ul>
-<li>12.1   敏感信息检测 </li>
-<li>12.2   剪贴板敏感信息泄露风险检测 </li>
-<li>12.3   Intent敏感数据泄露风险检测 </li>
-<li>12.4   PendingIntent误用风险 </li>
-<li>12.5   密钥硬编码风险检测 </li>
-<li>12.6   数据或程序加载检查 </li>
-<li>12.7   BASE64安全检测 </li>
-<li>12.8   文件全局读写漏洞检测 </li>
-<li>12.9   日志泄露风险检测 </li>
-<li>12.10   外部加载Dex检测 </li>
-<li>12.11   外部存储路径检测 </li>
-<li>12.12   明文数字证书风险 </li>
-<li>12.13 第三方oauth敏感信息泄露</li>
-</ul>
-<h3 id="13-敏感函数调用检测"><a href="#13-敏感函数调用检测" class="headerlink" title="13 敏感函数调用检测"></a>13 敏感函数调用检测</h3><ul>
-<li>13.1   安全相关的函数检测 </li>
-<li>13.2   安全相关的类检测 </li>
-<li>13.3   运行命令检测 </li>
-<li>13.4   Native Library加载检测 </li>
-<li>13.5   外部动态加载DEX检测 </li>
-<li>13.6   root代码检测 </li>
-<li>13.7   获取IMEI 和Device ID敏感信息代码检测 </li>
-<li>13.8   获取Android ID敏感信息代码检测 </li>
-<li>13.9   发送SMS敏感代码检测 </li>
-<li>13.10   文件删除代码检测 </li>
-<li>13.11   signature代码检测 </li>
-</ul>
-<h3 id="14-加固检测"><a href="#14-加固检测" class="headerlink" title="14 加固检测"></a>14 加固检测</h3><ul>
-<li>14.1 dex加固检测</li>
-<li>14.2 So文件加固检测</li>
-<li>14.3 资源文件加固检测</li>
-<li>14.4 混淆率检测</li>
-</ul>
-<h3 id="15-系统漏洞检测"><a href="#15-系统漏洞检测" class="headerlink" title="15 系统漏洞检测"></a>15 系统漏洞检测</h3><ul>
-<li>15.1   fragment注入漏洞检测 </li>
-<li>15.2   sqlite数据库日志泄露漏洞检测 </li>
-<li>15.3   随机数生成漏洞检测 </li>
-</ul>
-<h3 id="16-其他"><a href="#16-其他" class="headerlink" title="16 其他"></a>16 其他</h3><ul>
-<li>通用签名风险检测</li>
-</ul>
-<h2 id="二、动态扫描"><a href="#二、动态扫描" class="headerlink" title="二、动态扫描"></a>二、动态扫描</h2><h3 id="1-服务端漏洞检测"><a href="#1-服务端漏洞检测" class="headerlink" title="1 服务端漏洞检测"></a>1 服务端漏洞检测</h3><ul>
-<li><p>1.1 基于http代理</p>
-<ul>
-<li>水平权限风险检测</li>
-<li>垂直权限风险检测</li>
-<li>sql注入漏洞检测</li>
-<li>XSS漏洞检测</li>
-<li>敏感信息检测（硬编码、用户密码、银行卡、身份证等明文传输）</li>
-</ul>
-</li>
-<li><p>1.2 基于tcp或udp(socket)代理</p>
-<ul>
-<li>敏感信息检测（硬编码、用户密码、银行卡、身份证等明文传输）</li>
-</ul>
-</li>
-<li><p>1.3 html5漏洞检测</p>
-</li>
-</ul>
-<h3 id="2-hook技术检测"><a href="#2-hook技术检测" class="headerlink" title="2 hook技术检测"></a>2 hook技术检测</h3><ul>
-<li>2.1 SQLite Database存储信息检测</li>
-<li>2.2 SharePreferences存储信息检测</li>
-<li>2.3 Contert Provider存储信息检测</li>
-<li>2.4 File存储信息检测</li>
-<li>2.5 Intent数据内容检测</li>
-<li>2.6 Log日志打印检测</li>
-<li>2.7 System.print*输出检测</li>
-<li>2.8 剪贴板敏感信息检测</li>
-</ul>
-<h3 id="3-DDOS攻击检测"><a href="#3-DDOS攻击检测" class="headerlink" title="3 DDOS攻击检测"></a>3 DDOS攻击检测</h3><ul>
-<li><p>3.1 组件DDOS攻击检测</p>
-<ul>
-<li>Activity组件通用crash</li>
-<li>Receiver组件通用crash</li>
-<li>Service组件通用crash</li>
-</ul>
-</li>
-<li><p>3.2 native crash检测</p>
-</li>
-<li>3.3 java crash检测</li>
-</ul>
-<h3 id="4-provider注入漏洞检测"><a href="#4-provider注入漏洞检测" class="headerlink" title="4 provider注入漏洞检测"></a>4 provider注入漏洞检测</h3><h3 id="5-网络端口开放威胁检测"><a href="#5-网络端口开放威胁检测" class="headerlink" title="5 网络端口开放威胁检测"></a>5 网络端口开放威胁检测</h3><h2 id="三、业务安全扫描"><a href="#三、业务安全扫描" class="headerlink" title="三、业务安全扫描"></a>三、业务安全扫描</h2><p>未整理，欢迎大家补充</p>
-<h2 id="四、Checklist脑图："><a href="#四、Checklist脑图：" class="headerlink" title="四、Checklist脑图："></a>四、Checklist脑图：</h2><p><img src="\assets\img\android_pic\checklist.jpg" alt="checklist-logo"></p>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://pa55w0rd.github.io/androidchecklist/" data-id="cjop6svvu0004q9t6jigk5rc1" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
-      
-
-      
-        <a href="http://pa55w0rd.github.io/androidchecklist/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -1515,6 +1450,10 @@
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/use-algolia-search/">use_algolia_search</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/jekyll迁移hexo/">jekyll迁移hexo</a>
           </li>
         
@@ -1528,10 +1467,6 @@
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/linux_firefox_error/">Centos 7 运行firefox出错</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/mongodb_auth/">mongodb开启认证</a>
           </li>
         
       </ul>
@@ -1570,8 +1505,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1622,6 +1557,70 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
                           <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
                       </span>
                   </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="weixin-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='weixin.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="qq-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='qq.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
           
 
           
@@ -1774,7 +1773,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
     <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
   
-    <a href="/about.html" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+    <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
   
 </nav>
 

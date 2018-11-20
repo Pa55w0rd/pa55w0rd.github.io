@@ -78,16 +78,17 @@
   
   
   
+  
    -->
 
   <script>
    var CONFIG = {
     root: '/',
     algolia: {
-          applicationID: "",
-          apiKey: "",
-          adminApiKey: "",
-          indexName: "",
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
           hits: {"per_page":10},
           labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
         }
@@ -122,9 +123,7 @@
         
           <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
         
-          <a class="main-nav-link" href="/about"><i class="fa fa-about" aria-hidden="true"></i>about</a>
-        
-          <a class="main-nav-link" href="/categories"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
+          <a class="main-nav-link" href="/category"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
         
           <a class="main-nav-link" href="/tags"><i class="fa fa-tags" aria-hidden="true"></i>标签</a>
         
@@ -157,6 +156,88 @@
 
     <div class="outer">
       <section id="main">
+  
+    <article id="post-mysql-python安装时提示mysql_config not fount" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/mysql-python安装时提示mysql_config not fount/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-16T06:27:13.000Z" itemprop="datePublished">2018-10-16</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mysql-python安装时提示mysql_config not fount/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>mysql-python安装时mysql_config not found</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>mysql-python安装时提示mysql_config not found<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># pip install MySQL-<span class="keyword">python</span></span><br><span class="line">Collecting MySQL-<span class="keyword">python</span></span><br><span class="line">  Using cached http<span class="variable">s:</span>//<span class="keyword">files</span>.pythonhosted.org/packages/a5/e9/<span class="number">51</span>b544da85a36a68debe7a7091f068d802fc515a3a202652828c73453cad/MySQL-<span class="keyword">python</span>-<span class="number">1.2</span>.<span class="number">5</span>.zip</span><br><span class="line">    Complete output from <span class="keyword">command</span> <span class="keyword">python</span> setup.<span class="keyword">py</span> egg_info:</span><br><span class="line">    <span class="keyword">sh</span>: <span class="number">1</span>: mysql_confi<span class="variable">g:</span> not found</span><br><span class="line">    Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</span><br><span class="line">      File <span class="string">"&lt;string&gt;"</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">      File <span class="string">"/tmp/pip-build-QORDfG/MySQL-python/setup.py"</span>, <span class="built_in">line</span> <span class="number">17</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">        metadata, <span class="keyword">options</span> = get_config()</span><br><span class="line">      File <span class="string">"setup_posix.py"</span>, <span class="built_in">line</span> <span class="number">43</span>, in get_config</span><br><span class="line">        libs = mysql_config(<span class="string">"libs_r"</span>)</span><br><span class="line">      File <span class="string">"setup_posix.py"</span>, <span class="built_in">line</span> <span class="number">25</span>, in mysql_config</span><br><span class="line">        raise EnvironmentError(<span class="string">"%s not found"</span> % (mysql_config.path,))</span><br><span class="line">    EnvironmentError: mysql_config not found</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x01-解决方法"><a href="#0x01-解决方法" class="headerlink" title="0x01 解决方法"></a>0x01 解决方法</h2><p>报错的原因是没有安装<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">centos 7</span><br><span class="line">yum <span class="keyword">install</span> mysql-devel</span><br><span class="line">ubuntu</span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> libmysqlclient-dev</span><br></pre></td></tr></table></figure></p>
+<p>再执行pip install MySQL-python 安装成功</p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/mysql-python安装时提示mysql_config not fount/" data-id="cjopecdgj000b1it6a090z4l3" class="article-share-link" data-share="baidu" data-title="mysql-python安装时mysql_config not found">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/mysql-python安装时提示mysql_config not fount/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
   
     <article id="post-wireshark使用" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
@@ -245,7 +326,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/wireshark使用/" data-id="cjop6svwb000fq9t6edw50n89" class="article-share-link" data-share="baidu" data-title="Wireshark使用">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/wireshark使用/" data-id="cjopecdip001w1it62k5zu3qz" class="article-share-link" data-share="baidu" data-title="Wireshark使用">分享到</a>
       
 
       
@@ -363,7 +444,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/ubuntu安装xunfeng/" data-id="cjop6svwp000oq9t65nzmeq7v" class="article-share-link" data-share="baidu" data-title="ubuntu搭建xunfeng资产扫描系统">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/ubuntu安装xunfeng/" data-id="cjopecdh9000s1it6m1f3pci7" class="article-share-link" data-share="baidu" data-title="ubuntu搭建xunfeng资产扫描系统">分享到</a>
       
 
       
@@ -453,7 +534,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/token的使用/" data-id="cjop6svw4000bq9t6oegbddox" class="article-share-link" data-share="baidu" data-title="token的使用">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/token的使用/" data-id="cjopecdgc00081it6grnqwey0" class="article-share-link" data-share="baidu" data-title="token的使用">分享到</a>
       
 
       
@@ -1006,7 +1087,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/应用开发安全指南/" data-id="cjop6sw2k002sq9t6i1sffqi2" class="article-share-link" data-share="baidu" data-title="应用开发安全指南">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/应用开发安全指南/" data-id="cjopecdpx002s1it6u98y88cr" class="article-share-link" data-share="baidu" data-title="应用开发安全指南">分享到</a>
       
 
       
@@ -1032,167 +1113,9 @@
 
 
   
-    <article id="post-应用系统开发安全" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/应用系统开发安全/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T09:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/开发安全/">开发安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/应用系统开发安全/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>应用系统开发安全</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="一、安全原则"><a href="#一、安全原则" class="headerlink" title="一、安全原则"></a>一、安全原则</h2><ol>
-<li>保护最薄弱的环节原则：保护最易受攻击影响的部分；</li>
-<li>纵深防御原则：不同层面、不同角度之间需要相互配合；</li>
-<li>最小权限原则：只授予执行操作所需的最小权限； </li>
-<li>最小共享原则：使共享文件资源尽可能少；</li>
-<li>权限分离原则：授予不同用户所需的最小权限，并在它们之间形成相互制约的关系；</li>
-</ol>
-<hr>
-<h2 id="二、需求管理阶段"><a href="#二、需求管理阶段" class="headerlink" title="二、需求管理阶段"></a>二、需求管理阶段</h2><ol>
-<li>根据业务目标分析并制定系统安全目标；</li>
-<li>确认安全需求规格说明。</li>
-</ol>
-<hr>
-<h2 id="三、系统设计阶段"><a href="#三、系统设计阶段" class="headerlink" title="三、系统设计阶段"></a>三、系统设计阶段</h2><ol>
-<li>根据安全目标执行威胁建模，识别威胁和风险；</li>
-<li>根据威胁建模制定对应开发安全任务：<ul>
-<li>确定安全体系架构，设计安全协议和安全接口；</li>
-<li>确定访问控制与身份鉴别机制，定义主体角色和权限；</li>
-<li>信息输入的安全过滤，信息输出的校验和控制；</li>
-<li>数据结构安全设计，选择加密方法和算法；</li>
-<li>确定敏感数据保护方法；</li>
-<li>内部处理逻辑安全设计；</li>
-<li>评估内部通信机制，确定完整性机制。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="四、系统实现阶段"><a href="#四、系统实现阶段" class="headerlink" title="四、系统实现阶段"></a>四、系统实现阶段</h2><ol>
-<li>开发环境安全管理要求：<ul>
-<li>软件系统开发、测试禁止在生产环境中进行；</li>
-<li>开发环境中的开发用机应进行统一安全配置及时进行系统补丁升级和漏洞修复；</li>
-<li>软件程序不得篡改应用软件所运行的环境或平台中任何安全配置、安全文件和安全程序。</li>
-</ul>
-</li>
-<li>编码安全要求（后面会有详细讲解）：<ul>
-<li>遵循代码编写安全规范，根据代码编写安全规范以及安全设计方案进行系统开发；</li>
-<li>遵循通用安全编程准则，包括输入验证、缓存溢出、安全调用组件和程序编译等；</li>
-<li>遵循机密性要求，保护用户访问信息的机密性，严禁在客户端存放敏感数据</li>
-<li>避免内存溢出，严格检查和验证输入输出信息等；</li>
-<li>遵循结构化异常处理机制，捕捉并处理程序异常，防止系统信息泄露 </li>
-<li>遵循代码脆弱性防范要求，包括缓冲区溢出、SQL注入、跨站脚本攻击、XML注入攻击、HTTP HEAD注入等。</li>
-</ul>
-</li>
-<li>开发流程安全要求：<ul>
-<li>开发过程中应对阶段性开发成果进行有效管理；</li>
-<li>开发过程中应定期进行代码静态分析，使用代码审核工具对源代码进行检测，并报告源代码中存在的安全弱点；</li>
-<li>开发人员不得超越其规定权限进行开发，不得在程序中设置后门或恶意代码程序。</li>
-</ul>
-</li>
-</ol>
-<hr>
-<h2 id="五、系统测试阶段"><a href="#五、系统测试阶段" class="headerlink" title="五、系统测试阶段"></a>五、系统测试阶段</h2><ol>
-<li>测试内容应包括代码的安全测试和安全功能测试；</li>
-<li>代码的安全测试是指使用代码测试工具或渗透测试来识别代码的安全脆弱性，并应按照其提供的修复建议进行修复；</li>
-<li>安全功能测试主要包括身份认证和访问控制的功能测试；</li>
-<li>测试系统环境应尽可能模拟生产环境并与生产环境进行安全隔离；</li>
-<li>真实数据不得直接在测试环境中使用，须进行适当修改或屏蔽，在测试完成之后须立即从测试应用系统清除运行信息；</li>
-<li>测试人员编制安全测试方案，构造安全测试用例；</li>
-<li>验收测试不得由开发人员兼岗。</li>
-</ol>
-<hr>
-<h2 id="六、系统上线阶段"><a href="#六、系统上线阶段" class="headerlink" title="六、系统上线阶段"></a>六、系统上线阶段</h2><ol>
-<li>系统上线须在内部验收通过后进行；</li>
-<li>需进行上线前试运行，确认应用系统是否符合上线要求；</li>
-<li>上线成功后，记录上线的日期和内容。</li>
-</ol>
-<hr>
-<h2 id="七、文档管理"><a href="#七、文档管理" class="headerlink" title="七、文档管理"></a>七、文档管理</h2><ol>
-<li>源代码的变更和版本发布进行统一控制，对程序资源库的任何修改、更新和发布都需经部门主管领导授权和批准；</li>
-<li>应指定专人妥善保管程序源代码及相关技术文档。</li>
-</ol>
-<hr>
-<h2 id="八、外包管理"><a href="#八、外包管理" class="headerlink" title="八、外包管理"></a>八、外包管理</h2><ol>
-<li>应与外包开发单位签署相关知识产权保护协议和保密协议；</li>
-<li>外包开发单位进行系统开发过程中须严格遵循本制度的相关安全要求；</li>
-<li>在系统开发过程中须指派专人监督审核外包开发单位在各个阶段安全要求的执行情况；</li>
-<li>外包开发单位在系统开发完成后提供程序源代码和相关技术文档，不得将计算机系统采用的关键安全技术措施和核心安全功能设计对外公开；</li>
-<li>应对开发完成后的应用软件进行审查或检测。</li>
-</ol>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://pa55w0rd.github.io/应用系统开发安全/" data-id="cjop6svw00008q9t67y7p9n8j" class="article-share-link" data-share="baidu" data-title="应用系统开发安全">分享到</a>
-      
-
-      
-        <a href="http://pa55w0rd.github.io/应用系统开发安全/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 
@@ -1208,6 +1131,10 @@
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/use-algolia-search/">use_algolia_search</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/jekyll迁移hexo/">jekyll迁移hexo</a>
           </li>
         
@@ -1221,10 +1148,6 @@
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/linux_firefox_error/">Centos 7 运行firefox出错</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/mongodb_auth/">mongodb开启认证</a>
           </li>
         
       </ul>
@@ -1263,8 +1186,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -1315,6 +1238,70 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
                           <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
                       </span>
                   </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="weixin-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='weixin.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="qq-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='qq.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
           
 
           
@@ -1467,7 +1454,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
     <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
   
-    <a href="/about.html" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+    <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
   
 </nav>
 

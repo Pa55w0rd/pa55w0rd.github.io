@@ -123,11 +123,9 @@
         
           <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
         
-          <a class="main-nav-link" href="/category"><i class="fa fa-categories" aria-hidden="true"></i>Categories</a>
-        
-          <a class="main-nav-link" href="/tags"><i class="fa fa-tags" aria-hidden="true"></i>标签</a>
-        
           <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+          <a class="main-nav-link" href="/404.html"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
         
       </nav>
       <nav id="sub-nav">
@@ -374,7 +372,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjopecdnv002i1it6hoxqlz89" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjopejf46002j2ft6nojzl8nq" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
       
 
       
@@ -764,239 +762,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjopecdoh002m1it6x4dblp44" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjopejf4p002n2ft6t27c0i0e" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
         <a href="http://pa55w0rd.github.io/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-quick-SQL-cheatsheet" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/quick-SQL-cheatsheet/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/quick-SQL-cheatsheet/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>SQL 速查表</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<!--
-# 内容 
-1. [ 查找数据的查询 ](#find)
-2. [ 修改数据的查询 ](#modify)
-3. [ 聚合查询 ](#report)
-4. [ 连接查询 ](#joins)
-5. [ 视图查询 ](#view)
-6. [ 修改表的查询 ](#alter) 
-https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
--->
-<p><a name="find"></a></p>
-<h1 id="1-查找数据的查询"><a href="#1-查找数据的查询" class="headerlink" title="1. 查找数据的查询"></a>1. 查找数据的查询</h1><h3 id="SELECT-用于从数据库中选择数据"><a href="#SELECT-用于从数据库中选择数据" class="headerlink" title="SELECT: 用于从数据库中选择数据"></a><strong>SELECT</strong>: 用于从数据库中选择数据</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name;</li>
-</ul>
-<h3 id="DISTINCT-用于过滤掉重复的值并返回指定列的行"><a href="#DISTINCT-用于过滤掉重复的值并返回指定列的行" class="headerlink" title="DISTINCT: 用于过滤掉重复的值并返回指定列的行"></a><strong>DISTINCT</strong>: 用于过滤掉重复的值并返回指定列的行</h3><ul>
-<li><code>SELECT DISTINCT</code> column_name;</li>
-</ul>
-<h3 id="WHERE-用于过滤记录-行"><a href="#WHERE-用于过滤记录-行" class="headerlink" title="WHERE: 用于过滤记录/行"></a><strong>WHERE</strong>: 用于过滤记录/行</h3><ul>
-<li><code>SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> condition2;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>OR</code> condition2;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE NOT</code> condition;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> (condition2 <code>OR</code> condition3);</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE EXISTS</code> (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
-</ul>
-<h3 id="ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）"><a href="#ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）" class="headerlink" title="ORDER BY: 用于结果集的排序，升序（ASC）或者降序（DESC）"></a><strong>ORDER BY</strong>: 用于结果集的排序，升序（ASC）或者降序（DESC）</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column <code>DESC</code>;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column1 <code>ASC</code>, column2 <code>DESC</code>;</li>
-</ul>
-<h3 id="SELECT-TOP-用于指定从表顶部返回的记录数"><a href="#SELECT-TOP-用于指定从表顶部返回的记录数" class="headerlink" title="SELECT TOP: 用于指定从表顶部返回的记录数"></a><strong>SELECT TOP</strong>: 用于指定从表顶部返回的记录数</h3><ul>
-<li><code>SELECT TOP</code> number columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT TOP</code> percent columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li>并非所有数据库系统都支持<code>SELECT TOP</code>。 MySQL 中是<code>LIMIT</code>子句</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>LIMIT</code> offset, count;</li>
-</ul>
-<h3 id="LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符"><a href="#LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符" class="headerlink" title="LIKE: 用于搜索列中的特定模式，WHERE 子句中使用的运算符"></a><strong>LIKE</strong>: 用于搜索列中的特定模式，WHERE 子句中使用的运算符</h3><ul>
-<li>% (percent sign) 是一个表示零个，一个或多个字符的通配符</li>
-<li>_ (underscore) 是一个表示单个字符通配符</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>LIKE</code> pattern;</li>
-<li><code>LIKE</code> ‘a%’    （查找任何以“a”开头的值）</li>
-<li><code>LIKE</code> ‘%a’    （查找任何以“a”结尾的值）</li>
-<li><code>LIKE</code> ‘%or%’  （查找任何包含“or”的值）</li>
-<li><code>LIKE</code> ‘_r%’   （查找任何第二位是“r”的值）</li>
-<li><code>LIKE</code> ‘a_%_%’ （查找任何以“a”开头且长度至少为3的值）</li>
-<li><code>LIKE</code> ‘[a-c]%’（查找任何以“a”或“b”或“c”开头的值）</li>
-</ul>
-<h3 id="IN-用于在-WHERE-子句中指定多个值的运算符"><a href="#IN-用于在-WHERE-子句中指定多个值的运算符" class="headerlink" title="IN: 用于在 WHERE 子句中指定多个值的运算符"></a><strong>IN</strong>: 用于在 WHERE 子句中指定多个值的运算符</h3><ul>
-<li>本质上，IN运算符是多个OR条件的简写</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (value1, value2, …);</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (<code>SELECT STATEMENT</code>);</li>
-</ul>
-<h3 id="BETWEEN-用于过滤给定范围的值的运算符"><a href="#BETWEEN-用于过滤给定范围的值的运算符" class="headerlink" title="BETWEEN: 用于过滤给定范围的值的运算符"></a><strong>BETWEEN</strong>: 用于过滤给定范围的值的运算符</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>BETWEEN</code> value1 <code>AND</code> value2;</li>
-<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> (column_name <code>BETWEEN</code> value1 <code>AND</code> value2) <code>AND NOT</code> column_name2 <code>IN</code> (value3, value4);</li>
-<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> column_name <code>BETWEEN</code> #01/07/1999# AND #03/12/1999#;</li>
-</ul>
-<h3 id="NULL-代表一个字段没有值"><a href="#NULL-代表一个字段没有值" class="headerlink" title="NULL: 代表一个字段没有值"></a><strong>NULL</strong>: 代表一个字段没有值</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NULL</code>;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NOT NULL</code>;</li>
-</ul>
-<h3 id="AS-用于给表或者列分配别名"><a href="#AS-用于给表或者列分配别名" class="headerlink" title="AS: 用于给表或者列分配别名"></a><strong>AS</strong>: 用于给表或者列分配别名</h3><ul>
-<li><code>SELECT</code> column_name <code>AS</code> alias_name <code>FROM</code> table_name;</li>
-<li><code>SELECT</code> column_name <code>FROM</code> table_name <code>AS</code> alias_name;</li>
-<li><code>SELECT</code> column_name <code>AS</code> alias_name1, column_name2 <code>AS</code> alias_name2;</li>
-<li><code>SELECT</code> column_name1, column_name2 + ‘, ‘ + column_name3 <code>AS</code> alias_name;</li>
-</ul>
-<h3 id="UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符"><a href="#UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符" class="headerlink" title="UNION: 用于组合两个或者多个 SELECT 语句的结果集的运算符"></a><strong>UNION</strong>: 用于组合两个或者多个 SELECT 语句的结果集的运算符</h3><ul>
-<li>每个 SELECT 语句必须拥有相同的列数</li>
-<li>列必须拥有相似的数据类型</li>
-<li>每个 SELECT 语句中的列也必须具有相同的顺序</li>
-<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>UNION SELECT</code> column_name <code>FROM</code> table2;</li>
-<li><code>UNION</code> 仅允许选择不同的值, <code>UNION ALL</code> 允许重复</li>
-</ul>
-<h3 id="ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符"><a href="#ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符" class="headerlink" title="ANY|ALL: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符"></a><strong>ANY|ALL</strong>: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符</h3><ul>
-<li><code>ANY</code> 如果任何子查询值满足条件，则返回 true。</li>
-<li><code>ALL</code> 如果任何子查询值满足条件，则返回 true。</li>
-<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>WHERE</code> column_name operator (<code>ANY</code>|<code>ALL</code>) (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
-</ul>
-<h3 id="GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"><a href="#GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列" class="headerlink" title="GROUP BY: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"></a><strong>GROUP BY</strong>: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列</h3><ul>
-<li><code>SELECT</code> column_name1, COUNT(column_name2) <code>FROM</code> table_name <code>WHERE</code> condition <code>GROUP BY</code> column_name1 <code>ORDER BY</code> COUNT(column_name2) DESC;</li>
-</ul>
-<h3 id="HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。"><a href="#HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。" class="headerlink" title="HAVING: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。"></a><strong>HAVING</strong>: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。</h3><ul>
-<li><code>SELECT</code> <code>COUNT</code>(column_name1), column_name2 <code>FROM</code> table <code>GROUP BY</code> column_name2 <code>HAVING</code> <code>COUNT(</code>column_name1<code>)</code> &gt; 5;</li>
-</ul>
-<p><a name="modify"></a></p>
-<h1 id="2-修改数据的查询"><a href="#2-修改数据的查询" class="headerlink" title="2. 修改数据的查询"></a>2. 修改数据的查询</h1><h3 id="INSERT-INTO-用于在表中插入新记录-行"><a href="#INSERT-INTO-用于在表中插入新记录-行" class="headerlink" title="INSERT INTO: 用于在表中插入新记录/行"></a><strong>INSERT INTO</strong>: 用于在表中插入新记录/行</h3><ul>
-<li><code>INSERT INTO</code> table_name (column1, column2) <code>VALUES</code> (value1, value2);</li>
-<li><code>INSERT INTO</code> table_name <code>VALUES</code> (value1, value2 …);</li>
-</ul>
-<h3 id="UPDATE-用于修改表中的现有记录-行"><a href="#UPDATE-用于修改表中的现有记录-行" class="headerlink" title="UPDATE: 用于修改表中的现有记录/行"></a><strong>UPDATE</strong>: 用于修改表中的现有记录/行</h3><ul>
-<li><code>UPDATE</code> table_name <code>SET</code> column1 = value1, column2 = value2 <code>WHERE</code> condition;</li>
-<li><code>UPDATE</code> table_name <code>SET</code> column_name = value;</li>
-</ul>
-<h3 id="DELETE-用于删除表中的现有记录-行"><a href="#DELETE-用于删除表中的现有记录-行" class="headerlink" title="DELETE: 用于删除表中的现有记录/行"></a><strong>DELETE</strong>: 用于删除表中的现有记录/行</h3><ul>
-<li><code>DELETE FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>DELETE</code> * <code>FROM</code> table_name;</li>
-</ul>
-<p><a name="report"></a></p>
-<h1 id="3-聚合查询"><a href="#3-聚合查询" class="headerlink" title="3. 聚合查询"></a>3. 聚合查询</h1><h3 id="COUNT-返回出现次数"><a href="#COUNT-返回出现次数" class="headerlink" title="COUNT: 返回出现次数"></a><strong>COUNT</strong>: 返回出现次数</h3><ul>
-<li><code>SELECT COUNT (DISTINCT</code> column_name<code>)</code>;</li>
-</ul>
-<h3 id="MIN-and-MAX-返回所选列的最小-最大值"><a href="#MIN-and-MAX-返回所选列的最小-最大值" class="headerlink" title="MIN() and MAX(): 返回所选列的最小/最大值"></a><strong>MIN() and MAX()</strong>: 返回所选列的最小/最大值</h3><ul>
-<li><code>SELECT MIN (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT MAX (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="AVG-返回数字列的平均值"><a href="#AVG-返回数字列的平均值" class="headerlink" title="AVG(): 返回数字列的平均值"></a><strong>AVG()</strong>: 返回数字列的平均值</h3><ul>
-<li><code>SELECT AVG (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="SUM-返回数值列的总和"><a href="#SUM-返回数值列的总和" class="headerlink" title="SUM(): 返回数值列的总和"></a><strong>SUM()</strong>: 返回数值列的总和</h3><ul>
-<li><code>SELECT SUM (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<p><a name="joins"></a></p>
-<h1 id="4-连接查询"><a href="#4-连接查询" class="headerlink" title="4. 连接查询"></a>4. 连接查询</h1><h3 id="INNER-JOIN-内连接，返回在两张表中具有匹配值的记录"><a href="#INNER-JOIN-内连接，返回在两张表中具有匹配值的记录" class="headerlink" title="INNER JOIN: 内连接，返回在两张表中具有匹配值的记录"></a><strong>INNER JOIN</strong>: 内连接，返回在两张表中具有匹配值的记录</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>INNER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-<li><code>SELECT</code> table1.column_name1, table2.column_name2, table3.column_name3 <code>FROM</code> ((table1 <code>INNER JOIN</code> table2 <code>ON</code> relationship) <code>INNER JOIN</code> table3 <code>ON</code> relationship);</li>
-</ul>
-<h3 id="LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"><a href="#LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）" class="headerlink" title="LEFT (OUTER) JOIN: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"></a><strong>LEFT (OUTER) JOIN</strong>: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>LEFT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"><a href="#RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录" class="headerlink" title="RIGHT (OUTER) JOIN: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"></a><strong>RIGHT (OUTER) JOIN</strong>: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>RIGHT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。"><a href="#FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。" class="headerlink" title="FULL (OUTER) JOIN: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。"></a><strong>FULL (OUTER) JOIN</strong>: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>FULL OUTER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="Self-JOIN-自连接，表自身连接"><a href="#Self-JOIN-自连接，表自身连接" class="headerlink" title="Self JOIN: 自连接，表自身连接"></a><strong>Self JOIN</strong>: 自连接，表自身连接</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 T1, table1 T2 <code>WHERE</code> condition;</li>
-</ul>
-<p><a name="view"></a></p>
-<h1 id="5-视图查询"><a href="#5-视图查询" class="headerlink" title="5. 视图查询"></a>5. 视图查询</h1><h3 id="CREATE-创建视图"><a href="#CREATE-创建视图" class="headerlink" title="CREATE: 创建视图"></a><strong>CREATE</strong>: 创建视图</h3><ul>
-<li><code>CREATE VIEW</code> view_name <code>AS SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="SELECT-检索视图"><a href="#SELECT-检索视图" class="headerlink" title="SELECT: 检索视图"></a><strong>SELECT</strong>: 检索视图</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> view_name;</li>
-</ul>
-<h3 id="DROP-删除视图"><a href="#DROP-删除视图" class="headerlink" title="DROP: 删除视图"></a><strong>DROP</strong>: 删除视图</h3><ul>
-<li><code>DROP VIEW</code> view_name;</li>
-</ul>
-<p><a name="alter"></a></p>
-<h1 id="6-修改表的查询"><a href="#6-修改表的查询" class="headerlink" title="6. 修改表的查询"></a>6. 修改表的查询</h1><h3 id="ADD-添加字段"><a href="#ADD-添加字段" class="headerlink" title="ADD: 添加字段"></a><strong>ADD</strong>: 添加字段</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>ADD</code> column_name column_definition;</li>
-</ul>
-<h3 id="MODIFY-修改字段数据类型"><a href="#MODIFY-修改字段数据类型" class="headerlink" title="MODIFY: 修改字段数据类型"></a><strong>MODIFY</strong>: 修改字段数据类型</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>MODIFY</code> column_name column_type;</li>
-</ul>
-<h3 id="DROP-删除字段"><a href="#DROP-删除字段" class="headerlink" title="DROP: 删除字段"></a><strong>DROP</strong>: 删除字段</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>DROP COLUMN</code> column_name;</li>
-</ul>
-
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjopecdir001y1it6daol7svb" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
-      
-
-      
-        <a href="http://pa55w0rd.github.io/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -1290,7 +1060,7 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjopecdlp002b1it6rxhjv20x" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjopejf26002c2ft6vvl8zo3a" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
       
 
       
@@ -1316,11 +1086,11 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
 
 
   
-    <article id="post-phpstudy+https" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-quick-SQL-cheatsheet" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/phpstudy+https/" class="article-date">
+    <a href="/quick-SQL-cheatsheet/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
+  <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
 </a>
 
     
@@ -1339,8 +1109,8 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/phpstudy+https/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>phpstudy配置ssl证书实现https加密访问</a>
+      <a class="article-title" href="/quick-SQL-cheatsheet/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>SQL 速查表</a>
     </h1>
   
 
@@ -1358,63 +1128,155 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
         <ul>
 <li>目录<br>{:toc}</li>
 </ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。</p>
-<p>HTTPS（超文本传输安全）协议无疑可以有效的解决这一问题。所谓HTTPS，其实就是HTTP和SSL/TLS的组合，用以提供加密通讯及对网络服务器的身份鉴定。HTTPS的主要思想是在不安全的网络上创建一安全信道，防止黑客的窃听和攻击。</p>
-<h2 id="0x01-使用openssl生成x509签名证书"><a href="#0x01-使用openssl生成x509签名证书" class="headerlink" title="0x01 使用openssl生成x509签名证书"></a>0x01 使用openssl生成x509签名证书</h2><p>x509证书一般会用到三类文，key，csr，crt</p>
-<ul>
-<li><p>key是服务器上的私钥文件，用于对发送给客户端数据的加密，以及对从客户端接收到数据的解密，通常是rsa算法。</p>
-</li>
-<li><p>csr 是证书签名请求文件，用于申请证书。在制作csr文件的时，必须使用自己的私钥来签署申，还可以设定一个密钥。</p>
-</li>
-<li><p>crt是由证书颁发机构（CA）签名后的证书，或者是开发者自签名的证书，包含证书持有人的信息，持有人的公钥，以及签署者的签名等信息 </p>
-</li>
+<!--
+# 内容 
+1. [ 查找数据的查询 ](#find)
+2. [ 修改数据的查询 ](#modify)
+3. [ 聚合查询 ](#report)
+4. [ 连接查询 ](#joins)
+5. [ 视图查询 ](#view)
+6. [ 修改表的查询 ](#alter) 
+https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
+-->
+<p><a name="find"></a></p>
+<h1 id="1-查找数据的查询"><a href="#1-查找数据的查询" class="headerlink" title="1. 查找数据的查询"></a>1. 查找数据的查询</h1><h3 id="SELECT-用于从数据库中选择数据"><a href="#SELECT-用于从数据库中选择数据" class="headerlink" title="SELECT: 用于从数据库中选择数据"></a><strong>SELECT</strong>: 用于从数据库中选择数据</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> table_name;</li>
 </ul>
-<ol>
-<li><p>key的生成 </p>
-<p> <code># openssl genrsa -des3 -out server.key 2048</code></p>
-<p> 这样是生成rsa私钥，des3算法，openssl格式，2048位强度。server.key是密钥文件名。为了生成这样的密钥，需要一个至少四位的密码。可以通过以下方法删除私钥中的密码:</p>
-<p> <code># openssl rsa -in server.key -out server.key</code></p>
-</li>
-<li><p>生成CA的crt</p>
- <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl req -new -key server.key -out server.csr</span></span><br><span class="line"></span><br><span class="line">Country Name (2 letter code) [AU]:CN</span><br><span class="line">State <span class="keyword">or</span> Province Name (full name) [Some-State]:Beijing</span><br><span class="line">Locality Name (eg, city) []:Beijing</span><br><span class="line">Organization Name (eg, company) [Internet Widgits Pty Ltd]:Test</span><br><span class="line">Organizational Unit Name (eg, section) []:Test</span><br><span class="line">Common Name (e.g.<span class="built_in"> server </span>FQDN <span class="keyword">or</span> YOUR name) []:pa55w0rd.club</span><br><span class="line">Email<span class="built_in"> Address </span>[]:pa55w0rd@aliyun.com</span><br></pre></td></tr></table></figure>
-<p> 需要依次输入国家，地区，组织，email。common name可以写你的名字或者域名。如果为了https申请，这个必须和域名吻合，否则会引发浏览器警报。生成的csr文件交给CA签名后形成服务端自己的证书。</p>
-</li>
-</ol>
-<ol start="3">
-<li><p>crt生成方法</p>
- <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt</span></span><br><span class="line"></span><br><span class="line">Signature ok</span><br><span class="line"><span class="attr">subject=C</span> = CN, <span class="attr">ST</span> = Beijing, <span class="attr">L</span> = Beijing, <span class="attr">O</span> = Test, <span class="attr">OU</span> = Test, <span class="attr">CN</span> = pa55w0rd.club, <span class="attr">emailAddress</span> = pa55w0rd@aliyun.com</span><br><span class="line">Getting Private key</span><br></pre></td></tr></table></figure>
-<p> crt上有证书持有人的信息，持有人的公钥，以及签署者的签名等信息。当用户安装了证书之后，便意味着信任了这份证书，同时拥有了其中的公钥。证书上会说明用途，例如服务器认证，客户端认证，或者签署其他证书。当系统收到一份新的证书的时候，证书会说明，是由谁签署的。如果这个签署者确实可以签署其他证书，并且收到证书上的签名和签署者的公钥可以对上的时候，系统就自动信任新的证书。</p>
-<p> 最后生成了私用密钥：server.key和自己认证的SSL证书：server.crt</p>
-<p> 证书合并：</p>
-<p> <code>cat server.key server.crt &gt; server.pem</code></p>
-</li>
-<li><p>客户端证书文件</p>
-<p> 上面三步骤为服务端证书生成步骤，用户配置单向SSL时需要使用的证书文件，如果要配置双向SSL</p>
-<p> 证书生成步骤是一样的，最后需要将crt和key合并生成客户端证书安装包 pfx</p>
-<p> <code>openssl pkcs12 -export -in client.crt -inkey client.key -out client.pfx</code></p>
-</li>
-</ol>
-<h2 id="0x02-phpstudy安装ssl证书"><a href="#0x02-phpstudy安装ssl证书" class="headerlink" title="0x02 phpstudy安装ssl证书"></a>0x02 phpstudy安装ssl证书</h2><ol>
-<li><p>打开<code>php-openssl</code> 选项</p>
-<p> 点击【其他选项菜单】按钮→选择【PHP扩展及设置】→选择【PHP扩展】→在【php-openssl】选项上打钩即可。</p>
-</li>
-<li><p>使SSL模块生效</p>
-<p> 打开<code>phpStudy\Apache\conf\httpd.conf</code>文件，修改配置文件注意备份</p>
-<p> 找到 <code>LoadModule ssl_module modules/mod_ssl.so</code>，去除<code>#</code>注释，使ssl模块生效</p>
-<p> 搜索<code>Include conf/vhosts.conf</code>，在其下面增加一条<br> <code>Include conf/vhostssl.conf</code></p>
-</li>
-<li><p>在Apache安装目录下创建cert目录，将生产的证书拷贝过来</p>
-</li>
-<li><p>在Apache安装目录下conf文件夹中创建一个vhostssl.conf配置文件(文件名要和httpd.conf文件中引用的名称一致)</p>
- <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Listen <span class="number">443</span></span><br><span class="line">&lt;VirtualHost *:<span class="number">443</span>&gt;</span><br><span class="line">    DocumentRoot <span class="string">"E:\phpStudy\WWW"</span></span><br><span class="line">    ServerName www.pa55w0rd.club</span><br><span class="line">    ServerAlias pa55w0rd.club</span><br><span class="line">    ErrorLog <span class="string">"E:\phpStudy\Apache\logs\error.log"</span></span><br><span class="line">    TransferLog <span class="string">"E:\phpStudy\Apache\logs\access.log"</span></span><br><span class="line">    SSLEngine on</span><br><span class="line">    SSLProtocol TLSv1 TLSv1<span class="number">.1</span> TLSv1<span class="number">.2</span></span><br><span class="line">    SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5</span><br><span class="line">    SSLCertificateFile <span class="string">"E:\phpStudy\Apache\cert\server.pem"</span></span><br><span class="line">    SSLCertificateKeyFile <span class="string">"E:\phpStudy\Apache\cert\server.key"</span></span><br><span class="line">    SSLCertificateChainFile <span class="string">"E:\phpStudy\Apache\cert\server.pem"</span></span><br><span class="line">  &lt;Directory <span class="string">"E:\phpStudy\WWW"</span>&gt;</span><br><span class="line">      Options FollowSymLinks ExecCGI</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">      <span class="keyword">Require</span> all granted</span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启Apache，访问<a href="https://xxx" target="_blank" rel="noopener">https://xxx</a> 访问正常</p>
-</li>
-</ol>
-<h2 id="0x03-HTTP301重定向到HTTPS"><a href="#0x03-HTTP301重定向到HTTPS" class="headerlink" title="0x03 HTTP301重定向到HTTPS"></a>0x03 HTTP301重定向到HTTPS</h2><p>配置完SSL证书，我们需要进行站点301重定向，将http的地址强制跳转到https地址，Apache环境下，在站点根目录添加.htaccess文件</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">RewriteEngine</span></span> <span class="literal">on</span></span><br><span class="line"><span class="attribute">RewriteBase</span> /</span><br><span class="line"><span class="attribute"><span class="nomarkup">RewriteCond</span></span> <span class="variable">%&#123;SERVER_PORT&#125;</span> !^443$</span><br><span class="line"><span class="attribute"><span class="nomarkup">RewriteRule</span></span> ^.*$ https://<span class="variable">%&#123;SERVER_NAME&#125;</span><span class="variable">%&#123;REQUEST_URI&#125;</span><span class="meta"> [L,R=301]</span></span><br></pre></td></tr></table></figure>
-<p>PS. Windows下不允许创建.开头的文件，可以先创建任意文件，通过copy命令重命名.htaccess</p>
-<p>测试自动跳转到https</p>
+<h3 id="DISTINCT-用于过滤掉重复的值并返回指定列的行"><a href="#DISTINCT-用于过滤掉重复的值并返回指定列的行" class="headerlink" title="DISTINCT: 用于过滤掉重复的值并返回指定列的行"></a><strong>DISTINCT</strong>: 用于过滤掉重复的值并返回指定列的行</h3><ul>
+<li><code>SELECT DISTINCT</code> column_name;</li>
+</ul>
+<h3 id="WHERE-用于过滤记录-行"><a href="#WHERE-用于过滤记录-行" class="headerlink" title="WHERE: 用于过滤记录/行"></a><strong>WHERE</strong>: 用于过滤记录/行</h3><ul>
+<li><code>SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> condition2;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>OR</code> condition2;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE NOT</code> condition;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> (condition2 <code>OR</code> condition3);</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE EXISTS</code> (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
+</ul>
+<h3 id="ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）"><a href="#ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）" class="headerlink" title="ORDER BY: 用于结果集的排序，升序（ASC）或者降序（DESC）"></a><strong>ORDER BY</strong>: 用于结果集的排序，升序（ASC）或者降序（DESC）</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column <code>DESC</code>;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column1 <code>ASC</code>, column2 <code>DESC</code>;</li>
+</ul>
+<h3 id="SELECT-TOP-用于指定从表顶部返回的记录数"><a href="#SELECT-TOP-用于指定从表顶部返回的记录数" class="headerlink" title="SELECT TOP: 用于指定从表顶部返回的记录数"></a><strong>SELECT TOP</strong>: 用于指定从表顶部返回的记录数</h3><ul>
+<li><code>SELECT TOP</code> number columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>SELECT TOP</code> percent columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+<li>并非所有数据库系统都支持<code>SELECT TOP</code>。 MySQL 中是<code>LIMIT</code>子句</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>LIMIT</code> offset, count;</li>
+</ul>
+<h3 id="LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符"><a href="#LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符" class="headerlink" title="LIKE: 用于搜索列中的特定模式，WHERE 子句中使用的运算符"></a><strong>LIKE</strong>: 用于搜索列中的特定模式，WHERE 子句中使用的运算符</h3><ul>
+<li>% (percent sign) 是一个表示零个，一个或多个字符的通配符</li>
+<li>_ (underscore) 是一个表示单个字符通配符</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>LIKE</code> pattern;</li>
+<li><code>LIKE</code> ‘a%’    （查找任何以“a”开头的值）</li>
+<li><code>LIKE</code> ‘%a’    （查找任何以“a”结尾的值）</li>
+<li><code>LIKE</code> ‘%or%’  （查找任何包含“or”的值）</li>
+<li><code>LIKE</code> ‘_r%’   （查找任何第二位是“r”的值）</li>
+<li><code>LIKE</code> ‘a_%_%’ （查找任何以“a”开头且长度至少为3的值）</li>
+<li><code>LIKE</code> ‘[a-c]%’（查找任何以“a”或“b”或“c”开头的值）</li>
+</ul>
+<h3 id="IN-用于在-WHERE-子句中指定多个值的运算符"><a href="#IN-用于在-WHERE-子句中指定多个值的运算符" class="headerlink" title="IN: 用于在 WHERE 子句中指定多个值的运算符"></a><strong>IN</strong>: 用于在 WHERE 子句中指定多个值的运算符</h3><ul>
+<li>本质上，IN运算符是多个OR条件的简写</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (value1, value2, …);</li>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (<code>SELECT STATEMENT</code>);</li>
+</ul>
+<h3 id="BETWEEN-用于过滤给定范围的值的运算符"><a href="#BETWEEN-用于过滤给定范围的值的运算符" class="headerlink" title="BETWEEN: 用于过滤给定范围的值的运算符"></a><strong>BETWEEN</strong>: 用于过滤给定范围的值的运算符</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>BETWEEN</code> value1 <code>AND</code> value2;</li>
+<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> (column_name <code>BETWEEN</code> value1 <code>AND</code> value2) <code>AND NOT</code> column_name2 <code>IN</code> (value3, value4);</li>
+<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> column_name <code>BETWEEN</code> #01/07/1999# AND #03/12/1999#;</li>
+</ul>
+<h3 id="NULL-代表一个字段没有值"><a href="#NULL-代表一个字段没有值" class="headerlink" title="NULL: 代表一个字段没有值"></a><strong>NULL</strong>: 代表一个字段没有值</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NULL</code>;</li>
+<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NOT NULL</code>;</li>
+</ul>
+<h3 id="AS-用于给表或者列分配别名"><a href="#AS-用于给表或者列分配别名" class="headerlink" title="AS: 用于给表或者列分配别名"></a><strong>AS</strong>: 用于给表或者列分配别名</h3><ul>
+<li><code>SELECT</code> column_name <code>AS</code> alias_name <code>FROM</code> table_name;</li>
+<li><code>SELECT</code> column_name <code>FROM</code> table_name <code>AS</code> alias_name;</li>
+<li><code>SELECT</code> column_name <code>AS</code> alias_name1, column_name2 <code>AS</code> alias_name2;</li>
+<li><code>SELECT</code> column_name1, column_name2 + ‘, ‘ + column_name3 <code>AS</code> alias_name;</li>
+</ul>
+<h3 id="UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符"><a href="#UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符" class="headerlink" title="UNION: 用于组合两个或者多个 SELECT 语句的结果集的运算符"></a><strong>UNION</strong>: 用于组合两个或者多个 SELECT 语句的结果集的运算符</h3><ul>
+<li>每个 SELECT 语句必须拥有相同的列数</li>
+<li>列必须拥有相似的数据类型</li>
+<li>每个 SELECT 语句中的列也必须具有相同的顺序</li>
+<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>UNION SELECT</code> column_name <code>FROM</code> table2;</li>
+<li><code>UNION</code> 仅允许选择不同的值, <code>UNION ALL</code> 允许重复</li>
+</ul>
+<h3 id="ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符"><a href="#ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符" class="headerlink" title="ANY|ALL: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符"></a><strong>ANY|ALL</strong>: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符</h3><ul>
+<li><code>ANY</code> 如果任何子查询值满足条件，则返回 true。</li>
+<li><code>ALL</code> 如果任何子查询值满足条件，则返回 true。</li>
+<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>WHERE</code> column_name operator (<code>ANY</code>|<code>ALL</code>) (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
+</ul>
+<h3 id="GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"><a href="#GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列" class="headerlink" title="GROUP BY: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"></a><strong>GROUP BY</strong>: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列</h3><ul>
+<li><code>SELECT</code> column_name1, COUNT(column_name2) <code>FROM</code> table_name <code>WHERE</code> condition <code>GROUP BY</code> column_name1 <code>ORDER BY</code> COUNT(column_name2) DESC;</li>
+</ul>
+<h3 id="HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。"><a href="#HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。" class="headerlink" title="HAVING: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。"></a><strong>HAVING</strong>: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。</h3><ul>
+<li><code>SELECT</code> <code>COUNT</code>(column_name1), column_name2 <code>FROM</code> table <code>GROUP BY</code> column_name2 <code>HAVING</code> <code>COUNT(</code>column_name1<code>)</code> &gt; 5;</li>
+</ul>
+<p><a name="modify"></a></p>
+<h1 id="2-修改数据的查询"><a href="#2-修改数据的查询" class="headerlink" title="2. 修改数据的查询"></a>2. 修改数据的查询</h1><h3 id="INSERT-INTO-用于在表中插入新记录-行"><a href="#INSERT-INTO-用于在表中插入新记录-行" class="headerlink" title="INSERT INTO: 用于在表中插入新记录/行"></a><strong>INSERT INTO</strong>: 用于在表中插入新记录/行</h3><ul>
+<li><code>INSERT INTO</code> table_name (column1, column2) <code>VALUES</code> (value1, value2);</li>
+<li><code>INSERT INTO</code> table_name <code>VALUES</code> (value1, value2 …);</li>
+</ul>
+<h3 id="UPDATE-用于修改表中的现有记录-行"><a href="#UPDATE-用于修改表中的现有记录-行" class="headerlink" title="UPDATE: 用于修改表中的现有记录/行"></a><strong>UPDATE</strong>: 用于修改表中的现有记录/行</h3><ul>
+<li><code>UPDATE</code> table_name <code>SET</code> column1 = value1, column2 = value2 <code>WHERE</code> condition;</li>
+<li><code>UPDATE</code> table_name <code>SET</code> column_name = value;</li>
+</ul>
+<h3 id="DELETE-用于删除表中的现有记录-行"><a href="#DELETE-用于删除表中的现有记录-行" class="headerlink" title="DELETE: 用于删除表中的现有记录/行"></a><strong>DELETE</strong>: 用于删除表中的现有记录/行</h3><ul>
+<li><code>DELETE FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>DELETE</code> * <code>FROM</code> table_name;</li>
+</ul>
+<p><a name="report"></a></p>
+<h1 id="3-聚合查询"><a href="#3-聚合查询" class="headerlink" title="3. 聚合查询"></a>3. 聚合查询</h1><h3 id="COUNT-返回出现次数"><a href="#COUNT-返回出现次数" class="headerlink" title="COUNT: 返回出现次数"></a><strong>COUNT</strong>: 返回出现次数</h3><ul>
+<li><code>SELECT COUNT (DISTINCT</code> column_name<code>)</code>;</li>
+</ul>
+<h3 id="MIN-and-MAX-返回所选列的最小-最大值"><a href="#MIN-and-MAX-返回所选列的最小-最大值" class="headerlink" title="MIN() and MAX(): 返回所选列的最小/最大值"></a><strong>MIN() and MAX()</strong>: 返回所选列的最小/最大值</h3><ul>
+<li><code>SELECT MIN (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+<li><code>SELECT MAX (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<h3 id="AVG-返回数字列的平均值"><a href="#AVG-返回数字列的平均值" class="headerlink" title="AVG(): 返回数字列的平均值"></a><strong>AVG()</strong>: 返回数字列的平均值</h3><ul>
+<li><code>SELECT AVG (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<h3 id="SUM-返回数值列的总和"><a href="#SUM-返回数值列的总和" class="headerlink" title="SUM(): 返回数值列的总和"></a><strong>SUM()</strong>: 返回数值列的总和</h3><ul>
+<li><code>SELECT SUM (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<p><a name="joins"></a></p>
+<h1 id="4-连接查询"><a href="#4-连接查询" class="headerlink" title="4. 连接查询"></a>4. 连接查询</h1><h3 id="INNER-JOIN-内连接，返回在两张表中具有匹配值的记录"><a href="#INNER-JOIN-内连接，返回在两张表中具有匹配值的记录" class="headerlink" title="INNER JOIN: 内连接，返回在两张表中具有匹配值的记录"></a><strong>INNER JOIN</strong>: 内连接，返回在两张表中具有匹配值的记录</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>INNER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+<li><code>SELECT</code> table1.column_name1, table2.column_name2, table3.column_name3 <code>FROM</code> ((table1 <code>INNER JOIN</code> table2 <code>ON</code> relationship) <code>INNER JOIN</code> table3 <code>ON</code> relationship);</li>
+</ul>
+<h3 id="LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"><a href="#LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）" class="headerlink" title="LEFT (OUTER) JOIN: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"></a><strong>LEFT (OUTER) JOIN</strong>: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>LEFT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+</ul>
+<h3 id="RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"><a href="#RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录" class="headerlink" title="RIGHT (OUTER) JOIN: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"></a><strong>RIGHT (OUTER) JOIN</strong>: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>RIGHT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+</ul>
+<h3 id="FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。"><a href="#FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。" class="headerlink" title="FULL (OUTER) JOIN: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。"></a><strong>FULL (OUTER) JOIN</strong>: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>FULL OUTER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
+</ul>
+<h3 id="Self-JOIN-自连接，表自身连接"><a href="#Self-JOIN-自连接，表自身连接" class="headerlink" title="Self JOIN: 自连接，表自身连接"></a><strong>Self JOIN</strong>: 自连接，表自身连接</h3><ul>
+<li><code>SELECT</code> column_names <code>FROM</code> table1 T1, table1 T2 <code>WHERE</code> condition;</li>
+</ul>
+<p><a name="view"></a></p>
+<h1 id="5-视图查询"><a href="#5-视图查询" class="headerlink" title="5. 视图查询"></a>5. 视图查询</h1><h3 id="CREATE-创建视图"><a href="#CREATE-创建视图" class="headerlink" title="CREATE: 创建视图"></a><strong>CREATE</strong>: 创建视图</h3><ul>
+<li><code>CREATE VIEW</code> view_name <code>AS SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
+</ul>
+<h3 id="SELECT-检索视图"><a href="#SELECT-检索视图" class="headerlink" title="SELECT: 检索视图"></a><strong>SELECT</strong>: 检索视图</h3><ul>
+<li><code>SELECT</code> * <code>FROM</code> view_name;</li>
+</ul>
+<h3 id="DROP-删除视图"><a href="#DROP-删除视图" class="headerlink" title="DROP: 删除视图"></a><strong>DROP</strong>: 删除视图</h3><ul>
+<li><code>DROP VIEW</code> view_name;</li>
+</ul>
+<p><a name="alter"></a></p>
+<h1 id="6-修改表的查询"><a href="#6-修改表的查询" class="headerlink" title="6. 修改表的查询"></a>6. 修改表的查询</h1><h3 id="ADD-添加字段"><a href="#ADD-添加字段" class="headerlink" title="ADD: 添加字段"></a><strong>ADD</strong>: 添加字段</h3><ul>
+<li><code>ALTER TABLE</code> table_name <code>ADD</code> column_name column_definition;</li>
+</ul>
+<h3 id="MODIFY-修改字段数据类型"><a href="#MODIFY-修改字段数据类型" class="headerlink" title="MODIFY: 修改字段数据类型"></a><strong>MODIFY</strong>: 修改字段数据类型</h3><ul>
+<li><code>ALTER TABLE</code> table_name <code>MODIFY</code> column_name column_type;</li>
+</ul>
+<h3 id="DROP-删除字段"><a href="#DROP-删除字段" class="headerlink" title="DROP: 删除字段"></a><strong>DROP</strong>: 删除字段</h3><ul>
+<li><code>ALTER TABLE</code> table_name <code>DROP COLUMN</code> column_name;</li>
+</ul>
 
       
 
@@ -1426,11 +1288,125 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/phpstudy+https/" data-id="cjopecdig001n1it685gw9cex" class="article-share-link" data-share="baidu" data-title="phpstudy配置ssl证书实现https加密访问">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjopejezg001d2ft6zj8whjdo" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
       
 
       
-        <a href="http://pa55w0rd.github.io/phpstudy+https/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-解析漏洞" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/解析漏洞/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web安全/">web安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/解析漏洞/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>解析漏洞</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+
+        <br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <ul>
+<li>目录<br>{:toc}</li>
+</ul>
+<h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
+<li><p>目录解析</p>
+<p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
+<p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
+<p> /xx.asp/xx.jpg</p>
+</li>
+<li><p>文件解析</p>
+<p> 在IIS6.0下，分号后面的不被解析，也就是说xx.asp;.jpg会被服务器看成是xx.asp</p>
+<p> xx.asp;.jpg</p>
+<p> 另外IIS6.0 默认的可执行文件除了asp还包含这三种:</p>
+<p> /shell.asa</p>
+<p> /shell.cer</p>
+<p> /shell.cdx</p>
+</li>
+</ol>
+<h2 id="IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞"><a href="#IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞" class="headerlink" title="IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞"></a>IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞</h2><p>在默认Fast-CGI开启状况下,上传一个名字为xx.jpg，内容为<br><code>&lt;?PHP fputs(fopen(‘shell.php’,’w’),&#39;&lt;?php eval($_POST[cmd])?&gt;’);?&gt;</code><br>的文件，然后访问xx.jpg/.php,在这个目录下就会生成一句话木马 shell.php</p>
+<p>e.g. 将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
+<p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
+<ul>
+<li><p>/b 即二进制[binary]模式</p>
+</li>
+<li><p>/a 即ascii模式 xx.jpg正常图片文件 </p>
+</li>
+</ul>
+<h2 id="Nginx-lt-8-03-空字节代码执行漏洞"><a href="#Nginx-lt-8-03-空字节代码执行漏洞" class="headerlink" title="Nginx &lt;8.03 空字节代码执行漏洞"></a>Nginx &lt;8.03 空字节代码执行漏洞</h2><p>影响版本:0.5.,0.6., 0.7 &lt;= 0.7.65, 0.8 &lt;= 0.8.37</p>
+<p>Nginx在图片中嵌入PHP代码然后通过访问</p>
+<p>xxx.jpg%00.php</p>
+<p>来执行其中的代码</p>
+<h2 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h2><p>Apache 是从右到左开始判断解析,如果为不可识别解析,就再往左判断.</p>
+<p>比如 shell.php.a.rar “.a”和”.rar” 这两种后缀是apache不可识别解析,apache就会把shell.php.a.rar解析成php</p>
+<h2 id="lighttpd"><a href="#lighttpd" class="headerlink" title="lighttpd"></a>lighttpd</h2><p>xx.jpg/xx.php</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在windows环境下，xx.jpg[空格] 或xx.jpg. 这两类文件都是不允许存在的，若这样命名，windows会默认除去空格或点，利用windows的这种特性，通过抓包在文件名后加一个空格或者点绕过黑名单.若上传成功，空格和点都会被windows自动消除,这样也可以getshell。</p>
+<p>如果在Apache中.htaccess可被执行.且可被上传.那可以尝试在.htaccess中写入:</p>
+<p><code>&lt;FilesMatch &quot;shell.jpg&quot;&gt; SetHandler application/x-httpd-php &lt;/FilesMatch&gt;</code></p>
+<p>然后再上传shell.jpg的木马, 这样shell.jpg就可解析为php文件</p>
+
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjopejeyp000n2ft6wjvn0vz7" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/解析漏洞/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -1601,7 +1577,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
         
           <!-- <li> -->
           
-            <a id="weixin-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='weixin.png'>">
+            <a id="weixin-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='/img/weixin.png'>">
                 <span class="fa-stack fa-lg">
                       <i class="fa fa-circle fa-stack-2x"></i>
                       <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
@@ -1633,7 +1609,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
         
           <!-- <li> -->
           
-            <a id="qq-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='qq.png'>">
+            <a id="qq-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='/img/qq.png'>">
                 <span class="fa-stack fa-lg">
                       <i class="fa fa-circle fa-stack-2x"></i>
                       <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
@@ -1794,6 +1770,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
   
     <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+    <a href="/404.html" class="mobile-nav-link"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
   
 </nav>
 

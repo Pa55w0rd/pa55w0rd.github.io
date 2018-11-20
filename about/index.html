@@ -20,7 +20,7 @@
 <meta property="og:description" content="pa55w0rd.github.io个人博客一个小甲方信息安全工程师 记录点点滴滴，东拼西凑、总结和转载 积累一些东西，也方便自己查阅 如有侵权或其他问题请及时联系我，email：pa55w0rd@aliyun.com 转载请注明出处">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pa55w0rd.github.io/img/zs.jpg">
-<meta property="og:updated_time" content="2018-11-20T07:58:08.065Z">
+<meta property="og:updated_time" content="2018-11-20T11:08:56.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about">
 <meta name="twitter:description" content="pa55w0rd.github.io个人博客一个小甲方信息安全工程师 记录点点滴滴，东拼西凑、总结和转载 积累一些东西，也方便自己查阅 如有侵权或其他问题请及时联系我，email：pa55w0rd@aliyun.com 转载请注明出处">
@@ -85,6 +85,7 @@
   
    -->
 
+
   <script>
    var CONFIG = {
     root: '/',
@@ -98,7 +99,18 @@
         }
   };
   </script>
-
+<!--
+<script>
+    (function(){
+      if('{{ page.password }}'){
+        if (prompt('请输入文章密码') !== '{{ page.password }}'){
+          alert('密码错误！');
+          history.back();
+        }
+      }
+    })();
+  </script>
+-->
 </head>
 
 
@@ -156,6 +168,8 @@
     </div>
   </div>
 </header>
+
+    <a href="https://github.com/Pa55w0rd"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
 
     <div class="outer">
       <section id="main"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
@@ -219,7 +233,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/about/index.html" data-id="cjopl5zob0001kbt6a54fa4i6" class="article-share-link" data-share="baidu" data-title="about">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/about/index.html" data-id="cjopow64f0000sqt6k2cd9l88" class="article-share-link" data-share="baidu" data-title="about">分享到</a>
       
 
       
@@ -575,6 +589,17 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
         <i class="leancloud-visitors-count">1000000</i>
       </span>
 -->
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <div class="powered-by">
+        <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+        我的网站的访客数:<span id="busuanzi_value_site_uv"></span>
+        </span>
+      </div>
+
+      <div class="theme-info">
+        <div class="powered-by"></div>
+        <span class="post-count"> | 博客全站共{{ totalcount(site) }}字</span>
+      </div>
       <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257415698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257415698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 
     </div>
@@ -700,6 +725,11 @@ MathJax.Hub.Queue(function() {
 <script src="/js/script.js"></script>
 
 </div>
+{% if config.canvas_nest %}
+<script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+{% endif %}
+<!--鼠标点击爆炸动画-->
+<script type="text/javascript" src="/js/anime.js"></script>
 </body>
 </html>
 

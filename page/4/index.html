@@ -81,6 +81,7 @@
   
    -->
 
+
   <script>
    var CONFIG = {
     root: '/',
@@ -94,7 +95,18 @@
         }
   };
   </script>
-
+<!--
+<script>
+    (function(){
+      if('{{ page.password }}'){
+        if (prompt('请输入文章密码') !== '{{ page.password }}'){
+          alert('密码错误！');
+          history.back();
+        }
+      }
+    })();
+  </script>
+-->
 </head>
 
 
@@ -208,7 +220,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjopl5zvi002skbt6ihfu25qd" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjopow6cy002vsqt67mos1wsv" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
       
 
       
@@ -289,11 +301,88 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjopl5zvj002tkbt6dipnhky9" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjopow6cx002usqt6ygfozovg" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
         <a href="http://pa55w0rd.github.io/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-fileupload" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/fileupload/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web安全/">web安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/fileupload/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>文件上传漏洞总结</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。 </p>
+<p>上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。 </p>
+        
+          <p class="article-more-link ">
+            <a href="/fileupload/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjopow6b5002nsqt6skaiu0zq" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/fileupload/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -372,88 +461,11 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjopl5zqc001bkbt6x8x1ngsm" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjopow67q0019sqt6pzz097di" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
       
 
       
         <a href="http://pa55w0rd.github.io/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">评论</a>
-      
-
-      
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-fileupload" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/fileupload/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web安全/">web安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/fileupload/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>文件上传漏洞总结</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。 </p>
-<p>上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。 </p>
-        
-          <p class="article-more-link ">
-            <a href="/fileupload/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjopl5ztd002lkbt68xc5q5hq" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
-      
-
-      
-        <a href="http://pa55w0rd.github.io/fileupload/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
@@ -529,7 +541,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjopl5zpo000qkbt6a7aus539" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjopow66w000tsqt6xa0j0ggj" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
       
 
       
@@ -882,6 +894,17 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
         <i class="leancloud-visitors-count">1000000</i>
       </span>
 -->
+      <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <div class="powered-by">
+        <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+        我的网站的访客数:<span id="busuanzi_value_site_uv"></span>
+        </span>
+      </div>
+
+      <div class="theme-info">
+        <div class="powered-by"></div>
+        <span class="post-count"> | 博客全站共{{ totalcount(site) }}字</span>
+      </div>
       <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257415698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1257415698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
 
     </div>

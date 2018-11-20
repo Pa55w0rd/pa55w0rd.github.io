@@ -11,17 +11,17 @@
   <title>解析漏洞 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。  /xx.asp/xx.jpg">
+  <meta name="description" content="IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。  /xx.asp/xx.jpg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解析漏洞">
 <meta property="og:url" content="http://pa55w0rd.github.io/解析漏洞/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。  /xx.asp/xx.jpg">
+<meta property="og:description" content="IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。  /xx.asp/xx.jpg">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.761Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:31.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解析漏洞">
-<meta name="twitter:description" content="目录{:toc}  IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。  /xx.asp/xx.jpg">
+<meta name="twitter:description" content="IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。  /xx.asp/xx.jpg">
 
   
 
@@ -187,19 +187,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
+        
+        
+          <h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
 <li><p>目录解析</p>
 <p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
 <p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
 <p> /xx.asp/xx.jpg</p>
+ <a id="more"></a>
 </li>
 <li><p>文件解析</p>
 <p> 在IIS6.0下，分号后面的不被解析，也就是说xx.asp;.jpg会被服务器看成是xx.asp</p>
@@ -231,6 +226,49 @@
 <p><code>&lt;FilesMatch &quot;shell.jpg&quot;&gt; SetHandler application/x-httpd-php &lt;/FilesMatch&gt;</code></p>
 <p>然后再上传shell.jpg的木马, 这样shell.jpg就可解析为php文件</p>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
+<li><p>目录解析</p>
+<p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
+<p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
+<p> /xx.asp/xx.jpg</p>
+ <a id="more"></a>
+</li>
+<li><p>文件解析</p>
+<p> 在IIS6.0下，分号后面的不被解析，也就是说xx.asp;.jpg会被服务器看成是xx.asp</p>
+<p> xx.asp;.jpg</p>
+<p> 另外IIS6.0 默认的可执行文件除了asp还包含这三种:</p>
+<p> /shell.asa</p>
+<p> /shell.cer</p>
+<p> /shell.cdx</p>
+</li>
+</ol>
+<h2 id="IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞"><a href="#IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞" class="headerlink" title="IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞"></a>IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞</h2><p>在默认Fast-CGI开启状况下,上传一个名字为xx.jpg，内容为<br><code>&lt;?PHP fputs(fopen(‘shell.php’,’w’),&#39;&lt;?php eval($_POST[cmd])?&gt;’);?&gt;</code><br>的文件，然后访问xx.jpg/.php,在这个目录下就会生成一句话木马 shell.php</p>
+<p>e.g. 将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
+<p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
+<ul>
+<li><p>/b 即二进制[binary]模式</p>
+</li>
+<li><p>/a 即ascii模式 xx.jpg正常图片文件 </p>
+</li>
+</ul>
+<h2 id="Nginx-lt-8-03-空字节代码执行漏洞"><a href="#Nginx-lt-8-03-空字节代码执行漏洞" class="headerlink" title="Nginx &lt;8.03 空字节代码执行漏洞"></a>Nginx &lt;8.03 空字节代码执行漏洞</h2><p>影响版本:0.5.,0.6., 0.7 &lt;= 0.7.65, 0.8 &lt;= 0.8.37</p>
+<p>Nginx在图片中嵌入PHP代码然后通过访问</p>
+<p>xxx.jpg%00.php</p>
+<p>来执行其中的代码</p>
+<h2 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h2><p>Apache 是从右到左开始判断解析,如果为不可识别解析,就再往左判断.</p>
+<p>比如 shell.php.a.rar “.a”和”.rar” 这两种后缀是apache不可识别解析,apache就会把shell.php.a.rar解析成php</p>
+<h2 id="lighttpd"><a href="#lighttpd" class="headerlink" title="lighttpd"></a>lighttpd</h2><p>xx.jpg/xx.php</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在windows环境下，xx.jpg[空格] 或xx.jpg. 这两类文件都是不允许存在的，若这样命名，windows会默认除去空格或点，利用windows的这种特性，通过抓包在文件名后加一个空格或者点绕过黑名单.若上传成功，空格和点都会被windows自动消除,这样也可以getshell。</p>
+<p>如果在Apache中.htaccess可被执行.且可被上传.那可以尝试在.htaccess中写入:</p>
+<p><code>&lt;FilesMatch &quot;shell.jpg&quot;&gt; SetHandler application/x-httpd-php &lt;/FilesMatch&gt;</code></p>
+<p>然后再上传shell.jpg的木马, 这样shell.jpg就可解析为php文件</p>
+-->
       
 
     </div>
@@ -241,7 +279,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjopkqnla000lj3t6suawqq9m" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjopl5zpo000qkbt6a7aus539" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
       
 
       
@@ -256,17 +294,17 @@
     
 <nav id="article-nav">
   
-    <a href="/渗透测试/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/代理/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">渗透测试流程</div>
+      <div class="article-nav-title">代理</div>
     </a>
   
   
-    <a href="/代理/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/fileupload/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          代理
+          文件上传漏洞总结
         
       </div>
     </a>

@@ -11,12 +11,12 @@
   <title>如何进行安全设计评审（转发） | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转发自 https://github.com/mylamour/blog/issues/41  目录{:toc}如何进行安全设计评审  记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照SDL流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。  那么在">
+  <meta name="description" content="转发自 https://github.com/mylamour/blog/issues/41 如何进行安全设计评审记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照SDL流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何进行安全设计评审（转发）">
 <meta property="og:url" content="http://pa55w0rd.github.io/如何进行安全设计评审/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="转发自 https://github.com/mylamour/blog/issues/41  目录{:toc}如何进行安全设计评审  记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照SDL流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。  那么在">
+<meta property="og:description" content="转发自 https://github.com/mylamour/blog/issues/41 如何进行安全设计评审记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照SDL流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png">
@@ -27,10 +27,10 @@
 <meta property="og:image" content="https://user-images.githubusercontent.com/12653147/45539501-88f36080-b83c-11e8-8b18-26a204eaf0a9.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/12653147/45603390-385b4d80-ba5e-11e8-9135-5b8352202820.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/12653147/45603400-47420000-ba5e-11e8-9ac6-07ff0aedcc90.png">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.636Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:30.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何进行安全设计评审（转发）">
-<meta name="twitter:description" content="转发自 https://github.com/mylamour/blog/issues/41  目录{:toc}如何进行安全设计评审  记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照SDL流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。  那么在">
+<meta name="twitter:description" content="转发自 https://github.com/mylamour/blog/issues/41 如何进行安全设计评审记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照SDL流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png">
 
   
@@ -197,16 +197,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
-<ul>
-<li>目录<br>{:toc}<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1></li>
-</ul>
-<p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。<br><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
+        
+        
+          <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
+<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1><p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。</p>
+<a id="more"></a>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
 <p><img src="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png" alt="image"></p>
 <p>那么在安全设计评审这一阶段，应该怎么去做。我们可以先看下唯品会的SDL中在落地安全设计这一块怎么做的。</p>
 <p><img src="https://user-images.githubusercontent.com/12653147/45603582-d4398900-ba5f-11e8-97c3-41704aa37024.png" alt="image"></p>
@@ -290,6 +286,99 @@
 <li><a href="https://gist.github.com/mylamour/311299cc7fb80ad9f6674b2cf4ca02a4" target="_blank" rel="noopener">Part of Django Security</a></li>
 </ul>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
+<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1><p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。</p>
+<a id="more"></a>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536074-ee425400-b832-11e8-9ca7-442923291a3f.png" alt="image"></p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536096-01edba80-b833-11e8-8c10-7d9f2387ee44.png" alt="image"></p>
+<p>那么在安全设计评审这一阶段，应该怎么去做。我们可以先看下唯品会的SDL中在落地安全设计这一块怎么做的。</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45603582-d4398900-ba5f-11e8-97c3-41704aa37024.png" alt="image"></p>
+<p>就我自身而言。是按照以下这个流程进行的。</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45536539-66f5e000-b834-11e8-929b-6b5fcc5cdb98.png" height="400"></p>
+<p>看着一大堆乱七八糟，自上而下的流程，但是做起来其实很快的。此处默认安全人员熟悉各种基本的开发过程中的安全规范以及一些<code>Checklist</code>(必须要了解公司开发语言对应的安全开发规范)，举例： <code>web</code>安全开发规范，<code>Python</code>安全编码规范，<code>Flask</code>安全， <code>Django</code>安全,常用的安全配置，面临哪些攻击点等等。<br>ps: 明确逻辑是非常重要的，可以说最为重要，如果连逻辑都不明白，谈什么设计评审。</p>
+<p>一些比较基础的: </p>
+<ul>
+<li>HTTPS Everywhere</li>
+<li>Bcypt 存储Hash</li>
+<li>OTP</li>
+<li>频率限制</li>
+<li>盐不要硬编码</li>
+<li>secret 和 auth-token 不要硬编码</li>
+<li>服务器间调用的api不要在app出现</li>
+<li>CSP, CSRF, HSTS, X-FRAME-OPTIONS, X-XSS-PROTECTION</li>
+<li>过滤输入<br>等等等….</li>
+</ul>
+<p>下面以<code>C2C</code>平台交易部分为例进行说明，可以简单的想一下，在智联买一张火车票，打开了支付宝进行支付。:<br><img src="https://user-images.githubusercontent.com/12653147/45537646-67dc4100-b837-11e8-9154-a3f78020d931.png" alt="image"></p>
+<p>然后，你知道数字签名当然是很基础的部分了。那么接下来，你就要细化支付流程过程中出现哪些操作，针对这些操作需要做什么样的防护措施。下图是针对用户商户支付方之间的流程：</p>
+<p><img src="https://user-images.githubusercontent.com/12653147/45538041-84c54400-b838-11e8-9426-f8e2074c78ca.png" alt="image"></p>
+<p>针对每个输入点，自身可控的输入输出的地方，进行过滤，校验等操作。</p>
+<p>所以那么问题来了，如果只单单是用户和支付方之间的呢?<br><img src="https://user-images.githubusercontent.com/12653147/45539501-88f36080-b83c-11e8-8b18-26a204eaf0a9.png" alt="image"></p>
+<p>你也可以思考一下如何进行。</p>
+<p>并且在<code>OWASP</code>应用安全设计中，详细指出了其他一些问题(中文版 Version 1.0 5):</p>
+<ul>
+<li><p>数据流:</p>
+<ul>
+<li><p>用户输入是否被直接用于引用业务逻辑的类或函数? </p>
+</li>
+<li><p>是否有一个数据绑定缺陷?</p>
+</li>
+<li><p>是否暴露任何后门参数来调用业务逻辑?</p>
+</li>
+<li><p>应用程序的执行流程是否正确?</p>
+</li>
+</ul>
+</li>
+<li><p>身份验证和访问控制:</p>
+<ul>
+<li><p>是否对所有文件实现访问控制?</p>
+</li>
+<li><p>是否安全地处理会话?</p>
+</li>
+<li><p>是否存在单点登录?单点登录是否留下后门?</p>
+</li>
+</ul>
+</li>
+<li><p>已有或内置的安全控制:</p>
+<ul>
+<li><p>在现有任意安全控制中的弱点; </p>
+</li>
+<li><p>安全控制的部署是否正确?</p>
+</li>
+</ul>
+</li>
+<li><p>架构:</p>
+<ul>
+<li><p>对所有的输入是否有验证?</p>
+</li>
+<li><p>到外部服务器的连接是安全的吗?</p>
+</li>
+</ul>
+</li>
+<li><p>配置或代码文件和数据存储:</p>
+<ul>
+<li><p>配置文件中是否含有敏感数据?</p>
+</li>
+<li><p>是否支持任何不安全的数据源?</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>下图(来自OWASP官方文档)详列上述条目以及其他需要检查的地方。<br><img src="https://user-images.githubusercontent.com/12653147/45603390-385b4d80-ba5e-11e8-9135-5b8352202820.png" alt="image"><br><img src="https://user-images.githubusercontent.com/12653147/45603400-47420000-ba5e-11e8-9ac6-07ff0aedcc90.png" alt="image"></p>
+<p>但是其实并不需要按照上述所有清单做自检，或者说是当你和开发团队在讨论的过程中不需要涉及全部的checklist，可能只需要在架构上，设计上进行检验，以及身份验证和数据检验上。当然，都是需要根据自己的业务场景去实现，因地制宜。</p>
+<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h1><ul>
+<li><a href="https://www.microsoft.com/en-us/SDL/process/design.aspx" target="_blank" rel="noopener">Mircosoft SDL lifecycle: Desing</a></li>
+<li><a href="https://github.com/shieldfy/API-Security-Checklist" target="_blank" rel="noopener">API Security Checklist</a></li>
+<li><a href="https://github.com/FallibleInc/security-guide-for-developers" target="_blank" rel="noopener">The Security Checklist</a></li>
+<li><a href="https://gist.github.com/mylamour/702d9d6e24a27699d8759967e6eb9f4f" target="_blank" rel="noopener">Part of FLASK Security</a></li>
+<li><a href="https://gist.github.com/mylamour/311299cc7fb80ad9f6674b2cf4ca02a4" target="_blank" rel="noopener">Part of Django Security</a></li>
+</ul>
+-->
       
 
     </div>
@@ -300,7 +389,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/如何进行安全设计评审/" data-id="cjopkqnk10005j3t62cx3jwbu" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/如何进行安全设计评审/" data-id="cjopl5zr2001xkbt6edxar8wj" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
       
 
       
@@ -321,11 +410,11 @@
     </a>
   
   
-    <a href="/应用系统安全通用技术要求/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/安全设计Checklist/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          应用系统安全通用技术要求（转发）
+          安全设计Checklist（转发）
         
       </div>
     </a>

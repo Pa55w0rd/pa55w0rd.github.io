@@ -11,12 +11,12 @@
   <title>看！这里有三种非Web型的XSS注入漏洞 （转发） | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原文：https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections   译文：https://xz.aliyun.com/t/3048   目录{:toc}  0x00 前言前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是： 我们喜欢让事物以迥异于初衷的方式">
+  <meta name="description" content="原文：https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections   译文：https://xz.aliyun.com/t/3048  0x00 前言前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是： 我们喜欢让事物以迥异于初衷的方式运作，例如利用缓冲区溢">
 <meta property="og:type" content="article">
 <meta property="og:title" content="看！这里有三种非Web型的XSS注入漏洞 （转发）">
 <meta property="og:url" content="http://pa55w0rd.github.io/非web型xss注入漏洞/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="原文：https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections   译文：https://xz.aliyun.com/t/3048   目录{:toc}  0x00 前言前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是： 我们喜欢让事物以迥异于初衷的方式">
+<meta property="og:description" content="原文：https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections   译文：https://xz.aliyun.com/t/3048  0x00 前言前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是： 我们喜欢让事物以迥异于初衷的方式运作，例如利用缓冲区溢">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/xss/1.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/xss/2.png">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/xss/4.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/xss/5.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/xss/6.png">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.825Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:31.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="看！这里有三种非Web型的XSS注入漏洞 （转发）">
-<meta name="twitter:description" content="原文：https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections   译文：https://xz.aliyun.com/t/3048   目录{:toc}  0x00 前言前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是： 我们喜欢让事物以迥异于初衷的方式">
+<meta name="twitter:description" content="原文：https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections   译文：https://xz.aliyun.com/t/3048  0x00 前言前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是： 我们喜欢让事物以迥异于初衷的方式运作，例如利用缓冲区溢">
 <meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/xss/1.png">
 
   
@@ -194,24 +194,19 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <blockquote>
+        
+        
+          <blockquote>
 <p>原文：<a href="https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections" target="_blank" rel="noopener">https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections</a></p>
 </blockquote>
 <blockquote>
 <p>译文：<a href="https://xz.aliyun.com/t/3048" target="_blank" rel="noopener">https://xz.aliyun.com/t/3048</a></p>
 </blockquote>
-<ul>
-<li>目录<br>{:toc}</li>
-</ul>
 <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是：</p>
 <p>我们喜欢让事物以迥异于初衷的方式运作，例如利用缓冲区溢出来改变执行流程的方向、将JavaScript代码注入到不该注入的地方。</p>
 <p>对于大部分Web安全方面的教程来说，都是教我们如何以非常简单的方式来测试XSS漏洞 “XSS漏洞”)：在反射或存储Web请求中的数据输入时，没有进行严格的安全过滤处理，从而导致反射型XSS或存储型XSS漏洞。</p>
 <p>通常情况下，当讨论应用程序的安全性时，我们都知道“永远不要信任任何数据输入”这道圣谕；遗憾的是，并非所有开发人员都透彻地理解了“任何数据输入”的真正含义，因此，攻击者总有许多可乘之机。下面，我们举例进行说明：</p>
+<a id="more"></a>
 <h2 id="0x01-PowerDNS-Recursor"><a href="#0x01-PowerDNS-Recursor" class="headerlink" title="0x01 PowerDNS Recursor"></a>0x01 PowerDNS Recursor</h2><p>在我们的讨论中，Chris曾经提到曾在一个流行的DNS软件中发现了一个不同寻常的XSS漏洞，所以，我决定以它为例，让读者意识到Web并非唯一的攻击向量。</p>
 <p>PowerDNS Recursor是一款高端、高性能的名称解析服务器，至少可以为1亿用户提供DNS解析服务。该产品的设计初衷，主要就是将其用于DNS解析服务器。</p>
 <p>有一篇<a href="https://www.fortinet.com/blog/threat-research/powerdns-recursor-html-script-injection-vulnerability-a-walkthrough.html" target="_blank" rel="noopener">文章</a>详细展示了如何使用命令行工具dig通过DNS查询注入XSS有效载荷的过程：</p>
@@ -235,6 +230,46 @@
 <li>开发人员不要信任任何数据输入，在后端使用这些数据之前，一定要对接收到的数据以及发回给用户的数据进行彻底的安全过滤。</li>
 </ul>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <blockquote>
+<p>原文：<a href="https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections" target="_blank" rel="noopener">https://websec.ca/publication/Blog/Three-Non-Web-based-XSS-Injections</a></p>
+</blockquote>
+<blockquote>
+<p>译文：<a href="https://xz.aliyun.com/t/3048" target="_blank" rel="noopener">https://xz.aliyun.com/t/3048</a></p>
+</blockquote>
+<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>前些天，我跟老友Chris Navarrete进行了一次深入的交流，当谈及为什么选择这个职业时，我给出的理由是：</p>
+<p>我们喜欢让事物以迥异于初衷的方式运作，例如利用缓冲区溢出来改变执行流程的方向、将JavaScript代码注入到不该注入的地方。</p>
+<p>对于大部分Web安全方面的教程来说，都是教我们如何以非常简单的方式来测试XSS漏洞 “XSS漏洞”)：在反射或存储Web请求中的数据输入时，没有进行严格的安全过滤处理，从而导致反射型XSS或存储型XSS漏洞。</p>
+<p>通常情况下，当讨论应用程序的安全性时，我们都知道“永远不要信任任何数据输入”这道圣谕；遗憾的是，并非所有开发人员都透彻地理解了“任何数据输入”的真正含义，因此，攻击者总有许多可乘之机。下面，我们举例进行说明：</p>
+<a id="more"></a>
+<h2 id="0x01-PowerDNS-Recursor"><a href="#0x01-PowerDNS-Recursor" class="headerlink" title="0x01 PowerDNS Recursor"></a>0x01 PowerDNS Recursor</h2><p>在我们的讨论中，Chris曾经提到曾在一个流行的DNS软件中发现了一个不同寻常的XSS漏洞，所以，我决定以它为例，让读者意识到Web并非唯一的攻击向量。</p>
+<p>PowerDNS Recursor是一款高端、高性能的名称解析服务器，至少可以为1亿用户提供DNS解析服务。该产品的设计初衷，主要就是将其用于DNS解析服务器。</p>
+<p>有一篇<a href="https://www.fortinet.com/blog/threat-research/powerdns-recursor-html-script-injection-vulnerability-a-walkthrough.html" target="_blank" rel="noopener">文章</a>详细展示了如何使用命令行工具dig通过DNS查询注入XSS有效载荷的过程：</p>
+<p><img src="\assets\img\xss\1.png" alt="1"></p>
+<p>之后，我们会在Web UI中看到：</p>
+<p><img src="\assets\img\xss\2.png" alt="1"></p>
+<h2 id="0x02-Symantec-SSL-Toolbox"><a href="#0x02-Symantec-SSL-Toolbox" class="headerlink" title="0x02 Symantec SSL Toolbox"></a>0x02 Symantec SSL Toolbox</h2><p>这是三年前我在赛门铁克的SSL Certificate Tester中找到的一个漏洞，在我提交后，目前该漏洞已经得到了修复。这个免费在线服务用于从给定URL的x509 SSL证书中提取和显示相应的值，由于它完全信任这些内容，所以没有对各个字段中的数据进行安全过滤。</p>
+<p>因此，我创建了一个SSL证书，使其不同的字段中值都为<code>&lt;script&gt;alert(document.cookie);&lt;/script&gt;</code>，并将其安装在Web服务器的前端：</p>
+<p><img src="\assets\img\xss\3.png" alt="1"></p>
+<p>所以，这个免费服务解析该证书的时候，就会执行JavaScript代码：</p>
+<p><img src="\assets\img\xss\4.png" alt="1"></p>
+<h2 id="0x03-RATS（Rough-Auditing-Tool-for-Security）"><a href="#0x03-RATS（Rough-Auditing-Tool-for-Security）" class="headerlink" title="0x03 RATS（Rough Auditing Tool for Security）"></a>0x03 RATS（Rough Auditing Tool for Security）</h2><p>RATS由CERN计算机安全部门开发一款非常优秀的静态代码分析工具。我个人非常喜欢这款工具，并且已经用了许多年了。然而，该工具已经于2013年12月停止更新，估计现在已经没有人在维护该项目了，但具体情况我也拿不准。</p>
+<p>去年的时候，由于坐火车时很无聊，为了打发时间，竟然在该软件中找到了一个XSS漏洞。RATS需要接收一个包含源代码的文件夹，并创建一个包含分析结果的HTML报告，其中还包括所分析文件的名称，因此，攻击向量也就非常明显了。我在其名称中创建了一个包含JavaScript代码的文件：</p>
+<p><img src="\assets\img\xss\5.png" alt="1"></p>
+<p>分析完成之后，注入的JavaScript代码将在报告中呈现：</p>
+<p><img src="\assets\img\xss\6.png" alt="1"></p>
+<p>如果我是一名开发人员，并且知道自己repos中的代码肯定会进行安全审查的话，那么，我肯定会在文件名中加入相关代码来“搞”安全审计人员。</p>
+<h2 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h2><ul>
+<li>数据输入并不一定来自HTTP请求。</li>
+<li>考虑所有可能的数据输入：从文件系统到数据库、用户名、时间戳、日志，不要放过任何可能性。</li>
+<li>开发人员不要信任任何数据输入，在后端使用这些数据之前，一定要对接收到的数据以及发回给用户的数据进行彻底的安全过滤。</li>
+</ul>
+-->
       
 
     </div>
@@ -245,7 +280,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/非web型xss注入漏洞/" data-id="cjopkqnlm000xj3t6q2f8ke9w" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/非web型xss注入漏洞/" data-id="cjopl5zpv000vkbt6dtjv4cho" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
       
 
       

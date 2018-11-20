@@ -11,17 +11,17 @@
   <title>mongodb开启认证 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="修改配置文件，开启认证 1234# vi /etc/mongod.conf    security:    authorization:enablesd 创建密码  db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })  mongo创建db密码 d">
+  <meta name="description" content="修改配置文件，开启认证 1234# vi /etc/mongod.conf    security:    authorization:enablesd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mongodb开启认证">
 <meta property="og:url" content="http://pa55w0rd.github.io/mongodb_auth/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="修改配置文件，开启认证 1234# vi /etc/mongod.conf    security:    authorization:enablesd 创建密码  db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })  mongo创建db密码 d">
+<meta property="og:description" content="修改配置文件，开启认证 1234# vi /etc/mongod.conf    security:    authorization:enablesd">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.888Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:01.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongodb开启认证">
-<meta name="twitter:description" content="修改配置文件，开启认证 1234# vi /etc/mongod.conf    security:    authorization:enablesd 创建密码  db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })  mongo创建db密码 d">
+<meta name="twitter:description" content="修改配置文件，开启认证 1234# vi /etc/mongod.conf    security:    authorization:enablesd">
 
   
 
@@ -187,13 +187,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>修改配置文件，开启认证</p>
+        
+        
+          <p>修改配置文件，开启认证</p>
 <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vi /etc/mongod.conf</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>创建密码</p>
 <ul>
 <li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
@@ -205,6 +203,26 @@
 </li>
 </ul>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>修改配置文件，开启认证</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vi /etc/mongod.conf</span></span><br><span class="line"></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>创建密码</p>
+<ul>
+<li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
+<li><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的<ul>
+<li>管理员账户的 role是 userAdminAnyDatabase，‘userAdmin’代表用户管理身份，’AnyDatabase’ 代表可以管理任何数据库。</li>
+<li>dbOwner 代表数据库所有者角色，拥有最高该数据库最高权限。比如新建索引等</li>
+<li>readWrite 该用户用于该数据的读写，只拥有读写权限。</li>
+</ul>
+</li>
+</ul>
+-->
       
 
     </div>
@@ -215,7 +233,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/mongodb_auth/" data-id="cjopkqnlq0010j3t603u59abh" class="article-share-link" data-share="baidu" data-title="mongodb开启认证">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/mongodb_auth/" data-id="cjopl5zq40017kbt6o769jtzd" class="article-share-link" data-share="baidu" data-title="mongodb开启认证">分享到</a>
       
 
       

@@ -11,17 +11,17 @@
   <title>ubuntu搭建xunfeng资产扫描系统 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  0x00 前言巡风是一款适用于企业内网的12345678网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。巡风需要在```python2.7">
+  <meta name="description" content="0x00 前言巡风是一款适用于企业内网的12345678910网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。&amp;lt;!-- more --&amp;gt;巡风需要在`">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu搭建xunfeng资产扫描系统">
 <meta property="og:url" content="http://pa55w0rd.github.io/ubuntu安装xunfeng/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  0x00 前言巡风是一款适用于企业内网的12345678网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。巡风需要在```python2.7">
+<meta property="og:description" content="0x00 前言巡风是一款适用于企业内网的12345678910网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。&amp;lt;!-- more --&amp;gt;巡风需要在`">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.683Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:30.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu搭建xunfeng资产扫描系统">
-<meta name="twitter:description" content="目录{:toc}  0x00 前言巡风是一款适用于企业内网的12345678网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。巡风需要在```python2.7">
+<meta name="twitter:description" content="0x00 前言巡风是一款适用于企业内网的12345678910网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。&amp;lt;!-- more --&amp;gt;巡风需要在`">
 
   
 
@@ -187,15 +187,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>巡风是一款适用于企业内网的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。</span><br><span class="line"></span><br><span class="line">漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。</span><br><span class="line"></span><br><span class="line">巡风需要在```python2.7```和```mongodb3.2```版本以上环境上安装 </span><br><span class="line"></span><br><span class="line">```git clone https://github.com/ysrc/xunfeng</span><br></pre></td></tr></table></figure></p>
+        
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>巡风是一款适用于企业内网的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。</span><br><span class="line"></span><br><span class="line">漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">巡风需要在```python2.7```和```mongodb3.2```版本以上环境上安装 </span><br><span class="line"></span><br><span class="line">```git clone https://github.com/ysrc/xunfeng</span><br></pre></td></tr></table></figure></p>
 <h2 id="0x01-环境配置"><a href="#0x01-环境配置" class="headerlink" title="0x01 环境配置"></a>0x01 环境配置</h2><h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><p>安装好Ubuntu，首先换源</p>
 <p>部署和调试巡风要求root权限，请用户切换到root账号进行操作,Ubuntu默认未开启root，请使用下列命令开启</p>
 <figure class="highlight plain"><figcaption><span>sudo passwd root```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入你自己设置的root密码后</span><br><span class="line"></span><br><span class="line">```$ su root</span><br></pre></td></tr></table></figure>
@@ -235,6 +229,52 @@
 <p><code># sh Run.sh</code></p>
 <p>如开启防火墙，需打开80端口</p>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>巡风是一款适用于企业内网的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。</span><br><span class="line"></span><br><span class="line">漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">巡风需要在```python2.7```和```mongodb3.2```版本以上环境上安装 </span><br><span class="line"></span><br><span class="line">```git clone https://github.com/ysrc/xunfeng</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x01-环境配置"><a href="#0x01-环境配置" class="headerlink" title="0x01 环境配置"></a>0x01 环境配置</h2><h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><p>安装好Ubuntu，首先换源</p>
+<p>部署和调试巡风要求root权限，请用户切换到root账号进行操作,Ubuntu默认未开启root，请使用下列命令开启</p>
+<figure class="highlight plain"><figcaption><span>sudo passwd root```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入你自己设置的root密码后</span><br><span class="line"></span><br><span class="line">```$ su root</span><br></pre></td></tr></table></figure>
+<p>即可切换到root账号</p>
+<p>通过lsb_release 查看开发版本代号为18.04 bionic<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lsb_release -a</span></span><br><span class="line"><span class="literal">No</span> <span class="string">LSB</span> <span class="string">modules</span> <span class="string">are</span> <span class="string">available.</span></span><br><span class="line"><span class="string">Distributor</span> <span class="attr">ID:</span> <span class="string">Ubuntu</span></span><br><span class="line"><span class="attr">Description:</span>    <span class="string">Ubuntu</span> <span class="number">18.04</span><span class="number">.1</span> <span class="string">LTS</span></span><br><span class="line"><span class="attr">Release:</span>        <span class="number">18.04</span></span><br><span class="line"><span class="attr">Codename:</span>       <span class="string">bionic</span></span><br></pre></td></tr></table></figure></p>
+<p>备份原来的数据源配置文件</p>
+<figure class="highlight plain"><figcaption><span>cp</span><a href="/etc/apt/sources.list">/etc/apt/sources.list_backup```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">编辑数据源配置文件</span><br><span class="line"></span><br><span class="line">```# vi /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p>保存后执行<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> update &amp;&amp; apt-<span class="builtin-name">get</span><span class="built_in"> upgrade </span>&amp;&amp; apt-<span class="builtin-name">get</span> dist-upgrade</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改时区为Asia-Shanghai"><a href="#修改时区为Asia-Shanghai" class="headerlink" title="修改时区为Asia/Shanghai"></a>修改时区为Asia/Shanghai</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> TZ\=<span class="string">'Asia/Shanghai'</span>\; <span class="built_in">export</span> TZ &gt;&gt; ~/.bash\_profile &amp;&amp; <span class="built_in">source</span> ~/.bash\_profile</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装操作系统依赖"><a href="#安装操作系统依赖" class="headerlink" title="安装操作系统依赖"></a>安装操作系统依赖</h3><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apt-<span class="built_in">get</span> install gcc libssl-<span class="built_in">dev</span> libffi-<span class="built_in">dev</span> python-<span class="built_in">dev</span> libpcap-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装python依赖库"><a href="#安装python依赖库" class="headerlink" title="安装python依赖库"></a>安装python依赖库</h3><p>使用pip进行python依赖库管理，如果系统没有安装pip，可以通过如下命令安装</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># wget http<span class="variable">s:</span>//sec.ly.<span class="keyword">com</span>/mirror/<span class="built_in">get</span>-pip.<span class="keyword">py</span> --<span class="keyword">no</span>-check-certificate &amp;&amp; <span class="keyword">python</span> <span class="built_in">get</span>-pip.<span class="keyword">py</span></span><br></pre></td></tr></table></figure>
+<p>使用pip安装 python 依赖库, 这里使用了豆瓣的 pypi 源<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># pip install -r requirements.txt -i https:<span class="comment">//pypi.doubanio.com/simple/</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="安装mongo数据库"><a href="#安装mongo数据库" class="headerlink" title="安装mongo数据库"></a>安装mongo数据库</h3><p>由于低版本不支持全文索引，MongoDB版本需要 ≥ 3.2。</p>
+<p><a href="https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="noopener">参考官方安装步骤</a></p>
+<ol>
+<li><p>安装公钥</p>
+ <figure class="highlight plain"><figcaption><span>apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 添加3.2的源</span><br><span class="line"></span><br><span class="line">    ```# echo &quot;deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装数据库</p>
+ <figure class="highlight plain"><figcaption><span>apt-get update && apt-get install -y mongodb-org```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. 启动mongodb服务</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    默认情况下apt方式安装的mongodb会自动启动，查看是否启动成功</span><br><span class="line"></span><br><span class="line">    ```# netstat -antlp | grep 27017</span><br></pre></td></tr></table></figure>
+<p> 如果没有启动 </p>
+ <figure class="highlight plain"><figcaption><span>systemctl start mongodb```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">设置开机启动</span><br><span class="line"></span><br><span class="line">```# systemctl enable mongodb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mongodb添加认证</p>
+ <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mongo</span></span><br><span class="line">&gt; use xunfeng</span><br><span class="line">&gt; db.createUser(&#123;user:<span class="string">'scan'</span>,pwd:<span class="string">'your password'</span>,roles:[    &#123;role:<span class="string">'dbOwner'</span>,db:<span class="string">'xunfeng'</span>&#125;]&#125;)</span><br><span class="line">&gt; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+<p> 这里的 scan和your password 需要更换为你的mongodb的账户和密码。</p>
+</li>
+</ol>
+<h2 id="0x02-部署"><a href="#0x02-部署" class="headerlink" title="0x02 部署"></a>0x02 部署</h2><h3 id="导入数据库"><a href="#导入数据库" class="headerlink" title="导入数据库"></a>导入数据库</h3><p>进入 <figure class="highlight plain"><figcaption><span>文件夹, 执行如下命令:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```# mongorestore -h 127.0.0.1 --port 27017 -d xunfeng .</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>修改系统数据库配置脚本 Config.py:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span></span>(<span class="keyword">object</span>):</span><br><span class="line">    ACCOUNT = <span class="string">'admin'</span></span><br><span class="line">    PASSWORD = <span class="string">'xunfeng321'</span></span><br></pre></td></tr></table></figure>
+<p>修改 PASSWORD 字段内的密码, 设置成你的密码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductionConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    DB = <span class="string">'127.0.0.1'</span></span><br><span class="line">    PORT = <span class="number">27017</span></span><br><span class="line">    DBUSERNAME = <span class="string">'scan'</span></span><br><span class="line">    DBPASSWORD = <span class="string">'your password'</span></span><br><span class="line">    DBNAME = <span class="string">'xunfeng'</span></span><br></pre></td></tr></table></figure>
+<h3 id="运行系统"><a href="#运行系统" class="headerlink" title="运行系统"></a>运行系统</h3><p>根据实际情况修改(端口和目录需对应好) Conifg.py 和 Run.sh 文件后, 执行:</p>
+<p><code># sh Run.sh</code></p>
+<p>如开启防火墙，需打开80端口</p>
+-->
       
 
     </div>
@@ -245,7 +285,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/ubuntu安装xunfeng/" data-id="cjopkty9w0000jet6q1knvlhm" class="article-share-link" data-share="baidu" data-title="ubuntu搭建xunfeng资产扫描系统">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/ubuntu安装xunfeng/" data-id="cjopl5zop0008kbt6kzr37id9" class="article-share-link" data-share="baidu" data-title="ubuntu搭建xunfeng资产扫描系统">分享到</a>
       
 
       

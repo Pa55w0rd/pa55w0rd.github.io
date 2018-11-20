@@ -11,17 +11,17 @@
   <title>phpstudy配置ssl证书实现https加密访问 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  0x00 前言使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。 HTTPS（超文本传">
+  <meta name="description" content="0x00 前言使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。 HTTPS（超文本传输安全）协议无疑可以有">
 <meta property="og:type" content="article">
 <meta property="og:title" content="phpstudy配置ssl证书实现https加密访问">
 <meta property="og:url" content="http://pa55w0rd.github.io/phpstudy+https/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  0x00 前言使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。 HTTPS（超文本传">
+<meta property="og:description" content="0x00 前言使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。 HTTPS（超文本传输安全）协议无疑可以有">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.527Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:30.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="phpstudy配置ssl证书实现https加密访问">
-<meta name="twitter:description" content="目录{:toc}  0x00 前言使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。 HTTPS（超文本传">
+<meta name="twitter:description" content="0x00 前言使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。 HTTPS（超文本传输安全）协议无疑可以有">
 
   
 
@@ -187,16 +187,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。</p>
+        
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。</p>
 <p>HTTPS（超文本传输安全）协议无疑可以有效的解决这一问题。所谓HTTPS，其实就是HTTP和SSL/TLS的组合，用以提供加密通讯及对网络服务器的身份鉴定。HTTPS的主要思想是在不安全的网络上创建一安全信道，防止黑客的窃听和攻击。</p>
+<a id="more"></a>
 <h2 id="0x01-使用openssl生成x509签名证书"><a href="#0x01-使用openssl生成x509签名证书" class="headerlink" title="0x01 使用openssl生成x509签名证书"></a>0x01 使用openssl生成x509签名证书</h2><p>x509证书一般会用到三类文，key，csr，crt</p>
 <ul>
 <li><p>key是服务器上的私钥文件，用于对发送给客户端数据的加密，以及对从客户端接收到数据的解密，通常是rsa算法。</p>
@@ -253,6 +248,71 @@
 <p>PS. Windows下不允许创建.开头的文件，可以先创建任意文件，通过copy命令重命名.htaccess</p>
 <p>测试自动跳转到https</p>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>使用HTTP（超文本传输）协议访问互联网上的数据是没有经过加密的。也就是说，任何人都可以通过适当的工具拦截或者监听到在网络上传输的数据流。但是有时候，我们需要在网络上传输一些安全性或者私秘性的数据，譬如：包含信用卡及商品信息的电子订单。这个时候，如果仍然使用HTTP协议，势必会面临非常大的风险！相信没有人能接受自己的信用卡号在互联网上裸奔。</p>
+<p>HTTPS（超文本传输安全）协议无疑可以有效的解决这一问题。所谓HTTPS，其实就是HTTP和SSL/TLS的组合，用以提供加密通讯及对网络服务器的身份鉴定。HTTPS的主要思想是在不安全的网络上创建一安全信道，防止黑客的窃听和攻击。</p>
+<a id="more"></a>
+<h2 id="0x01-使用openssl生成x509签名证书"><a href="#0x01-使用openssl生成x509签名证书" class="headerlink" title="0x01 使用openssl生成x509签名证书"></a>0x01 使用openssl生成x509签名证书</h2><p>x509证书一般会用到三类文，key，csr，crt</p>
+<ul>
+<li><p>key是服务器上的私钥文件，用于对发送给客户端数据的加密，以及对从客户端接收到数据的解密，通常是rsa算法。</p>
+</li>
+<li><p>csr 是证书签名请求文件，用于申请证书。在制作csr文件的时，必须使用自己的私钥来签署申，还可以设定一个密钥。</p>
+</li>
+<li><p>crt是由证书颁发机构（CA）签名后的证书，或者是开发者自签名的证书，包含证书持有人的信息，持有人的公钥，以及签署者的签名等信息 </p>
+</li>
+</ul>
+<ol>
+<li><p>key的生成 </p>
+<p> <code># openssl genrsa -des3 -out server.key 2048</code></p>
+<p> 这样是生成rsa私钥，des3算法，openssl格式，2048位强度。server.key是密钥文件名。为了生成这样的密钥，需要一个至少四位的密码。可以通过以下方法删除私钥中的密码:</p>
+<p> <code># openssl rsa -in server.key -out server.key</code></p>
+</li>
+<li><p>生成CA的crt</p>
+ <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl req -new -key server.key -out server.csr</span></span><br><span class="line"></span><br><span class="line">Country Name (2 letter code) [AU]:CN</span><br><span class="line">State <span class="keyword">or</span> Province Name (full name) [Some-State]:Beijing</span><br><span class="line">Locality Name (eg, city) []:Beijing</span><br><span class="line">Organization Name (eg, company) [Internet Widgits Pty Ltd]:Test</span><br><span class="line">Organizational Unit Name (eg, section) []:Test</span><br><span class="line">Common Name (e.g.<span class="built_in"> server </span>FQDN <span class="keyword">or</span> YOUR name) []:pa55w0rd.club</span><br><span class="line">Email<span class="built_in"> Address </span>[]:pa55w0rd@aliyun.com</span><br></pre></td></tr></table></figure>
+<p> 需要依次输入国家，地区，组织，email。common name可以写你的名字或者域名。如果为了https申请，这个必须和域名吻合，否则会引发浏览器警报。生成的csr文件交给CA签名后形成服务端自己的证书。</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>crt生成方法</p>
+ <figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt</span></span><br><span class="line"></span><br><span class="line">Signature ok</span><br><span class="line"><span class="attr">subject=C</span> = CN, <span class="attr">ST</span> = Beijing, <span class="attr">L</span> = Beijing, <span class="attr">O</span> = Test, <span class="attr">OU</span> = Test, <span class="attr">CN</span> = pa55w0rd.club, <span class="attr">emailAddress</span> = pa55w0rd@aliyun.com</span><br><span class="line">Getting Private key</span><br></pre></td></tr></table></figure>
+<p> crt上有证书持有人的信息，持有人的公钥，以及签署者的签名等信息。当用户安装了证书之后，便意味着信任了这份证书，同时拥有了其中的公钥。证书上会说明用途，例如服务器认证，客户端认证，或者签署其他证书。当系统收到一份新的证书的时候，证书会说明，是由谁签署的。如果这个签署者确实可以签署其他证书，并且收到证书上的签名和签署者的公钥可以对上的时候，系统就自动信任新的证书。</p>
+<p> 最后生成了私用密钥：server.key和自己认证的SSL证书：server.crt</p>
+<p> 证书合并：</p>
+<p> <code>cat server.key server.crt &gt; server.pem</code></p>
+</li>
+<li><p>客户端证书文件</p>
+<p> 上面三步骤为服务端证书生成步骤，用户配置单向SSL时需要使用的证书文件，如果要配置双向SSL</p>
+<p> 证书生成步骤是一样的，最后需要将crt和key合并生成客户端证书安装包 pfx</p>
+<p> <code>openssl pkcs12 -export -in client.crt -inkey client.key -out client.pfx</code></p>
+</li>
+</ol>
+<h2 id="0x02-phpstudy安装ssl证书"><a href="#0x02-phpstudy安装ssl证书" class="headerlink" title="0x02 phpstudy安装ssl证书"></a>0x02 phpstudy安装ssl证书</h2><ol>
+<li><p>打开<code>php-openssl</code> 选项</p>
+<p> 点击【其他选项菜单】按钮→选择【PHP扩展及设置】→选择【PHP扩展】→在【php-openssl】选项上打钩即可。</p>
+</li>
+<li><p>使SSL模块生效</p>
+<p> 打开<code>phpStudy\Apache\conf\httpd.conf</code>文件，修改配置文件注意备份</p>
+<p> 找到 <code>LoadModule ssl_module modules/mod_ssl.so</code>，去除<code>#</code>注释，使ssl模块生效</p>
+<p> 搜索<code>Include conf/vhosts.conf</code>，在其下面增加一条<br> <code>Include conf/vhostssl.conf</code></p>
+</li>
+<li><p>在Apache安装目录下创建cert目录，将生产的证书拷贝过来</p>
+</li>
+<li><p>在Apache安装目录下conf文件夹中创建一个vhostssl.conf配置文件(文件名要和httpd.conf文件中引用的名称一致)</p>
+ <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Listen <span class="number">443</span></span><br><span class="line">&lt;VirtualHost *:<span class="number">443</span>&gt;</span><br><span class="line">    DocumentRoot <span class="string">"E:\phpStudy\WWW"</span></span><br><span class="line">    ServerName www.pa55w0rd.club</span><br><span class="line">    ServerAlias pa55w0rd.club</span><br><span class="line">    ErrorLog <span class="string">"E:\phpStudy\Apache\logs\error.log"</span></span><br><span class="line">    TransferLog <span class="string">"E:\phpStudy\Apache\logs\access.log"</span></span><br><span class="line">    SSLEngine on</span><br><span class="line">    SSLProtocol TLSv1 TLSv1<span class="number">.1</span> TLSv1<span class="number">.2</span></span><br><span class="line">    SSLCipherSuite HIGH:MEDIUM:!aNULL:!MD5</span><br><span class="line">    SSLCertificateFile <span class="string">"E:\phpStudy\Apache\cert\server.pem"</span></span><br><span class="line">    SSLCertificateKeyFile <span class="string">"E:\phpStudy\Apache\cert\server.key"</span></span><br><span class="line">    SSLCertificateChainFile <span class="string">"E:\phpStudy\Apache\cert\server.pem"</span></span><br><span class="line">  &lt;Directory <span class="string">"E:\phpStudy\WWW"</span>&gt;</span><br><span class="line">      Options FollowSymLinks ExecCGI</span><br><span class="line">      AllowOverride All</span><br><span class="line">      Order allow,deny</span><br><span class="line">      Allow from all</span><br><span class="line">      <span class="keyword">Require</span> all granted</span><br><span class="line">  &lt;/Directory&gt;</span><br><span class="line">&lt;/VirtualHost&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启Apache，访问<a href="https://xxx" target="_blank" rel="noopener">https://xxx</a> 访问正常</p>
+</li>
+</ol>
+<h2 id="0x03-HTTP301重定向到HTTPS"><a href="#0x03-HTTP301重定向到HTTPS" class="headerlink" title="0x03 HTTP301重定向到HTTPS"></a>0x03 HTTP301重定向到HTTPS</h2><p>配置完SSL证书，我们需要进行站点301重定向，将http的地址强制跳转到https地址，Apache环境下，在站点根目录添加.htaccess文件</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute"><span class="nomarkup">RewriteEngine</span></span> <span class="literal">on</span></span><br><span class="line"><span class="attribute">RewriteBase</span> /</span><br><span class="line"><span class="attribute"><span class="nomarkup">RewriteCond</span></span> <span class="variable">%&#123;SERVER_PORT&#125;</span> !^443$</span><br><span class="line"><span class="attribute"><span class="nomarkup">RewriteRule</span></span> ^.*$ https://<span class="variable">%&#123;SERVER_NAME&#125;</span><span class="variable">%&#123;REQUEST_URI&#125;</span><span class="meta"> [L,R=301]</span></span><br></pre></td></tr></table></figure>
+<p>PS. Windows下不允许创建.开头的文件，可以先创建任意文件，通过copy命令重命名.htaccess</p>
+<p>测试自动跳转到https</p>
+-->
       
 
     </div>
@@ -263,7 +323,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/phpstudy+https/" data-id="cjopkqnnj001qj3t6xkxvkxxc" class="article-share-link" data-share="baidu" data-title="phpstudy配置ssl证书实现https加密访问">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/phpstudy+https/" data-id="cjopl5zqf001gkbt6rqiqweli" class="article-share-link" data-share="baidu" data-title="phpstudy配置ssl证书实现https加密访问">分享到</a>
       
 
       
@@ -278,9 +338,9 @@
     
 <nav id="article-nav">
   
-    <a href="/代理/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/快速定位前端加密方法/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">代理</div>
+      <div class="article-nav-title">快速定位前端加密方法（转发）</div>
     </a>
   
   

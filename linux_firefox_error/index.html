@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="Centos 7 在firefox官网下载了最新的安装包，运行后提示 1234# firefoxXPCOMGlueLoad error for file /root/fuzzingbox/firefox/libmozgtk.so:libgtk-3.so.0: cannot open shared object file: No such file or directoryCouldn&apos;t load">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.449Z">
+<meta property="og:updated_time" content="2018-11-20T10:28:22.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos 7 运行firefox出错">
 <meta name="twitter:description" content="Centos 7 在firefox官网下载了最新的安装包，运行后提示 1234# firefoxXPCOMGlueLoad error for file /root/fuzzingbox/firefox/libmozgtk.so:libgtk-3.so.0: cannot open shared object file: No such file or directoryCouldn&apos;t load">
@@ -187,15 +187,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
+        
+        
+          <p>Centos 7 在firefox官网下载了最新的安装包，运行后提示</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># firefox</span><br><span class="line">XPCOMGlueLoad <span class="keyword">error</span> <span class="keyword">for</span> <span class="keyword">file</span> /root/fuzzingbox/firefox/libmozgtk.<span class="keyword">so</span>:</span><br><span class="line">libgtk-3.<span class="keyword">so</span>.0: cannot <span class="keyword">open</span> shared object <span class="keyword">file</span>: <span class="keyword">No</span> such <span class="keyword">file</span> or directory</span><br><span class="line">Couldn't load XPCOM.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>提示缺少libgtk-3.so库<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> gtk3</span><br></pre></td></tr></table></figure></p>
 
-        <br>
+        
+<!--
+        </br>
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
         <p>Centos 7 在firefox官网下载了最新的安装包，运行后提示</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># firefox</span><br><span class="line">XPCOMGlueLoad <span class="keyword">error</span> <span class="keyword">for</span> <span class="keyword">file</span> /root/fuzzingbox/firefox/libmozgtk.<span class="keyword">so</span>:</span><br><span class="line">libgtk-3.<span class="keyword">so</span>.0: cannot <span class="keyword">open</span> shared object <span class="keyword">file</span>: <span class="keyword">No</span> such <span class="keyword">file</span> or directory</span><br><span class="line">Couldn't load XPCOM.</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>提示缺少libgtk-3.so库<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> gtk3</span><br></pre></td></tr></table></figure></p>
-
+-->
       
 
     </div>
@@ -206,7 +215,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/linux_firefox_error/" data-id="cjopkqnlx0017j3t6nw21fyj6" class="article-share-link" data-share="baidu" data-title="Centos 7 运行firefox出错">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/linux_firefox_error/" data-id="cjopl5zr5001zkbt6r44ipane" class="article-share-link" data-share="baidu" data-title="Centos 7 运行firefox出错">分享到</a>
       
 
       

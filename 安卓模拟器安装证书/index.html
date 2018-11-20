@@ -11,20 +11,20 @@
   <title>安卓模拟器安装证书问题 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  0x00 描述在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的  尝试了各种方法都失败了，知道看到一篇文章http://blog.csdn.net/unklhe/article/details/51159509终于弄好了。 从burp导出证书PortSwiggerCA.crt 0x01 在linux上使用openssl生成cert文件12">
+  <meta name="description" content="0x00 描述在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓模拟器安装证书问题">
 <meta property="og:url" content="http://pa55w0rd.github.io/安卓模拟器安装证书/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  0x00 描述在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的  尝试了各种方法都失败了，知道看到一篇文章http://blog.csdn.net/unklhe/article/details/51159509终于弄好了。 从burp导出证书PortSwiggerCA.crt 0x01 在linux上使用openssl生成cert文件12">
+<meta property="og:description" content="0x00 描述在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安卓模拟器安装证书/1.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安卓模拟器安装证书/2.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/安卓模拟器安装证书/3.png">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.605Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:30.901Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓模拟器安装证书问题">
-<meta name="twitter:description" content="目录{:toc}  0x00 描述在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的  尝试了各种方法都失败了，知道看到一篇文章http://blog.csdn.net/unklhe/article/details/51159509终于弄好了。 从burp导出证书PortSwiggerCA.crt 0x01 在linux上使用openssl生成cert文件12">
+<meta name="twitter:description" content="0x00 描述在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的">
 <meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/安卓模拟器安装证书/1.png">
 
   
@@ -191,15 +191,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
+        
+        
+          <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
+<a id="more"></a>
 <p><img src="\assets\img\安卓模拟器安装证书\1.png" alt="1"></p>
 <p>尝试了各种方法都失败了，知道看到一篇文章<a href="http://blog.csdn.net/unklhe/article/details/51159509" target="_blank" rel="noopener">http://blog.csdn.net/unklhe/article/details/51159509</a>终于弄好了。</p>
 <pre><code>从burp导出证书PortSwiggerCA.crt
@@ -209,6 +204,23 @@
 <p>生成用户级证书<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell mkdir <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br><span class="line">adb <span class="keyword">push</span> D:\user\桌面\<span class="number">7</span>bf17d07.<span class="number">0</span> <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br></pre></td></tr></table></figure></p>
 <h2 id="0x03-安装成功"><a href="#0x03-安装成功" class="headerlink" title="0x03 安装成功"></a>0x03 安装成功</h2><p><img src="\assets\img\安卓模拟器安装证书\3.png" alt="3"></p>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
+<a id="more"></a>
+<p><img src="\assets\img\安卓模拟器安装证书\1.png" alt="1"></p>
+<p>尝试了各种方法都失败了，知道看到一篇文章<a href="http://blog.csdn.net/unklhe/article/details/51159509" target="_blank" rel="noopener">http://blog.csdn.net/unklhe/article/details/51159509</a>终于弄好了。</p>
+<pre><code>从burp导出证书PortSwiggerCA.crt
+</code></pre><h2 id="0x01-在linux上使用openssl生成cert文件"><a href="#0x01-在linux上使用openssl生成cert文件" class="headerlink" title="0x01 在linux上使用openssl生成cert文件"></a>0x01 在linux上使用openssl生成cert文件</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filename=`openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> --hash -noout`</span><br><span class="line">openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> &gt;&gt; <span class="variable">$filename</span>.<span class="number">0</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> -text -fingerprint -noout &gt;&gt; <span class="variable">$filename</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><img src="\assets\img\安卓模拟器安装证书\2.png" alt="2"></p>
+<h2 id="0x02-将生成的文件push到设备中"><a href="#0x02-将生成的文件push到设备中" class="headerlink" title="0x02 将生成的文件push到设备中"></a>0x02 将生成的文件push到设备中</h2><p>生成系统证书<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell mount -o remount,rw /system</span><br><span class="line">adb push D:\user\桌面\7bf17d07.0 /system/etc/security/cacerts</span><br></pre></td></tr></table></figure></p>
+<p>生成用户级证书<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell mkdir <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br><span class="line">adb <span class="keyword">push</span> D:\user\桌面\<span class="number">7</span>bf17d07.<span class="number">0</span> <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x03-安装成功"><a href="#0x03-安装成功" class="headerlink" title="0x03 安装成功"></a>0x03 安装成功</h2><p><img src="\assets\img\安卓模拟器安装证书\3.png" alt="3"></p>
+-->
       
 
     </div>
@@ -219,7 +231,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/安卓模拟器安装证书/" data-id="cjopkqnjy0004j3t6u4pwabq7" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/安卓模拟器安装证书/" data-id="cjopl5zod0002kbt6s39gx5ut" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
       
 
       

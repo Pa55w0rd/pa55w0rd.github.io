@@ -189,158 +189,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h1 id="Checklist整理"><a href="#Checklist整理" class="headerlink" title="Checklist整理"></a>Checklist整理</h1><h2 id="一、静态扫描"><a href="#一、静态扫描" class="headerlink" title="一、静态扫描"></a>一、静态扫描</h2><h3 id="1-文件信息"><a href="#1-文件信息" class="headerlink" title="1 文件信息"></a>1 文件信息</h3><h3 id="2-证书检测"><a href="#2-证书检测" class="headerlink" title="2 证书检测"></a>2 证书检测</h3><h3 id="3-权限信息检测"><a href="#3-权限信息检测" class="headerlink" title="3 权限信息检测"></a>3 权限信息检测</h3><h3 id="4-so文件检测"><a href="#4-so文件检测" class="headerlink" title="4 so文件检测"></a>4 so文件检测</h3><h3 id="5-第三方库-SDK-组件检测"><a href="#5-第三方库-SDK-组件检测" class="headerlink" title="5 第三方库/SDK/组件检测"></a>5 第三方库/SDK/组件检测</h3><ul>
-<li>第三方开源库/SDK检测</li>
-</ul>
-<h3 id="6-manifest文件检测"><a href="#6-manifest文件检测" class="headerlink" title="6 manifest文件检测"></a>6 manifest文件检测</h3><ul>
-<li>6.1   AndroidManifest文件中PermissionGroup检测 </li>
-<li>6.2   AndroidManifest文件中系统权限使用检测 </li>
-<li>6.3   AndroidManifest危险ProtectionLevel权限检测 </li>
-<li>6.4   AndroidManifest sharedUserId 检测 </li>
-<li>6.5   AndroidManifest allowBackup标志检测 </li>
-<li>6.6   AndroidManifest文件Debuggable配置检测 </li>
-<li>6.7   非必要权限检测 </li>
-<li>6.8   app最低版本检测 </li>
-</ul>
-<h3 id="7-组件安全检测"><a href="#7-组件安全检测" class="headerlink" title="7 组件安全检测"></a>7 组件安全检测</h3><ul>
-<li>7.1   Activity、activity-alias、service、receiver组件导出检测 </li>
-<li>7.2   ContentProvider组件导出检测 </li>
-<li>7.3   ContentProvider目录遍历漏洞检测 </li>
-<li>7.4   Implicit Service漏洞检测 </li>
-<li>7.5   Provider：grant-uri-permission属性检测 </li>
-<li>7.6   Intent-Based攻击检测 </li>
-<li>7.7   Intent Scheme URI漏洞攻击检测 </li>
-<li>7.8   应用本地拒绝服务漏洞检测 </li>
-<li>7.9   manifest中定义组件未实现检测 </li>
-<li>7.10   Debug或Test敏感测试组件泄露检测 </li>
-<li>7.11   Intent不安全反射风险检测 </li>
-</ul>
-<h3 id="8-webview组件安全检测"><a href="#8-webview组件安全检测" class="headerlink" title="8 webview组件安全检测"></a>8 webview组件安全检测</h3><ul>
-<li>8.1   WebView远程执行漏洞检测 </li>
-<li>8.2   WebView潜在XSS攻击检测 </li>
-<li>8.3   WebView本地文件访问漏洞检测 </li>
-<li>8.4   WebView密码明文存储漏洞检测 </li>
-<li>8.5   主机名弱校验检测 </li>
-<li>8.6   证书弱校验检测 </li>
-<li>8.7   中间人攻击漏洞检测 </li>
-<li>8.8   WebView不校验证书漏洞检测 </li>
-<li>8.9   WebView组件系统隐藏接口未移除漏洞 </li>
-</ul>
-<h3 id="9-sqlite安全检测"><a href="#9-sqlite安全检测" class="headerlink" title="9 sqlite安全检测"></a>9 sqlite安全检测</h3><ul>
-<li>9.1   SQLite数据库加密(SQLCipher)检测 </li>
-<li>9.2   SQLite数据库(SQLite Encryption Extension (SEE)) 检测 </li>
-<li>9.3   SQLite数据库的对称密钥(PRAGMA key) 检测 </li>
-<li>9.4   SQLiteDatabase Transaction Deprecated检测 </li>
-<li>9.5   Databases任意读写漏洞检测 </li>
-</ul>
-<h3 id="10-网络通信安全检测"><a href="#10-网络通信安全检测" class="headerlink" title="10 网络通信安全检测"></a>10 网络通信安全检测</h3><ul>
-<li>10.1   SSL连接检测 </li>
-<li>10.2   SSL不安全组件检测 </li>
-<li>10.3   HttpHost检测 </li>
-<li>10.4   HttpURLConnection漏洞检测 </li>
-<li>10.5   网络端口开放威胁检测 </li>
-</ul>
-<h3 id="11-弱加密风险检测"><a href="#11-弱加密风险检测" class="headerlink" title="11 弱加密风险检测"></a>11 弱加密风险检测</h3><ul>
-<li>11.1   弱加密算法风险检测 </li>
-<li>11.2   不安全的密钥长度风险检测 </li>
-<li>11.3   ECB弱加密模式风险检测 </li>
-<li>11.4   IVParameterSpec不安全初始化向量风险检测 </li>
-<li>11.5   RSA中不使用Padding风险检测 </li>
-<li>11.6   检测keystore是否使用密码保护 </li>
-</ul>
-<h3 id="12-数据安全检测"><a href="#12-数据安全检测" class="headerlink" title="12 数据安全检测"></a>12 数据安全检测</h3><ul>
-<li>12.1   敏感信息检测 </li>
-<li>12.2   剪贴板敏感信息泄露风险检测 </li>
-<li>12.3   Intent敏感数据泄露风险检测 </li>
-<li>12.4   PendingIntent误用风险 </li>
-<li>12.5   密钥硬编码风险检测 </li>
-<li>12.6   数据或程序加载检查 </li>
-<li>12.7   BASE64安全检测 </li>
-<li>12.8   文件全局读写漏洞检测 </li>
-<li>12.9   日志泄露风险检测 </li>
-<li>12.10   外部加载Dex检测 </li>
-<li>12.11   外部存储路径检测 </li>
-<li>12.12   明文数字证书风险 </li>
-<li>12.13 第三方oauth敏感信息泄露</li>
-</ul>
-<h3 id="13-敏感函数调用检测"><a href="#13-敏感函数调用检测" class="headerlink" title="13 敏感函数调用检测"></a>13 敏感函数调用检测</h3><ul>
-<li>13.1   安全相关的函数检测 </li>
-<li>13.2   安全相关的类检测 </li>
-<li>13.3   运行命令检测 </li>
-<li>13.4   Native Library加载检测 </li>
-<li>13.5   外部动态加载DEX检测 </li>
-<li>13.6   root代码检测 </li>
-<li>13.7   获取IMEI 和Device ID敏感信息代码检测 </li>
-<li>13.8   获取Android ID敏感信息代码检测 </li>
-<li>13.9   发送SMS敏感代码检测 </li>
-<li>13.10   文件删除代码检测 </li>
-<li>13.11   signature代码检测 </li>
-</ul>
-<h3 id="14-加固检测"><a href="#14-加固检测" class="headerlink" title="14 加固检测"></a>14 加固检测</h3><ul>
-<li>14.1 dex加固检测</li>
-<li>14.2 So文件加固检测</li>
-<li>14.3 资源文件加固检测</li>
-<li>14.4 混淆率检测</li>
-</ul>
-<h3 id="15-系统漏洞检测"><a href="#15-系统漏洞检测" class="headerlink" title="15 系统漏洞检测"></a>15 系统漏洞检测</h3><ul>
-<li>15.1   fragment注入漏洞检测 </li>
-<li>15.2   sqlite数据库日志泄露漏洞检测 </li>
-<li>15.3   随机数生成漏洞检测 </li>
-</ul>
-<h3 id="16-其他"><a href="#16-其他" class="headerlink" title="16 其他"></a>16 其他</h3><ul>
-<li>通用签名风险检测</li>
-</ul>
-<h2 id="二、动态扫描"><a href="#二、动态扫描" class="headerlink" title="二、动态扫描"></a>二、动态扫描</h2><h3 id="1-服务端漏洞检测"><a href="#1-服务端漏洞检测" class="headerlink" title="1 服务端漏洞检测"></a>1 服务端漏洞检测</h3><ul>
-<li><p>1.1 基于http代理</p>
-<ul>
-<li>水平权限风险检测</li>
-<li>垂直权限风险检测</li>
-<li>sql注入漏洞检测</li>
-<li>XSS漏洞检测</li>
-<li>敏感信息检测（硬编码、用户密码、银行卡、身份证等明文传输）</li>
-</ul>
-</li>
-<li><p>1.2 基于tcp或udp(socket)代理</p>
-<ul>
-<li>敏感信息检测（硬编码、用户密码、银行卡、身份证等明文传输）</li>
-</ul>
-</li>
-<li><p>1.3 html5漏洞检测</p>
-</li>
-</ul>
-<h3 id="2-hook技术检测"><a href="#2-hook技术检测" class="headerlink" title="2 hook技术检测"></a>2 hook技术检测</h3><ul>
-<li>2.1 SQLite Database存储信息检测</li>
-<li>2.2 SharePreferences存储信息检测</li>
-<li>2.3 Contert Provider存储信息检测</li>
-<li>2.4 File存储信息检测</li>
-<li>2.5 Intent数据内容检测</li>
-<li>2.6 Log日志打印检测</li>
-<li>2.7 System.print*输出检测</li>
-<li>2.8 剪贴板敏感信息检测</li>
-</ul>
-<h3 id="3-DDOS攻击检测"><a href="#3-DDOS攻击检测" class="headerlink" title="3 DDOS攻击检测"></a>3 DDOS攻击检测</h3><ul>
-<li><p>3.1 组件DDOS攻击检测</p>
-<ul>
-<li>Activity组件通用crash</li>
-<li>Receiver组件通用crash</li>
-<li>Service组件通用crash</li>
-</ul>
-</li>
-<li><p>3.2 native crash检测</p>
-</li>
-<li>3.3 java crash检测</li>
-</ul>
-<h3 id="4-provider注入漏洞检测"><a href="#4-provider注入漏洞检测" class="headerlink" title="4 provider注入漏洞检测"></a>4 provider注入漏洞检测</h3><h3 id="5-网络端口开放威胁检测"><a href="#5-网络端口开放威胁检测" class="headerlink" title="5 网络端口开放威胁检测"></a>5 网络端口开放威胁检测</h3><h2 id="三、业务安全扫描"><a href="#三、业务安全扫描" class="headerlink" title="三、业务安全扫描"></a>三、业务安全扫描</h2><p>未整理，欢迎大家补充</p>
-<h2 id="四、Checklist脑图："><a href="#四、Checklist脑图：" class="headerlink" title="四、Checklist脑图："></a>四、Checklist脑图：</h2><p><img src="\assets\img\android_pic\checklist.jpg" alt="checklist-logo"></p>
-
+        <h1 id="Checklist整理"><a href="#Checklist整理" class="headerlink" title="Checklist整理"></a>Checklist整理</h1>
+        
+          <p class="article-more-link ">
+            <a href="/androidchecklist/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -351,7 +205,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/androidchecklist/" data-id="cjopkqnom001xj3t6odvbqv85" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/androidchecklist/" data-id="cjopl5zom0005kbt6hrj28v3g" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
       
 
       
@@ -411,24 +265,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
-<p><img src="\assets\img\安卓模拟器安装证书\1.png" alt="1"></p>
-<p>尝试了各种方法都失败了，知道看到一篇文章<a href="http://blog.csdn.net/unklhe/article/details/51159509" target="_blank" rel="noopener">http://blog.csdn.net/unklhe/article/details/51159509</a>终于弄好了。</p>
-<pre><code>从burp导出证书PortSwiggerCA.crt
-</code></pre><h2 id="0x01-在linux上使用openssl生成cert文件"><a href="#0x01-在linux上使用openssl生成cert文件" class="headerlink" title="0x01 在linux上使用openssl生成cert文件"></a>0x01 在linux上使用openssl生成cert文件</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filename=`openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> --hash -noout`</span><br><span class="line">openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> &gt;&gt; <span class="variable">$filename</span>.<span class="number">0</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> -text -fingerprint -noout &gt;&gt; <span class="variable">$filename</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
-<p><img src="\assets\img\安卓模拟器安装证书\2.png" alt="2"></p>
-<h2 id="0x02-将生成的文件push到设备中"><a href="#0x02-将生成的文件push到设备中" class="headerlink" title="0x02 将生成的文件push到设备中"></a>0x02 将生成的文件push到设备中</h2><p>生成系统证书<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell mount -o remount,rw /system</span><br><span class="line">adb push D:\user\桌面\7bf17d07.0 /system/etc/security/cacerts</span><br></pre></td></tr></table></figure></p>
-<p>生成用户级证书<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell mkdir <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br><span class="line">adb <span class="keyword">push</span> D:\user\桌面\<span class="number">7</span>bf17d07.<span class="number">0</span> <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br></pre></td></tr></table></figure></p>
-<h2 id="0x03-安装成功"><a href="#0x03-安装成功" class="headerlink" title="0x03 安装成功"></a>0x03 安装成功</h2><p><img src="\assets\img\安卓模拟器安装证书\3.png" alt="3"></p>
-
+        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
+        
+          <p class="article-more-link ">
+            <a href="/安卓模拟器安装证书/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -439,7 +281,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/安卓模拟器安装证书/" data-id="cjopkqnjy0004j3t6u4pwabq7" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/安卓模拟器安装证书/" data-id="cjopl5zod0002kbt6s39gx5ut" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
       
 
       
@@ -480,81 +322,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
         <hr>
 <p>title:  Android进程注入<br>date:   2018-09-26 16:31:44<br>img:<br>description: Android进程注入</p>
 <h2 id="categories-移动安全"><a href="#categories-移动安全" class="headerlink" title="categories: 移动安全"></a>categories: 移动安全</h2><ul>
 <li>目录<br>{:toc}</li>
 </ul>
 <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>源于跳槽到甲方一个人的安全部，之前我做渗透测试几乎都是web和移动server端的，客户端只会拿apktool、dex2jar、drozer等工具反编译一下看看源码和四大组件安全。公司要求我对移动客户端进行安全评估，看了一篇360的关于Android应用的评估报告，发现有很多的测试项我都没有测试过，并且网上的细节资料很少，偶得一款inject工具，尝试了一些app都能成功，把过程记录一下。</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">项目地址：</span><br><span class="line">    https:<span class="regexp">//gi</span>thub.com<span class="regexp">/matrixhawk/</span>Poison</span><br><span class="line"></span><br><span class="line">工具编译方法：</span><br><span class="line"></span><br><span class="line">    http:<span class="regexp">//</span>blog.csdn.net<span class="regexp">/qq1084283172/</span>article<span class="regexp">/details/</span><span class="number">53869796</span></span><br></pre></td></tr></table></figure>
-<p>代码注入主要分为静态注入和动态注入两种，静态注入针对的是可执行文件，通过修改文件内容实现代码注入，比如修改smali文件二次打包。动态注入针对进程，通过修改寄存器、内存值等实现代码注入。相对于静态注入，进程注入不需要改动源文件，单需要最高权限，如Android的root权限才能够进行进程注入操作。</p>
-<p>Android下的进程注入效果是类似于Windows下的dll注入，Android系统使用的是Linux内核，因此进程间是弱相互作用，不存在Windows下类似于CreateRemoteThread 作用的函数，可以在其他进程空间内创建线程来加载我们的.so文件，所以我们所采用的方法就是依赖于linux下的ptrace()函数，将目标进程作为我们进程的子进程操作目标进程的寄存器和内存来运行我们加载.so文件的代码将.so链接到目标进程，最后让目标进程的执行流程跳转到注入的代码执行。</p>
-<p>如果Android客户端没有对进程进行有效的保护，攻击者就可以向从Native层面向客户端进程远程加载任意.so链接库，从而侵入客户端进程的进程空间，以搜索、篡改敏感内存或干涉客户端的执行过程。</p>
-<hr>
-<h2 id="0x01-环境准备"><a href="#0x01-环境准备" class="headerlink" title="0x01 环境准备"></a>0x01 环境准备</h2><p> 进程注入需要处理器使用的是arm架构，于是使用AVD自定义创建模拟器，其中下载sdk进行安装后，及自带AVD：</p>
-<ol>
-<li><p>启动AVD，界面如下<br> <img src="/assets/img/android_pic/1.png" alt="AVD界面"></p>
-</li>
-<li><p>点击creat后，如下选择配置即可，注意cpu架构是arm并且选择android4.4<br> <img src="/assets/img/android_pic/2.png" alt="创建"></p>
-</li>
-<li><p>安卓虚拟设备创建完成，点击start启动<br> <img src="/assets/img/android_pic/3.png" alt="启动"></p>
-</li>
-<li><p>启动过程非常耗时，当启动好之后，界面如下</p>
-<p> <img src="/assets/img/android_pic/4.png" alt="环境"></p>
-</li>
-</ol>
-<p>环境已将搭建好了，接下来就可以测试了</p>
-<hr>
-<h2 id="0x02-开始inject"><a href="#0x02-开始inject" class="headerlink" title="0x02 开始inject"></a>0x02 开始inject</h2><p>准备一个测试demo</p>
-<pre><code>AndroidDecod_com.example.androiddecod_1.apk 
-</code></pre><ol>
-<li><p>安装demo程序，并在模拟器中运行</p>
-<pre><code>adb  install AndroidDecod_com.example.androiddecod_1.apk 
-</code></pre><p> <img src="/assets/img/android_pic/5.png" alt="demo">    </p>
-</li>
-<li><p>上传poison注入程序及libmobisec.so文件到/data/local/tmp目录下，并给予执行权限</p>
-<pre><code>adbpush poison /data/local/tmp
-adbpush libmobisec.so /data/local/tmp
-adbshell chmod 777 /data/local/tmp/poison
-adbshell chmod 777 /data/local/tmp/libmobisec.so
-</code></pre><p> <img src="/assets/img/android_pic/6.png" alt="上传工具并赋予权限">    </p>
-</li>
-<li><p>查看demo的进程及PID号</p>
-<pre><code>ps | grep com.example.androiddecod
-</code></pre><p> <img src="/assets/img/android_pic/7.png" alt="查看pid"></p>
-<p> 这里能看到PID尾1473</p>
-</li>
-<li><p>通过poison工具把libmobisec.so注入到该进程</p>
-<pre><code>/data/local/tmp/poison /data/local/tmp/libmobisec.so 1473
-</code></pre></li>
-<li><p>查看该进程，注入成功</p>
-<pre><code>cat /proc/1473/maps | grep libmobisec.so
-</code></pre><p> <img src="/assets/img/android_pic/8.png" alt="注入成功"></p>
-</li>
-</ol>
-<hr>
-<h2 id="0x03-如何防止进程注入"><a href="#0x03-如何防止进程注入" class="headerlink" title="0x03 如何防止进程注入"></a>0x03 如何防止进程注入</h2><p>Android中注入需要调用ptrace,然后执行注入so中的函数。因此，防止Android注入可以通过以下方式：</p>
-<ol>
-<li>ptrace附加失败</li>
-<li>修改linker中的dlopen函数，防止第三方so加载</li>
-<li>定时检测应用加载的第三方so库，如果发现是被注入的so，卸载加载的so</li>
-</ol>
-<h2 id="0x04-参考资料"><a href="#0x04-参考资料" class="headerlink" title="0x04 参考资料"></a>0x04 参考资料</h2><ul>
-<li><p><a href="https://blog.csdn.net/qq1084283172/article/details/53869796" target="_blank" rel="noopener">Android进程的so注入–Poison</a> </p>
-</li>
-<li><p><a href="https://github.com/matrixhawk/Poison" target="_blank" rel="noopener">Poison项目源码</a></p>
-</li>
-<li><p><a href="http://man7.org/linux/man-pages/man2/ptrace.2.html" target="_blank" rel="noopener">PTARCE函数</a></p>
-</li>
-<li><p><a href="https://blog.csdn.net/l173864930/article/details/38456313" target="_blank" rel="noopener">进击的Android注入术</a></p>
-</li>
-</ul>
-
+        
+          <p class="article-more-link ">
+            <a href="/Android进程注入/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -565,7 +343,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/Android进程注入/" data-id="cjopkqniz0001j3t6o52yjw0x" class="article-share-link" data-share="baidu" data-title="">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/Android进程注入/" data-id="cjopl5zq70018kbt6fpqt889g" class="article-share-link" data-share="baidu" data-title="">分享到</a>
       
 
       
@@ -625,40 +403,12 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>jekyll是一个静态网站生成工具，可以通过markdown编写文档，使用模板自定义网站结构，通过sass或css自定义格式。jekyll是用ruby编写的工具，因此在安装jekyll之前需要安装ruby环境，由于官方源访问问题，需要切换国内源。</p>
-<h2 id="0x01-安装ruby"><a href="#0x01-安装ruby" class="headerlink" title="0x01 安装ruby"></a>0x01 安装ruby</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> install ruby</span><br><span class="line">apt-<span class="builtin-name">get</span> install ruby-dev (ubuntu)</span><br><span class="line">apt-<span class="builtin-name">get</span> install ruby-devel (centos)</span><br></pre></td></tr></table></figure>
-<h2 id="0x02-切换ruby源"><a href="#0x02-切换ruby源" class="headerlink" title="0x02 切换ruby源"></a>0x02 切换ruby源</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem sources -l   <span class="comment"># 查看当前已经添加的源</span></span><br><span class="line">gem sources -r <span class="keyword">https</span>://rubygems.org/  <span class="comment"># 移除官方源</span></span><br><span class="line">gem sources -<span class="keyword">a</span> <span class="keyword">http</span>://gems.ruby-china.com   <span class="comment"># 添加ruby china源，HTTP\HTTPs</span></span><br><span class="line">gem sources -u    <span class="comment">#刷新</span></span><br><span class="line">gem sources -l   <span class="comment"># 查看是否添加成功</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果使用bundler，需要</span><br><span class="line">bundle config mirror.http<span class="variable">s:</span>//rubygems.org http<span class="variable">s:</span>//gems.<span class="keyword">ruby</span>-china.<span class="keyword">com</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x03-安装jekyll"><a href="#0x03-安装jekyll" class="headerlink" title="0x03 安装jekyll"></a>0x03 安装jekyll</h2><h3 id="先安装依赖包管理工具bundler"><a href="#先安装依赖包管理工具bundler" class="headerlink" title="先安装依赖包管理工具bundler"></a>先安装依赖包管理工具bundler</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> bundler</span><br></pre></td></tr></table></figure>
-<h3 id="安装jekyll"><a href="#安装jekyll" class="headerlink" title="安装jekyll"></a>安装jekyll</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> jekyll</span><br></pre></td></tr></table></figure>
-<h2 id="0x04-jekyll使用"><a href="#0x04-jekyll使用" class="headerlink" title="0x04 jekyll使用"></a>0x04 jekyll使用</h2><p><a href="http://jekyllthemes.org/" target="_blank" rel="noopener">jekyll主题</a></p>
-<p><a href="https://www.jekyll.com.cn/docs/home/" target="_blank" rel="noopener">jekyll使用文档</a></p>
-<hr>
-<h2 id="0x05-其他方式-rvm安装ruby"><a href="#0x05-其他方式-rvm安装ruby" class="headerlink" title="0x05 其他方式 rvm安装ruby"></a>0x05 其他方式 rvm安装ruby</h2><ol>
-<li>安装rvm</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>-sSL</span><a href="https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer" target="_blank" rel="noopener">| bash```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```source /usr/local/rvm/scripts/rvm</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>查看rvm库中已知的ruby版本</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>list known```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3. 安装一个ruby</span><br><span class="line"></span><br><span class="line">```rvm install 2.5.1</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>使用一个ruby版本</li>
-</ol>
-<figure class="highlight plain"><figcaption><span>use 2.5.1```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```ruby --version</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>安装jekyll</li>
-</ol>
-<p><code>gem install jekyll</code></p>
-
+        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>jekyll是一个静态网站生成工具，可以通过markdown编写文档，使用模板自定义网站结构，通过sass或css自定义格式。jekyll是用ruby编写的工具，因此在安装jekyll之前需要安装ruby环境，由于官方源访问问题，需要切换国内源。</p>
+        
+          <p class="article-more-link ">
+            <a href="/ruby换源/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -669,7 +419,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/ruby换源/" data-id="cjopkqnjq0002j3t6vc7rsebx" class="article-share-link" data-share="baidu" data-title="ruby换源、安装jekyll">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/ruby换源/" data-id="cjopl5zno0000kbt64a9fl3tw" class="article-share-link" data-share="baidu" data-title="ruby换源、安装jekyll">分享到</a>
       
 
       
@@ -729,29 +479,12 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题</p>
-<h2 id="0x01-启用linux子系统"><a href="#0x01-启用linux子系统" class="headerlink" title="0x01 启用linux子系统"></a>0x01 启用linux子系统</h2><p><img src="/assets/img/use_linux1.png" alt="启用1"></p>
-<p><img src="/assets/img/use_linux2.png" alt="启用2"></p>
-<h2 id="0x02-安装linux子系统"><a href="#0x02-安装linux子系统" class="headerlink" title="0x02 安装linux子系统"></a>0x02 安装linux子系统</h2><p>打开win10应用商店，搜索linux，选择ubuntu安装</p>
-<p><img src="/assets/img/install_linux.png" alt="安装"></p>
-<h2 id="0x03-win10安装linux子系统报错0x8007019e解决办法"><a href="#0x03-win10安装linux子系统报错0x8007019e解决办法" class="headerlink" title="0x03 win10安装linux子系统报错0x8007019e解决办法"></a>0x03 win10安装linux子系统报错0x8007019e解决办法</h2><p><strong>原因：</strong> 未安装Windows子系统支持</p>
-<ol>
-<li>win+x，选择Windows PowerShell（管理员）</li>
-<li>输入 <figure class="highlight plain"><figcaption><span>-Online -FeatureName Microsoft-Windows-Subsystem-Linux```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3. 回车，输入Y，重启系统后重新打开安装的对应子系统即可</span><br><span class="line"></span><br><span class="line">## 0x04 开始使用</span><br><span class="line"></span><br><span class="line">### 换源</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h1 id="1-备份原来的数据源配置文件"><a href="#1-备份原来的数据源配置文件" class="headerlink" title="1.备份原来的数据源配置文件"></a>1.备份原来的数据源配置文件</h1><p>cp /etc/apt/sources.list /etc/apt/sources.list_backup</p>
-<h1 id="2-编辑数据源配置文件"><a href="#2-编辑数据源配置文件" class="headerlink" title="2.编辑数据源配置文件"></a>2.编辑数据源配置文件</h1><p>vi /etc/apt/sources.list<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用[<span class="string">中科大的源</span>](<span class="link">"http://mirrors.ustc.edu.cn/help/ubuntu.html#id1"</span>)</span><br></pre></td></tr></table></figure></p>
-<h1 id="lsb-release-a"><a href="#lsb-release-a" class="headerlink" title="lsb_release -a"></a>lsb_release -a</h1><p>No LSB modules are available.<br>Distributor ID: Ubuntu<br>Description:    Ubuntu 18.04.1 LTS<br>Release:        18.04<br>Codename:       bionic<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure></p>
-<h3 id="读取宿主机文件"><a href="#读取宿主机文件" class="headerlink" title="读取宿主机文件"></a>读取宿主机文件</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># df -h</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">rootfs          101G   62G   39G  62% /</span><br><span class="line">none            101G   62G   39G  62% /dev</span><br><span class="line">none            101G   62G   39G  62% /run</span><br><span class="line">none            101G   62G   39G  62% /run/lock</span><br><span class="line">none            101G   62G   39G  62% /run/shm</span><br><span class="line">none            101G   62G   39G  62% /run/user</span><br><span class="line">C:              101G   62G   39G  62% /mnt/c</span><br><span class="line">D:              279G   54G  225G  20% /mnt/d</span><br><span class="line">E:              278G   38G  240G  14% /mnt/e</span><br><span class="line">F:              277G  191G   87G  69% /mnt/f</span><br></pre></td></tr></table></figure>
-
+        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题</p>
+        
+          <p class="article-more-link ">
+            <a href="/win10-install-linux/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
       
 
     </div>
@@ -762,7 +495,7 @@ adbshell chmod 777 /data/local/tmp/libmobisec.so
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/win10-install-linux/" data-id="cjopkqnoi001uj3t6syvx5mcp" class="article-share-link" data-share="baidu" data-title="win10安装linux子系统">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/win10-install-linux/" data-id="cjopl5zok0004kbt6dvzbjt14" class="article-share-link" data-share="baidu" data-title="win10安装linux子系统">分享到</a>
       
 
       

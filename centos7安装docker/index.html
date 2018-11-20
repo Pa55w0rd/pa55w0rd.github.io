@@ -11,17 +11,17 @@
   <title>centos7 安装docker | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  0x00 前言Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。 社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费">
+  <meta name="description" content="0x00 前言Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos7 安装docker">
 <meta property="og:url" content="http://pa55w0rd.github.io/centos7安装docker/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  0x00 前言Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。 社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费">
+<meta property="og:description" content="0x00 前言Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.746Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:31.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7 安装docker">
-<meta name="twitter:description" content="目录{:toc}  0x00 前言Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。 社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费">
+<meta name="twitter:description" content="0x00 前言Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。 Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。">
 
   
 
@@ -187,16 +187,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+        
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
 <p>Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。</p>
+<a id="more"></a>
 <p>社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费服务，比如经过官方测试认证过的基础设施、容器、插件等。</p>
 <p>社区版按照stable和edge两种方式发布，每个季度更新stable版本，如17.06，17.09；每个月份更新edge版本，如17.09，17.10。</p>
 <p>Docker里比较重要的概念有<strong>注册服务器、仓库、镜像、容器</strong>。</p>
@@ -250,6 +245,68 @@
 
 登陆进入管理控制台就能看到了，按照操作文档进行加速器设置
 </code></pre>
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
+<p>Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。</p>
+<a id="more"></a>
+<p>社区版是免费提供给个人开发者和小型团体使用的，企业版会提供额外的收费服务，比如经过官方测试认证过的基础设施、容器、插件等。</p>
+<p>社区版按照stable和edge两种方式发布，每个季度更新stable版本，如17.06，17.09；每个月份更新edge版本，如17.09，17.10。</p>
+<p>Docker里比较重要的概念有<strong>注册服务器、仓库、镜像、容器</strong>。</p>
+<p><strong>仓库</strong>： 注册服务器是存放仓库的地方，其上往往存放着多个仓库。每个仓库集中存放某一类镜像，往往包括多个镜像文件，通过不同的标签（tag）来进行区分。例如存放Ubuntu操作系统镜像的仓库，称为Ubuntu仓库，其中可能包括14.04、12.04等不同版本的镜像。</p>
+<p><strong>镜像</strong>： Docker镜像（Image）类似于虚拟机镜像，可以将它理解为一个面向Docker引擎的只读模板，包含了文件系统。例如：一个镜像可以只包含一个完整的Ubuntu操作系统环境，可以把它称为一个Ubuntu镜像。</p>
+<p><strong>容器</strong>： 容器是从镜像创建的应用运行实例，可以将其启动、开始、停止、删除，而这些容器都是相互隔离、互不可见的。可以从一个镜像创建无数个容器。平时我们主要操作的就是容器。我们也可以把容器打包成镜像以方便再次使用。镜像自身是只读的。容器从镜像启动的时候，Docker会在镜像的最上层创建一个可写层，镜像本身将保持不变。</p>
+<h2 id="0x01-安装docker"><a href="#0x01-安装docker" class="headerlink" title="0x01 安装docker"></a>0x01 安装docker</h2><ol>
+<li><p>Docker 要求64位。并且当CentOS7时你的内核必须不小于3.10，查看你的CentOS 版本是否支持 Docker 。</p>
+<p> 查看当前的内核版本</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># <span class="selector-tag">uname</span> <span class="selector-tag">-r</span></span><br><span class="line">3<span class="selector-class">.10</span><span class="selector-class">.0-693</span><span class="selector-class">.21</span><span class="selector-class">.1</span><span class="selector-class">.el7</span><span class="selector-class">.x86_64</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 root 权限登录 Centos。确保 yum 包更新到最新。</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># yum -y update</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装和启动docker</p>
+<p> centos7 支持使用yum安装，省事很多</p>
+ <figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># yum install -y docker</span></span><br><span class="line"><span class="meta"># systemctl start docker</span></span><br><span class="line"><span class="meta"># systemctl enable docker</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证是否安装成功</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker version</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Client:</span></span><br><span class="line"><span class="attr"> Version:</span>         <span class="number">1.13</span><span class="number">.1</span></span><br><span class="line"> <span class="string">API</span> <span class="attr">version:</span>     <span class="number">1.26</span></span><br><span class="line"> <span class="string">Package</span> <span class="attr">version:</span> <span class="string">docker-1.13.1-75.git8633870.el7.centos.x86_64</span></span><br><span class="line"> <span class="string">Go</span> <span class="attr">version:</span>      <span class="string">go1.9.4</span></span><br><span class="line"> <span class="string">Git</span> <span class="attr">commit:</span>      <span class="number">8633870</span><span class="string">/1.13.1</span></span><br><span class="line"><span class="attr"> Built:</span>           <span class="string">Fri</span> <span class="string">Sep</span> <span class="number">28</span> <span class="number">19</span><span class="string">:45:08</span> <span class="number">2018</span></span><br><span class="line"> <span class="string">OS/Arch:</span>         <span class="string">linux/amd64</span></span><br><span class="line"></span><br><span class="line"><span class="attr">Server:</span></span><br><span class="line"><span class="attr"> Version:</span>         <span class="number">1.13</span><span class="number">.1</span></span><br><span class="line"> <span class="string">API</span> <span class="attr">version:</span>     <span class="number">1.26</span> <span class="string">(minimum</span> <span class="string">version</span> <span class="number">1.12</span><span class="string">)</span></span><br><span class="line"> <span class="string">Package</span> <span class="attr">version:</span> <span class="string">docker-1.13.1-75.git8633870.el7.centos.x86_64</span></span><br><span class="line"> <span class="string">Go</span> <span class="attr">version:</span>      <span class="string">go1.9.4</span></span><br><span class="line"> <span class="string">Git</span> <span class="attr">commit:</span>      <span class="number">8633870</span><span class="string">/1.13.1</span></span><br><span class="line"><span class="attr"> Built:</span>           <span class="string">Fri</span> <span class="string">Sep</span> <span class="number">28</span> <span class="number">19</span><span class="string">:45:08</span> <span class="number">2018</span></span><br><span class="line"> <span class="string">OS/Arch:</span>         <span class="string">linux/amd64</span></span><br><span class="line"><span class="attr"> Experimental:</span>    <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试docker是否正常运行</p>
+ <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run hello-world</span></span><br><span class="line"></span><br><span class="line">Hello <span class="keyword">from</span> Docker!</span><br><span class="line">This message shows <span class="keyword">that</span> your installation appears <span class="keyword">to</span> be working correctly.</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="0x02-使用docker"><a href="#0x02-使用docker" class="headerlink" title="0x02 使用docker"></a>0x02 使用docker</h2><ol>
+<li><p>常用命令</p>
+ <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找并拉取镜像</span></span><br><span class="line">docker search ubuntu</span><br><span class="line">docker pull ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有可用镜像</span></span><br><span class="line">docker images -a</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker rmi 容器ID </span><br><span class="line">    -f强制删除</span><br><span class="line"></span><br><span class="line"><span class="comment"># 导出导入</span></span><br><span class="line">docker save -o ubuntu_latest.tar ubuntu<span class="function">:latest</span></span><br><span class="line">docker load <span class="params">--input</span> ubuntu_latest.tar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从镜像中创建容器(每运行一次便创建一个新的容器)</span></span><br><span class="line">docker run image</span><br><span class="line">&gt; docker run ubuntu <span class="keyword">echo</span> 'hellp world'  运行一个新的容器，并执行命令<span class="keyword">echo</span></span><br><span class="line"></span><br><span class="line">&gt; docker run -it <span class="params">--name</span> test ubuntu <span class="string">/bin/bash</span> 以交互式终端运行一个新的容器，镜像ubuntu,使用bash，容器别名test</span><br><span class="line">    -i 交互式界面，默认是<span class="literal">false</span></span><br><span class="line">    -t 伪终端，默认<span class="literal">false</span></span><br><span class="line">    <span class="params">--name</span> 容器别名，默认随机命名</span><br><span class="line">    -p 对外端口：docker内部端口</span><br><span class="line"></span><br><span class="line">    进入镜像内部操作</span><br><span class="line">    docker exec -it 容器别名 <span class="string">/bin/bash</span><span class="params">(镜像shell地址)</span></span><br><span class="line"></span><br><span class="line">    exit 退出交互式界面，容器停止运行</span><br><span class="line">    crtl + P 或Q推出交互式界面，容器在后台运行（PQ大写）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看容器</span></span><br><span class="line">docker ps 查看正在运行的容器</span><br><span class="line">docker ps -a 查看所有容器</span><br><span class="line">docker ps -l 查看最近一次运行的容器</span><br><span class="line"></span><br><span class="line"><span class="comment"># 其他操作</span></span><br><span class="line">docker create 容器名或容器ID 创建容器</span><br><span class="line">docker start 容器名 启动容器</span><br><span class="line">docker run 容器名或容器ID 进入容器，相当于dcoker create + docker start</span><br><span class="line">docker attach 容器名或容器ID 进入容器的命令行</span><br><span class="line">docker stop 容器名 停止容器</span><br><span class="line">docker rm 容器名  删除容器（删除时必须是停止状态）</span><br><span class="line">docker top 容器名 查看容器的进程</span><br><span class="line">docker inspect 容器名 查看docker的底层信息</span><br><span class="line">docker commit 临时名 镜像名  保存镜像</span><br><span class="line"></span><br><span class="line">将主机<span class="string">/www/jy</span> 目录拷贝到容器aaa923a806ca的<span class="string">/www</span>目录下</span><br><span class="line">docker cp <span class="string">/www/jy</span> aaa923a806ca:<span class="string">/www/</span></span><br><span class="line">将主机<span class="string">/www/jy</span> 目录拷贝到容器aaa923a806ca中，目录重命名www</span><br><span class="line">docker cp <span class="string">/www/jy</span> aaa923a806ca:<span class="string">/www</span></span><br><span class="line">将容器aaa923a806ca的<span class="string">/www</span>目录拷贝到主机的<span class="string">/tmp</span>目录</span><br><span class="line">docker cp aaa923a806ca:<span class="string">/www</span> <span class="string">/tmp/</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>守护式容器</p>
+<p> 我们可以使用守护式容器运行一个或者多个服务，例如运行lamp服务、redis服务、mysql服务等。</p>
+<ul>
+<li>能够长期运行</li>
+<li>没有交互式会话</li>
+<li><p>适合运行应用程序和服务</p>
+<p>启动守护式容器<br><br><code>docker run -d image</code><br><br>-d 让容器在后台运行</p>
+<p>查看守护进行的运行状况<br><br><code>docker logs [-f] [-t] [--tail] 容器名或id</code><br><br>查看容器内WEB应用程序日志</p>
+</li>
+<li>-f –follow=true|false,默认false,一直跟随log变化</li>
+<li>-t –timestamps=true|false,默认false,加上时间戳</li>
+<li><p>–tail=”all”,返回最新多少条日志</p>
+<p>在容器中启动新的进程<br><br><code>docker exec [-d] [-i] [-t] 容器名 [COMMOND] [ARG...]</code></p>
+<p>停止守护式进程<br><br><code>docker stop 容器名</code>      发送停止信号，等待关闭<br><br><code>docker kill 容器名</code>     直接关闭容器</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="0x03-Nginx部署示例"><a href="#0x03-Nginx部署示例" class="headerlink" title="0x03 Nginx部署示例"></a>0x03 Nginx部署示例</h2><pre><code><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建映射端口为80的交互式界面：</span></span><br><span class="line">docker <span class="builtin-name">run</span> -p 80 --name web -i -t ubuntu /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一次使用更新源</span></span><br><span class="line">apt-<span class="builtin-name">get</span> update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装nginx</span></span><br><span class="line">apt-<span class="builtin-name">get</span> install nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装vim</span></span><br><span class="line">apt-<span class="builtin-name">get</span> install vim</span><br><span class="line"></span><br><span class="line">whereis nginx</span><br><span class="line">nginx: /usr/sbin/nginx /etc/nginx /usr/share/nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置文件</span></span><br><span class="line">vim /etc/nginx/conf.d/localhost.conf</span><br><span class="line"></span><br><span class="line">   <span class="built_in"> server </span>&#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  localhost;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            root   /var/www/; </span><br><span class="line">            index  index.html index.htm;</span><br><span class="line">        &#125;   </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新目录</span></span><br><span class="line">mkdir -p /var/www/</span><br><span class="line">vim /var/www/index.html</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动nginx</span></span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Crtl+P(即Crtl+shift+p)退出容器，并后台运行。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看 </span></span><br><span class="line">docker<span class="built_in"> port </span>web</span><br><span class="line">docker top web</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="0x04-镜像加速器"><a href="#0x04-镜像加速器" class="headerlink" title="0x04 镜像加速器"></a>0x04 镜像加速器</h2><pre><code>某些原因，需要使用加速器&lt;br&gt;
+`https://dev.aliyun.com/`
+
+登陆进入管理控制台就能看到了，按照操作文档进行加速器设置
+</code></pre>-->
       
 
     </div>
@@ -260,7 +317,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/centos7安装docker/" data-id="cjopkqnlf000qj3t6r24jed75" class="article-share-link" data-share="baidu" data-title="centos7 安装docker">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/centos7安装docker/" data-id="cjopl5zp3000dkbt62d52j4ci" class="article-share-link" data-share="baidu" data-title="centos7 安装docker">分享到</a>
       
 
       

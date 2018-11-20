@@ -11,19 +11,19 @@
   <title>代理 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请">
+  <meta name="description" content="正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代理">
 <meta property="og:url" content="http://pa55w0rd.github.io/代理/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请">
+<meta property="og:description" content="正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/proxy/1.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/proxy/2.png">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.761Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:31.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理">
-<meta name="twitter:description" content="目录{:toc}  正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请">
+<meta name="twitter:description" content="正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把">
 <meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/proxy/1.png">
 
   
@@ -190,15 +190,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
+        
+        
+          <h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
+<a id="more"></a>
 <p><img src="\assets\img\proxy\1.png" alt=""></p>
 <h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>至于反向代理,就更容易理解了,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
 <p><img src="\assets\img\proxy\2.png" alt=""></p>
@@ -213,6 +208,28 @@
 <p>网站的负载均衡可以从DNS和HTTP两个环节进行实施</p>
 <p>Kali Linux提供工具lbd来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
+<a id="more"></a>
+<p><img src="\assets\img\proxy\1.png" alt=""></p>
+<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>至于反向代理,就更容易理解了,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
+<p><img src="\assets\img\proxy\2.png" alt=""></p>
+<h2 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h2><p>很显然,透明的意思就是你感受不到代理服务器的存在,但流量却又真正被代理服务器所左右,也就是说,我们并不需要知道代理服务器,比如,我可以用这种方式来限制你访问某些资源等等……它跟正向代理非常的像,其实也属于正向代理的一种,只不过正向代理能看见,但这个看不到</p>
+<h2 id="匿名代理"><a href="#匿名代理" class="headerlink" title="匿名代理"></a>匿名代理</h2><ul>
+<li><p>高度匿名代理<br>  这样的服务器会把你的数据包原封不动的来转发,就好像自己的一样,这样对目标站来讲,根本就不会以为是代理服务器在访问它而不是你</p>
+</li>
+<li><p>普通匿名代理<br>  相对于高度匿名代理来讲,这样的服务器会被目标站认出来是代理服务器,从而很有可能还是会追踪到你的真实IP</p>
+</li>
+</ul>
+<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定,比如典型的 nginx七层负载均衡,以及各种硬件负载均衡器,比如像 f5 这种东西,等等……</p>
+<p>网站的负载均衡可以从DNS和HTTP两个环节进行实施</p>
+<p>Kali Linux提供工具lbd来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
+-->
       
 
     </div>
@@ -223,7 +240,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/代理/" data-id="cjopkqnkx000gj3t6or4105e1" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/代理/" data-id="cjopl5zpl000nkbt6imp9scpr" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
       
 
       
@@ -238,17 +255,17 @@
     
 <nav id="article-nav">
   
-    <a href="/解析漏洞/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/msfvenom 使用/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">解析漏洞</div>
+      <div class="article-nav-title">msfvenom 使用</div>
     </a>
   
   
-    <a href="/phpstudy+https/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/解析漏洞/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          phpstudy配置ssl证书实现https加密访问
+          解析漏洞
         
       </div>
     </a>

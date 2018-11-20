@@ -11,20 +11,20 @@
   <title>win10安装linux子系统 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="目录{:toc}  0x00 描述win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题 0x01 启用linux子系统  0x02 安装linux子系统打开win10应用商店，搜索linux，选择ubuntu安装  0x03 win10安装linux子系统报错0x8007019e解决办法原因： 未安装Windows子系统支持  win+x，选择Wi">
+  <meta name="description" content="0x00 描述win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="win10安装linux子系统">
 <meta property="og:url" content="http://pa55w0rd.github.io/win10-install-linux/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="目录{:toc}  0x00 描述win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题 0x01 启用linux子系统  0x02 安装linux子系统打开win10应用商店，搜索linux，选择ubuntu安装  0x03 win10安装linux子系统报错0x8007019e解决办法原因： 未安装Windows子系统支持  win+x，选择Wi">
+<meta property="og:description" content="0x00 描述win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/use_linux1.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/use_linux2.png">
 <meta property="og:image" content="http://pa55w0rd.github.io/assets/img/install_linux.png">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.589Z">
+<meta property="og:updated_time" content="2018-11-20T10:37:30.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="win10安装linux子系统">
-<meta name="twitter:description" content="目录{:toc}  0x00 描述win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题 0x01 启用linux子系统  0x02 安装linux子系统打开win10应用商店，搜索linux，选择ubuntu安装  0x03 win10安装linux子系统报错0x8007019e解决办法原因： 未安装Windows子系统支持  win+x，选择Wi">
+<meta name="twitter:description" content="0x00 描述win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题">
 <meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/use_linux1.png">
 
   
@@ -191,15 +191,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <ul>
-<li>目录<br>{:toc}</li>
-</ul>
-<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题</p>
+        
+        
+          <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题</p>
+<a id="more"></a>
 <h2 id="0x01-启用linux子系统"><a href="#0x01-启用linux子系统" class="headerlink" title="0x01 启用linux子系统"></a>0x01 启用linux子系统</h2><p><img src="/assets/img/use_linux1.png" alt="启用1"></p>
 <p><img src="/assets/img/use_linux2.png" alt="启用2"></p>
 <h2 id="0x02-安装linux子系统"><a href="#0x02-安装linux子系统" class="headerlink" title="0x02 安装linux子系统"></a>0x02 安装linux子系统</h2><p>打开win10应用商店，搜索linux，选择ubuntu安装</p>
@@ -214,6 +209,28 @@
 <h1 id="lsb-release-a"><a href="#lsb-release-a" class="headerlink" title="lsb_release -a"></a>lsb_release -a</h1><p>No LSB modules are available.<br>Distributor ID: Ubuntu<br>Description:    Ubuntu 18.04.1 LTS<br>Release:        18.04<br>Codename:       bionic<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure></p>
 <h3 id="读取宿主机文件"><a href="#读取宿主机文件" class="headerlink" title="读取宿主机文件"></a>读取宿主机文件</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># df -h</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">rootfs          101G   62G   39G  62% /</span><br><span class="line">none            101G   62G   39G  62% /dev</span><br><span class="line">none            101G   62G   39G  62% /run</span><br><span class="line">none            101G   62G   39G  62% /run/lock</span><br><span class="line">none            101G   62G   39G  62% /run/shm</span><br><span class="line">none            101G   62G   39G  62% /run/user</span><br><span class="line">C:              101G   62G   39G  62% /mnt/c</span><br><span class="line">D:              279G   54G  225G  20% /mnt/d</span><br><span class="line">E:              278G   38G  240G  14% /mnt/e</span><br><span class="line">F:              277G  191G   87G  69% /mnt/f</span><br></pre></td></tr></table></figure>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>win10系统一周年正式版(1607)之后开始支持内置linux子系统，记录一些关键步骤和遇到的问题</p>
+<a id="more"></a>
+<h2 id="0x01-启用linux子系统"><a href="#0x01-启用linux子系统" class="headerlink" title="0x01 启用linux子系统"></a>0x01 启用linux子系统</h2><p><img src="/assets/img/use_linux1.png" alt="启用1"></p>
+<p><img src="/assets/img/use_linux2.png" alt="启用2"></p>
+<h2 id="0x02-安装linux子系统"><a href="#0x02-安装linux子系统" class="headerlink" title="0x02 安装linux子系统"></a>0x02 安装linux子系统</h2><p>打开win10应用商店，搜索linux，选择ubuntu安装</p>
+<p><img src="/assets/img/install_linux.png" alt="安装"></p>
+<h2 id="0x03-win10安装linux子系统报错0x8007019e解决办法"><a href="#0x03-win10安装linux子系统报错0x8007019e解决办法" class="headerlink" title="0x03 win10安装linux子系统报错0x8007019e解决办法"></a>0x03 win10安装linux子系统报错0x8007019e解决办法</h2><p><strong>原因：</strong> 未安装Windows子系统支持</p>
+<ol>
+<li>win+x，选择Windows PowerShell（管理员）</li>
+<li>输入 <figure class="highlight plain"><figcaption><span>-Online -FeatureName Microsoft-Windows-Subsystem-Linux```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">3. 回车，输入Y，重启系统后重新打开安装的对应子系统即可</span><br><span class="line"></span><br><span class="line">## 0x04 开始使用</span><br><span class="line"></span><br><span class="line">### 换源</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h1 id="1-备份原来的数据源配置文件"><a href="#1-备份原来的数据源配置文件" class="headerlink" title="1.备份原来的数据源配置文件"></a>1.备份原来的数据源配置文件</h1><p>cp /etc/apt/sources.list /etc/apt/sources.list_backup</p>
+<h1 id="2-编辑数据源配置文件"><a href="#2-编辑数据源配置文件" class="headerlink" title="2.编辑数据源配置文件"></a>2.编辑数据源配置文件</h1><p>vi /etc/apt/sources.list<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用[<span class="string">中科大的源</span>](<span class="link">"http://mirrors.ustc.edu.cn/help/ubuntu.html#id1"</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="lsb-release-a"><a href="#lsb-release-a" class="headerlink" title="lsb_release -a"></a>lsb_release -a</h1><p>No LSB modules are available.<br>Distributor ID: Ubuntu<br>Description:    Ubuntu 18.04.1 LTS<br>Release:        18.04<br>Codename:       bionic<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure></p>
+<h3 id="读取宿主机文件"><a href="#读取宿主机文件" class="headerlink" title="读取宿主机文件"></a>读取宿主机文件</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># df -h</span></span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">rootfs          101G   62G   39G  62% /</span><br><span class="line">none            101G   62G   39G  62% /dev</span><br><span class="line">none            101G   62G   39G  62% /run</span><br><span class="line">none            101G   62G   39G  62% /run/lock</span><br><span class="line">none            101G   62G   39G  62% /run/shm</span><br><span class="line">none            101G   62G   39G  62% /run/user</span><br><span class="line">C:              101G   62G   39G  62% /mnt/c</span><br><span class="line">D:              279G   54G  225G  20% /mnt/d</span><br><span class="line">E:              278G   38G  240G  14% /mnt/e</span><br><span class="line">F:              277G  191G   87G  69% /mnt/f</span><br></pre></td></tr></table></figure>
+-->
       
 
     </div>
@@ -224,7 +241,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/win10-install-linux/" data-id="cjopkqnoi001uj3t6syvx5mcp" class="article-share-link" data-share="baidu" data-title="win10安装linux子系统">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/win10-install-linux/" data-id="cjopl5zok0004kbt6dvzbjt14" class="article-share-link" data-share="baidu" data-title="win10安装linux子系统">分享到</a>
       
 
       

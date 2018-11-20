@@ -11,17 +11,17 @@
   <title>Git修改远程URL | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？ 检查发现，在设置远程url的时候使用了https https://github.com/Pa55w0rd/pa55w0rd.github.io.git 使用git remote set-url命令从https切换到ssh1# git remote set-url origin git+ssh://git@github.c">
+  <meta name="description" content="Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git修改远程URL">
 <meta property="og:url" content="http://pa55w0rd.github.io/git_edit_remoteurl/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？ 检查发现，在设置远程url的时候使用了https https://github.com/Pa55w0rd/pa55w0rd.github.io.git 使用git remote set-url命令从https切换到ssh1# git remote set-url origin git+ssh://git@github.c">
+<meta property="og:description" content="Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:08:47.433Z">
+<meta property="og:updated_time" content="2018-11-20T10:31:41.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git修改远程URL">
-<meta name="twitter:description" content="Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？ 检查发现，在设置远程url的时候使用了https https://github.com/Pa55w0rd/pa55w0rd.github.io.git 使用git remote set-url命令从https切换到ssh1# git remote set-url origin git+ssh://git@github.c">
+<meta name="twitter:description" content="Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？">
 
   
 
@@ -187,12 +187,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-
-        <br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？</p>
+        
+        
+          <p>Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？</p>
+<a id="more"></a>
 <p>检查发现，在设置远程url的时候使用了https</p>
 <p><a href="https://github.com/Pa55w0rd/pa55w0rd.github.io.git" target="_blank" rel="noopener">https://github.com/Pa55w0rd/pa55w0rd.github.io.git</a></p>
 <p>使用git remote set-url命令从https切换到ssh<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># git remote <span class="keyword">set</span>-url <span class="comment">origin git+ssh:</span>//<span class="comment">git@github.com</span>/Pa55w0rd/<span class="comment">pa55w0rd.github.io.git</span></span><br></pre></td></tr></table></figure></p>
@@ -212,6 +210,33 @@
 <h3 id="克隆远程仓库到本地"><a href="#克隆远程仓库到本地" class="headerlink" title="克隆远程仓库到本地"></a>克隆远程仓库到本地</h3><p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Pa55w0rd/pa55w0rd.github.io.git</p>
 <h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><p>参考 <a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">阮一峰_ 常用Git命令清单</a></p>
 
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？</p>
+<a id="more"></a>
+<p>检查发现，在设置远程url的时候使用了https</p>
+<p><a href="https://github.com/Pa55w0rd/pa55w0rd.github.io.git" target="_blank" rel="noopener">https://github.com/Pa55w0rd/pa55w0rd.github.io.git</a></p>
+<p>使用git remote set-url命令从https切换到ssh<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># git remote <span class="keyword">set</span>-url <span class="comment">origin git+ssh:</span>//<span class="comment">git@github.com</span>/Pa55w0rd/<span class="comment">pa55w0rd.github.io.git</span></span><br></pre></td></tr></table></figure></p>
+<p>通过git remote -v命令验证是否成功<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># git remote -v</span></span><br><span class="line"><span class="attribute">origin</span>  git+ssh://git<span class="variable">@github</span>.com/Pa55w0rd/pa55w0rd.github.io.git (fetch)</span><br><span class="line">origin  git+ssh://git<span class="variable">@github</span>.com/Pa55w0rd/pa55w0rd.github.io.git (push)</span><br></pre></td></tr></table></figure></p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="建立远程仓库"><a href="#建立远程仓库" class="headerlink" title="建立远程仓库"></a>建立远程仓库</h3><p>进入GitHub，点击右上角 + 号，选择New repository</p>
+<p>输入仓库名称，点击 Create repository</p>
+<h3 id="建立本地仓库"><a href="#建立本地仓库" class="headerlink" title="建立本地仓库"></a>建立本地仓库</h3><p>建立目录，将文件夹初始化为git可以管理的仓库</p>
+<p>git init</p>
+<h3 id="与远程仓库关联"><a href="#与远程仓库关联" class="headerlink" title="与远程仓库关联"></a>与远程仓库关联</h3><p>git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Pa55w0rd/pa55w0rd.github.io.git</p>
+<h3 id="添加到暂存区"><a href="#添加到暂存区" class="headerlink" title="添加到暂存区"></a>添加到暂存区</h3><p>git add .   </p>
+<blockquote>
+<p>注意最后边的 .</p>
+</blockquote>
+<h3 id="提交暂存区到仓库区"><a href="#提交暂存区到仓库区" class="headerlink" title="提交暂存区到仓库区"></a>提交暂存区到仓库区</h3><p>git commit -m “init”</p>
+<h3 id="上传本地仓库到远程仓库"><a href="#上传本地仓库到远程仓库" class="headerlink" title="上传本地仓库到远程仓库"></a>上传本地仓库到远程仓库</h3><p>git push origin master</p>
+<h3 id="显示变更的文件"><a href="#显示变更的文件" class="headerlink" title="显示变更的文件"></a>显示变更的文件</h3><p>git status</p>
+<h3 id="克隆远程仓库到本地"><a href="#克隆远程仓库到本地" class="headerlink" title="克隆远程仓库到本地"></a>克隆远程仓库到本地</h3><p>git clone <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:Pa55w0rd/pa55w0rd.github.io.git</p>
+<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><p>参考 <a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">阮一峰_ 常用Git命令清单</a></p>
+-->
       
 
     </div>
@@ -222,7 +247,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/git_edit_remoteurl/" data-id="cjopkqnnn001sj3t6o2io7st1" class="article-share-link" data-share="baidu" data-title="Git修改远程URL">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/git_edit_remoteurl/" data-id="cjopl5zq20014kbt6gcl43wid" class="article-share-link" data-share="baidu" data-title="Git修改远程URL">分享到</a>
       
 
       

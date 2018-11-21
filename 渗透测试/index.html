@@ -12,13 +12,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主">
+<meta name="keywords" content="漏洞利用,渗透测试,信息收集,内网渗透">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透测试流程">
 <meta property="og:url" content="http://pa55w0rd.github.io/渗透测试/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T10:37:31.104Z">
+<meta property="og:updated_time" content="2018-11-21T08:56:12.370Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="渗透测试流程">
 <meta name="twitter:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主">
@@ -195,6 +196,36 @@
 
 
 
+
+        <!-- 目录内容 -->
+        
+          <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+                <span class="btn-bg"></span>
+                <span class="btn-text">文章导航</span>
+                </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+          <strong class="toc-title">文章目录</strong>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-明确目标"><span class="toc-number">2.</span> <span class="toc-text">0x01 明确目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-信息收集"><span class="toc-number">3.</span> <span class="toc-text">0x02 信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-漏洞发现"><span class="toc-number">4.</span> <span class="toc-text">0x03 漏洞发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-漏洞验证"><span class="toc-number">5.</span> <span class="toc-text">0x04 漏洞验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-后渗透阶段"><span class="toc-number">6.</span> <span class="toc-text">0x05 后渗透阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-报告编写"><span class="toc-number">7.</span> <span class="toc-text">0x06 报告编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-风险规避"><span class="toc-number">8.</span> <span class="toc-text">0x07 风险规避</span></a></li></ol>
+               </div>
+         <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+         </script>
+            		
+        <!-- 目录内容结束 -->
+
+
       </header>
     
     <div class="article-entry" itemprop="articleBody">
@@ -289,14 +320,16 @@
 <li>通过比较相同请求资源的首部响应中的ETag和Last-Modified的值，能够确定是否会从多个服务器上的到不同的文件</li>
 <li>通过查找cookie：有些服务器会在HTTP会话中加入自己的cookie来指定负载回话</li>
 <li>枚举SSL异常：查看SSL证书是否存在差异，是否支持同一个密码长度</li>
-<li>检查HTML源码中返回的注释</li>
+<li><p>检查HTML源码中返回的注释</p>
+<p>是否存在防护设备</p>
+</li>
+<li><p>有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f，熟悉各种bypasswaf的骚姿势</p>
+</li>
+<li>服务器防火墙是否开放，一般都会禁止icmp，通过ping命令探测</li>
 </ul>
 </li>
 </ul>
-<pre><code>是否存在防护设备
-- 有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f，熟悉各种bypasswaf的骚姿势
-- 服务器防火墙是否开放，一般都会禁止icmp，通过ping命令探测
-</code></pre><ul>
+<ul>
 <li><p>历史漏洞收集</p>
 <p>  了解目标历史漏洞对我们帮助也是非常的大，至少我们可以知道网站设计人员喜欢在什么地方犯错误，喜欢犯什么类型的错误。这样我们可以有针对性的进行渗透测试，或者说我们可以查看是否已经修补过得漏洞是否能够绕过。exploitdb 、hackerone、CNVD 、乌云漏洞库镜像站。 </p>
 </li>
@@ -308,7 +341,7 @@
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
-<p>  端口号    |   端口服务/协议简要说明        |   关于端口可能的一些渗透用途<br>  –|–|–<br>  tcp 20,21  |  ftp 默认的数据和命令传输端口[可明文亦可加密传输] | 允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)<br>  tcp 22 |    ssh[数据ssl加密传输]|    可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输,等等…常用于linux远程管理…<br>  tcp 23 |    telnet[明文传输]    |爆破,嗅探,一般常用于路由,交换登陆,可尝试弱口令,也许会有意想不到的收获<br>  tcp 25 |    smtp[简单邮件传输协议,多数linux发行版可能会默认开启此服务]|    邮件伪造,vrfy/expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑<br>  tcp/udp 53|    dns[域名解析]|    允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控<br>  tcp/udp 69|    tftp[简单文件传输协议,无认证]|    尝试下载目标及其的各类重要配置文件<br>  tcp 80-89,443,8440-8450,8080-8089|    web[各种常用的web服务端口]|    各种常用web服务端口,可尝试经典的top n,vpn,owa,webmail,目标oa,各类java控制台,各类服务器web管理面板,各类web中间件漏洞利用,各类web框架漏洞利用等等……<br>  tcp 110|    [邮局协议,可明文可密文]|    可尝试爆破,嗅探<br>  tcp 137,139,445    |samba[smb实现windows和linux间文件共享,明文]|    可尝试爆破以及smb自身的各种远程执行类漏洞利用,如,ms08-067,ms17-010,嗅探等……<br>  tcp 143    |imap[可明文可密文]    |可尝试爆破<br>  udp 161    |snmp[明文]|    爆破默认团队字符串,搜集目标内网信息<br>  tcp 389    |ldap[轻量级目录访问协议]|    ldap注入,允许匿名访问,弱口令<br>  tcp 512,513,514|    linux rexec|    可爆破,rlogin登陆<br>  tcp 873|    rsync备份服务|    匿名访问,文件上传<br>  tcp 1194|    openvpn    |想办法钓vpn账号,进内网<br>  tcp 1352|    Lotus domino邮件服务|    弱口令,信息泄漏,爆破<br>  tcp 1433|    mssql数据库|    注入,提权,sa弱口令,爆破<br>  tcp 1521|    oracle数据库|    tns爆破,注入,弹shell…<br>  tcp 1500|    ispmanager主机控制面板|    弱口令<br>  tcp 1025,111,2049|    nfs    |权限配置不当<br>  tcp 1723|    pptp|    爆破,想办法钓vpn账号,进内网<br>  tcp 2082,2083|    cpanel主机管理面板登录|    弱口令<br>  tcp 2181|    zookeeper|    未授权访问<br>  tcp 2601,2604|    zebra路由|    默认密码zerbra<br>  tcp 3128|    squid代理服务|    弱口令<br>  tcp 3312,3311|    kangle主机管理登录|    弱口令<br>  tcp 3306|    mysql数据库|    注入,提权,爆破<br>  tcp 3389|    windows rdp远程桌面|    shift后门[需要03以下的系统],爆破,ms12-020[蓝屏exp]<br>  tcp 4848|    glassfish控制台|    弱口令<br>  tcp 4899|    radmin远程桌面管理工具,现在已经非常非常少了|    抓密码拓展机器<br>  tcp 5000|    sybase/DB2数据库|    爆破,注入<br>  tcp 5432|    postgresql数据库|    爆破,注入,弱口令<br>  tcp 5632|    pcanywhere远程桌面管理工具|    抓密码,代码执行,已经快退出历史舞台了<br>  tcp 5900,5901,5902|    vnc远程桌面管理工具|    弱口令爆破,如果信息搜集不到位,成功几率很小<br>  tcp 5984|    CouchDB|    未授权导致的任意指令执行<br>  tcp 6379|    redis未授权|    可尝试未授权访问,弱口令爆破<br>  tcp 7001,7002|    weblogic控制台|    java反序列化,弱口令<br>  tcp 7778|    kloxo|    主机面板登录<br>  tcp 8000|    Ajenti主机控制面板|    弱口令<br>  tcp 8443|    plesk主机控制面板|    弱口令<br>  tcp 8069|    zabbix|    远程执行,sql注入<br>  tcp 8080-8089|    Jenkins,jboss|    反序列化,控制台弱口令<br>  tcp 9080-9081,9090|    websphere控制台|    java反序列化/弱口令<br>  tcp 9200,9300|    elasticsearch|    远程执行<br>  tcp 10000|    webmin linux主机web控制面板入口|    弱口令<br>  tcp 11211|    memcached|    未授权访问<br>  tcp 27017,27018|    mongodb|    爆破,未授权访问<br>  tcp 3690|    svn服务|    svn泄露,未授权访问<br>  tcp 50000|    SAP Management Console|    远程执行<br>  tcp 50070,50030|    hadoop|    默认端口未授权访问</p>
+<p>  端口号    |   端口服务/协议简要说明 |   关于端口可能的一些渗透用途<br>  –|–|–<br>  tcp 20,21  |  ftp 默认的数据和命令传输端口[可明文亦可加密传输] | 允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)<br>  tcp 22 |    ssh[数据ssl加密传输]|    可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输,等等…常用于linux远程管理…<br>  tcp 23 |    telnet[明文传输]    |爆破,嗅探,一般常用于路由,交换登陆,可尝试弱口令,也许会有意想不到的收获<br>  tcp 25 |    smtp[简单邮件传输协议,多数linux发行版可能会默认开启此服务]|    邮件伪造,vrfy/expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑<br>  tcp/udp 53|    dns[域名解析]|    允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控<br>  tcp/udp 69|    tftp[简单文件传输协议,无认证]|    尝试下载目标及其的各类重要配置文件<br>  tcp 80-89,443,8440-8450,8080-8089|    web[各种常用的web服务端口]|    各种常用web服务端口,可尝试经典的top n,vpn,owa,webmail,目标oa,各类java控制台,各类服务器web管理面板,各类web中间件漏洞利用,各类web框架漏洞利用等等……<br>  tcp 110|    [邮局协议,可明文可密文]|    可尝试爆破,嗅探<br>  tcp 137,139,445    |samba[smb实现windows和linux间文件共享,明文]|    可尝试爆破以及smb自身的各种远程执行类漏洞利用,如,ms08-067,ms17-010,嗅探等……<br>  tcp 143    |imap[可明文可密文]    |可尝试爆破<br>  udp 161    |snmp[明文]|    爆破默认团队字符串,搜集目标内网信息<br>  tcp 389    |ldap[轻量级目录访问协议]|    ldap注入,允许匿名访问,弱口令<br>  tcp 512,513,514|    linux rexec|    可爆破,rlogin登陆<br>  tcp 873|    rsync备份服务|    匿名访问,文件上传<br>  tcp 1194|    openvpn    |想办法钓vpn账号,进内网<br>  tcp 1352|    Lotus domino邮件服务|    弱口令,信息泄漏,爆破<br>  tcp 1433|    mssql数据库|    注入,提权,sa弱口令,爆破<br>  tcp 1521|    oracle数据库|    tns爆破,注入,弹shell…<br>  tcp 1500|    ispmanager主机控制面板|    弱口令<br>  tcp 1025,111,2049|    nfs    |权限配置不当<br>  tcp 1723|    pptp|    爆破,想办法钓vpn账号,进内网<br>  tcp 2082,2083|    cpanel主机管理面板登录|    弱口令<br>  tcp 2181|    zookeeper|    未授权访问<br>  tcp 2601,2604|    zebra路由|    默认密码zerbra<br>  tcp 3128|    squid代理服务|    弱口令<br>  tcp 3312,3311|    kangle主机管理登录|    弱口令<br>  tcp 3306|    mysql数据库|    注入,提权,爆破<br>  tcp 3389|    windows rdp远程桌面|    shift后门[需要03以下的系统],爆破,ms12-020[蓝屏exp]<br>  tcp 4848|    glassfish控制台|    弱口令<br>  tcp 4899|    radmin远程桌面管理工具,现在已经非常非常少了|    抓密码拓展机器<br>  tcp 5000|    sybase/DB2数据库|    爆破,注入<br>  tcp 5432|    postgresql数据库|    爆破,注入,弱口令<br>  tcp 5632|    pcanywhere远程桌面管理工具|    抓密码,代码执行,已经快退出历史舞台了<br>  tcp 5900,5901,5902|    vnc远程桌面管理工具|    弱口令爆破,如果信息搜集不到位,成功几率很小<br>  tcp 5984|    CouchDB|    未授权导致的任意指令执行<br>  tcp 6379|    redis未授权|    可尝试未授权访问,弱口令爆破<br>  tcp 7001,7002|    weblogic控制台|    java反序列化,弱口令<br>  tcp 7778|    kloxo|    主机面板登录<br>  tcp 8000|    Ajenti主机控制面板|    弱口令<br>  tcp 8443|    plesk主机控制面板|    弱口令<br>  tcp 8069|    zabbix|    远程执行,sql注入<br>  tcp 8080-8089|    Jenkins,jboss|    反序列化,控制台弱口令<br>  tcp 9080-9081,9090|    websphere控制台|    java反序列化/弱口令<br>  tcp 9200,9300|    elasticsearch|    远程执行<br>  tcp 10000|    webmin linux主机web控制面板入口|    弱口令<br>  tcp 11211|    memcached|    未授权访问<br>  tcp 27017,27018|    mongodb|    爆破,未授权访问<br>  tcp 3690|    svn服务|    svn泄露,未授权访问<br>  tcp 50000|    SAP Management Console|    远程执行<br>  tcp 50070,50030|    hadoop|    默认端口未授权访问</p>
 </li>
 <li><p>子域名信息收集</p>
 <p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a href="https://github.com/lijiejie/subDomainsBrute" target="_blank" rel="noopener">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu/google）、IP反查、主站爬取、shodan/fofa/zoomeye等</p>
@@ -456,25 +489,20 @@
 <li><p>数据库提权</p>
 <p>  利用数据库系统命令执行获取shell，或数据库漏洞如<a href="https://www.cnblogs.com/coderlee/archive/2009/07/18/1526229.html" target="_blank" rel="noopener">mssql的job提权</a>、<a href="https://www.cnblogs.com/wh4am1/p/6613770.html" target="_blank" rel="noopener">mysql的mof提权</a></p>
 </li>
-</ul>
+<li><p>web中间件漏洞提权</p>
+<p>  IIS溢出、tomcat提权</p>
+</li>
+<li><p>第三方软件提权</p>
+<p>  Filezllia提权、搜狗拼音提权</p>
+</li>
+<li><p>系统错误配置提权</p>
+<p>  在windows下可以使用BeRoot工具进行系统配置检查，利用配置错误点进行提权。 </p>
+</li>
+<li><p>获取或嗅探高权限账号提权</p>
+<p>  利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。 </p>
 </li>
 </ul>
-<pre><code>- web中间件漏洞提权
-
-    IIS溢出、tomcat提权
-
-- 第三方软件提权
-
-    Filezllia提权、搜狗拼音提权
-
-- 系统错误配置提权
-
-    在windows下可以使用BeRoot工具进行系统配置检查，利用配置错误点进行提权。 
-
-- 获取或嗅探高权限账号提权
-
-    利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。 
-</code></pre><ul>
+</li>
 <li><p>权限维持</p>
 <p>  当我们在渗透过程中通过漏洞获取到目标主机权限后，往往会因为服务器管理员发现和修补漏洞而导致对服务器权限的丢失，所以权限维持就显得很重要了。</p>
 <ul>
@@ -608,14 +636,16 @@
 <li>通过比较相同请求资源的首部响应中的ETag和Last-Modified的值，能够确定是否会从多个服务器上的到不同的文件</li>
 <li>通过查找cookie：有些服务器会在HTTP会话中加入自己的cookie来指定负载回话</li>
 <li>枚举SSL异常：查看SSL证书是否存在差异，是否支持同一个密码长度</li>
-<li>检查HTML源码中返回的注释</li>
+<li><p>检查HTML源码中返回的注释</p>
+<p>是否存在防护设备</p>
+</li>
+<li><p>有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f，熟悉各种bypasswaf的骚姿势</p>
+</li>
+<li>服务器防火墙是否开放，一般都会禁止icmp，通过ping命令探测</li>
 </ul>
 </li>
 </ul>
-<pre><code>是否存在防护设备
-- 有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f，熟悉各种bypasswaf的骚姿势
-- 服务器防火墙是否开放，一般都会禁止icmp，通过ping命令探测
-</code></pre><ul>
+<ul>
 <li><p>历史漏洞收集</p>
 <p>  了解目标历史漏洞对我们帮助也是非常的大，至少我们可以知道网站设计人员喜欢在什么地方犯错误，喜欢犯什么类型的错误。这样我们可以有针对性的进行渗透测试，或者说我们可以查看是否已经修补过得漏洞是否能够绕过。exploitdb 、hackerone、CNVD 、乌云漏洞库镜像站。 </p>
 </li>
@@ -627,7 +657,7 @@
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
-<p>  端口号    |   端口服务/协议简要说明        |   关于端口可能的一些渗透用途<br>  –|–|–<br>  tcp 20,21  |  ftp 默认的数据和命令传输端口[可明文亦可加密传输] | 允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)<br>  tcp 22 |    ssh[数据ssl加密传输]|    可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输,等等…常用于linux远程管理…<br>  tcp 23 |    telnet[明文传输]    |爆破,嗅探,一般常用于路由,交换登陆,可尝试弱口令,也许会有意想不到的收获<br>  tcp 25 |    smtp[简单邮件传输协议,多数linux发行版可能会默认开启此服务]|    邮件伪造,vrfy/expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑<br>  tcp/udp 53|    dns[域名解析]|    允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控<br>  tcp/udp 69|    tftp[简单文件传输协议,无认证]|    尝试下载目标及其的各类重要配置文件<br>  tcp 80-89,443,8440-8450,8080-8089|    web[各种常用的web服务端口]|    各种常用web服务端口,可尝试经典的top n,vpn,owa,webmail,目标oa,各类java控制台,各类服务器web管理面板,各类web中间件漏洞利用,各类web框架漏洞利用等等……<br>  tcp 110|    [邮局协议,可明文可密文]|    可尝试爆破,嗅探<br>  tcp 137,139,445    |samba[smb实现windows和linux间文件共享,明文]|    可尝试爆破以及smb自身的各种远程执行类漏洞利用,如,ms08-067,ms17-010,嗅探等……<br>  tcp 143    |imap[可明文可密文]    |可尝试爆破<br>  udp 161    |snmp[明文]|    爆破默认团队字符串,搜集目标内网信息<br>  tcp 389    |ldap[轻量级目录访问协议]|    ldap注入,允许匿名访问,弱口令<br>  tcp 512,513,514|    linux rexec|    可爆破,rlogin登陆<br>  tcp 873|    rsync备份服务|    匿名访问,文件上传<br>  tcp 1194|    openvpn    |想办法钓vpn账号,进内网<br>  tcp 1352|    Lotus domino邮件服务|    弱口令,信息泄漏,爆破<br>  tcp 1433|    mssql数据库|    注入,提权,sa弱口令,爆破<br>  tcp 1521|    oracle数据库|    tns爆破,注入,弹shell…<br>  tcp 1500|    ispmanager主机控制面板|    弱口令<br>  tcp 1025,111,2049|    nfs    |权限配置不当<br>  tcp 1723|    pptp|    爆破,想办法钓vpn账号,进内网<br>  tcp 2082,2083|    cpanel主机管理面板登录|    弱口令<br>  tcp 2181|    zookeeper|    未授权访问<br>  tcp 2601,2604|    zebra路由|    默认密码zerbra<br>  tcp 3128|    squid代理服务|    弱口令<br>  tcp 3312,3311|    kangle主机管理登录|    弱口令<br>  tcp 3306|    mysql数据库|    注入,提权,爆破<br>  tcp 3389|    windows rdp远程桌面|    shift后门[需要03以下的系统],爆破,ms12-020[蓝屏exp]<br>  tcp 4848|    glassfish控制台|    弱口令<br>  tcp 4899|    radmin远程桌面管理工具,现在已经非常非常少了|    抓密码拓展机器<br>  tcp 5000|    sybase/DB2数据库|    爆破,注入<br>  tcp 5432|    postgresql数据库|    爆破,注入,弱口令<br>  tcp 5632|    pcanywhere远程桌面管理工具|    抓密码,代码执行,已经快退出历史舞台了<br>  tcp 5900,5901,5902|    vnc远程桌面管理工具|    弱口令爆破,如果信息搜集不到位,成功几率很小<br>  tcp 5984|    CouchDB|    未授权导致的任意指令执行<br>  tcp 6379|    redis未授权|    可尝试未授权访问,弱口令爆破<br>  tcp 7001,7002|    weblogic控制台|    java反序列化,弱口令<br>  tcp 7778|    kloxo|    主机面板登录<br>  tcp 8000|    Ajenti主机控制面板|    弱口令<br>  tcp 8443|    plesk主机控制面板|    弱口令<br>  tcp 8069|    zabbix|    远程执行,sql注入<br>  tcp 8080-8089|    Jenkins,jboss|    反序列化,控制台弱口令<br>  tcp 9080-9081,9090|    websphere控制台|    java反序列化/弱口令<br>  tcp 9200,9300|    elasticsearch|    远程执行<br>  tcp 10000|    webmin linux主机web控制面板入口|    弱口令<br>  tcp 11211|    memcached|    未授权访问<br>  tcp 27017,27018|    mongodb|    爆破,未授权访问<br>  tcp 3690|    svn服务|    svn泄露,未授权访问<br>  tcp 50000|    SAP Management Console|    远程执行<br>  tcp 50070,50030|    hadoop|    默认端口未授权访问</p>
+<p>  端口号    |   端口服务/协议简要说明 |   关于端口可能的一些渗透用途<br>  –|–|–<br>  tcp 20,21  |  ftp 默认的数据和命令传输端口[可明文亦可加密传输] | 允许匿名的上传下载,爆破,嗅探,win提权,远程执行(proftpd 1.3.5),各类后门(proftpd,vsftp 2.3.4)<br>  tcp 22 |    ssh[数据ssl加密传输]|    可根据已搜集到的信息尝试爆破,v1版本可中间人,ssh隧道及内网代理转发,文件传输,等等…常用于linux远程管理…<br>  tcp 23 |    telnet[明文传输]    |爆破,嗅探,一般常用于路由,交换登陆,可尝试弱口令,也许会有意想不到的收获<br>  tcp 25 |    smtp[简单邮件传输协议,多数linux发行版可能会默认开启此服务]|    邮件伪造,vrfy/expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑<br>  tcp/udp 53|    dns[域名解析]|    允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控<br>  tcp/udp 69|    tftp[简单文件传输协议,无认证]|    尝试下载目标及其的各类重要配置文件<br>  tcp 80-89,443,8440-8450,8080-8089|    web[各种常用的web服务端口]|    各种常用web服务端口,可尝试经典的top n,vpn,owa,webmail,目标oa,各类java控制台,各类服务器web管理面板,各类web中间件漏洞利用,各类web框架漏洞利用等等……<br>  tcp 110|    [邮局协议,可明文可密文]|    可尝试爆破,嗅探<br>  tcp 137,139,445    |samba[smb实现windows和linux间文件共享,明文]|    可尝试爆破以及smb自身的各种远程执行类漏洞利用,如,ms08-067,ms17-010,嗅探等……<br>  tcp 143    |imap[可明文可密文]    |可尝试爆破<br>  udp 161    |snmp[明文]|    爆破默认团队字符串,搜集目标内网信息<br>  tcp 389    |ldap[轻量级目录访问协议]|    ldap注入,允许匿名访问,弱口令<br>  tcp 512,513,514|    linux rexec|    可爆破,rlogin登陆<br>  tcp 873|    rsync备份服务|    匿名访问,文件上传<br>  tcp 1194|    openvpn    |想办法钓vpn账号,进内网<br>  tcp 1352|    Lotus domino邮件服务|    弱口令,信息泄漏,爆破<br>  tcp 1433|    mssql数据库|    注入,提权,sa弱口令,爆破<br>  tcp 1521|    oracle数据库|    tns爆破,注入,弹shell…<br>  tcp 1500|    ispmanager主机控制面板|    弱口令<br>  tcp 1025,111,2049|    nfs    |权限配置不当<br>  tcp 1723|    pptp|    爆破,想办法钓vpn账号,进内网<br>  tcp 2082,2083|    cpanel主机管理面板登录|    弱口令<br>  tcp 2181|    zookeeper|    未授权访问<br>  tcp 2601,2604|    zebra路由|    默认密码zerbra<br>  tcp 3128|    squid代理服务|    弱口令<br>  tcp 3312,3311|    kangle主机管理登录|    弱口令<br>  tcp 3306|    mysql数据库|    注入,提权,爆破<br>  tcp 3389|    windows rdp远程桌面|    shift后门[需要03以下的系统],爆破,ms12-020[蓝屏exp]<br>  tcp 4848|    glassfish控制台|    弱口令<br>  tcp 4899|    radmin远程桌面管理工具,现在已经非常非常少了|    抓密码拓展机器<br>  tcp 5000|    sybase/DB2数据库|    爆破,注入<br>  tcp 5432|    postgresql数据库|    爆破,注入,弱口令<br>  tcp 5632|    pcanywhere远程桌面管理工具|    抓密码,代码执行,已经快退出历史舞台了<br>  tcp 5900,5901,5902|    vnc远程桌面管理工具|    弱口令爆破,如果信息搜集不到位,成功几率很小<br>  tcp 5984|    CouchDB|    未授权导致的任意指令执行<br>  tcp 6379|    redis未授权|    可尝试未授权访问,弱口令爆破<br>  tcp 7001,7002|    weblogic控制台|    java反序列化,弱口令<br>  tcp 7778|    kloxo|    主机面板登录<br>  tcp 8000|    Ajenti主机控制面板|    弱口令<br>  tcp 8443|    plesk主机控制面板|    弱口令<br>  tcp 8069|    zabbix|    远程执行,sql注入<br>  tcp 8080-8089|    Jenkins,jboss|    反序列化,控制台弱口令<br>  tcp 9080-9081,9090|    websphere控制台|    java反序列化/弱口令<br>  tcp 9200,9300|    elasticsearch|    远程执行<br>  tcp 10000|    webmin linux主机web控制面板入口|    弱口令<br>  tcp 11211|    memcached|    未授权访问<br>  tcp 27017,27018|    mongodb|    爆破,未授权访问<br>  tcp 3690|    svn服务|    svn泄露,未授权访问<br>  tcp 50000|    SAP Management Console|    远程执行<br>  tcp 50070,50030|    hadoop|    默认端口未授权访问</p>
 </li>
 <li><p>子域名信息收集</p>
 <p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a href="https://github.com/lijiejie/subDomainsBrute" target="_blank" rel="noopener">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu/google）、IP反查、主站爬取、shodan/fofa/zoomeye等</p>
@@ -775,25 +805,20 @@
 <li><p>数据库提权</p>
 <p>  利用数据库系统命令执行获取shell，或数据库漏洞如<a href="https://www.cnblogs.com/coderlee/archive/2009/07/18/1526229.html" target="_blank" rel="noopener">mssql的job提权</a>、<a href="https://www.cnblogs.com/wh4am1/p/6613770.html" target="_blank" rel="noopener">mysql的mof提权</a></p>
 </li>
-</ul>
+<li><p>web中间件漏洞提权</p>
+<p>  IIS溢出、tomcat提权</p>
+</li>
+<li><p>第三方软件提权</p>
+<p>  Filezllia提权、搜狗拼音提权</p>
+</li>
+<li><p>系统错误配置提权</p>
+<p>  在windows下可以使用BeRoot工具进行系统配置检查，利用配置错误点进行提权。 </p>
+</li>
+<li><p>获取或嗅探高权限账号提权</p>
+<p>  利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。 </p>
 </li>
 </ul>
-<pre><code>- web中间件漏洞提权
-
-    IIS溢出、tomcat提权
-
-- 第三方软件提权
-
-    Filezllia提权、搜狗拼音提权
-
-- 系统错误配置提权
-
-    在windows下可以使用BeRoot工具进行系统配置检查，利用配置错误点进行提权。 
-
-- 获取或嗅探高权限账号提权
-
-    利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。 
-</code></pre><ul>
+</li>
 <li><p>权限维持</p>
 <p>  当我们在渗透过程中通过漏洞获取到目标主机权限后，往往会因为服务器管理员发现和修补漏洞而导致对服务器权限的丢失，所以权限维持就显得很重要了。</p>
 <ul>
@@ -843,7 +868,7 @@
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/渗透测试/" data-id="cjopppymq002utyt6opif503y" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/渗透测试/" data-id="cjoqwm2a400315pt6r3tqbp3q" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
@@ -851,6 +876,8 @@
       
 
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息收集/">信息收集</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/内网渗透/">内网渗透</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/渗透测试/">渗透测试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞利用/">漏洞利用</a></li></ul>
+
 
     </footer>
   </div>
@@ -864,11 +891,11 @@
     </a>
   
   
-    <a href="/快速定位前端加密方法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/phpstudy+https/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          快速定位前端加密方法（转发）
+          phpstudy配置ssl证书实现https加密访问
         
       </div>
     </a>
@@ -909,6 +936,10 @@
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/添加文章目录/">hexo添加文章目录</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/use-algolia-search/">use_algolia_search</a>
           </li>
         
@@ -917,15 +948,11 @@
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/lynis/">Lynis</a>
+            <a id="recentpost_item" href="/lynis/">Lynis + ansible</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/git_edit_remoteurl/">Git修改远程URL</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/linux_firefox_error/">Centos 7 运行firefox出错</a>
           </li>
         
       </ul>
@@ -938,7 +965,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -954,7 +981,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a>
+      <a href="/tags/Android/" style="font-size: 15px;">Android</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 12.5px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 12.5px;">基础知识</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 20px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全测试/" style="font-size: 10px;">安全测试</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 15px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 17.5px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 12.5px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 12.5px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 12.5px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 10px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 17.5px;">开发安全</a> <a href="/tags/技巧/" style="font-size: 12.5px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 15px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 15px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a>
     </div>
   </div>
 
@@ -964,8 +991,8 @@
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">一月 2018</a><span class="archive-list-count">1</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">2018年01月</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 

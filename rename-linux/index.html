@@ -8,19 +8,21 @@
 
   
 
-  <title>Tag: 红蓝对抗 | Pa55w0rd &#39;s Blog</title>
+  <title>linux下批量重命名rename | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://pa55w0rd.github.io/tags/红蓝对抗/index.html">
+  <meta name="description" content="操作系统：Ubuntu 安装rename1# apt-get install rename -y">
+<meta name="keywords" content="解决方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux下批量重命名rename">
+<meta property="og:url" content="http://pa55w0rd.github.io/rename-linux/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="信息安全">
+<meta property="og:description" content="操作系统：Ubuntu 安装rename1# apt-get install rename -y">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-22T08:08:30.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pa55w0rd &#39;s Blog">
-<meta name="twitter:description" content="信息安全">
+<meta name="twitter:title" content="linux下批量重命名rename">
+<meta name="twitter:description" content="操作系统：Ubuntu 安装rename1# apt-get install rename -y">
 
   
 
@@ -165,44 +167,205 @@
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap" data-scroll-reveal="enter left and over 0.7s">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/甲方安全建设的一些思路和思考/" class="archive-article-date">
+      <section id="main"><article id="post-rename-linux" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/rename-linux/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-29T03:35:20.000Z" itemprop="datePublished">10月 29</time>
+  <time datetime="2018-11-22T07:53:44.000Z" itemprop="datePublished">2018-11-22</time>
 </a>
 
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/甲方安全建设的一些思路和思考/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>甲方安全建设的一些思路和思考 （转发）</a>
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>linux下批量重命名rename
     </h1>
   
 
 
-    </header>
+
+
+        <!-- 目录内容 -->
+        
+          <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+                <span class="btn-bg"></span>
+                <span class="btn-text">文章导航</span>
+                </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+          <strong class="toc-title">文章目录</strong>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装rename"><span class="toc-number">1.</span> <span class="toc-text">安装rename</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li></ol>
+               </div>
+         <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+         </script>
+            		
+        <!-- 目录内容结束 -->
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <p>操作系统：Ubuntu</p>
+<h2 id="安装rename"><a href="#安装rename" class="headerlink" title="安装rename"></a>安装rename</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install rename -y</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><p>-n：打印效果但不执行</p>
+</li>
+<li><p>-v：执行修改并打印结果</p>
+</li>
+<li><p>s：替换，支持正则表达式</p>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<li><p>替换文件名中的字符串，将test1替换为test2</p>
+<p> renema -v ‘s/test1/test2’ *.md</p>
+</li>
+<li><p>去掉文件名中的日期，格式2018-10-10</p>
+<p> rename -v ‘s/\d{4}-\d{2}-\d{2}//‘ *.md  </p>
+</li>
+<li><p>去掉文件后缀名.bak</p>
+<p> rename ‘s/.bak$//‘ *.bak</p>
+</li>
+<li><p>去掉文件名中的空格</p>
+<p> rename ‘s/[ ]+//g’ *</p>
+</li>
+<li><p>在文件开头加入字符串test1</p>
+<p> rename ‘s/^/test1/‘ *</p>
+</li>
+<li><p>在文件结尾加入字符串</p>
+<p> rename ‘s/$/test1/‘ *</p>
+</li>
+<li><p>替换文件名中的大小写</p>
+<p> rename -v ‘y/A-Z/a-z/‘ *</p>
+</li>
+</ol>
+<p><strong><a href="http://tool.oschina.net/regex/#" target="_blank" rel="noopener">在线正则表达式测试</a></strong></p>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>操作系统：Ubuntu</p>
+<h2 id="安装rename"><a href="#安装rename" class="headerlink" title="安装rename"></a>安装rename</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install rename -y</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<ul>
+<li><p>-n：打印效果但不执行</p>
+</li>
+<li><p>-v：执行修改并打印结果</p>
+</li>
+<li><p>s：替换，支持正则表达式</p>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<li><p>替换文件名中的字符串，将test1替换为test2</p>
+<p> renema -v ‘s/test1/test2’ *.md</p>
+</li>
+<li><p>去掉文件名中的日期，格式2018-10-10</p>
+<p> rename -v ‘s/\d{4}-\d{2}-\d{2}//‘ *.md  </p>
+</li>
+<li><p>去掉文件后缀名.bak</p>
+<p> rename ‘s/.bak$//‘ *.bak</p>
+</li>
+<li><p>去掉文件名中的空格</p>
+<p> rename ‘s/[ ]+//g’ *</p>
+</li>
+<li><p>在文件开头加入字符串test1</p>
+<p> rename ‘s/^/test1/‘ *</p>
+</li>
+<li><p>在文件结尾加入字符串</p>
+<p> rename ‘s/$/test1/‘ *</p>
+</li>
+<li><p>替换文件名中的大小写</p>
+<p> rename -v ‘y/A-Z/a-z/‘ *</p>
+</li>
+</ol>
+<p><strong><a href="http://tool.oschina.net/regex/#" target="_blank" rel="noopener">在线正则表达式测试</a></strong></p>
+-->
+      
+
+    </div>
+
+
+
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://pa55w0rd.github.io/rename-linux/" data-id="cjosdsx77001jcpt6p9htdcod" class="article-share-link" data-share="baidu" data-title="linux下批量重命名rename">分享到</a>
+      
+
+      
+        <a href="http://pa55w0rd.github.io/rename-linux/#gitalk-container" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方法/">解决方法</a></li></ul>
+
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/添加文章目录/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">hexo添加文章目录</div>
+    </a>
+  
+  
+</nav>
+
 
   
-  
-    </div></section>
-  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <div id="gitalk-container"></div>
+
 
 </section>
       
@@ -568,7 +731,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
+      id: "Thu Nov 22 2018 15:53:44 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

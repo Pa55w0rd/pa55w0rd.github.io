@@ -222,12 +222,13 @@
     </div>
 
 
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/信息安全规划文档的编写/" data-id="cjosdsxar0058cpt6ct1dzs2m" class="article-share-link" data-share="baidu" data-title="信息安全规划文档的编写  （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/信息安全规划文档的编写/" data-id="cjotmrssg005d5bt6ktqb3jq5" class="article-share-link" data-share="baidu" data-title="信息安全规划文档的编写  （转发）">分享到</a>
       
 
       
@@ -315,12 +316,13 @@
     </div>
 
 
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/非web型xss注入漏洞/" data-id="cjosdsx87002xcpt6v10x2txq" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/非web型xss注入漏洞/" data-id="cjotmrsoi002z5bt6o4wwn4ws" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
       
 
       
@@ -402,12 +404,13 @@
     </div>
 
 
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjosdsxd90065cpt6rtalstrw" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/甲方安全建设的一些思路和思考/" data-id="cjotmrsxb00675bt69s6gcen7" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
       
 
       
@@ -490,12 +493,13 @@
     </div>
 
 
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjosdsxd10060cpt6g9v6321i" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjotmrsx600605bt69ymyaw2b" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
@@ -523,16 +527,16 @@
 
 
   
-    <article id="post-fileupload" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-quick-SQL-cheatsheet" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/fileupload/" class="article-date">
+    <a href="/quick-SQL-cheatsheet/" class="article-date">
   <i class="fa fa-calendar"></i>
   <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/web安全/">web安全</a>
+    <a class="article-category-link" href="/categories/note/">note</a>
   </div>
 
 
@@ -546,8 +550,8 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/fileupload/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>文件上传漏洞总结</a>
+      <a class="article-title" href="/quick-SQL-cheatsheet/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>SQL 速查表</a>
     </h1>
   
 
@@ -563,11 +567,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。 </p>
-<p>上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。 </p>
+        <h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><ol>
+<li><a href="#find"> 查找数据的查询 </a></li>
+<li><a href="#modify"> 修改数据的查询 </a></li>
+<li><a href="#report"> 聚合查询 </a></li>
+<li><a href="#joins"> 连接查询 </a></li>
+<li><a href="#view"> 视图查询 </a></li>
+<li><a href="#alter"> 修改表的查询 </a><br><a href="https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md" target="_blank" rel="noopener">https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md</a></li>
+</ol>
         
           <p class="article-more-link ">
-            <a href="/fileupload/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/quick-SQL-cheatsheet/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
@@ -575,20 +585,21 @@
     </div>
 
 
-
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/fileupload/" data-id="cjosdsxak0054cpt6f09yhvub" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+        <a data-url="http://pa55w0rd.github.io/quick-SQL-cheatsheet/" data-id="cjotmrsml000n5bt6rxltckco" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
       
 
       
-        <a href="http://pa55w0rd.github.io/fileupload/#gitalk-container" class="article-comment-link">评论</a>
+        <a href="http://pa55w0rd.github.io/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">评论</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞利用/">漏洞利用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方法/">解决方法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础知识/">基础知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查表/">速查表</a></li></ul>
 
 
     </footer>
@@ -974,7 +985,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     const gitalk = new Gitalk({
       clientID: "992fba235eb173826494",
       clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
-      repo: "pa55w0rd.github.io",
+      repo: "www.pa55w0rd.club",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
@@ -1010,13 +1021,14 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
+
 
 <!-- 百度分享 end -->
 
 <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="//cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
 
 
 

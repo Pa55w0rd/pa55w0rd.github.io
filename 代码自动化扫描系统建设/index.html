@@ -15,42 +15,42 @@
 <meta name="keywords" content="平台建设,代码扫描">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码自动化扫描系统的建设（转发）">
-<meta property="og:url" content="http://pa55w0rd.github.io/代码自动化扫描系统建设/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.club/代码自动化扫描系统建设/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="转自 代码自动化扫描系统的建设- 唯品会安全应急响应中心  0x00 背景为什么需要自动化扫描？互联网的快速发展，程序员是功不可没的。从软件开发的瀑布模型到现在的敏捷开发, 软件的开发周期从数年到数月、从数月到数天，时间不断变换缩减。传统的代码扫描方式已经不能跟进新时代的软件开发流程中，这就需要改变我们的代码扫描方式，它应该在有限的时间内尽量发现足够多的安全问题，并能够结合 [CI (持续集成)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/1.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/2.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/3.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/4.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/5.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/6.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/7.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/8.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/9.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/10.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/11.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/12.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/13.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/14.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/15.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/16.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/17.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/18.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/19.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/20.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/21.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/22.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/23.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/24.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/25.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/26.png">
-<meta property="og:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/27.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/1.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/2.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/3.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/4.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/5.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/6.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/7.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/8.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/9.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/10.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/11.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/12.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/13.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/14.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/15.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/16.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/17.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/18.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/19.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/20.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/21.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/22.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/23.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/24.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/25.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/26.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/27.png">
 <meta property="og:updated_time" content="2018-11-21T08:55:15.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码自动化扫描系统的建设（转发）">
 <meta name="twitter:description" content="转自 代码自动化扫描系统的建设- 唯品会安全应急响应中心  0x00 背景为什么需要自动化扫描？互联网的快速发展，程序员是功不可没的。从软件开发的瀑布模型到现在的敏捷开发, 软件的开发周期从数年到数月、从数月到数天，时间不断变换缩减。传统的代码扫描方式已经不能跟进新时代的软件开发流程中，这就需要改变我们的代码扫描方式，它应该在有限的时间内尽量发现足够多的安全问题，并能够结合 [CI (持续集成)">
-<meta name="twitter:image" content="http://pa55w0rd.github.io/assets/img/auto_scan/1.png">
+<meta name="twitter:image" content="http://www.pa55w0rd.club/assets/img/auto_scan/1.png">
 
   
 
@@ -204,7 +204,7 @@ ga('send', 'pageview');
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="pa55w0rd.github.io">
+          <input type="hidden" name="si" value="www.pa55w0rd.club">
         </form>
       </div>
       -->
@@ -920,11 +920,11 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://pa55w0rd.github.io/代码自动化扫描系统建设/" data-id="cjotrp46z005vc1t6i4jfpze0" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/代码自动化扫描系统建设/" data-id="cjotug1w5005rg6t60gv0xtla" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
-        <a href="http://pa55w0rd.github.io/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.club/代码自动化扫描系统建设/#gitalk-container" class="article-comment-link">留言</a>
       
 
       

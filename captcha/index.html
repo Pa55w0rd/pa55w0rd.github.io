@@ -8,21 +8,21 @@
 
   
 
-  <title>解析漏洞 | Pa55w0rd &#39;s Blog</title>
+  <title>如何设计相对安全的图形验证码？ （转发） | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="文件解析漏洞,是指 Web 容器（Apache、nginx、iis 等）在解析文件时出现了漏洞,以其他格式执行出脚本格式的效果。从而,黑客可以利用该漏洞实现非法文件的解析。 IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.j">
-<meta name="keywords" content="漏洞利用">
+  <meta name="description" content="转自 https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA  0x00 验证码是什么验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。">
+<meta name="keywords" content="验证码安全,安全设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解析漏洞">
-<meta property="og:url" content="http://www.pa55w0rd.club/解析漏洞/index.html">
+<meta property="og:title" content="如何设计相对安全的图形验证码？ （转发）">
+<meta property="og:url" content="http://www.pa55w0rd.club/captcha/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="文件解析漏洞,是指 Web 容器（Apache、nginx、iis 等）在解析文件时出现了漏洞,以其他格式执行出脚本格式的效果。从而,黑客可以利用该漏洞实现非法文件的解析。 IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.j">
+<meta property="og:description" content="转自 https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA  0x00 验证码是什么验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-27T10:27:12.209Z">
+<meta property="og:updated_time" content="2018-11-27T10:09:23.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解析漏洞">
-<meta name="twitter:description" content="文件解析漏洞,是指 Web 容器（Apache、nginx、iis 等）在解析文件时出现了漏洞,以其他格式执行出脚本格式的效果。从而,黑客可以利用该漏洞实现非法文件的解析。 IIS 5.x/6.0解析漏洞 目录解析  在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。  例如创建目录 xx.asp，那么/xx.asp/xx.j">
+<meta name="twitter:title" content="如何设计相对安全的图形验证码？ （转发）">
+<meta name="twitter:description" content="转自 https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA  0x00 验证码是什么验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。">
 
   
 
@@ -186,11 +186,11 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-解析漏洞" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-captcha" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/解析漏洞/" class="article-date">
+    <a href="/captcha/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
+  <time datetime="2018-11-27T10:02:10.000Z" itemprop="datePublished">2018-11-27</time>
 </a>
 
     
@@ -209,7 +209,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      <i class="fa fa-pencil-square-o  article-title-icon"></i>解析漏洞
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>如何设计相对安全的图形验证码？ （转发）
     </h1>
   
 
@@ -225,7 +225,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-5-x-6-0解析漏洞"><span class="toc-number">1.</span> <span class="toc-text">IIS 5.x/6.0解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞"><span class="toc-number">2.</span> <span class="toc-text">IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nginx-lt-8-03-空字节代码执行漏洞"><span class="toc-number">3.</span> <span class="toc-text">Nginx &lt;8.03 空字节代码执行漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Apache解析漏洞"><span class="toc-number">4.</span> <span class="toc-text">Apache解析漏洞</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lighttpd"><span class="toc-number">5.</span> <span class="toc-text">lighttpd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">6.</span> <span class="toc-text">其他</span></a></li></ol>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-验证码是什么"><span class="toc-number">1.</span> <span class="toc-text">0x00 验证码是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-有什么作用"><span class="toc-number">2.</span> <span class="toc-text">0x01 有什么作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-设计或使用方法不当"><span class="toc-number">3.</span> <span class="toc-text">0x02 设计或使用方法不当</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-如何设计出一个相对安全的图形验证码"><span class="toc-number">4.</span> <span class="toc-text">0x03 如何设计出一个相对安全的图形验证码</span></a></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -251,43 +251,40 @@ ga('send', 'pageview');
       
         
         
-          <p>文件解析漏洞,是指 Web 容器（Apache、nginx、iis 等）在解析文件时出现了漏洞,以其他格式执行出脚本格式的效果。从而,黑客可以利用该漏洞实现非法文件的解析。</p>
-<h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
-<li><p>目录解析</p>
-<p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
-<p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
-<p> /xx.asp/xx.jpg</p>
- <a id="more"></a>
-</li>
-<li><p>文件解析</p>
-<p> 在IIS6.0下，分号后面的不被解析，也就是说xx.asp;.jpg会被服务器看成是xx.asp</p>
-<p> xx.asp;.jpg</p>
-<p> 另外IIS6.0 默认的可执行文件除了asp还包含这三种:</p>
-<p> /shell.asa</p>
-<p> /shell.cer</p>
-<p> /shell.cdx</p>
-</li>
+          <blockquote>
+<p>转自 <a href="https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA</a></p>
+</blockquote>
+<h2 id="0x00-验证码是什么"><a href="#0x00-验证码是什么" class="headerlink" title="0x00 验证码是什么"></a>0x00 验证码是什么</h2><p>验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。</p>
+<h2 id="0x01-有什么作用"><a href="#0x01-有什么作用" class="headerlink" title="0x01 有什么作用"></a>0x01 有什么作用</h2><p>简单概括如下：</p>
+<p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　</p>
+<p>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p>
+<h2 id="0x02-设计或使用方法不当"><a href="#0x02-设计或使用方法不当" class="headerlink" title="0x02 设计或使用方法不当"></a>0x02 设计或使用方法不当</h2><ol>
+<li>图形验证码数值在返回包中返回前端(可通过自动化程序输入验证码，导致验证码无效，导致防护失效)</li>
+<li>图形验证码的值由前端生成，发送到后端形成图片</li>
+<li>图形验证码验证后不失效（成功或失败都应该失效）,可以无限复用</li>
+<li>单独验证图形验证码，正确返回1，错误返回0，而认证请求却不包含图形验证码（可以绕过前端验证）</li>
+<li>万能图形验证码（测试环境为方便设置的万能验证码，上线后未关闭）</li>
+<li>验证码参数值为空时不检测图形验证码</li>
+<li>无验证码参数时(参数名和参数值都不存在)不检测图形验证码(一般是之前设计的时候没加图形验证码，后期添加图形验证码时保留了老接口)</li>
+<li>验证码大小值由前端控制,后端无大小检测(生成超大图形验证码，造成内存耗尽，拒绝服务)</li>
+<li>图形验证码过于简单(无扭曲，无干扰线导致，可自动化图像识别)</li>
+<li>认证过程中，先验证账号密码，后验证图形验证码(逻辑顺序有误，验证码起不到防护作用)</li>
+<li>验证码图片中数值不够随机，可预测导致可以猜解。</li>
 </ol>
-<h2 id="IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞"><a href="#IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞" class="headerlink" title="IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞"></a>IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞</h2><p>在默认Fast-CGI开启状况下,上传一个名字为xx.jpg，内容为<br><code>&lt;?PHP fputs(fopen(‘shell.php’,’w’),&#39;&lt;?php eval($_POST[cmd])?&gt;’);?&gt;</code><br>的文件，然后访问xx.jpg/.php,在这个目录下就会生成一句话木马 shell.php</p>
-<p>e.g. 将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
-<p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
-<ul>
-<li><p>/b 即二进制[binary]模式</p>
-</li>
-<li><p>/a 即ascii模式 xx.jpg正常图片文件 </p>
-</li>
-</ul>
-<h2 id="Nginx-lt-8-03-空字节代码执行漏洞"><a href="#Nginx-lt-8-03-空字节代码执行漏洞" class="headerlink" title="Nginx &lt;8.03 空字节代码执行漏洞"></a>Nginx &lt;8.03 空字节代码执行漏洞</h2><p>影响版本:0.5.,0.6., 0.7 &lt;= 0.7.65, 0.8 &lt;= 0.8.37</p>
-<p>Nginx在图片中嵌入PHP代码然后通过访问</p>
-<p>xxx.jpg%00.php</p>
-<p>来执行其中的代码</p>
-<h2 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h2><p>Apache1.x，2.x 中解析文件的规则是从右到左开始判断解析,如果为不可识别解析,就再往左判断.</p>
-<p>比如上传一个shell.php.a.rar文件绕过验证且 “.a”和”.rar” 这两种后缀是apache不可识别解析,apache就会把shell.php.a.rar解析成php</p>
-<h2 id="lighttpd"><a href="#lighttpd" class="headerlink" title="lighttpd"></a>lighttpd</h2><p>xx.jpg/xx.php</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在windows环境下，xx.jpg[空格] 或xx.jpg. 这两类文件都是不允许存在的，若这样命名，windows会默认除去空格或点，利用windows的这种特性，通过抓包在文件名后加一个空格或者点绕过黑名单.若上传成功，空格和点都会被windows自动消除,这样也可以getshell。</p>
-<p>如果在Apache中.htaccess可被执行.且可被上传.那可以尝试在.htaccess中写入:</p>
-<p><code>&lt;FilesMatch &quot;shell.jpg&quot;&gt; SetHandler application/x-httpd-php &lt;/FilesMatch&gt;</code></p>
-<p>然后再上传shell.jpg的木马, 这样shell.jpg就可解析为php文件</p>
+<h2 id="0x03-如何设计出一个相对安全的图形验证码"><a href="#0x03-如何设计出一个相对安全的图形验证码" class="headerlink" title="0x03 如何设计出一个相对安全的图形验证码"></a>0x03 如何设计出一个相对安全的图形验证码</h2><p><strong>设计上：</strong></p>
+<ol>
+<li>验证码字符集合和长度应可配置，至少四位，不允许单独使用英文字符或数字。</li>
+<li>验证码要能够置设置背景色、字符颜色、字符旋转、扭曲、字符粘连等，要添加干扰线，干扰线的颜色、尺寸和数量要可通过配置进行设定。</li>
+<li>验证码生成过程中不仅要使用安全随机函数还要确保种子绝对随机的，保证每次生成验证码的唯一性和不可预测性，防止重放攻击。</li>
+<li>针对一次请求生成的验证码只能用一次，用完立即过期。每次生成的验证码不允许跨会话和请求使用。</li>
+<li>验证码内容不允许以任何形式输出到客户端包括验证码的MD5值、 Base64转码值等。</li>
+</ol>
+<p><strong>另外图形验证码使用上应注意：</strong></p>
+<ol>
+<li>验证码参数和认证参数需要一起提交，到后端验证时要先验证验证码，正确后再进行后续认证。</li>
+<li>后台系统中验证码的验证逻辑要先于口令的验证，只有通过验证码的验证后才能进行用户名、口令等其他身份信息的验证过程。</li>
+<li>线上系统不应存在万能验证码，或不验证验证码内容的情况</li>
+</ol>
 
         
 <!--
@@ -295,43 +292,40 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>文件解析漏洞,是指 Web 容器（Apache、nginx、iis 等）在解析文件时出现了漏洞,以其他格式执行出脚本格式的效果。从而,黑客可以利用该漏洞实现非法文件的解析。</p>
-<h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
-<li><p>目录解析</p>
-<p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
-<p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
-<p> /xx.asp/xx.jpg</p>
- <a id="more"></a>
-</li>
-<li><p>文件解析</p>
-<p> 在IIS6.0下，分号后面的不被解析，也就是说xx.asp;.jpg会被服务器看成是xx.asp</p>
-<p> xx.asp;.jpg</p>
-<p> 另外IIS6.0 默认的可执行文件除了asp还包含这三种:</p>
-<p> /shell.asa</p>
-<p> /shell.cer</p>
-<p> /shell.cdx</p>
-</li>
+        <blockquote>
+<p>转自 <a href="https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA</a></p>
+</blockquote>
+<h2 id="0x00-验证码是什么"><a href="#0x00-验证码是什么" class="headerlink" title="0x00 验证码是什么"></a>0x00 验证码是什么</h2><p>验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。</p>
+<h2 id="0x01-有什么作用"><a href="#0x01-有什么作用" class="headerlink" title="0x01 有什么作用"></a>0x01 有什么作用</h2><p>简单概括如下：</p>
+<p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　</p>
+<p>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p>
+<h2 id="0x02-设计或使用方法不当"><a href="#0x02-设计或使用方法不当" class="headerlink" title="0x02 设计或使用方法不当"></a>0x02 设计或使用方法不当</h2><ol>
+<li>图形验证码数值在返回包中返回前端(可通过自动化程序输入验证码，导致验证码无效，导致防护失效)</li>
+<li>图形验证码的值由前端生成，发送到后端形成图片</li>
+<li>图形验证码验证后不失效（成功或失败都应该失效）,可以无限复用</li>
+<li>单独验证图形验证码，正确返回1，错误返回0，而认证请求却不包含图形验证码（可以绕过前端验证）</li>
+<li>万能图形验证码（测试环境为方便设置的万能验证码，上线后未关闭）</li>
+<li>验证码参数值为空时不检测图形验证码</li>
+<li>无验证码参数时(参数名和参数值都不存在)不检测图形验证码(一般是之前设计的时候没加图形验证码，后期添加图形验证码时保留了老接口)</li>
+<li>验证码大小值由前端控制,后端无大小检测(生成超大图形验证码，造成内存耗尽，拒绝服务)</li>
+<li>图形验证码过于简单(无扭曲，无干扰线导致，可自动化图像识别)</li>
+<li>认证过程中，先验证账号密码，后验证图形验证码(逻辑顺序有误，验证码起不到防护作用)</li>
+<li>验证码图片中数值不够随机，可预测导致可以猜解。</li>
 </ol>
-<h2 id="IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞"><a href="#IIS-7-0-IIS-7-5-Nginx-lt-8-03畸形解析漏洞" class="headerlink" title="IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞"></a>IIS 7.0/IIS 7.5/ Nginx &lt;8.03畸形解析漏洞</h2><p>在默认Fast-CGI开启状况下,上传一个名字为xx.jpg，内容为<br><code>&lt;?PHP fputs(fopen(‘shell.php’,’w’),&#39;&lt;?php eval($_POST[cmd])?&gt;’);?&gt;</code><br>的文件，然后访问xx.jpg/.php,在这个目录下就会生成一句话木马 shell.php</p>
-<p>e.g. 将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
-<p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
-<ul>
-<li><p>/b 即二进制[binary]模式</p>
-</li>
-<li><p>/a 即ascii模式 xx.jpg正常图片文件 </p>
-</li>
-</ul>
-<h2 id="Nginx-lt-8-03-空字节代码执行漏洞"><a href="#Nginx-lt-8-03-空字节代码执行漏洞" class="headerlink" title="Nginx &lt;8.03 空字节代码执行漏洞"></a>Nginx &lt;8.03 空字节代码执行漏洞</h2><p>影响版本:0.5.,0.6., 0.7 &lt;= 0.7.65, 0.8 &lt;= 0.8.37</p>
-<p>Nginx在图片中嵌入PHP代码然后通过访问</p>
-<p>xxx.jpg%00.php</p>
-<p>来执行其中的代码</p>
-<h2 id="Apache解析漏洞"><a href="#Apache解析漏洞" class="headerlink" title="Apache解析漏洞"></a>Apache解析漏洞</h2><p>Apache1.x，2.x 中解析文件的规则是从右到左开始判断解析,如果为不可识别解析,就再往左判断.</p>
-<p>比如上传一个shell.php.a.rar文件绕过验证且 “.a”和”.rar” 这两种后缀是apache不可识别解析,apache就会把shell.php.a.rar解析成php</p>
-<h2 id="lighttpd"><a href="#lighttpd" class="headerlink" title="lighttpd"></a>lighttpd</h2><p>xx.jpg/xx.php</p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>在windows环境下，xx.jpg[空格] 或xx.jpg. 这两类文件都是不允许存在的，若这样命名，windows会默认除去空格或点，利用windows的这种特性，通过抓包在文件名后加一个空格或者点绕过黑名单.若上传成功，空格和点都会被windows自动消除,这样也可以getshell。</p>
-<p>如果在Apache中.htaccess可被执行.且可被上传.那可以尝试在.htaccess中写入:</p>
-<p><code>&lt;FilesMatch &quot;shell.jpg&quot;&gt; SetHandler application/x-httpd-php &lt;/FilesMatch&gt;</code></p>
-<p>然后再上传shell.jpg的木马, 这样shell.jpg就可解析为php文件</p>
+<h2 id="0x03-如何设计出一个相对安全的图形验证码"><a href="#0x03-如何设计出一个相对安全的图形验证码" class="headerlink" title="0x03 如何设计出一个相对安全的图形验证码"></a>0x03 如何设计出一个相对安全的图形验证码</h2><p><strong>设计上：</strong></p>
+<ol>
+<li>验证码字符集合和长度应可配置，至少四位，不允许单独使用英文字符或数字。</li>
+<li>验证码要能够置设置背景色、字符颜色、字符旋转、扭曲、字符粘连等，要添加干扰线，干扰线的颜色、尺寸和数量要可通过配置进行设定。</li>
+<li>验证码生成过程中不仅要使用安全随机函数还要确保种子绝对随机的，保证每次生成验证码的唯一性和不可预测性，防止重放攻击。</li>
+<li>针对一次请求生成的验证码只能用一次，用完立即过期。每次生成的验证码不允许跨会话和请求使用。</li>
+<li>验证码内容不允许以任何形式输出到客户端包括验证码的MD5值、 Base64转码值等。</li>
+</ol>
+<p><strong>另外图形验证码使用上应注意：</strong></p>
+<ol>
+<li>验证码参数和认证参数需要一起提交，到后端验证时要先验证验证码，正确后再进行后续认证。</li>
+<li>后台系统中验证码的验证逻辑要先于口令的验证，只有通过验证码的验证后才能进行用户名、口令等其他身份信息的验证过程。</li>
+<li>线上系统不应存在万能验证码，或不验证验证码内容的情况</li>
+</ol>
 -->
       
 
@@ -344,15 +338,15 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/解析漏洞/" data-id="cjozkxr61002q6kt6oq9dc68f" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/captcha/" data-id="cjozkxr2u00096kt675m7vzm5" class="article-share-link" data-share="baidu" data-title="如何设计相对安全的图形验证码？ （转发）">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/解析漏洞/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.club/captcha/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞利用/">漏洞利用</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全设计/">安全设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/验证码安全/">验证码安全</a></li></ul>
 
 
     </footer>
@@ -361,20 +355,11 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/msfvenom 使用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/sqlmap/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">msfvenom 使用</div>
+      <div class="article-nav-title">sqlmap笔记</div>
     </a>
   
-  
-    <a href="/快速定位前端加密方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇 →</strong>
-      <div class="article-nav-title">
-        
-          快速定位前端加密方法（转发）
-        
-      </div>
-    </a>
   
 </nav>
 
@@ -766,7 +751,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Fri Oct 19 2018 17:23:03 GMT+0800",      // Ensure uniqueness and length less than 50
+      id: "Tue Nov 27 2018 18:02:10 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

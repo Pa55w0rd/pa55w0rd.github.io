@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.club/"/>
-  <updated>2018-11-27T10:09:23.816Z</updated>
+  <updated>2018-11-27T10:46:09.333Z</updated>
   <id>http://www.pa55w0rd.club/</id>
   
   <author>
@@ -21,17 +21,18 @@
     <link href="http://www.pa55w0rd.club/captcha/"/>
     <id>http://www.pa55w0rd.club/captcha/</id>
     <published>2018-11-27T10:02:10.000Z</published>
-    <updated>2018-11-27T10:09:23.816Z</updated>
+    <updated>2018-11-27T10:46:09.333Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>转自 <a href="https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA</a></p></blockquote><h2 id="0x00-验证码是什么"><a href="#0x00-验证码是什么" class="headerlink" title="0x00 验证码是什么"></a>0x00 验证码是什么</h2><p>验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。</p><h2 id="0x01-有什么作用"><a href="#0x01-有什么作用" class="headerlink" title="0x01 有什么作用"></a>0x01 有什么作用</h2><p>简单概括如下：</p><p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　</p><p>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p><h2 id="0x02-设计或使用方法不当"><a href="#0x02-设计或使用方法不当" class="headerlink" title="0x02 设计或使用方法不当"></a>0x02 设计或使用方法不当</h2><ol><li>图形验证码数值在返回包中返回前端(可通过自动化程序输入验证码，导致验证码无效，导致防护失效)</li><li>图形验证码的值由前端生成，发送到后端形成图片</li><li>图形验证码验证后不失效（成功或失败都应该失效）,可以无限复用</li><li>单独验证图形验证码，正确返回1，错误返回0，而认证请求却不包含图形验证码（可以绕过前端验证）</li><li>万能图形验证码（测试环境为方便设置的万能验证码，上线后未关闭）</li><li>验证码参数值为空时不检测图形验证码</li><li>无验证码参数时(参数名和参数值都不存在)不检测图形验证码(一般是之前设计的时候没加图形验证码，后期添加图形验证码时保留了老接口)</li><li>验证码大小值由前端控制,后端无大小检测(生成超大图形验证码，造成内存耗尽，拒绝服务)</li><li>图形验证码过于简单(无扭曲，无干扰线导致，可自动化图像识别)</li><li>认证过程中，先验证账号密码，后验证图形验证码(逻辑顺序有误，验证码起不到防护作用)</li><li>验证码图片中数值不够随机，可预测导致可以猜解。</li></ol><h2 id="0x03-如何设计出一个相对安全的图形验证码"><a href="#0x03-如何设计出一个相对安全的图形验证码" class="headerlink" title="0x03 如何设计出一个相对安全的图形验证码"></a>0x03 如何设计出一个相对安全的图形验证码</h2><p><strong>设计上：</strong></p><ol><li>验证码字符集合和长度应可配置，至少四位，不允许单独使用英文字符或数字。</li><li>验证码要能够置设置背景色、字符颜色、字符旋转、扭曲、字符粘连等，要添加干扰线，干扰线的颜色、尺寸和数量要可通过配置进行设定。</li><li>验证码生成过程中不仅要使用安全随机函数还要确保种子绝对随机的，保证每次生成验证码的唯一性和不可预测性，防止重放攻击。</li><li>针对一次请求生成的验证码只能用一次，用完立即过期。每次生成的验证码不允许跨会话和请求使用。</li><li>验证码内容不允许以任何形式输出到客户端包括验证码的MD5值、 Base64转码值等。</li></ol><p><strong>另外图形验证码使用上应注意：</strong></p><ol><li>验证码参数和认证参数需要一起提交，到后端验证时要先验证验证码，正确后再进行后续认证。</li><li>后台系统中验证码的验证逻辑要先于口令的验证，只有通过验证码的验证后才能进行用户名、口令等其他身份信息的验证过程。</li><li>线上系统不应存在万能验证码，或不验证验证码内容的情况</li></ol>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>转自 <a href="https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA</a></p></blockquote><h2 id="0x00-验证码是什么"><a href="#0x00-验证码是什么" class="headerlink" title="0x00 验证码是什么"></a>0x00 验证码是什么</h2><p>验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。</p><h2 id="0x01-有什么作用"><a href="#0x01-有什么作用" class="headerlink" title="0x01 有什么作用"></a>0x01 有什么作用</h2><p>简单概括如下：</p><p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　<br><a id="more"></a><br>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p><h2 id="0x02-设计或使用方法不当"><a href="#0x02-设计或使用方法不当" class="headerlink" title="0x02 设计或使用方法不当"></a>0x02 设计或使用方法不当</h2><ol><li>图形验证码数值在返回包中返回前端(可通过自动化程序输入验证码，导致验证码无效，导致防护失效)</li><li>图形验证码的值由前端生成，发送到后端形成图片</li><li>图形验证码验证后不失效（成功或失败都应该失效）,可以无限复用</li><li>单独验证图形验证码，正确返回1，错误返回0，而认证请求却不包含图形验证码（可以绕过前端验证）</li><li>万能图形验证码（测试环境为方便设置的万能验证码，上线后未关闭）</li><li>验证码参数值为空时不检测图形验证码</li><li>无验证码参数时(参数名和参数值都不存在)不检测图形验证码(一般是之前设计的时候没加图形验证码，后期添加图形验证码时保留了老接口)</li><li>验证码大小值由前端控制,后端无大小检测(生成超大图形验证码，造成内存耗尽，拒绝服务)</li><li>图形验证码过于简单(无扭曲，无干扰线导致，可自动化图像识别)</li><li>认证过程中，先验证账号密码，后验证图形验证码(逻辑顺序有误，验证码起不到防护作用)</li><li>验证码图片中数值不够随机，可预测导致可以猜解。</li></ol><h2 id="0x03-如何设计出一个相对安全的图形验证码"><a href="#0x03-如何设计出一个相对安全的图形验证码" class="headerlink" title="0x03 如何设计出一个相对安全的图形验证码"></a>0x03 如何设计出一个相对安全的图形验证码</h2><p><strong>设计上：</strong></p><ol><li>验证码字符集合和长度应可配置，至少四位，不允许单独使用英文字符或数字。</li><li>验证码要能够置设置背景色、字符颜色、字符旋转、扭曲、字符粘连等，要添加干扰线，干扰线的颜色、尺寸和数量要可通过配置进行设定。</li><li>验证码生成过程中不仅要使用安全随机函数还要确保种子绝对随机的，保证每次生成验证码的唯一性和不可预测性，防止重放攻击。</li><li>针对一次请求生成的验证码只能用一次，用完立即过期。每次生成的验证码不允许跨会话和请求使用。</li><li>验证码内容不允许以任何形式输出到客户端包括验证码的MD5值、 Base64转码值等。</li></ol><p><strong>另外图形验证码使用上应注意：</strong></p><ol><li>验证码参数和认证参数需要一起提交，到后端验证时要先验证验证码，正确后再进行后续认证。</li><li>后台系统中验证码的验证逻辑要先于口令的验证，只有通过验证码的验证后才能进行用户名、口令等其他身份信息的验证过程。</li><li>线上系统不应存在万能验证码，或不验证验证码内容的情况</li></ol>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;转自 &lt;a href=&quot;https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://mp.weixin.qq.com/s/5hU
-      
+      &lt;blockquote&gt;
+&lt;p&gt;转自 &lt;a href=&quot;https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;0x00-验证码是什么&quot;&gt;&lt;a href=&quot;#0x00-验证码是什么&quot; class=&quot;headerlink&quot; title=&quot;0x00 验证码是什么&quot;&gt;&lt;/a&gt;0x00 验证码是什么&lt;/h2&gt;&lt;p&gt;验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。&lt;/p&gt;
+&lt;h2 id=&quot;0x01-有什么作用&quot;&gt;&lt;a href=&quot;#0x01-有什么作用&quot; class=&quot;headerlink&quot; title=&quot;0x01 有什么作用&quot;&gt;&lt;/a&gt;0x01 有什么作用&lt;/h2&gt;&lt;p&gt;简单概括如下：&lt;/p&gt;
+&lt;p&gt;验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　&lt;br&gt;
     
     </summary>
     

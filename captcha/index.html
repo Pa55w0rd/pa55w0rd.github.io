@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="转自 https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA  0x00 验证码是什么验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-27T10:09:23.816Z">
+<meta property="og:updated_time" content="2018-11-27T10:46:09.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何设计相对安全的图形验证码？ （转发）">
 <meta name="twitter:description" content="转自 https://mp.weixin.qq.com/s/5hUS9Mbc1NHi5MEZpGcGEA  0x00 验证码是什么验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。">
@@ -256,8 +256,7 @@ ga('send', 'pageview');
 </blockquote>
 <h2 id="0x00-验证码是什么"><a href="#0x00-验证码是什么" class="headerlink" title="0x00 验证码是什么"></a>0x00 验证码是什么</h2><p>验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。</p>
 <h2 id="0x01-有什么作用"><a href="#0x01-有什么作用" class="headerlink" title="0x01 有什么作用"></a>0x01 有什么作用</h2><p>简单概括如下：</p>
-<p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　</p>
-<p>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p>
+<p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　<br><a id="more"></a><br>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p>
 <h2 id="0x02-设计或使用方法不当"><a href="#0x02-设计或使用方法不当" class="headerlink" title="0x02 设计或使用方法不当"></a>0x02 设计或使用方法不当</h2><ol>
 <li>图形验证码数值在返回包中返回前端(可通过自动化程序输入验证码，导致验证码无效，导致防护失效)</li>
 <li>图形验证码的值由前端生成，发送到后端形成图片</li>
@@ -297,8 +296,7 @@ ga('send', 'pageview');
 </blockquote>
 <h2 id="0x00-验证码是什么"><a href="#0x00-验证码是什么" class="headerlink" title="0x00 验证码是什么"></a>0x00 验证码是什么</h2><p>验证码（CAPTCHA）即“Completely Automated Public Turing test to tell Computers and Humans Apart”（全自动区分计算机和人类的图灵测试）的缩写，是一种区分用户是计算机还是人的公共全自动程序。</p>
 <h2 id="0x01-有什么作用"><a href="#0x01-有什么作用" class="headerlink" title="0x01 有什么作用"></a>0x01 有什么作用</h2><p>简单概括如下：</p>
-<p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　</p>
-<p>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p>
+<p>验证码在网络投票、交友论坛、网上商城等业务中，经常用来防止恶意用户侵入、恶意灌水、刷票，爆破、撞库、接口滥用等问题，为防止客户端用程序进行自动识别，因此图片中通常要加上一些干扰象素，由用户肉眼识别其中的验证码信息。客户输入表单提交时，验证码也提交给网站服务器，只有验证成功，才能执行相应的操作，其在Web安全中有着重要的应用。 　　<br><a id="more"></a><br>好了，废话不多说，为了回答我们最初的问题，我们必须要知道图形验证码在设计和使用中有哪些坑，哪些地方容易出问题。</p>
 <h2 id="0x02-设计或使用方法不当"><a href="#0x02-设计或使用方法不当" class="headerlink" title="0x02 设计或使用方法不当"></a>0x02 设计或使用方法不当</h2><ol>
 <li>图形验证码数值在返回包中返回前端(可通过自动化程序输入验证码，导致验证码无效，导致防护失效)</li>
 <li>图形验证码的值由前端生成，发送到后端形成图片</li>
@@ -338,7 +336,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/captcha/" data-id="cjozkxr2u00096kt675m7vzm5" class="article-share-link" data-share="baidu" data-title="如何设计相对安全的图形验证码？ （转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/captcha/" data-id="cjp10h3q9000160t6fc293ppv" class="article-share-link" data-share="baidu" data-title="如何设计相对安全的图形验证码？ （转发）">分享到</a>
       
 
       

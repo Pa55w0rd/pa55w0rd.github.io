@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-27T10:19:20.656Z">
+<meta property="og:updated_time" content="2018-11-28T08:12:54.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="渗透测试流程">
 <meta name="twitter:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
@@ -313,7 +313,8 @@ ga('send', 'pageview');
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a href="http://www.cnblogs.com/dongchi/p/4155368.html" target="_blank" rel="noopener">ip反查</a>，Nmap，Zenmap。</p>
 </li>
 <li><p>指纹识别</p>
-<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br><br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞。<br></p>
+<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br><br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</p>
+<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
 <ul>
 <li>使用浏览器插件(wappalyzer)可以很方便的查看这些信息<br></li>
 <li>使用nc 或telnet 可以观察数据包特征或者网页加载的特殊文件来识别cms，如<code>nc xxx.com 80</code></li>
@@ -326,7 +327,8 @@ ga('send', 'pageview');
 <li>HTML 源代码</li>
 <li>特定文件和文件夹，例如/templets/default/style/dedecms.css — dedecms</li>
 <li>网站独有文件的md5，例如favicon.ico</li>
-<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>用什么框架开发的，如Thinkphp、struts2</li>
+<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc、默认的后台登录页/数据库服务端口认证等进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>用什么框架开发的，如Thinkphp、struts2，很多网站都利用开源的框架来快速开发网站，所以收集网站的框架信息也是非常关键的。 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">开源的软件</span><br><span class="line"></span><br><span class="line">常见的开源软件有：wordpress、phpbb、dedecms等</span><br><span class="line">开源的框架</span><br><span class="line"></span><br><span class="line">常见的开源框架有：<span class="keyword">Struts2、 </span>Spring MVC、ThinkPHP等</span><br><span class="line">中间件服务器</span><br><span class="line"></span><br><span class="line">常见的中间件服务器有：jboss、tomcat、Weblogic等</span><br><span class="line">数据库服务</span><br><span class="line"></span><br><span class="line">常见的数据库服务：mssql、mysql、oracle、redis、sybase、MongoDB、DB2等</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>是否使用负载均衡，负载均衡是通过在多个服务器中分割WEB流量，来确保单个服务器的请求不会超载，一般不可见，但是有可能极大的改变渗透测试的进程。当发出请求的时候，负载均衡可能将请求交给其中的一个服务器来处理。每个服务器的应用结构虽然相同，但是文件夹不同、补丁级别不同及其他配置可能完全不同</p>
 </li>
@@ -641,9 +643,9 @@ ga('send', 'pageview');
 <p>  通过域名MX记录查看是否为自建邮件服务器，自建的情况下可以后续测试漏洞，通过TheHarvester可以进行邮箱挖掘，没有找到漏洞也可以进行钓鱼</p>
 </li>
 <li><p>了解网站业务功能</p>
-<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
+<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆/留言/下单/退出/退货/付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
 </li>
-<li><p>了解网站结构</p>
+<li><p>了解网站目录的结构</p>
 <p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫</p>
 </li>
 <li><p>企业及员工信息收集</p>
@@ -670,7 +672,7 @@ ga('send', 'pageview');
 </ul>
 <ul>
 <li><p>sql注入</p>
-<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  <strong>其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong>，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  何防止SQL注入：<br></p>
+<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  <strong>其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong>，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  <strong>何防止SQL注入：</strong><br></p>
 <ul>
 <li>不信任用户的输入；</li>
 <li>不使用动态拼接sql，可使用参数化的sql或直接使用存储过程进行数据查询存取；</li>
@@ -681,15 +683,38 @@ ga('send', 'pageview');
 </ul>
 </li>
 <li><p>xss漏洞</p>
-<p>  <strong>定义</strong>：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br><br>  前端漏洞也是一个很大的板块，在做渗透测试的时候我们需要抓住一些细微的点，对每一个输出点都尽可能的测试，并且想方设法的去绕过<br><br>  如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）<br></p>
-<ul>
-<li>将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；</li>
-<li>只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；</li>
-<li>对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；</li>
-<li>过滤或移除特殊的Html标签，如：script、iframe；</li>
-<li>过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。</li>
-</ul>
+<p>  <strong>定义</strong>：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br><br>  前端漏洞也是一个很大的板块，在做渗透测试的时候我们需要抓住一些细微的点，对每一个输出点都尽可能的测试，并且想方设法的去绕过<br></p>
+<p>  <strong>XSS可能发生的场景</strong></p>
+<ol>
+<li><p>在HTML标签中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>$var<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在这种场景下，XSS的利用方式一般是构造一个&lt;script&gt;标签，或者是任何能够产生脚本执行的方式。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">#</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p>在HTML属性中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"abc"</span> <span class="attr">name</span>=<span class="string">"$var"</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--灵活构造XSS PAYLOAD--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"abc"</span> <span class="attr">name</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">""</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>&lt;script&gt;</code>标签中输出 </p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> x = <span class="string">"$var"</span>;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--攻击者需要先闭合引号才能实施XSS攻击--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> x = <span class="string">""</span>;alert(<span class="regexp">/xss/</span>);<span class="comment">//";</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在事件中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">"funcA('$var')"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可能的攻击方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">"funcA('');alert(/xss/);  //')"</span>     &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在CSS中输出</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>($&#123;xss&#125;);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在<span class="selector-tag">CSS</span>中输出同样存在<span class="selector-tag">XSS</span>的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"javascript:alert('XSS')"</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>(alert(/xss/));&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出<br> <a href="http://www.evil.com/?test=$var" target="_blank" rel="noopener">test</a><br> <a href="http://www.evil.com/?test=" onclick="alert(1)" ""="" target="_blank" rel="noopener">test</a></p>
+<p> 防御方法：使用URLEncode</p>
+<p> 6.2 整个URL能够被用户控制<br> 这时URL的Protocol和Host部分是不能够使用URLEncode的<br> <a href="$var">test</a><br> 攻击方法：<br> <a href="javascript:alert(1);" target="_blank" rel="noopener">test</a><br> <a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=" target="_blank" rel="noopener">test</a><br> 防御方法：检查变量是否以”http”开头，再对变量进行URLEncode，OWASP中有函数ESAPI.encoder().encoderForURL()，但此API未解决伪协议的问题。</p>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>**如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）**&lt;br&gt;
+- 将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；
+- 只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；
+- 对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；
+- 过滤或移除特殊的Html标签，如：script、iframe；
+- 过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。
+</code></pre><ul>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
 <p>  更多<a href="http://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
@@ -701,15 +726,20 @@ ga('send', 'pageview');
 <p>  逻辑漏洞包括任意重置用户密码，修改订单等等，这类漏洞是扫描器所不能扫描出来的，所以需要我们认真分析整个站点的功能，分析其逻辑，多用burpsuite抓包观察数据包是否可篡改，验证码是否可爆破等等</p>
 </li>
 <li><p>csrf</p>
-<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
+<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  攻击者迫使web应用的用户去执行攻击者预设的操作，如果服务器没有合适的防御措施，用户即使访问熟悉的可信网站（生成的poc可以隐藏到论坛/blog等用户生成内容的网站中）也有受到攻击的危险</p>
+<p>  攻击者并不能通过CSRF攻击来直接获取用户的账户控制权，也不能直接窃取用户的任何信息。他们能做到的，是欺骗用户浏览器，让其以用户的名义执行操作。</p>
+<p>  因此对于用户来说很难避免在登陆一个网站之后不点击一些链接进行其他操作，所以随时可能成为CSRF的受害者。</p>
+<p>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
 <p>  如何防止CSRF跨站请求攻击：<br></p>
 <ul>
 <li>在web站点，将持久化的授权（例如cookie或者http授权）切换为瞬时的授权方法（在每个form中提供隐藏field）；</li>
-<li>验证码，强化用户与应用的交互，但不是任何请求都加验证码；</li>
+<li>验证码，强化用户与应用的交互，但每个请求都加验证码，用户友好性体验差，不适合实际使用；</li>
 <li>在HTTP头中自定义属性并验证 + One time tokens；</li>
 <li>检查请求header中的referer也能帮助组织CSRF攻击，但服务器不是总能拿到referer，有些浏览器出于安全会隐私考虑会不发referer，所以也不常用； </li>
 <li>在浏览其它站点前退出登录站点或者浏览结束后清理浏览器cookies；</li>
-<li>生成一个随机的token，在用户提交数据的同时提交这个token，服务器端对比后如果不正确，则拒绝执行操作。</li>
+<li><p>不同的表单包含一个随机的token，在用户提交数据的同时提交这个token，服务器端对比后如果不正确，则拒绝执行操作。<br>  这里是对token的建议如果是已登录的界面给予建议：在前端生成含有 <strong>用户id|当前时间|当前用户ip</strong>可逆的组合加密项(注意是加密不是编码，切忌不要用base64等常见编码当加密措施)，然后后端接收到token然后解密并验证用户ID是否与当前cookie中的用户id一致、用户当前IP是否一致、用户提交的时间与当前时间间隔，如果差距在30分钟以上那么需要用户重新刷新表单提交。</p>
+<p>  首先当用户第一次访问页面的时候，服务端可以获取到用户的ID、用户的当前IP、当前用户访问的时间等一些相关信息，利用这些信息组合做一个可逆向的加密，返回给前端，在前端生成一个input  hidden项 name为token，直接放入 value，如果用户执行页面的一些操作Get、Post等请求，会自动带上此值，然后服务端解密此值，然后在与当前获取的同样的数据做判断。</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -925,7 +955,8 @@ msf
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a href="http://www.cnblogs.com/dongchi/p/4155368.html" target="_blank" rel="noopener">ip反查</a>，Nmap，Zenmap。</p>
 </li>
 <li><p>指纹识别</p>
-<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br><br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞。<br></p>
+<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br><br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</p>
+<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
 <ul>
 <li>使用浏览器插件(wappalyzer)可以很方便的查看这些信息<br></li>
 <li>使用nc 或telnet 可以观察数据包特征或者网页加载的特殊文件来识别cms，如<code>nc xxx.com 80</code></li>
@@ -938,7 +969,8 @@ msf
 <li>HTML 源代码</li>
 <li>特定文件和文件夹，例如/templets/default/style/dedecms.css — dedecms</li>
 <li>网站独有文件的md5，例如favicon.ico</li>
-<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>用什么框架开发的，如Thinkphp、struts2</li>
+<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc、默认的后台登录页/数据库服务端口认证等进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>用什么框架开发的，如Thinkphp、struts2，很多网站都利用开源的框架来快速开发网站，所以收集网站的框架信息也是非常关键的。 <figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">开源的软件</span><br><span class="line"></span><br><span class="line">常见的开源软件有：wordpress、phpbb、dedecms等</span><br><span class="line">开源的框架</span><br><span class="line"></span><br><span class="line">常见的开源框架有：<span class="keyword">Struts2、 </span>Spring MVC、ThinkPHP等</span><br><span class="line">中间件服务器</span><br><span class="line"></span><br><span class="line">常见的中间件服务器有：jboss、tomcat、Weblogic等</span><br><span class="line">数据库服务</span><br><span class="line"></span><br><span class="line">常见的数据库服务：mssql、mysql、oracle、redis、sybase、MongoDB、DB2等</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>是否使用负载均衡，负载均衡是通过在多个服务器中分割WEB流量，来确保单个服务器的请求不会超载，一般不可见，但是有可能极大的改变渗透测试的进程。当发出请求的时候，负载均衡可能将请求交给其中的一个服务器来处理。每个服务器的应用结构虽然相同，但是文件夹不同、补丁级别不同及其他配置可能完全不同</p>
 </li>
@@ -1253,9 +1285,9 @@ msf
 <p>  通过域名MX记录查看是否为自建邮件服务器，自建的情况下可以后续测试漏洞，通过TheHarvester可以进行邮箱挖掘，没有找到漏洞也可以进行钓鱼</p>
 </li>
 <li><p>了解网站业务功能</p>
-<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
+<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆/留言/下单/退出/退货/付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
 </li>
-<li><p>了解网站结构</p>
+<li><p>了解网站目录的结构</p>
 <p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫</p>
 </li>
 <li><p>企业及员工信息收集</p>
@@ -1282,7 +1314,7 @@ msf
 </ul>
 <ul>
 <li><p>sql注入</p>
-<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  <strong>其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong>，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  何防止SQL注入：<br></p>
+<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  <strong>其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong>，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  <strong>何防止SQL注入：</strong><br></p>
 <ul>
 <li>不信任用户的输入；</li>
 <li>不使用动态拼接sql，可使用参数化的sql或直接使用存储过程进行数据查询存取；</li>
@@ -1293,15 +1325,38 @@ msf
 </ul>
 </li>
 <li><p>xss漏洞</p>
-<p>  <strong>定义</strong>：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br><br>  前端漏洞也是一个很大的板块，在做渗透测试的时候我们需要抓住一些细微的点，对每一个输出点都尽可能的测试，并且想方设法的去绕过<br><br>  如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）<br></p>
-<ul>
-<li>将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；</li>
-<li>只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；</li>
-<li>对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；</li>
-<li>过滤或移除特殊的Html标签，如：script、iframe；</li>
-<li>过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。</li>
-</ul>
+<p>  <strong>定义</strong>：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br><br>  前端漏洞也是一个很大的板块，在做渗透测试的时候我们需要抓住一些细微的点，对每一个输出点都尽可能的测试，并且想方设法的去绕过<br></p>
+<p>  <strong>XSS可能发生的场景</strong></p>
+<ol>
+<li><p>在HTML标签中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>$var<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在这种场景下，XSS的利用方式一般是构造一个&lt;script&gt;标签，或者是任何能够产生脚本执行的方式。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">#</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
+<li><p>在HTML属性中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"abc"</span> <span class="attr">name</span>=<span class="string">"$var"</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--灵活构造XSS PAYLOAD--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"abc"</span> <span class="attr">name</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;<span class="name">""</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>&lt;script&gt;</code>标签中输出 </p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> x = <span class="string">"$var"</span>;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--攻击者需要先闭合引号才能实施XSS攻击--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> x = <span class="string">""</span>;alert(<span class="regexp">/xss/</span>);<span class="comment">//";</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在事件中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">"funcA('$var')"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可能的攻击方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">"funcA('');alert(/xss/);  //')"</span>     &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在CSS中输出</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>($&#123;xss&#125;);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在<span class="selector-tag">CSS</span>中输出同样存在<span class="selector-tag">XSS</span>的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"javascript:alert('XSS')"</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>(alert(/xss/));&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出<br> <a href="http://www.evil.com/?test=$var" target="_blank" rel="noopener">test</a><br> <a href="http://www.evil.com/?test=" onclick="alert(1)" ""="" target="_blank" rel="noopener">test</a></p>
+<p> 防御方法：使用URLEncode</p>
+<p> 6.2 整个URL能够被用户控制<br> 这时URL的Protocol和Host部分是不能够使用URLEncode的<br> <a href="$var">test</a><br> 攻击方法：<br> <a href="javascript:alert(1);" target="_blank" rel="noopener">test</a><br> <a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=" target="_blank" rel="noopener">test</a><br> 防御方法：检查变量是否以”http”开头，再对变量进行URLEncode，OWASP中有函数ESAPI.encoder().encoderForURL()，但此API未解决伪协议的问题。</p>
+</li>
+</ol>
+</li>
+</ul>
+<pre><code>**如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）**&lt;br&gt;
+- 将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；
+- 只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；
+- 对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；
+- 过滤或移除特殊的Html标签，如：script、iframe；
+- 过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。
+</code></pre><ul>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
 <p>  更多<a href="http://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
@@ -1313,15 +1368,20 @@ msf
 <p>  逻辑漏洞包括任意重置用户密码，修改订单等等，这类漏洞是扫描器所不能扫描出来的，所以需要我们认真分析整个站点的功能，分析其逻辑，多用burpsuite抓包观察数据包是否可篡改，验证码是否可爆破等等</p>
 </li>
 <li><p>csrf</p>
-<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
+<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  攻击者迫使web应用的用户去执行攻击者预设的操作，如果服务器没有合适的防御措施，用户即使访问熟悉的可信网站（生成的poc可以隐藏到论坛/blog等用户生成内容的网站中）也有受到攻击的危险</p>
+<p>  攻击者并不能通过CSRF攻击来直接获取用户的账户控制权，也不能直接窃取用户的任何信息。他们能做到的，是欺骗用户浏览器，让其以用户的名义执行操作。</p>
+<p>  因此对于用户来说很难避免在登陆一个网站之后不点击一些链接进行其他操作，所以随时可能成为CSRF的受害者。</p>
+<p>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
 <p>  如何防止CSRF跨站请求攻击：<br></p>
 <ul>
 <li>在web站点，将持久化的授权（例如cookie或者http授权）切换为瞬时的授权方法（在每个form中提供隐藏field）；</li>
-<li>验证码，强化用户与应用的交互，但不是任何请求都加验证码；</li>
+<li>验证码，强化用户与应用的交互，但每个请求都加验证码，用户友好性体验差，不适合实际使用；</li>
 <li>在HTTP头中自定义属性并验证 + One time tokens；</li>
 <li>检查请求header中的referer也能帮助组织CSRF攻击，但服务器不是总能拿到referer，有些浏览器出于安全会隐私考虑会不发referer，所以也不常用； </li>
 <li>在浏览其它站点前退出登录站点或者浏览结束后清理浏览器cookies；</li>
-<li>生成一个随机的token，在用户提交数据的同时提交这个token，服务器端对比后如果不正确，则拒绝执行操作。</li>
+<li><p>不同的表单包含一个随机的token，在用户提交数据的同时提交这个token，服务器端对比后如果不正确，则拒绝执行操作。<br>  这里是对token的建议如果是已登录的界面给予建议：在前端生成含有 <strong>用户id|当前时间|当前用户ip</strong>可逆的组合加密项(注意是加密不是编码，切忌不要用base64等常见编码当加密措施)，然后后端接收到token然后解密并验证用户ID是否与当前cookie中的用户id一致、用户当前IP是否一致、用户提交的时间与当前时间间隔，如果差距在30分钟以上那么需要用户重新刷新表单提交。</p>
+<p>  首先当用户第一次访问页面的时候，服务端可以获取到用户的ID、用户的当前IP、当前用户访问的时间等一些相关信息，利用这些信息组合做一个可逆向的加密，返回给前端，在前端生成一个input  hidden项 name为token，直接放入 value，如果用户执行页面的一些操作Get、Post等请求，会自动带上此值，然后服务端解密此值，然后在与当前获取的同样的数据做判断。</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -1480,7 +1540,7 @@ msf
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjozkxrgk006n6kt6qfg4br6a" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjp10h4ee006p60t6f8lbglvm" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
@@ -1503,11 +1563,11 @@ msf
     </a>
   
   
-    <a href="/phpstudy+https/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/代理/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          phpstudy配置ssl证书实现https加密访问
+          代理
         
       </div>
     </a>

@@ -11,18 +11,18 @@
   <title>企业安全建设中用到的开源or“免费”的工具 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectDojosrc平台 SRCMS laravel-src资产管理/自动化">
+  <meta name="description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） APPscan (破解版) Burpsuite pro （破解版） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectD">
 <meta name="keywords" content="记录,安全建设,开源工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="企业安全建设中用到的开源or“免费”的工具">
 <meta property="og:url" content="http://www.pa55w0rd.club/other/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectDojosrc平台 SRCMS laravel-src资产管理/自动化">
+<meta property="og:description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） APPscan (破解版) Burpsuite pro （破解版） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectD">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-30T07:34:46.780Z">
+<meta property="og:updated_time" content="2018-11-30T10:16:28.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="企业安全建设中用到的开源or“免费”的工具">
-<meta name="twitter:description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectDojosrc平台 SRCMS laravel-src资产管理/自动化">
+<meta name="twitter:description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） APPscan (破解版) Burpsuite pro （破解版） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectD">
 
   
 
@@ -225,7 +225,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏扫"><span class="toc-number">1.</span> <span class="toc-text">漏扫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞管理"><span class="toc-number">2.</span> <span class="toc-text">漏洞管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src平台"><span class="toc-number">3.</span> <span class="toc-text">src平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资产管理-自动化运维"><span class="toc-number">4.</span> <span class="toc-text">资产管理/自动化运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#soc"><span class="toc-number">5.</span> <span class="toc-text">soc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入侵检测-安全监控-流量回溯"><span class="toc-number">6.</span> <span class="toc-text">入侵检测/安全监控/流量回溯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web应用安全"><span class="toc-number">7.</span> <span class="toc-text">web应用安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端安全集中管理"><span class="toc-number">8.</span> <span class="toc-text">终端安全集中管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堡垒机"><span class="toc-number">9.</span> <span class="toc-text">堡垒机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码质量管理"><span class="toc-number">10.</span> <span class="toc-text">代码质量管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web日志审计"><span class="toc-number">11.</span> <span class="toc-text">web日志审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志分析系统"><span class="toc-number">12.</span> <span class="toc-text">日志分析系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上网行为管理-准入-认证"><span class="toc-number">13.</span> <span class="toc-text">上网行为管理/准入/认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据防泄漏"><span class="toc-number">14.</span> <span class="toc-text">数据防泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基线检查-加固"><span class="toc-number">15.</span> <span class="toc-text">基线检查/加固</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github泄露扫描"><span class="toc-number">16.</span> <span class="toc-text">github泄露扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录索引系统"><span class="toc-number">17.</span> <span class="toc-text">目录索引系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蜜罐"><span class="toc-number">18.</span> <span class="toc-text">蜜罐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钓鱼"><span class="toc-number">19.</span> <span class="toc-text">钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API网关"><span class="toc-number">20.</span> <span class="toc-text">API网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">21.</span> <span class="toc-text">其他</span></a></li></ol>
+                 <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏扫"><span class="toc-number">1.</span> <span class="toc-text">漏扫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞管理"><span class="toc-number">2.</span> <span class="toc-text">漏洞管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项管"><span class="toc-number">3.</span> <span class="toc-text">项管</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src平台"><span class="toc-number">4.</span> <span class="toc-text">src平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资产管理-自动化运维"><span class="toc-number">5.</span> <span class="toc-text">资产管理/自动化运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#soc"><span class="toc-number">6.</span> <span class="toc-text">soc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入侵检测-安全监控-流量回溯"><span class="toc-number">7.</span> <span class="toc-text">入侵检测/安全监控/流量回溯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web应用安全"><span class="toc-number">8.</span> <span class="toc-text">web应用安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端安全集中管理"><span class="toc-number">9.</span> <span class="toc-text">终端安全集中管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堡垒机"><span class="toc-number">10.</span> <span class="toc-text">堡垒机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码质量管理"><span class="toc-number">11.</span> <span class="toc-text">代码质量管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web日志审计"><span class="toc-number">12.</span> <span class="toc-text">web日志审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志分析系统"><span class="toc-number">13.</span> <span class="toc-text">日志分析系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上网行为管理-准入-认证"><span class="toc-number">14.</span> <span class="toc-text">上网行为管理/准入/认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据防泄漏"><span class="toc-number">15.</span> <span class="toc-text">数据防泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基线检查-加固"><span class="toc-number">16.</span> <span class="toc-text">基线检查/加固</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github泄露扫描"><span class="toc-number">17.</span> <span class="toc-text">github泄露扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录索引系统"><span class="toc-number">18.</span> <span class="toc-text">目录索引系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蜜罐"><span class="toc-number">19.</span> <span class="toc-text">蜜罐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钓鱼"><span class="toc-number">20.</span> <span class="toc-text">钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API网关"><span class="toc-number">21.</span> <span class="toc-text">API网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">22.</span> <span class="toc-text">其他</span></a></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -255,12 +255,16 @@ ga('send', 'pageview');
 <li><a href="https://www.tenable.com/downloads/nessus" target="_blank" rel="noopener">nessus</a>（<a href="https://www.tenable.com/products/nessus/activation-code" target="_blank" rel="noopener">Home版</a>）</li>
 <li>openvas(在<a href="https://www.kali.org/tutorials/configuring-and-tuning-openvas-in-kali-linux/" target="_blank" rel="noopener">kali中安装openvas</a>，注意挂代 理，不然会很慢很慢和报错)</li>
 <li>awvs（破解版-52pojie）</li>
+<li>APPscan (<a href="https://pan.baidu.com/s/1sjkDDi1#list/path=%2F" target="_blank" rel="noopener">破解版</a>)</li>
+<li>Burpsuite pro （破解版）</li>
 <li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank" rel="noopener">mobsf</a> (移动app客户端，支持ios，但是需要在mac上跑)</li>
 <li>Nmap/Zmap/masscan 端口扫描<h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
 <li><a href="https://github.com/creditease-sec/insight" target="_blank" rel="noopener">洞察insight</a></li>
 <li>smef</li>
 <li><a href="https://github.com/jeffzh3ng/Fuxi-Scanner/" target="_blank" rel="noopener">Fuxi</a></li>
-<li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="src平台"><a href="#src平台" class="headerlink" title="src平台"></a>src平台</h3></li>
+<li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="项管"><a href="#项管" class="headerlink" title="项管"></a>项管</h3></li>
+<li>jira</li>
+<li>禅道<h3 id="src平台"><a href="#src平台" class="headerlink" title="src平台"></a>src平台</h3></li>
 <li><a href="https://github.com/martinzhou2015/SRCMS" target="_blank" rel="noopener">SRCMS</a></li>
 <li><a href="https://github.com/233sec/laravel-src" target="_blank" rel="noopener">laravel-src</a><h3 id="资产管理-自动化运维"><a href="#资产管理-自动化运维" class="headerlink" title="资产管理/自动化运维"></a>资产管理/自动化运维</h3></li>
 <li><a href="https://github.com/ysrc/xunfeng" target="_blank" rel="noopener">xunfeng</a></li>
@@ -299,7 +303,7 @@ ga('send', 'pageview');
 <li>sonar + jekins</li>
 <li>cobra</li>
 <li>VCG</li>
-<li>fortify(破解版，规则比较老了)</li>
+<li>fortify(破解版，找到最新的规则是2017.3)</li>
 <li>RIPS/Seay源代码审计系统(PHP))</li>
 <li>Findbugs（JAVA）</li>
 </ul>
@@ -345,6 +349,11 @@ ga('send', 'pageview');
 <li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">长亭开源牧云cloudwalker（只有webshell检测部分）</a></li>
 <li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
 <li>美团DBProxy数据库防火墙</li>
+<li>Linxu下 rkhunter/chkrootkit </li>
+<li>Win下 pchunter/ 火绒剑/ PowerTool/ ProcessExplorer/ ProcessHacker/ autoruns/ OTL</li>
+<li><a href="http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" target="_blank" rel="noopener">Kaspersky</a></li>
+<li>D盾 webshell查杀</li>
+<li>Sandboxie 个人版沙箱</li>
 </ul>
 
         
@@ -357,12 +366,16 @@ ga('send', 'pageview');
 <li><a href="https://www.tenable.com/downloads/nessus" target="_blank" rel="noopener">nessus</a>（<a href="https://www.tenable.com/products/nessus/activation-code" target="_blank" rel="noopener">Home版</a>）</li>
 <li>openvas(在<a href="https://www.kali.org/tutorials/configuring-and-tuning-openvas-in-kali-linux/" target="_blank" rel="noopener">kali中安装openvas</a>，注意挂代 理，不然会很慢很慢和报错)</li>
 <li>awvs（破解版-52pojie）</li>
+<li>APPscan (<a href="https://pan.baidu.com/s/1sjkDDi1#list/path=%2F" target="_blank" rel="noopener">破解版</a>)</li>
+<li>Burpsuite pro （破解版）</li>
 <li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank" rel="noopener">mobsf</a> (移动app客户端，支持ios，但是需要在mac上跑)</li>
 <li>Nmap/Zmap/masscan 端口扫描<h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
 <li><a href="https://github.com/creditease-sec/insight" target="_blank" rel="noopener">洞察insight</a></li>
 <li>smef</li>
 <li><a href="https://github.com/jeffzh3ng/Fuxi-Scanner/" target="_blank" rel="noopener">Fuxi</a></li>
-<li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="src平台"><a href="#src平台" class="headerlink" title="src平台"></a>src平台</h3></li>
+<li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="项管"><a href="#项管" class="headerlink" title="项管"></a>项管</h3></li>
+<li>jira</li>
+<li>禅道<h3 id="src平台"><a href="#src平台" class="headerlink" title="src平台"></a>src平台</h3></li>
 <li><a href="https://github.com/martinzhou2015/SRCMS" target="_blank" rel="noopener">SRCMS</a></li>
 <li><a href="https://github.com/233sec/laravel-src" target="_blank" rel="noopener">laravel-src</a><h3 id="资产管理-自动化运维"><a href="#资产管理-自动化运维" class="headerlink" title="资产管理/自动化运维"></a>资产管理/自动化运维</h3></li>
 <li><a href="https://github.com/ysrc/xunfeng" target="_blank" rel="noopener">xunfeng</a></li>
@@ -401,7 +414,7 @@ ga('send', 'pageview');
 <li>sonar + jekins</li>
 <li>cobra</li>
 <li>VCG</li>
-<li>fortify(破解版，规则比较老了)</li>
+<li>fortify(破解版，找到最新的规则是2017.3)</li>
 <li>RIPS/Seay源代码审计系统(PHP))</li>
 <li>Findbugs（JAVA）</li>
 </ul>
@@ -447,6 +460,11 @@ ga('send', 'pageview');
 <li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">长亭开源牧云cloudwalker（只有webshell检测部分）</a></li>
 <li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
 <li>美团DBProxy数据库防火墙</li>
+<li>Linxu下 rkhunter/chkrootkit </li>
+<li>Win下 pchunter/ 火绒剑/ PowerTool/ ProcessExplorer/ ProcessHacker/ autoruns/ OTL</li>
+<li><a href="http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" target="_blank" rel="noopener">Kaspersky</a></li>
+<li>D盾 webshell查杀</li>
+<li>Sandboxie 个人版沙箱</li>
 </ul>
 -->
       
@@ -460,7 +478,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/other/" data-id="cjp3p9qgl000u6yt61lzshfpw" class="article-share-link" data-share="baidu" data-title="企业安全建设中用到的开源or“免费”的工具">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/other/" data-id="cjp3qxmq2000f8ht6iz1gpt1i" class="article-share-link" data-share="baidu" data-title="企业安全建设中用到的开源or“免费”的工具">分享到</a>
       
 
       

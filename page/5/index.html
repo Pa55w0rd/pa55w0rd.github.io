@@ -247,7 +247,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/信息安全规划文档的编写/" data-id="cjp85fbpn006a6dt6tlsyyexp" class="article-share-link" data-share="baidu" data-title="信息安全规划文档的编写  （转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/信息安全规划文档的编写/" data-id="cjp9dj6py005sz0t68z12aijp" class="article-share-link" data-share="baidu" data-title="信息安全规划文档的编写  （转发）">分享到</a>
       
 
       
@@ -341,7 +341,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/非web型xss注入漏洞/" data-id="cjp85fbj7002o6dt6qbtixvva" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/非web型xss注入漏洞/" data-id="cjp9dj6m3002rz0t6d94hk2uc" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
       
 
       
@@ -429,7 +429,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/甲方安全建设的一些思路和思考/" data-id="cjp85fbpz006l6dt6dpkd7od7" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/甲方安全建设的一些思路和思考/" data-id="cjp9dj6sz006uz0t6qsurut2p" class="article-share-link" data-share="baidu" data-title="甲方安全建设的一些思路和思考 （转发）">分享到</a>
       
 
       
@@ -518,7 +518,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/代码自动化扫描系统建设/" data-id="cjp85fbps006d6dt64vk8pexl" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/代码自动化扫描系统建设/" data-id="cjp9dj6sr006nz0t6k9wavoov" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
@@ -546,16 +546,16 @@ ga('send', 'pageview');
 
 
   
-    <article id="post-quick-SQL-cheatsheet" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-fileupload" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/quick-SQL-cheatsheet/" class="article-date">
+    <a href="/fileupload/" class="article-date">
   <i class="fa fa-calendar"></i>
   <time datetime="2018-10-19T09:24:03.000Z" itemprop="datePublished">2018-10-19</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/web安全/">web安全</a>
   </div>
 
 
@@ -569,8 +569,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/quick-SQL-cheatsheet/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>SQL 速查表</a>
+      <a class="article-title" href="/fileupload/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>文件上传漏洞总结</a>
     </h1>
   
 
@@ -586,17 +586,11 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h1><ol>
-<li><a href="#find"> 查找数据的查询 </a></li>
-<li><a href="#modify"> 修改数据的查询 </a></li>
-<li><a href="#report"> 聚合查询 </a></li>
-<li><a href="#joins"> 连接查询 </a></li>
-<li><a href="#view"> 视图查询 </a></li>
-<li><a href="#alter"> 修改表的查询 </a><br><a href="https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md" target="_blank" rel="noopener">https://github.com/enochtangg/quick-SQL-cheatsheet/edit/master/README_zh-hans.md</a></li>
-</ol>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。 </p>
+<p>上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。 </p>
         
           <p class="article-more-link ">
-            <a href="/quick-SQL-cheatsheet/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/fileupload/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
@@ -610,15 +604,15 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/quick-SQL-cheatsheet/" data-id="cjp85fbfo000o6dt6owffloxw" class="article-share-link" data-share="baidu" data-title="SQL 速查表">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/fileupload/" data-id="cjp9dj6pm005lz0t6lachsic5" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/quick-SQL-cheatsheet/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.club/fileupload/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sql/">sql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础知识/">基础知识</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/速查表/">速查表</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞利用/">漏洞利用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方法/">解决方法</a></li></ul>
 
 
     </footer>

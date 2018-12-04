@@ -186,16 +186,16 @@ ga('send', 'pageview');
     <div class="outer">
       <section id="main">
   
-    <article id="post-msfvenom 使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-解析漏洞" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/msfvenom 使用/" class="article-date">
+    <a href="/解析漏洞/" class="article-date">
   <i class="fa fa-calendar"></i>
   <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/web安全/">web安全</a>
   </div>
 
 
@@ -209,8 +209,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/msfvenom 使用/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>msfvenom 使用</a>
+      <a class="article-title" href="/解析漏洞/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>解析漏洞</a>
     </h1>
   
 
@@ -226,20 +226,20 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="木马连接方式"><a href="#木马连接方式" class="headerlink" title="木马连接方式"></a>木马连接方式</h2><ul>
-<li><p>正向连接(bind)</p>
-<p>  是我主动去连接别人机器上的某个端口,很显然,这样极易被对方防火墙拦掉</p>
-</li>
-<li><p>反向连接(reverse)</p>
-<p>  是让别人机器上的某个端口上的流量主动连到我机器上的某个端口上,起码暂时对各类应用层防火墙的穿透效果还是蛮不错的</p>
+        <p>文件解析漏洞,是指 Web 容器（Apache、nginx、iis 等）在解析文件时出现了漏洞,以其他格式执行出脚本格式的效果。从而,黑客可以利用该漏洞实现非法文件的解析。</p>
+<h2 id="IIS-5-x-6-0解析漏洞"><a href="#IIS-5-x-6-0解析漏洞" class="headerlink" title="IIS 5.x/6.0解析漏洞"></a>IIS 5.x/6.0解析漏洞</h2><ol>
+<li><p>目录解析</p>
+<p> 在网站下建立文件夹的名字为 .asp、.asa 的文件夹，其目录内的任何扩展名的文件都被IIS当作asp文件来解析并执行。</p>
+<p> 例如创建目录 xx.asp，那么/xx.asp/xx.jpg将被当作asp文件来执行。假设攻击者可以控制上传文件夹路径，就可以不管你上传后你的图片改不改名都能拿shell了。</p>
+<p> /xx.asp/xx.jpg</p>
         
           <p class="article-more-link ">
-            <a href="/msfvenom 使用/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/解析漏洞/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
-    </li></ul></div>
+    </li></ol></div>
 
 
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
@@ -248,15 +248,15 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/msfvenom 使用/" data-id="cjp85fbg3000t6dt6h35riggp" class="article-share-link" data-share="baidu" data-title="msfvenom 使用">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/解析漏洞/" data-id="cjp9dj6mb0034z0t65bv5hqbn" class="article-share-link" data-share="baidu" data-title="解析漏洞">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/msfvenom 使用/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.club/解析漏洞/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具使用/">工具使用</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技巧/">技巧</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/漏洞利用/">漏洞利用</a></li></ul>
 
 
     </footer>
@@ -333,7 +333,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/代理/" data-id="cjp85fbh3001r6dt6vz0hb9ms" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/代理/" data-id="cjp9dj6ke001uz0t6o4c97imj" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
       
 
       
@@ -430,7 +430,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjp85fbsd00746dt6u9lq662z" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjp9dj6ul0079z0t6brndfa98" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
@@ -516,7 +516,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/centos7安装docker/" data-id="cjp85fbei00066dt6tq5d6ufq" class="article-share-link" data-share="baidu" data-title="centos7 安装docker">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/centos7安装docker/" data-id="cjp9dj6ht0008z0t6befdk2ct" class="article-share-link" data-share="baidu" data-title="centos7 安装docker">分享到</a>
       
 
       
@@ -606,7 +606,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/刷短信接口/" data-id="cjp85fbh8001v6dt62xsa8nrs" class="article-share-link" data-share="baidu" data-title="短信验证码安全问题">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/刷短信接口/" data-id="cjp9dj6ld0023z0t6u7toaplf" class="article-share-link" data-share="baidu" data-title="短信验证码安全问题">分享到</a>
       
 
       

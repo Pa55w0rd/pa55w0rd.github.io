@@ -186,6 +186,224 @@ ga('send', 'pageview');
     <div class="outer">
       <section id="main">
   
+    <article id="post-wireshark使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/wireshark使用/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-09T02:10:35.000Z" itemprop="datePublished">2018-10-09</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/wireshark使用/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>Wireshark使用</a>
+    </h1>
+  
+
+
+
+
+        <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料。Wireshark使用WinPCAP作为接口，直接与网卡进行数据报文交换。大家可以用它来排查故障、分析攻击类型等，可以更快理解和发现问题</p>
+        
+          <p class="article-more-link ">
+            <a href="/wireshark使用/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.club/wireshark使用/" data-id="cjp9j4d77002a4pt6kbslpu9k" class="article-share-link" data-share="baidu" data-title="Wireshark使用">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.club/wireshark使用/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具使用/">工具使用</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-ubuntu_install_xunfeng" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/ubuntu_install_xunfeng/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2018-10-08T03:29:31.000Z" itemprop="datePublished">2018-10-08</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/企业安全/">企业安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ubuntu_install_xunfeng/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>ubuntu搭建xunfeng资产扫描系统</a>
+    </h1>
+  
+
+
+
+
+        <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>巡风是一款适用于企业内网的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。</span><br><span class="line"></span><br><span class="line">漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">巡风需要在```python2.7```和```mongodb3.2```版本以上环境上安装 </span><br><span class="line"></span><br><span class="line">```git clone https://github.com/ysrc/xunfeng</span><br></pre></td></tr></table></figure></p>
+          
+            <p class="article-more-link">
+              <a href="/ubuntu_install_xunfeng/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            </p>
+          
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>巡风是一款适用于企业内网的<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">网络资产识别引擎会通过用户配置的IP范围定期自动的进行端口探测（支持调用MASSCAN），并进行指纹识别，识别内容包括：服务类型、组件容器、脚本语言、CMS。</span><br><span class="line"></span><br><span class="line">漏洞检测引擎会根据用户指定的任务规则进行定期或者一次性的漏洞检测，其支持2种插件类型、标示符与脚本，均可通过web控制台进行添加。</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">巡风需要在```python2.7```和```mongodb3.2```版本以上环境上安装 </span><br><span class="line"></span><br><span class="line">```git clone https://github.com/ysrc/xunfeng</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x01-环境配置"><a href="#0x01-环境配置" class="headerlink" title="0x01 环境配置"></a>0x01 环境配置</h2><h3 id="换源"><a href="#换源" class="headerlink" title="换源"></a>换源</h3><p>安装好Ubuntu，首先换源</p>
+<p>部署和调试巡风要求root权限，请用户切换到root账号进行操作,Ubuntu默认未开启root，请使用下列命令开启</p>
+<figure class="highlight plain"><figcaption><span>sudo passwd root```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入你自己设置的root密码后</span><br><span class="line"></span><br><span class="line">```$ su root</span><br></pre></td></tr></table></figure>
+<p>即可切换到root账号</p>
+<p>通过lsb_release 查看开发版本代号为18.04 bionic<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># lsb_release -a</span></span><br><span class="line"><span class="literal">No</span> <span class="string">LSB</span> <span class="string">modules</span> <span class="string">are</span> <span class="string">available.</span></span><br><span class="line"><span class="string">Distributor</span> <span class="attr">ID:</span> <span class="string">Ubuntu</span></span><br><span class="line"><span class="attr">Description:</span>    <span class="string">Ubuntu</span> <span class="number">18.04</span><span class="number">.1</span> <span class="string">LTS</span></span><br><span class="line"><span class="attr">Release:</span>        <span class="number">18.04</span></span><br><span class="line"><span class="attr">Codename:</span>       <span class="string">bionic</span></span><br></pre></td></tr></table></figure></p>
+<p>备份原来的数据源配置文件</p>
+<figure class="highlight plain"><figcaption><span>cp</span><a href="/etc/apt/sources.list">/etc/apt/sources.list_backup```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">编辑数据源配置文件</span><br><span class="line"></span><br><span class="line">```# vi /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"><span class="keyword">deb</span> http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br><span class="line"><span class="keyword">deb</span>-src http<span class="variable">s:</span>//mirrors.ustc.edu.<span class="keyword">cn</span>/ubuntu/ bionic-backports main restricted universe multiverse</span><br></pre></td></tr></table></figure>
+<p>保存后执行<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="builtin-name">get</span> update &amp;&amp; apt-<span class="builtin-name">get</span><span class="built_in"> upgrade </span>&amp;&amp; apt-<span class="builtin-name">get</span> dist-upgrade</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改时区为Asia-Shanghai"><a href="#修改时区为Asia-Shanghai" class="headerlink" title="修改时区为Asia/Shanghai"></a>修改时区为Asia/Shanghai</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">echo</span> TZ\=<span class="string">'Asia/Shanghai'</span>\; <span class="built_in">export</span> TZ &gt;&gt; ~/.bash\_profile &amp;&amp; <span class="built_in">source</span> ~/.bash\_profile</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装操作系统依赖"><a href="#安装操作系统依赖" class="headerlink" title="安装操作系统依赖"></a>安装操作系统依赖</h3><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apt-<span class="built_in">get</span> install gcc libssl-<span class="built_in">dev</span> libffi-<span class="built_in">dev</span> python-<span class="built_in">dev</span> libpcap-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装python依赖库"><a href="#安装python依赖库" class="headerlink" title="安装python依赖库"></a>安装python依赖库</h3><p>使用pip进行python依赖库管理，如果系统没有安装pip，可以通过如下命令安装</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># wget http<span class="variable">s:</span>//sec.ly.<span class="keyword">com</span>/mirror/<span class="built_in">get</span>-pip.<span class="keyword">py</span> --<span class="keyword">no</span>-check-certificate &amp;&amp; <span class="keyword">python</span> <span class="built_in">get</span>-pip.<span class="keyword">py</span></span><br></pre></td></tr></table></figure>
+<p>使用pip安装 python 依赖库, 这里使用了豆瓣的 pypi 源<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># pip install -r requirements.txt -i https:<span class="comment">//pypi.doubanio.com/simple/</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="安装mongo数据库"><a href="#安装mongo数据库" class="headerlink" title="安装mongo数据库"></a>安装mongo数据库</h3><p>由于低版本不支持全文索引，MongoDB版本需要 ≥ 3.2。</p>
+<p><a href="https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="noopener">参考官方安装步骤</a></p>
+<ol>
+<li><p>安装公钥</p>
+ <figure class="highlight plain"><figcaption><span>apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 添加3.2的源</span><br><span class="line"></span><br><span class="line">    ```# echo &quot;deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装数据库</p>
+ <figure class="highlight plain"><figcaption><span>apt-get update && apt-get install -y mongodb-org```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">4. 启动mongodb服务</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    默认情况下apt方式安装的mongodb会自动启动，查看是否启动成功</span><br><span class="line"></span><br><span class="line">    ```# netstat -antlp | grep 27017</span><br></pre></td></tr></table></figure>
+<p> 如果没有启动 </p>
+ <figure class="highlight plain"><figcaption><span>systemctl start mongodb```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">设置开机启动</span><br><span class="line"></span><br><span class="line">```# systemctl enable mongodb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>mongodb添加认证</p>
+ <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mongo</span></span><br><span class="line">&gt; use xunfeng</span><br><span class="line">&gt; db.createUser(&#123;user:<span class="string">'scan'</span>,pwd:<span class="string">'your password'</span>,roles:[    &#123;role:<span class="string">'dbOwner'</span>,db:<span class="string">'xunfeng'</span>&#125;]&#125;)</span><br><span class="line">&gt; <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
+<p> 这里的 scan和your password 需要更换为你的mongodb的账户和密码。</p>
+</li>
+</ol>
+<h2 id="0x02-部署"><a href="#0x02-部署" class="headerlink" title="0x02 部署"></a>0x02 部署</h2><h3 id="导入数据库"><a href="#导入数据库" class="headerlink" title="导入数据库"></a>导入数据库</h3><p>进入 <figure class="highlight plain"><figcaption><span>文件夹, 执行如下命令:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```# mongorestore -h 127.0.0.1 --port 27017 -d xunfeng .</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>修改系统数据库配置脚本 Config.py:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Config</span></span>(<span class="keyword">object</span>):</span><br><span class="line">    ACCOUNT = <span class="string">'admin'</span></span><br><span class="line">    PASSWORD = <span class="string">'xunfeng321'</span></span><br></pre></td></tr></table></figure>
+<p>修改 PASSWORD 字段内的密码, 设置成你的密码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductionConfig</span><span class="params">(Config)</span>:</span></span><br><span class="line">    DB = <span class="string">'127.0.0.1'</span></span><br><span class="line">    PORT = <span class="number">27017</span></span><br><span class="line">    DBUSERNAME = <span class="string">'scan'</span></span><br><span class="line">    DBPASSWORD = <span class="string">'your password'</span></span><br><span class="line">    DBNAME = <span class="string">'xunfeng'</span></span><br></pre></td></tr></table></figure>
+<h3 id="运行系统"><a href="#运行系统" class="headerlink" title="运行系统"></a>运行系统</h3><p>根据实际情况修改(端口和目录需对应好) Conifg.py 和 Run.sh 文件后, 执行:</p>
+<p><code># sh Run.sh</code></p>
+<p>如开启防火墙，需打开80端口</p>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.club/ubuntu_install_xunfeng/" data-id="cjp9j4d7500284pt655de13oe" class="article-share-link" data-share="baidu" data-title="ubuntu搭建xunfeng资产扫描系统">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.club/ubuntu_install_xunfeng/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xunfeng/">xunfeng</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/平台建设/">平台建设</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/资产扫描/">资产扫描</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
     <article id="post-token的使用" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
     <a href="/token的使用/" class="article-date">
@@ -248,7 +466,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/token的使用/" data-id="cjp9dj6jn001cz0t669f00c0w" class="article-share-link" data-share="baidu" data-title="token的使用">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/token的使用/" data-id="cjp9j4d62001a4pt65y35o3yy" class="article-share-link" data-share="baidu" data-title="token的使用">分享到</a>
       
 
       
@@ -333,7 +551,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/应用开发安全指南/" data-id="cjp9dj6vg007nz0t6ycm8u1c4" class="article-share-link" data-share="baidu" data-title="应用开发安全指南">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/应用开发安全指南/" data-id="cjp9j4dfx007j4pt6413uhiup" class="article-share-link" data-share="baidu" data-title="应用开发安全指南">分享到</a>
       
 
       
@@ -424,7 +642,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/应用系统开发安全/" data-id="cjp9dj6m90031z0t6mfhupnj8" class="article-share-link" data-share="baidu" data-title="应用系统开发安全">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/应用系统开发安全/" data-id="cjp9j4d7h002k4pt6hpmc6ys5" class="article-share-link" data-share="baidu" data-title="应用系统开发安全">分享到</a>
       
 
       
@@ -433,183 +651,6 @@ ga('send', 'pageview');
 
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全规范/">安全规范</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发安全/">开发安全</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-野路子企业安全架构设计" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/野路子企业安全架构设计/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/安全建设/">安全建设</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/野路子企业安全架构设计/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>野路子企业安全架构设计（转发）</a>
-    </h1>
-  
-
-
-
-
-        <!-- 目录内容 -->
-        		
-        <!-- 目录内容结束 -->
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>转发自 <a href="https://github.com/mylamour/blog/issues/33" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/33</a></p>
-</blockquote>
-<p><img src="https://user-images.githubusercontent.com/12653147/43885348-37bde086-9beb-11e8-8406-3b34d9d96700.png" alt="default"><br>首先，知道业务有哪些，有多少资产，然后是数据的流向，知道要分析哪些流量。想要发现什么，阻止什么。其实Google的OKR也可以在这里应用。例如，安全架构的OKR可以这样：</p>
-<p>O:  发现入侵者，减缓或者阻断攻击，以及取证。</p>
-        
-          <p class="article-more-link ">
-            <a href="/野路子企业安全架构设计/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/野路子企业安全架构设计/" data-id="cjp9dj6m7002yz0t68ghk1dsq" class="article-share-link" data-share="baidu" data-title="野路子企业安全架构设计（转发）">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/野路子企业安全架构设计/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全架构/">安全架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全设计/">安全设计</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-如何进行安全设计评审" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/如何进行安全设计评审/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/开发安全/">开发安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/如何进行安全设计评审/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>如何进行安全设计评审（转发）</a>
-    </h1>
-  
-
-
-
-
-        <!-- 目录内容 -->
-        		
-        <!-- 目录内容结束 -->
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>转发自 <a href="https://github.com/mylamour/blog/issues/41" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/41</a></p>
-</blockquote>
-<h1 id="如何进行安全设计评审"><a href="#如何进行安全设计评审" class="headerlink" title="如何进行安全设计评审"></a>如何进行安全设计评审</h1><p>记录一次安全设计评审的过程，当然这也是我第一次进行安全评审。因此做一个总结。安全设计评审应该是SDL落地安全人员参与过程中首当其冲的地方。仅指安全人员自身的功用。如果按照<code>SDL</code>流程来讲，最前期应该是进行安全培训。我们可以看两个微软SDL官方给出的流程图。</p>
-        
-          <p class="article-more-link ">
-            <a href="/如何进行安全设计评审/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/如何进行安全设计评审/" data-id="cjp9dj6lg0026z0t6fpo01sd9" class="article-share-link" data-share="baidu" data-title="如何进行安全设计评审（转发）">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/如何进行安全设计评审/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全设计/">安全设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全设计评审/">安全设计评审</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发安全/">开发安全</a></li></ul>
 
 
     </footer>
@@ -651,19 +692,19 @@ ga('send', 'pageview');
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/yyoa/">用友致远A6 OA存在sql注入并拿shell</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/linux-backdoor-killer/">Linux后门入侵检测工具使用</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/winspect/">WINSpect-基于Powershell的Windows安全审计工具</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/captcha/">如何设计相对安全的图形验证码？ （转发）</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/sqlmap/">sqlmap笔记</a>
           </li>
         
       </ul>
@@ -676,7 +717,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -692,7 +733,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/web安全/" style="font-size: 10px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全测试/" style="font-size: 10px;">安全测试</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -702,8 +743,8 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 

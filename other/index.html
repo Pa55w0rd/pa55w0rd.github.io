@@ -11,18 +11,18 @@
   <title>企业安全建设中用到的开源or“免费”的工具 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+  <meta name="description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） APPscan (破解版) Burpsuite pro （破解版） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectD">
 <meta name="keywords" content="记录,安全建设,开源工具">
 <meta property="og:type" content="article">
 <meta property="og:title" content="企业安全建设中用到的开源or“免费”的工具">
 <meta property="og:url" content="http://www.pa55w0rd.club/other/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta property="og:description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） APPscan (破解版) Burpsuite pro （破解版） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectD">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-04T06:39:37.035Z">
+<meta property="og:updated_time" content="2018-12-04T09:15:56.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="企业安全建设中用到的开源or“免费”的工具">
-<meta name="twitter:description" content="function doDecrypt (pwd, onError) { 	console.log(&apos;in doDecrypt&apos;); 	const txt = document.getElementById(&apos;enc_content&apos;).innerHTML; 	let plantext; 	try { 		const bytes = CryptoJS.AES.decrypt(txt, pwd);">
+<meta name="twitter:description" content="漏扫 nessus（Home版） openvas(在kali中安装openvas，注意挂代 理，不然会很慢很慢和报错) awvs（破解版-52pojie） APPscan (破解版) Burpsuite pro （破解版） mobsf (移动app客户端，支持ios，但是需要在mac上跑) Nmap/Zmap/masscan 端口扫描漏洞管理 洞察insight smef Fuxi DefectD">
 
   
 
@@ -225,7 +225,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 
+                 <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏扫"><span class="toc-number">1.</span> <span class="toc-text">漏扫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞管理"><span class="toc-number">2.</span> <span class="toc-text">漏洞管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项管"><span class="toc-number">3.</span> <span class="toc-text">项管</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src平台"><span class="toc-number">4.</span> <span class="toc-text">src平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资产管理-自动化运维"><span class="toc-number">5.</span> <span class="toc-text">资产管理/自动化运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#soc"><span class="toc-number">6.</span> <span class="toc-text">soc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入侵检测-安全监控-流量回溯"><span class="toc-number">7.</span> <span class="toc-text">入侵检测/安全监控/流量回溯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web应用安全"><span class="toc-number">8.</span> <span class="toc-text">web应用安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端安全集中管理"><span class="toc-number">9.</span> <span class="toc-text">终端安全集中管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堡垒机"><span class="toc-number">10.</span> <span class="toc-text">堡垒机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码质量管理"><span class="toc-number">11.</span> <span class="toc-text">代码质量管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web日志审计"><span class="toc-number">12.</span> <span class="toc-text">web日志审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志分析系统"><span class="toc-number">13.</span> <span class="toc-text">日志分析系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上网行为管理-准入-认证"><span class="toc-number">14.</span> <span class="toc-text">上网行为管理/准入/认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据防泄漏"><span class="toc-number">15.</span> <span class="toc-text">数据防泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基线检查-加固"><span class="toc-number">16.</span> <span class="toc-text">基线检查/加固</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github泄露扫描"><span class="toc-number">17.</span> <span class="toc-text">github泄露扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录索引系统"><span class="toc-number">18.</span> <span class="toc-text">目录索引系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蜜罐"><span class="toc-number">19.</span> <span class="toc-text">蜜罐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钓鱼"><span class="toc-number">20.</span> <span class="toc-text">钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API网关"><span class="toc-number">21.</span> <span class="toc-text">API网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">22.</span> <span class="toc-text">其他</span></a></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -251,92 +251,226 @@ ga('send', 'pageview');
       
         
         
-          <script src="/js/crypto-js.js"></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>
+          <h3 id="漏扫"><a href="#漏扫" class="headerlink" title="漏扫"></a>漏扫</h3><ul>
+<li><a href="https://www.tenable.com/downloads/nessus" target="_blank" rel="noopener">nessus</a>（<a href="https://www.tenable.com/products/nessus/activation-code" target="_blank" rel="noopener">Home版</a>）</li>
+<li>openvas(在<a href="https://www.kali.org/tutorials/configuring-and-tuning-openvas-in-kali-linux/" target="_blank" rel="noopener">kali中安装openvas</a>，注意挂代 理，不然会很慢很慢和报错)</li>
+<li>awvs（破解版-52pojie）</li>
+<li>APPscan (<a href="https://pan.baidu.com/s/1sjkDDi1#list/path=%2F" target="_blank" rel="noopener">破解版</a>)</li>
+<li>Burpsuite pro （破解版）</li>
+<li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank" rel="noopener">mobsf</a> (移动app客户端，支持ios，但是需要在mac上跑)</li>
+<li>Nmap/Zmap/masscan 端口扫描<h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
+<li><a href="https://github.com/creditease-sec/insight" target="_blank" rel="noopener">洞察insight</a></li>
+<li>smef</li>
+<li><a href="https://github.com/jeffzh3ng/Fuxi-Scanner/" target="_blank" rel="noopener">Fuxi</a></li>
+<li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="项管"><a href="#项管" class="headerlink" title="项管"></a>项管</h3></li>
+<li>jira</li>
+<li>禅道<h3 id="src平台"><a href="#src平台" class="headerlink" title="src平台"></a>src平台</h3></li>
+<li><a href="https://github.com/martinzhou2015/SRCMS" target="_blank" rel="noopener">SRCMS</a></li>
+<li><a href="https://github.com/233sec/laravel-src" target="_blank" rel="noopener">laravel-src</a><h3 id="资产管理-自动化运维"><a href="#资产管理-自动化运维" class="headerlink" title="资产管理/自动化运维"></a>资产管理/自动化运维</h3></li>
+<li><a href="https://github.com/ysrc/xunfeng" target="_blank" rel="noopener">xunfeng</a></li>
+<li>AssetsView</li>
+<li><a href="https://github.com/Tencent/bk-cmdb" target="_blank" rel="noopener">蓝鲸bk-cmdb</a></li>
+<li><a href="https://github.com/bongmu/OpsManage" target="_blank" rel="noopener">OpsManage</a></li>
+<li><a href="http://www.ansible.com.cn/" target="_blank" rel="noopener">Ansible</a></li>
+<li><a href="https://docs.saltstack.com/en/latest/contents.html" target="_blank" rel="noopener">Saltstack</a><h3 id="soc"><a href="#soc" class="headerlink" title="soc"></a>soc</h3></li>
+<li>sosrp</li>
+<li>w3a_SOC</li>
+<li>OpenSOC</li>
+<li>ossim<h3 id="入侵检测-安全监控-流量回溯"><a href="#入侵检测-安全监控-流量回溯" class="headerlink" title="入侵检测/安全监控/流量回溯"></a>入侵检测/安全监控/流量回溯</h3></li>
+<li>suricata(selks)</li>
+<li>bro</li>
+<li>ossec(wazuh)</li>
+<li>security onion</li>
+<li>OwlH</li>
+<li>Nethserver</li>
+<li>Snort</li>
+<li>OpenWIPS-NG</li>
+<li>moloch</li>
+<li><a href="https://github.com/ysrc/yulong-hids" target="_blank" rel="noopener">同程-驭龙</a></li>
+<li>青藤云</li>
+<li>Osquery<h3 id="web应用安全"><a href="#web应用安全" class="headerlink" title="web应用安全"></a>web应用安全</h3></li>
+<li><a href="https://github.com/loveshell/ngx_lua_waf" target="_blank" rel="noopener">ngx_lua_waf</a></li>
+<li><a href="https://github.com/starjun/openstar" target="_blank" rel="noopener">openstar</a></li>
+<li><a href="https://github.com/SpiderLabs/ModSecurity/tree/nginx_refactoring" target="_blank" rel="noopener">ModSecurity</a></li>
+<li><a href="https://github.com/titansec/OpenWAF" target="_blank" rel="noopener">openwaf</a></li>
+<li><a href="https://github.com/baidu/openrasp" target="_blank" rel="noopener">openRASP</a></li>
+<li>x-waf</li>
+<li>jxwaf<h3 id="终端安全集中管理"><a href="#终端安全集中管理" class="headerlink" title="终端安全集中管理"></a>终端安全集中管理</h3></li>
+<li>360企业版</li>
+<li>火绒企业安全<h3 id="堡垒机"><a href="#堡垒机" class="headerlink" title="堡垒机"></a>堡垒机</h3></li>
+<li>jumpserver</li>
+<li>teleport<h3 id="代码质量管理"><a href="#代码质量管理" class="headerlink" title="代码质量管理"></a>代码质量管理</h3></li>
+<li>sonar + jekins</li>
+<li>cobra</li>
+<li>VCG</li>
+<li>fortify(破解版，找到最新的规则是2017.3)</li>
+<li>RIPS/Seay源代码审计系统(PHP))</li>
+<li>Findbugs（JAVA）</li>
+</ul>
+<h3 id="web日志审计"><a href="#web日志审计" class="headerlink" title="web日志审计"></a>web日志审计</h3><ul>
+<li>360星图</li>
+<li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">xlog</a><h3 id="日志分析系统"><a href="#日志分析系统" class="headerlink" title="日志分析系统"></a>日志分析系统</h3></li>
+<li>elk（es+logstash+kibana)</li>
+<li><a href="https://github.com/anbai-inc/Kibana_Hanization" target="_blank" rel="noopener">Kibana_Hanization(kibana汉化)</a><h3 id="上网行为管理-准入-认证"><a href="#上网行为管理-准入-认证" class="headerlink" title="上网行为管理/准入/认证"></a>上网行为管理/准入/认证</h3></li>
+<li><a href="https://packetfence.org/" target="_blank" rel="noopener">packetfence</a></li>
+<li>ikuai</li>
+<li>openldap</li>
+<li><a href="https://github.com/apereo/cas" target="_blank" rel="noopener">中央认证服务（CAS）</a><h3 id="数据防泄漏"><a href="#数据防泄漏" class="headerlink" title="数据防泄漏"></a>数据防泄漏</h3></li>
+<li>opendlp<h3 id="基线检查-加固"><a href="#基线检查-加固" class="headerlink" title="基线检查/加固"></a>基线检查/加固</h3></li>
+<li><a href="https://learn.cisecurity.org/benchmarks" target="_blank" rel="noopener">CIS</a></li>
+<li><a href="https://github.com/CISOfy/lynis/" target="_blank" rel="noopener">Lynis审计</a></li>
+<li><a href="https://github.com/A-mIn3/WINspect" target="_blank" rel="noopener">WINSpect</a></li>
+<li><a href="https://www.open-scap.org/" target="_blank" rel="noopener">OpenSCAP</a><h3 id="github泄露扫描"><a href="#github泄露扫描" class="headerlink" title="github泄露扫描"></a>github泄露扫描</h3></li>
+<li><a href="https://github.com/MiSecurity/x-patrol" target="_blank" rel="noopener">x-patrol</a></li>
+<li><a href="https://github.com/0xbug/Hawkeye" target="_blank" rel="noopener">Hawkeye</a></li>
+<li><a href="https://github.com/FeeiCN/GSIL" target="_blank" rel="noopener">GSIL</a><h3 id="目录索引系统"><a href="#目录索引系统" class="headerlink" title="目录索引系统"></a>目录索引系统</h3></li>
+<li><a href="https://github.com/helloxz/zdir" target="_blank" rel="noopener">zdir</a><h3 id="蜜罐"><a href="#蜜罐" class="headerlink" title="蜜罐"></a>蜜罐</h3></li>
+<li>opencanary</li>
+<li><a href="https://github.com/dtag-dev-sec/tpotce" target="_blank" rel="noopener">T-Pot</a><h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3></li>
+<li><a href="https://github.com/p1r06u3/phishing" target="_blank" rel="noopener">P神的phishing</a></li>
+<li><a href="https://github.com/sdlchina/mail_fishing" target="_blank" rel="noopener">mail_fishing</a></li>
+<li><a href="https://github.com/thelinuxchoice/blackeye" target="_blank" rel="noopener">blackeye</a></li>
+<li><a href="https://getgophish.com/" target="_blank" rel="noopener">getgophish</a><h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3></li>
+<li><a href="https://github.com/eolinker/GoKu-API-Gateway" target="_blank" rel="noopener">GoKu-API-Gateway</a></li>
+<li><a href="https://konghq.com/faqs/" target="_blank" rel="noopener">Kong</a></li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">WebRange(docker管理平台)</a></li>
+<li><a href="https://github.com/pluosi/app-host" target="_blank" rel="noopener">app-host（内网app发布）</a></li>
+<li><a href="https://github.com/baidu/AdvBox" target="_blank" rel="noopener">AdvBox</a></li>
+<li><a href="https://github.com/facebook/osquery" target="_blank" rel="noopener">osquery</a></li>
+<li><a href="https://github.com/liujiantaoliu/TT-SSO" target="_blank" rel="noopener">PHP-SSO</a></li>
+<li><a href="https://github.com/HandsomeOne/Scout" target="_blank" rel="noopener">Scout(url监控平台)</a></li>
+<li><a href="https://github.com/jx-sec/jxotp" target="_blank" rel="noopener">jxotp(SSH登陆双因素认证系统)</a></li>
+<li><a href="https://github.com/sx1989827/DOClever" target="_blank" rel="noopener">DOClever</a></li>
+<li><a href="https://github.com/CISOfy/lynis" target="_blank" rel="noopener">lynis审计</a></li>
+<li><a href="https://github.com/jly8866/archer" target="_blank" rel="noopener">archer</a></li>
+<li><a href="https://github.com/meolu/walle-web" target="_blank" rel="noopener">walle-web（代码部署平台）</a></li>
+<li><a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">apollo(配置中心)</a></li>
+<li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">长亭开源牧云cloudwalker（只有webshell检测部分）</a></li>
+<li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
+<li>美团DBProxy数据库防火墙</li>
+<li>Linxu下 rkhunter/chkrootkit </li>
+<li>Win下 pchunter/ 火绒剑/ PowerTool/ ProcessExplorer/ ProcessHacker/ autoruns/ OTL</li>
+<li><a href="http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" target="_blank" rel="noopener">Kaspersky</a></li>
+<li>D盾 webshell查杀</li>
+<li>Sandboxie 个人版沙箱</li>
+<li>ClamAV</li>
+</ul>
+
         
 <!--
         </br>
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <script src=/js/crypto-js.js></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">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</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>-->
+        <h3 id="漏扫"><a href="#漏扫" class="headerlink" title="漏扫"></a>漏扫</h3><ul>
+<li><a href="https://www.tenable.com/downloads/nessus" target="_blank" rel="noopener">nessus</a>（<a href="https://www.tenable.com/products/nessus/activation-code" target="_blank" rel="noopener">Home版</a>）</li>
+<li>openvas(在<a href="https://www.kali.org/tutorials/configuring-and-tuning-openvas-in-kali-linux/" target="_blank" rel="noopener">kali中安装openvas</a>，注意挂代 理，不然会很慢很慢和报错)</li>
+<li>awvs（破解版-52pojie）</li>
+<li>APPscan (<a href="https://pan.baidu.com/s/1sjkDDi1#list/path=%2F" target="_blank" rel="noopener">破解版</a>)</li>
+<li>Burpsuite pro （破解版）</li>
+<li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank" rel="noopener">mobsf</a> (移动app客户端，支持ios，但是需要在mac上跑)</li>
+<li>Nmap/Zmap/masscan 端口扫描<h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
+<li><a href="https://github.com/creditease-sec/insight" target="_blank" rel="noopener">洞察insight</a></li>
+<li>smef</li>
+<li><a href="https://github.com/jeffzh3ng/Fuxi-Scanner/" target="_blank" rel="noopener">Fuxi</a></li>
+<li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="项管"><a href="#项管" class="headerlink" title="项管"></a>项管</h3></li>
+<li>jira</li>
+<li>禅道<h3 id="src平台"><a href="#src平台" class="headerlink" title="src平台"></a>src平台</h3></li>
+<li><a href="https://github.com/martinzhou2015/SRCMS" target="_blank" rel="noopener">SRCMS</a></li>
+<li><a href="https://github.com/233sec/laravel-src" target="_blank" rel="noopener">laravel-src</a><h3 id="资产管理-自动化运维"><a href="#资产管理-自动化运维" class="headerlink" title="资产管理/自动化运维"></a>资产管理/自动化运维</h3></li>
+<li><a href="https://github.com/ysrc/xunfeng" target="_blank" rel="noopener">xunfeng</a></li>
+<li>AssetsView</li>
+<li><a href="https://github.com/Tencent/bk-cmdb" target="_blank" rel="noopener">蓝鲸bk-cmdb</a></li>
+<li><a href="https://github.com/bongmu/OpsManage" target="_blank" rel="noopener">OpsManage</a></li>
+<li><a href="http://www.ansible.com.cn/" target="_blank" rel="noopener">Ansible</a></li>
+<li><a href="https://docs.saltstack.com/en/latest/contents.html" target="_blank" rel="noopener">Saltstack</a><h3 id="soc"><a href="#soc" class="headerlink" title="soc"></a>soc</h3></li>
+<li>sosrp</li>
+<li>w3a_SOC</li>
+<li>OpenSOC</li>
+<li>ossim<h3 id="入侵检测-安全监控-流量回溯"><a href="#入侵检测-安全监控-流量回溯" class="headerlink" title="入侵检测/安全监控/流量回溯"></a>入侵检测/安全监控/流量回溯</h3></li>
+<li>suricata(selks)</li>
+<li>bro</li>
+<li>ossec(wazuh)</li>
+<li>security onion</li>
+<li>OwlH</li>
+<li>Nethserver</li>
+<li>Snort</li>
+<li>OpenWIPS-NG</li>
+<li>moloch</li>
+<li><a href="https://github.com/ysrc/yulong-hids" target="_blank" rel="noopener">同程-驭龙</a></li>
+<li>青藤云</li>
+<li>Osquery<h3 id="web应用安全"><a href="#web应用安全" class="headerlink" title="web应用安全"></a>web应用安全</h3></li>
+<li><a href="https://github.com/loveshell/ngx_lua_waf" target="_blank" rel="noopener">ngx_lua_waf</a></li>
+<li><a href="https://github.com/starjun/openstar" target="_blank" rel="noopener">openstar</a></li>
+<li><a href="https://github.com/SpiderLabs/ModSecurity/tree/nginx_refactoring" target="_blank" rel="noopener">ModSecurity</a></li>
+<li><a href="https://github.com/titansec/OpenWAF" target="_blank" rel="noopener">openwaf</a></li>
+<li><a href="https://github.com/baidu/openrasp" target="_blank" rel="noopener">openRASP</a></li>
+<li>x-waf</li>
+<li>jxwaf<h3 id="终端安全集中管理"><a href="#终端安全集中管理" class="headerlink" title="终端安全集中管理"></a>终端安全集中管理</h3></li>
+<li>360企业版</li>
+<li>火绒企业安全<h3 id="堡垒机"><a href="#堡垒机" class="headerlink" title="堡垒机"></a>堡垒机</h3></li>
+<li>jumpserver</li>
+<li>teleport<h3 id="代码质量管理"><a href="#代码质量管理" class="headerlink" title="代码质量管理"></a>代码质量管理</h3></li>
+<li>sonar + jekins</li>
+<li>cobra</li>
+<li>VCG</li>
+<li>fortify(破解版，找到最新的规则是2017.3)</li>
+<li>RIPS/Seay源代码审计系统(PHP))</li>
+<li>Findbugs（JAVA）</li>
+</ul>
+<h3 id="web日志审计"><a href="#web日志审计" class="headerlink" title="web日志审计"></a>web日志审计</h3><ul>
+<li>360星图</li>
+<li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">xlog</a><h3 id="日志分析系统"><a href="#日志分析系统" class="headerlink" title="日志分析系统"></a>日志分析系统</h3></li>
+<li>elk（es+logstash+kibana)</li>
+<li><a href="https://github.com/anbai-inc/Kibana_Hanization" target="_blank" rel="noopener">Kibana_Hanization(kibana汉化)</a><h3 id="上网行为管理-准入-认证"><a href="#上网行为管理-准入-认证" class="headerlink" title="上网行为管理/准入/认证"></a>上网行为管理/准入/认证</h3></li>
+<li><a href="https://packetfence.org/" target="_blank" rel="noopener">packetfence</a></li>
+<li>ikuai</li>
+<li>openldap</li>
+<li><a href="https://github.com/apereo/cas" target="_blank" rel="noopener">中央认证服务（CAS）</a><h3 id="数据防泄漏"><a href="#数据防泄漏" class="headerlink" title="数据防泄漏"></a>数据防泄漏</h3></li>
+<li>opendlp<h3 id="基线检查-加固"><a href="#基线检查-加固" class="headerlink" title="基线检查/加固"></a>基线检查/加固</h3></li>
+<li><a href="https://learn.cisecurity.org/benchmarks" target="_blank" rel="noopener">CIS</a></li>
+<li><a href="https://github.com/CISOfy/lynis/" target="_blank" rel="noopener">Lynis审计</a></li>
+<li><a href="https://github.com/A-mIn3/WINspect" target="_blank" rel="noopener">WINSpect</a></li>
+<li><a href="https://www.open-scap.org/" target="_blank" rel="noopener">OpenSCAP</a><h3 id="github泄露扫描"><a href="#github泄露扫描" class="headerlink" title="github泄露扫描"></a>github泄露扫描</h3></li>
+<li><a href="https://github.com/MiSecurity/x-patrol" target="_blank" rel="noopener">x-patrol</a></li>
+<li><a href="https://github.com/0xbug/Hawkeye" target="_blank" rel="noopener">Hawkeye</a></li>
+<li><a href="https://github.com/FeeiCN/GSIL" target="_blank" rel="noopener">GSIL</a><h3 id="目录索引系统"><a href="#目录索引系统" class="headerlink" title="目录索引系统"></a>目录索引系统</h3></li>
+<li><a href="https://github.com/helloxz/zdir" target="_blank" rel="noopener">zdir</a><h3 id="蜜罐"><a href="#蜜罐" class="headerlink" title="蜜罐"></a>蜜罐</h3></li>
+<li>opencanary</li>
+<li><a href="https://github.com/dtag-dev-sec/tpotce" target="_blank" rel="noopener">T-Pot</a><h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3></li>
+<li><a href="https://github.com/p1r06u3/phishing" target="_blank" rel="noopener">P神的phishing</a></li>
+<li><a href="https://github.com/sdlchina/mail_fishing" target="_blank" rel="noopener">mail_fishing</a></li>
+<li><a href="https://github.com/thelinuxchoice/blackeye" target="_blank" rel="noopener">blackeye</a></li>
+<li><a href="https://getgophish.com/" target="_blank" rel="noopener">getgophish</a><h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3></li>
+<li><a href="https://github.com/eolinker/GoKu-API-Gateway" target="_blank" rel="noopener">GoKu-API-Gateway</a></li>
+<li><a href="https://konghq.com/faqs/" target="_blank" rel="noopener">Kong</a></li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">WebRange(docker管理平台)</a></li>
+<li><a href="https://github.com/pluosi/app-host" target="_blank" rel="noopener">app-host（内网app发布）</a></li>
+<li><a href="https://github.com/baidu/AdvBox" target="_blank" rel="noopener">AdvBox</a></li>
+<li><a href="https://github.com/facebook/osquery" target="_blank" rel="noopener">osquery</a></li>
+<li><a href="https://github.com/liujiantaoliu/TT-SSO" target="_blank" rel="noopener">PHP-SSO</a></li>
+<li><a href="https://github.com/HandsomeOne/Scout" target="_blank" rel="noopener">Scout(url监控平台)</a></li>
+<li><a href="https://github.com/jx-sec/jxotp" target="_blank" rel="noopener">jxotp(SSH登陆双因素认证系统)</a></li>
+<li><a href="https://github.com/sx1989827/DOClever" target="_blank" rel="noopener">DOClever</a></li>
+<li><a href="https://github.com/CISOfy/lynis" target="_blank" rel="noopener">lynis审计</a></li>
+<li><a href="https://github.com/jly8866/archer" target="_blank" rel="noopener">archer</a></li>
+<li><a href="https://github.com/meolu/walle-web" target="_blank" rel="noopener">walle-web（代码部署平台）</a></li>
+<li><a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">apollo(配置中心)</a></li>
+<li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">长亭开源牧云cloudwalker（只有webshell检测部分）</a></li>
+<li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
+<li>美团DBProxy数据库防火墙</li>
+<li>Linxu下 rkhunter/chkrootkit </li>
+<li>Win下 pchunter/ 火绒剑/ PowerTool/ ProcessExplorer/ ProcessHacker/ autoruns/ OTL</li>
+<li><a href="http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" target="_blank" rel="noopener">Kaspersky</a></li>
+<li>D盾 webshell查杀</li>
+<li>Sandboxie 个人版沙箱</li>
+<li>ClamAV</li>
+</ul>
+-->
       
 
     </div>
@@ -348,7 +482,7 @@ doDecrypt(passwd, onError);
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/other/" data-id="cjp9dj6j0000tz0t6b9i06v41" class="article-share-link" data-share="baidu" data-title="企业安全建设中用到的开源or“免费”的工具">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/other/" data-id="cjp9j4d5h000m4pt6dwdz0o85" class="article-share-link" data-share="baidu" data-title="企业安全建设中用到的开源or“免费”的工具">分享到</a>
       
 
       
@@ -365,9 +499,9 @@ doDecrypt(passwd, onError);
     
 <nav id="article-nav">
   
-    <a href="/linux-backdoor-killer/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/encrypt-test/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">Linux后门入侵检测工具使用</div>
+      <div class="article-nav-title">encrypt_test</div>
     </a>
   
   
@@ -412,19 +546,19 @@ doDecrypt(passwd, onError);
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/yyoa/">用友致远A6 OA存在sql注入并拿shell</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/linux-backdoor-killer/">Linux后门入侵检测工具使用</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/winspect/">WINSpect-基于Powershell的Windows安全审计工具</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/captcha/">如何设计相对安全的图形验证码？ （转发）</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/sqlmap/">sqlmap笔记</a>
           </li>
         
       </ul>
@@ -437,7 +571,7 @@ doDecrypt(passwd, onError);
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/企业安全/">企业安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -453,7 +587,7 @@ doDecrypt(passwd, onError);
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 13.33px;">Android</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/web安全/" style="font-size: 10px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全测试/" style="font-size: 10px;">安全测试</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -463,8 +597,8 @@ doDecrypt(passwd, onError);
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">12</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">2022年02月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">12</span></li></ul>
     </div>
   </div>
 

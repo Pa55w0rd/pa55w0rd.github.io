@@ -8,19 +8,21 @@
 
   
 
-  <title>Tag: 移动安全 | Pa55w0rd &#39;s Blog</title>
+  <title>Linux环境变量设置 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.club/tags/移动安全/index.html">
+  <meta name="description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux环境变量设置">
+<meta property="og:url" content="http://www.pa55w0rd.club/环境变量设置/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="信息安全">
+<meta property="og:description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-12-05T07:22:28.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pa55w0rd &#39;s Blog">
-<meta name="twitter:description" content="信息安全">
+<meta name="twitter:title" content="Linux环境变量设置">
+<meta name="twitter:description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
 
   
 
@@ -184,44 +186,194 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap" data-scroll-reveal="enter left and over 0.7s">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/androidchecklist/" class="archive-article-date">
+      <section id="main"><article id="post-环境变量设置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/环境变量设置/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-27T07:37:59.000Z" itemprop="datePublished">9月 27</time>
+  <time datetime="2018-12-05T06:56:46.000Z" itemprop="datePublished">2018-12-05</time>
 </a>
 
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/androidchecklist/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Android APP安全checklist</a>
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>Linux环境变量设置
     </h1>
   
 
 
-    </header>
+
+
+        <!-- 目录内容 -->
+        
+          <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+                <span class="btn-bg"></span>
+                <span class="btn-text">文章导航</span>
+                </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+          <strong class="toc-title">文章目录</strong>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-查看环境变量"><span class="toc-number">1.</span> <span class="toc-text">0x00 查看环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-设置环境变量"><span class="toc-number">2.</span> <span class="toc-text">0x01 设置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-将路径加入到PATH"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 将路径加入到PATH</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-命名一个新的环境变量"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 命名一个新的环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-作用域"><span class="toc-number">3.</span> <span class="toc-text">0x02 作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-作用于当前终端"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 作用于当前终端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-作用于当前用户"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 作用于当前用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-作用于所有用户"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 作用于所有用户</span></a></li></ol></li></ol>
+               </div>
+         <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+         </script>
+            		
+        <!-- 目录内容结束 -->
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="0x00-查看环境变量"><a href="#0x00-查看环境变量" class="headerlink" title="0x00 查看环境变量"></a>0x00 查看环境变量</h2><p>查看环境变量有三个命令：</p>
+<ul>
+<li>env：env命令是environment的缩写，用于列出所有的环境变量</li>
+<li>export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能</li>
+<li>echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录</li>
+</ul>
+<a id="more"></a>
+<h2 id="0x01-设置环境变量"><a href="#0x01-设置环境变量" class="headerlink" title="0x01 设置环境变量"></a>0x01 设置环境变量</h2><h3 id="1-1-将路径加入到PATH"><a href="#1-1-将路径加入到PATH" class="headerlink" title="1.1 将路径加入到PATH"></a>1.1 将路径加入到PATH</h3><p>可以直接添加到环境变量PATH中。$PATH表示变量PATH的值，包含已有的目录。</p>
+<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line">export PATH=<span class="variable">$PATH</span><span class="symbol">:/path/to/your/dir</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line">export PATH=<span class="regexp">/path/to</span><span class="regexp">/your/dir</span><span class="symbol">:</span><span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">VAR_NAME</span>=value</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>终端所添加的环境变量是临时的，只适用于当前终端，关闭当前终端或在另一个终端中，添加的环境变量无效。</p>
+<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~<span class="string">/.bashrc</span></span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/<span class="keyword">profile</span></span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>说明：</strong></p>
+<p>bash首先执行/etc/profile脚本,/etc/profile脚本先依次执行/etc/profile.d/*.sh </p>
+<p>随后bash会执行用户主目录下的.bash_profile脚本,.bash_profile脚本会执行用户主目录下的.bashrc脚本,<br>而.bashrc脚本会执行/etc/bashrc脚本</p>
+<p>至此,所有的环境变量和初始化设定都已经加载完成</p>
+<p>bash随后调用terminfo和inputrc，完成终端属性和键盘映射的设定</p>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-查看环境变量"><a href="#0x00-查看环境变量" class="headerlink" title="0x00 查看环境变量"></a>0x00 查看环境变量</h2><p>查看环境变量有三个命令：</p>
+<ul>
+<li>env：env命令是environment的缩写，用于列出所有的环境变量</li>
+<li>export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能</li>
+<li>echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录</li>
+</ul>
+<a id="more"></a>
+<h2 id="0x01-设置环境变量"><a href="#0x01-设置环境变量" class="headerlink" title="0x01 设置环境变量"></a>0x01 设置环境变量</h2><h3 id="1-1-将路径加入到PATH"><a href="#1-1-将路径加入到PATH" class="headerlink" title="1.1 将路径加入到PATH"></a>1.1 将路径加入到PATH</h3><p>可以直接添加到环境变量PATH中。$PATH表示变量PATH的值，包含已有的目录。</p>
+<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line">export PATH=<span class="variable">$PATH</span><span class="symbol">:/path/to/your/dir</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line">export PATH=<span class="regexp">/path/to</span><span class="regexp">/your/dir</span><span class="symbol">:</span><span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">VAR_NAME</span>=value</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>终端所添加的环境变量是临时的，只适用于当前终端，关闭当前终端或在另一个终端中，添加的环境变量无效。</p>
+<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~<span class="string">/.bashrc</span></span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/<span class="keyword">profile</span></span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>说明：</strong></p>
+<p>bash首先执行/etc/profile脚本,/etc/profile脚本先依次执行/etc/profile.d/*.sh </p>
+<p>随后bash会执行用户主目录下的.bash_profile脚本,.bash_profile脚本会执行用户主目录下的.bashrc脚本,<br>而.bashrc脚本会执行/etc/bashrc脚本</p>
+<p>至此,所有的环境变量和初始化设定都已经加载完成</p>
+<p>bash随后调用terminfo和inputrc，完成终端属性和键盘映射的设定</p>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.club/环境变量设置/" data-id="cjpauj2t9005e9ft6v1t4juzq" class="article-share-link" data-share="baidu" data-title="Linux环境变量设置">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.club/环境变量设置/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/encrypt-test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">encrypt_test</div>
+    </a>
+  
+  
+    <a href="/other/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          企业安全建设中用到的开源or“免费”的工具
+        
+      </div>
+    </a>
+  
+</nav>
+
 
   
-  
-    </div></section>
-  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
 
 </section>
       
@@ -589,7 +741,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
+      id: "Wed Dec 05 2018 14:56:46 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

@@ -11,18 +11,18 @@
   <title>Linux环境变量设置 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
+  <meta name="description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux环境变量设置">
 <meta property="og:url" content="http://www.pa55w0rd.club/环境变量设置/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
+<meta property="og:description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-05T07:22:28.961Z">
+<meta property="og:updated_time" content="2018-12-05T07:27:47.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux环境变量设置">
-<meta name="twitter:description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
+<meta name="twitter:description" content="0x00 查看环境变量查看环境变量有三个命令：  env：env命令是environment的缩写，用于列出所有的环境变量 export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能 echo $PATH：echo $PATH用于列出变量PATH的值，里面包含了已添加的目录">
 
   
 
@@ -255,20 +255,20 @@ ga('send', 'pageview');
 <ul>
 <li>env：env命令是environment的缩写，用于列出所有的环境变量</li>
 <li>export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能</li>
-<li>echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录</li>
+<li><code>echo $PATH</code>：<code>echo $PATH</code>用于列出变量PATH的值，里面包含了已添加的目录</li>
 </ul>
 <a id="more"></a>
 <h2 id="0x01-设置环境变量"><a href="#0x01-设置环境变量" class="headerlink" title="0x01 设置环境变量"></a>0x01 设置环境变量</h2><h3 id="1-1-将路径加入到PATH"><a href="#1-1-将路径加入到PATH" class="headerlink" title="1.1 将路径加入到PATH"></a>1.1 将路径加入到PATH</h3><p>可以直接添加到环境变量PATH中。$PATH表示变量PATH的值，包含已有的目录。</p>
-<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line">export PATH=<span class="variable">$PATH</span><span class="symbol">:/path/to/your/dir</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line">export PATH=<span class="regexp">/path/to</span><span class="regexp">/your/dir</span><span class="symbol">:</span><span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">VAR_NAME</span>=value</span><br></pre></td></tr></table></figure></p>
-<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/path/to/your/dir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line"><span class="built_in">export</span> PATH=/path/to/your/dir:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> VAR_NAME=value</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure></p>
 <p>终端所添加的环境变量是临时的，只适用于当前终端，关闭当前终端或在另一个终端中，添加的环境变量无效。</p>
-<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~<span class="string">/.bashrc</span></span><br></pre></td></tr></table></figure></p>
-<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure></p>
 <p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/<span class="keyword">profile</span></span><br></pre></td></tr></table></figure></p>
-<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
-<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure></p>
+<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p><strong>说明：</strong></p>
 <p>bash首先执行/etc/profile脚本,/etc/profile脚本先依次执行/etc/profile.d/*.sh </p>
@@ -286,20 +286,20 @@ ga('send', 'pageview');
 <ul>
 <li>env：env命令是environment的缩写，用于列出所有的环境变量</li>
 <li>export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能</li>
-<li>echo $PATH：    echo $PATH用于列出变量PATH的值，里面包含了已添加的目录</li>
+<li><code>echo $PATH</code>：<code>echo $PATH</code>用于列出变量PATH的值，里面包含了已添加的目录</li>
 </ul>
 <a id="more"></a>
 <h2 id="0x01-设置环境变量"><a href="#0x01-设置环境变量" class="headerlink" title="0x01 设置环境变量"></a>0x01 设置环境变量</h2><h3 id="1-1-将路径加入到PATH"><a href="#1-1-将路径加入到PATH" class="headerlink" title="1.1 将路径加入到PATH"></a>1.1 将路径加入到PATH</h3><p>可以直接添加到环境变量PATH中。$PATH表示变量PATH的值，包含已有的目录。</p>
-<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line">export PATH=<span class="variable">$PATH</span><span class="symbol">:/path/to/your/dir</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line">export PATH=<span class="regexp">/path/to</span><span class="regexp">/your/dir</span><span class="symbol">:</span><span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">VAR_NAME</span>=value</span><br></pre></td></tr></table></figure></p>
-<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/path/to/your/dir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line"><span class="built_in">export</span> PATH=/path/to/your/dir:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> VAR_NAME=value</span><br></pre></td></tr></table></figure></p>
+<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure></p>
 <p>终端所添加的环境变量是临时的，只适用于当前终端，关闭当前终端或在另一个终端中，添加的环境变量无效。</p>
-<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~<span class="string">/.bashrc</span></span><br></pre></td></tr></table></figure></p>
-<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure></p>
 <p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="keyword">vim</span> /etc/<span class="keyword">profile</span></span><br></pre></td></tr></table></figure></p>
-<p>添加语句：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASS_PATH=./JAVA_HOME/<span class="class"><span class="keyword">lib</span>:$<span class="title">JAVA_HOME</span>/<span class="title">jre</span>/<span class="title">lib</span></span></span><br></pre></td></tr></table></figure></p>
-<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">source</span> <span class="regexp">/etc/</span>profile</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/profile</span><br></pre></td></tr></table></figure></p>
+<p>添加语句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure></p>
+<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></p>
 <hr>
 <p><strong>说明：</strong></p>
 <p>bash首先执行/etc/profile脚本,/etc/profile脚本先依次执行/etc/profile.d/*.sh </p>
@@ -318,7 +318,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/环境变量设置/" data-id="cjpauj2t9005e9ft6v1t4juzq" class="article-share-link" data-share="baidu" data-title="Linux环境变量设置">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/环境变量设置/" data-id="cjpaxmcnn0054d3t6q76gggf0" class="article-share-link" data-share="baidu" data-title="Linux环境变量设置">分享到</a>
       
 
       
@@ -335,17 +335,17 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/encrypt-test/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/yyoa/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">encrypt_test</div>
+      <div class="article-nav-title">用友致远A6 OA存在sql注入并拿shell</div>
     </a>
   
   
-    <a href="/other/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/encrypt-test/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          企业安全建设中用到的开源or“免费”的工具
+          encrypt_test
         
       </div>
     </a>
@@ -391,11 +391,11 @@ ga('send', 'pageview');
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/环境变量设置/">Linux环境变量设置</a>
+            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
+            <a id="recentpost_item" href="/环境变量设置/">Linux环境变量设置</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
@@ -432,7 +432,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 

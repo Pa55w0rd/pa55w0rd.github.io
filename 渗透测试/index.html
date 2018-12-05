@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-28T08:12:54.755Z">
+<meta property="og:updated_time" content="2018-12-05T08:58:22.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="渗透测试流程">
 <meta name="twitter:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
@@ -313,9 +313,16 @@ ga('send', 'pageview');
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a href="http://www.cnblogs.com/dongchi/p/4155368.html" target="_blank" rel="noopener">ip反查</a>，Nmap，Zenmap。</p>
 </li>
 <li><p>指纹识别</p>
-<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br><br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</p>
-<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
+<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br></p>
 <ul>
+<li>TTL</li>
+<li>路径大小写</li>
+<li>访问不存在的页面<br>针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</li>
+<li>respone包头</li>
+<li>index.php/index.jsp/index.asp</li>
+<li><p>爬虫爬取网站结构，看xx.jsp?等</p>
+<p>使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
+</li>
 <li>使用浏览器插件(wappalyzer)可以很方便的查看这些信息<br></li>
 <li>使用nc 或telnet 可以观察数据包特征或者网页加载的特殊文件来识别cms，如<code>nc xxx.com 80</code></li>
 <li>通过Zoomeye、Shodan等在线系统搜集</li>
@@ -357,10 +364,18 @@ ga('send', 'pageview');
 <p>  可以利用工具对其进行逆向，找出其所使用的url链接，然后进行专门的渗透测试</p>
 </li>
 <li><p>敏感目录/文件</p>
-<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan等</p>
+<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
+<p>  关键的操作就是确定端口后边的软件及软件版本，然后去个漏洞库去查找其存在的漏洞乃至exp<br>  搜索漏洞信息</p>
+<ul>
+<li><a href="http://www.cvedetails.com/version-search.php" target="_blank" rel="noopener">CVE漏洞库搜索</a></li>
+<li><a href="http://cve.mitre.org/cve/search_cve_list.html" target="_blank" rel="noopener">mitre_cve漏洞信息搜索</a><br>通过cve获取exp</li>
+<li>通过metasploit搜索<code>msf&gt; search cve:2018-xxxx</code></li>
+<li><a href="https://www.exploit-db.com/search/" target="_blank" rel="noopener">exploit-db</a></li>
+<li>github搜索</li>
+</ul>
 </li>
 </ul>
 <table>
@@ -646,12 +661,15 @@ ga('send', 'pageview');
 <p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆/留言/下单/退出/退货/付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
 </li>
 <li><p>了解网站目录的结构</p>
-<p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫</p>
+<p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫，</p>
 </li>
-<li><p>企业及员工信息收集</p>
+<li><p>企业及员工信息收集-社会工程学</p>
 <p>  通过天眼查、官方网站等可以查到企业的一些基本信息</p>
+<p>  拿着姓名/手机/邮箱等到各网站搜一圈看注册信息</p>
 <p>  拿到员工的信息，我们可以尝试使用弱密码进行登录一些内部平台，并且一些员工的邮箱的前缀很可能就是他的密码。当然，如果说当一个服务不允许多次使用错误密码登录，我们可以先确定弱口令，然后爆破收集到的账号信息去爆破哪些用户使用这个弱口令从而绕过这个防护机制。</p>
 <p>  可以尝试给对方邮箱发送钓鱼邮件或木马</p>
+<p>  UitraISO+Hacksaw制作木马启动盘</p>
+<p>  Airmom-ng假冒ap，并利用karma架设假冒服务</p>
 <p>  水坑攻击或鱼叉式钓鱼</p>
 </li>
 <li><p>网站备案信息</p>
@@ -679,11 +697,14 @@ ga('send', 'pageview');
 <li>不使用管理员权限的数据库连接；</li>
 <li>对机密信息进行加密或hash掉密码和敏感信息；</li>
 <li>应用异常尽可能少在web提示，最好使用自定义信息对应用的异常信息进行包装；</li>
-<li>采用工具或网络平台检测是否存在SQL注入。</li>
+<li><p>采用工具或网络平台检测是否存在SQL注入。</p>
+<p><strong>从数据库读取数据</strong></p>
+</li>
 </ul>
 </li>
 <li><p>xss漏洞</p>
 <p>  <strong>定义</strong>：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br><br>  前端漏洞也是一个很大的板块，在做渗透测试的时候我们需要抓住一些细微的点，对每一个输出点都尽可能的测试，并且想方设法的去绕过<br></p>
+<p>  <strong>用户输入被返回到前端页面</strong></p>
 <p>  <strong>XSS可能发生的场景</strong></p>
 <ol>
 <li><p>在HTML标签中输出</p>
@@ -701,20 +722,25 @@ ga('send', 'pageview');
 <li><p>在CSS中输出</p>
  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>($&#123;xss&#125;);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在<span class="selector-tag">CSS</span>中输出同样存在<span class="selector-tag">XSS</span>的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"javascript:alert('XSS')"</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>(alert(/xss/));&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出<br> <a href="http://www.evil.com/?test=$var" target="_blank" rel="noopener">test</a><br> <a href="http://www.evil.com/?test=" onclick="alert(1)" ""="" target="_blank" rel="noopener">test</a></p>
+<li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.evil.com/?test=$var"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.evil.com/?test="</span> <span class="attr">onclick</span>=<span class="string">alert(1)</span>"" &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 防御方法：使用URLEncode</p>
-<p> 6.2 整个URL能够被用户控制<br> 这时URL的Protocol和Host部分是不能够使用URLEncode的<br> <a href="$var">test</a><br> 攻击方法：<br> <a href="javascript:alert(1);" target="_blank" rel="noopener">test</a><br> <a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=" target="_blank" rel="noopener">test</a><br> 防御方法：检查变量是否以”http”开头，再对变量进行URLEncode，OWASP中有函数ESAPI.encoder().encoderForURL()，但此API未解决伪协议的问题。</p>
+<p> 6.2 整个URL能够被用户控制<br> 这时URL的Protocol和Host部分是不能够使用URLEncode的</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$var"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 攻击方法：</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:alert(1);"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4="</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 防御方法：检查变量是否以”http”开头，再对变量进行URLEncode，OWASP中有函数ESAPI.encoder().encoderForURL()，但此API未解决伪协议的问题。</p>
+<p><strong>如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）</strong><br></p>
 </li>
 </ol>
-</li>
+<ul>
+<li>将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；</li>
+<li>只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；</li>
+<li>对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；</li>
+<li>过滤或移除特殊的Html标签，如：script、iframe；</li>
+<li>过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。</li>
 </ul>
-<pre><code>**如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）**&lt;br&gt;
-- 将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；
-- 只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；
-- 对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；
-- 过滤或移除特殊的Html标签，如：script、iframe；
-- 过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。
-</code></pre><ul>
+</li>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
 <p>  更多<a href="http://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
@@ -730,6 +756,7 @@ ga('send', 'pageview');
 <p>  攻击者并不能通过CSRF攻击来直接获取用户的账户控制权，也不能直接窃取用户的任何信息。他们能做到的，是欺骗用户浏览器，让其以用户的名义执行操作。</p>
 <p>  因此对于用户来说很难避免在登陆一个网站之后不点击一些链接进行其他操作，所以随时可能成为CSRF的受害者。</p>
 <p>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
+<p>  <strong>功能使用的是请求/响应模式</strong></p>
 <p>  如何防止CSRF跨站请求攻击：<br></p>
 <ul>
 <li>在web站点，将持久化的授权（例如cookie或者http授权）切换为瞬时的授权方法（在每个form中提供隐藏field）；</li>
@@ -771,7 +798,9 @@ ga('send', 'pageview');
 <p>  远程文件包含拿shell，本地包含读取文件</p>
 </li>
 <li><p>命令执行</p>
-<p>  <strong>定义</strong>：针对操作系统，即能够在服务器上执行任意命令。从Web应用中通过Shell来调用操作系统命令，如果在Shell调用时存在漏洞，就可以执行攻击者的非法OS命令<br><br>  命令注入的思路与sql注入思路是差不多的，都是对用户的输入过滤不严谨。<br><br>  如何防止OS注入：<br></p>
+<p>  <strong>定义</strong>：针对操作系统，即能够在服务器上执行任意命令。从Web应用中通过Shell来调用操作系统命令，如果在Shell调用时存在漏洞，就可以执行攻击者的非法OS命令<br><br>  命令注入的思路与sql注入思路是差不多的，都是对用户的输入过滤不严谨。<br></p>
+<p>  <strong>调用系统命令</strong></p>
+<p>  如何防止OS注入：<br></p>
 <ul>
 <li>不调用外部程序；</li>
 <li>过滤掉、；，[,],|,&lt;,&gt;,\之类的符号；</li>
@@ -798,7 +827,98 @@ ga('send', 'pageview');
 <li><p>SSRF</p>
 <p>  ServerSide Request Forgery 的简写，允许 Web Interface 请求受保护网络内的资源。</p>
 </li>
+<li><p>参数</p>
+<p>  参数超长是否导致溢出、参数有特殊字符是否会导致程序报错、参数确实是否导致程序报错</p>
+</li>
+<li><p>业务漏洞检测</p>
+</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>功能</th>
+<th>功能对应检测点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>身份认证</td>
+<td>用户注册</td>
+<td>是否可以重复注册</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>密码修改</td>
+<td>修改密码逻辑是否有问题</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>密码重置</td>
+<td>重置密码逻辑是否有问题</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>短信验证码</td>
+<td>短信炸弹，逻辑是否有问题、是否可爆破</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>图片验证码</td>
+<td>验证码是否可重复使用</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>登录</td>
+<td>登录逻辑是否有问题</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>登录</td>
+<td>会话ID生成机制是否有问题</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>登录</td>
+<td>是否有超时自动退出机制</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>退出</td>
+<td>退出后会话ID是否真的失效</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>用户信息查看</td>
+<td>是否可以水平越权访问其他用户页面</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>具有管理员界面</td>
+<td>是否可以垂直越权访问管理员页面</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>具有管理员接口</td>
+<td>普通用户直接发包是否也会响应</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>购买</td>
+<td>修改价格后端是否会再次校验</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>多步功能</td>
+<td>是否跳过其中某些步骤</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>请求次数限制</td>
+<td>服务端如何限制是否可以绕过，条件竞争</td>
+</tr>
+</tbody>
+</table>
 <p>最后需要注意的是在进行漏洞发现的时候应该对每一个事件利用burpsuite进行抓包仔细观察数据包的传送情况，不放过任何一个可利用的点。</p>
 <h2 id="0x04-漏洞验证"><a href="#0x04-漏洞验证" class="headerlink" title="0x04 漏洞验证"></a>0x04 漏洞验证</h2><p>尽可能的由浅入深，旁敲侧推，尽可能的将漏洞的价值发挥到最大化，比如说挖到一枚self-xss ，这个漏洞一般会被忽略，如果说结合csrf漏洞的话那么就是一个中危漏洞了<br><br>再比如说拿到一个企业的邮箱账户，我们可以对其vpn爆破然后进行内网探测等等都是可行的。</p>
 <h2 id="0x05-后渗透阶段"><a href="#0x05-后渗透阶段" class="headerlink" title="0x05 后渗透阶段"></a>0x05 后渗透阶段</h2><p>后渗透测试包括内网渗透，权限维持，权限提升，读取用户hash，浏览器密码等等，一般都是点到为止，不会深入。<strong>这里需要注意，是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！</strong> </p>
@@ -955,9 +1075,16 @@ msf
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a href="http://www.cnblogs.com/dongchi/p/4155368.html" target="_blank" rel="noopener">ip反查</a>，Nmap，Zenmap。</p>
 </li>
 <li><p>指纹识别</p>
-<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br><br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</p>
-<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
+<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br></p>
 <ul>
+<li>TTL</li>
+<li>路径大小写</li>
+<li>访问不存在的页面<br>针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</li>
+<li>respone包头</li>
+<li>index.php/index.jsp/index.asp</li>
+<li><p>爬虫爬取网站结构，看xx.jsp?等</p>
+<p>使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
+</li>
 <li>使用浏览器插件(wappalyzer)可以很方便的查看这些信息<br></li>
 <li>使用nc 或telnet 可以观察数据包特征或者网页加载的特殊文件来识别cms，如<code>nc xxx.com 80</code></li>
 <li>通过Zoomeye、Shodan等在线系统搜集</li>
@@ -999,10 +1126,18 @@ msf
 <p>  可以利用工具对其进行逆向，找出其所使用的url链接，然后进行专门的渗透测试</p>
 </li>
 <li><p>敏感目录/文件</p>
-<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan等</p>
+<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
+<p>  关键的操作就是确定端口后边的软件及软件版本，然后去个漏洞库去查找其存在的漏洞乃至exp<br>  搜索漏洞信息</p>
+<ul>
+<li><a href="http://www.cvedetails.com/version-search.php" target="_blank" rel="noopener">CVE漏洞库搜索</a></li>
+<li><a href="http://cve.mitre.org/cve/search_cve_list.html" target="_blank" rel="noopener">mitre_cve漏洞信息搜索</a><br>通过cve获取exp</li>
+<li>通过metasploit搜索<code>msf&gt; search cve:2018-xxxx</code></li>
+<li><a href="https://www.exploit-db.com/search/" target="_blank" rel="noopener">exploit-db</a></li>
+<li>github搜索</li>
+</ul>
 </li>
 </ul>
 <table>
@@ -1288,12 +1423,15 @@ msf
 <p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆/留言/下单/退出/退货/付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
 </li>
 <li><p>了解网站目录的结构</p>
-<p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫</p>
+<p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫，</p>
 </li>
-<li><p>企业及员工信息收集</p>
+<li><p>企业及员工信息收集-社会工程学</p>
 <p>  通过天眼查、官方网站等可以查到企业的一些基本信息</p>
+<p>  拿着姓名/手机/邮箱等到各网站搜一圈看注册信息</p>
 <p>  拿到员工的信息，我们可以尝试使用弱密码进行登录一些内部平台，并且一些员工的邮箱的前缀很可能就是他的密码。当然，如果说当一个服务不允许多次使用错误密码登录，我们可以先确定弱口令，然后爆破收集到的账号信息去爆破哪些用户使用这个弱口令从而绕过这个防护机制。</p>
 <p>  可以尝试给对方邮箱发送钓鱼邮件或木马</p>
+<p>  UitraISO+Hacksaw制作木马启动盘</p>
+<p>  Airmom-ng假冒ap，并利用karma架设假冒服务</p>
 <p>  水坑攻击或鱼叉式钓鱼</p>
 </li>
 <li><p>网站备案信息</p>
@@ -1321,11 +1459,14 @@ msf
 <li>不使用管理员权限的数据库连接；</li>
 <li>对机密信息进行加密或hash掉密码和敏感信息；</li>
 <li>应用异常尽可能少在web提示，最好使用自定义信息对应用的异常信息进行包装；</li>
-<li>采用工具或网络平台检测是否存在SQL注入。</li>
+<li><p>采用工具或网络平台检测是否存在SQL注入。</p>
+<p><strong>从数据库读取数据</strong></p>
+</li>
 </ul>
 </li>
 <li><p>xss漏洞</p>
 <p>  <strong>定义</strong>：恶意攻击者往Web页面里插入恶意Script代码，当用户浏览该页之时，嵌入其中Web里面的Script代码会被执行，从而达到恶意攻击用户的目的。<br><br>  前端漏洞也是一个很大的板块，在做渗透测试的时候我们需要抓住一些细微的点，对每一个输出点都尽可能的测试，并且想方设法的去绕过<br></p>
+<p>  <strong>用户输入被返回到前端页面</strong></p>
 <p>  <strong>XSS可能发生的场景</strong></p>
 <ol>
 <li><p>在HTML标签中输出</p>
@@ -1343,20 +1484,25 @@ msf
 <li><p>在CSS中输出</p>
  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>($&#123;xss&#125;);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在<span class="selector-tag">CSS</span>中输出同样存在<span class="selector-tag">XSS</span>的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">"javascript:alert('XSS')"</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>(alert(/xss/));&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出<br> <a href="http://www.evil.com/?test=$var" target="_blank" rel="noopener">test</a><br> <a href="http://www.evil.com/?test=" onclick="alert(1)" ""="" target="_blank" rel="noopener">test</a></p>
+<li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.evil.com/?test=$var"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.evil.com/?test="</span> <span class="attr">onclick</span>=<span class="string">alert(1)</span>"" &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 防御方法：使用URLEncode</p>
-<p> 6.2 整个URL能够被用户控制<br> 这时URL的Protocol和Host部分是不能够使用URLEncode的<br> <a href="$var">test</a><br> 攻击方法：<br> <a href="javascript:alert(1);" target="_blank" rel="noopener">test</a><br> <a href="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4=" target="_blank" rel="noopener">test</a><br> 防御方法：检查变量是否以”http”开头，再对变量进行URLEncode，OWASP中有函数ESAPI.encoder().encoderForURL()，但此API未解决伪协议的问题。</p>
+<p> 6.2 整个URL能够被用户控制<br> 这时URL的Protocol和Host部分是不能够使用URLEncode的</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"$var"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 攻击方法：</p>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:alert(1);"</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTs8L3NjcmlwdD4="</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 防御方法：检查变量是否以”http”开头，再对变量进行URLEncode，OWASP中有函数ESAPI.encoder().encoderForURL()，但此API未解决伪协议的问题。</p>
+<p><strong>如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）</strong><br></p>
 </li>
 </ol>
-</li>
+<ul>
+<li>将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；</li>
+<li>只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；</li>
+<li>对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；</li>
+<li>过滤或移除特殊的Html标签，如：script、iframe；</li>
+<li>过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。</li>
 </ul>
-<pre><code>**如何防止XSS跨站脚本攻击：（原则是不相信用户输入的数据）**&lt;br&gt;
-- 将重要的cookies标记为http only，这样JavaScript中的document.cookie语句就不能获取到cookie了；
-- 只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；
-- 对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；
-- 过滤或移除特殊的Html标签，如：script、iframe；
-- 过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。
-</code></pre><ul>
+</li>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
 <p>  更多<a href="http://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
@@ -1372,6 +1518,7 @@ msf
 <p>  攻击者并不能通过CSRF攻击来直接获取用户的账户控制权，也不能直接窃取用户的任何信息。他们能做到的，是欺骗用户浏览器，让其以用户的名义执行操作。</p>
 <p>  因此对于用户来说很难避免在登陆一个网站之后不点击一些链接进行其他操作，所以随时可能成为CSRF的受害者。</p>
 <p>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
+<p>  <strong>功能使用的是请求/响应模式</strong></p>
 <p>  如何防止CSRF跨站请求攻击：<br></p>
 <ul>
 <li>在web站点，将持久化的授权（例如cookie或者http授权）切换为瞬时的授权方法（在每个form中提供隐藏field）；</li>
@@ -1413,7 +1560,9 @@ msf
 <p>  远程文件包含拿shell，本地包含读取文件</p>
 </li>
 <li><p>命令执行</p>
-<p>  <strong>定义</strong>：针对操作系统，即能够在服务器上执行任意命令。从Web应用中通过Shell来调用操作系统命令，如果在Shell调用时存在漏洞，就可以执行攻击者的非法OS命令<br><br>  命令注入的思路与sql注入思路是差不多的，都是对用户的输入过滤不严谨。<br><br>  如何防止OS注入：<br></p>
+<p>  <strong>定义</strong>：针对操作系统，即能够在服务器上执行任意命令。从Web应用中通过Shell来调用操作系统命令，如果在Shell调用时存在漏洞，就可以执行攻击者的非法OS命令<br><br>  命令注入的思路与sql注入思路是差不多的，都是对用户的输入过滤不严谨。<br></p>
+<p>  <strong>调用系统命令</strong></p>
+<p>  如何防止OS注入：<br></p>
 <ul>
 <li>不调用外部程序；</li>
 <li>过滤掉、；，[,],|,&lt;,&gt;,\之类的符号；</li>
@@ -1440,7 +1589,98 @@ msf
 <li><p>SSRF</p>
 <p>  ServerSide Request Forgery 的简写，允许 Web Interface 请求受保护网络内的资源。</p>
 </li>
+<li><p>参数</p>
+<p>  参数超长是否导致溢出、参数有特殊字符是否会导致程序报错、参数确实是否导致程序报错</p>
+</li>
+<li><p>业务漏洞检测</p>
+</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>功能</th>
+<th>功能对应检测点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>身份认证</td>
+<td>用户注册</td>
+<td>是否可以重复注册</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>密码修改</td>
+<td>修改密码逻辑是否有问题</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>密码重置</td>
+<td>重置密码逻辑是否有问题</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>短信验证码</td>
+<td>短信炸弹，逻辑是否有问题、是否可爆破</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>图片验证码</td>
+<td>验证码是否可重复使用</td>
+</tr>
+<tr>
+<td>身份认证</td>
+<td>登录</td>
+<td>登录逻辑是否有问题</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>登录</td>
+<td>会话ID生成机制是否有问题</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>登录</td>
+<td>是否有超时自动退出机制</td>
+</tr>
+<tr>
+<td>会话管理</td>
+<td>退出</td>
+<td>退出后会话ID是否真的失效</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>用户信息查看</td>
+<td>是否可以水平越权访问其他用户页面</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>具有管理员界面</td>
+<td>是否可以垂直越权访问管理员页面</td>
+</tr>
+<tr>
+<td>访问控制</td>
+<td>具有管理员接口</td>
+<td>普通用户直接发包是否也会响应</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>购买</td>
+<td>修改价格后端是否会再次校验</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>多步功能</td>
+<td>是否跳过其中某些步骤</td>
+</tr>
+<tr>
+<td>业务逻辑</td>
+<td>请求次数限制</td>
+<td>服务端如何限制是否可以绕过，条件竞争</td>
+</tr>
+</tbody>
+</table>
 <p>最后需要注意的是在进行漏洞发现的时候应该对每一个事件利用burpsuite进行抓包仔细观察数据包的传送情况，不放过任何一个可利用的点。</p>
 <h2 id="0x04-漏洞验证"><a href="#0x04-漏洞验证" class="headerlink" title="0x04 漏洞验证"></a>0x04 漏洞验证</h2><p>尽可能的由浅入深，旁敲侧推，尽可能的将漏洞的价值发挥到最大化，比如说挖到一枚self-xss ，这个漏洞一般会被忽略，如果说结合csrf漏洞的话那么就是一个中危漏洞了<br><br>再比如说拿到一个企业的邮箱账户，我们可以对其vpn爆破然后进行内网探测等等都是可行的。</p>
 <h2 id="0x05-后渗透阶段"><a href="#0x05-后渗透阶段" class="headerlink" title="0x05 后渗透阶段"></a>0x05 后渗透阶段</h2><p>后渗透测试包括内网渗透，权限维持，权限提升，读取用户hash，浏览器密码等等，一般都是点到为止，不会深入。<strong>这里需要注意，是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！</strong> </p>
@@ -1540,7 +1780,7 @@ msf
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjpauj30p007d9ft6o5ezelut" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjpaxmct1007ed3t6fgzal6i5" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
@@ -1563,11 +1803,11 @@ msf
     </a>
   
   
-    <a href="/phpstudy+https/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/trs/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          phpstudy配置ssl证书实现https加密访问
+          TRS漏洞整理 （转发）
         
       </div>
     </a>
@@ -1613,11 +1853,11 @@ msf
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/环境变量设置/">Linux环境变量设置</a>
+            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/encrypt-test/">encrypt_test</a>
+            <a id="recentpost_item" href="/环境变量设置/">Linux环境变量设置</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
@@ -1654,7 +1894,7 @@ msf
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 11.67px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 15px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.pa55w0rd.club/other/</loc>
+    
+    <lastmod>2018-12-14T03:11:48.815Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.pa55w0rd.club/burp/</loc>
     
     <lastmod>2018-12-13T04:52:16.733Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://www.pa55w0rd.club/firewall/</loc>
     
     <lastmod>2018-12-13T03:03:05.428Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.pa55w0rd.club/other/</loc>
-    
-    <lastmod>2018-12-12T10:23:52.524Z</lastmod>
     
   </url>
   

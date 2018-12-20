@@ -11,13 +11,13 @@
   <title>Burp Suite使用 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧">
+  <meta name="description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧，欢迎大家补充">
 <meta name="keywords" content="工具使用,web安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Burp Suite使用">
 <meta property="og:url" content="http://www.pa55w0rd.club/burp/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧">
+<meta property="og:description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧，欢迎大家补充">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.pa55w0rd.club/burp/1.png">
 <meta property="og:image" content="http://www.pa55w0rd.club/burp/2.png">
@@ -33,10 +33,12 @@
 <meta property="og:image" content="http://www.pa55w0rd.club/burp/csrf.png">
 <meta property="og:image" content="http://www.pa55w0rd.club/burp/payload1.png">
 <meta property="og:image" content="http://www.pa55w0rd.club/burp/payload2.png">
-<meta property="og:updated_time" content="2018-12-13T04:52:16.733Z">
+<meta property="og:image" content="http://www.pa55w0rd.club/burp/colla_check.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/burp/colla_client.png">
+<meta property="og:updated_time" content="2018-12-20T07:36:19.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Burp Suite使用">
-<meta name="twitter:description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧">
+<meta name="twitter:description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧，欢迎大家补充">
 <meta name="twitter:image" content="http://www.pa55w0rd.club/burp/1.png">
 
   
@@ -240,7 +242,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-专业版激活问题"><span class="toc-number">2.</span> <span class="toc-text">0x01 专业版激活问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#激活步骤"><span class="toc-number">2.1.</span> <span class="toc-text">激活步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-中文显示乱码问题"><span class="toc-number">3.</span> <span class="toc-text">0x02 中文显示乱码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-拦截响应包"><span class="toc-number">4.</span> <span class="toc-text">0x03 拦截响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-拦截指定url的请求响应包"><span class="toc-number">5.</span> <span class="toc-text">0x04 拦截指定url的请求响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-自动替换cookie等"><span class="toc-number">6.</span> <span class="toc-text">0x05 自动替换cookie等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-生成csrf-poc"><span class="toc-number">7.</span> <span class="toc-text">0x06 生成csrf poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-条件竞争漏洞测试"><span class="toc-number">8.</span> <span class="toc-text">0x07 条件竞争漏洞测试</span></a></li></ol>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-专业版激活问题"><span class="toc-number">2.</span> <span class="toc-text">0x01 专业版激活问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#激活步骤"><span class="toc-number">2.1.</span> <span class="toc-text">激活步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-中文显示乱码问题"><span class="toc-number">3.</span> <span class="toc-text">0x02 中文显示乱码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-拦截响应包"><span class="toc-number">4.</span> <span class="toc-text">0x03 拦截响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-拦截指定url的请求响应包"><span class="toc-number">5.</span> <span class="toc-text">0x04 拦截指定url的请求响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-自动替换cookie等"><span class="toc-number">6.</span> <span class="toc-text">0x05 自动替换cookie等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-生成csrf-poc"><span class="toc-number">7.</span> <span class="toc-text">0x06 生成csrf poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-条件竞争漏洞测试"><span class="toc-number">8.</span> <span class="toc-text">0x07 条件竞争漏洞测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-DNSlog功能"><span class="toc-number">9.</span> <span class="toc-text">0x08 DNSlog功能</span></a></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -267,7 +269,7 @@ ga('send', 'pageview');
         
         
           <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。</p>
-<p>大家都很熟悉工具的使用了，这里介绍几个技巧<br><a id="more"></a></p>
+<p>大家都很熟悉工具的使用了，这里介绍几个技巧，<strong>欢迎大家补充</strong><br><a id="more"></a></p>
 <h2 id="0x01-专业版激活问题"><a href="#0x01-专业版激活问题" class="headerlink" title="0x01 专业版激活问题"></a>0x01 专业版激活问题</h2><p>使用burp-loader-keygen.jar注册机激活<br><br>支持1.6-目前最新的都能使用该注册机激活<br><br>注意有人利用这个破解补丁添加后门传播病毒，<a href="https://0x00sec.org/t/malware-reversing-burpsuite-keygen/5167" target="_blank" rel="noopener">后门分析帖子》》</a><br><br>原始注册机文件的MD5<br><br>burp-loader-keygen.jar     MD5: A4A02E374695234412E2C66B0649B757<br><br>源文件MD5官网查看：<br><a href="http://releases.portswigger.net" target="_blank" rel="noopener">http://releases.portswigger.net</a></p>
 <p>使用burp-loader-keygen.jar破解的，每次都需要在该工具上启动，或使用命令行启动<code>java -Xbootclasspath/p:burp-loader-keygen.jar -jar burpsuite_pro.jar</code></p>
 <h3 id="激活步骤"><a href="#激活步骤" class="headerlink" title="激活步骤"></a>激活步骤</h3><ol>
@@ -310,7 +312,12 @@ ga('send', 'pageview');
 <img src="/burp/replace.png" title="replace">
 <h2 id="0x06-生成csrf-poc"><a href="#0x06-生成csrf-poc" class="headerlink" title="0x06 生成csrf poc"></a>0x06 生成csrf poc</h2><p>对拦截的请求，右键</p>
 <img src="/burp/csrf.png" title="csrf">
-<h2 id="0x07-条件竞争漏洞测试"><a href="#0x07-条件竞争漏洞测试" class="headerlink" title="0x07 条件竞争漏洞测试"></a>0x07 条件竞争漏洞测试</h2><p>将请求包发送至Intruder</p>
+<h2 id="0x07-条件竞争漏洞测试"><a href="#0x07-条件竞争漏洞测试" class="headerlink" title="0x07 条件竞争漏洞测试"></a>0x07 条件竞争漏洞测试</h2><p>“竞争条件”发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
+<p>开发者在进行代码开发时常常倾向于认为代码会以线性的方式执行，而且他们忽视了并行服务器会并发执行多个线程，这就会导致意想不到的结果。</p>
+<p>简单的说：本来你有100块钱，买一个商品要花100，你可以多开启多个线程去跑，有可能不止一个用户买成功</p>
+<p>“竞争条件”漏洞有时很难通过黑盒/灰盒的方法来进行挖掘，因为这个漏洞很受环境因素的影响，比如网络延迟、服务器的处理能力等。一般都会通过对代码进行审计来发现此类问题</p>
+<p>可以使用Burp的intruder功能来实现发送多个并发请求</p>
+<p>将请求包发送至Intruder</p>
 <p>Intruder – Payloads – Payload Stes </p>
 <p>Payload type设置为NUll payloads</p>
 <p>Payload Options 次数设置100次</p>
@@ -318,6 +325,23 @@ ga('send', 'pageview');
 <p>Intruder – Options – Request Engine</p>
 <p>线程数设置最大999 ，点击Start attack</p>
 <img src="/burp/payload2.png" title="payload1">
+<h2 id="0x08-DNSlog功能"><a href="#0x08-DNSlog功能" class="headerlink" title="0x08 DNSlog功能"></a>0x08 DNSlog功能</h2><p>Burp Collaborator是从Burp suite v1.6.15版本添加的新功能，也就是DNSlog，监控DNS解析记录和HTTP访问记录，在检测盲注类漏洞很好用，也可以借助第三方服务</p>
+<p>这里引出两个概念，<strong>In-band attack与 out-band attack（带内与带外攻击）</strong>，带内与带外的区别核心在于是否使用不同的通信通道。</p>
+<ul>
+<li>带内攻击<br>在一次攻击当中,只有一条通道，属于in-band（带内）攻击。常规的web测试模型就是我们向目标发送payloads，然后分析目标返回的数据。</li>
+<li>带外攻击<br>现在同一次攻击下，不止一条信道，则属于out-band（带外）攻击。与外部服务交互行为发生在一个payload提交到目标应用上，导致目标通过某个网络协议和一个外部的域名进行信息交互。和ssrf攻击类似，让目标与Collaborator交互</li>
+</ul>
+<p>首先通过project options - misc - burp collaborator server - run health check 检查信道是否通畅</p>
+<img src="/burp/colla_check.png" title="colla_check">
+<p>启用 主界面菜单项 burp - burp collaborator client 即可启用</p>
+<p>点击Copy 头clipboard ，添加到payload中</p>
+<img src="/burp/colla_client.png" title="colla_client">
+<p>带外信道根据不同场景一般用如下几类：</p>
+<ol>
+<li>burp 自带的 collaborator。主界面菜单项 burp - burp collaborator client 即可启用，可以在 project options - misc - burp collaborator server - run health check 检查信道是否通畅。无需第三方服务、不用注册，即开即用。由于我 burp 不离手，所以，这种带外信道方便、集成度高是它的最大优点，另外，burp 进行各类盲注（XXE、SQLi、CMDi 等等）的主动扫描时，也会用到 collaborator；</li>
+<li>用脚本语言快速启用 web server。运行 python3 -m http.server 8653 或 php -S 0.0.0.0:8088 后，所有对它的 GET、HEAD 请求几类都能在日志中查看到。这种方式非常适用于攻击端与目标同在内网的场景，比如，无公网环境的 CTF 竞赛。不支持 POST 是它最大的短板；</li>
+<li>借助第三方服务（<a href="http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持" target="_blank" rel="noopener">http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持</a> DNS 查询、HTTP POST 方法，此外，由于这是长期有效的服务，所以，很适用于那些非实时触发的带外访问请求（如，二次 SQLi）。你可以隔两三天再去看有无访问记录。</li>
+</ol>
 
         
 <!--
@@ -326,7 +350,7 @@ ga('send', 'pageview');
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
         <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。</p>
-<p>大家都很熟悉工具的使用了，这里介绍几个技巧<br><a id="more"></a></p>
+<p>大家都很熟悉工具的使用了，这里介绍几个技巧，<strong>欢迎大家补充</strong><br><a id="more"></a></p>
 <h2 id="0x01-专业版激活问题"><a href="#0x01-专业版激活问题" class="headerlink" title="0x01 专业版激活问题"></a>0x01 专业版激活问题</h2><p>使用burp-loader-keygen.jar注册机激活<br><br>支持1.6-目前最新的都能使用该注册机激活<br><br>注意有人利用这个破解补丁添加后门传播病毒，<a href="https://0x00sec.org/t/malware-reversing-burpsuite-keygen/5167" target="_blank" rel="noopener">后门分析帖子》》</a><br><br>原始注册机文件的MD5<br><br>burp-loader-keygen.jar     MD5: A4A02E374695234412E2C66B0649B757<br><br>源文件MD5官网查看：<br><a href="http://releases.portswigger.net" target="_blank" rel="noopener">http://releases.portswigger.net</a></p>
 <p>使用burp-loader-keygen.jar破解的，每次都需要在该工具上启动，或使用命令行启动<code>java -Xbootclasspath/p:burp-loader-keygen.jar -jar burpsuite_pro.jar</code></p>
 <h3 id="激活步骤"><a href="#激活步骤" class="headerlink" title="激活步骤"></a>激活步骤</h3><ol>
@@ -369,7 +393,12 @@ ga('send', 'pageview');
 <img src="/burp/replace.png" title="replace">
 <h2 id="0x06-生成csrf-poc"><a href="#0x06-生成csrf-poc" class="headerlink" title="0x06 生成csrf poc"></a>0x06 生成csrf poc</h2><p>对拦截的请求，右键</p>
 <img src="/burp/csrf.png" title="csrf">
-<h2 id="0x07-条件竞争漏洞测试"><a href="#0x07-条件竞争漏洞测试" class="headerlink" title="0x07 条件竞争漏洞测试"></a>0x07 条件竞争漏洞测试</h2><p>将请求包发送至Intruder</p>
+<h2 id="0x07-条件竞争漏洞测试"><a href="#0x07-条件竞争漏洞测试" class="headerlink" title="0x07 条件竞争漏洞测试"></a>0x07 条件竞争漏洞测试</h2><p>“竞争条件”发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
+<p>开发者在进行代码开发时常常倾向于认为代码会以线性的方式执行，而且他们忽视了并行服务器会并发执行多个线程，这就会导致意想不到的结果。</p>
+<p>简单的说：本来你有100块钱，买一个商品要花100，你可以多开启多个线程去跑，有可能不止一个用户买成功</p>
+<p>“竞争条件”漏洞有时很难通过黑盒/灰盒的方法来进行挖掘，因为这个漏洞很受环境因素的影响，比如网络延迟、服务器的处理能力等。一般都会通过对代码进行审计来发现此类问题</p>
+<p>可以使用Burp的intruder功能来实现发送多个并发请求</p>
+<p>将请求包发送至Intruder</p>
 <p>Intruder – Payloads – Payload Stes </p>
 <p>Payload type设置为NUll payloads</p>
 <p>Payload Options 次数设置100次</p>
@@ -377,6 +406,23 @@ ga('send', 'pageview');
 <p>Intruder – Options – Request Engine</p>
 <p>线程数设置最大999 ，点击Start attack</p>
 <img src="/burp/payload2.png" title="payload1">
+<h2 id="0x08-DNSlog功能"><a href="#0x08-DNSlog功能" class="headerlink" title="0x08 DNSlog功能"></a>0x08 DNSlog功能</h2><p>Burp Collaborator是从Burp suite v1.6.15版本添加的新功能，也就是DNSlog，监控DNS解析记录和HTTP访问记录，在检测盲注类漏洞很好用，也可以借助第三方服务</p>
+<p>这里引出两个概念，<strong>In-band attack与 out-band attack（带内与带外攻击）</strong>，带内与带外的区别核心在于是否使用不同的通信通道。</p>
+<ul>
+<li>带内攻击<br>在一次攻击当中,只有一条通道，属于in-band（带内）攻击。常规的web测试模型就是我们向目标发送payloads，然后分析目标返回的数据。</li>
+<li>带外攻击<br>现在同一次攻击下，不止一条信道，则属于out-band（带外）攻击。与外部服务交互行为发生在一个payload提交到目标应用上，导致目标通过某个网络协议和一个外部的域名进行信息交互。和ssrf攻击类似，让目标与Collaborator交互</li>
+</ul>
+<p>首先通过project options - misc - burp collaborator server - run health check 检查信道是否通畅</p>
+<img src="/burp/colla_check.png" title="colla_check">
+<p>启用 主界面菜单项 burp - burp collaborator client 即可启用</p>
+<p>点击Copy 头clipboard ，添加到payload中</p>
+<img src="/burp/colla_client.png" title="colla_client">
+<p>带外信道根据不同场景一般用如下几类：</p>
+<ol>
+<li>burp 自带的 collaborator。主界面菜单项 burp - burp collaborator client 即可启用，可以在 project options - misc - burp collaborator server - run health check 检查信道是否通畅。无需第三方服务、不用注册，即开即用。由于我 burp 不离手，所以，这种带外信道方便、集成度高是它的最大优点，另外，burp 进行各类盲注（XXE、SQLi、CMDi 等等）的主动扫描时，也会用到 collaborator；</li>
+<li>用脚本语言快速启用 web server。运行 python3 -m http.server 8653 或 php -S 0.0.0.0:8088 后，所有对它的 GET、HEAD 请求几类都能在日志中查看到。这种方式非常适用于攻击端与目标同在内网的场景，比如，无公网环境的 CTF 竞赛。不支持 POST 是它最大的短板；</li>
+<li>借助第三方服务（<a href="http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持" target="_blank" rel="noopener">http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持</a> DNS 查询、HTTP POST 方法，此外，由于这是长期有效的服务，所以，很适用于那些非实时触发的带外访问请求（如，二次 SQLi）。你可以隔两三天再去看有无访问记录。</li>
+</ol>
 -->
       
 
@@ -389,7 +435,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/burp/" data-id="cjpngj1qi0002i4t6hga5rao7" class="article-share-link" data-share="baidu" data-title="Burp Suite使用">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/burp/" data-id="cjpwara3o00045at6hgxu9m60" class="article-share-link" data-share="baidu" data-title="Burp Suite使用">分享到</a>
       
 
       

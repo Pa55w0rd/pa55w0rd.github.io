@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.pa55w0rd.club/centos7_install_docker/</loc>
+    
+    <lastmod>2019-01-09T07:06:34.250Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.club/other/</loc>
+    
+    <lastmod>2019-01-08T08:34:29.476Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.pa55w0rd.club/sonar/</loc>
     
     <lastmod>2019-01-08T07:37:01.071Z</lastmod>
@@ -37,23 +51,9 @@
   </url>
   
   <url>
-    <loc>http://www.pa55w0rd.club/centos7_install_docker/</loc>
-    
-    <lastmod>2018-12-29T02:35:06.951Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.pa55w0rd.club/insight/</loc>
     
     <lastmod>2018-12-26T10:10:02.641Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.pa55w0rd.club/other/</loc>
-    
-    <lastmod>2018-12-26T10:03:15.924Z</lastmod>
     
   </url>
   

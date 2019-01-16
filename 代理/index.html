@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.pa55w0rd.club/assets/img/proxy/1.png">
 <meta property="og:image" content="http://www.pa55w0rd.club/assets/img/proxy/2.png">
-<meta property="og:updated_time" content="2018-11-21T08:57:17.782Z">
+<meta property="og:updated_time" content="2019-01-16T06:23:50.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代理">
 <meta name="twitter:description" content="正向代理 [ ForwardProxy ]大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把">
@@ -228,7 +228,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正向代理-ForwardProxy"><span class="toc-number">1.</span> <span class="toc-text">正向代理 [ ForwardProxy ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向代理-reverseproxy"><span class="toc-number">2.</span> <span class="toc-text">反向代理 [ reverseproxy ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#透明代理"><span class="toc-number">3.</span> <span class="toc-text">透明代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匿名代理"><span class="toc-number">4.</span> <span class="toc-text">匿名代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#负载均衡-Loadbalancing"><span class="toc-number">5.</span> <span class="toc-text">负载均衡 [ Loadbalancing ]</span></a></li></ol>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#正向代理-ForwardProxy"><span class="toc-number">1.</span> <span class="toc-text">正向代理 [ ForwardProxy ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反向代理-reverseproxy"><span class="toc-number">2.</span> <span class="toc-text">反向代理 [ reverseproxy ]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#透明代理"><span class="toc-number">3.</span> <span class="toc-text">透明代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匿名代理"><span class="toc-number">4.</span> <span class="toc-text">匿名代理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#负载均衡-Loadbalancing"><span class="toc-number">5.</span> <span class="toc-text">负载均衡 [ Loadbalancing ]</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#负载均衡与会话同步："><span class="toc-number">5.1.</span> <span class="toc-text">负载均衡与会话同步：</span></a></li></ol></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -257,7 +257,7 @@ ga('send', 'pageview');
           <h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
 <a id="more"></a>
 <p><img src="\assets\img\proxy\1.png" alt=""></p>
-<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>至于反向代理,就更容易理解了,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
+<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>服务器端使用反向代理服务器统一接收客户端访问，然后再按即定规则将数据包重定向到真正的服务器的场景,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
 <p><img src="\assets\img\proxy\2.png" alt=""></p>
 <h2 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h2><p>很显然,透明的意思就是你感受不到代理服务器的存在,但流量却又真正被代理服务器所左右,也就是说,我们并不需要知道代理服务器,比如,我可以用这种方式来限制你访问某些资源等等……它跟正向代理非常的像,其实也属于正向代理的一种,只不过正向代理能看见,但这个看不到</p>
 <h2 id="匿名代理"><a href="#匿名代理" class="headerlink" title="匿名代理"></a>匿名代理</h2><ul>
@@ -266,9 +266,16 @@ ga('send', 'pageview');
 <li><p>普通匿名代理<br>  相对于高度匿名代理来讲,这样的服务器会被目标站认出来是代理服务器,从而很有可能还是会追踪到你的真实IP</p>
 </li>
 </ul>
-<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定,比如典型的 nginx七层负载均衡,以及各种硬件负载均衡器,比如像 f5 这种东西,等等……</p>
+<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定</p>
+<p><strong>软负载：</strong>就是通过软件来实现负载均衡功能；Nginx和httpd等http服务器都能实现软负载功能。</p>
+<p><strong>硬负载：</strong>又叫硬件负载，就是把实现负载均衡功能的软件搬到一台专门的计算机上；比如F5等设备。</p>
 <p>网站的负载均衡可以从DNS和HTTP两个环节进行实施</p>
-<p>Kali Linux提供工具lbd来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
+<p>Kali Linux提供工具 <strong>lbd</strong>来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
+<h3 id="负载均衡与会话同步："><a href="#负载均衡与会话同步：" class="headerlink" title="负载均衡与会话同步："></a>负载均衡与会话同步：</h3><p>在负载均衡中可以将来自同一个IP的访问通过IP_HASH等方式全定向到一台机器上。这样一来所有会话（session）就全在一台机器上，就不必使用会话同步了。</p>
+<p>但IP_HASH的问题是如果某台服务器故障而请求一样被发送过去，那么这些访问请求被发送到故障机的IP将无法得到服务，我的服务器分明还有多台正常而我的用户却只因一台故障即不能访问，这并不能最大化多台服务器的效益。</p>
+<p>会话中保存着用户的登录状态，而如果请求是按即定算法被分配到不确定的服务器上那么就得保证会话同步，以确保在S1上登录过的用户其请求被重定向到S2时其状态也是登录的（而不是又让用户再次登录这样的网站没人愿意用）。</p>
+<p>会话同步实现的思路是无论哪台服务器的session都存放到一台服务器上，请求无论被分配到S1还是S2都是到那台服务器上取session。</p>
+<p>而在session服务器的存储又有两种方案，一是使用oracle等传统数据库存储，二是使 用memcache等内存数据库存储；后者方案是更加推荐的。</p>
 
         
 <!--
@@ -279,7 +286,7 @@ ga('send', 'pageview');
         <h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
 <a id="more"></a>
 <p><img src="\assets\img\proxy\1.png" alt=""></p>
-<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>至于反向代理,就更容易理解了,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
+<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>服务器端使用反向代理服务器统一接收客户端访问，然后再按即定规则将数据包重定向到真正的服务器的场景,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
 <p><img src="\assets\img\proxy\2.png" alt=""></p>
 <h2 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h2><p>很显然,透明的意思就是你感受不到代理服务器的存在,但流量却又真正被代理服务器所左右,也就是说,我们并不需要知道代理服务器,比如,我可以用这种方式来限制你访问某些资源等等……它跟正向代理非常的像,其实也属于正向代理的一种,只不过正向代理能看见,但这个看不到</p>
 <h2 id="匿名代理"><a href="#匿名代理" class="headerlink" title="匿名代理"></a>匿名代理</h2><ul>
@@ -288,9 +295,16 @@ ga('send', 'pageview');
 <li><p>普通匿名代理<br>  相对于高度匿名代理来讲,这样的服务器会被目标站认出来是代理服务器,从而很有可能还是会追踪到你的真实IP</p>
 </li>
 </ul>
-<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定,比如典型的 nginx七层负载均衡,以及各种硬件负载均衡器,比如像 f5 这种东西,等等……</p>
+<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定</p>
+<p><strong>软负载：</strong>就是通过软件来实现负载均衡功能；Nginx和httpd等http服务器都能实现软负载功能。</p>
+<p><strong>硬负载：</strong>又叫硬件负载，就是把实现负载均衡功能的软件搬到一台专门的计算机上；比如F5等设备。</p>
 <p>网站的负载均衡可以从DNS和HTTP两个环节进行实施</p>
-<p>Kali Linux提供工具lbd来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
+<p>Kali Linux提供工具 <strong>lbd</strong>来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
+<h3 id="负载均衡与会话同步："><a href="#负载均衡与会话同步：" class="headerlink" title="负载均衡与会话同步："></a>负载均衡与会话同步：</h3><p>在负载均衡中可以将来自同一个IP的访问通过IP_HASH等方式全定向到一台机器上。这样一来所有会话（session）就全在一台机器上，就不必使用会话同步了。</p>
+<p>但IP_HASH的问题是如果某台服务器故障而请求一样被发送过去，那么这些访问请求被发送到故障机的IP将无法得到服务，我的服务器分明还有多台正常而我的用户却只因一台故障即不能访问，这并不能最大化多台服务器的效益。</p>
+<p>会话中保存着用户的登录状态，而如果请求是按即定算法被分配到不确定的服务器上那么就得保证会话同步，以确保在S1上登录过的用户其请求被重定向到S2时其状态也是登录的（而不是又让用户再次登录这样的网站没人愿意用）。</p>
+<p>会话同步实现的思路是无论哪台服务器的session都存放到一台服务器上，请求无论被分配到S1还是S2都是到那台服务器上取session。</p>
+<p>而在session服务器的存储又有两种方案，一是使用oracle等传统数据库存储，二是使 用memcache等内存数据库存储；后者方案是更加推荐的。</p>
 -->
       
 
@@ -303,7 +317,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/代理/" data-id="cjqrvlvh5002d6it64osnkt9e" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/代理/" data-id="cjqyt7ilj002e6it6tsnmyar3" class="article-share-link" data-share="baidu" data-title="代理">分享到</a>
       
 
       
@@ -320,17 +334,17 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/渗透测试/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/phpstudy+https/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">渗透测试流程</div>
+      <div class="article-nav-title">phpstudy配置ssl证书实现https加密访问</div>
     </a>
   
   
-    <a href="/trs/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/快速定位前端加密方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          TRS漏洞整理 （转发）
+          快速定位前端加密方法（转发）
         
       </div>
     </a>
@@ -372,6 +386,10 @@ ga('send', 'pageview');
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/data-sec/">浅析商业银行数据安全保护体系建设思路（转）</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/sonar/">Docker部署sonar</a>
           </li>
         
@@ -387,10 +405,6 @@ ga('send', 'pageview');
             <a id="recentpost_item" href="/firewall/">Centos 7 使用firewalld防火墙</a>
           </li>
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/burp/">Burp Suite使用</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -401,7 +415,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">25</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -417,7 +431,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 16.67px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 12px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 12px;">checklist</a> <a href="/tags/docker/" style="font-size: 12px;">docker</a> <a href="/tags/hexo/" style="font-size: 14px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/linux/" style="font-size: 12px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 16px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础知识/" style="font-size: 16px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 20px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 14px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 18px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 12px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 18px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 12px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 12px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 16px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 12px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 18px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -427,8 +441,8 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">13</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">13</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">13</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">13</span></li></ul>
     </div>
   </div>
 

@@ -8,21 +8,21 @@
 
   
 
-  <title>mysql-python安装时mysql_config not found | Pa55w0rd &#39;s Blog</title>
+  <title>CentOS7下mysql5.7忘记root密码 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="0x00 描述mysql-python安装时提示mysql_config not found1234567891011121314# pip install MySQL-pythonCollecting MySQL-python  Using cached https://files.pythonhosted.org/packages/a5/e9/51b544da85a36a68debe7a709">
+  <meta name="description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
 <meta name="keywords" content="解决方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql-python安装时mysql_config not found">
-<meta property="og:url" content="http://www.pa55w0rd.club/mysql-python安装时提示mysql_config not fount/index.html">
+<meta property="og:title" content="CentOS7下mysql5.7忘记root密码">
+<meta property="og:url" content="http://www.pa55w0rd.club/mysql-forget-passwd/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="0x00 描述mysql-python安装时提示mysql_config not found1234567891011121314# pip install MySQL-pythonCollecting MySQL-python  Using cached https://files.pythonhosted.org/packages/a5/e9/51b544da85a36a68debe7a709">
+<meta property="og:description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-21T09:00:12.312Z">
+<meta property="og:updated_time" content="2019-01-21T07:26:36.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mysql-python安装时mysql_config not found">
-<meta name="twitter:description" content="0x00 描述mysql-python安装时提示mysql_config not found1234567891011121314# pip install MySQL-pythonCollecting MySQL-python  Using cached https://files.pythonhosted.org/packages/a5/e9/51b544da85a36a68debe7a709">
+<meta name="twitter:title" content="CentOS7下mysql5.7忘记root密码">
+<meta name="twitter:description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
 
   
 
@@ -186,11 +186,11 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-mysql-python安装时提示mysql_config not fount" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-mysql-forget-passwd" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/mysql-python安装时提示mysql_config not fount/" class="article-date">
+    <a href="/mysql-forget-passwd/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-16T06:27:13.000Z" itemprop="datePublished">2018-10-16</time>
+  <time datetime="2019-01-21T07:02:33.000Z" itemprop="datePublished">2019-01-21</time>
 </a>
 
     
@@ -209,7 +209,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      <i class="fa fa-pencil-square-o  article-title-icon"></i>mysql-python安装时mysql_config not found
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>CentOS7下mysql5.7忘记root密码
     </h1>
   
 
@@ -217,31 +217,7 @@ ga('send', 'pageview');
 
 
         <!-- 目录内容 -->
-        
-          <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-                <span class="btn-bg"></span>
-                <span class="btn-text">文章导航</span>
-                </p>
-        <div id="toc-article" class="toc-article">
-            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-          <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-描述"><span class="toc-number">1.</span> <span class="toc-text">0x00 描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-解决方法"><span class="toc-number">2.</span> <span class="toc-text">0x01 解决方法</span></a></li></ol>
-               </div>
-         <script type="text/javascript">
-        function showToc(){
-          var toc_article = document.getElementById("toc-article");
-          var show_toc_btn = document.getElementById("show-toc-btn");
-          toc_article.setAttribute("style","display:block");
-          show_toc_btn.setAttribute("style","display:none");
-          };
-        function showBtn(){
-          var toc_article = document.getElementById("toc-article");
-          var show_toc_btn = document.getElementById("show-toc-btn");
-          toc_article.setAttribute("style","display:none");
-          show_toc_btn.setAttribute("style","display:block");
-          };
-         </script>
-            		
+        		
         <!-- 目录内容结束 -->
 
 
@@ -251,22 +227,26 @@ ga('send', 'pageview');
       
         
         
-          <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>mysql-python安装时提示mysql_config not found<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># pip install MySQL-<span class="keyword">python</span></span><br><span class="line">Collecting MySQL-<span class="keyword">python</span></span><br><span class="line">  Using cached http<span class="variable">s:</span>//<span class="keyword">files</span>.pythonhosted.org/packages/a5/e9/<span class="number">51</span>b544da85a36a68debe7a7091f068d802fc515a3a202652828c73453cad/MySQL-<span class="keyword">python</span>-<span class="number">1.2</span>.<span class="number">5</span>.zip</span><br><span class="line">    Complete output from <span class="keyword">command</span> <span class="keyword">python</span> setup.<span class="keyword">py</span> egg_info:</span><br><span class="line">    <span class="keyword">sh</span>: <span class="number">1</span>: mysql_confi<span class="variable">g:</span> not found</span><br><span class="line">    Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</span><br><span class="line">      File <span class="string">"&lt;string&gt;"</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">      File <span class="string">"/tmp/pip-build-QORDfG/MySQL-python/setup.py"</span>, <span class="built_in">line</span> <span class="number">17</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">        metadata, <span class="keyword">options</span> = get_config()</span><br><span class="line">      File <span class="string">"setup_posix.py"</span>, <span class="built_in">line</span> <span class="number">43</span>, in get_config</span><br><span class="line">        libs = mysql_config(<span class="string">"libs_r"</span>)</span><br><span class="line">      File <span class="string">"setup_posix.py"</span>, <span class="built_in">line</span> <span class="number">25</span>, in mysql_config</span><br><span class="line">        raise EnvironmentError(<span class="string">"%s not found"</span> % (mysql_config.path,))</span><br><span class="line">    EnvironmentError: mysql_config not found</span><br></pre></td></tr></table></figure></p>
+          <p>CentOS7下mysql5.7忘记root密码</p>
+<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="0x01-解决方法"><a href="#0x01-解决方法" class="headerlink" title="0x01 解决方法"></a>0x01 解决方法</h2><p>报错的原因是没有安装<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">centos 7</span><br><span class="line">yum <span class="keyword">install</span> mysql-devel</span><br><span class="line">ubuntu</span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> libmysqlclient-dev</span><br></pre></td></tr></table></figure></p>
-<p>再执行pip install MySQL-python 安装成功</p>
-
+<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
+<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2>
         
 <!--
         </br>
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>mysql-python安装时提示mysql_config not found<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># pip install MySQL-<span class="keyword">python</span></span><br><span class="line">Collecting MySQL-<span class="keyword">python</span></span><br><span class="line">  Using cached http<span class="variable">s:</span>//<span class="keyword">files</span>.pythonhosted.org/packages/a5/e9/<span class="number">51</span>b544da85a36a68debe7a7091f068d802fc515a3a202652828c73453cad/MySQL-<span class="keyword">python</span>-<span class="number">1.2</span>.<span class="number">5</span>.zip</span><br><span class="line">    Complete output from <span class="keyword">command</span> <span class="keyword">python</span> setup.<span class="keyword">py</span> egg_info:</span><br><span class="line">    <span class="keyword">sh</span>: <span class="number">1</span>: mysql_confi<span class="variable">g:</span> not found</span><br><span class="line">    Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</span><br><span class="line">      File <span class="string">"&lt;string&gt;"</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">      File <span class="string">"/tmp/pip-build-QORDfG/MySQL-python/setup.py"</span>, <span class="built_in">line</span> <span class="number">17</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">        metadata, <span class="keyword">options</span> = get_config()</span><br><span class="line">      File <span class="string">"setup_posix.py"</span>, <span class="built_in">line</span> <span class="number">43</span>, in get_config</span><br><span class="line">        libs = mysql_config(<span class="string">"libs_r"</span>)</span><br><span class="line">      File <span class="string">"setup_posix.py"</span>, <span class="built_in">line</span> <span class="number">25</span>, in mysql_config</span><br><span class="line">        raise EnvironmentError(<span class="string">"%s not found"</span> % (mysql_config.path,))</span><br><span class="line">    EnvironmentError: mysql_config not found</span><br></pre></td></tr></table></figure></p>
+        <p>CentOS7下mysql5.7忘记root密码</p>
+<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="0x01-解决方法"><a href="#0x01-解决方法" class="headerlink" title="0x01 解决方法"></a>0x01 解决方法</h2><p>报错的原因是没有安装<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">centos 7</span><br><span class="line">yum <span class="keyword">install</span> mysql-devel</span><br><span class="line">ubuntu</span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> libmysqlclient-dev</span><br></pre></td></tr></table></figure></p>
-<p>再执行pip install MySQL-python 安装成功</p>
--->
+<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
+<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
+<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2>-->
       
 
     </div>
@@ -278,11 +258,11 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/mysql-python安装时提示mysql_config not fount/" data-id="cjr8if4eh001a68t6wm2tgt0l" class="article-share-link" data-share="baidu" data-title="mysql-python安装时mysql_config not found">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/mysql-forget-passwd/" data-id="cjr8if4e9001068t63m9qnvw6" class="article-share-link" data-share="baidu" data-title="CentOS7下mysql5.7忘记root密码">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/mysql-python安装时提示mysql_config not fount/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.club/mysql-forget-passwd/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
@@ -295,20 +275,11 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/wireshark使用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/data-sec/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">Wireshark使用</div>
+      <div class="article-nav-title">浅析商业银行数据安全保护体系建设思路（转）</div>
     </a>
   
-  
-    <a href="/聊聊HTTPS和SSLTLS协议/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇 →</strong>
-      <div class="article-nav-title">
-        
-          聊聊HTTPS和SSLTLS协议（转）
-        
-      </div>
-    </a>
   
 </nav>
 
@@ -701,7 +672,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Tue Oct 16 2018 14:27:13 GMT+0800",      // Ensure uniqueness and length less than 50
+      id: "Mon Jan 21 2019 15:02:33 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

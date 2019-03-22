@@ -11,18 +11,18 @@
   <title>渗透测试流程 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
+  <meta name="description" content="总结，持续更新   渗透千万条，安全第一条。渗透不授权，亲人泪两行！   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络">
 <meta name="keywords" content="漏洞利用,渗透测试,信息收集,内网渗透">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透测试流程">
 <meta property="og:url" content="http://www.pa55w0rd.club/渗透测试/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
+<meta property="og:description" content="总结，持续更新   渗透千万条，安全第一条。渗透不授权，亲人泪两行！   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T09:16:43.595Z">
+<meta property="og:updated_time" content="2019-03-14T06:31:25.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="渗透测试流程">
-<meta name="twitter:description" content="总结，持续更新   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！   常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，">
+<meta name="twitter:description" content="总结，持续更新   渗透千万条，安全第一条。渗透不授权，亲人泪两行！   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络">
 
   
 
@@ -255,15 +255,17 @@ ga('send', 'pageview');
 <p><strong>总结，持续更新</strong></p>
 </blockquote>
 <blockquote>
+<p><strong>渗透千万条，安全第一条。渗透不授权，亲人泪两行！</strong></p>
+</blockquote>
+<blockquote>
 <p><strong>白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong></p>
 </blockquote>
 <blockquote>
 <p><strong>是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！</strong></p>
 </blockquote>
-<blockquote>
-<p><strong>常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主</strong></p>
-</blockquote>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络所有者根据渗透人员提供的渗透测试报告，可以清晰知晓系统中存在的安全隐患和问题。<br><br>渗透测试不同于入侵，入侵是不择手段的，甚至是居右破坏性的拿到系统权限<br><a id="more"></a></p>
+<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络所有者根据渗透人员提供的渗透测试报告，可以清晰知晓系统中存在的安全隐患和问题。</p>
+<p>但是注意任何没有明确授意 授权的渗透测试都可能存在法律风险，授权最好是纸质文档形式，有你授权人的姓名身份证号甲方盖章和单位名称等。</p>
+<p>渗透测试不同于入侵，入侵是不择手段的，甚至是居右破坏性的拿到系统权限<br><a id="more"></a></p>
 <h2 id="0x01-明确目标"><a href="#0x01-明确目标" class="headerlink" title="0x01 明确目标"></a>0x01 明确目标</h2><p>当拿到一个合法的渗透测试项目时，我们首先应该明确客户要求我们进行渗透测试的范围以及整体项目的时间。</p>
 <ul>
 <li>确定范围：测试目标的范围，ip，域名，内外网。</li>
@@ -305,6 +307,10 @@ ga('send', 'pageview');
 <ul>
 <li><p>whois信息查询</p>
 <p>  当拿到一个域名的时候，我们首先应该进行whois查询，可以使kali 下面的 whois命令或者使用<a href="http://whois.chinaz.com/" target="_blank" rel="noopener">chinaz在线工具</a>，whois信息可以获取关键注册人的信息，包括注册公司、注册邮箱、管理员邮箱、管理员联系手机等,对后期社工很有用，还可以查询同一注册人注册的其他的域名，域名对应的NS记录、MX记录，自动识别国内常见的托管商（万网、新网等）。或者我们可以有针对性的利用其信息生成字典，对后台或者其他登录功能进行爆破。</p>
+<p>  who.is：<a href="https://who.is/" target="_blank" rel="noopener">https://who.is/</a> </p>
+<p>  站长之家：<a href="http://whois.chinaz.com/" target="_blank" rel="noopener">http://whois.chinaz.com/</a></p>
+<p>  爱站：<a href="https://whois.aizhan.com/" target="_blank" rel="noopener">https://whois.aizhan.com/</a> </p>
+<p>  微步：<a href="https://x.threatbook.cn/" target="_blank" rel="noopener">https://x.threatbook.cn/</a> </p>
 </li>
 <li><p>利用搜索引擎发现和侦察信息泄露，如google hacking获得后台，未授权页面，敏感url等</p>
 <p>  利用google去搜索包括特殊文本字符串的网页<br>  inurl:xxx filetype:xls<br>  inurl:xxx site:xxx.com</p>
@@ -312,7 +318,7 @@ ga('send', 'pageview');
 <li><p>旁站C段查询</p>
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a href="http://www.cnblogs.com/dongchi/p/4155368.html" target="_blank" rel="noopener">ip反查</a>，Nmap，Zenmap。</p>
 </li>
-<li><p>指纹识别</p>
+<li><p>指纹识别/网站架构探测</p>
 <p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br></p>
 <ul>
 <li>TTL</li>
@@ -350,7 +356,7 @@ ga('send', 'pageview');
 <li><p>检查HTML源码中返回的注释</p>
 <p>是否存在防护设备</p>
 </li>
-<li><p>有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f，熟悉各种bypasswaf的骚姿势</p>
+<li><p>有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f、nmap脚本（http-waf-detect、http-waf-fingerprint），熟悉各种bypasswaf的骚姿势</p>
 </li>
 <li>服务器防火墙是否开放，一般都会禁止icmp，通过ping命令探测</li>
 </ul>
@@ -364,17 +370,20 @@ ga('send', 'pageview');
 <p>  可以利用工具对其进行逆向，找出其所使用的url链接，然后进行专门的渗透测试</p>
 </li>
 <li><p>敏感目录/文件</p>
-<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
+<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan、<a href="https://github.com/lijiejie/BBScan" target="_blank" rel="noopener">BBscan</a>、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
+<p>  Nmap常用命令：nmap -T4-sT -Pn -sV ip</p>
 <p>  关键的操作就是确定端口后边的软件及软件版本，然后去个漏洞库去查找其存在的漏洞乃至exp<br>  搜索漏洞信息</p>
 <ul>
 <li><a href="http://www.cvedetails.com/version-search.php" target="_blank" rel="noopener">CVE漏洞库搜索</a></li>
 <li><a href="http://cve.mitre.org/cve/search_cve_list.html" target="_blank" rel="noopener">mitre_cve漏洞信息搜索</a><br>通过cve获取exp</li>
 <li>通过metasploit搜索<code>msf&gt; search cve:2018-xxxx</code></li>
 <li><a href="https://www.exploit-db.com/search/" target="_blank" rel="noopener">exploit-db</a></li>
-<li>github搜索</li>
+<li><p>github搜索</p>
+<p>常见端口：21,22,23,80-90,161,389,443,445,873,1099,1433,1521,1900,2082,2083,2222,2601,2604,3128,3306,3311,3312,3389,4440,4848,5432,5560,5900,5901,5902,6082,6379,7001-7010,7778,8080-8090,8649,8888,9000,9200,10000,11211,27017,28017,50000,50030,50060</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -642,6 +651,14 @@ ga('send', 'pageview');
 <ul>
 <li><p>子域名信息收集</p>
 <p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a href="https://github.com/lijiejie/subDomainsBrute" target="_blank" rel="noopener">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu/google）、IP反查、主站爬取、shodan/fofa/zoomeye等</p>
+<p>  <strong>有许多第三方服务聚合了大量的DNS数据集，并通过它们来检索给定域名的子域名</strong></p>
+<p>  VirusTotal：<a href="https://www.virustotal.com/#/home/search" target="_blank" rel="noopener">https://www.virustotal.com/#/home/search</a> </p>
+<p>  DNSdumpster：<a href="https://dnsdumpster.com/" target="_blank" rel="noopener">https://dnsdumpster.com/</a> </p>
+<p>  <strong>基于SSL证书查询</strong></p>
+<p>  <a href="https://crt.sh/" target="_blank" rel="noopener">https://crt.sh/</a></p>
+<p>  <a href="https://censys.io/" target="_blank" rel="noopener">https://censys.io/</a></p>
+<p>  <a href="https://developers.facebook.com/tools/ct/" target="_blank" rel="noopener">https://developers.facebook.com/tools/ct/</a></p>
+<p>  <a href="https://google.com/transparencyreport/https/ct/" target="_blank" rel="noopener">https://google.com/transparencyreport/https/ct/</a></p>
 <p>  <strong>利用dig检查目标ns服务器是否允许传送</strong></p>
 <p>  区域传送：允许第三主服务器的数据刷新自己的区域数据库，防止主域名服务器因意外故障变得不可用时影响到这个网络。 区域传送配置错误：只要有人发出请求，就会提供一个区域数据库的拷贝，把内部主机名和ip地址暴露出来</p>
 <p>  首先,应该去查下目标的ns服务器是否允许区域传送,如果允许,直接把目标的整个子域备份过来即可，可以使用 <strong>dig</strong>（可以从该域名的官方DNS服务器上查询到精确的权威解答）或 <strong>nslookup</strong>（得到DNS解析服务器保存在Cache中的非权威解答）</p>
@@ -665,6 +682,9 @@ ga('send', 'pageview');
 </li>
 <li><p>企业及员工信息收集-社会工程学</p>
 <p>  通过天眼查、官方网站等可以查到企业的一些基本信息</p>
+<p>  通过说明文档以及网站页面收集，或者网站发表者以及留言板信息处收集账号</p>
+<p>  通过 teemo，metago，burpusit，awvs，netspker 或者 google 语法收集</p>
+<p>  搜索相关 QQ 群收集相关企业员工的社交账号</p>
 <p>  拿着姓名/手机/邮箱等到各网站搜一圈看注册信息</p>
 <p>  拿到员工的信息，我们可以尝试使用弱密码进行登录一些内部平台，并且一些员工的邮箱的前缀很可能就是他的密码。当然，如果说当一个服务不允许多次使用错误密码登录，我们可以先确定弱口令，然后爆破收集到的账号信息去爆破哪些用户使用这个弱口令从而绕过这个防护机制。</p>
 <p>  可以尝试给对方邮箱发送钓鱼邮件或木马</p>
@@ -673,8 +693,10 @@ ga('send', 'pageview');
 <p>  水坑攻击或鱼叉式钓鱼</p>
 </li>
 <li><p>网站备案信息</p>
-<p>  <a href="http://www.beianbeian.com/?jdfwkey=vv0kk" target="_blank" rel="noopener">www.beianbeian.com/?jdfwkey=vv0kk</a></p>
-<p>  <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noopener">http://www.miitbeian.gov.cn/publish/query/indexFirst.action</a></p>
+<p>  天眼查：<a href="https://www.tianyancha.com/" target="_blank" rel="noopener">https://www.tianyancha.com/</a> </p>
+<p>  ICP备案查询网：<a href="http://www.beianbeian.com/" target="_blank" rel="noopener">http://www.beianbeian.com/</a> </p>
+<p>  国家企业信用信息公示系统：<a href="http://www.gsxt.gov.cn/index.html" target="_blank" rel="noopener">http://www.gsxt.gov.cn/index.html</a> </p>
+<p>  工信部备案管理系统：<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noopener">http://www.miitbeian.gov.cn/publish/query/indexFirst.action</a></p>
 </li>
 <li><p>F12审查网页元素</p>
 <p>  对于程序员来说, 在源代码中添加详细注释和元数据是非常普遍的,甚至是推荐的。但是, HTML 代码中包含的注释和元数据可能会对潜在攻击者暴露内部信息。应对源代码中的注释和元数据进行审查以确定是否泄露了任何信息。</p>
@@ -744,7 +766,7 @@ ga('send', 'pageview');
 </li>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
-<p>  更多<a href="http://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
+<p>  更多<a href="http://www.pa55w0rd.club/fileupload/">《文件上传漏洞总结》</a></p>
 </li>
 <li><p>xxe漏洞</p>
 <p>  xxe漏洞如果存在的话危害是非常大的，从读取信息到探测内网等等</p>
@@ -791,8 +813,38 @@ ga('send', 'pageview');
 <li><p>各种框架漏洞</p>
 <p>  比如说structs这个框架的漏洞层出不穷，当明确了目标所使用何种框架之后，我们可以使用poc进行验证</p>
 </li>
-<li><p>信息泄露</p>
-<p>  信息泄露即通过各种搜索手段或者查看robots.txt之类的敏感目录得到敏感信息</p>
+<li><p>敏感信息泄露</p>
+<p>  敏感信息是业务系统中的保密性要求较高的数据，通常包括系统敏感信息和应用敏感信息。系统敏感信息指的是业务系统本身的基础环境信息，比如系统信息，中间件版本之类的，一旦泄露可能可以协助攻击者提供更多的攻击途径和方法；应用敏感信息指的是应用中存储的重要业务数据，比如用户注册时提供的一些信息，身份证、姓名、电话号码等，泄露后可能会对应用的用户带来危害。</p>
+<ul>
+<li><p>敏感信息传输</p>
+<p>在业务流程中，许多敏感信息需要从客户端提交到服务端，如果没有采取合理的加密措施，在提交到服务端的过程中可能被第三方截取，从而产生信息泄露风险。</p>
+</li>
+<li><p>敏感信息显示</p>
+<p>通常情况下应用敏感信息在客户端显示时需要进行脱敏，密码等部分用户信息是不应该在客户端显示的，如果程序设计时在这部分没有进行很好的处理，就会产生敏感信息泄露漏洞。</p>
+</li>
+<li><p>客户端代码注释</p>
+<p>客户端代码注释有可能泄露系统敏感信息，对一些核心代码进行技术注释也有可能会帮助攻击者解读代码，为攻击者提供便利，通常要求客户端代码不能包含注释，尤其是不能包含核心代码的技术注释。</p>
+</li>
+<li><p>错误处理</p>
+<p>不安全的错误处理方法可能泄露系统或应用的敏感信息，手工测试的过程中应留意各类错误信息，如果发现错误信息中包含系统或应用敏感信息，则进行记录。</p>
+</li>
+<li><p>修复建议</p>
+</li>
+</ul>
+<ol>
+<li><p>应根据业务特点定义出系统存储的敏感信息。</p>
+</li>
+<li><p>敏感信息在存储、传输、显示时应进行安全处理，可采用的处理方式为加密或脱敏。</p>
+</li>
+<li><p>敏感信息不应使用GET方式提交到服务器。</p>
+</li>
+<li><p>用户密码为最高级别的敏感信息，在存储、传输、显示时都必须加密。</p>
+</li>
+<li><p>需要选择可靠的加密算法，优先选择不对称加密算法，不得使用BASE64等编码方式进行“加密”</p>
+</li>
+<li><p>对于一些系统默认报错页面应重新进行设计自定义报错页面，以免暴露系统敏感信息。</p>
+</li>
+</ol>
 </li>
 <li><p>文件包含</p>
 <p>  当我们在遇到文件上传并且有白名单校验的时候，利用文件包含可以轻松getshell</p>
@@ -826,8 +878,10 @@ ga('send', 'pageview');
 </ul>
 <ul>
 <li><p>SSRF</p>
-<p>  ServerSide Request Forgery 的简写，允许 Web Interface 请求受保护网络内的资源。</p>
+<p>  SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。</p>
 </li>
+</ul>
+<ul>
 <li><p>参数</p>
 <p>  参数超长是否导致溢出、参数有特殊字符是否会导致程序报错、参数确实是否导致程序报错</p>
 </li>
@@ -1018,15 +1072,17 @@ msf
 <p><strong>总结，持续更新</strong></p>
 </blockquote>
 <blockquote>
+<p><strong>渗透千万条，安全第一条。渗透不授权，亲人泪两行！</strong></p>
+</blockquote>
+<blockquote>
 <p><strong>白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong></p>
 </blockquote>
 <blockquote>
 <p><strong>是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！</strong></p>
 </blockquote>
-<blockquote>
-<p><strong>常在河边走很容易就湿鞋，但如果你熟知法律边界，知道有一条不可触碰的高压线摆在那，你就可以做到常在河堤走，永远不湿鞋。-TK教主</strong></p>
-</blockquote>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络所有者根据渗透人员提供的渗透测试报告，可以清晰知晓系统中存在的安全隐患和问题。<br><br>渗透测试不同于入侵，入侵是不择手段的，甚至是居右破坏性的拿到系统权限<br><a id="more"></a></p>
+<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络所有者根据渗透人员提供的渗透测试报告，可以清晰知晓系统中存在的安全隐患和问题。</p>
+<p>但是注意任何没有明确授意 授权的渗透测试都可能存在法律风险，授权最好是纸质文档形式，有你授权人的姓名身份证号甲方盖章和单位名称等。</p>
+<p>渗透测试不同于入侵，入侵是不择手段的，甚至是居右破坏性的拿到系统权限<br><a id="more"></a></p>
 <h2 id="0x01-明确目标"><a href="#0x01-明确目标" class="headerlink" title="0x01 明确目标"></a>0x01 明确目标</h2><p>当拿到一个合法的渗透测试项目时，我们首先应该明确客户要求我们进行渗透测试的范围以及整体项目的时间。</p>
 <ul>
 <li>确定范围：测试目标的范围，ip，域名，内外网。</li>
@@ -1068,6 +1124,10 @@ msf
 <ul>
 <li><p>whois信息查询</p>
 <p>  当拿到一个域名的时候，我们首先应该进行whois查询，可以使kali 下面的 whois命令或者使用<a href="http://whois.chinaz.com/" target="_blank" rel="noopener">chinaz在线工具</a>，whois信息可以获取关键注册人的信息，包括注册公司、注册邮箱、管理员邮箱、管理员联系手机等,对后期社工很有用，还可以查询同一注册人注册的其他的域名，域名对应的NS记录、MX记录，自动识别国内常见的托管商（万网、新网等）。或者我们可以有针对性的利用其信息生成字典，对后台或者其他登录功能进行爆破。</p>
+<p>  who.is：<a href="https://who.is/" target="_blank" rel="noopener">https://who.is/</a> </p>
+<p>  站长之家：<a href="http://whois.chinaz.com/" target="_blank" rel="noopener">http://whois.chinaz.com/</a></p>
+<p>  爱站：<a href="https://whois.aizhan.com/" target="_blank" rel="noopener">https://whois.aizhan.com/</a> </p>
+<p>  微步：<a href="https://x.threatbook.cn/" target="_blank" rel="noopener">https://x.threatbook.cn/</a> </p>
 </li>
 <li><p>利用搜索引擎发现和侦察信息泄露，如google hacking获得后台，未授权页面，敏感url等</p>
 <p>  利用google去搜索包括特殊文本字符串的网页<br>  inurl:xxx filetype:xls<br>  inurl:xxx site:xxx.com</p>
@@ -1075,7 +1135,7 @@ msf
 <li><p>旁站C段查询</p>
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a href="http://www.cnblogs.com/dongchi/p/4155368.html" target="_blank" rel="noopener">ip反查</a>，Nmap，Zenmap。</p>
 </li>
-<li><p>指纹识别</p>
+<li><p>指纹识别/网站架构探测</p>
 <p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br></p>
 <ul>
 <li>TTL</li>
@@ -1113,7 +1173,7 @@ msf
 <li><p>检查HTML源码中返回的注释</p>
 <p>是否存在防护设备</p>
 </li>
-<li><p>有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f，熟悉各种bypasswaf的骚姿势</p>
+<li><p>有没有waf，具体是什么类型waf，可以在目标url的动态参数输入一些敏感特征，看是否拦截，也可以用工具判断whatwaf、wafw00f、nmap脚本（http-waf-detect、http-waf-fingerprint），熟悉各种bypasswaf的骚姿势</p>
 </li>
 <li>服务器防火墙是否开放，一般都会禁止icmp，通过ping命令探测</li>
 </ul>
@@ -1127,17 +1187,20 @@ msf
 <p>  可以利用工具对其进行逆向，找出其所使用的url链接，然后进行专门的渗透测试</p>
 </li>
 <li><p>敏感目录/文件</p>
-<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
+<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a href="https://github.com/maurosoria/dirsearch" target="_blank" rel="noopener">dirsearch</a>、御剑、wwwscan、<a href="https://github.com/lijiejie/BBScan" target="_blank" rel="noopener">BBscan</a>、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
+<p>  Nmap常用命令：nmap -T4-sT -Pn -sV ip</p>
 <p>  关键的操作就是确定端口后边的软件及软件版本，然后去个漏洞库去查找其存在的漏洞乃至exp<br>  搜索漏洞信息</p>
 <ul>
 <li><a href="http://www.cvedetails.com/version-search.php" target="_blank" rel="noopener">CVE漏洞库搜索</a></li>
 <li><a href="http://cve.mitre.org/cve/search_cve_list.html" target="_blank" rel="noopener">mitre_cve漏洞信息搜索</a><br>通过cve获取exp</li>
 <li>通过metasploit搜索<code>msf&gt; search cve:2018-xxxx</code></li>
 <li><a href="https://www.exploit-db.com/search/" target="_blank" rel="noopener">exploit-db</a></li>
-<li>github搜索</li>
+<li><p>github搜索</p>
+<p>常见端口：21,22,23,80-90,161,389,443,445,873,1099,1433,1521,1900,2082,2083,2222,2601,2604,3128,3306,3311,3312,3389,4440,4848,5432,5560,5900,5901,5902,6082,6379,7001-7010,7778,8080-8090,8649,8888,9000,9200,10000,11211,27017,28017,50000,50030,50060</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -1405,6 +1468,14 @@ msf
 <ul>
 <li><p>子域名信息收集</p>
 <p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a href="https://github.com/lijiejie/subDomainsBrute" target="_blank" rel="noopener">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu/google）、IP反查、主站爬取、shodan/fofa/zoomeye等</p>
+<p>  <strong>有许多第三方服务聚合了大量的DNS数据集，并通过它们来检索给定域名的子域名</strong></p>
+<p>  VirusTotal：<a href="https://www.virustotal.com/#/home/search" target="_blank" rel="noopener">https://www.virustotal.com/#/home/search</a> </p>
+<p>  DNSdumpster：<a href="https://dnsdumpster.com/" target="_blank" rel="noopener">https://dnsdumpster.com/</a> </p>
+<p>  <strong>基于SSL证书查询</strong></p>
+<p>  <a href="https://crt.sh/" target="_blank" rel="noopener">https://crt.sh/</a></p>
+<p>  <a href="https://censys.io/" target="_blank" rel="noopener">https://censys.io/</a></p>
+<p>  <a href="https://developers.facebook.com/tools/ct/" target="_blank" rel="noopener">https://developers.facebook.com/tools/ct/</a></p>
+<p>  <a href="https://google.com/transparencyreport/https/ct/" target="_blank" rel="noopener">https://google.com/transparencyreport/https/ct/</a></p>
 <p>  <strong>利用dig检查目标ns服务器是否允许传送</strong></p>
 <p>  区域传送：允许第三主服务器的数据刷新自己的区域数据库，防止主域名服务器因意外故障变得不可用时影响到这个网络。 区域传送配置错误：只要有人发出请求，就会提供一个区域数据库的拷贝，把内部主机名和ip地址暴露出来</p>
 <p>  首先,应该去查下目标的ns服务器是否允许区域传送,如果允许,直接把目标的整个子域备份过来即可，可以使用 <strong>dig</strong>（可以从该域名的官方DNS服务器上查询到精确的权威解答）或 <strong>nslookup</strong>（得到DNS解析服务器保存在Cache中的非权威解答）</p>
@@ -1428,6 +1499,9 @@ msf
 </li>
 <li><p>企业及员工信息收集-社会工程学</p>
 <p>  通过天眼查、官方网站等可以查到企业的一些基本信息</p>
+<p>  通过说明文档以及网站页面收集，或者网站发表者以及留言板信息处收集账号</p>
+<p>  通过 teemo，metago，burpusit，awvs，netspker 或者 google 语法收集</p>
+<p>  搜索相关 QQ 群收集相关企业员工的社交账号</p>
 <p>  拿着姓名/手机/邮箱等到各网站搜一圈看注册信息</p>
 <p>  拿到员工的信息，我们可以尝试使用弱密码进行登录一些内部平台，并且一些员工的邮箱的前缀很可能就是他的密码。当然，如果说当一个服务不允许多次使用错误密码登录，我们可以先确定弱口令，然后爆破收集到的账号信息去爆破哪些用户使用这个弱口令从而绕过这个防护机制。</p>
 <p>  可以尝试给对方邮箱发送钓鱼邮件或木马</p>
@@ -1436,8 +1510,10 @@ msf
 <p>  水坑攻击或鱼叉式钓鱼</p>
 </li>
 <li><p>网站备案信息</p>
-<p>  <a href="http://www.beianbeian.com/?jdfwkey=vv0kk" target="_blank" rel="noopener">www.beianbeian.com/?jdfwkey=vv0kk</a></p>
-<p>  <a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noopener">http://www.miitbeian.gov.cn/publish/query/indexFirst.action</a></p>
+<p>  天眼查：<a href="https://www.tianyancha.com/" target="_blank" rel="noopener">https://www.tianyancha.com/</a> </p>
+<p>  ICP备案查询网：<a href="http://www.beianbeian.com/" target="_blank" rel="noopener">http://www.beianbeian.com/</a> </p>
+<p>  国家企业信用信息公示系统：<a href="http://www.gsxt.gov.cn/index.html" target="_blank" rel="noopener">http://www.gsxt.gov.cn/index.html</a> </p>
+<p>  工信部备案管理系统：<a href="http://www.miitbeian.gov.cn/publish/query/indexFirst.action" target="_blank" rel="noopener">http://www.miitbeian.gov.cn/publish/query/indexFirst.action</a></p>
 </li>
 <li><p>F12审查网页元素</p>
 <p>  对于程序员来说, 在源代码中添加详细注释和元数据是非常普遍的,甚至是推荐的。但是, HTML 代码中包含的注释和元数据可能会对潜在攻击者暴露内部信息。应对源代码中的注释和元数据进行审查以确定是否泄露了任何信息。</p>
@@ -1507,7 +1583,7 @@ msf
 </li>
 <li><p>上传漏洞</p>
 <p>  各种web中间件解析漏洞，各类编辑器漏洞利用，bypass上传检测（黑名单、白名单配合解析漏洞、阶段、.htaccess自解析、配合本地包含漏洞一起利用</p>
-<p>  更多<a href="http://www.pa55w0rd.club/2018/10/19/fileupload/">《文件上传漏洞总结》</a></p>
+<p>  更多<a href="http://www.pa55w0rd.club/fileupload/">《文件上传漏洞总结》</a></p>
 </li>
 <li><p>xxe漏洞</p>
 <p>  xxe漏洞如果存在的话危害是非常大的，从读取信息到探测内网等等</p>
@@ -1554,8 +1630,38 @@ msf
 <li><p>各种框架漏洞</p>
 <p>  比如说structs这个框架的漏洞层出不穷，当明确了目标所使用何种框架之后，我们可以使用poc进行验证</p>
 </li>
-<li><p>信息泄露</p>
-<p>  信息泄露即通过各种搜索手段或者查看robots.txt之类的敏感目录得到敏感信息</p>
+<li><p>敏感信息泄露</p>
+<p>  敏感信息是业务系统中的保密性要求较高的数据，通常包括系统敏感信息和应用敏感信息。系统敏感信息指的是业务系统本身的基础环境信息，比如系统信息，中间件版本之类的，一旦泄露可能可以协助攻击者提供更多的攻击途径和方法；应用敏感信息指的是应用中存储的重要业务数据，比如用户注册时提供的一些信息，身份证、姓名、电话号码等，泄露后可能会对应用的用户带来危害。</p>
+<ul>
+<li><p>敏感信息传输</p>
+<p>在业务流程中，许多敏感信息需要从客户端提交到服务端，如果没有采取合理的加密措施，在提交到服务端的过程中可能被第三方截取，从而产生信息泄露风险。</p>
+</li>
+<li><p>敏感信息显示</p>
+<p>通常情况下应用敏感信息在客户端显示时需要进行脱敏，密码等部分用户信息是不应该在客户端显示的，如果程序设计时在这部分没有进行很好的处理，就会产生敏感信息泄露漏洞。</p>
+</li>
+<li><p>客户端代码注释</p>
+<p>客户端代码注释有可能泄露系统敏感信息，对一些核心代码进行技术注释也有可能会帮助攻击者解读代码，为攻击者提供便利，通常要求客户端代码不能包含注释，尤其是不能包含核心代码的技术注释。</p>
+</li>
+<li><p>错误处理</p>
+<p>不安全的错误处理方法可能泄露系统或应用的敏感信息，手工测试的过程中应留意各类错误信息，如果发现错误信息中包含系统或应用敏感信息，则进行记录。</p>
+</li>
+<li><p>修复建议</p>
+</li>
+</ul>
+<ol>
+<li><p>应根据业务特点定义出系统存储的敏感信息。</p>
+</li>
+<li><p>敏感信息在存储、传输、显示时应进行安全处理，可采用的处理方式为加密或脱敏。</p>
+</li>
+<li><p>敏感信息不应使用GET方式提交到服务器。</p>
+</li>
+<li><p>用户密码为最高级别的敏感信息，在存储、传输、显示时都必须加密。</p>
+</li>
+<li><p>需要选择可靠的加密算法，优先选择不对称加密算法，不得使用BASE64等编码方式进行“加密”</p>
+</li>
+<li><p>对于一些系统默认报错页面应重新进行设计自定义报错页面，以免暴露系统敏感信息。</p>
+</li>
+</ol>
 </li>
 <li><p>文件包含</p>
 <p>  当我们在遇到文件上传并且有白名单校验的时候，利用文件包含可以轻松getshell</p>
@@ -1589,8 +1695,10 @@ msf
 </ul>
 <ul>
 <li><p>SSRF</p>
-<p>  ServerSide Request Forgery 的简写，允许 Web Interface 请求受保护网络内的资源。</p>
+<p>  SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。</p>
 </li>
+</ul>
+<ul>
 <li><p>参数</p>
 <p>  参数超长是否导致溢出、参数有特殊字符是否会导致程序报错、参数确实是否导致程序报错</p>
 </li>
@@ -1782,7 +1890,7 @@ msf
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjsu02yem008i91t6fupssp5i" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/渗透测试/" data-id="cjtjx2wv9008u6kt66lizqa3b" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
@@ -1805,11 +1913,11 @@ msf
     </a>
   
   
-    <a href="/msfvenom _use/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/快速定位前端加密方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇 →</strong>
       <div class="article-nav-title">
         
-          msfvenom 使用
+          快速定位前端加密方法（转发）
         
       </div>
     </a>
@@ -1851,6 +1959,14 @@ msf
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/kunpeng/">开源POC检测框架Kunpeng使用</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/vmware/">VMware Workstation pro 激活密钥</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/mysql-forget-passwd/">CentOS7下mysql5.7忘记root密码</a>
           </li>
         
@@ -1860,14 +1976,6 @@ msf
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/sonar/">Docker部署sonar</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/docker1/">修改正在运行的docker容器的端口映射</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/insight/">insight洞察-漏洞生命周期管理使用</a>
           </li>
         
       </ul>
@@ -1880,7 +1988,7 @@ msf
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">27</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1896,7 +2004,7 @@ msf
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 16.67px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.67px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 16.67px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.43px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.43px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.43px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 10px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 14.29px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 14.29px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.57px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 12.86px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 15.71px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.43px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 17.14px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.43px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 11.43px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 14.29px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.43px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 15.71px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -1906,8 +2014,8 @@ msf
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 

@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="看到什么记什么，没有顺序">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-22T10:26:05.706Z">
+<meta property="og:updated_time" content="2019-03-29T08:25:34.948Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux基础">
 <meta name="twitter:description" content="看到什么记什么，没有顺序">
@@ -225,7 +225,7 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux各个目录的作用及内容"><span class="toc-number">1.</span> <span class="toc-text">Linux各个目录的作用及内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#终端快捷键"><span class="toc-number">2.</span> <span class="toc-text">终端快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number">3.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firewall"><span class="toc-number">4.</span> <span class="toc-text">firewall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongodb"><span class="toc-number">5.</span> <span class="toc-text">mongodb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">6.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">7.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建-复制-移动-删除"><span class="toc-number">8.</span> <span class="toc-text">新建/复制/移动/删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘管理"><span class="toc-number">9.</span> <span class="toc-text">磁盘管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口进程占用"><span class="toc-number">10.</span> <span class="toc-text">查看端口进程占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-备份恢复"><span class="toc-number">11.</span> <span class="toc-text">mysql 备份恢复</span></a></li></ol>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux各个目录的作用及内容"><span class="toc-number">1.</span> <span class="toc-text">Linux各个目录的作用及内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#终端快捷键"><span class="toc-number">2.</span> <span class="toc-text">终端快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number">3.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firewall"><span class="toc-number">4.</span> <span class="toc-text">firewall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongodb"><span class="toc-number">5.</span> <span class="toc-text">mongodb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">6.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">7.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#新建-复制-移动-删除"><span class="toc-number">8.</span> <span class="toc-text">新建/复制/移动/删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#磁盘管理"><span class="toc-number">9.</span> <span class="toc-text">磁盘管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看端口进程占用"><span class="toc-number">10.</span> <span class="toc-text">查看端口进程占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-备份恢复"><span class="toc-number">11.</span> <span class="toc-text">mysql 备份恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">12.</span> <span class="toc-text">其他</span></a></li></ol>
                </div>
          <script type="text/javascript">
         function showToc(){
@@ -381,8 +381,10 @@ ga('send', 'pageview');
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup.sql</span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> --databases dbname1 dbname2 &gt; backup.sql</span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -all-databases &gt; backup.sql</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>恢复</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup.sql</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup.sql</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat /proc/self/root/etc/passwd</p>
 
         
 <!--
@@ -520,8 +522,10 @@ ga('send', 'pageview');
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup.sql</span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> --databases dbname1 dbname2 &gt; backup.sql</span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -all-databases &gt; backup.sql</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>恢复</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup.sql</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup.sql</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat /proc/self/root/etc/passwd</p>
 -->
       
 
@@ -534,7 +538,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/linux/" data-id="cjtjx2wgg00106kt6ngbz1uh3" class="article-share-link" data-share="baidu" data-title="Linux基础">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/linux/" data-id="cju0te6zu001x6ht6xyc9xoft" class="article-share-link" data-share="baidu" data-title="Linux基础">分享到</a>
       
 
       

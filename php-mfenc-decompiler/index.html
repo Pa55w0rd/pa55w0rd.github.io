@@ -8,19 +8,24 @@
 
   
 
-  <title>Pa55w0rd &#39;s Blog</title>
+  <title>PHP 魔方加密二代 解密 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.club/page/13/index.html">
+  <meta name="description" content="0x00 前言洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。 从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程">
+<meta name="keywords" content="工具使用,代码审计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP 魔方加密二代 解密">
+<meta property="og:url" content="http://www.pa55w0rd.club/php-mfenc-decompiler/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="信息安全">
+<meta property="og:description" content="0x00 前言洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。 从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.pa55w0rd.club/php-mfenc-decompiler/1.png">
+<meta property="og:image" content="http://www.pa55w0rd.club/php-mfenc-decompiler/2.png">
+<meta property="og:updated_time" content="2019-05-08T07:59:11.426Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pa55w0rd &#39;s Blog">
-<meta name="twitter:description" content="信息安全">
+<meta name="twitter:title" content="PHP 魔方加密二代 解密">
+<meta name="twitter:description" content="0x00 前言洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。 从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程">
+<meta name="twitter:image" content="http://www.pa55w0rd.club/php-mfenc-decompiler/1.png">
 
   
 
@@ -184,18 +189,16 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-    <article id="post-应用系统安全通用技术要求" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-php-mfenc-decompiler" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/应用系统安全通用技术要求/" class="article-date">
+    <a href="/php-mfenc-decompiler/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
+  <time datetime="2019-05-08T06:50:36.000Z" itemprop="datePublished">2019-05-08</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/开发安全/">开发安全</a>
+    <a class="article-category-link" href="/categories/note/">note</a>
   </div>
 
 
@@ -208,9 +211,8 @@ ga('send', 'pageview');
 
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/应用系统安全通用技术要求/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>应用系统安全通用技术要求（转发）</a>
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>PHP 魔方加密二代 解密
     </h1>
   
 
@@ -218,7 +220,31 @@ ga('send', 'pageview');
 
 
         <!-- 目录内容 -->
-        		
+        
+          <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+                <span class="btn-bg"></span>
+                <span class="btn-text">文章导航</span>
+                </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+          <strong class="toc-title">文章目录</strong>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-常用的加密类型及特征"><span class="toc-number">2.</span> <span class="toc-text">0x01 常用的加密类型及特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-解密"><span class="toc-number">3.</span> <span class="toc-text">0x02 解密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载PHP-mfenc反编译器代码"><span class="toc-number">3.1.</span> <span class="toc-text">下载PHP mfenc反编译器代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除composer-lock"><span class="toc-number">3.2.</span> <span class="toc-text">删除composer.lock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用composer安装依赖的库文件"><span class="toc-number">3.3.</span> <span class="toc-text">使用composer安装依赖的库文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过rebuild对member-php进行解密"><span class="toc-number">3.4.</span> <span class="toc-text">通过rebuild对member.php进行解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解密结果"><span class="toc-number">3.5.</span> <span class="toc-text">解密结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos7-安装PHP-7"><span class="toc-number">4.</span> <span class="toc-text">Centos7 安装PHP 7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装compoeser"><span class="toc-number">5.</span> <span class="toc-text">安装compoeser</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”"><span class="toc-number"></span> <span class="toc-text">php -r “copy(‘https://install.phpcomposer.com/installer&#39;, ‘composer-setup.php’);”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php-composer-setup-php"><span class="toc-number"></span> <span class="toc-text">php composer-setup.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php-r-“unlink-‘composer-setup-php’-”"><span class="toc-number"></span> <span class="toc-text">php -r “unlink(‘composer-setup.php’);”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mv-composer-phar-usr-local-bin-composer"><span class="toc-number"></span> <span class="toc-text">mv composer.phar /usr/local/bin/composer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com"><span class="toc-number"></span> <span class="toc-text">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#composer-selfupdate"><span class="toc-number"></span> <span class="toc-text">composer selfupdate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#composer-install"><span class="toc-number"></span> <span class="toc-text">composer install</span></a>
+               </li></div>
+         <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+         </script>
+            		
         <!-- 目录内容结束 -->
 
 
@@ -226,104 +252,156 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>转发自 <a href="https://github.com/aka99/sdl/blob/master/appsecreq.md" target="_blank" rel="noopener">https://github.com/aka99/sdl/blob/master/appsecreq.md</a></p>
+        
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。</p>
+<p>从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程</p>
+<a id="more"></a>
+<p><a href="https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=770762" target="_blank" rel="noopener">[调试逆向] PHP解密：魔方加密2代 全自动反编译器</a></p>
+<p>汇编这块看不懂，直接拉到最下面，大佬给出了反编译代码</p>
+<p><a href="https://github.com/ganlvtech/php-mfenc-decompiler" target="_blank" rel="noopener">PHP mfenc Decompiler</a></p>
+<h2 id="0x01-常用的加密类型及特征"><a href="#0x01-常用的加密类型及特征" class="headerlink" title="0x01 常用的加密类型及特征"></a>0x01 常用的加密类型及特征</h2><table>
+<thead>
+<tr>
+<th>加密类型</th>
+<th>加密特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zend/PHP5.3/5.4<br>Zend/PHP5.5/5.6</td>
+<td>文件头部 &lt;?php @Zend或Zend<br>PHP 5.3 2004072201 65540<br>PHP 5.4 2004072201 65541<br>PHP 5.5 2004072201 65542<br>PHP 5.6 2004072201 65543</td>
+</tr>
+<tr>
+<td>微擎加密</td>
+<td>主要使用goto语法打乱代码顺序  </td>
+</tr>
+<tr>
+<td>魔方一代加密</td>
+<td>function 开头包含很多function </td>
+</tr>
+<tr>
+<td>魔方二代加密</td>
+<td>if(isset($乱码){array_push$乱码… 开头 </td>
+</tr>
+<tr>
+<td>ionCube</td>
+<td>文件头部 &lt;?php //00xxx(16进制数字) 或 HR+c</td>
+</tr>
+<tr>
+<td>php-screw</td>
+<td>文件头部 PM9SCREW等一般是定制版本, 文件特征各不相同 </td>
+</tr>
+<tr>
+<td>php-beast</td>
+<td>文件头部 二进制数据 “\xe8\x16\xa4\x0c”一般是定制版本, 文件特征各不相同 </td>
+</tr>
+<tr>
+<td>ZoeeyGuard</td>
+<td>调用函数 zoeey_run等一般是定制版本, 文件特征各不相同 </td>
+</tr>
+</tbody>
+</table>
+<h2 id="0x02-解密"><a href="#0x02-解密" class="headerlink" title="0x02 解密"></a>0x02 解密</h2><img src="/php-mfenc-decompiler/1.png" title="描述">
+<p>对比一下加密特征，符合魔方二代加密</p>
+<h3 id="下载PHP-mfenc反编译器代码"><a href="#下载PHP-mfenc反编译器代码" class="headerlink" title="下载PHP mfenc反编译器代码"></a>下载PHP mfenc反编译器代码</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># git clone https:<span class="comment">//github.com/ganlvtech/php-mfenc-decompiler.git</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="删除composer-lock"><a href="#删除composer-lock" class="headerlink" title="删除composer.lock"></a>删除composer.lock</h3><h3 id="使用composer安装依赖的库文件"><a href="#使用composer安装依赖的库文件" class="headerlink" title="使用composer安装依赖的库文件"></a>使用composer安装依赖的库文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># composer install</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意PHP版本 &gt; 7.0</p>
 </blockquote>
-<h2 id="1-标识与鉴别"><a href="#1-标识与鉴别" class="headerlink" title="1　标识与鉴别"></a>1　标识与鉴别</h2><h3 id="1-1-身份标识"><a href="#1-1-身份标识" class="headerlink" title="1.1　身份标识"></a>1.1　身份标识</h3><p><strong>应用系统的管理员及普通用户应具有明确的身份标识（账号）：</strong></p>
+<h3 id="通过rebuild对member-php进行解密"><a href="#通过rebuild对member-php进行解密" class="headerlink" title="通过rebuild对member.php进行解密"></a>通过rebuild对member.php进行解密</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># php bin/rebuild.php member.php</span></span><br></pre></td></tr></table></figure>
+<p>会在当前目录下生成member.rebuilt.php文件</p>
+<h3 id="解密结果"><a href="#解密结果" class="headerlink" title="解密结果"></a>解密结果</h3><img src="/php-mfenc-decompiler/2.png" title="描述">
+<h2 id="Centos7-安装PHP-7"><a href="#Centos7-安装PHP-7" class="headerlink" title="Centos7 安装PHP 7"></a>Centos7 安装PHP 7</h2><p>我的PHP版本是PHP 5.4，在使用composer安装依赖报错提示需要 PHP &gt; 7.0</p>
+<p>通过yum安装报错，只能通过源码编译安装，速度比较慢</p>
+<p>可以使用remi源</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/</a></p>
+<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><p><code>`</code><br>下载安装脚本 － composer-setup.php － 到当前目录。</p>
+<h1 id="php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”"><a href="#php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”" class="headerlink" title="php -r “copy(‘https://install.phpcomposer.com/installer&#39;, ‘composer-setup.php’);”"></a>php -r “copy(‘<a href="https://install.phpcomposer.com/installer&#39;" target="_blank" rel="noopener">https://install.phpcomposer.com/installer&#39;</a>, ‘composer-setup.php’);”</h1><p>执行安装过程</p>
+<h1 id="php-composer-setup-php"><a href="#php-composer-setup-php" class="headerlink" title="php composer-setup.php"></a>php composer-setup.php</h1><p>删除安装脚本</p>
+<h1 id="php-r-“unlink-‘composer-setup-php’-”"><a href="#php-r-“unlink-‘composer-setup-php’-”" class="headerlink" title="php -r “unlink(‘composer-setup.php’);”"></a>php -r “unlink(‘composer-setup.php’);”</h1><p>全局安装</p>
+<h1 id="mv-composer-phar-usr-local-bin-composer"><a href="#mv-composer-phar-usr-local-bin-composer" class="headerlink" title="mv composer.phar /usr/local/bin/composer"></a>mv composer.phar /usr/local/bin/composer</h1><p>切换为国内镜像</p>
+<h1 id="composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com"><a href="#composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com" class="headerlink" title="composer config -g repo.packagist composer https://packagist.phpcomposer.com"></a>composer config -g repo.packagist composer <a href="https://packagist.phpcomposer.com" target="_blank" rel="noopener">https://packagist.phpcomposer.com</a></h1><p>更新 composer</p>
+<h1 id="composer-selfupdate"><a href="#composer-selfupdate" class="headerlink" title="composer selfupdate"></a>composer selfupdate</h1><p>安装依赖</p>
+<h1 id="composer-install"><a href="#composer-install" class="headerlink" title="composer install"></a>composer install</h1><p><code></code><br>更多请参考<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">Composer 安装与使用</a></p>
+
         
-          <p class="article-more-link ">
-            <a href="/应用系统安全通用技术要求/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/应用系统安全通用技术要求/" data-id="cjvexmkia007u5yt67mamwqs4" class="article-share-link" data-share="baidu" data-title="应用系统安全通用技术要求（转发）">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/应用系统安全通用技术要求/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全规范/">安全规范</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全设计/">安全设计</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
 <!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-野路子企业安全架构设计" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/野路子企业安全架构设计/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/安全建设/">安全建设</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/野路子企业安全架构设计/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>野路子企业安全架构设计（转发）</a>
-    </h1>
-  
-
-
-
-
-        <!-- 目录内容 -->
-        		
-        <!-- 目录内容结束 -->
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>转发自 <a href="https://github.com/mylamour/blog/issues/33" target="_blank" rel="noopener">https://github.com/mylamour/blog/issues/33</a></p>
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。</p>
+<p>从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程</p>
+<a id="more"></a>
+<p><a href="https://www.52pojie.cn/forum.php?mod=viewthread&amp;tid=770762" target="_blank" rel="noopener">[调试逆向] PHP解密：魔方加密2代 全自动反编译器</a></p>
+<p>汇编这块看不懂，直接拉到最下面，大佬给出了反编译代码</p>
+<p><a href="https://github.com/ganlvtech/php-mfenc-decompiler" target="_blank" rel="noopener">PHP mfenc Decompiler</a></p>
+<h2 id="0x01-常用的加密类型及特征"><a href="#0x01-常用的加密类型及特征" class="headerlink" title="0x01 常用的加密类型及特征"></a>0x01 常用的加密类型及特征</h2><table>
+<thead>
+<tr>
+<th>加密类型</th>
+<th>加密特征</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zend/PHP5.3/5.4<br>Zend/PHP5.5/5.6</td>
+<td>文件头部 &lt;?php @Zend或Zend<br>PHP 5.3 2004072201 65540<br>PHP 5.4 2004072201 65541<br>PHP 5.5 2004072201 65542<br>PHP 5.6 2004072201 65543</td>
+</tr>
+<tr>
+<td>微擎加密</td>
+<td>主要使用goto语法打乱代码顺序  </td>
+</tr>
+<tr>
+<td>魔方一代加密</td>
+<td>function 开头包含很多function </td>
+</tr>
+<tr>
+<td>魔方二代加密</td>
+<td>if(isset($乱码){array_push$乱码… 开头 </td>
+</tr>
+<tr>
+<td>ionCube</td>
+<td>文件头部 &lt;?php //00xxx(16进制数字) 或 HR+c</td>
+</tr>
+<tr>
+<td>php-screw</td>
+<td>文件头部 PM9SCREW等一般是定制版本, 文件特征各不相同 </td>
+</tr>
+<tr>
+<td>php-beast</td>
+<td>文件头部 二进制数据 “\xe8\x16\xa4\x0c”一般是定制版本, 文件特征各不相同 </td>
+</tr>
+<tr>
+<td>ZoeeyGuard</td>
+<td>调用函数 zoeey_run等一般是定制版本, 文件特征各不相同 </td>
+</tr>
+</tbody>
+</table>
+<h2 id="0x02-解密"><a href="#0x02-解密" class="headerlink" title="0x02 解密"></a>0x02 解密</h2><img src="/php-mfenc-decompiler/1.png" title="描述">
+<p>对比一下加密特征，符合魔方二代加密</p>
+<h3 id="下载PHP-mfenc反编译器代码"><a href="#下载PHP-mfenc反编译器代码" class="headerlink" title="下载PHP mfenc反编译器代码"></a>下载PHP mfenc反编译器代码</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># git clone https:<span class="comment">//github.com/ganlvtech/php-mfenc-decompiler.git</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="删除composer-lock"><a href="#删除composer-lock" class="headerlink" title="删除composer.lock"></a>删除composer.lock</h3><h3 id="使用composer安装依赖的库文件"><a href="#使用composer安装依赖的库文件" class="headerlink" title="使用composer安装依赖的库文件"></a>使用composer安装依赖的库文件</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># composer install</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意PHP版本 &gt; 7.0</p>
 </blockquote>
-<p><img src="https://user-images.githubusercontent.com/12653147/43885348-37bde086-9beb-11e8-8406-3b34d9d96700.png" alt="default"><br>首先，知道业务有哪些，有多少资产，然后是数据的流向，知道要分析哪些流量。想要发现什么，阻止什么。其实Google的OKR也可以在这里应用。例如，安全架构的OKR可以这样：</p>
-<p>O:  发现入侵者，减缓或者阻断攻击，以及取证。</p>
-        
-          <p class="article-more-link ">
-            <a href="/野路子企业安全架构设计/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
+<h3 id="通过rebuild对member-php进行解密"><a href="#通过rebuild对member-php进行解密" class="headerlink" title="通过rebuild对member.php进行解密"></a>通过rebuild对member.php进行解密</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># php bin/rebuild.php member.php</span></span><br></pre></td></tr></table></figure>
+<p>会在当前目录下生成member.rebuilt.php文件</p>
+<h3 id="解密结果"><a href="#解密结果" class="headerlink" title="解密结果"></a>解密结果</h3><img src="/php-mfenc-decompiler/2.png" title="描述">
+<h2 id="Centos7-安装PHP-7"><a href="#Centos7-安装PHP-7" class="headerlink" title="Centos7 安装PHP 7"></a>Centos7 安装PHP 7</h2><p>我的PHP版本是PHP 5.4，在使用composer安装依赖报错提示需要 PHP &gt; 7.0</p>
+<p>通过yum安装报错，只能通过源码编译安装，速度比较慢</p>
+<p>可以使用remi源</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/</a></p>
+<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><p><code>`</code><br>下载安装脚本 － composer-setup.php － 到当前目录。</p>
+<h1 id="php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”"><a href="#php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”" class="headerlink" title="php -r “copy(‘https://install.phpcomposer.com/installer&#39;, ‘composer-setup.php’);”"></a>php -r “copy(‘<a href="https://install.phpcomposer.com/installer&#39;" target="_blank" rel="noopener">https://install.phpcomposer.com/installer&#39;</a>, ‘composer-setup.php’);”</h1><p>执行安装过程</p>
+<h1 id="php-composer-setup-php"><a href="#php-composer-setup-php" class="headerlink" title="php composer-setup.php"></a>php composer-setup.php</h1><p>删除安装脚本</p>
+<h1 id="php-r-“unlink-‘composer-setup-php’-”"><a href="#php-r-“unlink-‘composer-setup-php’-”" class="headerlink" title="php -r “unlink(‘composer-setup.php’);”"></a>php -r “unlink(‘composer-setup.php’);”</h1><p>全局安装</p>
+<h1 id="mv-composer-phar-usr-local-bin-composer"><a href="#mv-composer-phar-usr-local-bin-composer" class="headerlink" title="mv composer.phar /usr/local/bin/composer"></a>mv composer.phar /usr/local/bin/composer</h1><p>切换为国内镜像</p>
+<h1 id="composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com"><a href="#composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com" class="headerlink" title="composer config -g repo.packagist composer https://packagist.phpcomposer.com"></a>composer config -g repo.packagist composer <a href="https://packagist.phpcomposer.com" target="_blank" rel="noopener">https://packagist.phpcomposer.com</a></h1><p>更新 composer</p>
+<h1 id="composer-selfupdate"><a href="#composer-selfupdate" class="headerlink" title="composer selfupdate"></a>composer selfupdate</h1><p>安装依赖</p>
+<h1 id="composer-install"><a href="#composer-install" class="headerlink" title="composer install"></a>composer install</h1><p><code></code><br>更多请参考<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">Composer 安装与使用</a></p>
+-->
       
 
     </div>
@@ -335,19 +413,32 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/野路子企业安全架构设计/" data-id="cjvexmkc9004y5yt69warm6gf" class="article-share-link" data-share="baidu" data-title="野路子企业安全架构设计（转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/php-mfenc-decompiler/" data-id="cjvexmk6f001a5yt6o53jkvte" class="article-share-link" data-share="baidu" data-title="PHP 魔方加密二代 解密">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/野路子企业安全架构设计/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.club/php-mfenc-decompiler/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全架构/">安全架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全设计/">安全设计</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/代码审计/">代码审计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具使用/">工具使用</a></li></ul>
 
 
     </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/php-study/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">PHP编程基础学习记录</div>
+    </a>
+  
+  
+</nav>
+
+
   
 </article>
 <!--
@@ -357,272 +448,18 @@ ga('send', 'pageview');
 -->
 
 
-
-
-
-
-
-  
-    <article id="post-androidchecklist" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/androidchecklist/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-27T07:37:59.000Z" itemprop="datePublished">2018-09-27</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/移动安全/">移动安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/androidchecklist/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Android APP安全checklist</a>
-    </h1>
-  
-
-
-
-
-        <!-- 目录内容 -->
-        		
-        <!-- 目录内容结束 -->
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Checklist整理"><a href="#Checklist整理" class="headerlink" title="Checklist整理"></a>Checklist整理</h1>
-        
-          <p class="article-more-link ">
-            <a href="/androidchecklist/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+  </section> 
 
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
 
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/androidchecklist/" data-id="cjvexmk3f00005yt6s87ydq4w" class="article-share-link" data-share="baidu" data-title="Android APP安全checklist">分享到</a>
-      
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
 
-      
-        <a href="http://www.pa55w0rd.club/androidchecklist/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/checklist/">checklist</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/移动安全/">移动安全</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-Android_so_inject" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/Android_so_inject/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-26T08:31:44.000Z" itemprop="datePublished">2018-09-26</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/移动安全/">移动安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Android_so_inject/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Android进程注入工具 --Poison</a>
-    </h1>
-  
-
-
-
-
-        <!-- 目录内容 -->
-        		
-        <!-- 目录内容结束 -->
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>之前做的渗透测试几乎都是web和移动server端的，客户端只会拿apktool、dex2jar、drozer等工具反编译一下看看源码和四大组件安全。公司要求我对移动客户端进行安全评估，看了一篇360的关于Android应用的评估报告，发现有很多的测试项我都没有测试过，并且网上的细节资料很少，偶得一款inject工具，尝试了一些app都能成功，把过程记录一下。</p>
-        
-          <p class="article-more-link ">
-            <a href="/Android_so_inject/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/Android_so_inject/" data-id="cjvexmk4v00015yt6vz1dwkwz" class="article-share-link" data-share="baidu" data-title="Android进程注入工具 --Poison">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/Android_so_inject/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-安全测试-工具使用/">Android - 安全测试 - 工具使用</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article id="post-安卓模拟器安装证书" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/安卓模拟器安装证书/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-26T08:15:07.000Z" itemprop="datePublished">2018-09-26</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/移动安全/">移动安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/安卓模拟器安装证书/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>安卓模拟器安装证书问题</a>
-    </h1>
-  
-
-
-
-
-        <!-- 目录内容 -->
-        		
-        <!-- 目录内容结束 -->
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
-        
-          <p class="article-more-link ">
-            <a href="/安卓模拟器安装证书/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.club/安卓模拟器安装证书/" data-id="cjvexmkb8004a5yt6yym5jfg4" class="article-share-link" data-share="baidu" data-title="安卓模拟器安装证书问题">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.club/安卓模拟器安装证书/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方法/">解决方法</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/12/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/14/">Next &raquo;</a>
-    </nav>
-  
 
 </section>
       
@@ -990,7 +827,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
+      id: "Wed May 08 2019 14:50:36 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

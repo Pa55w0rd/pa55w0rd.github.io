@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.pa55w0rd.club/php-mfenc-decompiler/1.png">
 <meta property="og:image" content="http://www.pa55w0rd.club/php-mfenc-decompiler/2.png">
-<meta property="og:updated_time" content="2019-05-08T07:59:11.426Z">
+<meta property="og:updated_time" content="2019-05-08T08:03:58.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP 魔方加密二代 解密">
 <meta name="twitter:description" content="0x00 前言洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。 从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程">
@@ -228,8 +228,8 @@ ga('send', 'pageview');
         <div id="toc-article" class="toc-article">
             <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
           <strong class="toc-title">文章目录</strong>
-                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-常用的加密类型及特征"><span class="toc-number">2.</span> <span class="toc-text">0x01 常用的加密类型及特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-解密"><span class="toc-number">3.</span> <span class="toc-text">0x02 解密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载PHP-mfenc反编译器代码"><span class="toc-number">3.1.</span> <span class="toc-text">下载PHP mfenc反编译器代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除composer-lock"><span class="toc-number">3.2.</span> <span class="toc-text">删除composer.lock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用composer安装依赖的库文件"><span class="toc-number">3.3.</span> <span class="toc-text">使用composer安装依赖的库文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过rebuild对member-php进行解密"><span class="toc-number">3.4.</span> <span class="toc-text">通过rebuild对member.php进行解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解密结果"><span class="toc-number">3.5.</span> <span class="toc-text">解密结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos7-安装PHP-7"><span class="toc-number">4.</span> <span class="toc-text">Centos7 安装PHP 7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装compoeser"><span class="toc-number">5.</span> <span class="toc-text">安装compoeser</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”"><span class="toc-number"></span> <span class="toc-text">php -r “copy(‘https://install.phpcomposer.com/installer&#39;, ‘composer-setup.php’);”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php-composer-setup-php"><span class="toc-number"></span> <span class="toc-text">php composer-setup.php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php-r-“unlink-‘composer-setup-php’-”"><span class="toc-number"></span> <span class="toc-text">php -r “unlink(‘composer-setup.php’);”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mv-composer-phar-usr-local-bin-composer"><span class="toc-number"></span> <span class="toc-text">mv composer.phar /usr/local/bin/composer</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com"><span class="toc-number"></span> <span class="toc-text">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#composer-selfupdate"><span class="toc-number"></span> <span class="toc-text">composer selfupdate</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#composer-install"><span class="toc-number"></span> <span class="toc-text">composer install</span></a>
-               </li></div>
+                 <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-常用的加密类型及特征"><span class="toc-number">2.</span> <span class="toc-text">0x01 常用的加密类型及特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-解密"><span class="toc-number">3.</span> <span class="toc-text">0x02 解密</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载PHP-mfenc反编译器代码"><span class="toc-number">3.1.</span> <span class="toc-text">下载PHP mfenc反编译器代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除composer-lock"><span class="toc-number">3.2.</span> <span class="toc-text">删除composer.lock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用composer安装依赖的库文件"><span class="toc-number">3.3.</span> <span class="toc-text">使用composer安装依赖的库文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过rebuild对member-php进行解密"><span class="toc-number">3.4.</span> <span class="toc-text">通过rebuild对member.php进行解密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解密结果"><span class="toc-number">3.5.</span> <span class="toc-text">解密结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Centos7-安装PHP-7"><span class="toc-number">4.</span> <span class="toc-text">Centos7 安装PHP 7</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装compoeser"><span class="toc-number">5.</span> <span class="toc-text">安装compoeser</span></a></li></ol>
+               </div>
          <script type="text/javascript">
         function showToc(){
           var toc_article = document.getElementById("toc-article");
@@ -282,7 +282,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td>魔方二代加密</td>
-<td>if(isset($乱码){array_push$乱码… 开头 </td>
+<td><code>if(isset($乱码){array_push$乱码... 开头</code> </td>
 </tr>
 <tr>
 <td>ionCube</td>
@@ -316,14 +316,8 @@ ga('send', 'pageview');
 <p>通过yum安装报错，只能通过源码编译安装，速度比较慢</p>
 <p>可以使用remi源</p>
 <p><a href="https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/</a></p>
-<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><p><code>`</code><br>下载安装脚本 － composer-setup.php － 到当前目录。</p>
-<h1 id="php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”"><a href="#php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”" class="headerlink" title="php -r “copy(‘https://install.phpcomposer.com/installer&#39;, ‘composer-setup.php’);”"></a>php -r “copy(‘<a href="https://install.phpcomposer.com/installer&#39;" target="_blank" rel="noopener">https://install.phpcomposer.com/installer&#39;</a>, ‘composer-setup.php’);”</h1><p>执行安装过程</p>
-<h1 id="php-composer-setup-php"><a href="#php-composer-setup-php" class="headerlink" title="php composer-setup.php"></a>php composer-setup.php</h1><p>删除安装脚本</p>
-<h1 id="php-r-“unlink-‘composer-setup-php’-”"><a href="#php-r-“unlink-‘composer-setup-php’-”" class="headerlink" title="php -r “unlink(‘composer-setup.php’);”"></a>php -r “unlink(‘composer-setup.php’);”</h1><p>全局安装</p>
-<h1 id="mv-composer-phar-usr-local-bin-composer"><a href="#mv-composer-phar-usr-local-bin-composer" class="headerlink" title="mv composer.phar /usr/local/bin/composer"></a>mv composer.phar /usr/local/bin/composer</h1><p>切换为国内镜像</p>
-<h1 id="composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com"><a href="#composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com" class="headerlink" title="composer config -g repo.packagist composer https://packagist.phpcomposer.com"></a>composer config -g repo.packagist composer <a href="https://packagist.phpcomposer.com" target="_blank" rel="noopener">https://packagist.phpcomposer.com</a></h1><p>更新 composer</p>
-<h1 id="composer-selfupdate"><a href="#composer-selfupdate" class="headerlink" title="composer selfupdate"></a>composer selfupdate</h1><p>安装依赖</p>
-<h1 id="composer-install"><a href="#composer-install" class="headerlink" title="composer install"></a>composer install</h1><p><code></code><br>更多请参考<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">Composer 安装与使用</a></p>
+<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">下载安装脚本 － composer-setup.php － 到当前目录。</span><br><span class="line"><span class="meta"># php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"</span></span><br><span class="line"></span><br><span class="line">执行安装过程</span><br><span class="line"><span class="meta"># php composer-setup.php</span></span><br><span class="line"></span><br><span class="line">删除安装脚本</span><br><span class="line"><span class="meta"># php -r "unlink('composer-setup.php');"</span></span><br><span class="line"></span><br><span class="line">全局安装</span><br><span class="line"><span class="meta"># mv composer.phar /usr/local/bin/composer</span></span><br><span class="line"></span><br><span class="line">切换为国内镜像</span><br><span class="line"><span class="meta"># composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></span><br><span class="line"></span><br><span class="line">更新 composer</span><br><span class="line"><span class="meta"># composer selfupdate</span></span><br><span class="line"></span><br><span class="line">安装依赖</span><br><span class="line"><span class="meta"># composer install</span></span><br></pre></td></tr></table></figure>
+<p>更多请参考<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">Composer 安装与使用</a></p>
 
         
 <!--
@@ -359,7 +353,7 @@ ga('send', 'pageview');
 </tr>
 <tr>
 <td>魔方二代加密</td>
-<td>if(isset($乱码){array_push$乱码… 开头 </td>
+<td><code>if(isset($乱码){array_push$乱码... 开头</code> </td>
 </tr>
 <tr>
 <td>ionCube</td>
@@ -393,14 +387,8 @@ ga('send', 'pageview');
 <p>通过yum安装报错，只能通过源码编译安装，速度比较慢</p>
 <p>可以使用remi源</p>
 <p><a href="https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/</a></p>
-<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><p><code>`</code><br>下载安装脚本 － composer-setup.php － 到当前目录。</p>
-<h1 id="php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”"><a href="#php-r-“copy-‘https-install-phpcomposer-com-installer-39-‘composer-setup-php’-”" class="headerlink" title="php -r “copy(‘https://install.phpcomposer.com/installer&#39;, ‘composer-setup.php’);”"></a>php -r “copy(‘<a href="https://install.phpcomposer.com/installer&#39;" target="_blank" rel="noopener">https://install.phpcomposer.com/installer&#39;</a>, ‘composer-setup.php’);”</h1><p>执行安装过程</p>
-<h1 id="php-composer-setup-php"><a href="#php-composer-setup-php" class="headerlink" title="php composer-setup.php"></a>php composer-setup.php</h1><p>删除安装脚本</p>
-<h1 id="php-r-“unlink-‘composer-setup-php’-”"><a href="#php-r-“unlink-‘composer-setup-php’-”" class="headerlink" title="php -r “unlink(‘composer-setup.php’);”"></a>php -r “unlink(‘composer-setup.php’);”</h1><p>全局安装</p>
-<h1 id="mv-composer-phar-usr-local-bin-composer"><a href="#mv-composer-phar-usr-local-bin-composer" class="headerlink" title="mv composer.phar /usr/local/bin/composer"></a>mv composer.phar /usr/local/bin/composer</h1><p>切换为国内镜像</p>
-<h1 id="composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com"><a href="#composer-config-g-repo-packagist-composer-https-packagist-phpcomposer-com" class="headerlink" title="composer config -g repo.packagist composer https://packagist.phpcomposer.com"></a>composer config -g repo.packagist composer <a href="https://packagist.phpcomposer.com" target="_blank" rel="noopener">https://packagist.phpcomposer.com</a></h1><p>更新 composer</p>
-<h1 id="composer-selfupdate"><a href="#composer-selfupdate" class="headerlink" title="composer selfupdate"></a>composer selfupdate</h1><p>安装依赖</p>
-<h1 id="composer-install"><a href="#composer-install" class="headerlink" title="composer install"></a>composer install</h1><p><code></code><br>更多请参考<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">Composer 安装与使用</a></p>
+<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">下载安装脚本 － composer-setup.php － 到当前目录。</span><br><span class="line"><span class="meta"># php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');"</span></span><br><span class="line"></span><br><span class="line">执行安装过程</span><br><span class="line"><span class="meta"># php composer-setup.php</span></span><br><span class="line"></span><br><span class="line">删除安装脚本</span><br><span class="line"><span class="meta"># php -r "unlink('composer-setup.php');"</span></span><br><span class="line"></span><br><span class="line">全局安装</span><br><span class="line"><span class="meta"># mv composer.phar /usr/local/bin/composer</span></span><br><span class="line"></span><br><span class="line">切换为国内镜像</span><br><span class="line"><span class="meta"># composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></span><br><span class="line"></span><br><span class="line">更新 composer</span><br><span class="line"><span class="meta"># composer selfupdate</span></span><br><span class="line"></span><br><span class="line">安装依赖</span><br><span class="line"><span class="meta"># composer install</span></span><br></pre></td></tr></table></figure>
+<p>更多请参考<a href="https://www.runoob.com/w3cnote/composer-install-and-usage.html" target="_blank" rel="noopener">Composer 安装与使用</a></p>
 -->
       
 
@@ -413,7 +401,7 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/php-mfenc-decompiler/" data-id="cjvexmk6f001a5yt6o53jkvte" class="article-share-link" data-share="baidu" data-title="PHP 魔方加密二代 解密">分享到</a>
+        <a data-url="http://www.pa55w0rd.club/php-mfenc-decompiler/" data-id="cjvezqtc2001g7st6so4yo7b5" class="article-share-link" data-share="baidu" data-title="PHP 魔方加密二代 解密">分享到</a>
       
 
       

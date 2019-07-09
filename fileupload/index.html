@@ -15,11 +15,11 @@
 <meta name="keywords" content="web安全,解决方法,漏洞利用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件上传漏洞总结">
-<meta property="og:url" content="http://www.pa55w0rd.club/fileupload/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/fileupload/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="0x00 前言在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。  上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-12T09:42:54.012Z">
+<meta property="og:updated_time" content="2019-07-09T03:24:03.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="文件上传漏洞总结">
 <meta name="twitter:description" content="0x00 前言在web应用程序中，文件上传是一种常见的要求，因为它有助于提高业务效率。在大型社交网络程序中都支持文件上传功能。在博客，论坛，电子银行网络，会给用户和企业员工有效的共享文件。允许上传图片，视频，头像和许多其他类型文件。  上传文件的时候，如果服务器端脚本语言，未对上传的文件进行严格的验证和过滤，就有可能上传恶意的脚本文件，从而控制整个网站，甚至是服务器。">
@@ -176,7 +176,7 @@ ga('send', 'pageview');
           <input name=tn type=hidden value="bds">
           <input name=cl type=hidden value="3">
           <input name=ct type=hidden value="2097152">
-          <input type="hidden" name="si" value="www.pa55w0rd.club">
+          <input type="hidden" name="si" value="www.pa55w0rd.online">
         </form>
       </div>
       -->
@@ -338,7 +338,7 @@ function showBtn(){
 </ul>
 <p>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：</p>
 <figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">#PHP    </span></span><br><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">Include</span>(<span class="string">"上传的txt文件路径"</span>);<span class="meta">?&gt;</span></span> </span></span><br><span class="line"><span class="xml">#ASP    </span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--#include file="上传的txt文件路径" --&gt;</span></span></span><br><span class="line"><span class="xml">#JSP    </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">jsp:inclde</span> <span class="attr">page</span>=<span class="string">"上传的txt文件路径"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">or  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby">@include file=<span class="string">"上传的txt文件路径"</span></span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><p>参考 <a href="http://www.pa55w0rd.club/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">《解析漏洞》</a></p>
+<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><p>参考 <a href="http://www.pa55w0rd.online/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">《解析漏洞》</a></p>
 <h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
 <li><p>上传不符合windows文件命名规则的文件名</p>
 <ul>
@@ -571,7 +571,7 @@ function showBtn(){
 </ul>
 <p>此时，这个php文件就会去引用txt文件的内容，从而绕过校验，下面列举包含的语法：</p>
 <figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">#PHP    </span></span><br><span class="line"><span class="xml"><span class="php"><span class="meta">&lt;?php</span> <span class="keyword">Include</span>(<span class="string">"上传的txt文件路径"</span>);<span class="meta">?&gt;</span></span> </span></span><br><span class="line"><span class="xml">#ASP    </span></span><br><span class="line"><span class="xml"><span class="comment">&lt;!--#include file="上传的txt文件路径" --&gt;</span></span></span><br><span class="line"><span class="xml">#JSP    </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">jsp:inclde</span> <span class="attr">page</span>=<span class="string">"上传的txt文件路径"</span>/&gt;</span></span></span><br><span class="line"><span class="xml">or  </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby">@include file=<span class="string">"上传的txt文件路径"</span></span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><p>参考 <a href="http://www.pa55w0rd.club/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">《解析漏洞》</a></p>
+<h3 id="2-4-配合文件解析漏洞"><a href="#2-4-配合文件解析漏洞" class="headerlink" title="2.4 配合文件解析漏洞"></a>2.4 配合文件解析漏洞</h3><p>参考 <a href="http://www.pa55w0rd.online/%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/">《解析漏洞》</a></p>
 <h3 id="2-5-配合操作系统文件命名规则"><a href="#2-5-配合操作系统文件命名规则" class="headerlink" title="2.5 配合操作系统文件命名规则"></a>2.5 配合操作系统文件命名规则</h3><ol>
 <li><p>上传不符合windows文件命名规则的文件名</p>
 <ul>
@@ -719,11 +719,11 @@ function showBtn(){
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.club/fileupload/" data-id="cjwrgwgfj00709rt623vhfjqr" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/fileupload/" data-id="cjxv99qnp006v5ot6151vi8hp" class="article-share-link" data-share="baidu" data-title="文件上传漏洞总结">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.club/fileupload/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/fileupload/#gitalk-container" class="article-comment-link">留言</a>
       
 
       

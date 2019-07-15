@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.pa55w0rd.online/burp/</loc>
+    
+    <lastmod>2019-07-10T09:00:28.057Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/other/</loc>
+    
+    <lastmod>2019-07-10T07:41:10.023Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.pa55w0rd.online/linux-process-in-background/</loc>
     
     <lastmod>2019-07-10T06:34:14.988Z</lastmod>
@@ -86,13 +100,6 @@
   </url>
   
   <url>
-    <loc>http://www.pa55w0rd.online/burp/</loc>
-    
-    <lastmod>2019-03-14T06:31:27.519Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.pa55w0rd.online/jsonp/</loc>
     
     <lastmod>2019-03-04T10:24:04.166Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>http://www.pa55w0rd.online/sqlmap/</loc>
     
     <lastmod>2019-01-14T07:42:31.340Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.pa55w0rd.online/other/</loc>
-    
-    <lastmod>2019-01-14T07:13:01.578Z</lastmod>
     
   </url>
   

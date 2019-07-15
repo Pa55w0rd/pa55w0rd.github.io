@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="跳到甲方工作也差不多两年了，参与部分企业安全建设工作，主要工作还是渗透和开源平台的建设和维护使用 在这种“甲方”的工作体会就是  公司不是很重视安全这块，网络安全法出台，明确要求企业要做等保测评，招个人做吧  没有资源，要钱没有，要人没有，好在研发的小伙伴和运维小伙伴比较支持工作   两年里，搭建了很多开源的系统，在这里分类了一下， 如果有更好的 欢迎推荐 安装和使用可以去看官方文档 有基础的py">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-14T07:13:01.578Z">
+<meta property="og:updated_time" content="2019-07-10T07:41:10.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="企业安全建设中用到的开源or“免费”的工具">
 <meta name="twitter:description" content="跳到甲方工作也差不多两年了，参与部分企业安全建设工作，主要工作还是渗透和开源平台的建设和维护使用 在这种“甲方”的工作体会就是  公司不是很重视安全这块，网络安全法出台，明确要求企业要做等保测评，招个人做吧  没有资源，要钱没有，要人没有，好在研发的小伙伴和运维小伙伴比较支持工作   两年里，搭建了很多开源的系统，在这里分类了一下， 如果有更好的 欢迎推荐 安装和使用可以去看官方文档 有基础的py">
@@ -226,7 +226,7 @@ ga('send', 'pageview');
 <div id="toc-article" class="toc-article">
     <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
   <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏扫"><span class="toc-number">1.</span> <span class="toc-text">漏扫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞管理"><span class="toc-number">2.</span> <span class="toc-text">漏洞管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项管"><span class="toc-number">3.</span> <span class="toc-text">项管</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src平台"><span class="toc-number">4.</span> <span class="toc-text">src平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资产管理-自动化运维"><span class="toc-number">5.</span> <span class="toc-text">资产管理/自动化运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#soc"><span class="toc-number">6.</span> <span class="toc-text">soc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入侵检测-安全监控-流量回溯"><span class="toc-number">7.</span> <span class="toc-text">入侵检测/安全监控/流量回溯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web应用安全"><span class="toc-number">8.</span> <span class="toc-text">web应用安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端安全集中管理"><span class="toc-number">9.</span> <span class="toc-text">终端安全集中管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堡垒机"><span class="toc-number">10.</span> <span class="toc-text">堡垒机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码质量管理-代码审计"><span class="toc-number">11.</span> <span class="toc-text">代码质量管理/代码审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web日志审计"><span class="toc-number">12.</span> <span class="toc-text">web日志审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志分析系统"><span class="toc-number">13.</span> <span class="toc-text">日志分析系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上网行为管理-准入-认证"><span class="toc-number">14.</span> <span class="toc-text">上网行为管理/准入/认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据防泄漏"><span class="toc-number">15.</span> <span class="toc-text">数据防泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基线检查-加固"><span class="toc-number">16.</span> <span class="toc-text">基线检查/加固</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github泄露扫描"><span class="toc-number">17.</span> <span class="toc-text">github泄露扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录索引系统-个人网盘-文件共享"><span class="toc-number">18.</span> <span class="toc-text">目录索引系统/个人网盘/文件共享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蜜罐"><span class="toc-number">19.</span> <span class="toc-text">蜜罐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钓鱼"><span class="toc-number">20.</span> <span class="toc-text">钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API网关"><span class="toc-number">21.</span> <span class="toc-text">API网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">22.</span> <span class="toc-text">其他</span></a></li></ol>
+         <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#漏扫"><span class="toc-number">1.</span> <span class="toc-text">漏扫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#漏洞管理"><span class="toc-number">2.</span> <span class="toc-text">漏洞管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项管"><span class="toc-number">3.</span> <span class="toc-text">项管</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src平台"><span class="toc-number">4.</span> <span class="toc-text">src平台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资产管理-自动化运维"><span class="toc-number">5.</span> <span class="toc-text">资产管理/自动化运维</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#soc-siem"><span class="toc-number">6.</span> <span class="toc-text">soc/siem</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#入侵检测-安全监控-流量回溯"><span class="toc-number">7.</span> <span class="toc-text">入侵检测/安全监控/流量回溯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web应用安全"><span class="toc-number">8.</span> <span class="toc-text">web应用安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#终端安全集中管理"><span class="toc-number">9.</span> <span class="toc-text">终端安全集中管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#堡垒机"><span class="toc-number">10.</span> <span class="toc-text">堡垒机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码质量管理-代码审计"><span class="toc-number">11.</span> <span class="toc-text">代码质量管理/代码审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#web日志审计"><span class="toc-number">12.</span> <span class="toc-text">web日志审计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#日志分析系统"><span class="toc-number">13.</span> <span class="toc-text">日志分析系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#上网行为管理-准入-统一认证"><span class="toc-number">14.</span> <span class="toc-text">上网行为管理/准入/统一认证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据防泄漏"><span class="toc-number">15.</span> <span class="toc-text">数据防泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基线检查-加固"><span class="toc-number">16.</span> <span class="toc-text">基线检查/加固</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#github泄露扫描"><span class="toc-number">17.</span> <span class="toc-text">github泄露扫描</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录索引系统-个人网盘-文件共享"><span class="toc-number">18.</span> <span class="toc-text">目录索引系统/个人网盘/文件共享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#蜜罐"><span class="toc-number">19.</span> <span class="toc-text">蜜罐</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#钓鱼"><span class="toc-number">20.</span> <span class="toc-text">钓鱼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API网关"><span class="toc-number">21.</span> <span class="toc-text">API网关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#风控系统"><span class="toc-number">22.</span> <span class="toc-text">风控系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安全开发"><span class="toc-number">23.</span> <span class="toc-text">安全开发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库安全"><span class="toc-number">24.</span> <span class="toc-text">数据库安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">25.</span> <span class="toc-text">其他</span></a></li></ol>
        </div>
  <script type="text/javascript">
 function showToc(){
@@ -269,9 +269,11 @@ function showBtn(){
 <li>APPscan (<a href="https://pan.baidu.com/s/1sjkDDi1#list/path=%2F" target="_blank" rel="noopener">破解版</a>)</li>
 <li>Burpsuite pro （破解版）</li>
 <li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank" rel="noopener">mobsf</a> (移动app客户端，支持ios，但是需要在mac上跑)</li>
-<li>Nmap/Zmap/masscan 端口扫描<h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
+<li>Nmap/Zmap/masscan 端口扫描</li>
+<li>w3af/zap/arachni/sqlmap/whatweb</li>
+<li><a href="https://github.com/chaitin/xray" target="_blank" rel="noopener">xray</a><h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
 <li><a href="https://github.com/creditease-sec/insight" target="_blank" rel="noopener">洞察insight</a></li>
-<li>smef</li>
+<li><a href="https://gitee.com/gy071089/SecurityManageFramwork" target="_blank" rel="noopener">SeMF</a></li>
 <li><a href="https://github.com/jeffzh3ng/Fuxi-Scanner/" target="_blank" rel="noopener">Fuxi</a></li>
 <li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="项管"><a href="#项管" class="headerlink" title="项管"></a>项管</h3></li>
 <li>jira</li>
@@ -283,11 +285,11 @@ function showBtn(){
 <li><a href="https://github.com/Tencent/bk-cmdb" target="_blank" rel="noopener">蓝鲸bk-cmdb</a></li>
 <li><a href="https://github.com/bongmu/OpsManage" target="_blank" rel="noopener">OpsManage</a></li>
 <li><a href="http://www.ansible.com.cn/" target="_blank" rel="noopener">Ansible</a></li>
-<li><a href="https://docs.saltstack.com/en/latest/contents.html" target="_blank" rel="noopener">Saltstack</a><h3 id="soc"><a href="#soc" class="headerlink" title="soc"></a>soc</h3></li>
+<li><a href="https://docs.saltstack.com/en/latest/contents.html" target="_blank" rel="noopener">Saltstack</a><h3 id="soc-siem"><a href="#soc-siem" class="headerlink" title="soc/siem"></a>soc/siem</h3></li>
 <li>sosrp</li>
 <li>w3a_SOC</li>
-<li>OpenSOC</li>
-<li>ossim<h3 id="入侵检测-安全监控-流量回溯"><a href="#入侵检测-安全监控-流量回溯" class="headerlink" title="入侵检测/安全监控/流量回溯"></a>入侵检测/安全监控/流量回溯</h3></li>
+<li><a href="http://opensoc.github.io/" target="_blank" rel="noopener">OpenSOC</a></li>
+<li><a href="https://www.alienvault.com/products/ossim" target="_blank" rel="noopener">ossim</a><h3 id="入侵检测-安全监控-流量回溯"><a href="#入侵检测-安全监控-流量回溯" class="headerlink" title="入侵检测/安全监控/流量回溯"></a>入侵检测/安全监控/流量回溯</h3></li>
 <li>suricata(selks)</li>
 <li>bro</li>
 <li>ossec(wazuh)</li>
@@ -302,39 +304,43 @@ function showBtn(){
 <li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">CloudWalker（牧云）现在只开放webshell查杀</a></li>
 <li>Osquery<h3 id="web应用安全"><a href="#web应用安全" class="headerlink" title="web应用安全"></a>web应用安全</h3></li>
 <li><a href="https://github.com/loveshell/ngx_lua_waf" target="_blank" rel="noopener">ngx_lua_waf</a></li>
+<li><a href="https://github.com/p0pr0ck5/lua-resty-waf/" target="_blank" rel="noopener">lua-resty-waf</a></li>
 <li><a href="https://github.com/starjun/openstar" target="_blank" rel="noopener">openstar</a></li>
 <li><a href="https://github.com/SpiderLabs/ModSecurity/tree/nginx_refactoring" target="_blank" rel="noopener">ModSecurity</a></li>
 <li><a href="https://github.com/titansec/OpenWAF" target="_blank" rel="noopener">openwaf</a></li>
 <li><a href="https://github.com/baidu/openrasp" target="_blank" rel="noopener">openRASP</a></li>
-<li>x-waf</li>
-<li>jxwaf<h3 id="终端安全集中管理"><a href="#终端安全集中管理" class="headerlink" title="终端安全集中管理"></a>终端安全集中管理</h3></li>
+<li><a href="http://www.jxwaf.com/" target="_blank" rel="noopener">jxwaf锦衣盾</a></li>
+<li><a href="https://github.com/xsec-lab/x-waf" target="_blank" rel="noopener">x-waf</a><h3 id="终端安全集中管理"><a href="#终端安全集中管理" class="headerlink" title="终端安全集中管理"></a>终端安全集中管理</h3></li>
 <li>360企业版</li>
 <li>火绒企业安全<h3 id="堡垒机"><a href="#堡垒机" class="headerlink" title="堡垒机"></a>堡垒机</h3></li>
 <li><a href="https://github.com/jumpserver/jumpserver" target="_blank" rel="noopener">jumpserver</a></li>
-<li>teleport<h3 id="代码质量管理-代码审计"><a href="#代码质量管理-代码审计" class="headerlink" title="代码质量管理/代码审计"></a>代码质量管理/代码审计</h3></li>
+<li><a href="https://tp4a.com/" target="_blank" rel="noopener">teleport</a></li>
+</ul>
+<h3 id="代码质量管理-代码审计"><a href="#代码质量管理-代码审计" class="headerlink" title="代码质量管理/代码审计"></a>代码质量管理/代码审计</h3><ul>
 <li><a href="https://www.sonarqube.org/downloads/" target="_blank" rel="noopener">SonarQube代码质量管理平台-社区版</a></li>
 <li><a href="https://github.com/WhaleShark-Team/cobra" target="_blank" rel="noopener">cobra</a></li>
-<li>VCG</li>
+<li><a href="https://sourceforge.net/projects/visualcodegrepp/" target="_blank" rel="noopener">VCG</a></li>
 <li>fortify(破解版，找到最新的规则是2018.3)</li>
 <li>RIPS/Seay源代码审计系统(PHP))</li>
 <li>Findbugs（JAVA）</li>
 <li><a href="https://www.owasp.org/index.php/OWASP_Dependency_Check" target="_blank" rel="noopener">Dependency-check依赖检查工具</a></li>
-</ul>
-<h3 id="web日志审计"><a href="#web日志审计" class="headerlink" title="web日志审计"></a>web日志审计</h3><ul>
+<li><a href="https://find-sec-bugs.github.io/" target="_blank" rel="noopener">Find Security Bugs</a><h3 id="web日志审计"><a href="#web日志审计" class="headerlink" title="web日志审计"></a>web日志审计</h3></li>
 <li>360星图</li>
 <li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">xlog</a></li>
 <li><a href="https://github.com/jensvoid/lorg" target="_blank" rel="noopener">lorg</a><h3 id="日志分析系统"><a href="#日志分析系统" class="headerlink" title="日志分析系统"></a>日志分析系统</h3></li>
 <li>elk（es+logstash+kibana)</li>
-<li><a href="https://github.com/anbai-inc/Kibana_Hanization" target="_blank" rel="noopener">Kibana_Hanization(kibana汉化)</a><h3 id="上网行为管理-准入-认证"><a href="#上网行为管理-准入-认证" class="headerlink" title="上网行为管理/准入/认证"></a>上网行为管理/准入/认证</h3></li>
+<li><a href="https://github.com/anbai-inc/Kibana_Hanization" target="_blank" rel="noopener">Kibana_Hanization(kibana汉化)</a><h3 id="上网行为管理-准入-统一认证"><a href="#上网行为管理-准入-统一认证" class="headerlink" title="上网行为管理/准入/统一认证"></a>上网行为管理/准入/统一认证</h3></li>
 <li><a href="https://packetfence.org/" target="_blank" rel="noopener">packetfence</a></li>
 <li>ikuai</li>
 <li>openldap</li>
+<li>openID</li>
 <li><a href="https://github.com/apereo/cas" target="_blank" rel="noopener">中央认证服务（CAS）</a><h3 id="数据防泄漏"><a href="#数据防泄漏" class="headerlink" title="数据防泄漏"></a>数据防泄漏</h3></li>
-<li>opendlp<h3 id="基线检查-加固"><a href="#基线检查-加固" class="headerlink" title="基线检查/加固"></a>基线检查/加固</h3></li>
+<li><a href="https://code.google.com/archive/p/opendlp/" target="_blank" rel="noopener">opendlp</a><h3 id="基线检查-加固"><a href="#基线检查-加固" class="headerlink" title="基线检查/加固"></a>基线检查/加固</h3></li>
 <li><a href="https://learn.cisecurity.org/benchmarks" target="_blank" rel="noopener">CIS</a></li>
 <li><a href="https://github.com/CISOfy/lynis/" target="_blank" rel="noopener">Lynis审计</a></li>
 <li><a href="https://github.com/A-mIn3/WINspect" target="_blank" rel="noopener">WINSpect</a></li>
-<li><a href="https://www.open-scap.org/" target="_blank" rel="noopener">OpenSCAP</a><h3 id="github泄露扫描"><a href="#github泄露扫描" class="headerlink" title="github泄露扫描"></a>github泄露扫描</h3></li>
+<li><a href="https://www.open-scap.org/" target="_blank" rel="noopener">OpenSCAP</a></li>
+<li><a href="http://www.fail2ban.org" target="_blank" rel="noopener">fail2ban</a><h3 id="github泄露扫描"><a href="#github泄露扫描" class="headerlink" title="github泄露扫描"></a>github泄露扫描</h3></li>
 <li><a href="https://github.com/MiSecurity/x-patrol" target="_blank" rel="noopener">x-patrol</a></li>
 <li><a href="https://github.com/0xbug/Hawkeye" target="_blank" rel="noopener">Hawkeye</a></li>
 <li><a href="https://github.com/FeeiCN/GSIL" target="_blank" rel="noopener">GSIL</a></li>
@@ -342,18 +348,36 @@ function showBtn(){
 <li><a href="https://github.com/helloxz/zdir" target="_blank" rel="noopener">zdir</a></li>
 <li><a href="https://nextcloud.com/" target="_blank" rel="noopener">nextcloud</a></li>
 <li><a href="https://www.seafile.com/product/private_server/" target="_blank" rel="noopener">Seafile社区版 </a></li>
-<li>ownCloud</li>
+<li><a href="https://owncloud.com/products/" target="_blank" rel="noopener">ownCloud</a></li>
+<li><a href="http://cloudreve.org/" target="_blank" rel="noopener">Cloudreve</a></li>
+<li>FileRun</li>
 <li>OnionShare</li>
 <li>Pydio Cells<h3 id="蜜罐"><a href="#蜜罐" class="headerlink" title="蜜罐"></a>蜜罐</h3></li>
 <li><a href="https://github.com/p1r06u3/opencanary_web" target="_blank" rel="noopener">p1r06u3_opencanary_web</a></li>
 <li><a href="https://github.com/dtag-dev-sec/tpotce" target="_blank" rel="noopener">T-Pot</a></li>
-<li><a href="https://github.com/threatstream/mhn" target="_blank" rel="noopener">mhn</a><h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3></li>
+<li><a href="https://github.com/threatstream/mhn" target="_blank" rel="noopener">mhn</a></li>
+<li><a href="https://github.com/mushorg/glastopf" target="_blank" rel="noopener">Glastopf</a></li>
+<li>Cowrie/Kippo<h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3></li>
 <li><a href="https://github.com/p1r06u3/phishing" target="_blank" rel="noopener">p1r06u3的phishing</a></li>
 <li><a href="https://github.com/sdlchina/mail_fishing" target="_blank" rel="noopener">mail_fishing</a></li>
 <li><a href="https://github.com/thelinuxchoice/blackeye" target="_blank" rel="noopener">blackeye</a></li>
 <li><a href="https://github.com/gophish/gophish" target="_blank" rel="noopener">Gophish</a><h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3></li>
 <li><a href="https://github.com/eolinker/GoKu-API-Gateway" target="_blank" rel="noopener">GoKu-API-Gateway</a></li>
 <li><a href="https://konghq.com/faqs/" target="_blank" rel="noopener">Kong</a></li>
+</ul>
+<h3 id="风控系统"><a href="#风控系统" class="headerlink" title="风控系统"></a>风控系统</h3><ul>
+<li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
+<li><a href="https://github.com/momosecurity/aswan" target="_blank" rel="noopener">陌陌风控系统静态规则引擎</a></li>
+<li><a href="https://github.com/ysrc/Liudao" target="_blank" rel="noopener">六道 —— 实时业务风控系统</a></li>
+</ul>
+<h3 id="安全开发"><a href="#安全开发" class="headerlink" title="安全开发"></a>安全开发</h3><ul>
+<li><a href="https://github.com/momosecurity/rhizobia_J" target="_blank" rel="noopener">陌陌JAVA安全SDK及编码规范</a></li>
+<li><a href="https://github.com/momosecurity/rhizobia_P" target="_blank" rel="noopener">陌陌PHP安全SDK及编码规范</a></li>
+</ul>
+<h3 id="数据库安全"><a href="#数据库安全" class="headerlink" title="数据库安全"></a>数据库安全</h3><ul>
+<li><a href="https://github.com/Meituan-Dianping/DBProxy" target="_blank" rel="noopener">美团DBProxy数据库防火墙</a></li>
+<li><a href="https://github.com/mcafee/mysql-audit" target="_blank" rel="noopener">mysql-audit</a></li>
+<li><a href="https://github.com/wstart/DB_BaseLine" target="_blank" rel="noopener">DB_BaseLine</a></li>
 </ul>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">WebRange(docker管理平台)</a></li>
@@ -369,8 +393,6 @@ function showBtn(){
 <li><a href="https://github.com/meolu/walle-web" target="_blank" rel="noopener">walle-web（代码部署平台）</a></li>
 <li><a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">apollo(配置中心)</a></li>
 <li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">长亭开源牧云cloudwalker（只有webshell检测部分）</a></li>
-<li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
-<li>美团DBProxy数据库防火墙</li>
 <li>Linxu下 rkhunter/chkrootkit </li>
 <li>Win下 pchunter/ 火绒剑/ PowerTool/ ProcessExplorer/ ProcessHacker/ autoruns/ OTL</li>
 <li><a href="http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" target="_blank" rel="noopener">Kaspersky</a></li>
@@ -378,7 +400,12 @@ function showBtn(){
 <li><a href="https://github.com/SekoiaLab/Fastir_Collector_Linux" target="_blank" rel="noopener">Fastir_Collector_Linux取证</a></li>
 <li>D盾 webshell查杀</li>
 <li>Sandboxie 个人版沙箱</li>
+<li><a href="https://github.com/cuckoosandbox/cuckoo" target="_blank" rel="noopener">cuckoo沙箱</a></li>
+<li><a href="https://github.com/ytisf/theZoo" target="_blank" rel="noopener">theZoo沙箱</a></li>
 <li>ClamAV</li>
+<li><a href="https://github.com/meolu/walle-web" target="_blank" rel="noopener">瓦力 Devops开源项目代码部署平台</a></li>
+<li><a href="https://github.com/BugScanTeam/DNSLog" target="_blank" rel="noopener">DNSLog</a></li>
+<li><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener">frp</a></li>
 </ul>
 
         
@@ -408,9 +435,11 @@ function showBtn(){
 <li>APPscan (<a href="https://pan.baidu.com/s/1sjkDDi1#list/path=%2F" target="_blank" rel="noopener">破解版</a>)</li>
 <li>Burpsuite pro （破解版）</li>
 <li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank" rel="noopener">mobsf</a> (移动app客户端，支持ios，但是需要在mac上跑)</li>
-<li>Nmap/Zmap/masscan 端口扫描<h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
+<li>Nmap/Zmap/masscan 端口扫描</li>
+<li>w3af/zap/arachni/sqlmap/whatweb</li>
+<li><a href="https://github.com/chaitin/xray" target="_blank" rel="noopener">xray</a><h3 id="漏洞管理"><a href="#漏洞管理" class="headerlink" title="漏洞管理"></a>漏洞管理</h3></li>
 <li><a href="https://github.com/creditease-sec/insight" target="_blank" rel="noopener">洞察insight</a></li>
-<li>smef</li>
+<li><a href="https://gitee.com/gy071089/SecurityManageFramwork" target="_blank" rel="noopener">SeMF</a></li>
 <li><a href="https://github.com/jeffzh3ng/Fuxi-Scanner/" target="_blank" rel="noopener">Fuxi</a></li>
 <li><a href="https://github.com/DefectDojo/django-DefectDojo" target="_blank" rel="noopener">DefectDojo</a><h3 id="项管"><a href="#项管" class="headerlink" title="项管"></a>项管</h3></li>
 <li>jira</li>
@@ -422,11 +451,11 @@ function showBtn(){
 <li><a href="https://github.com/Tencent/bk-cmdb" target="_blank" rel="noopener">蓝鲸bk-cmdb</a></li>
 <li><a href="https://github.com/bongmu/OpsManage" target="_blank" rel="noopener">OpsManage</a></li>
 <li><a href="http://www.ansible.com.cn/" target="_blank" rel="noopener">Ansible</a></li>
-<li><a href="https://docs.saltstack.com/en/latest/contents.html" target="_blank" rel="noopener">Saltstack</a><h3 id="soc"><a href="#soc" class="headerlink" title="soc"></a>soc</h3></li>
+<li><a href="https://docs.saltstack.com/en/latest/contents.html" target="_blank" rel="noopener">Saltstack</a><h3 id="soc-siem"><a href="#soc-siem" class="headerlink" title="soc/siem"></a>soc/siem</h3></li>
 <li>sosrp</li>
 <li>w3a_SOC</li>
-<li>OpenSOC</li>
-<li>ossim<h3 id="入侵检测-安全监控-流量回溯"><a href="#入侵检测-安全监控-流量回溯" class="headerlink" title="入侵检测/安全监控/流量回溯"></a>入侵检测/安全监控/流量回溯</h3></li>
+<li><a href="http://opensoc.github.io/" target="_blank" rel="noopener">OpenSOC</a></li>
+<li><a href="https://www.alienvault.com/products/ossim" target="_blank" rel="noopener">ossim</a><h3 id="入侵检测-安全监控-流量回溯"><a href="#入侵检测-安全监控-流量回溯" class="headerlink" title="入侵检测/安全监控/流量回溯"></a>入侵检测/安全监控/流量回溯</h3></li>
 <li>suricata(selks)</li>
 <li>bro</li>
 <li>ossec(wazuh)</li>
@@ -441,39 +470,43 @@ function showBtn(){
 <li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">CloudWalker（牧云）现在只开放webshell查杀</a></li>
 <li>Osquery<h3 id="web应用安全"><a href="#web应用安全" class="headerlink" title="web应用安全"></a>web应用安全</h3></li>
 <li><a href="https://github.com/loveshell/ngx_lua_waf" target="_blank" rel="noopener">ngx_lua_waf</a></li>
+<li><a href="https://github.com/p0pr0ck5/lua-resty-waf/" target="_blank" rel="noopener">lua-resty-waf</a></li>
 <li><a href="https://github.com/starjun/openstar" target="_blank" rel="noopener">openstar</a></li>
 <li><a href="https://github.com/SpiderLabs/ModSecurity/tree/nginx_refactoring" target="_blank" rel="noopener">ModSecurity</a></li>
 <li><a href="https://github.com/titansec/OpenWAF" target="_blank" rel="noopener">openwaf</a></li>
 <li><a href="https://github.com/baidu/openrasp" target="_blank" rel="noopener">openRASP</a></li>
-<li>x-waf</li>
-<li>jxwaf<h3 id="终端安全集中管理"><a href="#终端安全集中管理" class="headerlink" title="终端安全集中管理"></a>终端安全集中管理</h3></li>
+<li><a href="http://www.jxwaf.com/" target="_blank" rel="noopener">jxwaf锦衣盾</a></li>
+<li><a href="https://github.com/xsec-lab/x-waf" target="_blank" rel="noopener">x-waf</a><h3 id="终端安全集中管理"><a href="#终端安全集中管理" class="headerlink" title="终端安全集中管理"></a>终端安全集中管理</h3></li>
 <li>360企业版</li>
 <li>火绒企业安全<h3 id="堡垒机"><a href="#堡垒机" class="headerlink" title="堡垒机"></a>堡垒机</h3></li>
 <li><a href="https://github.com/jumpserver/jumpserver" target="_blank" rel="noopener">jumpserver</a></li>
-<li>teleport<h3 id="代码质量管理-代码审计"><a href="#代码质量管理-代码审计" class="headerlink" title="代码质量管理/代码审计"></a>代码质量管理/代码审计</h3></li>
+<li><a href="https://tp4a.com/" target="_blank" rel="noopener">teleport</a></li>
+</ul>
+<h3 id="代码质量管理-代码审计"><a href="#代码质量管理-代码审计" class="headerlink" title="代码质量管理/代码审计"></a>代码质量管理/代码审计</h3><ul>
 <li><a href="https://www.sonarqube.org/downloads/" target="_blank" rel="noopener">SonarQube代码质量管理平台-社区版</a></li>
 <li><a href="https://github.com/WhaleShark-Team/cobra" target="_blank" rel="noopener">cobra</a></li>
-<li>VCG</li>
+<li><a href="https://sourceforge.net/projects/visualcodegrepp/" target="_blank" rel="noopener">VCG</a></li>
 <li>fortify(破解版，找到最新的规则是2018.3)</li>
 <li>RIPS/Seay源代码审计系统(PHP))</li>
 <li>Findbugs（JAVA）</li>
 <li><a href="https://www.owasp.org/index.php/OWASP_Dependency_Check" target="_blank" rel="noopener">Dependency-check依赖检查工具</a></li>
-</ul>
-<h3 id="web日志审计"><a href="#web日志审计" class="headerlink" title="web日志审计"></a>web日志审计</h3><ul>
+<li><a href="https://find-sec-bugs.github.io/" target="_blank" rel="noopener">Find Security Bugs</a><h3 id="web日志审计"><a href="#web日志审计" class="headerlink" title="web日志审计"></a>web日志审计</h3></li>
 <li>360星图</li>
 <li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">xlog</a></li>
 <li><a href="https://github.com/jensvoid/lorg" target="_blank" rel="noopener">lorg</a><h3 id="日志分析系统"><a href="#日志分析系统" class="headerlink" title="日志分析系统"></a>日志分析系统</h3></li>
 <li>elk（es+logstash+kibana)</li>
-<li><a href="https://github.com/anbai-inc/Kibana_Hanization" target="_blank" rel="noopener">Kibana_Hanization(kibana汉化)</a><h3 id="上网行为管理-准入-认证"><a href="#上网行为管理-准入-认证" class="headerlink" title="上网行为管理/准入/认证"></a>上网行为管理/准入/认证</h3></li>
+<li><a href="https://github.com/anbai-inc/Kibana_Hanization" target="_blank" rel="noopener">Kibana_Hanization(kibana汉化)</a><h3 id="上网行为管理-准入-统一认证"><a href="#上网行为管理-准入-统一认证" class="headerlink" title="上网行为管理/准入/统一认证"></a>上网行为管理/准入/统一认证</h3></li>
 <li><a href="https://packetfence.org/" target="_blank" rel="noopener">packetfence</a></li>
 <li>ikuai</li>
 <li>openldap</li>
+<li>openID</li>
 <li><a href="https://github.com/apereo/cas" target="_blank" rel="noopener">中央认证服务（CAS）</a><h3 id="数据防泄漏"><a href="#数据防泄漏" class="headerlink" title="数据防泄漏"></a>数据防泄漏</h3></li>
-<li>opendlp<h3 id="基线检查-加固"><a href="#基线检查-加固" class="headerlink" title="基线检查/加固"></a>基线检查/加固</h3></li>
+<li><a href="https://code.google.com/archive/p/opendlp/" target="_blank" rel="noopener">opendlp</a><h3 id="基线检查-加固"><a href="#基线检查-加固" class="headerlink" title="基线检查/加固"></a>基线检查/加固</h3></li>
 <li><a href="https://learn.cisecurity.org/benchmarks" target="_blank" rel="noopener">CIS</a></li>
 <li><a href="https://github.com/CISOfy/lynis/" target="_blank" rel="noopener">Lynis审计</a></li>
 <li><a href="https://github.com/A-mIn3/WINspect" target="_blank" rel="noopener">WINSpect</a></li>
-<li><a href="https://www.open-scap.org/" target="_blank" rel="noopener">OpenSCAP</a><h3 id="github泄露扫描"><a href="#github泄露扫描" class="headerlink" title="github泄露扫描"></a>github泄露扫描</h3></li>
+<li><a href="https://www.open-scap.org/" target="_blank" rel="noopener">OpenSCAP</a></li>
+<li><a href="http://www.fail2ban.org" target="_blank" rel="noopener">fail2ban</a><h3 id="github泄露扫描"><a href="#github泄露扫描" class="headerlink" title="github泄露扫描"></a>github泄露扫描</h3></li>
 <li><a href="https://github.com/MiSecurity/x-patrol" target="_blank" rel="noopener">x-patrol</a></li>
 <li><a href="https://github.com/0xbug/Hawkeye" target="_blank" rel="noopener">Hawkeye</a></li>
 <li><a href="https://github.com/FeeiCN/GSIL" target="_blank" rel="noopener">GSIL</a></li>
@@ -481,18 +514,36 @@ function showBtn(){
 <li><a href="https://github.com/helloxz/zdir" target="_blank" rel="noopener">zdir</a></li>
 <li><a href="https://nextcloud.com/" target="_blank" rel="noopener">nextcloud</a></li>
 <li><a href="https://www.seafile.com/product/private_server/" target="_blank" rel="noopener">Seafile社区版 </a></li>
-<li>ownCloud</li>
+<li><a href="https://owncloud.com/products/" target="_blank" rel="noopener">ownCloud</a></li>
+<li><a href="http://cloudreve.org/" target="_blank" rel="noopener">Cloudreve</a></li>
+<li>FileRun</li>
 <li>OnionShare</li>
 <li>Pydio Cells<h3 id="蜜罐"><a href="#蜜罐" class="headerlink" title="蜜罐"></a>蜜罐</h3></li>
 <li><a href="https://github.com/p1r06u3/opencanary_web" target="_blank" rel="noopener">p1r06u3_opencanary_web</a></li>
 <li><a href="https://github.com/dtag-dev-sec/tpotce" target="_blank" rel="noopener">T-Pot</a></li>
-<li><a href="https://github.com/threatstream/mhn" target="_blank" rel="noopener">mhn</a><h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3></li>
+<li><a href="https://github.com/threatstream/mhn" target="_blank" rel="noopener">mhn</a></li>
+<li><a href="https://github.com/mushorg/glastopf" target="_blank" rel="noopener">Glastopf</a></li>
+<li>Cowrie/Kippo<h3 id="钓鱼"><a href="#钓鱼" class="headerlink" title="钓鱼"></a>钓鱼</h3></li>
 <li><a href="https://github.com/p1r06u3/phishing" target="_blank" rel="noopener">p1r06u3的phishing</a></li>
 <li><a href="https://github.com/sdlchina/mail_fishing" target="_blank" rel="noopener">mail_fishing</a></li>
 <li><a href="https://github.com/thelinuxchoice/blackeye" target="_blank" rel="noopener">blackeye</a></li>
 <li><a href="https://github.com/gophish/gophish" target="_blank" rel="noopener">Gophish</a><h3 id="API网关"><a href="#API网关" class="headerlink" title="API网关"></a>API网关</h3></li>
 <li><a href="https://github.com/eolinker/GoKu-API-Gateway" target="_blank" rel="noopener">GoKu-API-Gateway</a></li>
 <li><a href="https://konghq.com/faqs/" target="_blank" rel="noopener">Kong</a></li>
+</ul>
+<h3 id="风控系统"><a href="#风控系统" class="headerlink" title="风控系统"></a>风控系统</h3><ul>
+<li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
+<li><a href="https://github.com/momosecurity/aswan" target="_blank" rel="noopener">陌陌风控系统静态规则引擎</a></li>
+<li><a href="https://github.com/ysrc/Liudao" target="_blank" rel="noopener">六道 —— 实时业务风控系统</a></li>
+</ul>
+<h3 id="安全开发"><a href="#安全开发" class="headerlink" title="安全开发"></a>安全开发</h3><ul>
+<li><a href="https://github.com/momosecurity/rhizobia_J" target="_blank" rel="noopener">陌陌JAVA安全SDK及编码规范</a></li>
+<li><a href="https://github.com/momosecurity/rhizobia_P" target="_blank" rel="noopener">陌陌PHP安全SDK及编码规范</a></li>
+</ul>
+<h3 id="数据库安全"><a href="#数据库安全" class="headerlink" title="数据库安全"></a>数据库安全</h3><ul>
+<li><a href="https://github.com/Meituan-Dianping/DBProxy" target="_blank" rel="noopener">美团DBProxy数据库防火墙</a></li>
+<li><a href="https://github.com/mcafee/mysql-audit" target="_blank" rel="noopener">mysql-audit</a></li>
+<li><a href="https://github.com/wstart/DB_BaseLine" target="_blank" rel="noopener">DB_BaseLine</a></li>
 </ul>
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li><a href="https://github.com/apxar/xlog" target="_blank" rel="noopener">WebRange(docker管理平台)</a></li>
@@ -508,8 +559,6 @@ function showBtn(){
 <li><a href="https://github.com/meolu/walle-web" target="_blank" rel="noopener">walle-web（代码部署平台）</a></li>
 <li><a href="https://github.com/ctripcorp/apollo" target="_blank" rel="noopener">apollo(配置中心)</a></li>
 <li><a href="https://github.com/chaitin/cloudwalker" target="_blank" rel="noopener">长亭开源牧云cloudwalker（只有webshell检测部分）</a></li>
-<li><a href="https://github.com/threathunterX/nebula" target="_blank" rel="noopener">Nebula “星云”业务风控系统</a></li>
-<li>美团DBProxy数据库防火墙</li>
 <li>Linxu下 rkhunter/chkrootkit </li>
 <li>Win下 pchunter/ 火绒剑/ PowerTool/ ProcessExplorer/ ProcessHacker/ autoruns/ OTL</li>
 <li><a href="http://devbuilds.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" target="_blank" rel="noopener">Kaspersky</a></li>
@@ -517,7 +566,12 @@ function showBtn(){
 <li><a href="https://github.com/SekoiaLab/Fastir_Collector_Linux" target="_blank" rel="noopener">Fastir_Collector_Linux取证</a></li>
 <li>D盾 webshell查杀</li>
 <li>Sandboxie 个人版沙箱</li>
+<li><a href="https://github.com/cuckoosandbox/cuckoo" target="_blank" rel="noopener">cuckoo沙箱</a></li>
+<li><a href="https://github.com/ytisf/theZoo" target="_blank" rel="noopener">theZoo沙箱</a></li>
 <li>ClamAV</li>
+<li><a href="https://github.com/meolu/walle-web" target="_blank" rel="noopener">瓦力 Devops开源项目代码部署平台</a></li>
+<li><a href="https://github.com/BugScanTeam/DNSLog" target="_blank" rel="noopener">DNSLog</a></li>
+<li><a href="https://github.com/fatedier/frp/blob/master/README_zh.md" target="_blank" rel="noopener">frp</a></li>
 </ul>
 -->
       
@@ -531,7 +585,7 @@ function showBtn(){
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/other/" data-id="cjxwvcmf3001q7vt655grsyn4" class="article-share-link" data-share="baidu" data-title="企业安全建设中用到的开源or“免费”的工具">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/other/" data-id="cjy43qpx0001m8ht61o2wlbkg" class="article-share-link" data-share="baidu" data-title="企业安全建设中用到的开源or“免费”的工具">分享到</a>
       
 
       
@@ -873,12 +927,22 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     
     <div class="widget-wrap">
   
-      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友链</h3>
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友情链接『不分先后』</h3>
       <div class="widget">
         <ul>
         
             <li onclick="javascript:document.getElementById('friend_links_item').click();">
               <a id="friend_links_item" href="https://firexun.github.io/"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="http://www.weiho.xyz/"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="http://pirogue.org/"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
             </li>
 
         

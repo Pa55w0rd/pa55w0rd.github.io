@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.pa55w0rd.online/redis/</loc>
+    
+    <lastmod>2019-07-16T06:08:40.834Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/php-study/</loc>
+    
+    <lastmod>2019-07-16T03:00:49.210Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/crontab-resume/</loc>
+    
+    <lastmod>2019-07-16T02:48:12.408Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.pa55w0rd.online/burp/</loc>
     
     <lastmod>2019-07-10T09:00:28.057Z</lastmod>
@@ -68,13 +89,6 @@
     <loc>http://www.pa55w0rd.online/php-mfenc-decompiler/</loc>
     
     <lastmod>2019-05-08T08:03:58.684Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.pa55w0rd.online/php-study/</loc>
-    
-    <lastmod>2019-05-05T08:38:08.767Z</lastmod>
     
   </url>
   

@@ -8,19 +8,21 @@
 
   
 
-  <title>Tag: 名词解释 | Pa55w0rd &#39;s Blog</title>
+  <title>crontab误删除恢复 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.online/tags/名词解释/index.html">
+  <meta name="description" content="事故原因分析：回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下： 如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令">
+<meta name="keywords" content="note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="crontab误删除恢复">
+<meta property="og:url" content="http://www.pa55w0rd.online/crontab-resume/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="信息安全">
+<meta property="og:description" content="事故原因分析：回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下： 如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-16T02:48:12.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pa55w0rd &#39;s Blog">
-<meta name="twitter:description" content="信息安全">
+<meta name="twitter:title" content="crontab误删除恢复">
+<meta name="twitter:description" content="事故原因分析：回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下： 如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令">
 
   
 
@@ -184,44 +186,147 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap" data-scroll-reveal="enter left and over 0.7s">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/代理/" class="archive-article-date">
+      <section id="main"><article id="post-crontab-resume" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/crontab-resume/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">10月 19</time>
+  <time datetime="2019-05-16T02:37:20.000Z" itemprop="datePublished">2019-05-16</time>
 </a>
 
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/代理/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>代理</a>
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>crontab误删除恢复
     </h1>
   
 
 
-    </header>
+
+      </header>
+    
+    <!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="事故原因分析："><a href="#事故原因分析：" class="headerlink" title="事故原因分析："></a>事故原因分析：</h2><p>回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下：</p>
+<p>如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令“crontab”，接着在“任务管理器”中直接杀掉SecureCRT进程，再通过另外一个SSH窗口执行“crontab -l”，就会发现，所有的计划任务都不存在了。在今天事故发生的时间点上，就有人在服务器上遇到了这样的情况。</p>
+<a id="more"></a>
+<h2 id="恢复操作"><a href="#恢复操作" class="headerlink" title="恢复操作"></a>恢复操作</h2><ol>
+<li><p>获取完整日志和cmd日志。<br>从日志中恢复出一份最近几天的完整crontab 运行日志和cmd日志，并存储，用于之后完善和核准例行时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/cron | grep -i <span class="string">"`which cron`"</span> &gt; ./all_temp</span><br><span class="line">cat  ./all_temp | grep -v <span class="string">"&lt;command&gt;” &gt; ./cmd_temp</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有crontab指令。<br>从日志中恢复一份去重的crontab log。【相当于所有的crontab命令】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F<span class="string">'('</span> <span class="string">'/crond/&#123;a[$3]=$0&#125;END&#123;for(i in a)print a[i]&#125;'</span> /var/<span class="built_in">log</span>/cron* &gt;crontab.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手工恢复：<br>从crontab.txt 中找出每一条指令，然后在cmd_temp 中匹配运行次数，重新编辑crontab 添加</p>
+</li>
+</ol>
+<h2 id="反思工作"><a href="#反思工作" class="headerlink" title="反思工作"></a>反思工作</h2><p>防止类似事件再次发生，写个简单shell脚本，每天对crontab进行备份，备份最近15天的数据。过期清除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 每天对crontab 进行备份 ，同时删除最近15天的数据</span></span><br><span class="line">DATE=$(date +%Y%m%d)</span><br><span class="line"></span><br><span class="line">crontab -l &gt; /home/work/bak/crontab_<span class="variable">$DATE</span>.bak</span><br><span class="line">find /home/work/bak/ -mtime +15 -name <span class="string">'*.bak'</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure></p>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="事故原因分析："><a href="#事故原因分析：" class="headerlink" title="事故原因分析："></a>事故原因分析：</h2><p>回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下：</p>
+<p>如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令“crontab”，接着在“任务管理器”中直接杀掉SecureCRT进程，再通过另外一个SSH窗口执行“crontab -l”，就会发现，所有的计划任务都不存在了。在今天事故发生的时间点上，就有人在服务器上遇到了这样的情况。</p>
+<a id="more"></a>
+<h2 id="恢复操作"><a href="#恢复操作" class="headerlink" title="恢复操作"></a>恢复操作</h2><ol>
+<li><p>获取完整日志和cmd日志。<br>从日志中恢复出一份最近几天的完整crontab 运行日志和cmd日志，并存储，用于之后完善和核准例行时间。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /var/<span class="built_in">log</span>/cron | grep -i <span class="string">"`which cron`"</span> &gt; ./all_temp</span><br><span class="line">cat  ./all_temp | grep -v <span class="string">"&lt;command&gt;” &gt; ./cmd_temp</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取所有crontab指令。<br>从日志中恢复一份去重的crontab log。【相当于所有的crontab命令】</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F<span class="string">'('</span> <span class="string">'/crond/&#123;a[$3]=$0&#125;END&#123;for(i in a)print a[i]&#125;'</span> /var/<span class="built_in">log</span>/cron* &gt;crontab.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手工恢复：<br>从crontab.txt 中找出每一条指令，然后在cmd_temp 中匹配运行次数，重新编辑crontab 添加</p>
+</li>
+</ol>
+<h2 id="反思工作"><a href="#反思工作" class="headerlink" title="反思工作"></a>反思工作</h2><p>防止类似事件再次发生，写个简单shell脚本，每天对crontab进行备份，备份最近15天的数据。过期清除<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 每天对crontab 进行备份 ，同时删除最近15天的数据</span></span><br><span class="line">DATE=$(date +%Y%m%d)</span><br><span class="line"></span><br><span class="line">crontab -l &gt; /home/work/bak/crontab_<span class="variable">$DATE</span>.bak</span><br><span class="line">find /home/work/bak/ -mtime +15 -name <span class="string">'*.bak'</span> -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure></p>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/crontab-resume/" data-id="cjy5f29w20009hzt6rfhwexbf" class="article-share-link" data-share="baidu" data-title="crontab误删除恢复">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/crontab-resume/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
+
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/php-mfenc-decompiler/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">PHP 魔方加密二代 解密</div>
+    </a>
+  
+  
+    <a href="/cve-2019-0708/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          CVE-2019-0708 批量检测
+        
+      </div>
+    </a>
+  
+</nav>
+
 
   
-  
-    </div></section>
-  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
 
 </section>
       
@@ -614,7 +719,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
+      id: "Thu May 16 2019 10:37:20 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

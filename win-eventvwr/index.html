@@ -8,19 +8,21 @@
 
   
 
-  <title>Tag: 开发安全 | Pa55w0rd &#39;s Blog</title>
+  <title>Windows日志事件ID说明 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.online/tags/开发安全/index.html">
+  <meta name="description" content="日志路径：C:\Windows\System32\winevt\Logs查看日志：Security.evtx、System.evtx、Application.evtx如何查看：右键我的电脑-管理-系统工具-事件查看器，或者eventvwr查看事件查看器 打开Windows系统的事件查看器，右键单击系统或安全日志，选择筛选当前日志，在筛选器中输入下列事件ID即可。">
+<meta name="keywords" content="note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows日志事件ID说明">
+<meta property="og:url" content="http://www.pa55w0rd.online/win-eventvwr/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="信息安全">
+<meta property="og:description" content="日志路径：C:\Windows\System32\winevt\Logs查看日志：Security.evtx、System.evtx、Application.evtx如何查看：右键我的电脑-管理-系统工具-事件查看器，或者eventvwr查看事件查看器 打开Windows系统的事件查看器，右键单击系统或安全日志，选择筛选当前日志，在筛选器中输入下列事件ID即可。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-07-17T09:41:14.509Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pa55w0rd &#39;s Blog">
-<meta name="twitter:description" content="信息安全">
+<meta name="twitter:title" content="Windows日志事件ID说明">
+<meta name="twitter:description" content="日志路径：C:\Windows\System32\winevt\Logs查看日志：Security.evtx、System.evtx、Application.evtx如何查看：右键我的电脑-管理-系统工具-事件查看器，或者eventvwr查看事件查看器 打开Windows系统的事件查看器，右键单击系统或安全日志，选择筛选当前日志，在筛选器中输入下列事件ID即可。">
 
   
 
@@ -184,116 +186,127 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap" data-scroll-reveal="enter left and over 0.7s">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/应用开发安全指南/" class="archive-article-date">
+      <section id="main"><article id="post-win-eventvwr" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/win-eventvwr/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T10:37:59.000Z" itemprop="datePublished">9月 28</time>
+  <time datetime="2019-04-17T09:38:58.000Z" itemprop="datePublished">2019-04-17</time>
 </a>
 
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/应用开发安全指南/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>应用开发安全指南</a>
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>Windows日志事件ID说明
     </h1>
   
 
 
-    </header>
-  </div>
-</article>
 
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/应用系统开发安全/" class="archive-article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T09:37:59.000Z" itemprop="datePublished">9月 28</time>
-</a>
+    <!-- 目录内容 -->
+		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <p>日志路径：C:\Windows\System32\winevt\Logs<br>查看日志：Security.evtx、System.evtx、Application.evtx<br>如何查看：右键我的电脑-管理-系统工具-事件查看器，或者eventvwr查看事件查看器</p>
+<p>打开Windows系统的事件查看器，右键单击系统或安全日志，选择筛选当前日志，在筛选器中输入下列事件ID即可。<br><a id="more"></a></p>
+<p>系统：<br>1074，通过这个事件ID查看计算机的开机、关机、重启的时间以及原因和注释。<br>6005，表示计算机日志服务已启动，如果出现了事件ID为6005，则表示这天正常启动了系统。<br>104，这个时间ID记录所有审计日志清除事件，当有日志被清除时，出现此事件ID。</p>
+<p>安全：<br>4624，这个事件ID表示成功登陆的用户，用来筛选该系统的用户登陆成功情况。<br>4625，这个事件ID表示登陆失败的用户。<br>4720,4722,4723,4724,4725,4726,4738,4740,事件ID表示当用户帐号发生创建，删除，改变密码时的事件记录。<br>4727,4737,4739,4762,事件ID表示当用户组发生添加、删除时或组内添加成员时生成该事件。</p>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <p>日志路径：C:\Windows\System32\winevt\Logs<br>查看日志：Security.evtx、System.evtx、Application.evtx<br>如何查看：右键我的电脑-管理-系统工具-事件查看器，或者eventvwr查看事件查看器</p>
+<p>打开Windows系统的事件查看器，右键单击系统或安全日志，选择筛选当前日志，在筛选器中输入下列事件ID即可。<br><a id="more"></a></p>
+<p>系统：<br>1074，通过这个事件ID查看计算机的开机、关机、重启的时间以及原因和注释。<br>6005，表示计算机日志服务已启动，如果出现了事件ID为6005，则表示这天正常启动了系统。<br>104，这个时间ID记录所有审计日志清除事件，当有日志被清除时，出现此事件ID。</p>
+<p>安全：<br>4624，这个事件ID表示成功登陆的用户，用来筛选该系统的用户登陆成功情况。<br>4625，这个事件ID表示登陆失败的用户。<br>4720,4722,4723,4724,4725,4726,4738,4740,事件ID表示当用户帐号发生创建，删除，改变密码时的事件记录。<br>4727,4737,4739,4762,事件ID表示当用户组发生添加、删除时或组内添加成员时生成该事件。</p>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/win-eventvwr/" data-id="cjy727wpo0036pft6br2nu9dl" class="article-share-link" data-share="baidu" data-title="Windows日志事件ID说明">分享到</a>
+      
 
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/应用系统开发安全/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>应用系统开发安全</a>
-    </h1>
-  
-
-
-    </header>
-  </div>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/如何进行安全设计评审/" class="archive-article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">9月 28</time>
-</a>
+        <a href="http://www.pa55w0rd.online/win-eventvwr/#gitalk-container" class="article-comment-link">留言</a>
+      
 
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/如何进行安全设计评审/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>如何进行安全设计评审（转发）</a>
-    </h1>
-  
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
 
 
-    </header>
+    </footer>
   </div>
-</article>
-
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/安全设计Checklist/" class="archive-article-date">
-  <i class="fa fa-calendar"></i>
-  <time datetime="2018-09-28T07:37:59.000Z" itemprop="datePublished">9月 28</time>
-</a>
-
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/安全设计Checklist/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>安全设计Checklist（转发）</a>
-    </h1>
+    <a href="/kunpeng/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">开源POC检测框架Kunpeng使用</div>
+    </a>
   
+  
+    <a href="/php-study/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          PHP编程基础学习记录
+        
+      </div>
+    </a>
+  
+</nav>
 
 
-    </header>
-  </div>
+  
 </article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
 
-  
-  
-    </div></section>
-  
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
 
 </section>
       
@@ -686,7 +699,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
+      id: "Wed Apr 17 2019 17:38:58 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

@@ -27,15 +27,19 @@
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/6.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/license.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/font.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/burp/daili1.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/burp/daili2.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/burp/proxifier.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/responses.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/intercept_requests.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/replace.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/burp/intruder.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/csrf.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/payload1.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/payload2.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/colla_check.png">
 <meta property="og:image" content="http://www.pa55w0rd.online/burp/colla_client.png">
-<meta property="og:updated_time" content="2019-07-10T09:00:28.057Z">
+<meta property="og:updated_time" content="2019-07-22T03:54:35.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Burp Suite使用">
 <meta name="twitter:description" content="0x00 前言Burp Suite是Web应用程序测试的最佳工具之一，其多种功能可以帮我们执行各种任务.请求的拦截和修改,扫描web应用程序漏洞,以暴力破解登陆表单,执行会话令牌等多种的随机性检查。 大家都很熟悉工具的使用了，这里介绍几个技巧，欢迎大家补充">
@@ -243,7 +247,7 @@ ga('send', 'pageview');
 <div id="toc-article" class="toc-article">
     <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
   <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-专业版激活问题"><span class="toc-number">2.</span> <span class="toc-text">0x01 专业版激活问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#激活步骤"><span class="toc-number">2.1.</span> <span class="toc-text">激活步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-中文显示乱码问题"><span class="toc-number">3.</span> <span class="toc-text">0x02 中文显示乱码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-拦截响应包"><span class="toc-number">4.</span> <span class="toc-text">0x03 拦截响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-拦截指定url的请求响应包"><span class="toc-number">5.</span> <span class="toc-text">0x04 拦截指定url的请求响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-自动替换cookie等"><span class="toc-number">6.</span> <span class="toc-text">0x05 自动替换cookie等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-生成csrf-poc"><span class="toc-number">7.</span> <span class="toc-text">0x06 生成csrf poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-条件竞争漏洞测试"><span class="toc-number">8.</span> <span class="toc-text">0x07 条件竞争漏洞测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-DNSlog功能"><span class="toc-number">9.</span> <span class="toc-text">0x08 DNSlog功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09"><span class="toc-number">10.</span> <span class="toc-text">0x09</span></a></li></ol>
+         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-专业版激活问题"><span class="toc-number">2.</span> <span class="toc-text">0x01 专业版激活问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#激活步骤"><span class="toc-number">2.1.</span> <span class="toc-text">激活步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-中文显示乱码问题"><span class="toc-number">3.</span> <span class="toc-text">0x02 中文显示乱码问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-https网站导入证书"><span class="toc-number">4.</span> <span class="toc-text">0x03 https网站导入证书</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-移动端安装证书"><span class="toc-number">5.</span> <span class="toc-text">0x04 移动端安装证书</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安卓手机"><span class="toc-number">5.1.</span> <span class="toc-text">安卓手机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模拟器安装证书"><span class="toc-number">5.2.</span> <span class="toc-text">模拟器安装证书</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IPhone-设备"><span class="toc-number">5.3.</span> <span class="toc-text">IPhone 设备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-代理设置"><span class="toc-number">6.</span> <span class="toc-text">0x05 代理设置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一般情况"><span class="toc-number">6.1.</span> <span class="toc-text">一般情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理链"><span class="toc-number">6.2.</span> <span class="toc-text">代理链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不支持代理的客户端"><span class="toc-number">6.3.</span> <span class="toc-text">不支持代理的客户端</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-拦截响应包"><span class="toc-number">7.</span> <span class="toc-text">0x06 拦截响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-拦截指定url的请求响应包"><span class="toc-number">8.</span> <span class="toc-text">0x07 拦截指定url的请求响应包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x08-匹配和自动替换cookie等"><span class="toc-number">9.</span> <span class="toc-text">0x08 匹配和自动替换cookie等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-Intruder模块匹配返回包内的中文"><span class="toc-number">10.</span> <span class="toc-text">0x09 Intruder模块匹配返回包内的中文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x10-生成csrf-poc"><span class="toc-number">11.</span> <span class="toc-text">0x10 生成csrf poc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x11-条件竞争漏洞测试"><span class="toc-number">12.</span> <span class="toc-text">0x11 条件竞争漏洞测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x12-交互式应用程序安全测试-last"><span class="toc-number">13.</span> <span class="toc-text">0x12 交互式应用程序安全测试 last</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x13-点击劫持"><span class="toc-number">14.</span> <span class="toc-text">0x13 点击劫持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x14-DNSlog功能"><span class="toc-number">15.</span> <span class="toc-text">0x14 DNSlog功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x15-插件-非BApp-Store中的插件"><span class="toc-number">16.</span> <span class="toc-text">0x15 插件(非BApp Store中的插件)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x16-参考"><span class="toc-number">17.</span> <span class="toc-text">0x16 参考</span></a></li></ol>
        </div>
  <script type="text/javascript">
 function showToc(){
@@ -299,15 +303,49 @@ function showBtn(){
 <img src="/burp/license.png" title="license">
 <h2 id="0x02-中文显示乱码问题"><a href="#0x02-中文显示乱码问题" class="headerlink" title="0x02 中文显示乱码问题"></a>0x02 中文显示乱码问题</h2><p>User options –Display – HTTP Message Display – Change font…<br>选择一个中文的字体格式，调整显示字体大小</p>
 <img src="/burp/font.png" title="中文乱码">
-<h2 id="0x03-拦截响应包"><a href="#0x03-拦截响应包" class="headerlink" title="0x03 拦截响应包"></a>0x03 拦截响应包</h2><p>很多时候，在测试验证码等认证漏洞的时候，只在前端验证，可以通过修改响应包中的值绕过验证</p>
+<p>如果是Unicode编码，可以使用插件转换成中文</p>
+<h2 id="0x03-https网站导入证书"><a href="#0x03-https网站导入证书" class="headerlink" title="0x03 https网站导入证书"></a>0x03 https网站导入证书</h2><p>访问burp，127.0.0.1:8080 ，下载CA Certificate证书，将证书导入浏览器中</p>
+<p>以Firefox 68为例 <strong>选项–隐私与安全–证书–查看证书–证书颁发机构–导入之前下载的cacert.der证书文件</strong></p>
+<h2 id="0x04-移动端安装证书"><a href="#0x04-移动端安装证书" class="headerlink" title="0x04 移动端安装证书"></a>0x04 移动端安装证书</h2><p>在使用Burp代理分析移动设备应用通信的时候，会遇到使用SSL/TLS的应用，这时候就会因为证书验证不通过而无法抓包分析，这时候就需要在移动设备上安装证书，使其信任Burp代理</p>
+<p>0x03中，在浏览器中打开证书颁发机构，找到PortSwigger CA文件，导出PortSwiggerCA.crt，复制到手机中导入</p>
+<h3 id="安卓手机"><a href="#安卓手机" class="headerlink" title="安卓手机"></a>安卓手机</h3><p>设置–更多设置–系统安全–加密与凭证–从存储设备安装</p>
+<p>PS: 不同收集安装路径可能不一样，我这个是小米8的</p>
+<h3 id="模拟器安装证书"><a href="#模拟器安装证书" class="headerlink" title="模拟器安装证书"></a>模拟器安装证书</h3><p>安装过程和上面差不多，之前碰到过一个问题，导入证书的时候证书文件是灰色的，解决方法：<a href="https://www.pa55w0rd.online/%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6/">安卓模拟器安装证书问题 </a></p>
+<h3 id="IPhone-设备"><a href="#IPhone-设备" class="headerlink" title="IPhone 设备"></a>IPhone 设备</h3><p>直接传到手机端安装证书，安装成功后，在设置 – 通用 – 描述文件 里可以看到证书</p>
+<p>在设置 – 通用 –关于本机 – 证书信任设置中信息刚刚安装的证书</p>
+<p>然后通过设置wifi代理，就可以进行抓包了</p>
+<h2 id="0x05-代理设置"><a href="#0x05-代理设置" class="headerlink" title="0x05 代理设置"></a>0x05 代理设置</h2><p>BurpSuite的核心是代理Proxy，通常情况下使用BurpSuite的套路是：浏览器设置BurpSuite代理——&gt;访问Web应用程序——&gt;BurpSuite抓包分析</p>
+<h3 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h3><p>一般情况下，直接设置浏览器的代理服务器为Burp即可，推荐浏览器插件<strong>SwitchyOmega</strong>，chrome和火狐中都有，设置好情景模式一键切换</p>
+<h3 id="代理链"><a href="#代理链" class="headerlink" title="代理链"></a>代理链</h3><p>在某些网络环境中，访问目标网站需要走代理。浏览器设置代理之后就不能再设置Brup代理，这种情况可以借助代理链</p>
+<ol>
+<li>upstream proxy servers</li>
+</ol>
+<p>在该设置项中，可以设置多个上游代理服务器规则，满足规则的请求将被发送至相应的代理服务器。</p>
+<p>User options – Connections – Upstream Proxy Servers</p>
+<img src="/burp/daili1.png" title="daili1">
+<ol start="2">
+<li>SOCKS Proxy</li>
+</ol>
+<p>与Upstream Proxy Servers的作用类似，SOCKS Proxy的功能也是将请求内容发送至相应的代理服务器。不同之处在于，SOCKS Proxy作用于TCP协议层，因此如果设置了该项，那么所有的请求数据都会被发送至SOCKS代理服务器</p>
+<p>User options – Connections – SOCKS Proxy</p>
+<img src="/burp/daili2.png" title="daili2">
+<h3 id="不支持代理的客户端"><a href="#不支持代理的客户端" class="headerlink" title="不支持代理的客户端"></a>不支持代理的客户端</h3><p>有时候，我们想对电脑上的某客户端进行抓包分析，然而这个客户端并没有代理设置的功能，怎么办？如果直接设置系统代理当然也是可以的，但是这样一来所有程序的流量都要经过BurpSuite，一方面有可能影响非测试软件的使用；另一方面，BurpSuite中非测试软件的请求记录过多也影响我们的分析测试。</p>
+<p><a href="https://www.proxifier.com" target="_blank" rel="noopener">Proxifier</a>能够为那些本身不能设置代理的软件设置SOCKS或者HTTPS代理（链）</p>
+<p>软件使用略过</p>
+<p>Proxy Servers和Profication Rules</p>
+<img src="/burp/proxifier.png" title="proxifier">
+<p>点击工具栏第一个图标，打开Proxy Servers对话框。Proxy Servers对话框分为上下两部分，上半部分用于设置代理服务器，下半部分用于设置代理链。</p>
+<p>代理服务器设置完成之后开始进行规则设置，点击工具栏第二个图标进入Proxification Rules对话框</p>
+<p>点击Add添加规则即可</p>
+<h2 id="0x06-拦截响应包"><a href="#0x06-拦截响应包" class="headerlink" title="0x06 拦截响应包"></a>0x06 拦截响应包</h2><p>很多时候，在测试验证码等认证漏洞的时候，只在前端验证，可以通过修改响应包中的值绕过验证</p>
 <p>Proxy – Options – Intercept Server Responses 勾选启用</p>
 <img src="/burp/responses.png" title="responses">
-<h2 id="0x04-拦截指定url的请求响应包"><a href="#0x04-拦截指定url的请求响应包" class="headerlink" title="0x04 拦截指定url的请求响应包"></a>0x04 拦截指定url的请求响应包</h2><p>请求包设置</p>
+<h2 id="0x07-拦截指定url的请求响应包"><a href="#0x07-拦截指定url的请求响应包" class="headerlink" title="0x07 拦截指定url的请求响应包"></a>0x07 拦截指定url的请求响应包</h2><p>请求包设置</p>
 <p>Proxy – Options – Intercept Client Requests – Add</p>
 <img src="/burp/intercept_requests.png" title="intercept_requests">
 <p>响应包设置</p>
 <p>Proxy – Options – Intercept Server Responses – Add，同上图设置</p>
-<h2 id="0x05-自动替换cookie等"><a href="#0x05-自动替换cookie等" class="headerlink" title="0x05 自动替换cookie等"></a>0x05 自动替换cookie等</h2><p>如盲打xss，接收到cookie后，需要在每个请求包中都替换cookie</p>
+<h2 id="0x08-匹配和自动替换cookie等"><a href="#0x08-匹配和自动替换cookie等" class="headerlink" title="0x08 匹配和自动替换cookie等"></a>0x08 匹配和自动替换cookie等</h2><p>如盲打xss，接收到cookie后，需要在每个请求包中都替换cookie</p>
 <p>Proxy – Options – Match and Replace – Add(增加其他自动替换同理，可以自动替换请求/响应内容，这里以cookie为例)</p>
 <img src="/burp/replace.png" title="replace">
 <blockquote>
@@ -316,9 +354,13 @@ function showBtn(){
 <li>自动添加XFF头等伪造IP</li>
 </ol>
 </blockquote>
-<h2 id="0x06-生成csrf-poc"><a href="#0x06-生成csrf-poc" class="headerlink" title="0x06 生成csrf poc"></a>0x06 生成csrf poc</h2><p>对拦截的请求，右键</p>
+<h2 id="0x09-Intruder模块匹配返回包内的中文"><a href="#0x09-Intruder模块匹配返回包内的中文" class="headerlink" title="0x09 Intruder模块匹配返回包内的中文"></a>0x09 Intruder模块匹配返回包内的中文</h2><p>在使用Intruder模块进行爆破或fuzz的时候，一般都通过返回包的长度或者状态码来识别是否爆破成功，如果碰到状态码一样或者返回包长度都不同的情况，可以通过Intruder-&gt;Option-&gt;Grep-Match 进行返回包内容的匹配</p>
+<p>匹配类型有简单字符串和正则比配</p>
+<p>如果要匹配中文，需要将中文转换成十六进制，使用正则匹配的方式</p>
+<img src="/burp/intruder.png" title="intruder">
+<h2 id="0x10-生成csrf-poc"><a href="#0x10-生成csrf-poc" class="headerlink" title="0x10 生成csrf poc"></a>0x10 生成csrf poc</h2><p>对拦截的请求，右键</p>
 <img src="/burp/csrf.png" title="csrf">
-<h2 id="0x07-条件竞争漏洞测试"><a href="#0x07-条件竞争漏洞测试" class="headerlink" title="0x07 条件竞争漏洞测试"></a>0x07 条件竞争漏洞测试</h2><p>“竞争条件”发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
+<h2 id="0x11-条件竞争漏洞测试"><a href="#0x11-条件竞争漏洞测试" class="headerlink" title="0x11 条件竞争漏洞测试"></a>0x11 条件竞争漏洞测试</h2><p>“竞争条件”发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
 <p>开发者在进行代码开发时常常倾向于认为代码会以线性的方式执行，而且他们忽视了并行服务器会并发执行多个线程，这就会导致意想不到的结果。</p>
 <p>简单的说：本来你有100块钱，买一个商品要花100，你可以多开启多个线程去跑，有可能不止一个用户买成功</p>
 <p>“竞争条件”漏洞有时很难通过黑盒/灰盒的方法来进行挖掘，因为这个漏洞很受环境因素的影响，比如网络延迟、服务器的处理能力等。一般都会通过对代码进行审计来发现此类问题</p>
@@ -331,7 +373,11 @@ function showBtn(){
 <p>Intruder – Options – Request Engine</p>
 <p>线程数设置最大999 ，点击Start attack</p>
 <img src="/burp/payload2.png" title="payload1">
-<h2 id="0x08-DNSlog功能"><a href="#0x08-DNSlog功能" class="headerlink" title="0x08 DNSlog功能"></a>0x08 DNSlog功能</h2><p>Burp Collaborator是从Burp suite v1.6.15版本添加的新功能，也就是DNSlog，监控DNS解析记录和HTTP访问记录，在检测盲注类漏洞很好用，也可以借助第三方服务</p>
+<h2 id="0x12-交互式应用程序安全测试-last"><a href="#0x12-交互式应用程序安全测试-last" class="headerlink" title="0x12 交互式应用程序安全测试 last"></a>0x12 交互式应用程序安全测试 last</h2><p>主界面菜单项 burp - Burp Infiltrator</p>
+<p>参考：<a href="https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/" target="_blank" rel="noopener">https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/</a></p>
+<h2 id="0x13-点击劫持"><a href="#0x13-点击劫持" class="headerlink" title="0x13 点击劫持"></a>0x13 点击劫持</h2><p>主界面菜单项 burp - Burp Clickbandit</p>
+<p>参考：<a href="https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/" target="_blank" rel="noopener">https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/</a></p>
+<h2 id="0x14-DNSlog功能"><a href="#0x14-DNSlog功能" class="headerlink" title="0x14 DNSlog功能"></a>0x14 DNSlog功能</h2><p><strong>Burp Collaborator</strong>是从Burp suite v1.6.15版本添加的新功能，也就是DNSlog，监控DNS解析记录和HTTP访问记录，在检测盲注类漏洞很好用，也可以借助第三方服务</p>
 <p>这里引出两个概念，<strong>In-band attack与 out-band attack（带内与带外攻击）</strong>，带内与带外的区别核心在于是否使用不同的通信通道。</p>
 <ul>
 <li>带内攻击<br>在一次攻击当中,只有一条通道，属于in-band（带内）攻击。常规的web测试模型就是我们向目标发送payloads，然后分析目标返回的数据。</li>
@@ -348,7 +394,20 @@ function showBtn(){
 <li>用脚本语言快速启用 web server。运行 python3 -m http.server 8653 或 php -S 0.0.0.0:8088 后，所有对它的 GET、HEAD 请求几类都能在日志中查看到。这种方式非常适用于攻击端与目标同在内网的场景，比如，无公网环境的 CTF 竞赛。不支持 POST 是它最大的短板；</li>
 <li>借助第三方服务（<a href="http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持" target="_blank" rel="noopener">http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持</a> DNS 查询、HTTP POST 方法，此外，由于这是长期有效的服务，所以，很适用于那些非实时触发的带外访问请求（如，二次 SQLi）。你可以隔两三天再去看有无访问记录。</li>
 </ol>
-<h2 id="0x09"><a href="#0x09" class="headerlink" title="0x09"></a>0x09</h2>
+<h2 id="0x15-插件-非BApp-Store中的插件"><a href="#0x15-插件-非BApp-Store中的插件" class="headerlink" title="0x15 插件(非BApp Store中的插件)"></a>0x15 插件(非BApp Store中的插件)</h2><ul>
+<li><a href="https://github.com/d3vilbug/HackBar" target="_blank" rel="noopener">HackBar </a>，火狐的hackbar插件收费了，几个替代品都不怎么好用，这个插件功能比火狐的多且强大</li>
+<li><a href="https://github.com/bit4woo/reCAPTCHA" target="_blank" rel="noopener">reCAPTCHA</a>自动识别图形验证码并用于burp intruder爆破模块的插件</li>
+<li><a href="https://github.com/bit4woo/knife" target="_blank" rel="noopener">knife</a>增加了几个右键菜单，更新cookie、更新header，集成hackbar、sqlmap、u2c（将unicode转换成中文）</li>
+<li><a href="https://github.com/bit4woo/domain_hunter" target="_blank" rel="noopener">domain_hunter</a> 域名收集</li>
+<li><a href="https://github.com/c0ny1/HTTPHeadModifer" target="_blank" rel="noopener">HTTPHeadModifer</a>修改header头，伪造源IP、UA、添加Origin、更新cookie</li>
+<li><a href="https://github.com/c0ny1/chunked-coding-converter" target="_blank" rel="noopener">chunked-coding-converter</a>  安全客有一篇文章<a href="https://www.anquanke.com/post/id/169738" target="_blank" rel="noopener">《利用分块传输吊打所有WAF》</a></li>
+<li><a href="https://github.com/c0ny1/jsEncrypter" target="_blank" rel="noopener">jsEncrypter</a>加密传输爆破</li>
+</ul>
+<h2 id="0x16-参考"><a href="#0x16-参考" class="headerlink" title="0x16 参考"></a>0x16 参考</h2><ul>
+<li><a href="https://www.anquanke.com/post/id/85925" target="_blank" rel="noopener">【技术分享】BurpSuite 代理设置的小技巧 </a></li>
+<li><a href="https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/" target="_blank" rel="noopener">Advance Web Application Testing using Burpsuite</a></li>
+</ul>
+
         
 <!--
         </br>
@@ -389,15 +448,49 @@ function showBtn(){
 <img src="/burp/license.png" title="license">
 <h2 id="0x02-中文显示乱码问题"><a href="#0x02-中文显示乱码问题" class="headerlink" title="0x02 中文显示乱码问题"></a>0x02 中文显示乱码问题</h2><p>User options –Display – HTTP Message Display – Change font…<br>选择一个中文的字体格式，调整显示字体大小</p>
 <img src="/burp/font.png" title="中文乱码">
-<h2 id="0x03-拦截响应包"><a href="#0x03-拦截响应包" class="headerlink" title="0x03 拦截响应包"></a>0x03 拦截响应包</h2><p>很多时候，在测试验证码等认证漏洞的时候，只在前端验证，可以通过修改响应包中的值绕过验证</p>
+<p>如果是Unicode编码，可以使用插件转换成中文</p>
+<h2 id="0x03-https网站导入证书"><a href="#0x03-https网站导入证书" class="headerlink" title="0x03 https网站导入证书"></a>0x03 https网站导入证书</h2><p>访问burp，127.0.0.1:8080 ，下载CA Certificate证书，将证书导入浏览器中</p>
+<p>以Firefox 68为例 <strong>选项–隐私与安全–证书–查看证书–证书颁发机构–导入之前下载的cacert.der证书文件</strong></p>
+<h2 id="0x04-移动端安装证书"><a href="#0x04-移动端安装证书" class="headerlink" title="0x04 移动端安装证书"></a>0x04 移动端安装证书</h2><p>在使用Burp代理分析移动设备应用通信的时候，会遇到使用SSL/TLS的应用，这时候就会因为证书验证不通过而无法抓包分析，这时候就需要在移动设备上安装证书，使其信任Burp代理</p>
+<p>0x03中，在浏览器中打开证书颁发机构，找到PortSwigger CA文件，导出PortSwiggerCA.crt，复制到手机中导入</p>
+<h3 id="安卓手机"><a href="#安卓手机" class="headerlink" title="安卓手机"></a>安卓手机</h3><p>设置–更多设置–系统安全–加密与凭证–从存储设备安装</p>
+<p>PS: 不同收集安装路径可能不一样，我这个是小米8的</p>
+<h3 id="模拟器安装证书"><a href="#模拟器安装证书" class="headerlink" title="模拟器安装证书"></a>模拟器安装证书</h3><p>安装过程和上面差不多，之前碰到过一个问题，导入证书的时候证书文件是灰色的，解决方法：<a href="https://www.pa55w0rd.online/%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6/">安卓模拟器安装证书问题 </a></p>
+<h3 id="IPhone-设备"><a href="#IPhone-设备" class="headerlink" title="IPhone 设备"></a>IPhone 设备</h3><p>直接传到手机端安装证书，安装成功后，在设置 – 通用 – 描述文件 里可以看到证书</p>
+<p>在设置 – 通用 –关于本机 – 证书信任设置中信息刚刚安装的证书</p>
+<p>然后通过设置wifi代理，就可以进行抓包了</p>
+<h2 id="0x05-代理设置"><a href="#0x05-代理设置" class="headerlink" title="0x05 代理设置"></a>0x05 代理设置</h2><p>BurpSuite的核心是代理Proxy，通常情况下使用BurpSuite的套路是：浏览器设置BurpSuite代理——&gt;访问Web应用程序——&gt;BurpSuite抓包分析</p>
+<h3 id="一般情况"><a href="#一般情况" class="headerlink" title="一般情况"></a>一般情况</h3><p>一般情况下，直接设置浏览器的代理服务器为Burp即可，推荐浏览器插件<strong>SwitchyOmega</strong>，chrome和火狐中都有，设置好情景模式一键切换</p>
+<h3 id="代理链"><a href="#代理链" class="headerlink" title="代理链"></a>代理链</h3><p>在某些网络环境中，访问目标网站需要走代理。浏览器设置代理之后就不能再设置Brup代理，这种情况可以借助代理链</p>
+<ol>
+<li>upstream proxy servers</li>
+</ol>
+<p>在该设置项中，可以设置多个上游代理服务器规则，满足规则的请求将被发送至相应的代理服务器。</p>
+<p>User options – Connections – Upstream Proxy Servers</p>
+<img src="/burp/daili1.png" title="daili1">
+<ol start="2">
+<li>SOCKS Proxy</li>
+</ol>
+<p>与Upstream Proxy Servers的作用类似，SOCKS Proxy的功能也是将请求内容发送至相应的代理服务器。不同之处在于，SOCKS Proxy作用于TCP协议层，因此如果设置了该项，那么所有的请求数据都会被发送至SOCKS代理服务器</p>
+<p>User options – Connections – SOCKS Proxy</p>
+<img src="/burp/daili2.png" title="daili2">
+<h3 id="不支持代理的客户端"><a href="#不支持代理的客户端" class="headerlink" title="不支持代理的客户端"></a>不支持代理的客户端</h3><p>有时候，我们想对电脑上的某客户端进行抓包分析，然而这个客户端并没有代理设置的功能，怎么办？如果直接设置系统代理当然也是可以的，但是这样一来所有程序的流量都要经过BurpSuite，一方面有可能影响非测试软件的使用；另一方面，BurpSuite中非测试软件的请求记录过多也影响我们的分析测试。</p>
+<p><a href="https://www.proxifier.com" target="_blank" rel="noopener">Proxifier</a>能够为那些本身不能设置代理的软件设置SOCKS或者HTTPS代理（链）</p>
+<p>软件使用略过</p>
+<p>Proxy Servers和Profication Rules</p>
+<img src="/burp/proxifier.png" title="proxifier">
+<p>点击工具栏第一个图标，打开Proxy Servers对话框。Proxy Servers对话框分为上下两部分，上半部分用于设置代理服务器，下半部分用于设置代理链。</p>
+<p>代理服务器设置完成之后开始进行规则设置，点击工具栏第二个图标进入Proxification Rules对话框</p>
+<p>点击Add添加规则即可</p>
+<h2 id="0x06-拦截响应包"><a href="#0x06-拦截响应包" class="headerlink" title="0x06 拦截响应包"></a>0x06 拦截响应包</h2><p>很多时候，在测试验证码等认证漏洞的时候，只在前端验证，可以通过修改响应包中的值绕过验证</p>
 <p>Proxy – Options – Intercept Server Responses 勾选启用</p>
 <img src="/burp/responses.png" title="responses">
-<h2 id="0x04-拦截指定url的请求响应包"><a href="#0x04-拦截指定url的请求响应包" class="headerlink" title="0x04 拦截指定url的请求响应包"></a>0x04 拦截指定url的请求响应包</h2><p>请求包设置</p>
+<h2 id="0x07-拦截指定url的请求响应包"><a href="#0x07-拦截指定url的请求响应包" class="headerlink" title="0x07 拦截指定url的请求响应包"></a>0x07 拦截指定url的请求响应包</h2><p>请求包设置</p>
 <p>Proxy – Options – Intercept Client Requests – Add</p>
 <img src="/burp/intercept_requests.png" title="intercept_requests">
 <p>响应包设置</p>
 <p>Proxy – Options – Intercept Server Responses – Add，同上图设置</p>
-<h2 id="0x05-自动替换cookie等"><a href="#0x05-自动替换cookie等" class="headerlink" title="0x05 自动替换cookie等"></a>0x05 自动替换cookie等</h2><p>如盲打xss，接收到cookie后，需要在每个请求包中都替换cookie</p>
+<h2 id="0x08-匹配和自动替换cookie等"><a href="#0x08-匹配和自动替换cookie等" class="headerlink" title="0x08 匹配和自动替换cookie等"></a>0x08 匹配和自动替换cookie等</h2><p>如盲打xss，接收到cookie后，需要在每个请求包中都替换cookie</p>
 <p>Proxy – Options – Match and Replace – Add(增加其他自动替换同理，可以自动替换请求/响应内容，这里以cookie为例)</p>
 <img src="/burp/replace.png" title="replace">
 <blockquote>
@@ -406,9 +499,13 @@ function showBtn(){
 <li>自动添加XFF头等伪造IP</li>
 </ol>
 </blockquote>
-<h2 id="0x06-生成csrf-poc"><a href="#0x06-生成csrf-poc" class="headerlink" title="0x06 生成csrf poc"></a>0x06 生成csrf poc</h2><p>对拦截的请求，右键</p>
+<h2 id="0x09-Intruder模块匹配返回包内的中文"><a href="#0x09-Intruder模块匹配返回包内的中文" class="headerlink" title="0x09 Intruder模块匹配返回包内的中文"></a>0x09 Intruder模块匹配返回包内的中文</h2><p>在使用Intruder模块进行爆破或fuzz的时候，一般都通过返回包的长度或者状态码来识别是否爆破成功，如果碰到状态码一样或者返回包长度都不同的情况，可以通过Intruder-&gt;Option-&gt;Grep-Match 进行返回包内容的匹配</p>
+<p>匹配类型有简单字符串和正则比配</p>
+<p>如果要匹配中文，需要将中文转换成十六进制，使用正则匹配的方式</p>
+<img src="/burp/intruder.png" title="intruder">
+<h2 id="0x10-生成csrf-poc"><a href="#0x10-生成csrf-poc" class="headerlink" title="0x10 生成csrf poc"></a>0x10 生成csrf poc</h2><p>对拦截的请求，右键</p>
 <img src="/burp/csrf.png" title="csrf">
-<h2 id="0x07-条件竞争漏洞测试"><a href="#0x07-条件竞争漏洞测试" class="headerlink" title="0x07 条件竞争漏洞测试"></a>0x07 条件竞争漏洞测试</h2><p>“竞争条件”发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
+<h2 id="0x11-条件竞争漏洞测试"><a href="#0x11-条件竞争漏洞测试" class="headerlink" title="0x11 条件竞争漏洞测试"></a>0x11 条件竞争漏洞测试</h2><p>“竞争条件”发生在多个线程同时访问同一个共享代码、变量、文件等没有进行锁操作或者同步操作的场景中。</p>
 <p>开发者在进行代码开发时常常倾向于认为代码会以线性的方式执行，而且他们忽视了并行服务器会并发执行多个线程，这就会导致意想不到的结果。</p>
 <p>简单的说：本来你有100块钱，买一个商品要花100，你可以多开启多个线程去跑，有可能不止一个用户买成功</p>
 <p>“竞争条件”漏洞有时很难通过黑盒/灰盒的方法来进行挖掘，因为这个漏洞很受环境因素的影响，比如网络延迟、服务器的处理能力等。一般都会通过对代码进行审计来发现此类问题</p>
@@ -421,7 +518,11 @@ function showBtn(){
 <p>Intruder – Options – Request Engine</p>
 <p>线程数设置最大999 ，点击Start attack</p>
 <img src="/burp/payload2.png" title="payload1">
-<h2 id="0x08-DNSlog功能"><a href="#0x08-DNSlog功能" class="headerlink" title="0x08 DNSlog功能"></a>0x08 DNSlog功能</h2><p>Burp Collaborator是从Burp suite v1.6.15版本添加的新功能，也就是DNSlog，监控DNS解析记录和HTTP访问记录，在检测盲注类漏洞很好用，也可以借助第三方服务</p>
+<h2 id="0x12-交互式应用程序安全测试-last"><a href="#0x12-交互式应用程序安全测试-last" class="headerlink" title="0x12 交互式应用程序安全测试 last"></a>0x12 交互式应用程序安全测试 last</h2><p>主界面菜单项 burp - Burp Infiltrator</p>
+<p>参考：<a href="https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/" target="_blank" rel="noopener">https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/</a></p>
+<h2 id="0x13-点击劫持"><a href="#0x13-点击劫持" class="headerlink" title="0x13 点击劫持"></a>0x13 点击劫持</h2><p>主界面菜单项 burp - Burp Clickbandit</p>
+<p>参考：<a href="https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/" target="_blank" rel="noopener">https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/</a></p>
+<h2 id="0x14-DNSlog功能"><a href="#0x14-DNSlog功能" class="headerlink" title="0x14 DNSlog功能"></a>0x14 DNSlog功能</h2><p><strong>Burp Collaborator</strong>是从Burp suite v1.6.15版本添加的新功能，也就是DNSlog，监控DNS解析记录和HTTP访问记录，在检测盲注类漏洞很好用，也可以借助第三方服务</p>
 <p>这里引出两个概念，<strong>In-band attack与 out-band attack（带内与带外攻击）</strong>，带内与带外的区别核心在于是否使用不同的通信通道。</p>
 <ul>
 <li>带内攻击<br>在一次攻击当中,只有一条通道，属于in-band（带内）攻击。常规的web测试模型就是我们向目标发送payloads，然后分析目标返回的数据。</li>
@@ -438,7 +539,20 @@ function showBtn(){
 <li>用脚本语言快速启用 web server。运行 python3 -m http.server 8653 或 php -S 0.0.0.0:8088 后，所有对它的 GET、HEAD 请求几类都能在日志中查看到。这种方式非常适用于攻击端与目标同在内网的场景，比如，无公网环境的 CTF 竞赛。不支持 POST 是它最大的短板；</li>
 <li>借助第三方服务（<a href="http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持" target="_blank" rel="noopener">http://ceye.io/、http://requestbin.net/）。效果上，类似第二种方式，但支持</a> DNS 查询、HTTP POST 方法，此外，由于这是长期有效的服务，所以，很适用于那些非实时触发的带外访问请求（如，二次 SQLi）。你可以隔两三天再去看有无访问记录。</li>
 </ol>
-<h2 id="0x09"><a href="#0x09" class="headerlink" title="0x09"></a>0x09</h2>-->
+<h2 id="0x15-插件-非BApp-Store中的插件"><a href="#0x15-插件-非BApp-Store中的插件" class="headerlink" title="0x15 插件(非BApp Store中的插件)"></a>0x15 插件(非BApp Store中的插件)</h2><ul>
+<li><a href="https://github.com/d3vilbug/HackBar" target="_blank" rel="noopener">HackBar </a>，火狐的hackbar插件收费了，几个替代品都不怎么好用，这个插件功能比火狐的多且强大</li>
+<li><a href="https://github.com/bit4woo/reCAPTCHA" target="_blank" rel="noopener">reCAPTCHA</a>自动识别图形验证码并用于burp intruder爆破模块的插件</li>
+<li><a href="https://github.com/bit4woo/knife" target="_blank" rel="noopener">knife</a>增加了几个右键菜单，更新cookie、更新header，集成hackbar、sqlmap、u2c（将unicode转换成中文）</li>
+<li><a href="https://github.com/bit4woo/domain_hunter" target="_blank" rel="noopener">domain_hunter</a> 域名收集</li>
+<li><a href="https://github.com/c0ny1/HTTPHeadModifer" target="_blank" rel="noopener">HTTPHeadModifer</a>修改header头，伪造源IP、UA、添加Origin、更新cookie</li>
+<li><a href="https://github.com/c0ny1/chunked-coding-converter" target="_blank" rel="noopener">chunked-coding-converter</a>  安全客有一篇文章<a href="https://www.anquanke.com/post/id/169738" target="_blank" rel="noopener">《利用分块传输吊打所有WAF》</a></li>
+<li><a href="https://github.com/c0ny1/jsEncrypter" target="_blank" rel="noopener">jsEncrypter</a>加密传输爆破</li>
+</ul>
+<h2 id="0x16-参考"><a href="#0x16-参考" class="headerlink" title="0x16 参考"></a>0x16 参考</h2><ul>
+<li><a href="https://www.anquanke.com/post/id/85925" target="_blank" rel="noopener">【技术分享】BurpSuite 代理设置的小技巧 </a></li>
+<li><a href="https://www.hackingarticles.in/advance-web-application-testing-using-burpsuite/" target="_blank" rel="noopener">Advance Web Application Testing using Burpsuite</a></li>
+</ul>
+-->
       
 
     </div>
@@ -450,7 +564,7 @@ function showBtn(){
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/burp/" data-id="cjy727wnq0014pft68ck24t3e" class="article-share-link" data-share="baidu" data-title="Burp Suite使用">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/burp/" data-id="cjydzohr50074qzt6h5qp4npy" class="article-share-link" data-share="baidu" data-title="Burp Suite使用">分享到</a>
       
 
       
@@ -519,6 +633,10 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/awvs-nessus/">AWVS / NESSUS</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/redis/">Redis的一些漏洞复现利用</a>
           </li>
         
@@ -534,10 +652,6 @@ function showBtn(){
             <a id="recentpost_item" href="/cve-2019-0708/">CVE-2019-0708 批量检测</a>
           </li>
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/crontab-resume/">crontab误删除恢复</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -548,7 +662,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -564,7 +678,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.43px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.43px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.43px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 17.14px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 14.29px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 14.29px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.57px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 12.86px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 15.71px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.43px;">安装使用</a> <a href="/tags/工具使用/" style="font-size: 18.57px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.43px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 12.86px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 14.29px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.43px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 15.71px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/编程基础/" style="font-size: 10px;">编程基础</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.43px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.43px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.43px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 17.14px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 14.29px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 14.29px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.57px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 12.86px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 15.71px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.43px;">安装使用</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具使用/" style="font-size: 18.57px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.43px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 12.86px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 14.29px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.43px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 15.71px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/编程基础/" style="font-size: 10px;">编程基础</a> <a href="/tags/解决方法/" style="font-size: 20px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -574,8 +688,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 

@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+
+  <title>常见未授权访问漏洞总结 | Pa55w0rd &#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x00 前言最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞">
+<meta name="keywords" content="未授权访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见未授权访问漏洞总结">
+<meta property="og:url" content="http://www.pa55w0rd.online/unauthorized-access-sumup/index.html">
+<meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
+<meta property="og:description" content="0x00 前言最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-23T10:23:43.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常见未授权访问漏洞总结">
+<meta name="twitter:description" content="0x00 前言最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞">
+
+  
+
+  
+
+
+  
+    <meta name="baidu-site-verification" content="d4d7b60d81cad7436bcab57af5cf84c7">
+  
+
+
+  
+    <meta name="google-site-verification" content="google4b1aaf5aa71b9f3c.html">
+  
+
+
+
+  
+    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+  
+
+
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+
+
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/scrollReveal.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
+  <script src="/js/algolia-search.js" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-126660308-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+  
+  
+  <!-- 
+  
+  
+  
+  
+  
+   -->
+
+
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+<!--
+<script>
+    (function(){
+      if('{{ page.password }}'){
+        if (prompt('请输入文章密码') !== '{{ page.password }}'){
+          alert('密码错误！');
+          history.back();
+        }
+      }
+    })();
+  </script>
+-->
+</head>
+
+
+</html>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div data-scroll-reveal="enter top" id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pa55w0rd &#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+        
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+          <a class="main-nav-link" href="/comments"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+        
+          <a class="main-nav-link" href="/404.html"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        
+        <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      </nav>
+        <div id="local-search-input"></div>
+      <!-- 百度搜索 -->
+     <!-- <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.pa55w0rd.online">
+        </form>
+      </div>
+      -->
+   
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-unauthorized-access-sumup" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <a href="/unauthorized-access-sumup/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time datetime="2019-09-23T08:59:49.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>常见未授权访问漏洞总结
+    </h1>
+  
+
+
+
+      </header>
+    
+    <!-- 目录内容 -->
+
+  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+        </p>
+<div id="toc-article" class="toc-article">
+    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+  <strong class="toc-title">文章目录</strong>
+         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-参考"><span class="toc-number">2.</span> <span class="toc-text">0x01 参考</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-总结"><span class="toc-number">3.</span> <span class="toc-text">0x02 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LDAP未授权访问漏洞"><span class="toc-number">3.1.</span> <span class="toc-text">LDAP未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NFS未授权访问漏洞"><span class="toc-number">3.2.</span> <span class="toc-text">NFS未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis未授权访问漏洞"><span class="toc-number">3.3.</span> <span class="toc-text">Redis未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB未授权访问漏洞"><span class="toc-number">3.4.</span> <span class="toc-text">MongoDB未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jenkins未授权访问漏洞"><span class="toc-number">3.5.</span> <span class="toc-text">Jenkins未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memcached-未授权访问漏洞"><span class="toc-number">3.6.</span> <span class="toc-text">Memcached 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JBOSS-未授权访问漏洞"><span class="toc-number">3.7.</span> <span class="toc-text">JBOSS 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VNC-未授权访问漏洞"><span class="toc-number">3.8.</span> <span class="toc-text">VNC 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-未授权访问漏洞"><span class="toc-number">3.9.</span> <span class="toc-text">Docker 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper-未授权访问漏洞"><span class="toc-number">3.10.</span> <span class="toc-text">ZooKeeper 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rsync-未授权访问漏洞"><span class="toc-number">3.11.</span> <span class="toc-text">Rsync 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Atlassian-Crowd-未授权访问漏洞"><span class="toc-number">3.12.</span> <span class="toc-text">Atlassian Crowd 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CouchDB-未授权访问漏洞"><span class="toc-number">3.13.</span> <span class="toc-text">CouchDB 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Elasticsearch-未授权访问漏洞"><span class="toc-number">3.14.</span> <span class="toc-text">Elasticsearch 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hadoop-未授权访问漏洞"><span class="toc-number">3.15.</span> <span class="toc-text">Hadoop 未授权访问漏洞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jupyter-Notebook-未授权访问漏洞"><span class="toc-number">3.16.</span> <span class="toc-text">Jupyter Notebook 未授权访问漏洞</span></a></li></ol></li></ol>
+       </div>
+ <script type="text/javascript">
+function showToc(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:block");
+  show_toc_btn.setAttribute("style","display:none");
+  };
+function showBtn(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:none");
+  show_toc_btn.setAttribute("style","display:block");
+  };
+ </script>
+    		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞</p>
+<a id="more"></a>
+<h2 id="0x01-参考"><a href="#0x01-参考" class="headerlink" title="0x01 参考"></a>0x01 参考</h2><blockquote>
+<p><a href="https://xz.aliyun.com/t/6103" target="_blank" rel="noopener">常见未授权访问漏洞总结</a><br><a href="https://www.secpulse.com/archives/61101.html" target="_blank" rel="noopener">【脉搏沉淀系列】未授权访问漏洞总结</a><br><a href="https://www.freebuf.com/articles/web/165340.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/165340.html</a><br><a href="https://ptestmethod.readthedocs.io/en/latest/LFF-IPS-P2-VulnerabilityAnalysis.html#ftp-port-21" target="_blank" rel="noopener">PortVulnerabilityAnalysis</a><br><a href="https://www.pa55w0rd.online/redis/">Redis的一些漏洞复现利用 </a><br><a href="https://www.cnblogs.com/qcloud1001/p/9173253.html" target="_blank" rel="noopener">Hadoop Yarn REST API未授权漏洞利用挖矿分析</a></p>
+</blockquote>
+<h2 id="0x02-总结"><a href="#0x02-总结" class="headerlink" title="0x02 总结"></a>0x02 总结</h2><h3 id="LDAP未授权访问漏洞"><a href="#LDAP未授权访问漏洞" class="headerlink" title="LDAP未授权访问漏洞"></a>LDAP未授权访问漏洞</h3><p><strong>漏洞介绍及危害</strong><br>轻量级目录访问协议，最近几年随着ldap的广泛使用被发现的漏洞也越来越多。但是毕竟主流的攻击方式仍旧是那些，比如注入，未授权等等；这些问题的出现也都是因为配置不当而造成的。</p>
+<p><strong>测试</strong><br>JXplorer、LdapAdmin等可视化工具连接</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>密码策略配置</li>
+</ul>
+<h3 id="NFS未授权访问漏洞"><a href="#NFS未授权访问漏洞" class="headerlink" title="NFS未授权访问漏洞"></a>NFS未授权访问漏洞</h3><p><strong>漏洞介绍及危害</strong></p>
+<p>NFS（Network FileSystem）即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。<br><strong>测试</strong><br>showmount -e 10.0.0.1</p>
+<p><strong>防御手段</strong><br>限制IP</p>
+<h3 id="Redis未授权访问漏洞"><a href="#Redis未授权访问漏洞" class="headerlink" title="Redis未授权访问漏洞"></a>Redis未授权访问漏洞</h3><p><strong>漏洞简介及危害</strong></p>
+<p> Redis 默认情况下，会绑定在 0.0.0.0:6379，如果没有进行采用相关的策略，比如添加防火墙规则避免其他非信任来源 ip 访问等，这样将会将 Redis 服务暴露到公网上，如果在没有设置密码认证（一般为空）的情况下，会导致任意用户在可以访问目标服务器的情况下未授权访问 Redis 以及读取 Redis 的数据。攻击者在未授权访问 Redis 的情况下，利用 Redis 自身的提供的config 命令，可以进行写文件操作，攻击者可以成功将自己的ssh公钥写入目标服务器的 /root/.ssh 文件夹的authotrized_keys 文件中，进而可以使用对应私钥直接使用ssh服务登录目标服务器、添加计划任务、写入Webshell等操作。</p>
+<p><strong>测试</strong><br>redis-cli -h 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>禁止使用root权限启动redis服务。</li>
+<li>对redis访问启动密码认证。</li>
+<li>添加IP访问限制，并更改默认6379端口。</li>
+</ul>
+<h3 id="MongoDB未授权访问漏洞"><a href="#MongoDB未授权访问漏洞" class="headerlink" title="MongoDB未授权访问漏洞"></a>MongoDB未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  开启MongoDB服务时不添加任何参数时,默认是没有权限验证的,登录的用户可以通过默认端口无需密码对数据库任意操作（增、删、改、查高危动作）而且可以远程访问数据库。</p>
+<p>  造成未授权访问的根本原因就在于启动 Mongodb 的时候未设置 –auth 也很少会有人会给数据库添加上账号密码（默认空口令），使用默认空口令这将导致恶意攻击者无需进行账号认证就可以登陆到数据服务器。</p>
+<p><strong>测试</strong><br>nmap -p 27017 –script mongodb-info 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>为MongoDB添加认证：MongoDB启动时添加–auth参数、为MongoDB添加用户</li>
+<li>MongoDB 自身带有一个HTTP服务和并支持REST接口。在2.6以后这些接口默认是关闭的。mongoDB默认会使用默认端口监听web服务，一般不需要通过web方式进行远程管理，建议禁用。修改配置文件或在启动的时候选择 –nohttpinterface 参数 nohttpinterface=false</li>
+<li>启动时加入参数–bind_ip 127.0.0.1 或在/etc/mongodb.conf文件中添加以下内容：bind_ip = 127.0.0.1</li>
+</ul>
+<h3 id="Jenkins未授权访问漏洞"><a href="#Jenkins未授权访问漏洞" class="headerlink" title="Jenkins未授权访问漏洞"></a>Jenkins未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  默认情况下 Jenkins面板中用户可以选择执行脚本界面来操作一些系统层命令，攻击者可通过未授权访问漏洞或者暴力破解用户密码等进入后台管理服务，通过脚本执行界面从而获取服务器权限。</p>
+<p><strong>测试</strong><br>访问<a href="http://10.0.0.1:8080/manage" target="_blank" rel="noopener">http://10.0.0.1:8080/manage</a> 可以看到没有任何限制可以直接访问</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>升级版本。</li>
+<li>添加认证，设置强密码复杂度及账号锁定。</li>
+<li>禁止把Jenkins直接暴露在公网。</li>
+</ul>
+<h3 id="Memcached-未授权访问漏洞"><a href="#Memcached-未授权访问漏洞" class="headerlink" title="Memcached 未授权访问漏洞"></a>Memcached 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Memcached 是一套常用的 key-value 分布式高速缓存系统，由于 Memcached 的安全设计缺陷没有权限控制模块，所以对公网开放的Memcache服务很容易被攻击者扫描发现，攻击者无需认证通过命令交互可直接读取 Memcached中的敏感信息。</p>
+<p><strong>测试</strong><br>telnet 10.0.0.1 11211 </p>
+<p>nc -vv 10.0.0.1 11211</p>
+<p>nmap -p 11211 –script memcached-info 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>设置Memchached只允许本地访问。</li>
+<li>禁止外网访问Memcached 11211端口。</li>
+<li>配置访问控制策略。</li>
+<li>最小化权限运行。</li>
+<li>修改默认端口等。</li>
+</ul>
+<h3 id="JBOSS-未授权访问漏洞"><a href="#JBOSS-未授权访问漏洞" class="headerlink" title="JBOSS 未授权访问漏洞"></a>JBOSS 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  JBoss是一个基于J2EE的开放源代码应用服务器，代码遵循LGPL许可，可以在任何商业应用中免费使用；JBoss也是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3规范。,默认情况下访问 <a href="http://ip:8080/jmx-console" target="_blank" rel="noopener">http://ip:8080/jmx-console</a> 就可以浏览 JBoss 的部署管理的信息不需要输入用户名和密码可以直接部署上传木马有安全隐患。</p>
+<p><strong>测试</strong><br><a href="http://10.0.0.1:8080/jmx-console/" target="_blank" rel="noopener">http://10.0.0.1:8080/jmx-console/</a> 无需认证进入控制页面</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>对jmx控制页面访问添加访问验证。</li>
+<li>进行JMX Console 安全配置。</li>
+</ul>
+<h3 id="VNC-未授权访问漏洞"><a href="#VNC-未授权访问漏洞" class="headerlink" title="VNC 未授权访问漏洞"></a>VNC 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  VNC 是虚拟网络控制台Virtual Network Console的英文缩写。它是一款优秀的远程控制工具软件由美国电话电报公司AT&amp;T的欧洲研究实验室开发。VNC是基于 UNXI 和 Linux 的免费开源软件由 VNC Server 和 VNC Viewer 两部分组成。VNC 默认端口号为 5900、5901。VNC 未授权访问漏洞如被利用可能造成恶意用户直接控制target主机。</p>
+<p><strong>测试</strong><br>vncviewer 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>配置 VNC 客户端登录口令认证并配置符合密码强度要求的密码。</li>
+<li>以最小普通权限身份运行操作系统。<h3 id="Docker-未授权访问漏洞"><a href="#Docker-未授权访问漏洞" class="headerlink" title="Docker 未授权访问漏洞"></a>Docker 未授权访问漏洞</h3><strong>漏洞简介以及危害</strong></li>
+</ul>
+<p>  Docker 是一个开源的引擎可以轻松地为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署包括 VMs、bare metal、OpenStack 集群和其他的基础应用平台Docker。</p>
+<p>  Docker Remote API 是一个取代远程命令行界面（rcli）的REST API。存在问题的版本分别为 1.3 和 1.6因为权限控制等问题导致可以通过 docker client 或者 http 直接请求就可以访问这个 API，通过这个接口，我们可以新建 container，删除已有 container，甚至是获取宿主机的 shell。</p>
+<p><strong>测试</strong><br>docker -H tcp://10.0.0.1:2375 version</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>简单粗暴的方法，对2375端口做网络访问控制，如ACL控制，或者访问规则。</li>
+<li>修改docker swarm的认证方式，使用TLS认证：Overview Swarm with TLS 和 Configure Docker Swarm for TLS这两篇文档，说的是配置好TLS后，Docker CLI 在发送命令到docker daemon之前，会首先发送它的证书，如果证书是由daemon信任的CA所签名的，才可以继续执行。</li>
+</ul>
+<h3 id="ZooKeeper-未授权访问漏洞"><a href="#ZooKeeper-未授权访问漏洞" class="headerlink" title="ZooKeeper 未授权访问漏洞"></a>ZooKeeper 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  zookeeper是分布式协同管理工具，常用来管理系统配置信息，提供分布式协同服务。Zookeeper的默认开放端口是2181。Zookeeper安装部署之后默认情况下不需要任何身份验证，造成攻击者可以远程利用Zookeeper，通过服务器收集敏感信息或者在Zookeeper集群内进行破坏（比如：kill命令）。攻击者能够执行所有只允许由管理员运行的命令。<br><strong>测试</strong><br>echo envi|nc 10.0.0.1 2181</p>
+<p>利用zookeeper可视化管理工具进行连接，下载地址：<a href="https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip" target="_blank" rel="noopener">https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip</a></p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>修改 ZooKeeper 默认端口，采用其他端口服务。</li>
+<li>添加访问控制，配置服务来源地址限制策略。</li>
+<li>增加 ZooKeeper 的认证配置。</li>
+</ul>
+<h3 id="Rsync-未授权访问漏洞"><a href="#Rsync-未授权访问漏洞" class="headerlink" title="Rsync 未授权访问漏洞"></a>Rsync 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Rsync（remote synchronize）是一个远程数据同步工具，可通过 LAN/WAN 快速同步多台主机间的文件，也可以同步本地硬盘中的不同目录。Rsync 默认允许匿名访问，如果在配置文件中没有相关的用户认证以及文件授权，就会触发隐患。Rsync 的默认端口为 837。</p>
+<p><strong>测试</strong><br>rsync rsync://10.0.0.1:873/</p>
+<p>rsync 10.0.0.1::</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>账户认证：正确配置认证用户名及密码。</li>
+<li>权限控制：使用合理的权限。</li>
+<li>网络访问控制：控制接入源ip。</li>
+<li>数据加密传输等</li>
+</ul>
+<h3 id="Atlassian-Crowd-未授权访问漏洞"><a href="#Atlassian-Crowd-未授权访问漏洞" class="headerlink" title="Atlassian Crowd 未授权访问漏洞"></a>Atlassian Crowd 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Atlassian Crowd和Atlassian Crowd Data Center都是澳大利亚Atlassian公司的产品。Atlassian Crowd是一套基于Web的单点登录系统。该系统为多用户、网络应用程序和目录服务器提供验证、授权等功能。Atlassian Crowd Data Center是Crowd的集群部署版。Atlassian Crowd和Crowd Data Center在其某些发行版本中错误地启用了pdkinstall开发插件，使其存在安全漏洞。攻击者利用该漏洞可在未授权访问的情况下对Atlassian Crowd和Crowd Data Center安装任意的恶意插件，执行任意代码/命令，从而获得服务器权限。</p>
+<p><strong>测试</strong><br>进行上传一个标准的插件，来自atlassian-bundled-plugins中的applinks-plugin-5.4.12.jar</p>
+<p>curl –form “<a href="mailto:file_cdl=@applinks-plugin-5.4.12.jar" target="_blank" rel="noopener">file_cdl=@applinks-plugin-5.4.12.jar</a>“ <a href="http://10.0.0.1:8095/crowd/admin/uploadplugin.action" target="_blank" rel="noopener">http://10.0.0.1:8095/crowd/admin/uploadplugin.action</a> -v</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>设置访问/crowd/admin/uploadplugin.action的源ip。</li>
+<li>升级最新版本(3.5.0以上)。</li>
+</ul>
+<h3 id="CouchDB-未授权访问漏洞"><a href="#CouchDB-未授权访问漏洞" class="headerlink" title="CouchDB 未授权访问漏洞"></a>CouchDB 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Apache CouchDB是一个开源数据库，专注于易用性和成为”完全拥抱web的数据库”。它是一个使用JSON作为存储格式，JavaScript作为查询语言，MapReduce和HTTP作为API的NoSQL数据库。应用广泛，如BBC用在其动态内容展示平台，Credit Suisse用在其内部的商品部门的市场框架，Meebo，用在其社交平台（web和应用程序）,默认会在5984端口开放Restful的API接口，如果使用SSL的话就会监听在6984端口，用于数据库的管理功能。其HTTP Server默认开启时没有进行验证，而且绑定在0.0.0.0，所有用户均可通过API访问导致未授权访问。</p>
+<p>  在官方配置文档中对HTTP Server的配置有WWW-Authenticate：Set this option to trigger basic-auth popup on unauthorized requests，但是很多用户都没有这么配置，导致漏洞产生。</p>
+<p><strong>测试</strong><br>curl <a href="http://10.0.0.1:5984" target="_blank" rel="noopener">http://10.0.0.1:5984</a></p>
+<p>curl <a href="http://10.0.0.1:5984/_config" target="_blank" rel="noopener">http://10.0.0.1:5984/_config</a></p>
+<p>nmap -p 5984 –script “couchdb-stats.nse” 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>绑定指定ip。</li>
+<li>设置访问密码。</li>
+</ul>
+<h3 id="Elasticsearch-未授权访问漏洞"><a href="#Elasticsearch-未授权访问漏洞" class="headerlink" title="Elasticsearch 未授权访问漏洞"></a>Elasticsearch 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。Elasticsearch的增删改查操作全部由http接口完成。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索。<br>  Elasticsearch服务普遍存在一个未授权访问的问题，攻击者通常可以请求一个开放9200或9300的服务器进行恶意攻击。</p>
+<p><strong>测试</strong><br>curl <a href="http://10.0.0.1:9200/_nodes" target="_blank" rel="noopener">http://10.0.0.1:9200/_nodes</a> #查看节点数据</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>访问控制策略，限制IP访问，绑定固定IP。</li>
+<li>在config/elasticsearch.yml中为9200端口设置认证等。</li>
+</ul>
+<h3 id="Hadoop-未授权访问漏洞"><a href="#Hadoop-未授权访问漏洞" class="headerlink" title="Hadoop 未授权访问漏洞"></a>Hadoop 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Hadoop是一个由Apache基金会所开发的分布式系统基础架构，由于服务器直接在开放了 Hadoop 机器 HDFS 的 50070 web 端口及部分默认服务端口，黑客可以通过命令行操作多个目录下的数据，如进行删除，下载，目录浏览甚至命令执行等操作，产生极大的危害。</p>
+<p><strong>测试</strong><br>访问 <a href="http://10.0.0.1:8088/cluster" target="_blank" rel="noopener">http://10.0.0.1:8088/cluster</a></p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>如无必要，关闭 Hadoop Web 管理页面。</li>
+<li>开启身份验证，防止未经授权用户访问。</li>
+<li>设置“安全组”访问控制策略，将 Hadoop 默认开放的多个端口对公网全部禁止或限制可信任的 IP 地址才能访问包括 50070 以及 WebUI 等相关端口。<h3 id="Jupyter-Notebook-未授权访问漏洞"><a href="#Jupyter-Notebook-未授权访问漏洞" class="headerlink" title="Jupyter Notebook 未授权访问漏洞"></a>Jupyter Notebook 未授权访问漏洞</h3><strong>漏洞简介以及危害</strong></li>
+</ul>
+<p>  Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。<br>如果管理员未为Jupyter Notebook配置密码，将导致未授权访问漏洞，游客可在其中创建一个console并执行任意Python代码和命令。<br><strong>测试</strong><br>访问 <a href="http://10.0.0.1:8888" target="_blank" rel="noopener">http://10.0.0.1:8888</a></p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>开启身份验证，防止未经授权用户访问。</li>
+<li>访问控制策略，限制IP访问，绑定固定IP。</li>
+</ul>
+
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞</p>
+<a id="more"></a>
+<h2 id="0x01-参考"><a href="#0x01-参考" class="headerlink" title="0x01 参考"></a>0x01 参考</h2><blockquote>
+<p><a href="https://xz.aliyun.com/t/6103" target="_blank" rel="noopener">常见未授权访问漏洞总结</a><br><a href="https://www.secpulse.com/archives/61101.html" target="_blank" rel="noopener">【脉搏沉淀系列】未授权访问漏洞总结</a><br><a href="https://www.freebuf.com/articles/web/165340.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/165340.html</a><br><a href="https://ptestmethod.readthedocs.io/en/latest/LFF-IPS-P2-VulnerabilityAnalysis.html#ftp-port-21" target="_blank" rel="noopener">PortVulnerabilityAnalysis</a><br><a href="https://www.pa55w0rd.online/redis/">Redis的一些漏洞复现利用 </a><br><a href="https://www.cnblogs.com/qcloud1001/p/9173253.html" target="_blank" rel="noopener">Hadoop Yarn REST API未授权漏洞利用挖矿分析</a></p>
+</blockquote>
+<h2 id="0x02-总结"><a href="#0x02-总结" class="headerlink" title="0x02 总结"></a>0x02 总结</h2><h3 id="LDAP未授权访问漏洞"><a href="#LDAP未授权访问漏洞" class="headerlink" title="LDAP未授权访问漏洞"></a>LDAP未授权访问漏洞</h3><p><strong>漏洞介绍及危害</strong><br>轻量级目录访问协议，最近几年随着ldap的广泛使用被发现的漏洞也越来越多。但是毕竟主流的攻击方式仍旧是那些，比如注入，未授权等等；这些问题的出现也都是因为配置不当而造成的。</p>
+<p><strong>测试</strong><br>JXplorer、LdapAdmin等可视化工具连接</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>密码策略配置</li>
+</ul>
+<h3 id="NFS未授权访问漏洞"><a href="#NFS未授权访问漏洞" class="headerlink" title="NFS未授权访问漏洞"></a>NFS未授权访问漏洞</h3><p><strong>漏洞介绍及危害</strong></p>
+<p>NFS（Network FileSystem）即网络文件系统，是FreeBSD支持的文件系统中的一种，它允许网络中的计算机之间通过TCP/IP网络共享资源。在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。<br><strong>测试</strong><br>showmount -e 10.0.0.1</p>
+<p><strong>防御手段</strong><br>限制IP</p>
+<h3 id="Redis未授权访问漏洞"><a href="#Redis未授权访问漏洞" class="headerlink" title="Redis未授权访问漏洞"></a>Redis未授权访问漏洞</h3><p><strong>漏洞简介及危害</strong></p>
+<p> Redis 默认情况下，会绑定在 0.0.0.0:6379，如果没有进行采用相关的策略，比如添加防火墙规则避免其他非信任来源 ip 访问等，这样将会将 Redis 服务暴露到公网上，如果在没有设置密码认证（一般为空）的情况下，会导致任意用户在可以访问目标服务器的情况下未授权访问 Redis 以及读取 Redis 的数据。攻击者在未授权访问 Redis 的情况下，利用 Redis 自身的提供的config 命令，可以进行写文件操作，攻击者可以成功将自己的ssh公钥写入目标服务器的 /root/.ssh 文件夹的authotrized_keys 文件中，进而可以使用对应私钥直接使用ssh服务登录目标服务器、添加计划任务、写入Webshell等操作。</p>
+<p><strong>测试</strong><br>redis-cli -h 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>禁止使用root权限启动redis服务。</li>
+<li>对redis访问启动密码认证。</li>
+<li>添加IP访问限制，并更改默认6379端口。</li>
+</ul>
+<h3 id="MongoDB未授权访问漏洞"><a href="#MongoDB未授权访问漏洞" class="headerlink" title="MongoDB未授权访问漏洞"></a>MongoDB未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  开启MongoDB服务时不添加任何参数时,默认是没有权限验证的,登录的用户可以通过默认端口无需密码对数据库任意操作（增、删、改、查高危动作）而且可以远程访问数据库。</p>
+<p>  造成未授权访问的根本原因就在于启动 Mongodb 的时候未设置 –auth 也很少会有人会给数据库添加上账号密码（默认空口令），使用默认空口令这将导致恶意攻击者无需进行账号认证就可以登陆到数据服务器。</p>
+<p><strong>测试</strong><br>nmap -p 27017 –script mongodb-info 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>为MongoDB添加认证：MongoDB启动时添加–auth参数、为MongoDB添加用户</li>
+<li>MongoDB 自身带有一个HTTP服务和并支持REST接口。在2.6以后这些接口默认是关闭的。mongoDB默认会使用默认端口监听web服务，一般不需要通过web方式进行远程管理，建议禁用。修改配置文件或在启动的时候选择 –nohttpinterface 参数 nohttpinterface=false</li>
+<li>启动时加入参数–bind_ip 127.0.0.1 或在/etc/mongodb.conf文件中添加以下内容：bind_ip = 127.0.0.1</li>
+</ul>
+<h3 id="Jenkins未授权访问漏洞"><a href="#Jenkins未授权访问漏洞" class="headerlink" title="Jenkins未授权访问漏洞"></a>Jenkins未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  默认情况下 Jenkins面板中用户可以选择执行脚本界面来操作一些系统层命令，攻击者可通过未授权访问漏洞或者暴力破解用户密码等进入后台管理服务，通过脚本执行界面从而获取服务器权限。</p>
+<p><strong>测试</strong><br>访问<a href="http://10.0.0.1:8080/manage" target="_blank" rel="noopener">http://10.0.0.1:8080/manage</a> 可以看到没有任何限制可以直接访问</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>升级版本。</li>
+<li>添加认证，设置强密码复杂度及账号锁定。</li>
+<li>禁止把Jenkins直接暴露在公网。</li>
+</ul>
+<h3 id="Memcached-未授权访问漏洞"><a href="#Memcached-未授权访问漏洞" class="headerlink" title="Memcached 未授权访问漏洞"></a>Memcached 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Memcached 是一套常用的 key-value 分布式高速缓存系统，由于 Memcached 的安全设计缺陷没有权限控制模块，所以对公网开放的Memcache服务很容易被攻击者扫描发现，攻击者无需认证通过命令交互可直接读取 Memcached中的敏感信息。</p>
+<p><strong>测试</strong><br>telnet 10.0.0.1 11211 </p>
+<p>nc -vv 10.0.0.1 11211</p>
+<p>nmap -p 11211 –script memcached-info 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>设置Memchached只允许本地访问。</li>
+<li>禁止外网访问Memcached 11211端口。</li>
+<li>配置访问控制策略。</li>
+<li>最小化权限运行。</li>
+<li>修改默认端口等。</li>
+</ul>
+<h3 id="JBOSS-未授权访问漏洞"><a href="#JBOSS-未授权访问漏洞" class="headerlink" title="JBOSS 未授权访问漏洞"></a>JBOSS 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  JBoss是一个基于J2EE的开放源代码应用服务器，代码遵循LGPL许可，可以在任何商业应用中免费使用；JBoss也是一个管理EJB的容器和服务器，支持EJB 1.1、EJB 2.0和EJB3规范。,默认情况下访问 <a href="http://ip:8080/jmx-console" target="_blank" rel="noopener">http://ip:8080/jmx-console</a> 就可以浏览 JBoss 的部署管理的信息不需要输入用户名和密码可以直接部署上传木马有安全隐患。</p>
+<p><strong>测试</strong><br><a href="http://10.0.0.1:8080/jmx-console/" target="_blank" rel="noopener">http://10.0.0.1:8080/jmx-console/</a> 无需认证进入控制页面</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>对jmx控制页面访问添加访问验证。</li>
+<li>进行JMX Console 安全配置。</li>
+</ul>
+<h3 id="VNC-未授权访问漏洞"><a href="#VNC-未授权访问漏洞" class="headerlink" title="VNC 未授权访问漏洞"></a>VNC 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  VNC 是虚拟网络控制台Virtual Network Console的英文缩写。它是一款优秀的远程控制工具软件由美国电话电报公司AT&amp;T的欧洲研究实验室开发。VNC是基于 UNXI 和 Linux 的免费开源软件由 VNC Server 和 VNC Viewer 两部分组成。VNC 默认端口号为 5900、5901。VNC 未授权访问漏洞如被利用可能造成恶意用户直接控制target主机。</p>
+<p><strong>测试</strong><br>vncviewer 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>配置 VNC 客户端登录口令认证并配置符合密码强度要求的密码。</li>
+<li>以最小普通权限身份运行操作系统。<h3 id="Docker-未授权访问漏洞"><a href="#Docker-未授权访问漏洞" class="headerlink" title="Docker 未授权访问漏洞"></a>Docker 未授权访问漏洞</h3><strong>漏洞简介以及危害</strong></li>
+</ul>
+<p>  Docker 是一个开源的引擎可以轻松地为任何应用创建一个轻量级的、可移植的、自给自足的容器。开发者在笔记本上编译测试通过的容器可以批量地在生产环境中部署包括 VMs、bare metal、OpenStack 集群和其他的基础应用平台Docker。</p>
+<p>  Docker Remote API 是一个取代远程命令行界面（rcli）的REST API。存在问题的版本分别为 1.3 和 1.6因为权限控制等问题导致可以通过 docker client 或者 http 直接请求就可以访问这个 API，通过这个接口，我们可以新建 container，删除已有 container，甚至是获取宿主机的 shell。</p>
+<p><strong>测试</strong><br>docker -H tcp://10.0.0.1:2375 version</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>简单粗暴的方法，对2375端口做网络访问控制，如ACL控制，或者访问规则。</li>
+<li>修改docker swarm的认证方式，使用TLS认证：Overview Swarm with TLS 和 Configure Docker Swarm for TLS这两篇文档，说的是配置好TLS后，Docker CLI 在发送命令到docker daemon之前，会首先发送它的证书，如果证书是由daemon信任的CA所签名的，才可以继续执行。</li>
+</ul>
+<h3 id="ZooKeeper-未授权访问漏洞"><a href="#ZooKeeper-未授权访问漏洞" class="headerlink" title="ZooKeeper 未授权访问漏洞"></a>ZooKeeper 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  zookeeper是分布式协同管理工具，常用来管理系统配置信息，提供分布式协同服务。Zookeeper的默认开放端口是2181。Zookeeper安装部署之后默认情况下不需要任何身份验证，造成攻击者可以远程利用Zookeeper，通过服务器收集敏感信息或者在Zookeeper集群内进行破坏（比如：kill命令）。攻击者能够执行所有只允许由管理员运行的命令。<br><strong>测试</strong><br>echo envi|nc 10.0.0.1 2181</p>
+<p>利用zookeeper可视化管理工具进行连接，下载地址：<a href="https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip" target="_blank" rel="noopener">https://issues.apache.org/jira/secure/attachment/12436620/ZooInspector.zip</a></p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>修改 ZooKeeper 默认端口，采用其他端口服务。</li>
+<li>添加访问控制，配置服务来源地址限制策略。</li>
+<li>增加 ZooKeeper 的认证配置。</li>
+</ul>
+<h3 id="Rsync-未授权访问漏洞"><a href="#Rsync-未授权访问漏洞" class="headerlink" title="Rsync 未授权访问漏洞"></a>Rsync 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Rsync（remote synchronize）是一个远程数据同步工具，可通过 LAN/WAN 快速同步多台主机间的文件，也可以同步本地硬盘中的不同目录。Rsync 默认允许匿名访问，如果在配置文件中没有相关的用户认证以及文件授权，就会触发隐患。Rsync 的默认端口为 837。</p>
+<p><strong>测试</strong><br>rsync rsync://10.0.0.1:873/</p>
+<p>rsync 10.0.0.1::</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>账户认证：正确配置认证用户名及密码。</li>
+<li>权限控制：使用合理的权限。</li>
+<li>网络访问控制：控制接入源ip。</li>
+<li>数据加密传输等</li>
+</ul>
+<h3 id="Atlassian-Crowd-未授权访问漏洞"><a href="#Atlassian-Crowd-未授权访问漏洞" class="headerlink" title="Atlassian Crowd 未授权访问漏洞"></a>Atlassian Crowd 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Atlassian Crowd和Atlassian Crowd Data Center都是澳大利亚Atlassian公司的产品。Atlassian Crowd是一套基于Web的单点登录系统。该系统为多用户、网络应用程序和目录服务器提供验证、授权等功能。Atlassian Crowd Data Center是Crowd的集群部署版。Atlassian Crowd和Crowd Data Center在其某些发行版本中错误地启用了pdkinstall开发插件，使其存在安全漏洞。攻击者利用该漏洞可在未授权访问的情况下对Atlassian Crowd和Crowd Data Center安装任意的恶意插件，执行任意代码/命令，从而获得服务器权限。</p>
+<p><strong>测试</strong><br>进行上传一个标准的插件，来自atlassian-bundled-plugins中的applinks-plugin-5.4.12.jar</p>
+<p>curl –form “<a href="mailto:file_cdl=@applinks-plugin-5.4.12.jar" target="_blank" rel="noopener">file_cdl=@applinks-plugin-5.4.12.jar</a>“ <a href="http://10.0.0.1:8095/crowd/admin/uploadplugin.action" target="_blank" rel="noopener">http://10.0.0.1:8095/crowd/admin/uploadplugin.action</a> -v</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>设置访问/crowd/admin/uploadplugin.action的源ip。</li>
+<li>升级最新版本(3.5.0以上)。</li>
+</ul>
+<h3 id="CouchDB-未授权访问漏洞"><a href="#CouchDB-未授权访问漏洞" class="headerlink" title="CouchDB 未授权访问漏洞"></a>CouchDB 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Apache CouchDB是一个开源数据库，专注于易用性和成为”完全拥抱web的数据库”。它是一个使用JSON作为存储格式，JavaScript作为查询语言，MapReduce和HTTP作为API的NoSQL数据库。应用广泛，如BBC用在其动态内容展示平台，Credit Suisse用在其内部的商品部门的市场框架，Meebo，用在其社交平台（web和应用程序）,默认会在5984端口开放Restful的API接口，如果使用SSL的话就会监听在6984端口，用于数据库的管理功能。其HTTP Server默认开启时没有进行验证，而且绑定在0.0.0.0，所有用户均可通过API访问导致未授权访问。</p>
+<p>  在官方配置文档中对HTTP Server的配置有WWW-Authenticate：Set this option to trigger basic-auth popup on unauthorized requests，但是很多用户都没有这么配置，导致漏洞产生。</p>
+<p><strong>测试</strong><br>curl <a href="http://10.0.0.1:5984" target="_blank" rel="noopener">http://10.0.0.1:5984</a></p>
+<p>curl <a href="http://10.0.0.1:5984/_config" target="_blank" rel="noopener">http://10.0.0.1:5984/_config</a></p>
+<p>nmap -p 5984 –script “couchdb-stats.nse” 10.0.0.1</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>绑定指定ip。</li>
+<li>设置访问密码。</li>
+</ul>
+<h3 id="Elasticsearch-未授权访问漏洞"><a href="#Elasticsearch-未授权访问漏洞" class="headerlink" title="Elasticsearch 未授权访问漏洞"></a>Elasticsearch 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。Elasticsearch的增删改查操作全部由http接口完成。由于Elasticsearch授权模块需要付费，所以免费开源的Elasticsearch可能存在未授权访问漏洞。该漏洞导致，攻击者可以拥有Elasticsearch的所有权限。可以对数据进行任意操作。业务系统将面临敏感数据泄露、数据丢失、数据遭到破坏甚至遭到攻击者的勒索。<br>  Elasticsearch服务普遍存在一个未授权访问的问题，攻击者通常可以请求一个开放9200或9300的服务器进行恶意攻击。</p>
+<p><strong>测试</strong><br>curl <a href="http://10.0.0.1:9200/_nodes" target="_blank" rel="noopener">http://10.0.0.1:9200/_nodes</a> #查看节点数据</p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>访问控制策略，限制IP访问，绑定固定IP。</li>
+<li>在config/elasticsearch.yml中为9200端口设置认证等。</li>
+</ul>
+<h3 id="Hadoop-未授权访问漏洞"><a href="#Hadoop-未授权访问漏洞" class="headerlink" title="Hadoop 未授权访问漏洞"></a>Hadoop 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
+<p>  Hadoop是一个由Apache基金会所开发的分布式系统基础架构，由于服务器直接在开放了 Hadoop 机器 HDFS 的 50070 web 端口及部分默认服务端口，黑客可以通过命令行操作多个目录下的数据，如进行删除，下载，目录浏览甚至命令执行等操作，产生极大的危害。</p>
+<p><strong>测试</strong><br>访问 <a href="http://10.0.0.1:8088/cluster" target="_blank" rel="noopener">http://10.0.0.1:8088/cluster</a></p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>如无必要，关闭 Hadoop Web 管理页面。</li>
+<li>开启身份验证，防止未经授权用户访问。</li>
+<li>设置“安全组”访问控制策略，将 Hadoop 默认开放的多个端口对公网全部禁止或限制可信任的 IP 地址才能访问包括 50070 以及 WebUI 等相关端口。<h3 id="Jupyter-Notebook-未授权访问漏洞"><a href="#Jupyter-Notebook-未授权访问漏洞" class="headerlink" title="Jupyter Notebook 未授权访问漏洞"></a>Jupyter Notebook 未授权访问漏洞</h3><strong>漏洞简介以及危害</strong></li>
+</ul>
+<p>  Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。<br>如果管理员未为Jupyter Notebook配置密码，将导致未授权访问漏洞，游客可在其中创建一个console并执行任意Python代码和命令。<br><strong>测试</strong><br>访问 <a href="http://10.0.0.1:8888" target="_blank" rel="noopener">http://10.0.0.1:8888</a></p>
+<p><strong>防御手段</strong></p>
+<ul>
+<li>开启身份验证，防止未经授权用户访问。</li>
+<li>访问控制策略，限制IP访问，绑定固定IP。</li>
+</ul>
+
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/unauthorized-access-sumup/" data-id="ck0w9jx1v007y6ut6swlt0d4v" class="article-share-link" data-share="baidu" data-title="常见未授权访问漏洞总结">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/unauthorized-access-sumup/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/未授权访问/">未授权访问</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/proxychains-error/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">proxychains_error</div>
+    </a>
+  
+  
+</nav>
+
+
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
+
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/unauthorized-access-sumup/">常见未授权访问漏洞总结</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/proxychains-error/">proxychains_error</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/burp-plugins/">Burp插件</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/awvs-nessus/">AWVS / NESSUS</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/redis/">Redis的一些漏洞复现利用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  <script>
+  $(document).on("click", "ul.category-list li.category-list-item", function () {
+    window.location.href = $(this).find('a').attr('href')
+  })
+  </script>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 13.33px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具使用/" style="font-size: 18.33px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 13.33px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/未授权访问/" style="font-size: 10px;">未授权访问</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 13.33px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/编程基础/" style="font-size: 10px;">编程基础</a> <a href="/tags/解决方法/" style="font-size: 18.33px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
+    <div class="widget">
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+<script>
+$(document).on("click", "ul.archive-list li.archive-list-item", function () {
+  window.location.href = $(this).find('a').attr('href')
+})
+</script>
+
+  
+    
+  <style>
+  *{ margin: 0; padding: 0;}
+  .tooltips{ border-width: 1px; border-style: solid; position: absolute; display: none; border-radius: 3px; opacity: 0; filter:alpha( opacity = 0) ; z-index: 999;}
+  .tooltips p.content{ padding: 5px; }
+  .tooltips .triangle-front,.tooltips .triangle-back{ width: 0; height: 0; overflow: hidden; border-width: 8px; border-style: solid; position: absolute; border-color: transparent ; top: 100%; left: 50%; margin-left: -8px;}
+  .tooltips .triangle-back{ margin-top: -1px;}
+
+  .toolTipInfo{ border-color: #000; background-color: #EEEEEE;}
+  .toolTipInfo .triangle-front{ border-top-color: #EEEEEE;}
+  .toolTipInfo .triangle-back{ border-top-color: #EEEEEE;}
+
+
+  .icoSize{font-size: 2em}
+  </style>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-link"></i>链接</h3>
+    <div class="widget" style="z-index: 1;">
+
+
+
+
+
+      <!-- <ul> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+                  <a id="github-alt-icon-color" class="weight-icon-link" target="_blank" href="https://github.com/Pa55w0rd">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="weixin-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='/img/weixin.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="qq-icon-color" class="weight-icon-link" href="javascript:;" target="_blank" tooltips="<img src='/img/qq.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+                  <a id="envelope-o-icon-color" class="weight-icon-link" target="_blank" href="mailto:pa55w0rd@aliyun.com" data-toggle="tooltip" data-placement="top" title="请多多交流！">
+                  <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope-o  fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+
+          <!-- </li> -->
+        
+      <!-- </ul> -->
+    </div>
+  </div>
+
+
+  <script>
+  $.fn.extend({
+    hoverTips : function (){
+      var self = $(this);
+      var sw = self.get(0).switch;
+      if( !sw ) {
+        sw = true;
+        var content = self.attr("tooltips");
+        var htmlDom = $("<div class='tooltips'>")
+            .addClass("toolTipInfo")
+            .html("<p class='content'></p>"
+                + "<p class='triangle-front'></p>"
+                + "<p class='triangle-back'></p>");
+        htmlDom.find("p.content").html( content );
+      }
+      self.on("mouseover",function(){
+        $("body").append( htmlDom );
+        var left = self.offset().left - htmlDom.outerWidth()/2 + self.outerWidth()/2;
+        var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".triangle-front").css("border-width"));
+        htmlDom.css({"left":left,"top":top - 10,"display":"block"});
+        htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
+      });
+      self.on("mouseout",function(){
+        var top = parseInt(htmlDom.css("top"));
+        htmlDom.stop().animate({ "top" : top - 10 ,"opacity" : 0},300,function(){
+          htmlDom.remove();
+          sw = false;
+        });
+      });
+    },
+
+  });
+
+  $("#weixin-icon-color").hoverTips();
+  $("#qq-icon-color").hoverTips();
+  </script>
+
+
+
+  
+    
+    <div class="widget-wrap">
+  
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友情链接『不分先后』</h3>
+      <div class="widget">
+        <ul>
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="https://firexun.github.io"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="http://www.weiho.xyz"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="http://pirogue.org"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="http://www.mianhuage.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Cotton&#39;s Blog</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="https://www.lovesec.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级菜鸟</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" href="https://my.oschina.net/9199771"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级大熊猫</a>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  
+  
+  
+</aside>
+
+      
+    </div>
+    <footer id="footer">
+  
+  <div data-scroll-reveal="enter bottom" class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Pa55w0rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
+    </div>
+
+    <div id="footer-info" class="inner">
+      <!-- id 将作为查询条件 
+      <span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">阅读量 </em>
+        <i class="leancloud-visitors-count">1000000</i>
+      </span>
+-->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <div class="powered-by">
+        <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+        我的网站的访问总数:<span id="busuanzi_value_site_pv"></span>次
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+  
+    <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+    <a href="/comments" class="mobile-nav-link"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+  
+    <a href="/404.html" class="mobile-nav-link"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/betop.png"></a>
+</div>
+
+<!-- totop end -->
+
+
+
+  <script>
+    const gitalk = new Gitalk({
+      clientID: "992fba235eb173826494",
+      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
+      repo: "pa55w0rd.github.io",
+      owner: "Pa55w0rd",
+      admin: "Pa55w0rd",
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: "Mon Sep 23 2019 16:59:49 GMT+0800",      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+<!-- 百度分享 end -->
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+
+</div>
+</body>
+</html>
+
+
+
+<div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+window.scrollReveal = new scrollReveal({ reset: true});
+//
+})
+</script>

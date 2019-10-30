@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="0x00 前言最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-23T10:23:43.322Z">
+<meta property="og:updated_time" content="2019-09-24T02:05:15.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常见未授权访问漏洞总结">
 <meta name="twitter:description" content="0x00 前言最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞">
@@ -251,7 +251,7 @@ function showBtn(){
           <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞</p>
 <a id="more"></a>
 <h2 id="0x01-参考"><a href="#0x01-参考" class="headerlink" title="0x01 参考"></a>0x01 参考</h2><blockquote>
-<p><a href="https://xz.aliyun.com/t/6103" target="_blank" rel="noopener">常见未授权访问漏洞总结</a><br><a href="https://www.secpulse.com/archives/61101.html" target="_blank" rel="noopener">【脉搏沉淀系列】未授权访问漏洞总结</a><br><a href="https://www.freebuf.com/articles/web/165340.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/165340.html</a><br><a href="https://ptestmethod.readthedocs.io/en/latest/LFF-IPS-P2-VulnerabilityAnalysis.html#ftp-port-21" target="_blank" rel="noopener">PortVulnerabilityAnalysis</a><br><a href="https://www.pa55w0rd.online/redis/">Redis的一些漏洞复现利用 </a><br><a href="https://www.cnblogs.com/qcloud1001/p/9173253.html" target="_blank" rel="noopener">Hadoop Yarn REST API未授权漏洞利用挖矿分析</a></p>
+<p><a href="https://xz.aliyun.com/t/6103" target="_blank" rel="noopener">常见未授权访问漏洞总结</a><br><a href="https://www.secpulse.com/archives/61101.html" target="_blank" rel="noopener">【脉搏沉淀系列】未授权访问漏洞总结</a><br><a href="https://www.freebuf.com/articles/web/165340.html" target="_blank" rel="noopener">混在运维部的安全员说“端口与口令安全” </a><br><a href="https://ptestmethod.readthedocs.io/en/latest/LFF-IPS-P2-VulnerabilityAnalysis.html#ftp-port-21" target="_blank" rel="noopener">PortVulnerabilityAnalysis</a><br><a href="https://www.pa55w0rd.online/redis/">Redis的一些漏洞复现利用 </a><br><a href="https://www.cnblogs.com/qcloud1001/p/9173253.html" target="_blank" rel="noopener">Hadoop Yarn REST API未授权漏洞利用挖矿分析</a></p>
 </blockquote>
 <h2 id="0x02-总结"><a href="#0x02-总结" class="headerlink" title="0x02 总结"></a>0x02 总结</h2><h3 id="LDAP未授权访问漏洞"><a href="#LDAP未授权访问漏洞" class="headerlink" title="LDAP未授权访问漏洞"></a>LDAP未授权访问漏洞</h3><p><strong>漏洞介绍及危害</strong><br>轻量级目录访问协议，最近几年随着ldap的广泛使用被发现的漏洞也越来越多。但是毕竟主流的攻击方式仍旧是那些，比如注入，未授权等等；这些问题的出现也都是因为配置不当而造成的。</p>
 <p><strong>测试</strong><br>JXplorer、LdapAdmin等可视化工具连接</p>
@@ -268,7 +268,7 @@ function showBtn(){
 <p><strong>防御手段</strong></p>
 <ul>
 <li>禁止使用root权限启动redis服务。</li>
-<li>对redis访问启动密码认证。</li>
+<li>对redis访问启动密码认证，并设置复杂密码。redis默认没有开启密码认证，打开/etc/redis/redis.conf配置文件， （requirepass 密码）可设置认证密码，保存redis.conf，重启redis（/etc/init.d/redis-serverrestart）之后，需要执行（auth 密码）。。</li>
 <li>添加IP访问限制，并更改默认6379端口。</li>
 </ul>
 <h3 id="MongoDB未授权访问漏洞"><a href="#MongoDB未授权访问漏洞" class="headerlink" title="MongoDB未授权访问漏洞"></a>MongoDB未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
@@ -279,6 +279,7 @@ function showBtn(){
 <ul>
 <li>为MongoDB添加认证：MongoDB启动时添加–auth参数、为MongoDB添加用户</li>
 <li>MongoDB 自身带有一个HTTP服务和并支持REST接口。在2.6以后这些接口默认是关闭的。mongoDB默认会使用默认端口监听web服务，一般不需要通过web方式进行远程管理，建议禁用。修改配置文件或在启动的时候选择 –nohttpinterface 参数 nohttpinterface=false</li>
+<li>使用安全组防火墙或本地操作系统防火墙对访问源IP进行控制，如果仅对内网服务器提供服务，建议禁止将MongoDB服务发布到互联网上。</li>
 <li>启动时加入参数–bind_ip 127.0.0.1 或在/etc/mongodb.conf文件中添加以下内容：bind_ip = 127.0.0.1</li>
 </ul>
 <h3 id="Jenkins未授权访问漏洞"><a href="#Jenkins未授权访问漏洞" class="headerlink" title="Jenkins未授权访问漏洞"></a>Jenkins未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
@@ -373,6 +374,7 @@ function showBtn(){
 <p><strong>防御手段</strong></p>
 <ul>
 <li>访问控制策略，限制IP访问，绑定固定IP。</li>
+<li>架设nginx反向代理服务器，并设置http basic认证来实现elasticsearch的登录认证。 </li>
 <li>在config/elasticsearch.yml中为9200端口设置认证等。</li>
 </ul>
 <h3 id="Hadoop-未授权访问漏洞"><a href="#Hadoop-未授权访问漏洞" class="headerlink" title="Hadoop 未授权访问漏洞"></a>Hadoop 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
@@ -382,6 +384,7 @@ function showBtn(){
 <ul>
 <li>如无必要，关闭 Hadoop Web 管理页面。</li>
 <li>开启身份验证，防止未经授权用户访问。</li>
+<li>部署Knox、Nginx之类的反向代理系统，防止未经授权用户访问； </li>
 <li>设置“安全组”访问控制策略，将 Hadoop 默认开放的多个端口对公网全部禁止或限制可信任的 IP 地址才能访问包括 50070 以及 WebUI 等相关端口。<h3 id="Jupyter-Notebook-未授权访问漏洞"><a href="#Jupyter-Notebook-未授权访问漏洞" class="headerlink" title="Jupyter Notebook 未授权访问漏洞"></a>Jupyter Notebook 未授权访问漏洞</h3><strong>漏洞简介以及危害</strong></li>
 </ul>
 <p>  Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。<br>如果管理员未为Jupyter Notebook配置密码，将导致未授权访问漏洞，游客可在其中创建一个console并执行任意Python代码和命令。<br><strong>测试</strong><br>访问 <a href="http://10.0.0.1:8888" target="_blank" rel="noopener">http://10.0.0.1:8888</a></p>
@@ -401,7 +404,7 @@ function showBtn(){
         <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>最近在对公司的资产进行梳理，发现了很多端口对外开放了，如ldap389、rsync873、ssh22、mysql3306和一些不常见的端口，以及内网大量的hadoop、redis、ftp、mongodb等存在未授权访问，从网上收集了一些文章总结一下常见的未授权访问漏洞</p>
 <a id="more"></a>
 <h2 id="0x01-参考"><a href="#0x01-参考" class="headerlink" title="0x01 参考"></a>0x01 参考</h2><blockquote>
-<p><a href="https://xz.aliyun.com/t/6103" target="_blank" rel="noopener">常见未授权访问漏洞总结</a><br><a href="https://www.secpulse.com/archives/61101.html" target="_blank" rel="noopener">【脉搏沉淀系列】未授权访问漏洞总结</a><br><a href="https://www.freebuf.com/articles/web/165340.html" target="_blank" rel="noopener">https://www.freebuf.com/articles/web/165340.html</a><br><a href="https://ptestmethod.readthedocs.io/en/latest/LFF-IPS-P2-VulnerabilityAnalysis.html#ftp-port-21" target="_blank" rel="noopener">PortVulnerabilityAnalysis</a><br><a href="https://www.pa55w0rd.online/redis/">Redis的一些漏洞复现利用 </a><br><a href="https://www.cnblogs.com/qcloud1001/p/9173253.html" target="_blank" rel="noopener">Hadoop Yarn REST API未授权漏洞利用挖矿分析</a></p>
+<p><a href="https://xz.aliyun.com/t/6103" target="_blank" rel="noopener">常见未授权访问漏洞总结</a><br><a href="https://www.secpulse.com/archives/61101.html" target="_blank" rel="noopener">【脉搏沉淀系列】未授权访问漏洞总结</a><br><a href="https://www.freebuf.com/articles/web/165340.html" target="_blank" rel="noopener">混在运维部的安全员说“端口与口令安全” </a><br><a href="https://ptestmethod.readthedocs.io/en/latest/LFF-IPS-P2-VulnerabilityAnalysis.html#ftp-port-21" target="_blank" rel="noopener">PortVulnerabilityAnalysis</a><br><a href="https://www.pa55w0rd.online/redis/">Redis的一些漏洞复现利用 </a><br><a href="https://www.cnblogs.com/qcloud1001/p/9173253.html" target="_blank" rel="noopener">Hadoop Yarn REST API未授权漏洞利用挖矿分析</a></p>
 </blockquote>
 <h2 id="0x02-总结"><a href="#0x02-总结" class="headerlink" title="0x02 总结"></a>0x02 总结</h2><h3 id="LDAP未授权访问漏洞"><a href="#LDAP未授权访问漏洞" class="headerlink" title="LDAP未授权访问漏洞"></a>LDAP未授权访问漏洞</h3><p><strong>漏洞介绍及危害</strong><br>轻量级目录访问协议，最近几年随着ldap的广泛使用被发现的漏洞也越来越多。但是毕竟主流的攻击方式仍旧是那些，比如注入，未授权等等；这些问题的出现也都是因为配置不当而造成的。</p>
 <p><strong>测试</strong><br>JXplorer、LdapAdmin等可视化工具连接</p>
@@ -418,7 +421,7 @@ function showBtn(){
 <p><strong>防御手段</strong></p>
 <ul>
 <li>禁止使用root权限启动redis服务。</li>
-<li>对redis访问启动密码认证。</li>
+<li>对redis访问启动密码认证，并设置复杂密码。redis默认没有开启密码认证，打开/etc/redis/redis.conf配置文件， （requirepass 密码）可设置认证密码，保存redis.conf，重启redis（/etc/init.d/redis-serverrestart）之后，需要执行（auth 密码）。。</li>
 <li>添加IP访问限制，并更改默认6379端口。</li>
 </ul>
 <h3 id="MongoDB未授权访问漏洞"><a href="#MongoDB未授权访问漏洞" class="headerlink" title="MongoDB未授权访问漏洞"></a>MongoDB未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
@@ -429,6 +432,7 @@ function showBtn(){
 <ul>
 <li>为MongoDB添加认证：MongoDB启动时添加–auth参数、为MongoDB添加用户</li>
 <li>MongoDB 自身带有一个HTTP服务和并支持REST接口。在2.6以后这些接口默认是关闭的。mongoDB默认会使用默认端口监听web服务，一般不需要通过web方式进行远程管理，建议禁用。修改配置文件或在启动的时候选择 –nohttpinterface 参数 nohttpinterface=false</li>
+<li>使用安全组防火墙或本地操作系统防火墙对访问源IP进行控制，如果仅对内网服务器提供服务，建议禁止将MongoDB服务发布到互联网上。</li>
 <li>启动时加入参数–bind_ip 127.0.0.1 或在/etc/mongodb.conf文件中添加以下内容：bind_ip = 127.0.0.1</li>
 </ul>
 <h3 id="Jenkins未授权访问漏洞"><a href="#Jenkins未授权访问漏洞" class="headerlink" title="Jenkins未授权访问漏洞"></a>Jenkins未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
@@ -523,6 +527,7 @@ function showBtn(){
 <p><strong>防御手段</strong></p>
 <ul>
 <li>访问控制策略，限制IP访问，绑定固定IP。</li>
+<li>架设nginx反向代理服务器，并设置http basic认证来实现elasticsearch的登录认证。 </li>
 <li>在config/elasticsearch.yml中为9200端口设置认证等。</li>
 </ul>
 <h3 id="Hadoop-未授权访问漏洞"><a href="#Hadoop-未授权访问漏洞" class="headerlink" title="Hadoop 未授权访问漏洞"></a>Hadoop 未授权访问漏洞</h3><p><strong>漏洞简介以及危害</strong></p>
@@ -532,6 +537,7 @@ function showBtn(){
 <ul>
 <li>如无必要，关闭 Hadoop Web 管理页面。</li>
 <li>开启身份验证，防止未经授权用户访问。</li>
+<li>部署Knox、Nginx之类的反向代理系统，防止未经授权用户访问； </li>
 <li>设置“安全组”访问控制策略，将 Hadoop 默认开放的多个端口对公网全部禁止或限制可信任的 IP 地址才能访问包括 50070 以及 WebUI 等相关端口。<h3 id="Jupyter-Notebook-未授权访问漏洞"><a href="#Jupyter-Notebook-未授权访问漏洞" class="headerlink" title="Jupyter Notebook 未授权访问漏洞"></a>Jupyter Notebook 未授权访问漏洞</h3><strong>漏洞简介以及危害</strong></li>
 </ul>
 <p>  Jupyter Notebook（此前被称为 IPython notebook）是一个交互式笔记本，支持运行 40 多种编程语言。<br>如果管理员未为Jupyter Notebook配置密码，将导致未授权访问漏洞，游客可在其中创建一个console并执行任意Python代码和命令。<br><strong>测试</strong><br>访问 <a href="http://10.0.0.1:8888" target="_blank" rel="noopener">http://10.0.0.1:8888</a></p>
@@ -553,7 +559,7 @@ function showBtn(){
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/unauthorized-access-sumup/" data-id="ck0w9jx1v007y6ut6swlt0d4v" class="article-share-link" data-share="baidu" data-title="常见未授权访问漏洞总结">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/unauthorized-access-sumup/" data-id="ck2cyz8h4007v6tt6t1gcgavb" class="article-share-link" data-share="baidu" data-title="常见未授权访问漏洞总结">分享到</a>
       
 
       
@@ -575,6 +581,15 @@ function showBtn(){
       <div class="article-nav-title">proxychains_error</div>
     </a>
   
+  
+    <a href="/frida/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          frida hook 简单使用
+        
+      </div>
+    </a>
   
 </nav>
 
@@ -613,6 +628,14 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/openrasp/">openrasp</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/frida/">frida hook 简单使用</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/unauthorized-access-sumup/">常见未授权访问漏洞总结</a>
           </li>
         
@@ -622,14 +645,6 @@ function showBtn(){
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
             <a id="recentpost_item" href="/burp-plugins/">Burp插件</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/awvs-nessus/">AWVS / NESSUS</a>
-          </li>
-        
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/redis/">Redis的一些漏洞复现利用</a>
           </li>
         
       </ul>
@@ -642,7 +657,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">40</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web安全/">web安全</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/安全建设/">安全建设</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/应急响应/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发安全/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动安全/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -658,7 +673,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 13.33px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具使用/" style="font-size: 18.33px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 13.33px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/未授权访问/" style="font-size: 10px;">未授权访问</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 13.33px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/编程基础/" style="font-size: 10px;">编程基础</a> <a href="/tags/解决方法/" style="font-size: 18.33px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-安全测试-工具使用/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp劫持/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql注入/" style="font-size: 10px;">sql注入</a> <a href="/tags/web安全/" style="font-size: 13.33px;">web安全</a> <a href="/tags/windows-审计工具/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/业务安全/" style="font-size: 10px;">业务安全</a> <a href="/tags/代码审计/" style="font-size: 10px;">代码审计</a> <a href="/tags/代码扫描/" style="font-size: 10px;">代码扫描</a> <a href="/tags/信息收集/" style="font-size: 10px;">信息收集</a> <a href="/tags/内网安全/" style="font-size: 10px;">内网安全</a> <a href="/tags/内网渗透/" style="font-size: 10px;">内网渗透</a> <a href="/tags/前端加密/" style="font-size: 10px;">前端加密</a> <a href="/tags/名词解释/" style="font-size: 10px;">名词解释</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/基础知识/" style="font-size: 15px;">基础知识</a> <a href="/tags/基线加固/" style="font-size: 10px;">基线加固</a> <a href="/tags/备忘录/" style="font-size: 10px;">备忘录</a> <a href="/tags/安全建设/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/安全架构/" style="font-size: 10px;">安全架构</a> <a href="/tags/安全规划/" style="font-size: 10px;">安全规划</a> <a href="/tags/安全规范/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/安全设计/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/安全设计评审/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/安全评估/" style="font-size: 10px;">安全评估</a> <a href="/tags/安全运维/" style="font-size: 10px;">安全运维</a> <a href="/tags/安全防护/" style="font-size: 10px;">安全防护</a> <a href="/tags/安装使用/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/工具/" style="font-size: 10px;">工具</a> <a href="/tags/工具使用/" style="font-size: 18.33px;">工具使用</a> <a href="/tags/平台建设/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/应急响应/" style="font-size: 13.33px;">应急响应</a> <a href="/tags/开发安全/" style="font-size: 15px;">开发安全</a> <a href="/tags/开源工具/" style="font-size: 10px;">开源工具</a> <a href="/tags/技巧/" style="font-size: 11.67px;">技巧</a> <a href="/tags/指南/" style="font-size: 10px;">指南</a> <a href="/tags/操作记录/" style="font-size: 10px;">操作记录</a> <a href="/tags/数据安全/" style="font-size: 10px;">数据安全</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/未授权访问/" style="font-size: 10px;">未授权访问</a> <a href="/tags/渗透测试/" style="font-size: 10px;">渗透测试</a> <a href="/tags/漏洞利用/" style="font-size: 13.33px;">漏洞利用</a> <a href="/tags/漏洞管理/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/移动安全/" style="font-size: 10px;">移动安全</a> <a href="/tags/等级保护/" style="font-size: 10px;">等级保护</a> <a href="/tags/红蓝对抗/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/编程基础/" style="font-size: 10px;">编程基础</a> <a href="/tags/解决方法/" style="font-size: 18.33px;">解决方法</a> <a href="/tags/记录/" style="font-size: 10px;">记录</a> <a href="/tags/资产扫描/" style="font-size: 10px;">资产扫描</a> <a href="/tags/迁移/" style="font-size: 10px;">迁移</a> <a href="/tags/速查表/" style="font-size: 10px;">速查表</a> <a href="/tags/非web型xss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/验证码安全/" style="font-size: 10px;">验证码安全</a>
     </div>
   </div>
 
@@ -668,8 +683,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 

@@ -8,21 +8,23 @@
 
   
 
-  <title>CentOS7下mysql5.7忘记root密码 | Pa55w0rd &#39;s Blog</title>
+  <title>OpenRASP 部署 | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
-<meta name="keywords" content="解决方法">
+  <meta name="description" content="0x00 前言上周一台web服务器部署单机版OpenRASP之后感觉还不错，想在公司内部推广一下，准备在一些后台系统的服务器上安装agent，单机版部署报警日志查看不是很方便，遂部署管理后台方便管理">
+<meta name="keywords" content="安全防护">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS7下mysql5.7忘记root密码">
-<meta property="og:url" content="http://www.pa55w0rd.online/mysql-forget-passwd/index.html">
+<meta property="og:title" content="OpenRASP 部署">
+<meta property="og:url" content="http://www.pa55w0rd.online/openrasp-web/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
+<meta property="og:description" content="0x00 前言上周一台web服务器部署单机版OpenRASP之后感觉还不错，想在公司内部推广一下，准备在一些后台系统的服务器上安装agent，单机版部署报警日志查看不是很方便，遂部署管理后台方便管理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-21T07:26:36.877Z">
+<meta property="og:image" content="http://www.pa55w0rd.online/openrasp-web/1.png">
+<meta property="og:updated_time" content="2019-11-04T05:38:04.547Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CentOS7下mysql5.7忘记root密码">
-<meta name="twitter:description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
+<meta name="twitter:title" content="OpenRASP 部署">
+<meta name="twitter:description" content="0x00 前言上周一台web服务器部署单机版OpenRASP之后感觉还不错，想在公司内部推广一下，准备在一些后台系统的服务器上安装agent，单机版部署报警日志查看不是很方便，遂部署管理后台方便管理">
+<meta name="twitter:image" content="http://www.pa55w0rd.online/openrasp-web/1.png">
 
   
 
@@ -186,16 +188,16 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-mysql-forget-passwd" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main"><article id="post-openrasp-web" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/mysql-forget-passwd/" class="article-date">
+    <a href="/openrasp-web/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2019-01-21T07:02:33.000Z" itemprop="datePublished">2019-01-21</time>
+  <time datetime="2019-11-04T05:19:50.000Z" itemprop="datePublished">2019-11-04</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/安全建设/">安全建设</a>
   </div>
 
 
@@ -209,7 +211,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      <i class="fa fa-pencil-square-o  article-title-icon"></i>CentOS7下mysql5.7忘记root密码
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>OpenRASP 部署
     </h1>
   
 
@@ -218,32 +220,152 @@ ga('send', 'pageview');
       </header>
     
     <!-- 目录内容 -->
-		
+
+  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+        </p>
+<div id="toc-article" class="toc-article">
+    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+  <strong class="toc-title">文章目录</strong>
+         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-前言"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-准备"><span class="toc-number">2.</span> <span class="toc-text">0x01 准备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB-安装"><span class="toc-number">2.1.</span> <span class="toc-text">MongoDB 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ElasticSearch-安装"><span class="toc-number">2.2.</span> <span class="toc-text">ElasticSearch 安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-管理后台安装"><span class="toc-number">3.</span> <span class="toc-text">0x02 管理后台安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-添加主机"><span class="toc-number">4.</span> <span class="toc-text">0x03 添加主机</span></a></li></ol>
+       </div>
+ <script type="text/javascript">
+function showToc(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:block");
+  show_toc_btn.setAttribute("style","display:none");
+  };
+function showBtn(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:none");
+  show_toc_btn.setAttribute("style","display:block");
+  };
+ </script>
+    		
 <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
         
-          <p>CentOS7下mysql5.7忘记root密码</p>
-<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
+          <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>上周一台web服务器部署单机版OpenRASP之后感觉还不错，想在公司内部推广一下，准备在一些后台系统的服务器上安装agent，单机版部署报警日志查看不是很方便，遂部署管理后台方便管理</p>
 <a id="more"></a>
-<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
-<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
-<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2>
+<h2 id="0x01-准备"><a href="#0x01-准备" class="headerlink" title="0x01 准备"></a>0x01 准备</h2><p>OpenRASP使用了 ElasticSearch 和 MongoDB 两种数据库。前者用来存储报警和统计信息，后者用来存储应用、账号密码等信息。</p>
+<p>自己测试机上有mongodb 3.2 和 elk套件7.1.1，这里对数据库版本有要求</p>
+<ul>
+<li>MongoDB 版本大于等于 3.6</li>
+<li>ElasticSearch 版本大于等于 5.6，小于 7.0</li>
+</ul>
+<p>好吧，都不符合，重新安装MongoDB 和 ElasticSearch</p>
+<h3 id="MongoDB-安装"><a href="#MongoDB-安装" class="headerlink" title="MongoDB 安装"></a>MongoDB 安装</h3><p>官方手册：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/</a></p>
+<p>安装mongodb社区版，目前最新版为4.2</p>
+<ol>
+<li><p>创建仓库</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum<span class="selector-class">.repos</span><span class="selector-class">.d</span>/mongodb-org-<span class="number">4.2</span>.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mongodb-org-4.2]</span></span><br><span class="line"><span class="attr">name</span>=MongoDB Repository</span><br><span class="line"><span class="attr">baseurl</span>=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/<span class="number">4.2</span>/x<span class="number">86_64</span>/</span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=https://www.mongodb.org/static/pgp/server-<span class="number">4.2</span>.asc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yum命令安装mongodb</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> -y mongodb-org</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> mongod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mongo</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum erase $(rpm -qa | grep mongodb-org)</span><br><span class="line">删除数据目录</span><br><span class="line">rm -r /var/log/mongodb</span><br><span class="line">rm -r /var/<span class="class"><span class="keyword">lib</span>/<span class="title">mongo</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用认证</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="meta-keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol">security:</span></span><br><span class="line"><span class="symbol">  authorization:</span> enabled</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ElasticSearch-安装"><a href="#ElasticSearch-安装" class="headerlink" title="ElasticSearch 安装"></a>ElasticSearch 安装</h3><p><a href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/past-releases#elasticsearch</a></p>
+<p>下载6版本最新的 <a href="https://www.elastic.co/downloads/past-releases/elasticsearch-6-8-4" target="_blank" rel="noopener">https://www.elastic.co/downloads/past-releases/elasticsearch-6-8-4</a></p>
+<p><strong>不能使用root账户启动</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@Honeypot</span> opt]<span class="comment"># useradd es684</span></span><br><span class="line">[root<span class="variable">@Honeypot</span> opt]<span class="comment"># chown -R es684:es684 /opt/elasticsearch-6.8.4/</span></span><br><span class="line">[root<span class="variable">@Honeypot</span> opt]<span class="comment"># su es684</span></span><br><span class="line">[es684<span class="variable">@Honeypot</span> opt]<span class="variable">$ </span>elasticsearch-<span class="number">6.8</span>.<span class="number">4</span>/bin/elasticsearch</span><br><span class="line"></span><br><span class="line">[root<span class="variable">@Honeypot</span> ~]<span class="comment"># curl http://127.0.0.1:9200</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="string">"pLQxhPa"</span>,</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"elasticsearch"</span>,</span><br><span class="line">  <span class="string">"cluster_uuid"</span> : <span class="string">"ZZHzhK93RvqBf2jzbTFtiQ"</span>,</span><br><span class="line">  <span class="string">"version"</span> : &#123;</span><br><span class="line">    <span class="string">"number"</span> : <span class="string">"6.8.4"</span>,</span><br><span class="line">    <span class="string">"build_flavor"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"build_type"</span> : <span class="string">"tar"</span>,</span><br><span class="line">    <span class="string">"build_hash"</span> : <span class="string">"bca0c8d"</span>,</span><br><span class="line">    <span class="string">"build_date"</span> : <span class="string">"2019-10-16T06:19:49.319352Z"</span>,</span><br><span class="line">    <span class="string">"build_snapshot"</span> : <span class="keyword">false</span>,</span><br><span class="line">    <span class="string">"lucene_version"</span> : <span class="string">"7.7.2"</span>,</span><br><span class="line">    <span class="string">"minimum_wire_compatibility_version"</span> : <span class="string">"5.6.0"</span>,</span><br><span class="line">    <span class="string">"minimum_index_compatibility_version"</span> : <span class="string">"5.0.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里两个数据库安装好了，开始安装管理后台</p>
+<h2 id="0x02-管理后台安装"><a href="#0x02-管理后台安装" class="headerlink" title="0x02 管理后台安装"></a>0x02 管理后台安装</h2><ol>
+<li><p>编辑 conf/app.conf 文件，修正 ElasticSearch 和 MongoDB 两个服务器的地址</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[prod]</span></span><br><span class="line"><span class="attr">EsAddr</span> = http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9200</span></span><br><span class="line"><span class="attr">EsUser</span> =</span><br><span class="line"><span class="attr">EsPwd</span> =</span><br><span class="line"><span class="attr">MongoDBAddr</span> = <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">27017</span></span><br><span class="line"><span class="attr">MongoDBUser</span> =</span><br><span class="line"><span class="attr">MongoDBPwd</span> =</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动后台服务器:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./rasp-cloud</span> -d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问<br>在浏览器里打开 <a href="http://your-ip:8086" target="_blank" rel="noopener">http://your-ip:8086</a><br>登录管理后台。其中用户名固定为 openrasp，初始密码为 admin@123</p>
+</li>
+</ol>
+<p>用户名：openrasp<br>密 码：!9cN!j!7fThP</p>
+<p>系统设置 - 防护设置 - 关闭记录日志模式</p>
+<p>系统设置 - 通用设置 - 自定义拦截状态码修改为404 ，自定义HTML响应内容修改为自己的404页面</p>
+<h2 id="0x03-添加主机"><a href="#0x03-添加主机" class="headerlink" title="0x03 添加主机"></a>0x03 添加主机</h2><p>点击右上角添加主机，以PHP服务器为例<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php install.php -d <span class="string">/opt/rasp</span> <span class="params">--app-id</span> 171fea1b56790016e91239b3ede558xxxxxxxxxx <span class="params">--app-secret</span> KJIToQ9VqdKq6O0dLxdG1XbIHOxrLZF8xxxxxxxxxxx <span class="params">--backend-url</span> http:<span class="string">//your-ip</span><span class="function">:8086</span></span><br></pre></td></tr></table></figure></p>
+<p>重启PHP-FPM生效</p>
+<img src="/openrasp-web/1.png" title="描述">
+
         
 <!--
         </br>
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>CentOS7下mysql5.7忘记root密码</p>
-<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>上周一台web服务器部署单机版OpenRASP之后感觉还不错，想在公司内部推广一下，准备在一些后台系统的服务器上安装agent，单机版部署报警日志查看不是很方便，遂部署管理后台方便管理</p>
 <a id="more"></a>
-<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
-<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
-<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2>-->
+<h2 id="0x01-准备"><a href="#0x01-准备" class="headerlink" title="0x01 准备"></a>0x01 准备</h2><p>OpenRASP使用了 ElasticSearch 和 MongoDB 两种数据库。前者用来存储报警和统计信息，后者用来存储应用、账号密码等信息。</p>
+<p>自己测试机上有mongodb 3.2 和 elk套件7.1.1，这里对数据库版本有要求</p>
+<ul>
+<li>MongoDB 版本大于等于 3.6</li>
+<li>ElasticSearch 版本大于等于 5.6，小于 7.0</li>
+</ul>
+<p>好吧，都不符合，重新安装MongoDB 和 ElasticSearch</p>
+<h3 id="MongoDB-安装"><a href="#MongoDB-安装" class="headerlink" title="MongoDB 安装"></a>MongoDB 安装</h3><p>官方手册：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/</a></p>
+<p>安装mongodb社区版，目前最新版为4.2</p>
+<ol>
+<li><p>创建仓库</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum<span class="selector-class">.repos</span><span class="selector-class">.d</span>/mongodb-org-<span class="number">4.2</span>.repo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mongodb-org-4.2]</span></span><br><span class="line"><span class="attr">name</span>=MongoDB Repository</span><br><span class="line"><span class="attr">baseurl</span>=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/<span class="number">4.2</span>/x<span class="number">86_64</span>/</span><br><span class="line"><span class="attr">gpgcheck</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">enabled</span>=<span class="number">1</span></span><br><span class="line"><span class="attr">gpgkey</span>=https://www.mongodb.org/static/pgp/server-<span class="number">4.2</span>.asc</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yum命令安装mongodb</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> -y mongodb-org</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动服务</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> mongod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">mongo</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum erase $(rpm -qa | grep mongodb-org)</span><br><span class="line">删除数据目录</span><br><span class="line">rm -r /var/log/mongodb</span><br><span class="line">rm -r /var/<span class="class"><span class="keyword">lib</span>/<span class="title">mongo</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启用认证</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="meta-keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol">security:</span></span><br><span class="line"><span class="symbol">  authorization:</span> enabled</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="ElasticSearch-安装"><a href="#ElasticSearch-安装" class="headerlink" title="ElasticSearch 安装"></a>ElasticSearch 安装</h3><p><a href="https://www.elastic.co/cn/downloads/past-releases#elasticsearch" target="_blank" rel="noopener">https://www.elastic.co/cn/downloads/past-releases#elasticsearch</a></p>
+<p>下载6版本最新的 <a href="https://www.elastic.co/downloads/past-releases/elasticsearch-6-8-4" target="_blank" rel="noopener">https://www.elastic.co/downloads/past-releases/elasticsearch-6-8-4</a></p>
+<p><strong>不能使用root账户启动</strong><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@Honeypot</span> opt]<span class="comment"># useradd es684</span></span><br><span class="line">[root<span class="variable">@Honeypot</span> opt]<span class="comment"># chown -R es684:es684 /opt/elasticsearch-6.8.4/</span></span><br><span class="line">[root<span class="variable">@Honeypot</span> opt]<span class="comment"># su es684</span></span><br><span class="line">[es684<span class="variable">@Honeypot</span> opt]<span class="variable">$ </span>elasticsearch-<span class="number">6.8</span>.<span class="number">4</span>/bin/elasticsearch</span><br><span class="line"></span><br><span class="line">[root<span class="variable">@Honeypot</span> ~]<span class="comment"># curl http://127.0.0.1:9200</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span> : <span class="string">"pLQxhPa"</span>,</span><br><span class="line">  <span class="string">"cluster_name"</span> : <span class="string">"elasticsearch"</span>,</span><br><span class="line">  <span class="string">"cluster_uuid"</span> : <span class="string">"ZZHzhK93RvqBf2jzbTFtiQ"</span>,</span><br><span class="line">  <span class="string">"version"</span> : &#123;</span><br><span class="line">    <span class="string">"number"</span> : <span class="string">"6.8.4"</span>,</span><br><span class="line">    <span class="string">"build_flavor"</span> : <span class="string">"default"</span>,</span><br><span class="line">    <span class="string">"build_type"</span> : <span class="string">"tar"</span>,</span><br><span class="line">    <span class="string">"build_hash"</span> : <span class="string">"bca0c8d"</span>,</span><br><span class="line">    <span class="string">"build_date"</span> : <span class="string">"2019-10-16T06:19:49.319352Z"</span>,</span><br><span class="line">    <span class="string">"build_snapshot"</span> : <span class="keyword">false</span>,</span><br><span class="line">    <span class="string">"lucene_version"</span> : <span class="string">"7.7.2"</span>,</span><br><span class="line">    <span class="string">"minimum_wire_compatibility_version"</span> : <span class="string">"5.6.0"</span>,</span><br><span class="line">    <span class="string">"minimum_index_compatibility_version"</span> : <span class="string">"5.0.0"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"tagline"</span> : <span class="string">"You Know, for Search"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里两个数据库安装好了，开始安装管理后台</p>
+<h2 id="0x02-管理后台安装"><a href="#0x02-管理后台安装" class="headerlink" title="0x02 管理后台安装"></a>0x02 管理后台安装</h2><ol>
+<li><p>编辑 conf/app.conf 文件，修正 ElasticSearch 和 MongoDB 两个服务器的地址</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[prod]</span></span><br><span class="line"><span class="attr">EsAddr</span> = http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9200</span></span><br><span class="line"><span class="attr">EsUser</span> =</span><br><span class="line"><span class="attr">EsPwd</span> =</span><br><span class="line"><span class="attr">MongoDBAddr</span> = <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">27017</span></span><br><span class="line"><span class="attr">MongoDBUser</span> =</span><br><span class="line"><span class="attr">MongoDBPwd</span> =</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动后台服务器:</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">./rasp-cloud</span> -d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问<br>在浏览器里打开 <a href="http://your-ip:8086" target="_blank" rel="noopener">http://your-ip:8086</a><br>登录管理后台。其中用户名固定为 openrasp，初始密码为 admin@123</p>
+</li>
+</ol>
+<p>用户名：openrasp<br>密 码：!9cN!j!7fThP</p>
+<p>系统设置 - 防护设置 - 关闭记录日志模式</p>
+<p>系统设置 - 通用设置 - 自定义拦截状态码修改为404 ，自定义HTML响应内容修改为自己的404页面</p>
+<h2 id="0x03-添加主机"><a href="#0x03-添加主机" class="headerlink" title="0x03 添加主机"></a>0x03 添加主机</h2><p>点击右上角添加主机，以PHP服务器为例<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php install.php -d <span class="string">/opt/rasp</span> <span class="params">--app-id</span> 171fea1b56790016e91239b3ede558xxxxxxxxxx <span class="params">--app-secret</span> KJIToQ9VqdKq6O0dLxdG1XbIHOxrLZF8xxxxxxxxxxx <span class="params">--backend-url</span> http:<span class="string">//your-ip</span><span class="function">:8086</span></span><br></pre></td></tr></table></figure></p>
+<p>重启PHP-FPM生效</p>
+<img src="/openrasp-web/1.png" title="描述">
+-->
       
 
     </div>
@@ -255,15 +377,15 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/mysql-forget-passwd/" data-id="ck2jzufnf002865t6hcd418tn" class="article-share-link" data-share="baidu" data-title="CentOS7下mysql5.7忘记root密码">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/openrasp-web/" data-id="ck2jzufnc002665t6a4dqkk9f" class="article-share-link" data-share="baidu" data-title="OpenRASP 部署">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/mysql-forget-passwd/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/openrasp-web/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方法/">解决方法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全防护/">安全防护</a></li></ul>
 
 
     </footer>
@@ -272,20 +394,11 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/data-sec/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/phpshell/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">浅析商业银行数据安全保护体系建设思路（转）</div>
+      <div class="article-nav-title">一次php加密文件的分析</div>
     </a>
   
-  
-    <a href="/vmware/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇 →</strong>
-      <div class="article-nav-title">
-        
-          VMware Workstation pro
-        
-      </div>
-    </a>
   
 </nav>
 
@@ -703,7 +816,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Mon Jan 21 2019 15:02:33 GMT+0800",      // Ensure uniqueness and length less than 50
+      id: "Mon Nov 04 2019 13:19:50 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.pa55w0rd.online/phpshell/</loc>
+    <loc>http://www.pa55w0rd.online/openrasp-web/</loc>
     
-    <lastmod>2019-11-01T03:31:56.095Z</lastmod>
+    <lastmod>2019-11-04T05:38:04.547Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.pa55w0rd.online/openrasp/</loc>
     
-    <lastmod>2019-10-30T07:39:31.758Z</lastmod>
+    <lastmod>2019-11-04T05:21:10.431Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/linux/</loc>
+    
+    <lastmod>2019-11-01T11:16:29.211Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/phpshell/</loc>
+    
+    <lastmod>2019-11-01T03:34:57.090Z</lastmod>
     
   </url>
   
@@ -166,13 +180,6 @@
     <loc>http://www.pa55w0rd.online/kunpeng/</loc>
     
     <lastmod>2019-04-03T06:11:35.726Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.pa55w0rd.online/linux/</loc>
-    
-    <lastmod>2019-03-29T08:25:34.948Z</lastmod>
     
   </url>
   

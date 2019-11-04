@@ -8,21 +8,19 @@
 
   
 
-  <title>CentOS7下mysql5.7忘记root密码 | Pa55w0rd &#39;s Blog</title>
+  <title>Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
-<meta name="keywords" content="解决方法">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CentOS7下mysql5.7忘记root密码">
-<meta property="og:url" content="http://www.pa55w0rd.online/mysql-forget-passwd/index.html">
+  <meta name="description" content="信息安全">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pa55w0rd &#39;s Blog">
+<meta property="og:url" content="http://www.pa55w0rd.online/page/17/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
+<meta property="og:description" content="信息安全">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-21T07:26:36.877Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CentOS7下mysql5.7忘记root密码">
-<meta name="twitter:description" content="CentOS7下mysql5.7忘记root密码 步骤一 配置文件中添加skip-grant-tables123456vi /etc/my.cnf# 在[mysqld]中添加skip-grant-tables    [mysqld]    skip-grant-tables    datadir=/var/lib/mysql    socket=/var/lib/mysql/mysql.sock">
+<meta name="twitter:title" content="Pa55w0rd &#39;s Blog">
+<meta name="twitter:description" content="信息安全">
 
   
 
@@ -186,16 +184,18 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article id="post-mysql-forget-passwd" class="article article-type-post" itemscope="" itemprop="blogPost">
+      <section id="main">
+  
+    <article id="post-jsonp" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div data-scroll-reveal="enter top and over 0.7s" class="article-meta">
-    <a href="/mysql-forget-passwd/" class="article-date">
+    <a href="/jsonp/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time datetime="2019-01-21T07:02:33.000Z" itemprop="datePublished">2019-01-21</time>
+  <time datetime="2018-09-19T08:30:51.000Z" itemprop="datePublished">2018-09-19</time>
 </a>
 
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/web安全/">web安全</a>
   </div>
 
 
@@ -208,8 +208,9 @@ ga('send', 'pageview');
 
         
   
-    <h1 class="article-title" itemprop="name">
-      <i class="fa fa-pencil-square-o  article-title-icon"></i>CentOS7下mysql5.7忘记root密码
+    <h1 itemprop="name">
+      <a class="article-title" href="/jsonp/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>JSONP劫持</a>
     </h1>
   
 
@@ -222,28 +223,13 @@ ga('send', 'pageview');
 <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
+        <h2 id="jsonp劫持"><a href="#jsonp劫持" class="headerlink" title="jsonp劫持"></a>jsonp劫持</h2><p>jsonp是一个非官方的协议，全称是 JSON with Padding ，是基于 JSON 格式的为解决跨域请求资源而产生的解决方案。实现的基本原理是利用script元素的开放策略，网页可以得到从其他来源动态产生的json数据，因此可以用来实现跨域。</p>
+<p>web程序如果通过JSONP的方式来跨域传递用户认证后的敏感信息时，攻击者完全可以在自己的虚假页面中发起恶意的jsonp请求，诱导被攻击者访问来达到截取用户敏感信息的目的。<br>
         
+          </p><p class="article-more-link ">
+            <a href="/jsonp/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
         
-          <p>CentOS7下mysql5.7忘记root密码</p>
-<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
-<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
-<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2>
-        
-<!--
-        </br>
-        <span id="busuanzi_container_page_pv">
-          阅读次数<span id="busuanzi_value_page_pv"></span>
-        </span>
-        <p>CentOS7下mysql5.7忘记root密码</p>
-<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
-<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
-<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">'root'</span>) <span class="built_in">where</span> user=<span class="string">'root'</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2>-->
       
 
     </div>
@@ -255,41 +241,19 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/mysql-forget-passwd/" data-id="ck2jzufnf002865t6hcd418tn" class="article-share-link" data-share="baidu" data-title="CentOS7下mysql5.7忘记root密码">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/jsonp/" data-id="ck2jzufnw002q65t6qbyd59vk" class="article-share-link" data-share="baidu" data-title="JSONP劫持">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/mysql-forget-passwd/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/jsonp/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/解决方法/">解决方法</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsonp劫持/">jsonp劫持</a></li></ul>
 
 
     </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/data-sec/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">← 上一篇</strong>
-      <div class="article-nav-title">浅析商业银行数据安全保护体系建设思路（转）</div>
-    </a>
-  
-  
-    <a href="/vmware/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇 →</strong>
-      <div class="article-nav-title">
-        
-          VMware Workstation pro
-        
-      </div>
-    </a>
-  
-</nav>
-
-
   
 </article>
 <!--
@@ -299,18 +263,17 @@ ga('send', 'pageview');
 -->
 
 
-  <section class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section> 
 
 
 
 
-  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
-  <div id="gitalk-container"></div>
 
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/16/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span>
+    </nav>
+  
 
 </section>
       
@@ -703,7 +666,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Mon Jan 21 2019 15:02:33 GMT+0800",      // Ensure uniqueness and length less than 50
+      id: "",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

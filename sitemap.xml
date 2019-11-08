@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.pa55w0rd.online/openrasp-web/</loc>
+    <loc>http://www.pa55w0rd.online/OpenRASP-alert/</loc>
     
-    <lastmod>2019-11-04T05:38:04.547Z</lastmod>
+    <lastmod>2019-11-08T05:45:09.677Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.pa55w0rd.online/openrasp/</loc>
     
-    <lastmod>2019-11-04T05:21:10.431Z</lastmod>
+    <lastmod>2019-11-04T05:40:02.903Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/openrasp-web/</loc>
+    
+    <lastmod>2019-11-04T05:38:04.547Z</lastmod>
     
   </url>
   

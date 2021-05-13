@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+  
+
+  <title>浅析商业银行数据安全保护体系建设思路（转） | Pa55w0rd &#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="转自绿盟科技博客  前言近年来，随着商业银行信息化的发展，信息系统越来越多的使用于日常工作，成为不可或缺的工具和手段。银行通过信息化大大提高其生产效率，从传统的柜面银行与24小时自助银行，再到手机银行，微信银行。银行的业务受理无论在空间和时间上都得到了极大的拓展，依赖于信息系统的发展而运行发展并壮大； 但是当银行正在利用信息化技术高效率的进行跨地域、跨国家的信息交流时，海量的如客户资料、营销方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅析商业银行数据安全保护体系建设思路（转）">
+<meta property="og:url" content="http://www.pa55w0rd.online/data-sec/index.html">
+<meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
+<meta property="og:description" content="转自绿盟科技博客  前言近年来，随着商业银行信息化的发展，信息系统越来越多的使用于日常工作，成为不可或缺的工具和手段。银行通过信息化大大提高其生产效率，从传统的柜面银行与24小时自助银行，再到手机银行，微信银行。银行的业务受理无论在空间和时间上都得到了极大的拓展，依赖于信息系统的发展而运行发展并壮大； 但是当银行正在利用信息化技术高效率的进行跨地域、跨国家的信息交流时，海量的如客户资料、营销方案">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://blog.nsfocus.net/wp-content/uploads/2018/11/500938693_wx.jpg">
+<meta property="article:published_time" content="2019-01-10T06:26:39.000Z">
+<meta property="article:modified_time" content="2019-01-16T06:37:53.318Z">
+<meta property="article:author" content="Pa55w0rd">
+<meta property="article:tag" content="安全建设">
+<meta property="article:tag" content="数据安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://blog.nsfocus.net/wp-content/uploads/2018/11/500938693_wx.jpg">
+
+  
+
+  
+
+
+  
+    <meta name="baidu-site-verification" content="d4d7b60d81cad7436bcab57af5cf84c7" />
+  
+
+
+  
+    <meta name="google-site-verification" content="google4b1aaf5aa71b9f3c.html" />
+  
+
+
+
+  
+    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+  
+
+
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/scrollReveal.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
+  <script src="/js/algolia-search.js" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-126660308-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+  
+  
+  <!-- 
+  
+  
+  
+  
+  
+   -->
+
+
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+<!--
+<script>
+    (function(){
+      if('{{ page.password }}'){
+        if (prompt('请输入文章密码') !== '{{ page.password }}'){
+          alert('密码错误！');
+          history.back();
+        }
+      }
+    })();
+  </script>
+-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div data-scroll-reveal="enter top"  id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pa55w0rd &#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+        
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+          <a class="main-nav-link" href="/comments"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+        
+          <a class="main-nav-link" href="/404.html"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a  class="nav-icon" href="/atom.xml" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        
+        <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      </nav>
+        <div id="local-search-input"></div>
+      <!-- 百度搜索 -->
+     <!-- <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.pa55w0rd.online">
+        </form>
+      </div>
+      -->
+   
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article   id="post-data-sec" class="article article-type-post" itemscope itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
+    <a  href="/data-sec/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time  datetime="2019-01-10T06:26:39.000Z" itemprop="datePublished">2019-01-10</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner"  >
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>浅析商业银行数据安全保护体系建设思路（转）
+    </h1>
+  
+
+
+
+      </header>
+    
+    <!-- 目录内容 -->
+
+  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+        </p>
+<div id="toc-article" class="toc-article">
+    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+  <strong class="toc-title">文章目录</strong>
+         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%86%E4%B8%9A%E9%93%B6%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E7%9A%84%E5%9B%B0%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">商业银行数据保护的困境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%98%E5%9C%A8%E5%BD%A2%E5%BC%8F%E5%A4%9A%E3%80%81%E8%AE%BF%E9%97%AE%E4%BA%BA%E5%91%98%E5%A4%9A%E3%80%81%E5%AD%98%E5%82%A8%E5%88%86%E6%95%A3%E3%80%81%E6%98%93%E4%BC%A0%E6%92%AD"><span class="toc-number">2.1.</span> <span class="toc-text">数据存在形式多、访问人员多、存储分散、易传播</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B3%84%E9%9C%B2%E9%80%94%E5%BE%84%E5%A4%9A"><span class="toc-number">2.2.</span> <span class="toc-text">数据泄露途径多</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BB%B7%E5%80%BC%E5%AE%9A%E4%B9%89%E4%B8%8D%E6%98%8E%E7%A1%AE%EF%BC%8C%E4%BF%9D%E6%8A%A4%E5%B7%A5%E4%BD%9C%E9%87%8D%E7%82%B9%E4%B8%8D%E7%AA%81%E5%87%BA"><span class="toc-number">2.3.</span> <span class="toc-text">数据价值定义不明确，保护工作重点不突出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E5%BB%BA%E8%AE%BE%E6%AD%A5%E9%AA%A4"><span class="toc-number">3.</span> <span class="toc-text">数据保护建设步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E5%9F%BA%E7%A1%80"><span class="toc-number">3.1.</span> <span class="toc-text">建立信息安全防护基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E4%BD%93%E7%B3%BB"><span class="toc-number">3.2.</span> <span class="toc-text">建立数据安全防护体系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BF%A1%E6%81%AF%E6%B5%81%E8%BF%9B%E8%A1%8C%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="toc-number">3.3.</span> <span class="toc-text">对信息流进行风险管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4%E4%BD%93%E7%B3%BB%E5%BB%BA%E8%AE%BE%E6%80%9D%E8%B7%AF"><span class="toc-number">4.</span> <span class="toc-text">数据安全防护体系建设思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E5%96%84%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E7%BB%84%E7%BB%87%E6%9E%B6%E6%9E%84"><span class="toc-number">4.1.</span> <span class="toc-text">完善数据保护组织架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%95%B0%E6%8D%AE%E8%BF%9B%E8%A1%8C%E5%88%86%E7%B1%BB%E5%88%86%E7%BA%A7%E4%BF%9D%E6%8A%A4"><span class="toc-number">4.2.</span> <span class="toc-text">对数据进行分类分级保护</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%86%E5%88%AB%E7%8E%B0%E6%9C%89%E6%95%B0%E6%8D%AE"><span class="toc-number">4.2.1.</span> <span class="toc-text">识别现有数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%88%86%E7%B1%BB"><span class="toc-number">4.2.2.</span> <span class="toc-text">进行数据分类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E5%AE%9A%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E6%8E%A7%E5%88%B6%E7%AD%96%E7%95%A5"><span class="toc-number">4.3.</span> <span class="toc-text">制定数据保护控制策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E5%AE%9A%E5%B9%B6%E6%8E%A8%E8%BF%9B%E6%95%8F%E6%84%9F%E6%80%A7%E6%A0%87%E8%AF%86%E7%AD%96%E7%95%A5"><span class="toc-number">4.4.</span> <span class="toc-text">制定并推进敏感性标识策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E5%AE%9A%E6%8E%88%E6%9D%83%E5%AE%A1%E6%89%B9%E7%AD%96%E7%95%A5"><span class="toc-number">4.5.</span> <span class="toc-text">制定授权审批策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E5%AE%9A%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE%E8%84%B1%E6%95%8F%E7%AD%96%E7%95%A5"><span class="toc-number">4.6.</span> <span class="toc-text">制定敏感数据脱敏策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%8A%80%E6%9C%AF%E6%89%8B%E6%AE%B5%E8%BF%9B%E8%A1%8C%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4"><span class="toc-number">4.7.</span> <span class="toc-text">建立技术手段进行数据保护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%A6%86%E7%9B%96%E6%95%B0%E6%8D%AE%E5%85%A8%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E7%9A%84%E5%88%B6%E5%BA%A6%E4%B8%8E%E6%8A%80%E6%9C%AF%E6%89%8B%E6%AE%B5"><span class="toc-number">4.8.</span> <span class="toc-text">建立覆盖数据全生命周期的制度与技术手段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B%E6%95%B0%E6%8D%AE%E4%BF%9D%E6%8A%A4%E5%AE%89%E5%85%A8%E5%9F%B9%E8%AE%AD%E4%BD%93%E7%B3%BB"><span class="toc-number">4.9.</span> <span class="toc-text">建立数据保护安全培训体系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+       </div>
+ <script type="text/javascript">
+function showToc(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:block");
+  show_toc_btn.setAttribute("style","display:none");
+  };
+function showBtn(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:none");
+  show_toc_btn.setAttribute("style","display:block");
+  };
+ </script>
+    		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <blockquote>
+<p>转自<a target="_blank" rel="noopener" href="http://blog.nsfocus.net/brief-analysis-on-the-construction-of-data-security-protection-system-in-commercial-banks/">绿盟科技博客</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近年来，随着商业银行信息化的发展，信息系统越来越多的使用于日常工作，成为不可或缺的工具和手段。银行通过信息化大大提高其生产效率，从传统的柜面银行与24小时自助银行，再到手机银行，微信银行。银行的业务受理无论在空间和时间上都得到了极大的拓展，依赖于信息系统的发展而运行发展并壮大；</p>
+<p>但是当银行正在利用信息化技术高效率的进行跨地域、跨国家的信息交流时，海量的如客户资料、营销方案、财务报表、研发数据等关乎企业核心竞争力的机密数据也随之被传输。信息技术本身的双刃剑特性也在组织网络中不断显现：强大的开放性和互通性催生了商业泄密、网络间谍等众多灰色名词，“力拓案”、“维基泄密”等事件让信息安全事件迅速升温，信息防泄密成为商业银行越来越关注的焦点。</p>
+<span id="more"></span>
+<p>本文结合目前数据保护技术现状及绿盟科技数据保护建设经验，对商业银行数据保护建设思路进行梳理</p>
+<p><img src="http://blog.nsfocus.net/wp-content/uploads/2018/11/500938693_wx.jpg"></p>
+<h2 id="商业银行数据保护的困境"><a href="#商业银行数据保护的困境" class="headerlink" title="商业银行数据保护的困境"></a>商业银行数据保护的困境</h2><h3 id="数据存在形式多、访问人员多、存储分散、易传播"><a href="#数据存在形式多、访问人员多、存储分散、易传播" class="headerlink" title="数据存在形式多、访问人员多、存储分散、易传播"></a>数据存在形式多、访问人员多、存储分散、易传播</h3><p>在商业银行内部，有海量电子数据，纸质数据，且一直处于动态增长状态，如用户基本信息，账户信息；应用系统源码，需求说明，设计说明文档：系统的用户名和密码;系统交付及规划资料：网络拓扑图、IP地址清单;安全设备的告警和自动生成的报告、日志;甚至于一些管理决策支撑信息：如银行经营状况分析报表、某分行业务经营报告、风险管理报告;市场推广活动情况、后督工作记录、拆借操作记录、贷款审批与发放记录、客户征信、董事会、股东会议等会议纪要等等。</p>
+<p>这些数据大部分数据被分散存储在全行办公人员PC电脑中，移动存储介质中或个人邮箱中。这种分散的数据存储方式给商业银行数据保护工作带来很大的困扰，同时，人员办公又存在地域上的不集中，一旦发生数据泄露，会很快在全省及至全国范围内扩散。再者，每个机构对员工日常要求和管理的标准高低不一，人员安全意识不均衡，进一步增加了数据保护的难度。</p>
+<h3 id="数据泄露途径多"><a href="#数据泄露途径多" class="headerlink" title="数据泄露途径多"></a>数据泄露途径多</h3><p>从数据存储侧泄露来看，这些数据被存放于办公PC，个人笔记本，个人邮箱，移动办公设备以及移动存储设备中。尤其是可移动办公设备和移动存储设备，容易因丢失或失窃发生数据泄露。</p>
+<p>从数据泄露手段角度看，互联网邮箱，公有云网盘，WEB类应用都会成为用户存储和传播企业数据的工具。如某银行为了防止内部数据外泄，将所有办公终端U口全部进行了禁用。但其有一个办公业务应用，是内外网互通的，允许用户上传文档。为了便于日常文件传输，很多用户将大量的数据上传到了此平台。结果，这台应用服务器被攻击，上面存储的大量敏感数据被下载。</p>
+<p>从数据泄露人员来看，商业银行内部办公人员，外部黑客，第三方外包人员以及合作单位或设备维护人员都有可能造成数据泄露。</p>
+<h3 id="数据价值定义不明确，保护工作重点不突出"><a href="#数据价值定义不明确，保护工作重点不突出" class="headerlink" title="数据价值定义不明确，保护工作重点不突出"></a>数据价值定义不明确，保护工作重点不突出</h3><p>在有些商业银行没有明确的数据价值定义标准，或者数据价值宣传教育不到位，致使工作人员对手里掌握和拥有的数据不能进行很好的估值，自然而然，对其泄露后产生的后果也就无从评估了。2016年，沈阳某银行在其装修期间将客户资料当废品进行处理，就是一期对客户资料价值错误评估的典型案例。设想，如果该行有明确的数据价值定义和评估标准，而工作人员对此标准又很熟悉，那么在对此类资料进行处理时，就有了处理的标准，而不是随心而为。</p>
+<p>数据价值定义不明确的另外一个弊端就是数据保护人员的工作重心不突出，采用大而全的数据安全保护策略，不但自己的工作量大，成效低，不好开展，业务人员或其他部门人员的工作效率也因此而降低，数据保护工作得不到其他部门的认可，推进十分缓慢，甚至终止。</p>
+<h2 id="数据保护建设步骤"><a href="#数据保护建设步骤" class="headerlink" title="数据保护建设步骤"></a>数据保护建设步骤</h2>
+
+<h3 id="建立信息安全防护基础"><a href="#建立信息安全防护基础" class="headerlink" title="建立信息安全防护基础"></a>建立信息安全防护基础</h3><p>商业银行数据保护建设是信息安全防护中的一部分。因此，在进行数据安全防护建设过程中，需要商业银行有良好的信息安全防护基础，例如机房物理安全，各安全域之间的访问控制，人员安全等。并已经建立完整的信息安全组织，和信息安全策略方针。目前来讲，国内大部分商业银行之部分建立已经基本完成，也就是说，大部分商业银行已经具备建立数据安全防护体系的基础条件。</p>
+<h3 id="建立数据安全防护体系"><a href="#建立数据安全防护体系" class="headerlink" title="建立数据安全防护体系"></a>建立数据安全防护体系</h3><p>数据安全防护体系的建设是商业银行数据安全保护的必经之路，整体规划，分步建设，有助于商业银行在逐步提高数据安全保护水平的同时避免资源的浪费，降低数据保护成本和工作难度。一般包括数据保护组织的建立，数据分类分级，数据保护控制策略制定，数据保护技术手段选取，数据全生命周期管理，以及审计与持续改进等内容。</p>
+<h3 id="对信息流进行风险管理"><a href="#对信息流进行风险管理" class="headerlink" title="对信息流进行风险管理"></a>对信息流进行风险管理</h3><p>在商业银行数据安全防护体系建设完成后，为了更加精细的控制企业数据的流转并防止泄露，一般会建立以业务流为中心的敏感数据动态流转风险管理，进一步防止敏感数据外泄。其内容包括敏感数据分布状况调研；明确业务系统使用管理人员；确定数据流转和处理方式；并借助第三方安全机构进行数据流转各环节的风险评估，发现薄弱环节，进行加固和修复，长期持续改进等内容。</p>
+<h2 id="数据安全防护体系建设思路"><a href="#数据安全防护体系建设思路" class="headerlink" title="数据安全防护体系建设思路"></a>数据安全防护体系建设思路</h2><h3 id="完善数据保护组织架构"><a href="#完善数据保护组织架构" class="headerlink" title="完善数据保护组织架构"></a>完善数据保护组织架构</h3><p>近年来，伴随着商业竞争的加剧，数据保护工作已经越来越得到企业的重视。随之在市场上已经产生了数据间谍这类职业，他们受雇于某个企业，对其竞争对手的数据进行针对性的窃取。在很多企业也产生了专门的部门或职位来进行单位数据保护工作，可以预见，在不久的将来，这一职位或部门将出现在越来越多的企业中。</p>
+<p>数据保护工作涉及到商业银行各个部门及所有业务系统和全行工作人员，因此，数据保护组织的建立过程中应该充分考虑到数据保护工作的系统性，建立完备的组织架构。一般分为决策组织，管理组织，执行组织和审计组织。</p>
+<p>决策组织职责主要有根据公司发展战略，结合企业信息安全策略方针，制定符合企业业务发展的数据保护战略方针；并授权指派管理组织开展数据保护工作；对管理组织的工作进行指导和定期检查；对审计组织反馈的问题进行督导问责和解决。</p>
+<p>管理组织职责主要有根据企业数据保护战略方针完善企业数据保护管理制度，规划数据保护建设项目；并向决策组织定期汇报数据保护管理工作情况；对执行组织数据保护工作进行检查和指导；配合审计组织的监督和检查。</p>
+<p>执行组织负责具体的数据保护技术工作的实施和执行；并定期向管理组织汇报，接受和配合审计组织监督和检查。</p>
+<p>审计组织职责主要是对管理组织和执行组织日常数据保护工作进行监督和检查，并将检查结果反馈给决策组织，跟踪审计问题的解决情况等。</p>
+<p>各组织间的关系如下图所示：</p>
+
+
+<h3 id="对数据进行分类分级保护"><a href="#对数据进行分类分级保护" class="headerlink" title="对数据进行分类分级保护"></a>对数据进行分类分级保护</h3><p>数据保护和信息系统保护类似，应该分等级，分类别，进行重点保护。如果一味追求大而全，密而精，必然使得数据保护工作的效果难以达到预期。这种保护工作，也不可能得到业务人员或其他部门的支持与认可，自然也就无病而终，不能长期有效的开展下去。</p>
+<p>因此，商业银行在开展数据保护工作之前，应当有明确的数据分类依据和数据重要程序分级依据。</p>
+<h4 id="识别现有数据"><a href="#识别现有数据" class="headerlink" title="识别现有数据"></a>识别现有数据</h4><p>数据识别方法有调研了解，技术手段收集等，一般的，为了数据分级工作的准确性，还需要结访谈调研。步骤如下：</p>
+<p>1、向各部门分发数据收集表，了解各部门日常工作中所涉及的敏感数据类型。</p>
+<p>2、访谈各部门，调研了解敏感信息的重要性。</p>
+<p>根据数据收集表的内容，进行各部门的针对性访谈，了解其对自己所在部门数据重要程序的分级情况，为后期数据分级定义工作做准备。</p>
+<p>3、通过技术手段，按照数据类型进行敏感数据存储分布调研。</p>
+<p>依据前两步调研结果，对通过技术手段，对全网的敏感数据进行收集，分析其存储分分布情况，为后期数据保护策略定义提供依据。</p>
+<h4 id="进行数据分类"><a href="#进行数据分类" class="headerlink" title="进行数据分类"></a>进行数据分类</h4><p>根据数据识别的结果，依据商业银行自己业务特性或自身情况进行数据分类，一般的分类依据有：</p>
+<p>1、根据国家标准和监管要求进行数据分类</p>
+<p>这种分类方式简单明了，但存在与商业银行自身业务不匹配或不完全匹配的情况，可能全出现分类过大或过小，存在重合或遗漏的情况。</p>
+<p>2、参考同行业进行数据分类；</p>
+<p>由于行业的相通性，数据分类也有一定的共同性，参考同行业进行数据分类一种简便而又高效的数据分类方式。</p>
+<p>3、根据业务部门和管理部门的经验分类</p>
+<p>对于业务形式比较独特的商业银行，如涉及到跨国业务，由于不同国家对数据重要程程度的认识和定义上存在区别，需要业务部门和管理部门进行数据分类时也要考虑其特殊性。</p>
+<p>数据分类方式没有统一的标准，各商业银行可以选择一种或多种分类方式进行数据分类。但建议在进行数据分类时遵循如下原则，以保护数据分类的合理性，为后期的数据分级工作提供良好的前提保证。</p>
+<ul>
+<li>科学性原则</li>
+</ul>
+<p>分类过程中应当充分考虑数据的业务属性，同时兼顾数据的敏感性级别</p>
+<ul>
+<li>实用性原则</li>
+</ul>
+<p>数据的类目设置应与商业银行现有的管理和分类相兼容，保证员工的数据分类习惯，降低分类和数据保护的难度。</p>
+<ul>
+<li>稳定性原则</li>
+</ul>
+<p>在进行数据分类过程中，应当充分考虑未来的拓展需求，使得分类保护兼容和稳定。</p>
+<ul>
+<li>进行数据分级</li>
+</ul>
+<p>数据分级是从数据的机密性角度出发，为了满足数据保护的要求。分级过程可以单独设计;</p>
+<p>也可以结合保密规定等内容进行;</p>
+<p>数据分级是为了合理的进行数据保护，防止矫枉过正，防护过度，造成防护资源的浪费以及给员工日常办公带来不便，以至于员工抵抗，保护工作无法继续。</p>
+<h3 id="制定数据保护控制策略"><a href="#制定数据保护控制策略" class="headerlink" title="制定数据保护控制策略"></a>制定数据保护控制策略</h3><p>商业银行在数据保护过程中，应当根据企业文化，业务特点和敏感数据数据面临的风险情况，对不同环境下的敏感数据设计相应的控制策略，如：敏感性标识，授权审批，信息脱敏，安全隔离。</p>
+<h3 id="制定并推进敏感性标识策略"><a href="#制定并推进敏感性标识策略" class="headerlink" title="制定并推进敏感性标识策略"></a>制定并推进敏感性标识策略</h3><p>为了让员工在日常工作中，对所产生的数据和接触到数据的重要程度有清晰认知，制定数据敏感性标识策略，并在日常办公过程中推行。</p>
+<p>数据敏感性标识可以根据分级重新定义标识标志，如：公开信息，内部使用，商业机密等，也可以直接按照密级进行标识。如果有多个分级定义，需要再进一步细化标识，如：公开信息，内部使用，商业机密A，商业机密AA，商业机密AAA等；</p>
+<p>制定数据标识标志后，再依据不同类型的数据制定不同的标识策略，如：</p>
+<p>文件，文档类：应当在封面或首页的明显位置标识其使用范围或密级以及期限；</p>
+<p>非文件、文档类：例如源代码，数据库数据，应建立所在系统的敏感性标识台账，对所存储的数据进行标识；</p>
+<p>信息载体：如光盘，U盘，移动硬盘等，应在介质明显位置进行标注或标签标示。</p>
+<h3 id="制定授权审批策略"><a href="#制定授权审批策略" class="headerlink" title="制定授权审批策略"></a>制定授权审批策略</h3><p>由于内部办公的需要，数据不可避免的会在各部门或各工作人员之间进行流动，商业银行应根据企业组织特点，规范各级别敏感数据的授权审批流程。</p>
+<h3 id="制定敏感数据脱敏策略"><a href="#制定敏感数据脱敏策略" class="headerlink" title="制定敏感数据脱敏策略"></a>制定敏感数据脱敏策略</h3><p>商业银行应制定严格的数据脱敏策略。商业银行在内部办公，第三方数据交换，测试系统开发过程中，存在大量的数据交互，如果直接使用未脱敏的数据，极有可能造成数据泄露。为此，企业应建立完整的敏感数据脱敏策略来应对数据流转过程中的泄露风险。并结合授权审批策略，强制要求只有数据脱敏，杜绝未脱敏数据泄露。</p>
+<ul>
+<li>制定安全隔离策略</li>
+</ul>
+<p>根据数据分级，敏感性标识和密级定义对不同级别的数据进行分区分级别存储。对涉及敏感信息处理的网络、操作系统、中间件，数据库，甚至业务人员的办公电脑进行物理或逻辑上的安全隔离，保证数据处理环境的安全</p>
+<ul>
+<li>制定第三方数据使用控制策略</li>
+</ul>
+<p>在商业银行业务高速发展的今天，涉及到大量的第三方外包人员或第三方公司，银行应当设置专门的控制策略来控制这部分人员的数据使用。策略设置过程中应考虑如下因素：根据不同的级别，设置对应的第三方控制要求；根据所接触数据级别，提高第三方准入门槛，缩小数据接触范围；按照“必需知道”和“最小授权”双重原则进行访问授权。并通过服务合同或协议等，明确第三方在安全和数据保密方面的责任。定期通过安全检查，外部评估等方式对第三方公司策略执行情况进行检查，确保第三方控制策略的的效执行。</p>
+<h3 id="建立技术手段进行数据保护"><a href="#建立技术手段进行数据保护" class="headerlink" title="建立技术手段进行数据保护"></a>建立技术手段进行数据保护</h3><p>技术手段是对管理和控制策略的有效补充，同时也是确保控制策略落地的有效支撑，企业应当根据其自身业务特性和控制策略，选择有效的技术手段，来封锁各种数据泄露途径，保证数据安全。好的技术手段应该可以在数据泄露事件发生前，发生时，发生后全过程进行控制。</p>
+<ul>
+<li>事前预防</li>
+</ul>
+<p>事前预防指通过技术手段的采用，可以预防数据泄露的发生或提高数据窃取成本，从数据CIA原则出发进行技术手段设计。常见的事前预防技术手段有透明加密，数据脱敏，终端安全，加密key，磁盘加密，移动介质管控等；</p>
+<ul>
+<li>事中阻断</li>
+</ul>
+<p>事中阻断是指当数据泄露发生时，其可以识别数据泄露行为并进行阻断。常见的技术手段有网络数据防泄露系统（网络DLP），邮件数据防泄露，终端数据防泄露等。其中终端数据防泄露可以有效防护移动介质拷贝，即时通讯工具传输，截屏，录屏等手段造成的数据泄露。</p>
+<ul>
+<li>事后审计</li>
+</ul>
+<p>事后审计是指当数据泄露事件发生后，提供可追溯审计的日志，帮助技术人员进行数据泄露源头或责任人定位。常见的技术手段有数据库审计，日志审计系统以及事中阻断技术手段产生的日志。</p>
+<h3 id="建立覆盖数据全生命周期的制度与技术手段"><a href="#建立覆盖数据全生命周期的制度与技术手段" class="headerlink" title="建立覆盖数据全生命周期的制度与技术手段"></a>建立覆盖数据全生命周期的制度与技术手段</h3><p>商业银行在设计和制定数据保护管理制度以及技术措施时，应融入和覆盖数据全生命周期的各个环节。</p>
+<p>一般来讲，数据全生命周期包括如下几个环节：</p>
+<ul>
+<li>创建</li>
+</ul>
+<p>在数据被创建时，应当通过管理制度和技术手段强制要求数据创建者确定数据安全级别，并进行有效的安全性标识；</p>
+<ul>
+<li>存储</li>
+</ul>
+<p>在数据存储过程中，应当根据不同级别的数据采用不同的技术手段进行数据存储，敏感数据应当分环境，加密存储</p>
+<ul>
+<li>使用</li>
+</ul>
+<p>数据在流转和使用过程中，应当有明确的应用审批和记录流程，第三方人员的使用应当严格管控。</p>
+<ul>
+<li>传输</li>
+</ul>
+<p>需要异地使用数据或传输使用的，应对数据加密后进行传输，并采用加密协议，甚至专人专网进行传输，保证数据在传输过程中不被截取或窃听。</p>
+<ul>
+<li>销毁</li>
+</ul>
+<p>在数据使用完毕后，确保完善的技术和管理手段监控数据销毁过程，防止数据被恢复或有备份没有销毁，造成数据的泄露。</p>
+<p>建立有效的审计与持续改进举措</p>
+<p>良好的数据保护工作是一个不断改进优化，持续改进的过程。通过安全检查，审计跟踪，发现问题和解决问题，优化旧的管理制度，使用与新的数据安全形势相匹配的管理制度与技术手段，不断提高敏感信息防护水平。</p>
+<h3 id="建立数据保护安全培训体系"><a href="#建立数据保护安全培训体系" class="headerlink" title="建立数据保护安全培训体系"></a>建立数据保护安全培训体系</h3><p>再好的管理策略，多么完美的技术手段，如果不能得到执行者的拥护和执行，一切都将是空谈和摆设。因此，为了保证商业银行数据保护工作的有效落地，降低公司当前所面临的数据泄露风险，商业银行应当建立完备的安全培训体系，提升其安全管控水平。</p>
+<p>完备的安全培训体系应当覆盖全员，又重点突出，既包含管理策略，又涉及技术手段；并且针对不同的人群有不同的要求和标准；</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>商业银行数据保护是一个系统工程，需要多方面的协调与配合，既涉及到组织架构的调整，也有技术手段的增加，管理策略补充，更需要长期的进行人员教育与培训。数据保护整体架构可概况如下：</p>
+
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <blockquote>
+<p>转自<a target="_blank" rel="noopener" href="http://blog.nsfocus.net/brief-analysis-on-the-construction-of-data-security-protection-system-in-commercial-banks/">绿盟科技博客</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>近年来，随着商业银行信息化的发展，信息系统越来越多的使用于日常工作，成为不可或缺的工具和手段。银行通过信息化大大提高其生产效率，从传统的柜面银行与24小时自助银行，再到手机银行，微信银行。银行的业务受理无论在空间和时间上都得到了极大的拓展，依赖于信息系统的发展而运行发展并壮大；</p>
+<p>但是当银行正在利用信息化技术高效率的进行跨地域、跨国家的信息交流时，海量的如客户资料、营销方案、财务报表、研发数据等关乎企业核心竞争力的机密数据也随之被传输。信息技术本身的双刃剑特性也在组织网络中不断显现：强大的开放性和互通性催生了商业泄密、网络间谍等众多灰色名词，“力拓案”、“维基泄密”等事件让信息安全事件迅速升温，信息防泄密成为商业银行越来越关注的焦点。</p>
+<span id="more"></span>
+<p>本文结合目前数据保护技术现状及绿盟科技数据保护建设经验，对商业银行数据保护建设思路进行梳理</p>
+<p><img src="http://blog.nsfocus.net/wp-content/uploads/2018/11/500938693_wx.jpg"></p>
+<h2 id="商业银行数据保护的困境"><a href="#商业银行数据保护的困境" class="headerlink" title="商业银行数据保护的困境"></a>商业银行数据保护的困境</h2><h3 id="数据存在形式多、访问人员多、存储分散、易传播"><a href="#数据存在形式多、访问人员多、存储分散、易传播" class="headerlink" title="数据存在形式多、访问人员多、存储分散、易传播"></a>数据存在形式多、访问人员多、存储分散、易传播</h3><p>在商业银行内部，有海量电子数据，纸质数据，且一直处于动态增长状态，如用户基本信息，账户信息；应用系统源码，需求说明，设计说明文档：系统的用户名和密码;系统交付及规划资料：网络拓扑图、IP地址清单;安全设备的告警和自动生成的报告、日志;甚至于一些管理决策支撑信息：如银行经营状况分析报表、某分行业务经营报告、风险管理报告;市场推广活动情况、后督工作记录、拆借操作记录、贷款审批与发放记录、客户征信、董事会、股东会议等会议纪要等等。</p>
+<p>这些数据大部分数据被分散存储在全行办公人员PC电脑中，移动存储介质中或个人邮箱中。这种分散的数据存储方式给商业银行数据保护工作带来很大的困扰，同时，人员办公又存在地域上的不集中，一旦发生数据泄露，会很快在全省及至全国范围内扩散。再者，每个机构对员工日常要求和管理的标准高低不一，人员安全意识不均衡，进一步增加了数据保护的难度。</p>
+<h3 id="数据泄露途径多"><a href="#数据泄露途径多" class="headerlink" title="数据泄露途径多"></a>数据泄露途径多</h3><p>从数据存储侧泄露来看，这些数据被存放于办公PC，个人笔记本，个人邮箱，移动办公设备以及移动存储设备中。尤其是可移动办公设备和移动存储设备，容易因丢失或失窃发生数据泄露。</p>
+<p>从数据泄露手段角度看，互联网邮箱，公有云网盘，WEB类应用都会成为用户存储和传播企业数据的工具。如某银行为了防止内部数据外泄，将所有办公终端U口全部进行了禁用。但其有一个办公业务应用，是内外网互通的，允许用户上传文档。为了便于日常文件传输，很多用户将大量的数据上传到了此平台。结果，这台应用服务器被攻击，上面存储的大量敏感数据被下载。</p>
+<p>从数据泄露人员来看，商业银行内部办公人员，外部黑客，第三方外包人员以及合作单位或设备维护人员都有可能造成数据泄露。</p>
+<h3 id="数据价值定义不明确，保护工作重点不突出"><a href="#数据价值定义不明确，保护工作重点不突出" class="headerlink" title="数据价值定义不明确，保护工作重点不突出"></a>数据价值定义不明确，保护工作重点不突出</h3><p>在有些商业银行没有明确的数据价值定义标准，或者数据价值宣传教育不到位，致使工作人员对手里掌握和拥有的数据不能进行很好的估值，自然而然，对其泄露后产生的后果也就无从评估了。2016年，沈阳某银行在其装修期间将客户资料当废品进行处理，就是一期对客户资料价值错误评估的典型案例。设想，如果该行有明确的数据价值定义和评估标准，而工作人员对此标准又很熟悉，那么在对此类资料进行处理时，就有了处理的标准，而不是随心而为。</p>
+<p>数据价值定义不明确的另外一个弊端就是数据保护人员的工作重心不突出，采用大而全的数据安全保护策略，不但自己的工作量大，成效低，不好开展，业务人员或其他部门人员的工作效率也因此而降低，数据保护工作得不到其他部门的认可，推进十分缓慢，甚至终止。</p>
+<h2 id="数据保护建设步骤"><a href="#数据保护建设步骤" class="headerlink" title="数据保护建设步骤"></a>数据保护建设步骤</h2>
+
+<h3 id="建立信息安全防护基础"><a href="#建立信息安全防护基础" class="headerlink" title="建立信息安全防护基础"></a>建立信息安全防护基础</h3><p>商业银行数据保护建设是信息安全防护中的一部分。因此，在进行数据安全防护建设过程中，需要商业银行有良好的信息安全防护基础，例如机房物理安全，各安全域之间的访问控制，人员安全等。并已经建立完整的信息安全组织，和信息安全策略方针。目前来讲，国内大部分商业银行之部分建立已经基本完成，也就是说，大部分商业银行已经具备建立数据安全防护体系的基础条件。</p>
+<h3 id="建立数据安全防护体系"><a href="#建立数据安全防护体系" class="headerlink" title="建立数据安全防护体系"></a>建立数据安全防护体系</h3><p>数据安全防护体系的建设是商业银行数据安全保护的必经之路，整体规划，分步建设，有助于商业银行在逐步提高数据安全保护水平的同时避免资源的浪费，降低数据保护成本和工作难度。一般包括数据保护组织的建立，数据分类分级，数据保护控制策略制定，数据保护技术手段选取，数据全生命周期管理，以及审计与持续改进等内容。</p>
+<h3 id="对信息流进行风险管理"><a href="#对信息流进行风险管理" class="headerlink" title="对信息流进行风险管理"></a>对信息流进行风险管理</h3><p>在商业银行数据安全防护体系建设完成后，为了更加精细的控制企业数据的流转并防止泄露，一般会建立以业务流为中心的敏感数据动态流转风险管理，进一步防止敏感数据外泄。其内容包括敏感数据分布状况调研；明确业务系统使用管理人员；确定数据流转和处理方式；并借助第三方安全机构进行数据流转各环节的风险评估，发现薄弱环节，进行加固和修复，长期持续改进等内容。</p>
+<h2 id="数据安全防护体系建设思路"><a href="#数据安全防护体系建设思路" class="headerlink" title="数据安全防护体系建设思路"></a>数据安全防护体系建设思路</h2><h3 id="完善数据保护组织架构"><a href="#完善数据保护组织架构" class="headerlink" title="完善数据保护组织架构"></a>完善数据保护组织架构</h3><p>近年来，伴随着商业竞争的加剧，数据保护工作已经越来越得到企业的重视。随之在市场上已经产生了数据间谍这类职业，他们受雇于某个企业，对其竞争对手的数据进行针对性的窃取。在很多企业也产生了专门的部门或职位来进行单位数据保护工作，可以预见，在不久的将来，这一职位或部门将出现在越来越多的企业中。</p>
+<p>数据保护工作涉及到商业银行各个部门及所有业务系统和全行工作人员，因此，数据保护组织的建立过程中应该充分考虑到数据保护工作的系统性，建立完备的组织架构。一般分为决策组织，管理组织，执行组织和审计组织。</p>
+<p>决策组织职责主要有根据公司发展战略，结合企业信息安全策略方针，制定符合企业业务发展的数据保护战略方针；并授权指派管理组织开展数据保护工作；对管理组织的工作进行指导和定期检查；对审计组织反馈的问题进行督导问责和解决。</p>
+<p>管理组织职责主要有根据企业数据保护战略方针完善企业数据保护管理制度，规划数据保护建设项目；并向决策组织定期汇报数据保护管理工作情况；对执行组织数据保护工作进行检查和指导；配合审计组织的监督和检查。</p>
+<p>执行组织负责具体的数据保护技术工作的实施和执行；并定期向管理组织汇报，接受和配合审计组织监督和检查。</p>
+<p>审计组织职责主要是对管理组织和执行组织日常数据保护工作进行监督和检查，并将检查结果反馈给决策组织，跟踪审计问题的解决情况等。</p>
+<p>各组织间的关系如下图所示：</p>
+
+
+<h3 id="对数据进行分类分级保护"><a href="#对数据进行分类分级保护" class="headerlink" title="对数据进行分类分级保护"></a>对数据进行分类分级保护</h3><p>数据保护和信息系统保护类似，应该分等级，分类别，进行重点保护。如果一味追求大而全，密而精，必然使得数据保护工作的效果难以达到预期。这种保护工作，也不可能得到业务人员或其他部门的支持与认可，自然也就无病而终，不能长期有效的开展下去。</p>
+<p>因此，商业银行在开展数据保护工作之前，应当有明确的数据分类依据和数据重要程序分级依据。</p>
+<h4 id="识别现有数据"><a href="#识别现有数据" class="headerlink" title="识别现有数据"></a>识别现有数据</h4><p>数据识别方法有调研了解，技术手段收集等，一般的，为了数据分级工作的准确性，还需要结访谈调研。步骤如下：</p>
+<p>1、向各部门分发数据收集表，了解各部门日常工作中所涉及的敏感数据类型。</p>
+<p>2、访谈各部门，调研了解敏感信息的重要性。</p>
+<p>根据数据收集表的内容，进行各部门的针对性访谈，了解其对自己所在部门数据重要程序的分级情况，为后期数据分级定义工作做准备。</p>
+<p>3、通过技术手段，按照数据类型进行敏感数据存储分布调研。</p>
+<p>依据前两步调研结果，对通过技术手段，对全网的敏感数据进行收集，分析其存储分分布情况，为后期数据保护策略定义提供依据。</p>
+<h4 id="进行数据分类"><a href="#进行数据分类" class="headerlink" title="进行数据分类"></a>进行数据分类</h4><p>根据数据识别的结果，依据商业银行自己业务特性或自身情况进行数据分类，一般的分类依据有：</p>
+<p>1、根据国家标准和监管要求进行数据分类</p>
+<p>这种分类方式简单明了，但存在与商业银行自身业务不匹配或不完全匹配的情况，可能全出现分类过大或过小，存在重合或遗漏的情况。</p>
+<p>2、参考同行业进行数据分类；</p>
+<p>由于行业的相通性，数据分类也有一定的共同性，参考同行业进行数据分类一种简便而又高效的数据分类方式。</p>
+<p>3、根据业务部门和管理部门的经验分类</p>
+<p>对于业务形式比较独特的商业银行，如涉及到跨国业务，由于不同国家对数据重要程程度的认识和定义上存在区别，需要业务部门和管理部门进行数据分类时也要考虑其特殊性。</p>
+<p>数据分类方式没有统一的标准，各商业银行可以选择一种或多种分类方式进行数据分类。但建议在进行数据分类时遵循如下原则，以保护数据分类的合理性，为后期的数据分级工作提供良好的前提保证。</p>
+<ul>
+<li>科学性原则</li>
+</ul>
+<p>分类过程中应当充分考虑数据的业务属性，同时兼顾数据的敏感性级别</p>
+<ul>
+<li>实用性原则</li>
+</ul>
+<p>数据的类目设置应与商业银行现有的管理和分类相兼容，保证员工的数据分类习惯，降低分类和数据保护的难度。</p>
+<ul>
+<li>稳定性原则</li>
+</ul>
+<p>在进行数据分类过程中，应当充分考虑未来的拓展需求，使得分类保护兼容和稳定。</p>
+<ul>
+<li>进行数据分级</li>
+</ul>
+<p>数据分级是从数据的机密性角度出发，为了满足数据保护的要求。分级过程可以单独设计;</p>
+<p>也可以结合保密规定等内容进行;</p>
+<p>数据分级是为了合理的进行数据保护，防止矫枉过正，防护过度，造成防护资源的浪费以及给员工日常办公带来不便，以至于员工抵抗，保护工作无法继续。</p>
+<h3 id="制定数据保护控制策略"><a href="#制定数据保护控制策略" class="headerlink" title="制定数据保护控制策略"></a>制定数据保护控制策略</h3><p>商业银行在数据保护过程中，应当根据企业文化，业务特点和敏感数据数据面临的风险情况，对不同环境下的敏感数据设计相应的控制策略，如：敏感性标识，授权审批，信息脱敏，安全隔离。</p>
+<h3 id="制定并推进敏感性标识策略"><a href="#制定并推进敏感性标识策略" class="headerlink" title="制定并推进敏感性标识策略"></a>制定并推进敏感性标识策略</h3><p>为了让员工在日常工作中，对所产生的数据和接触到数据的重要程度有清晰认知，制定数据敏感性标识策略，并在日常办公过程中推行。</p>
+<p>数据敏感性标识可以根据分级重新定义标识标志，如：公开信息，内部使用，商业机密等，也可以直接按照密级进行标识。如果有多个分级定义，需要再进一步细化标识，如：公开信息，内部使用，商业机密A，商业机密AA，商业机密AAA等；</p>
+<p>制定数据标识标志后，再依据不同类型的数据制定不同的标识策略，如：</p>
+<p>文件，文档类：应当在封面或首页的明显位置标识其使用范围或密级以及期限；</p>
+<p>非文件、文档类：例如源代码，数据库数据，应建立所在系统的敏感性标识台账，对所存储的数据进行标识；</p>
+<p>信息载体：如光盘，U盘，移动硬盘等，应在介质明显位置进行标注或标签标示。</p>
+<h3 id="制定授权审批策略"><a href="#制定授权审批策略" class="headerlink" title="制定授权审批策略"></a>制定授权审批策略</h3><p>由于内部办公的需要，数据不可避免的会在各部门或各工作人员之间进行流动，商业银行应根据企业组织特点，规范各级别敏感数据的授权审批流程。</p>
+<h3 id="制定敏感数据脱敏策略"><a href="#制定敏感数据脱敏策略" class="headerlink" title="制定敏感数据脱敏策略"></a>制定敏感数据脱敏策略</h3><p>商业银行应制定严格的数据脱敏策略。商业银行在内部办公，第三方数据交换，测试系统开发过程中，存在大量的数据交互，如果直接使用未脱敏的数据，极有可能造成数据泄露。为此，企业应建立完整的敏感数据脱敏策略来应对数据流转过程中的泄露风险。并结合授权审批策略，强制要求只有数据脱敏，杜绝未脱敏数据泄露。</p>
+<ul>
+<li>制定安全隔离策略</li>
+</ul>
+<p>根据数据分级，敏感性标识和密级定义对不同级别的数据进行分区分级别存储。对涉及敏感信息处理的网络、操作系统、中间件，数据库，甚至业务人员的办公电脑进行物理或逻辑上的安全隔离，保证数据处理环境的安全</p>
+<ul>
+<li>制定第三方数据使用控制策略</li>
+</ul>
+<p>在商业银行业务高速发展的今天，涉及到大量的第三方外包人员或第三方公司，银行应当设置专门的控制策略来控制这部分人员的数据使用。策略设置过程中应考虑如下因素：根据不同的级别，设置对应的第三方控制要求；根据所接触数据级别，提高第三方准入门槛，缩小数据接触范围；按照“必需知道”和“最小授权”双重原则进行访问授权。并通过服务合同或协议等，明确第三方在安全和数据保密方面的责任。定期通过安全检查，外部评估等方式对第三方公司策略执行情况进行检查，确保第三方控制策略的的效执行。</p>
+<h3 id="建立技术手段进行数据保护"><a href="#建立技术手段进行数据保护" class="headerlink" title="建立技术手段进行数据保护"></a>建立技术手段进行数据保护</h3><p>技术手段是对管理和控制策略的有效补充，同时也是确保控制策略落地的有效支撑，企业应当根据其自身业务特性和控制策略，选择有效的技术手段，来封锁各种数据泄露途径，保证数据安全。好的技术手段应该可以在数据泄露事件发生前，发生时，发生后全过程进行控制。</p>
+<ul>
+<li>事前预防</li>
+</ul>
+<p>事前预防指通过技术手段的采用，可以预防数据泄露的发生或提高数据窃取成本，从数据CIA原则出发进行技术手段设计。常见的事前预防技术手段有透明加密，数据脱敏，终端安全，加密key，磁盘加密，移动介质管控等；</p>
+<ul>
+<li>事中阻断</li>
+</ul>
+<p>事中阻断是指当数据泄露发生时，其可以识别数据泄露行为并进行阻断。常见的技术手段有网络数据防泄露系统（网络DLP），邮件数据防泄露，终端数据防泄露等。其中终端数据防泄露可以有效防护移动介质拷贝，即时通讯工具传输，截屏，录屏等手段造成的数据泄露。</p>
+<ul>
+<li>事后审计</li>
+</ul>
+<p>事后审计是指当数据泄露事件发生后，提供可追溯审计的日志，帮助技术人员进行数据泄露源头或责任人定位。常见的技术手段有数据库审计，日志审计系统以及事中阻断技术手段产生的日志。</p>
+<h3 id="建立覆盖数据全生命周期的制度与技术手段"><a href="#建立覆盖数据全生命周期的制度与技术手段" class="headerlink" title="建立覆盖数据全生命周期的制度与技术手段"></a>建立覆盖数据全生命周期的制度与技术手段</h3><p>商业银行在设计和制定数据保护管理制度以及技术措施时，应融入和覆盖数据全生命周期的各个环节。</p>
+<p>一般来讲，数据全生命周期包括如下几个环节：</p>
+<ul>
+<li>创建</li>
+</ul>
+<p>在数据被创建时，应当通过管理制度和技术手段强制要求数据创建者确定数据安全级别，并进行有效的安全性标识；</p>
+<ul>
+<li>存储</li>
+</ul>
+<p>在数据存储过程中，应当根据不同级别的数据采用不同的技术手段进行数据存储，敏感数据应当分环境，加密存储</p>
+<ul>
+<li>使用</li>
+</ul>
+<p>数据在流转和使用过程中，应当有明确的应用审批和记录流程，第三方人员的使用应当严格管控。</p>
+<ul>
+<li>传输</li>
+</ul>
+<p>需要异地使用数据或传输使用的，应对数据加密后进行传输，并采用加密协议，甚至专人专网进行传输，保证数据在传输过程中不被截取或窃听。</p>
+<ul>
+<li>销毁</li>
+</ul>
+<p>在数据使用完毕后，确保完善的技术和管理手段监控数据销毁过程，防止数据被恢复或有备份没有销毁，造成数据的泄露。</p>
+<p>建立有效的审计与持续改进举措</p>
+<p>良好的数据保护工作是一个不断改进优化，持续改进的过程。通过安全检查，审计跟踪，发现问题和解决问题，优化旧的管理制度，使用与新的数据安全形势相匹配的管理制度与技术手段，不断提高敏感信息防护水平。</p>
+<h3 id="建立数据保护安全培训体系"><a href="#建立数据保护安全培训体系" class="headerlink" title="建立数据保护安全培训体系"></a>建立数据保护安全培训体系</h3><p>再好的管理策略，多么完美的技术手段，如果不能得到执行者的拥护和执行，一切都将是空谈和摆设。因此，为了保证商业银行数据保护工作的有效落地，降低公司当前所面临的数据泄露风险，商业银行应当建立完备的安全培训体系，提升其安全管控水平。</p>
+<p>完备的安全培训体系应当覆盖全员，又重点突出，既包含管理策略，又涉及技术手段；并且针对不同的人群有不同的要求和标准；</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>商业银行数据保护是一个系统工程，需要多方面的协调与配合，既涉及到组织架构的调整，也有技术手段的增加，管理策略补充，更需要长期的进行人员教育与培训。数据保护整体架构可概况如下：</p>
+
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/data-sec/" data-id="ckoms13jz00949cswclfk2li0" class="article-share-link" data-share="baidu" data-title="浅析商业银行数据安全保护体系建设思路（转）">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/data-sec/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" rel="tag">安全建设</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" rel="tag">数据安全</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/sonar/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">Docker部署sonar</div>
+    </a>
+  
+  
+    <a href="/mysql-forget-passwd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          CentOS7下mysql5.7忘记root密码
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
+
+</section>
+      
+      <aside   id="sidebar">
+  
+    
+  <div class="widget-wrap">
+
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/iast/">洞态IAST在某互联网甲方的落地实践</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/OpenRASP-alert/">OpenRASP报警推送</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/openrasp-web/">OpenRASP 部署</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/phpshell/">一次php加密文件的分析</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/openrasp/">OpenRASP 单机版</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">41</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  <script>
+  $(document).on("click", "ul.category-list li.category-list-item", function () {
+    window.location.href = $(this).find('a').attr('href')
+  })
+  </script>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/DevSecOps/" style="font-size: 10px;">DevSecOps</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 10px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 13.33px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8/" style="font-size: 10px;">业务安全</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">代码扫描</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 10px;">信息收集</a> <a href="/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">内网安全</a> <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" style="font-size: 10px;">内网渗透</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">前端加密</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.67px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 15px;">基础知识</a> <a href="/tags/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/" style="font-size: 10px;">基线加固</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">安全架构</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%A7%84%E5%88%92/" style="font-size: 10px;">安全规划</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%AF%84%E5%AE%A1/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0/" style="font-size: 10px;">安全评估</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">安全运维</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.33px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.33px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.33px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 15px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 11.67px;">技巧</a> <a href="/tags/%E6%8C%87%E5%8D%97/" style="font-size: 10px;">指南</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 13.33px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4/" style="font-size: 10px;">等级保护</a> <a href="/tags/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 18.33px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9D%9Eweb%E5%9E%8Bxss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%89%E5%85%A8/" style="font-size: 10px;">验证码安全</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
+    <div class="widget">
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+<script>
+$(document).on("click", "ul.archive-list li.archive-list-item", function () {
+  window.location.href = $(this).find('a').attr('href')
+})
+</script>
+
+  
+    
+  <style>
+  *{ margin: 0; padding: 0;}
+  .tooltips{ border-width: 1px; border-style: solid; position: absolute; display: none; border-radius: 3px; opacity: 0; filter:alpha( opacity = 0) ; z-index: 999;}
+  .tooltips p.content{ padding: 5px; }
+  .tooltips .triangle-front,.tooltips .triangle-back{ width: 0; height: 0; overflow: hidden; border-width: 8px; border-style: solid; position: absolute; border-color: transparent ; top: 100%; left: 50%; margin-left: -8px;}
+  .tooltips .triangle-back{ margin-top: -1px;}
+
+  .toolTipInfo{ border-color: #000; background-color: #EEEEEE;}
+  .toolTipInfo .triangle-front{ border-top-color: #EEEEEE;}
+  .toolTipInfo .triangle-back{ border-top-color: #EEEEEE;}
+
+
+  .icoSize{font-size: 2em}
+  </style>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-link"></i>链接</h3>
+    <div class="widget" style="z-index: 1;">
+
+
+
+
+
+      <!-- <ul> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+                  <a id="github-alt-icon-color" class="weight-icon-link" target="_blank"  href="https://github.com/Pa55w0rd">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="weixin-icon-color" class="weight-icon-link"  href="javascript:;"   id="weixin-icon" target="_blank" tooltips="<img src='/img/weixin.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="qq-icon-color" class="weight-icon-link"  href="javascript:;"   id="qq-icon" target="_blank" tooltips="<img src='/img/qq.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+                  <a id="envelope-o-icon-color" class="weight-icon-link" target="_blank"  href="mailto:pa55w0rd@aliyun.com" data-toggle="tooltip" data-placement="top" title="请多多交流！">
+                  <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope-o  fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+
+          <!-- </li> -->
+        
+      <!-- </ul> -->
+    </div>
+  </div>
+
+
+  <script>
+  $.fn.extend({
+    hoverTips : function (){
+      var self = $(this);
+      var sw = self.get(0).switch;
+      if( !sw ) {
+        sw = true;
+        var content = self.attr("tooltips");
+        var htmlDom = $("<div class='tooltips'>")
+            .addClass("toolTipInfo")
+            .html("<p class='content'></p>"
+                + "<p class='triangle-front'></p>"
+                + "<p class='triangle-back'></p>");
+        htmlDom.find("p.content").html( content );
+      }
+      self.on("mouseover",function(){
+        $("body").append( htmlDom );
+        var left = self.offset().left - htmlDom.outerWidth()/2 + self.outerWidth()/2;
+        var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".triangle-front").css("border-width"));
+        htmlDom.css({"left":left,"top":top - 10,"display":"block"});
+        htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
+      });
+      self.on("mouseout",function(){
+        var top = parseInt(htmlDom.css("top"));
+        htmlDom.stop().animate({ "top" : top - 10 ,"opacity" : 0},300,function(){
+          htmlDom.remove();
+          sw = false;
+        });
+      });
+    },
+
+  });
+
+  $("#weixin-icon-color").hoverTips();
+  $("#qq-icon-color").hoverTips();
+  </script>
+
+
+
+  
+    
+    <div class="widget-wrap">
+  
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友情链接『不分先后』</h3>
+      <div class="widget">
+        <ul>
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://firexun.github.io"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.weiho.xyz"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://pirogue.org"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.mianhuage.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Cotton&#39;s Blog</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://www.lovesec.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级菜鸟</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://my.oschina.net/9199771"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级大熊猫</a>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  
+  
+  
+</aside>
+
+      
+    </div>
+    <footer  id="footer">
+  
+  <div  data-scroll-reveal="enter bottom"  class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pa55w0rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
+    </div>
+
+    <div id="footer-info" class="inner">
+      <!-- id 将作为查询条件 
+      <span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">阅读量 </em>
+        <i class="leancloud-visitors-count">1000000</i>
+      </span>
+-->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <div class="powered-by">
+        <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+        我的网站的访问总数:<span id="busuanzi_value_site_pv"></span>次
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+  
+    <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+    <a href="/comments" class="mobile-nav-link"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+  
+    <a href="/404.html" class="mobile-nav-link"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/betop.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+
+  <script>
+    const gitalk = new Gitalk({
+      clientID: "992fba235eb173826494",
+      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
+      repo: "pa55w0rd.github.io",
+      owner: "Pa55w0rd",
+      admin: "Pa55w0rd",
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: "Thu Jan 10 2019 14:26:39 GMT+0800",      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+<!-- 百度分享 end -->
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+</div>
+</body>
+</html>
+
+
+
+<div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+window.scrollReveal = new scrollReveal({ reset: true});
+//
+})
+</script>

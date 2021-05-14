@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.pa55w0rd.online/openrasp-iast/</loc>
+    <loc>http://www.pa55w0rd.online/iast-test/</loc>
     
     <lastmod>2021-05-14</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.pa55w0rd.online/iast-test/</loc>
+    <loc>http://www.pa55w0rd.online/iast/</loc>
+    
+    <lastmod>2021-05-14</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.pa55w0rd.online/openrasp-iast/</loc>
     
     <lastmod>2021-05-14</lastmod>
     
@@ -24,13 +31,6 @@
   
   <url>
     <loc>http://www.pa55w0rd.online/netsparker-iast/</loc>
-    
-    <lastmod>2021-05-14</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.pa55w0rd.online/iast/</loc>
     
     <lastmod>2021-05-14</lastmod>
     

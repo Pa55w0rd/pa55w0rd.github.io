@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2021-05-14T03:23:52.935Z</updated>
+  <updated>2021-05-14T03:23:41.044Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>IAST测试靶场搭建</title>
-    <link href="http://www.pa55w0rd.online/iast-test/"/>
-    <id>http://www.pa55w0rd.online/iast-test/</id>
-    <published>2021-05-14T10:53:09.000Z</published>
-    <updated>2021-05-14T03:23:52.935Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>测试用例的选择尽量贴近真实业务使用的场景，覆盖常见的高危漏洞，以及各类请求形式。用于测试IAST产品支持检测漏洞类型、检出率、脏数据插入等等</p><span id="more"></span><h2 id="0x01-靶场选择"><a href="#0x01-靶场选择" class="headerlink" title="0x01 靶场选择"></a>0x01 靶场选择</h2><table><thead><tr><th>靶场</th><th>DVWA</th><th>Openrasp-testcases</th></tr></thead><tbody><tr><td>技术栈</td><td>PHP/MYSQL</td><td>JAVA/PHP/MYSQL</td></tr><tr><td>支持漏洞类型</td><td><a href="https://github.com/digininja/DVWA">https://github.com/digininja/DVWA</a></td><td><a href="https://github.com/baidu-security/openrasp-testcases">https://github.com/baidu-security/openrasp-testcases</a></td></tr></tbody></table><p>考虑到公司使用的技术栈，这里选择了openrasp-testcases用于测试靶场</p><h2 id="0x02-靶场搭建"><a href="#0x02-靶场搭建" class="headerlink" title="0x02 靶场搭建"></a>0x02 靶场搭建</h2><p>环境：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Centos7</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">PHP7</span>.<span class="number">3</span></span><br><span class="line"><span class="attribute">JDK1</span>.<span class="number">8</span></span><br><span class="line"><span class="attribute">MYSQL5</span>.<span class="number">6</span></span><br><span class="line"><span class="attribute">APACHE2</span>.<span class="number">4</span></span><br><span class="line"><span class="attribute">TOMCAT8</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">MAVEN3</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure><h3 id="2-1-JAVA-测试靶场"><a href="#2-1-JAVA-测试靶场" class="headerlink" title="2.1 JAVA 测试靶场"></a>2.1 JAVA 测试靶场</h3><p>mvn编译</p><p>启动tomcat</p><p>启动mysql</p><p>本地靶场：<a href="http://192.168.244.129:8080/manager/html">http://192.168.244.129:8080/manager/html</a></p><p><img src="https://pic.rmb.bdstatic.com/bjh/7fecbe8550249e2d807eaadd547fcddb.png" alt="image.png"></p><h3 id="2-2-PHP测试靶场"><a href="#2-2-PHP测试靶场" class="headerlink" title="2.2 PHP测试靶场"></a>2.2 PHP测试靶场</h3><p>启动apache</p><p>启动php</p><p>启动mysql</p><p>本地靶场</p><p><a href="http://192.168.244.129/">http://192.168.244.129/</a><br><img src="https://pic.rmb.bdstatic.com/bjh/65b814f3f7c7ad8e621fd3d8e3b4e174.png" alt="image.png"></p><h3 id="2-3-脏数据测试"><a href="#2-3-脏数据测试" class="headerlink" title="2.3 脏数据测试"></a>2.3 脏数据测试</h3><p>产生脏数据的原因大多是执行了 数据库的insert语句，这里使用java简单写一个demo用于测试脏数据</p><p>创建数据库</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> test;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> test;         </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> test.* <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> test.* <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span>;</span><br></pre></td></tr></table></figure><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> table vuln (</span><br><span class="line">-&gt; <span class="symbol">`id`</span> INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">-&gt; <span class="symbol">`name`</span> VARCHAR(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">-&gt; <span class="keyword">primary</span> <span class="keyword">key</span>(<span class="symbol">`id`</span>)</span><br><span class="line">-&gt; )ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure><p>清空数据，重置ID</p><p>truncate table vuln;</p><p>MySQL服务器执行SQL记录实时监控，或者直接查询数据库</p><p><a href="https://github.com/cw1997/MySQL-Monitor">https://github.com/cw1997/MySQL-Monitor</a></p><p>执行sql语句</p><p>stmt.executeUpdate(“INSERT INTO vuln(name) VALUES (‘“+id+”‘)”);</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;测试用例的选择尽量贴近真实业务使用的场景，覆盖常见的高危漏洞，以及各类请求形式。用于测试IAST产品支持检测漏洞类型、检出率、脏数据插入等等&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
-    
-    
-    <category term="SDL" scheme="http://www.pa55w0rd.online/tags/SDL/"/>
-    
-  </entry>
   
   <entry>
     <title>洞态IAST落地实践</title>
@@ -106,11 +85,11 @@
   </entry>
   
   <entry>
-    <title>openrasp-iast</title>
+    <title>百度开源OpenRASP - IAST使用</title>
     <link href="http://www.pa55w0rd.online/openrasp-iast/"/>
     <id>http://www.pa55w0rd.online/openrasp-iast/</id>
     <published>2021-05-14T02:00:30.000Z</published>
-    <updated>2021-05-14T03:20:16.223Z</updated>
+    <updated>2021-05-14T03:25:54.451Z</updated>
     
     <content type="html"><![CDATA[<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>相对于awvs和netsparker的IAST，百度iast为主动型插桩技术，无需人工配置任务及代理等，由agent采集请求及hook点信息，自动选择扫描漏洞类型，极大的增加覆盖率和效率，减少脏数据产生</p><p>主动型扫描，不适用于参数加密、编码、防重放等场景</p><p>管理后台部署参考 <a href="https://www.pa55w0rd.online/openrasp-web/">OpenRASP 部署</a></p><span id="more"></span><h2 id="0x01-开启灰盒扫描"><a href="#0x01-开启灰盒扫描" class="headerlink" title="0x01 开启灰盒扫描"></a>0x01 开启灰盒扫描</h2><p>参考 <a href="https://rasp.baidu.com/doc/install/iast.html">安装灰盒扫描工具</a></p><table><thead><tr><th>项目</th><th>IAST</th><th>SAST</th><th>DAST</th></tr></thead><tbody><tr><td>测试覆盖度</td><td>高，由功能测试覆盖度保障</td><td>高</td><td>低</td></tr><tr><td>检出率</td><td>高</td><td>高</td><td>中</td></tr><tr><td>误报率</td><td>低</td><td>高，需要编写规则</td><td>低</td></tr><tr><td>扫描效率</td><td>准实时检测</td><td>非实时，与程序复杂度、代码量相关</td><td>非实时，程序越复杂，安全测试用例就越多</td></tr><tr><td>扫描报告</td><td>包含动态数据流、请求响应、应用代码信息</td><td>只有静态代码信息</td><td>只有请求和响应信息</td></tr><tr><td>并发检测</td><td>资源消耗分布端上，可支持上百个任务</td><td>CPU 消耗较大</td><td>网络资源消耗</td></tr><tr><td>语言支持</td><td>区分不同语</td><td>区分不同语</td><td>不区分语言</td></tr><tr><td>框架支持</td><td>一定程度区分</td><td>一定程度区分</td><td>不区分框架</td></tr><tr><td>使用风险</td><td>无</td><td>无</td><td>脏数据、大流量</td></tr><tr><td>使用成本</td><td>低，基本没有误报</td><td>高，人工排查误报</td><td>低</td></tr><tr><td>开发流程集成度</td><td>无缝集成开发和测试阶段，零成本完成</td><td>安全测试</td><td>开发阶段，成本较高    测试阶段，成本较高</td></tr></tbody></table><blockquote><p>通过综合对比，IAST 不仅解决了传统 DAST 无法精确定位漏洞位置的问题，还有着比传统 SAST 技术低得多的误报率。在脏数据处理、对系统稳定性影响更小，这里对IAST产品做调研</p></blockquote>]]></content>
     
@@ -118,6 +97,27 @@
     <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;相对于awvs和netsparker的IAST，百度iast为主动型插桩技术，无需人工配置任务及代理等，由agent采集请求及hook点信息，自动选择扫描漏洞类型，极大的增加覆盖率和效率，减少脏数据产生&lt;/p&gt;
 &lt;p&gt;主动型扫描，不适用于参数加密、编码、防重放等场景&lt;/p&gt;
 &lt;p&gt;管理后台部署参考 &lt;a href=&quot;https://www.pa55w0rd.online/openrasp-web/&quot;&gt;OpenRASP 部署&lt;/a&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="SDL" scheme="http://www.pa55w0rd.online/tags/SDL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IAST测试靶场搭建</title>
+    <link href="http://www.pa55w0rd.online/iast-test/"/>
+    <id>http://www.pa55w0rd.online/iast-test/</id>
+    <published>2021-05-14T00:53:09.000Z</published>
+    <updated>2021-05-14T03:25:50.609Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>测试用例的选择尽量贴近真实业务使用的场景，覆盖常见的高危漏洞，以及各类请求形式。用于测试IAST产品支持检测漏洞类型、检出率、脏数据插入等等</p><span id="more"></span><h2 id="0x01-靶场选择"><a href="#0x01-靶场选择" class="headerlink" title="0x01 靶场选择"></a>0x01 靶场选择</h2><table><thead><tr><th>靶场</th><th>DVWA</th><th>Openrasp-testcases</th></tr></thead><tbody><tr><td>技术栈</td><td>PHP/MYSQL</td><td>JAVA/PHP/MYSQL</td></tr><tr><td>支持漏洞类型</td><td><a href="https://github.com/digininja/DVWA">https://github.com/digininja/DVWA</a></td><td><a href="https://github.com/baidu-security/openrasp-testcases">https://github.com/baidu-security/openrasp-testcases</a></td></tr></tbody></table><p>考虑到公司使用的技术栈，这里选择了openrasp-testcases用于测试靶场</p><h2 id="0x02-靶场搭建"><a href="#0x02-靶场搭建" class="headerlink" title="0x02 靶场搭建"></a>0x02 靶场搭建</h2><p>环境：</p><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Centos7</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">PHP7</span>.<span class="number">3</span></span><br><span class="line"><span class="attribute">JDK1</span>.<span class="number">8</span></span><br><span class="line"><span class="attribute">MYSQL5</span>.<span class="number">6</span></span><br><span class="line"><span class="attribute">APACHE2</span>.<span class="number">4</span></span><br><span class="line"><span class="attribute">TOMCAT8</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">MAVEN3</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure><h3 id="2-1-JAVA-测试靶场"><a href="#2-1-JAVA-测试靶场" class="headerlink" title="2.1 JAVA 测试靶场"></a>2.1 JAVA 测试靶场</h3><p>mvn编译</p><p>启动tomcat</p><p>启动mysql</p><p>本地靶场：<a href="http://192.168.244.129:8080/manager/html">http://192.168.244.129:8080/manager/html</a></p><p><img src="https://pic.rmb.bdstatic.com/bjh/7fecbe8550249e2d807eaadd547fcddb.png" alt="image.png"></p><h3 id="2-2-PHP测试靶场"><a href="#2-2-PHP测试靶场" class="headerlink" title="2.2 PHP测试靶场"></a>2.2 PHP测试靶场</h3><p>启动apache</p><p>启动php</p><p>启动mysql</p><p>本地靶场</p><p><a href="http://192.168.244.129/">http://192.168.244.129/</a><br><img src="https://pic.rmb.bdstatic.com/bjh/65b814f3f7c7ad8e621fd3d8e3b4e174.png" alt="image.png"></p><h3 id="2-3-脏数据测试"><a href="#2-3-脏数据测试" class="headerlink" title="2.3 脏数据测试"></a>2.3 脏数据测试</h3><p>产生脏数据的原因大多是执行了 数据库的insert语句，这里使用java简单写一个demo用于测试脏数据</p><p>创建数据库</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> test;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> test;         </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> test.* <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> test.* <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span>;</span><br></pre></td></tr></table></figure><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> table vuln (</span><br><span class="line">-&gt; <span class="symbol">`id`</span> INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">-&gt; <span class="symbol">`name`</span> VARCHAR(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">-&gt; <span class="keyword">primary</span> <span class="keyword">key</span>(<span class="symbol">`id`</span>)</span><br><span class="line">-&gt; )ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure><p>清空数据，重置ID</p><p>truncate table vuln;</p><p>MySQL服务器执行SQL记录实时监控，或者直接查询数据库</p><p><a href="https://github.com/cw1997/MySQL-Monitor">https://github.com/cw1997/MySQL-Monitor</a></p><p>执行sql语句</p><p>stmt.executeUpdate(“INSERT INTO vuln(name) VALUES (‘“+id+”‘)”);</p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;测试用例的选择尽量贴近真实业务使用的场景，覆盖常见的高危漏洞，以及各类请求形式。用于测试IAST产品支持检测漏洞类型、检出率、脏数据插入等等&lt;/p&gt;</summary>
     
     
     

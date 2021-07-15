@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2021-06-04T10:02:25.166Z</updated>
+  <updated>2021-07-15T02:46:12.573Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>阿里云OSS Bucket 劫持</title>
+    <link href="http://www.pa55w0rd.online/oss/"/>
+    <id>http://www.pa55w0rd.online/oss/</id>
+    <published>2021-07-15T02:25:25.000Z</published>
+    <updated>2021-07-15T02:46:12.573Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="对象存储OSS"><a href="#对象存储OSS" class="headerlink" title="对象存储OSS"></a>对象存储OSS</h2><p>阿里云对象存储OSS（Object Storage Service）是一款海量、安全、低成本、高可靠的云存储服务，提供99.9999999999%(12个9)的数据持久性，99.995%的数据可用性。多种存储类型供选择，全面优化存储成本。</p><h2 id="劫持利用"><a href="#劫持利用" class="headerlink" title="劫持利用"></a>劫持利用</h2><p>访问某域名，提示 NoSuchBucket </p><span id="more"></span><img src="/oss/oss1.png" class="" title="描述"><p>获取信息，这个桶不存在</p><p>HostId : <code>baobao-tb.oss-cn-shenzhen.aliyuncs.com</code></p><p>BucketName : <code>baobao-tb</code></p><p>登陆阿里云，访问(OSS管理控制台)[<a href="https://oss.console.aliyun.com/overview]">https://oss.console.aliyun.com/overview]</a></p><h3 id="创建Bucket"><a href="#创建Bucket" class="headerlink" title="创建Bucket"></a>创建Bucket</h3><p>注意填写Bucket 名称和地域，和上面获取的信息保持一致</p><img src="/oss/oss2.png" class="" title="描述"><p>查看 Bucket 域名，可以看到创建成功</p><img src="/oss/oss3.png" class="" title="描述"><h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>访问左侧菜单，选择上传文件，上传HTML文件，文件ACL 选择公共读就可以了</p><img src="/oss/oss4.png" class="" title="描述"><p>访问该该地址，发现已经劫持成功</p><img src="/oss/oss5.png" class="" title="描述"><img src="/oss/oss6.png" class="" title="描述">]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;对象存储OSS&quot;&gt;&lt;a href=&quot;#对象存储OSS&quot; class=&quot;headerlink&quot; title=&quot;对象存储OSS&quot;&gt;&lt;/a&gt;对象存储OSS&lt;/h2&gt;&lt;p&gt;阿里云对象存储OSS（Object Storage Service）是一款海量、安全、低成本、高可靠的云存储服务，提供99.9999999999%(12个9)的数据持久性，99.995%的数据可用性。多种存储类型供选择，全面优化存储成本。&lt;/p&gt;
+&lt;h2 id=&quot;劫持利用&quot;&gt;&lt;a href=&quot;#劫持利用&quot; class=&quot;headerlink&quot; title=&quot;劫持利用&quot;&gt;&lt;/a&gt;劫持利用&lt;/h2&gt;&lt;p&gt;访问某域名，提示 NoSuchBucket &lt;/p&gt;</summary>
+    
+    
+    
+    <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
+    
+    
+    <category term="note" scheme="http://www.pa55w0rd.online/tags/note/"/>
+    
+  </entry>
   
   <entry>
     <title>AWVS漏洞复现小记</title>
@@ -443,31 +465,6 @@
     
     
     <category term="note" scheme="http://www.pa55w0rd.online/tags/note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CVE-2019-0708 批量检测</title>
-    <link href="http://www.pa55w0rd.online/cve-2019-0708/"/>
-    <id>http://www.pa55w0rd.online/cve-2019-0708/</id>
-    <published>2019-06-11T06:57:19.000Z</published>
-    <updated>2019-06-11T07:02:20.409Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="0x01-前言"><a href="#0x01-前言" class="headerlink" title="0x01 前言"></a>0x01 前言</h2><blockquote><p>项目地址：<a href="https://github.com/Pa55w0rd/CVE-2019-0708">https://github.com/Pa55w0rd/CVE-2019-0708</a></p></blockquote><p>CVE-2019-0708 Windows RDP 远程命令执行漏洞</p><p>Windows系列服务器于2019年5月15号，被爆出高危漏洞，该漏洞影响范围较广，windows2003、windows2008、windows2008 R2、windows xp * 系统都会遭到攻击，该服务器漏洞利用方式是通过远程桌面端口3389，RDP协议进行攻击的 。CVE-2019-0708漏洞是通过检查用户的身份认证，导致可以绕过认证，不用任何的交互，直接通过rdp协议进行连接发送恶意代码执行命令到服务器中去。这个漏洞是今年来说危害严重性最大的漏洞，换句话说，该漏洞是“可传播的”，这意味着任何利用该漏洞的恶意软件都可能从受影响的计算机传播到受影响的计算机，就像2017年WannaCry恶意软件在全球蔓延一样，跟之前的勒索，永恒之蓝病毒差不多。</p><span id="more"></span><h2 id="0x02-批量检测"><a href="#0x02-批量检测" class="headerlink" title="0x02 批量检测"></a>0x02 批量检测</h2><p>由于使用Windows系统的服务器有很多，需要批量排查，虽然在边界防火墙阻止tcp端口3389的连接，保护服务器免受来自外部的攻击，但针对内网横向攻击，还是要不打补丁等方式来保证服务器的安全</p><h3 id="1-gt-360-RDP漏洞无损扫描器"><a href="#1-gt-360-RDP漏洞无损扫描器" class="headerlink" title="1&gt; 360 RDP漏洞无损扫描器"></a>1&gt; 360 RDP漏洞无损扫描器</h3><p>0708detector.exe　程序是360公司的360Vulcan Team发布的一款针对编号为CVE-2019-0708的Windows远程桌面协议漏洞的检测程序,原则上该扫描程序不会造成目标系统出现蓝屏,请您测试后再使用。</p><p>程序校验码MD5，防止捆绑后门木马<br>febc027cee2782dba25b628ce3a893d6 *0708detector.exe</p><p>使用方法及结果判断请参考  readme(请读我).txt</p><h3 id="2-gt-基于360无损扫描器写的批量脚本"><a href="#2-gt-基于360无损扫描器写的批量脚本" class="headerlink" title="2&gt; 基于360无损扫描器写的批量脚本"></a>2&gt; 基于360无损扫描器写的批量脚本</h3><p><strong>环境</strong></p><figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pytho<span class="symbol">n3</span><span class="number">.6</span></span><br><span class="line">wi<span class="symbol">n10</span></span><br></pre></td></tr></table></figure><p><strong>使用</strong></p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">python</span> cve-<span class="number">2019</span>-<span class="number">0708</span>_v1.<span class="keyword">py</span> -h</span><br><span class="line">usage: cve-<span class="number">2019</span>-<span class="number">0708</span>_v1.<span class="keyword">py</span> [-h] [-<span class="keyword">p</span> PORT] [-t TARGET | -<span class="keyword">f</span> FILE]</span><br><span class="line"></span><br><span class="line">Example: <span class="keyword">python</span> cve-<span class="number">2019</span>-<span class="number">0708</span>_v1.<span class="keyword">py</span> -t <span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span> -<span class="keyword">p</span> <span class="number">3389</span></span><br><span class="line"></span><br><span class="line">optional <span class="keyword">argument</span><span class="variable">s:</span></span><br><span class="line">  -h, --<span class="keyword">help</span>            show this <span class="keyword">help</span> message <span class="built_in">and</span> <span class="keyword">exit</span></span><br><span class="line">  -<span class="keyword">p</span> PORT, --port PORT  默认端口<span class="number">3389</span></span><br><span class="line">  -t TARGET, --target TARGET</span><br><span class="line">                        可以输入单个IP地址，或者输入CIDR形式，如：<span class="number">192.168</span>.<span class="number">1.0</span>/<span class="number">24</span>，注意CIDR格式，第一位必须是</span><br><span class="line">                        所在IP段的网络号</span><br><span class="line">  -<span class="keyword">f</span> FILE, --<span class="keyword">file</span> FILE  输入IP地址文件</span><br></pre></td></tr></table></figure><p>大致就是先通过telnet判断是否打开3389端口，然后通过多线程调用360无损扫描器进行扫描</p><img src="/cve-2019-0708/1.png" class="" title="描述"><blockquote><p>错误处理</p></blockquote><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">错误’ValueError: IP(‘<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>/<span class="number">24</span>’) has invalid prefix length (<span class="number">24</span>)’的解决办法</span><br><span class="line"></span><br><span class="line">这个是由于IP地址的CIDR格式引起的，根据IPy的库规定，第一位必须是所在IP段的网络号，正确的写法如下：</span><br><span class="line"></span><br><span class="line"><span class="number">1.1.1.0</span>/<span class="number">24</span> : <span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">0</span>~<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">255</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.1.1.128</span>/<span class="number">25</span> : <span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">128</span>~<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">255</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.1.1.64</span>/<span class="number">26</span> : <span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">64</span>~<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">127</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.1.1.32</span>/<span class="number">27</span> : <span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">32</span>~<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">63</span></span><br><span class="line"></span><br><span class="line"><span class="number">1.1.1.16</span>/<span class="number">28</span> : <span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">16</span>~<span class="number">1</span>.<span class="number">1</span>.<span class="number">1</span>.<span class="number">31</span></span><br></pre></td></tr></table></figure><h3 id="3-gt-msf-auxiliary-scanner-rdp-cve-2019-0708-bluekeep-模块"><a href="#3-gt-msf-auxiliary-scanner-rdp-cve-2019-0708-bluekeep-模块" class="headerlink" title="3&gt; msf auxiliary/scanner/rdp/cve_2019_0708_bluekeep 模块"></a>3&gt; msf auxiliary/scanner/rdp/cve_2019_0708_bluekeep 模块</h3><img src="/cve-2019-0708/2.png" class="" title="描述"><h2 id="0x03-修复建议"><a href="#0x03-修复建议" class="headerlink" title="0x03 修复建议"></a>0x03 修复建议</h2><ol><li>自行去微软官方下载对应的安全补丁进行补丁更新操作</li><li>如果不需要，请禁用远程桌面服务</li><li>在运行Windows 7，Windows Server 2008和Windows Server 2008 R2的提供支持版本的系统上启用网络级别身份验证（NLA），因为NLA要求的身份验证在漏洞触发点之前，所以受影响的系统可以利用NLA防御此漏洞的“蠕虫”恶意软件或高级恶意软件威胁。但是，如果攻击者具有可用于成功进行身份验证的有效凭据，则受影响的系统仍然容易受到远程执行代码执行（RCE）的攻击。</li><li>在企业边界防火墙处阻止TCP端口3389</li><li>避免将远程桌面服务（RDP，默认端口为3389）暴露在公网上（如为了远程运维方便确有必要开启，则可通过VPN登录后才能访问）</li></ol>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;0x01-前言&quot;&gt;&lt;a href=&quot;#0x01-前言&quot; class=&quot;headerlink&quot; title=&quot;0x01 前言&quot;&gt;&lt;/a&gt;0x01 前言&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;项目地址：&lt;a href=&quot;https://github.com/Pa55w0rd/CVE-2019-0708&quot;&gt;https://github.com/Pa55w0rd/CVE-2019-0708&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;CVE-2019-0708 Windows RDP 远程命令执行漏洞&lt;/p&gt;
-&lt;p&gt;Windows系列服务器于2019年5月15号，被爆出高危漏洞，该漏洞影响范围较广，windows2003、windows2008、windows2008 R2、windows xp * 系统都会遭到攻击，该服务器漏洞利用方式是通过远程桌面端口3389，RDP协议进行攻击的 。CVE-2019-0708漏洞是通过检查用户的身份认证，导致可以绕过认证，不用任何的交互，直接通过rdp协议进行连接发送恶意代码执行命令到服务器中去。这个漏洞是今年来说危害严重性最大的漏洞，换句话说，该漏洞是“可传播的”，这意味着任何利用该漏洞的恶意软件都可能从受影响的计算机传播到受影响的计算机，就像2017年WannaCry恶意软件在全球蔓延一样，跟之前的勒索，永恒之蓝病毒差不多。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="应急响应" scheme="http://www.pa55w0rd.online/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
-    
-    
-    <category term="应急响应" scheme="http://www.pa55w0rd.online/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
     
   </entry>
   

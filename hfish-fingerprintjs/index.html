@@ -8,18 +8,24 @@
 
   
 
-  <title>Tag: 备忘录 | Pa55w0rd &#39;s Blog</title>
+  <title>魔改开源版本HFish - 溯源2 fingerprintjs | Pa55w0rd &#39;s Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.online/tags/%E5%A4%87%E5%BF%98%E5%BD%95/index.html">
+  <meta name="description" content="FingerprintJSFingerprintJS 是一个浏览器指纹库，可查询浏览器属性并从中计算出散列的访问者标识符。与 cookie 和本地存储不同，指纹在隐身&#x2F;隐私模式下保持不变，即使浏览器数据被清除。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="魔改开源版本HFish - 溯源2 fingerprintjs">
+<meta property="og:url" content="http://www.pa55w0rd.online/hfish-fingerprintjs/index.html">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="信息安全">
+<meta property="og:description" content="FingerprintJSFingerprintJS 是一个浏览器指纹库，可查询浏览器属性并从中计算出散列的访问者标识符。与 cookie 和本地存储不同，指纹在隐身&#x2F;隐私模式下保持不变，即使浏览器数据被清除。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/bf59073eb7119969dc936eba7771f921.png">
+<meta property="article:published_time" content="2021-08-30T10:11:26.000Z">
+<meta property="article:modified_time" content="2021-08-30T10:32:13.157Z">
 <meta property="article:author" content="Pa55w0rd">
+<meta property="article:tag" content="蜜罐">
+<meta property="article:tag" content="开源">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.rmb.bdstatic.com/bjh/bf59073eb7119969dc936eba7771f921.png">
 
   
 
@@ -185,44 +191,154 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap"  data-scroll-reveal="enter left and over 0.7s">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div  class="archive-article-inner">
-    <header class="archive-article-header">
-      <a  href="/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E5%A4%87%E5%BF%98%E5%BD%95/" class="archive-article-date">
+      <section id="main"><article   id="post-hfish-fingerprintjs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
+    <a  href="/hfish-fingerprintjs/" class="article-date">
   <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-29T03:38:20.000Z" itemprop="datePublished">10月 29</time>
+  <time  datetime="2021-08-30T10:11:26.000Z" itemprop="datePublished">2021-08-30</time>
 </a>
 
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner"  >
+    
+    
+
+      <header class="article-header">
+
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/web%E5%BA%94%E7%94%A8%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E5%A4%87%E5%BF%98%E5%BD%95/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Web应用安全测试备忘录 By legend</a>
+    <h1 class="article-title" itemprop="name">
+      <i class="fa fa-pencil-square-o  article-title-icon"></i>魔改开源版本HFish - 溯源2 fingerprintjs
     </h1>
   
 
 
-    </header>
+
+      </header>
+    
+    <!-- <span title="{{ __('post.wordcount') }}">
+      字数统计：{{ wordcount(post.content) }} 字
+     </span>
+     <span title="{{ __('post.min2read') }}">
+      阅读时长：预计{{ min2read(post.content) }} 分钟
+    </span> -->
+    <!-- 目录内容 -->
+
+  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+        </p>
+<div id="toc-article" class="toc-article">
+    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+  <strong class="toc-title">文章目录</strong>
+         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FingerprintJS"><span class="toc-number">1.</span> <span class="toc-text">FingerprintJS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">简单使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%90%8E%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">最后效果图</span></a></li></ol>
+       </div>
+ <script type="text/javascript">
+function showToc(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:block");
+  show_toc_btn.setAttribute("style","display:none");
+  };
+function showBtn(){
+  var toc_article = document.getElementById("toc-article");
+  var show_toc_btn = document.getElementById("show-toc-btn");
+  toc_article.setAttribute("style","display:none");
+  show_toc_btn.setAttribute("style","display:block");
+  };
+ </script>
+    		
+<!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+          <h2 id="FingerprintJS"><a href="#FingerprintJS" class="headerlink" title="FingerprintJS"></a>FingerprintJS</h2><p>FingerprintJS 是一个浏览器指纹库，可查询浏览器属性并从中计算出散列的访问者标识符。与 cookie 和本地存储不同，指纹在隐身/隐私模式下保持不变，即使浏览器数据被清除。</p>
+<span id="more"></span>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/fingerprintjs/fingerprintjs">https://github.com/fingerprintjs/fingerprintjs</a></p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><p>通过调用该库，会返回一个hash字符串，标识访问用户的唯一值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// Initialize the agent at application startup.</span></span><br><span class="line">  <span class="keyword">const</span> fpPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">    script.onload = resolve</span><br><span class="line">    script.onerror = reject</span><br><span class="line">    script.async = <span class="literal">true</span></span><br><span class="line">    script.src = <span class="string">&#x27;https://cdn.jsdelivr.net/npm/&#x27;</span></span><br><span class="line">      + <span class="string">&#x27;@fingerprintjs/fingerprintjs@3/dist/fp.min.js&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(script)</span><br><span class="line">  &#125;)</span><br><span class="line">    .then(<span class="function">() =&gt;</span> FingerprintJS.load())</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the visitor identifier when you need it.</span></span><br><span class="line">  fpPromise</span><br><span class="line">    .then(<span class="function"><span class="params">fp</span> =&gt;</span> fp.get())</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// This is the visitor identifier:</span></span><br><span class="line">      <span class="keyword">const</span> visitorId = result.visitorId</span><br><span class="line">      <span class="built_in">console</span>.log(visitorId)</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="最后效果图"><a href="#最后效果图" class="headerlink" title="最后效果图"></a>最后效果图</h2><p>该js放在存在漏洞的页面或者登录后的页面</p>
+<p><img src="https://pic.rmb.bdstatic.com/bjh/bf59073eb7119969dc936eba7771f921.png" alt="image.png"></p>
+
+        
+<!--
+        </br>
+        <span id="busuanzi_container_page_pv">
+          阅读次数<span id="busuanzi_value_page_pv"></span>
+        </span>
+        <h2 id="FingerprintJS"><a href="#FingerprintJS" class="headerlink" title="FingerprintJS"></a>FingerprintJS</h2><p>FingerprintJS 是一个浏览器指纹库，可查询浏览器属性并从中计算出散列的访问者标识符。与 cookie 和本地存储不同，指纹在隐身/隐私模式下保持不变，即使浏览器数据被清除。</p>
+<span id="more"></span>
+<p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/fingerprintjs/fingerprintjs">https://github.com/fingerprintjs/fingerprintjs</a></p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><p>通过调用该库，会返回一个hash字符串，标识访问用户的唯一值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="comment">// Initialize the agent at application startup.</span></span><br><span class="line">  <span class="keyword">const</span> fpPromise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">    script.onload = resolve</span><br><span class="line">    script.onerror = reject</span><br><span class="line">    script.async = <span class="literal">true</span></span><br><span class="line">    script.src = <span class="string">&#x27;https://cdn.jsdelivr.net/npm/&#x27;</span></span><br><span class="line">      + <span class="string">&#x27;@fingerprintjs/fingerprintjs@3/dist/fp.min.js&#x27;</span></span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(script)</span><br><span class="line">  &#125;)</span><br><span class="line">    .then(<span class="function">() =&gt;</span> FingerprintJS.load())</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the visitor identifier when you need it.</span></span><br><span class="line">  fpPromise</span><br><span class="line">    .then(<span class="function"><span class="params">fp</span> =&gt;</span> fp.get())</span><br><span class="line">    .then(<span class="function"><span class="params">result</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// This is the visitor identifier:</span></span><br><span class="line">      <span class="keyword">const</span> visitorId = result.visitorId</span><br><span class="line">      <span class="built_in">console</span>.log(visitorId)</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="最后效果图"><a href="#最后效果图" class="headerlink" title="最后效果图"></a>最后效果图</h2><p>该js放在存在漏洞的页面或者登录后的页面</p>
+<p><img src="https://pic.rmb.bdstatic.com/bjh/bf59073eb7119969dc936eba7771f921.png" alt="image.png"></p>
+-->
+      
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/hfish-fingerprintjs/" data-id="cksyi5ux50000w0sw5ysa4ipm" class="article-share-link" data-share="baidu" data-title="魔改开源版本HFish - 溯源2 fingerprintjs">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/hfish-fingerprintjs/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%9C%9C%E7%BD%90/" rel="tag">蜜罐</a></li></ul>
+
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hfish-web/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← 上一篇</strong>
+      <div class="article-nav-title">魔改开源版本HFish - 高交互Web蜜罐</div>
+    </a>
+  
+  
+</nav>
+
 
   
-  
-    </div></section>
-  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+  <section class="comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section> 
+
+
+
+
+  <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
+  <div id="gitalk-container"></div>
+
 
 </section>
       
@@ -615,7 +731,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
       // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
+      id: "Mon Aug 30 2021 18:11:26 GMT+0800",      // Ensure uniqueness and length less than 50
       distractionFreeMode: false  // Facebook-like distraction free mode
     })
     gitalk.render('gitalk-container')

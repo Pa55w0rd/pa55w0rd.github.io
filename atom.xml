@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2021-08-30T10:32:13.157Z</updated>
+  <updated>2021-09-13T08:38:27.402Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CVE-2021-40444</title>
+    <link href="http://www.pa55w0rd.online/CVE-2021-40444/"/>
+    <id>http://www.pa55w0rd.online/CVE-2021-40444/</id>
+    <published>2021-09-13T08:38:27.000Z</published>
+    <updated>2021-09-13T08:38:27.402Z</updated>
+    
+    <content type="html"><![CDATA[<script src=/js/crypto-js.js></script><script>function doDecrypt (pwd, onError) {console.log('in doDecrypt');const txt = document.getElementById('enc_content').innerHTML;let plantext;try {const bytes = CryptoJS.AES.decrypt(txt, pwd);var plaintext = bytes.toString(CryptoJS.enc.Utf8);} catch(err) {if(onError) {onError(err);}return;}document.getElementById('enc_content').innerHTML = plaintext;document.getElementById('enc_content').style.display = 'block';document.getElementById('enc_passwd').style.display = 'none';if(typeof MathJax !== 'undefined') {MathJax.Hub.Queue(['resetEquationNumbers', MathJax.InputJax.TeX],['PreProcess', MathJax.Hub],['Reprocess', MathJax.Hub]);}}</script><div id="enc_content" style="display:none">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</div><div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div><script>var onError = function(error) {document.getElementById("enc_error").innerHTML = "password error!"};function decrypt() {var passwd = document.getElementById("enc_pwd_input").value;console.log(passwd);doDecrypt(passwd, onError);}</script></div>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;如不需要对文章进行加密请去掉&quot;&gt;&lt;a href=&quot;#如不需要对文章进行加密请去掉&quot; class=&quot;headerlink&quot; title=&quot;如不需要对文章进行加密请去掉&quot;&gt;&lt;/a&gt;如不需要对文章进行加密请去掉&lt;/h1&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;encrypt:&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;enc_pwd:&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;123456&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;如不需要目录请去掉&quot;&gt;&lt;a href=&quot;#如不需要目录请去掉&quot; class=&quot;headerlink&quot; title=&quot;如不需要目录请去掉&quot;&gt;&lt;/a&gt;如不需要目录请去掉&lt;/h1&gt;&lt;figure class=&quot;highlight yaml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;attr&quot;&gt;toc:&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;true&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;h1 id=&quot;添加摘要&quot;&gt;&lt;a href=&quot;#添加摘要&quot; class=&quot;headerlink&quot; title=&quot;添加摘要&quot;&gt;&lt;/a&gt;添加摘要&lt;/h1&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>魔改开源版本HFish - 溯源2 fingerprintjs</title>
@@ -457,28 +478,6 @@
     
     
     <category term="基础" scheme="http://www.pa55w0rd.online/tags/%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>proxychains_error</title>
-    <link href="http://www.pa55w0rd.online/proxychains-error/"/>
-    <id>http://www.pa55w0rd.online/proxychains-error/</id>
-    <published>2019-07-22T07:52:35.000Z</published>
-    <updated>2019-07-22T07:59:45.542Z</updated>
-    
-    <content type="html"><![CDATA[<p>在使用proxychains代理时，报了个错误</p><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ProxyChains<span class="string">-3</span>.1 (http://proxychains.sf.net)</span><br><span class="line"><span class="keyword">ERROR: </span>ld.so: object &#x27;libproxychains.so.3&#x27; from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.</span><br></pre></td></tr></table></figure><span id="more"></span><p>看来proxychains无法加载libproxychains.so.3库，查到的资料是修改/usr/bin/proxychains文件的export</p><p>通过find命令查找这个库</p><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> <span class="regexp">/usr/</span> -name libproxychains.so.<span class="number">3</span> -<span class="keyword">print</span></span><br><span class="line"><span class="regexp">/usr/</span>lib<span class="regexp">/x86_64-linux-gnu/</span>libproxychains.so.<span class="number">3</span></span><br></pre></td></tr></table></figure><p>将vi /usr/bin/proxychains的export修改为/usr/lib/x86_64-linux-gnu/libproxychains.so.3</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;ProxyChains-3.1 (http://proxychains.sf.net)&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> = 0 ] ; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;  usage:&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;          proxychains &lt;prog&gt; [args]&quot;</span></span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">export</span> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libproxychains.so.3</span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;在使用proxychains代理时，报了个错误&lt;/p&gt;
-&lt;figure class=&quot;highlight subunit&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;ProxyChains&lt;span class=&quot;string&quot;&gt;-3&lt;/span&gt;.1 (http://proxychains.sf.net)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ERROR: &lt;/span&gt;ld.so: object &amp;#x27;libproxychains.so.3&amp;#x27; from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
-    
-    
-    <category term="note" scheme="http://www.pa55w0rd.online/tags/note/"/>
     
   </entry>
   

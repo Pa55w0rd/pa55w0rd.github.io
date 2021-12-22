@@ -25,7 +25,7 @@
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/cfffa3ddd7d59e6696113a8b3d857e2d.png">
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/179763afe5257feb006fce33d55c4568.png">
 <meta property="article:published_time" content="2021-12-17T08:33:07.000Z">
-<meta property="article:modified_time" content="2021-12-17T09:56:41.450Z">
+<meta property="article:modified_time" content="2021-12-17T10:24:59.682Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="应急响应">
 <meta name="twitter:card" content="summary">
@@ -163,6 +163,8 @@ ga('send', 'pageview');
         
           <a class="main-nav-link" href="/archives"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
         
+          <a class="main-nav-link" href="/threat-broadcast"><i class="fa fa-bullhorn" aria-hidden="true"></i>威胁情报</a>
+        
           <a class="main-nav-link" href="/about"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
         
           <a class="main-nav-link" href="/comments"><i class="fa fa-comments" aria-hidden="true"></i>留言</a>
@@ -268,7 +270,7 @@ function showBtn(){
 <p>上面从网上找了一段描述，自上周四poc出来之后，波及很广，大家都是加班加点的打补丁，很多SRC纷纷发文称暂不接受该漏洞，到现在，仍有很多带有漏洞的业务跑在互联网上，利用工具如雨后春笋一样，这里随便找了个工具从黑盒层面进行检测，该漏洞的利用方式类似fastjson jndi注入</p>
 <h2 id="黑盒检测工具"><a href="#黑盒检测工具" class="headerlink" title="黑盒检测工具"></a>黑盒检测工具</h2><p>这里推荐burp插件进行被动扫描，之前尝试写xray poc，发现xray的poc只能fuzz header头，不能遍历参数进行fuzz，burp插件覆盖更全面</p>
 <p>自行GitHub搜索 log4jscan</p>
-<p>dnslog建议自建或者使用ceye.io，不然大家都是用dnslog.cn，是不是抽风一下，根本无法检测出漏洞</p>
+<p>dnslog建议自建或者使用ceye.io，不然大家都是用dnslog.cn，时不时抽风一下，根本无法检测出漏洞</p>
 <h2 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h2><p>Apache Log4j2 不是一个特定的Web服务，而仅仅是一个第三方库，我们可以通过找到一些使用了这个库的应用来复现这个漏洞，比如Apache Solr。</p>
 <p>执行如下命令启动一个Apache Solr 8.11.0，其依赖了Log4j 2.14.1</p>
 <p><img src="https://pic.rmb.bdstatic.com/bjh/bd2dcbe7957c7bf340c04dcaa20a749d.png" alt="image.png"></p>
@@ -307,7 +309,7 @@ function showBtn(){
 <p>上面从网上找了一段描述，自上周四poc出来之后，波及很广，大家都是加班加点的打补丁，很多SRC纷纷发文称暂不接受该漏洞，到现在，仍有很多带有漏洞的业务跑在互联网上，利用工具如雨后春笋一样，这里随便找了个工具从黑盒层面进行检测，该漏洞的利用方式类似fastjson jndi注入</p>
 <h2 id="黑盒检测工具"><a href="#黑盒检测工具" class="headerlink" title="黑盒检测工具"></a>黑盒检测工具</h2><p>这里推荐burp插件进行被动扫描，之前尝试写xray poc，发现xray的poc只能fuzz header头，不能遍历参数进行fuzz，burp插件覆盖更全面</p>
 <p>自行GitHub搜索 log4jscan</p>
-<p>dnslog建议自建或者使用ceye.io，不然大家都是用dnslog.cn，是不是抽风一下，根本无法检测出漏洞</p>
+<p>dnslog建议自建或者使用ceye.io，不然大家都是用dnslog.cn，时不时抽风一下，根本无法检测出漏洞</p>
 <h2 id="靶场搭建"><a href="#靶场搭建" class="headerlink" title="靶场搭建"></a>靶场搭建</h2><p>Apache Log4j2 不是一个特定的Web服务，而仅仅是一个第三方库，我们可以通过找到一些使用了这个库的应用来复现这个漏洞，比如Apache Solr。</p>
 <p>执行如下命令启动一个Apache Solr 8.11.0，其依赖了Log4j 2.14.1</p>
 <p><img src="https://pic.rmb.bdstatic.com/bjh/bd2dcbe7957c7bf340c04dcaa20a749d.png" alt="image.png"></p>
@@ -759,6 +761,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     <a href="/" class="mobile-nav-link"><i class="fa fa-home" aria-hidden="true"></i>首页</a>
   
     <a href="/archives" class="mobile-nav-link"><i class="fa fa-archive" aria-hidden="true"></i>归档</a>
+  
+    <a href="/threat-broadcast" class="mobile-nav-link"><i class="fa fa-bullhorn" aria-hidden="true"></i>威胁情报</a>
   
     <a href="/about" class="mobile-nav-link"><i class="fa fa-user" aria-hidden="true"></i>关于我</a>
   

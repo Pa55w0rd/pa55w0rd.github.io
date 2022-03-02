@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2021-12-24T05:53:49.036Z</updated>
+  <updated>2022-03-02T08:59:31.596Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>博客添加威胁情报播报模块</title>
-    <link href="http://www.pa55w0rd.online/threat-broadcast/"/>
-    <id>http://www.pa55w0rd.online/threat-broadcast/</id>
+    <link href="http://www.pa55w0rd.online/threat-broadcast-post/"/>
+    <id>http://www.pa55w0rd.online/threat-broadcast-post/</id>
     <published>2021-12-24T05:47:09.000Z</published>
-    <updated>2021-12-24T05:53:49.036Z</updated>
+    <updated>2022-03-02T08:59:31.596Z</updated>
     
     <content type="html"><![CDATA[<p>漏洞威胁情报，通过公开的威胁情报来源爬取并整合最新信息</p><p>clone项目地址：<a href="https://github.com/lyy289065406/threat-broadcast">https://github.com/lyy289065406/threat-broadcast</a></p><p>通过Github Actions部署，并自动生成 Github Page 播报页面</p><span id="more"></span><p>博客地址：<a href="https://www.pa55w0rd.online/">https://www.pa55w0rd.online/</a></p><p><img src="https://pic.rmb.bdstatic.com/bjh/5ece22d6a1c6cf4a553034ddbc64cb4d.png" alt="image.png"></p><p>Github Page </p><p><img src="https://pic.rmb.bdstatic.com/bjh/7b9b8040329a4679f744c9cf59e8d71a.png" alt="image.png"></p>]]></content>
     

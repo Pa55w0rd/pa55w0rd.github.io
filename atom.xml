@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2022-03-03T10:47:02.324Z</updated>
+  <updated>2022-03-10T09:01:55.370Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</title>
+    <link href="http://www.pa55w0rd.online/zer-trust-security-model/"/>
+    <id>http://www.pa55w0rd.online/zer-trust-security-model/</id>
+    <published>2022-03-10T05:49:02.000Z</published>
+    <updated>2022-03-10T09:01:55.370Z</updated>
+    
+    <content type="html"><![CDATA[<p>远程办公的场景越来越多，传统的VPN方式已经不能满足业务和安全需求，这里先记录几个名词，后续有时间研究研究</p><p><code>SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</code></p><p>留坑</p><span id="more"></span>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;远程办公的场景越来越多，传统的VPN方式已经不能满足业务和安全需求，这里先记录几个名词，后续有时间研究研究&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;SPA &amp;amp; fwknop &amp;amp; SDP &amp;amp; Pomerium &amp;amp; IAP &amp;amp; Traefik &amp;amp; KeyCloak &amp;amp; Casbin &amp;amp; ORY Oathkeeper&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;留坑&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+    <category term="零信任" scheme="http://www.pa55w0rd.online/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/"/>
+    
+    <category term="zero-trust" scheme="http://www.pa55w0rd.online/tags/zero-trust/"/>
+    
+    <category term="iam" scheme="http://www.pa55w0rd.online/tags/iam/"/>
+    
+  </entry>
   
   <entry>
     <title>OpenVPN + Ldap + OTP</title>
@@ -453,27 +480,6 @@
     
     
     <category term="分析" scheme="http://www.pa55w0rd.online/tags/%E5%88%86%E6%9E%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OpenRASP 单机版</title>
-    <link href="http://www.pa55w0rd.online/openrasp/"/>
-    <id>http://www.pa55w0rd.online/openrasp/</id>
-    <published>2019-10-30T07:28:02.000Z</published>
-    <updated>2019-11-04T05:40:02.903Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>某web应用一直被黑，加上是零几年的网站代码没人维护，于是从某云开个服务器放上去了，然后再部署一个防护软件，想装个安全狗的，听大佬说存在数据回传，之前关注了百度开源的OpenRASP项目，先在测试环境试一下</p><span id="more"></span><h2 id="0x01-环境"><a href="#0x01-环境" class="headerlink" title="0x01 环境"></a>0x01 环境</h2><p>这个PHP测试环境是前几天CVE-2019-11043 PHP-FPM + Nginx RCE的漏洞靶场</p><p>docker 启动并将宿主机目录挂在到容器 /var/www/html 目录下</p><p>下载测试用例</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>packages.baidu.com<span class="regexp">/app/</span>openrasp<span class="regexp">/testcases/</span>php-vulns.tar.gz</span><br><span class="line">tar -xzf php-vulns.tar.gz</span><br><span class="line"></span><br><span class="line">访问http:<span class="regexp">//</span><span class="number">10.10</span>.<span class="number">10.11</span>:<span class="number">8080</span><span class="regexp">/vulns/</span>  OpenRASP 官方测试用例集合</span><br></pre></td></tr></table></figure><p>下载openrasp</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https:<span class="regexp">//</span>packages.baidu.com<span class="regexp">/app/</span>openrasp<span class="regexp">/release/</span><span class="number">1.2</span>.<span class="number">1</span>/rasp-php-linux.tar.bz2</span><br><span class="line">tar -xjf rasp-php-linux.tar.bz2</span><br></pre></td></tr></table></figure><p>进入容器内</p><p>这里安装单机版，openrasp依赖pdo、pcre、json扩展</p><p>通过php -m 查看扩展状态是已启用的</p><h2 id="0x02-安装"><a href="#0x02-安装" class="headerlink" title="0x02 安装"></a>0x02 安装</h2><p>这里使用自动化安装失败</p><p>改为手工安装</p><ol><li>确认基本信息</li></ol><p>在web目录下创建一个phpinfo.php文件<br>定位到extension_dir，确认PHP扩展安装目录</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/lib/</span>php<span class="regexp">/extensions/</span>no-debug-non-zts-<span class="number">20170718</span></span><br></pre></td></tr></table></figure><p>搜索Additional .ini files parsed （生产服务器上没有，搜索Loaded Configuration File确认ini配置文件路径）</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/etc/</span>php<span class="regexp">/conf.d/</span>docker-php-ext-sodium.ini </span><br></pre></td></tr></table></figure><p>在该目录下创建一个新的ini文件/etc/php.d/z-openrasp.ini</p><ol start="2"><li>安装软件</li></ol><p>根据PHP版本号，复制openrasp.so到扩展目录</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp openrasp<span class="regexp">/rasp-php-2019-10-29/</span>php<span class="regexp">/linux-php7.2-x86_64/</span>openrasp.so <span class="regexp">/usr/</span>local<span class="regexp">/lib/</span>php<span class="regexp">/extensions/</span>no-debug-non-zts-<span class="number">20170718</span>/</span><br><span class="line">chmod <span class="number">755</span> <span class="regexp">/usr/</span>local<span class="regexp">/lib/</span>php<span class="regexp">/extensions/</span>no-debug-non-zts-<span class="number">20170718</span>/openrasp.so</span><br></pre></td></tr></table></figure><p>确定openrasp安装目录，这个目录将会用于存储检测插件、报警日志、插件日志等内容</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p <span class="regexp">/opt/</span>rasp</span><br><span class="line">chmod <span class="number">777</span> -R <span class="regexp">/opt/</span>rasp</span><br></pre></td></tr></table></figure><p>修改z-openrasp.ini，添加</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">; BEGIN OPENRASP</span></span><br><span class="line"></span><br><span class="line"><span class="section">[openrasp]</span></span><br><span class="line"><span class="attr">extension</span>=openrasp.so</span><br><span class="line"><span class="attr">openrasp.root_dir</span>=/opt/rasp</span><br><span class="line"></span><br><span class="line"><span class="comment">; 远程管理配置，不需要不用配置</span></span><br><span class="line"><span class="comment">; openrasp.backend_url=</span></span><br><span class="line"><span class="comment">; openrasp.app_id=</span></span><br><span class="line"><span class="comment">; openrasp.app_secret=</span></span><br><span class="line"><span class="comment">; openrasp.remote_management_enable=1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; END OPENRASP</span></span><br></pre></td></tr></table></figure><ol start="3"><li><p>将官方插件移动到 /opt/rasp/plugins/ 目录下</p></li><li><p>重启php-fpm</p></li><li><p>验证是否安装成功，通过phpinfo.php，检查openrasp模块是否加载成功，返回包X-Protected-By: OpenRASP</p></li><li><p>插件模式开启的是观察模式，将所有的拦截改为仅记录日志，在插件里面关闭观察模式</p></li></ol><h2 id="0x03-防护成功"><a href="#0x03-防护成功" class="headerlink" title="0x03 防护成功"></a>0x03 防护成功</h2><img src="/openrasp/1.png" class="" title="描述">]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;0x00-前言&quot;&gt;&lt;a href=&quot;#0x00-前言&quot; class=&quot;headerlink&quot; title=&quot;0x00 前言&quot;&gt;&lt;/a&gt;0x00 前言&lt;/h2&gt;&lt;p&gt;某web应用一直被黑，加上是零几年的网站代码没人维护，于是从某云开个服务器放上去了，然后再部署一个防护软件，想装个安全狗的，听大佬说存在数据回传，之前关注了百度开源的OpenRASP项目，先在测试环境试一下&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
-    
-    
-    <category term="安全防护" scheme="http://www.pa55w0rd.online/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/"/>
     
   </entry>
   

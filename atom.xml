@@ -6,7 +6,7 @@
   <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
   
   <link href="http://www.pa55w0rd.online/"/>
-  <updated>2023-08-24T09:53:35.078Z</updated>
+  <updated>2023-08-24T10:10:32.747Z</updated>
   <id>http://www.pa55w0rd.online/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.pa55w0rd.online/wechatmp-chatgpt/"/>
     <id>http://www.pa55w0rd.online/wechatmp-chatgpt/</id>
     <published>2023-08-24T09:17:33.000Z</published>
-    <updated>2023-08-24T09:53:35.078Z</updated>
+    <updated>2023-08-24T10:10:32.747Z</updated>
     
     <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入微信公众号，让用户可以通过私信与ChatGPT进行交流。</p><span id="more"></span><h2 id="为什么要将ChatGPT接入微信公众号私信呢"><a href="#为什么要将ChatGPT接入微信公众号私信呢" class="headerlink" title="为什么要将ChatGPT接入微信公众号私信呢"></a>为什么要将ChatGPT接入微信公众号私信呢</h2><p>首先，这可以为你的公众号增加一个全新的互动方式。你可以让ChatGPT回答读者的问题，提供更个性化的答案和建议。这样，你的读者不再只是被动地阅读你的文章，而是真正与你的公众号进行互动。</p><p>接入ChatGPT也能够为你的公众号带来更多的亮点。想象一下，你的读者可以发送私信给ChatGPT，询问各种问题，不仅限于你之前发布的内容。无论是技术问题、生活琐事还是搞笑段子，ChatGPT都可以给出非常有趣的回答。这样一来，你的公众号将成为读者心中的好玩伙伴，增加用户粘性和留存率。</p><p>不过，我们也要注意一点。虽然ChatGPT可以提供智能的回答，但它毕竟是一个机器学习模型，在某些情况下可能会给出不准确或不合理的回答。所以，在使用ChatGPT的同时，你也要进行一定的监控和过滤，确保回答的质量和可靠性。</p><h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><ol><li>关注公众号<code>Pa55w0rd</code><br><img src="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png" alt="1692869717320.png"></li><li>直接给公众号发送消息即可<br>默认使用<code>gpt-3.5-turbo-0613</code>模型，可以通过<code>#set_gpt_model gpt-4-0613</code>命令切换gpt-4-0613模型（GPT-4比较慢，也不保证可用），通过<code>#reset_gpt_model</code>重置默认模型，通过<code>#gpt_model</code>查看当前模型，通过<code>#reset</code>重置会话</li><li>由于受订阅号限制，回复内容较短的情况下 (15s内)，可以立即完成回复，但耗时较长的回复则会先回复一句 “正在思考中”，后续需要用户输入任意文字主动获取答案<br><img src="https://yanxuan.nosdn.127.net/fb5789d744eaf842c142163776434331.png" alt="1692869926985.png"></li></ol><h2 id="我是如何接入的"><a href="#我是如何接入的" class="headerlink" title="我是如何接入的"></a>我是如何接入的</h2><p>使用<a href="https://github.com/zhayujie/chatgpt-on-wechat">chatgpt-on-wechat</a>项目，按照接入文档操作，写的很详细，我是3月21日接入微信，因为微信平均一周掉线一次，到6月16号选择接入公众号，运行很稳定，微信小号也是老号，未发现封号、限制添加好友问题</p><p>项目介绍<br><code>Wechat robot based on ChatGPT, which using OpenAI api and itchat library. 使用ChatGPT搭建微信聊天机器人，基于 GPT3.5/GPT4.0/文心一言 模型，支持个人微信、公众号、企业微信部署，能处理文本、语音和图片，访问操作系统和互联网，支持基于知识库定制专属机器人。</code></p><h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>通过将ChatGPT接入微信公众号私信，你可以为你的读者带来更加生动、有趣的互动体验。这不仅能够增加用户的参与度，还能够提高用户粘性和留存率。当然，合理使用ChatGPT的同时，也要注意回答质量和准确性的监控。让我们一起探索，为微信公众号注入无限可能吧！</p>]]></content>
     
@@ -33,7 +33,13 @@
     <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
     
     
-    <category term="ChatGPT - 微信公众号 - 私信互动 - GPT-4" scheme="http://www.pa55w0rd.online/tags/ChatGPT-%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7-%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8-GPT-4/"/>
+    <category term="ChatGPT" scheme="http://www.pa55w0rd.online/tags/ChatGPT/"/>
+    
+    <category term="微信公众号" scheme="http://www.pa55w0rd.online/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+    
+    <category term="私信互动" scheme="http://www.pa55w0rd.online/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/"/>
+    
+    <category term="GPT-4" scheme="http://www.pa55w0rd.online/tags/GPT-4/"/>
     
   </entry>
   

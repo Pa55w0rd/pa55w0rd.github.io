@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,16 +10,33 @@
 
   <title>应用开发安全指南 | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.概述本指南是IT安全保障体系建设规范的一个组成部分，全面阐述了IT系统应用开发整个软件生命周期所必须遵照的设计、编码、测试方面的安全要求，阐述了不同开发环境和编码语言条件下安全开发的相关规范要求。">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/">
+
+
+  <meta name="keywords" content="安全开发,开发安全">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"应用开发安全指南","description":"本指南是IT安全保障体系建设规范的一个组成部分，全面阐述了IT系统应用开发整个软件生命周期所必须遵照的设计、编码、测试方面的安全要求，阐述了不同开发环境和编码语言条件下安全开发的相关规范要求。","url":"http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/","datePublished":"2018-09-28T10:37:59.000Z","dateModified":"2026-03-24T07:59:41.333Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/"},"inLanguage":"zh-CN"}</script>
+
+
+  
+  <meta name="description" content="本指南是IT安全保障体系建设规范的一个组成部分，全面阐述了IT系统应用开发整个软件生命周期所必须遵照的设计、编码、测试方面的安全要求，阐述了不同开发环境和编码语言条件下安全开发的相关规范要求。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="应用开发安全指南">
-<meta property="og:url" content="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="1.概述本指南是IT安全保障体系建设规范的一个组成部分，全面阐述了IT系统应用开发整个软件生命周期所必须遵照的设计、编码、测试方面的安全要求，阐述了不同开发环境和编码语言条件下安全开发的相关规范要求。">
+<meta property="og:description" content="本指南是IT安全保障体系建设规范的一个组成部分，全面阐述了IT系统应用开发整个软件生命周期所必须遵照的设计、编码、测试方面的安全要求，阐述了不同开发环境和编码语言条件下安全开发的相关规范要求。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-09-28T10:37:59.000Z">
-<meta property="article:modified_time" content="2022-03-10T09:22:27.303Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.333Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="安全开发">
 <meta name="twitter:card" content="summary">
@@ -41,7 +58,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -53,25 +70,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -91,31 +119,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -128,11 +131,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -190,21 +193,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-应用开发安全指南" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-09-28T10:37:59.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
+      <section id="main"><article id="post-应用开发安全指南" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-09-28T10:37:59.000Z" itemprop="datePublished">2018-09-28</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 16.9k 字</span>
+      <span class="article-reading-time">约 58 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.333Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -221,39 +240,6 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E7%9B%AE%E7%9A%84"><span class="toc-number">1.1.</span> <span class="toc-text">1.1.目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-number">1.2.</span> <span class="toc-text">1.2.适用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-%E9%80%82%E7%94%A8%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.3.</span> <span class="toc-text">1.3.适用对象</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%AE%89%E5%85%A8"><span class="toc-number">2.</span> <span class="toc-text">2.应用系统设计安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.1.</span> <span class="toc-text">2.1.应用系统架构安全设计要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%87%AA%E8%BA%AB%E6%9E%B6%E6%9E%84%E5%AE%89%E5%85%A8"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1.应用系统自身架构安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E4%B8%8E%E5%A4%96%E7%B3%BB%E7%BB%9F%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%AE%89%E5%85%A8"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2.应用系统与外系统接口的安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-3-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%85%B6%E4%BB%96%E7%9A%84%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6"><span class="toc-number">2.1.3.</span> <span class="toc-text">2.1.3.应用系统其他的安全机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E5%8A%9F%E8%83%BD%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">2.2.应用系统软件功能安全设计要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E8%AE%A4%E8%AF%81%E4%B8%8E%E6%8E%88%E6%9D%83%E5%8A%9F%E8%83%BD%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1.认证与授权功能的设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2.数据安全功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E5%AE%89%E5%85%A8%E5%AE%A1%E8%AE%A1%E5%8A%9F%E8%83%BD"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3.安全审计功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-4-%E5%AE%B9%E9%94%99%E5%8A%9F%E8%83%BD%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.4.</span> <span class="toc-text">2.2.4.容错功能设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%82%A8%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.3.</span> <span class="toc-text">2.3.应用系统存储安全设计要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AD%98%E5%82%A8%E5%AE%B9%E9%87%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1.应用系统的存储容量设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AD%98%E5%82%A8%E4%BB%8B%E8%B4%A8%E9%80%89%E6%8B%A9"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2.应用系统的存储介质选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%82%A8%E5%A4%87%E4%BB%BD%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.3.3.</span> <span class="toc-text">2.3.3.应用系统存储备份对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%AD%98%E5%82%A8%E5%A4%87%E4%BB%BD%E6%96%B9%E5%BC%8F"><span class="toc-number">2.3.4.</span> <span class="toc-text">2.3.4.应用系统存储备份方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-5-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AD%98%E5%82%A8%E8%AE%BE%E5%A4%87%E5%8A%9F%E8%83%BD%E8%A6%81%E6%B1%82"><span class="toc-number">2.3.5.</span> <span class="toc-text">2.3.5.应用系统的存储设备功能要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E9%80%9A%E8%AE%AF%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.4.</span> <span class="toc-text">2.4.应用系统通讯安全设计要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.5.</span> <span class="toc-text">2.5.应用系统数据库安全设计要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.6.</span> <span class="toc-text">2.6.应用系统数据安全设计要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-1-%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86%E5%AE%89%E5%85%A8"><span class="toc-number">2.6.1.</span> <span class="toc-text">2.6.1.数据采集安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-2-%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%AE%89%E5%85%A8"><span class="toc-number">2.6.2.</span> <span class="toc-text">2.6.2.数据传输安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-3-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%AE%89%E5%85%A8"><span class="toc-number">2.6.3.</span> <span class="toc-text">2.6.3.数据处理安全</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E7%BC%96%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.</span> <span class="toc-text">3.应用系统编码安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E5%9F%BA%E6%9C%AC%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8%E8%A6%81%E6%B1%82"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.基本代码安全要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-%E8%BE%93%E5%85%A5%E9%AA%8C%E8%AF%81"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1.输入验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-SQL%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2.SQL语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-%E6%B3%A8%E9%87%8A%E4%BB%A3%E7%A0%81"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3.注释代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-%E9%94%99%E8%AF%AF%E6%B6%88%E6%81%AF"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4.错误消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5-URL%E5%86%85%E5%AE%B9"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5.URL内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-6-%E8%AE%BE%E7%BD%AEPATH%E5%8F%98%E9%87%8F"><span class="toc-number">3.1.6.</span> <span class="toc-text">3.1.6.设置PATH变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-7-%E5%85%B6%E4%BB%96%E8%A6%81%E6%B1%82"><span class="toc-number">3.1.7.</span> <span class="toc-text">3.1.7.其他要求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Web%E7%BC%96%E7%A8%8B%E5%AE%89%E5%85%A8%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="toc-number">3.2.</span> <span class="toc-text">3.2.Web编程安全基本要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-1-%E8%BE%93%E5%85%A5%E6%A3%80%E6%9F%A5%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.1.</span> <span class="toc-text">3.2.1.输入检查安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-2-%E6%95%8F%E6%84%9F%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E6%94%BE%E5%92%8C%E4%BC%A0%E9%80%92%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.2.</span> <span class="toc-text">3.2.2.敏感数据的存放和传递安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-3-%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.3.</span> <span class="toc-text">3.2.3.缓冲区溢出安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-4-%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.4.</span> <span class="toc-text">3.2.4.格式化字符串安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-5-%E6%95%B4%E6%95%B0%E6%BA%A2%E5%87%BA%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.5.</span> <span class="toc-text">3.2.5.整数溢出安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-6-SQL%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.6.</span> <span class="toc-text">3.2.6.SQL注入代码安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-7-%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.7.</span> <span class="toc-text">3.2.7.命令注入代码安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-8-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.8.</span> <span class="toc-text">3.2.8.异常处理代码安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-9-%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.9.</span> <span class="toc-text">3.2.9.跨站脚本代码安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-10-%E4%BF%9D%E6%8A%A4%E7%BD%91%E7%BB%9C%E6%B5%81%E9%87%8F%E7%9A%84%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.10.</span> <span class="toc-text">3.2.10.保护网络流量的代码安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-11-%E5%BA%94%E7%94%A8%E4%B8%AD%E7%9A%84%E5%BC%B1%E5%8F%A3%E4%BB%A4%E4%BB%A3%E7%A0%81%E5%AE%89%E5%85%A8"><span class="toc-number">3.2.11.</span> <span class="toc-text">3.2.11.应用中的弱口令代码安全</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-SOCKET%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B%E5%AE%89%E5%85%A8%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 SOCKET网络编程安全基本要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-JAVA%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E8%A6%81%E6%B1%82"><span class="toc-number">3.4.</span> <span class="toc-text">3.4.JAVA安全开发要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-1-%E9%98%B2%E8%8C%83%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%88XSS%EF%BC%89"><span class="toc-number">3.4.1.</span> <span class="toc-text">3.4.1.防范跨站脚本（XSS）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-2-%E9%98%B2%E8%8C%83SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">3.4.2.</span> <span class="toc-text">3.4.2.防范SQL注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-3-%E9%98%B2%E8%8C%83%E6%81%B6%E6%84%8F%E6%96%87%E4%BB%B6%E6%89%A7%E8%A1%8C"><span class="toc-number">3.4.3.</span> <span class="toc-text">3.4.3.防范恶意文件执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-4-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E7%9B%B4%E6%8E%A5%E5%AF%B9%E8%B1%A1%E5%BC%95%E7%94%A8"><span class="toc-number">3.4.4.</span> <span class="toc-text">3.4.4.不安全的直接对象引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-5-%E9%98%B2%E8%8C%83%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0"><span class="toc-number">3.4.5.</span> <span class="toc-text">3.4.5.防范跨站请求伪造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-6-%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%E4%B8%8D%E5%BD%93"><span class="toc-number">3.4.6.</span> <span class="toc-text">3.4.6.信息泄露和错误处理不当</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-7-%E6%AE%8B%E7%BC%BA%E7%9A%84%E8%AE%A4%E8%AF%81%E5%92%8C%E4%BC%9A%E8%AF%9D%E7%AE%A1%E7%90%86"><span class="toc-number">3.4.7.</span> <span class="toc-text">3.4.7.残缺的认证和会话管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-8-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E5%8A%A0%E5%AF%86%E5%AD%98%E5%82%A8"><span class="toc-number">3.4.8.</span> <span class="toc-text">3.4.8.不安全的加密存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-9-%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-number">3.4.9.</span> <span class="toc-text">3.4.9.不安全的通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-10-%E9%99%90%E5%88%B6URL%E8%AE%BF%E9%97%AE%E5%A4%B1%E6%95%88"><span class="toc-number">3.4.10.</span> <span class="toc-text">3.4.10.限制URL访问失效</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-PHP%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E8%A6%81%E6%B1%82"><span class="toc-number">3.5.</span> <span class="toc-text">3.5.PHP安全开发要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-1-%E5%8F%98%E9%87%8F%E6%BB%A5%E7%94%A8"><span class="toc-number">3.5.1.</span> <span class="toc-text">3.5.1.变量滥用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-2-%E6%96%87%E4%BB%B6%E6%89%93%E5%BC%80"><span class="toc-number">3.5.2.</span> <span class="toc-text">3.5.2.文件打开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-3-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB"><span class="toc-number">3.5.3.</span> <span class="toc-text">3.5.3.文件包含</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-4-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">3.5.4.</span> <span class="toc-text">3.5.4.文件上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-5-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">3.5.5.</span> <span class="toc-text">3.5.5.命令执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-6-%E8%AD%A6%E5%91%8A%E5%8F%8A%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF"><span class="toc-number">3.5.6.</span> <span class="toc-text">3.5.6.警告及错误信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-7-PHP%E4%B8%8EMySQL%E7%BB%84%E5%90%88%E7%9A%84SQL%E6%B3%A8%E5%85%A5"><span class="toc-number">3.5.7.</span> <span class="toc-text">3.5.7.PHP与MySQL组合的SQL注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-8-%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC"><span class="toc-number">3.5.8.</span> <span class="toc-text">3.5.8.跨站脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-9-%E7%A6%81%E7%94%A8%E6%97%A0%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">3.5.9.</span> <span class="toc-text">3.5.9.禁用无用的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-10-%E7%A6%81%E7%94%A8%E6%9F%90%E4%BA%9B%E7%B1%BB"><span class="toc-number">3.5.10.</span> <span class="toc-text">3.5.10.禁用某些类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-11-%E9%99%90%E5%88%B6%E8%84%9A%E6%9C%AC%E6%93%8D%E4%BD%9C%E8%B7%AF%E5%BE%84"><span class="toc-number">3.5.11.</span> <span class="toc-text">3.5.11.限制脚本操作路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-12-%E5%85%B6%E4%BB%96%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">3.5.12.</span> <span class="toc-text">3.5.12.其他安全配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6-C-C-%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E8%A6%81%E6%B1%82"><span class="toc-number">3.6.</span> <span class="toc-text">3.6.C&#x2F;C++安全开发要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-1-%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA"><span class="toc-number">3.6.1.</span> <span class="toc-text">3.6.1.缓冲区溢出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-2-%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%94%BB%E5%87%BB"><span class="toc-number">3.6.2.</span> <span class="toc-text">3.6.2.格式化字符串攻击</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-3-%E7%AB%9E%E4%BA%89%E6%9D%A1%E4%BB%B6"><span class="toc-number">3.6.3.</span> <span class="toc-text">3.6.3.竞争条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-4-%E6%A3%80%E9%AA%8C%E6%9C%89%E6%95%88%E7%9A%84%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">3.6.4.</span> <span class="toc-text">3.6.4.检验有效的返回值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7-Perl%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91%E8%A6%81%E6%B1%82"><span class="toc-number">3.7.</span> <span class="toc-text">3.7.Perl安全开发要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-1-Taint%E9%AA%8C%E8%AF%81"><span class="toc-number">3.7.1.</span> <span class="toc-text">3.7.1.Taint验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-2-%E5%AE%89%E5%85%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">3.7.2.</span> <span class="toc-text">3.7.2.安全模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-7-3-%E8%AD%A6%E5%91%8A%E5%8F%82%E6%95%B0"><span class="toc-number">3.7.3.</span> <span class="toc-text">3.7.3.警告参数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%BA%94%E7%94%A8%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95%E5%AE%89%E5%85%A8"><span class="toc-number">4.</span> <span class="toc-text">4.应用系统测试安全</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E6%B5%8B%E8%AF%95%E5%89%8D%E7%9A%84%E8%A6%81%E6%B1%82"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.测试前的要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95%E5%8F%8A%E5%86%85%E5%AE%B9%E8%A6%81%E6%B1%82"><span class="toc-number">4.2.</span> <span class="toc-text">4.2.测试方法及内容要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%8F%8A%E4%BA%BA%E5%91%98%E5%AE%89%E5%85%A8%E8%A6%81%E6%B1%82"><span class="toc-number">4.3.</span> <span class="toc-text">4.3.测试环境及人员安全要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E6%B5%8B%E8%AF%95%E5%90%8E%E7%9A%84%E8%A6%81%E6%B1%82"><span class="toc-number">4.4.</span> <span class="toc-text">4.4.测试后的要求</span></a></li></ol></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
@@ -265,18 +251,36 @@ function showBtn(){
 <h2 id="1-2-适用范围"><a href="#1-2-适用范围" class="headerlink" title="1.2.适用范围"></a>1.2.适用范围</h2><p>本指南适用于xxxx系统代码开发项目，作为xxxx在IT系统开发、设计环节中所遵照执行的依据。</p>
 <h2 id="1-3-适用对象"><a href="#1-3-适用对象" class="headerlink" title="1.3.适用对象"></a>1.3.适用对象</h2><p>本配置指南的适用人员包括：xxxx系统应用开发人员及安全检查管理人员。</p>
 <hr>
-<h1 id="2-应用系统设计安全"><a href="#2-应用系统设计安全" class="headerlink" title="2.应用系统设计安全"></a>2.应用系统设计安全</h1><h2 id="2-1-应用系统架构安全设计要求"><a href="#2-1-应用系统架构安全设计要求" class="headerlink" title="2.1.应用系统架构安全设计要求"></a>2.1.应用系统架构安全设计要求</h2><p>在应用系统设计阶段，应充分考虑该架构的安全性,包括B/S、C/S等形式的安全，主要体现在应用数据和用户会话的安全，还应当考虑应用系统自身体系架构内部的安全，以及与外系统接口的安全。针对某些特殊应用，还需考虑复、抗攻击等安全机制。</p>
+<h1 id="2-应用系统设计安全"><a href="#2-应用系统设计安全" class="headerlink" title="2.应用系统设计安全"></a>2.应用系统设计安全</h1><h2 id="2-1-应用系统架构安全设计要求"><a href="#2-1-应用系统架构安全设计要求" class="headerlink" title="2.1.应用系统架构安全设计要求"></a>2.1.应用系统架构安全设计要求</h2><p>在应用系统设计阶段，应充分考虑该架构的安全性,包括B&#x2F;S、C&#x2F;S等形式的安全，主要体现在应用数据和用户会话的安全，还应当考虑应用系统自身体系架构内部的安全，以及与外系统接口的安全。针对某些特殊应用，还需考虑复、抗攻击等安全机制。</p>
 <h3 id="2-1-1-应用系统自身架构安全"><a href="#2-1-1-应用系统自身架构安全" class="headerlink" title="2.1.1.应用系统自身架构安全"></a>2.1.1.应用系统自身架构安全</h3><ol>
-<li><p>自身结构中各组件之间通讯过程的安全机制<br><br> 组件之间的通讯包括命令级的和数据级的，应充分考虑：    - 传输命令和数据所采用的协议的安全性。应根据组件之间通讯内容安全性要求程度的不同选择不同安全性要求的协议；    - 考虑程序的模块之间的安全通讯机制；    - 不应使用标准的服务端口或者常见病毒、蠕虫等使用的服务端口。</p>
+<li><p>   自身结构中各组件之间通讯过程的安全机制<br><br>  组件之间的通讯包括命令级的和数据级的，应充分考虑：</p>
+<ul>
+<li>传输命令和数据所采用的协议的安全性。应根据组件之间通讯内容安全性要求程度的不同选择不同安全性要求的协议；</li>
+<li>考虑程序的模块之间的安全通讯机制；</li>
+<li>不应使用标准的服务端口或者常见病毒、蠕虫等使用的服务端口。</li>
+</ul>
 </li>
-<li><p>   认证与访问控制机制，应考虑：    - 组件之间的信任机制；    - 用户的身份认证机制；    - 对于组件资源的访问控制机制；    - 不通用户对资源的权限控制机制。</p>
+<li><p>   认证与访问控制机制，应考虑：</p>
+<ul>
+<li>组件之间的信任机制；</li>
+<li>用户的身份认证机制；</li>
+<li>对于组件资源的访问控制机制；</li>
+<li>不通用户对资源的权限控制机制。</li>
+</ul>
 </li>
-<li><p>组件内重要文件和数据的安全防护机制：<br><br> 存在于组件内部的重要数据资源应当考虑其相应的安全防护机制，这些重要的数据资源包括：    - 配置文件；    - 用户数据，包括文件数据及数据库中的数据；    - 临时文件和数据；    - 与外系统或者系统内部其他组件接口用的数据文件。</p>
+<li><p>   组件内重要文件和数据的安全防护机制：<br><br>  存在于组件内部的重要数据资源应当考虑其相应的安全防护机制，这些重要的数据资源包括：</p>
+<ul>
+<li>配置文件；</li>
+<li>用户数据，包括文件数据及数据库中的数据；</li>
+<li>临时文件和数据；</li>
+<li>与外系统或者系统内部其他组件接口用的数据文件。</li>
+</ul>
+<p>  对这些重要数据的存取安全性设计，包括:</p>
+<ul>
+<li>文件和数据存放是否加密及采用的加密方式。</li>
+</ul>
 </li>
 </ol>
-<pre><code>对这些重要数据的存取安全性设计，包括:
-- 文件和数据存放是否加密及采用的加密方式。
-</code></pre>
 <h3 id="2-1-2-应用系统与外系统接口的安全"><a href="#2-1-2-应用系统与外系统接口的安全" class="headerlink" title="2.1.2.应用系统与外系统接口的安全"></a>2.1.2.应用系统与外系统接口的安全</h3><p>应用系统与外系统的接口安全设计，主要应考虑以下几个要素：</p>
 <ol>
 <li>与外系统的之间通讯中的安全机制。应充分考虑：</li>
@@ -325,7 +329,7 @@ function showBtn(){
 <li><pre><code>认证与授权；
 </code></pre>
 </li>
-<li>  最小权限；</li>
+<li>最小权限；</li>
 <li><pre><code>资源保障。
 </code></pre>
 </li>
@@ -377,7 +381,7 @@ function showBtn(){
 <li><pre><code>数据访问范围的权限设计；
 </code></pre>
 </li>
-<li>  针对不同用户的数据库表权限隔离</li>
+<li>针对不同用户的数据库表权限隔离</li>
 <li><pre><code>应用功能模块使用权限的设计。
 </code></pre>
 </li>
@@ -439,13 +443,7 @@ function showBtn(){
 <li>对于应用系统的交易数据，应采用高性能、高可靠的存储介质，如磁盘、磁盘阵列等进行存储；</li>
 <li>对于应用系统的历史数据，应采用可靠、稳定的存储介质，如磁带、光盘等进行存储。</li>
 </ol>
-<h3 id="2-3-3-应用系统存储备份对象"><a href="#2-3-3-应用系统存储备份对象" class="headerlink" title="2.3.3.应用系统存储备份对象"></a>2.3.3.应用系统存储备份对象</h3><p>应用系统对于其储存备份的对象设计，应包括如下内容：</p>
-<ol>
-<li>   系统数据的备份：应包括Web服务器的网站内容、Mail服务器的邮件实时备份、数据库、文件服务器中的文件以及其他数据；</li>
-<li>   系统的完全备份：应包括关键的、需要快速恢复的设备，通过磁带机的完全备份，应实现快速的灾难恢复；</li>
-<li>   系统的冗余主机备份：对于关键并且不能停止的服务设备（如计费服务、Web、Mail服务器），应考虑使用多台主机进行冗余备份，以保证当任何一台主机发生故障时，服务器仍可提供服务；</li>
-<li>   系统配置的备份：应包括关键路由器的配置、防火墙的配置、各类服务器操作系统的安全配置以及各类服务器（如Web、Mail、文件服务器等）中服务器软件（如Apache、tomcat等）的配置。</li>
-</ol>
+<h3 id="2-3-3-应用系统存储备份对象"><a href="#2-3-3-应用系统存储备份对象" class="headerlink" title="2.3.3.应用系统存储备份对象"></a>2.3.3.应用系统存储备份对象</h3><p>应用系统对于其储存备份的对象设计，应包括如下内容：<br>1.	系统数据的备份：应包括Web服务器的网站内容、Mail服务器的邮件实时备份、数据库、文件服务器中的文件以及其他数据；<br>2.	系统的完全备份：应包括关键的、需要快速恢复的设备，通过磁带机的完全备份，应实现快速的灾难恢复；<br>3.	系统的冗余主机备份：对于关键并且不能停止的服务设备（如计费服务、Web、Mail服务器），应考虑使用多台主机进行冗余备份，以保证当任何一台主机发生故障时，服务器仍可提供服务；<br>4.	系统配置的备份：应包括关键路由器的配置、防火墙的配置、各类服务器操作系统的安全配置以及各类服务器（如Web、Mail、文件服务器等）中服务器软件（如Apache、tomcat等）的配置。</p>
 <h3 id="2-3-4-应用系统存储备份方式"><a href="#2-3-4-应用系统存储备份方式" class="headerlink" title="2.3.4.应用系统存储备份方式"></a>2.3.4.应用系统存储备份方式</h3><p>应用系统应当根据不同的阶段，系统数据不同的重要程度，对数据采取不同的备份方式：</p>
 <ol>
 <li>完全备份<br><br>使用备份介质对整个系统进行完全备份，包括系统和数据。这种备份方<br>式的优点是直观，容易被人理解，而且当数据丢失时，可以快速恢复丢失的数据。它也有不足之处，即：</li>
@@ -481,7 +479,7 @@ function showBtn(){
 <li>存储设备应有简便的、功能强大的管理工具，做到对整个存储系统的监视与控制。</li>
 </ol>
 <h2 id="2-4-应用系统通讯安全设计要求"><a href="#2-4-应用系统通讯安全设计要求" class="headerlink" title="2.4.应用系统通讯安全设计要求"></a>2.4.应用系统通讯安全设计要求</h2><ol>
-<li>应采用安全通信协议对重要数据进行安全传输（尤其是账号、口令信息），如使用SSL/TLS、HTTPS、SFTP和IPSec等安全协议进行通信：</li>
+<li>应采用安全通信协议对重要数据进行安全传输（尤其是账号、口令信息），如使用SSL&#x2F;TLS、HTTPS、SFTP和IPSec等安全协议进行通信：</li>
 </ol>
 <ul>
 <li>终端与服务器端之间的WWW服务，建议使用HTTPS安全通信协议；</li>
@@ -520,12 +518,12 @@ function showBtn(){
 <li>应按照数据的类型、数据的重要程度、网络的安全状况等综合因素，对<br>数据的传输采取不同的安全保护，包括但不限于防火墙、IDS、VPN、病毒防护等安全措施。</li>
 <li>应了解数据传输存在安全隐患的网络或设备，对存在安全隐患的网络采取必要的安全技术，包括但不限于安全通信协议、加密算法、完整性检查算法以及抗抵赖攻击方法等。</li>
 <li>应制定数据传输安全的检查方式，包括但不限于数据传输安全抗主动攻击能力检查、被动抗攻击的能力检查。</li>
-<li>应保障“数据传输安全”有关的重要配置参数安全，包括但不限于口令、加/解密算法、加/解密密钥等。</li>
-<li>应采用安全通信协议对数据进行安全传输，如使用SSL/TLS、HTTPS、<br>SFTP和IPSec等安全协议进行通信。</li>
+<li>应保障“数据传输安全”有关的重要配置参数安全，包括但不限于口令、加&#x2F;解密算法、加&#x2F;解密密钥等。</li>
+<li>应采用安全通信协议对数据进行安全传输，如使用SSL&#x2F;TLS、HTTPS、<br>SFTP和IPSec等安全协议进行通信。</li>
 <li>对传输的信息进行不同等级的加密保护，即根据网络或设备的风险、传输内容安全要求的不同，选择不同安全强度的加密算法对信息进行加密传输。建议使用RSA等高强度的密码算法对非常重要的信息（如口令、加密密钥）进行加密传输；对于普通数据的传输，可以采用DES、3DES等加密算法进行加密传输。</li>
 <li>应防止对所传输数据进行未经授权的任何形式的修改，即对业务的重要数据或敏感数据，建议使用MD5、SHA等算法对数据完整性进行保护。</li>
 <li>对重要的交互信息，建议采取抗抵赖技术，包括但不限于数字签名技术。</li>
-<li>为了配合网络其它安全设备，建议采用基于用户名/口令的认证技术、<br>VLAN技术、MPLS技术等安全技术手段。</li>
+<li>为了配合网络其它安全设备，建议采用基于用户名&#x2F;口令的认证技术、<br>VLAN技术、MPLS技术等安全技术手段。</li>
 </ol>
 <h3 id="2-6-3-数据处理安全"><a href="#2-6-3-数据处理安全" class="headerlink" title="2.6.3.数据处理安全"></a>2.6.3.数据处理安全</h3><ol>
 <li>应根据数据的类型、数据的处理方式、数据的安全性要求、与其它接口<br>有关的敏感等级、数据相关业务应用的重要性程度来进行数据处理过程的安全性设计。</li>
@@ -538,14 +536,14 @@ function showBtn(){
 <hr>
 <h1 id="3-应用系统编码安全"><a href="#3-应用系统编码安全" class="headerlink" title="3.应用系统编码安全"></a>3.应用系统编码安全</h1><h2 id="3-1-基本代码安全要求"><a href="#3-1-基本代码安全要求" class="headerlink" title="3.1.基本代码安全要求"></a>3.1.基本代码安全要求</h2><h3 id="3-1-1-输入验证"><a href="#3-1-1-输入验证" class="headerlink" title="3.1.1.输入验证"></a>3.1.1.输入验证</h3><p>对函数入口参数的合法性和准确性进行检查，具体如下：<br></p>
 <ul>
-<li>在B/S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“man-in-the-middle”攻击类似）。</li>
+<li>在B&#x2F;S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“man-in-the-middle”攻击类似）。</li>
 <li>在实际的校验中，输入校验首先定义一个有效（可接受）的字符集，然后检<br>查每个数据的字符是否在有效范围内。如果输入中包含无效的字符，应用程序应<br>该返回错误页面并说明输入中包含无效字符。这样进行验证的原因是定义无效的字符集比较困难，并且一些不应该有效的字符通常不会被指出。</li>
 <li>另外，边界检查（例如字符串的最大长度）应该在字符有效性检查以前进行，边界分析可以防止大多数缓冲区溢出漏洞。</li>
 <li>从环境变量获得的数据也需要进行验证，同时避免在环境变量中存放敏感数据（例如密码）。</li>
 </ul>
 <h3 id="3-1-2-SQL语句"><a href="#3-1-2-SQL语句" class="headerlink" title="3.1.2.SQL语句"></a>3.1.2.SQL语句</h3><p>如果应用程序需要连接后端数据库，使用存储过程而不能在代码中使用SQL<br>语句，使用程序以外的嵌入在代码中的SQL语句调用特别危险，难以防止攻击<br>者使用输入域或者配置文件（由应用程序载入）来执行嵌入式的SQL攻击。当然，输入验证有助于缓解这种风险。</p>
 <h3 id="3-1-3-注释代码"><a href="#3-1-3-注释代码" class="headerlink" title="3.1.3.注释代码"></a>3.1.3.注释代码</h3><p>当应用程序在实际环境中开始应用时，应该删除所有的注释代码。<br><br>注释代码是用来调试或者测试的，它们不是最终应用程序的一部分。无论如何应该在实际的环境中删除它们以避免意外的执行（一般注释标识被删除后就无法激活休眠的代码，但还是存在可能性的，所以强烈建议执行这项工作）。</p>
-<h3 id="3-1-4-错误消息"><a href="#3-1-4-错误消息" class="headerlink" title="3.1.4.错误消息"></a>3.1.4.错误消息</h3><p>所有为用户显示的错误信息都不应该暴露任何关于系统、网络或应用程序的<br>敏感信息。如果可能，应使用包含编号的一般的错误信息，这种信息只有开发者和/或支持小组才能理解，如“发生了错误（代码1234），请您与系统维护部门联系。</p>
+<h3 id="3-1-4-错误消息"><a href="#3-1-4-错误消息" class="headerlink" title="3.1.4.错误消息"></a>3.1.4.错误消息</h3><p>所有为用户显示的错误信息都不应该暴露任何关于系统、网络或应用程序的<br>敏感信息。如果可能，应使用包含编号的一般的错误信息，这种信息只有开发者和&#x2F;或支持小组才能理解，如“发生了错误（代码1234），请您与系统维护部门联系。</p>
 <h3 id="3-1-5-URL内容"><a href="#3-1-5-URL内容" class="headerlink" title="3.1.5.URL内容"></a>3.1.5.URL内容</h3><p>对于Web应用，不能在URL上暴露任何重要信息，例如密码、服务器名称、<br>IP地址或者文件系统路径（暴露了Web服务器的目录结构），这些信息可以在攻击时被使用。</p>
 <h3 id="3-1-6-设置PATH变量"><a href="#3-1-6-设置PATH变量" class="headerlink" title="3.1.6.设置PATH变量"></a>3.1.6.设置PATH变量</h3><p>设置PATH为一个已知的值，而不是仅仅使用启动时的缺省值。攻击者可<br>以在攻击应用程序时使用PATH变量，例如试图执行一个任意的程序，这些可<br>以应用于大多数其他的语言。</p>
 <h3 id="3-1-7-其他要求"><a href="#3-1-7-其他要求" class="headerlink" title="3.1.7.其他要求"></a>3.1.7.其他要求</h3><ol>
@@ -574,7 +572,7 @@ function showBtn(){
 <li>采取会话控制或批次控制，确保更新前后数据文件的一致性，例如：检查操作前后文件打开和关闭的数目是否一致。</li>
 <li>检查执行操作前后对象的差额是否正常，如：句柄处理，堆栈等系统资源的占用与释放等。</li>
 <li>严格验证系统生成的数据。</li>
-<li>在网络传输过程中检查下载/上传的数据或软件的完整性。</li>
+<li>在网络传输过程中检查下载&#x2F;上传的数据或软件的完整性。</li>
 <li>检查文件与记录是否被篡改。例如通过计算哈希值（HASH）进行对比。</li>
 <li>禁止私自将代码上传到互联网，如github等</li>
 </ol>
@@ -648,7 +646,7 @@ function showBtn(){
 <h3 id="3-2-10-保护网络流量的代码安全"><a href="#3-2-10-保护网络流量的代码安全" class="headerlink" title="3.2.10.保护网络流量的代码安全"></a>3.2.10.保护网络流量的代码安全</h3><ol>
 <li>要使用强大的初始认证机制。</li>
 <li>对应用程序所产生的所有网络流量都要执行过程中消息认证。</li>
-<li>尽可能使用SSL/TLS进行网络加密传输。</li>
+<li>尽可能使用SSL&#x2F;TLS进行网络加密传输。</li>
 </ol>
 <h3 id="3-2-11-应用中的弱口令代码安全"><a href="#3-2-11-应用中的弱口令代码安全" class="headerlink" title="3.2.11.应用中的弱口令代码安全"></a>3.2.11.应用中的弱口令代码安全</h3><ol>
 <li>确保口令在网络上认证时不被窃听。</li>
@@ -681,8 +679,8 @@ function showBtn(){
 <h3 id="3-4-3-防范恶意文件执行"><a href="#3-4-3-防范恶意文件执行" class="headerlink" title="3.4.3.防范恶意文件执行"></a>3.4.3.防范恶意文件执行</h3><p>恶意文件执行是一种能够威胁任何网站形式的漏洞，只要攻击者在具有<br>引入（include）功能程式的参数中修改参数内容，Web服务器便会引入恶意程序从而受到恶意文件执行漏洞攻击。<br><br>攻击者可利用恶意文件执行漏洞进行攻击取得Web服务器控制权，进<br>行不法利益或获取经济利益。</p>
 <h3 id="3-4-4-不安全的直接对象引用"><a href="#3-4-4-不安全的直接对象引用" class="headerlink" title="3.4.4.不安全的直接对象引用"></a>3.4.4.不安全的直接对象引用</h3><p>所谓“不安全的对象直接引用”，即Insecuredirectobjectreferences，意<br>指一个已经授权的用户，通过更改访问时的一个参数，从而访问到原本其<br>并没有得到授权的对象。Web应用往往在生成Web页面时会用它的真实名<br>字，且并不会对所有的目标对象访问时检查用户权限，所以这就造成了不安全的对象直接引用的漏洞。<br><br>以下是不安全的对象直接引用示例：</p>
 <ul>
-<li>攻击者发现他自己的参数是6065，即?acct=6065；</li>
-<li>他可以直接更改参数为6066，即?acct=6066；</li>
+<li>攻击者发现他自己的参数是6065，即?acct&#x3D;6065；</li>
+<li>他可以直接更改参数为6066，即?acct&#x3D;6066；</li>
 <li>这样他就可以直接看到6066用户的账户信息了。<br><br>这种漏洞能损害参数所引用的所有数据。除非名字空间很稀疏，否则攻击者很容易访问该类型的所有数据。</li>
 </ul>
 <h3 id="3-4-5-防范跨站请求伪造"><a href="#3-4-5-防范跨站请求伪造" class="headerlink" title="3.4.5.防范跨站请求伪造"></a>3.4.5.防范跨站请求伪造</h3><p>跨站请求伪造，也被称成为“oneclickattack”或者sessionriding，通常<br>缩写为CSRF或者XSRF，是一种对网站的恶意利用。它与XSS非常不同，<br>并且攻击方式几乎相左。XSS利用站点内的信任用户，而CSRF则通过伪装<br>来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击<br>往往不太流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。<br><br>攻击者能让受害用户修改可以修改的任何数据，或者是执行允许使用的任何功能。</p>
@@ -847,11 +845,11 @@ function showBtn(){
 <p>使用<code>safe_mode</code>模式也能避免这种问题，前面已经讨论过。</p>
 <h3 id="3-5-3-文件包含"><a href="#3-5-3-文件包含" class="headerlink" title="3.5.3.文件包含"></a>3.5.3.文件包含</h3><p>要求程序员包含文件里的参数尽量不能使用变量，如果使用变量，就一<br>定要严格检查要包含的文件名，绝对不能由用户任意指定。如前面文件打开中限制PHP操作路径是一个必要的选项。<br>另外，如非特<br>殊需要，一定要关闭PHP的远程文件打开功能。修改php.ini文件：<code>allow_url_fopen=Off</code><br>重启apache。</p>
 <h3 id="3-5-4-文件上传"><a href="#3-5-4-文件上传" class="headerlink" title="3.5.4.文件上传"></a>3.5.4.文件上传</h3><p><strong>PHP-4.0.3</strong>以后提供了<code>is_uploaded_file</code>和<code>move_uploaded_file</code>函数，可以<br>检查操作的文件是否是用户上传的文件，从而避免把系统文件拷贝到Web目录。<br><br>使用<code>$HTTP_POST_FILES</code>或<code>$_FILES</code>数组来读取用户上传的文件变量。严格检查上传变量。比如不允许是php脚本文件。<br>把PHP脚本操作限制在Web目录可以避免程序员使用<code>copy函数</code>把系统<br>文件拷贝到Web目录。<code>move_uploaded_file</code>不受<code>open_basedir</code>的限制，所以不必修改<code>php.ini</code>里<code>upload_tmp_dir</code>的值。<br>把PHP脚本用<code>phpencode</code>进行加密，避免由于copy操作泄漏源码。严格配置文件和目录的权限，只允许上传的目录能够让nobody用户可写。<br><br>对于上传目录去掉PHP解释功能，可以通过修改<code>httpd.conf</code>实现：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory<span class="regexp">/usr/</span>local<span class="regexp">/apache/</span>htdocs/upload&gt;php_flagengineoff</span><br><span class="line"><span class="comment">#如果是php3换成php3_engineoff</span></span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;Directory/usr/local/apache/htdocs/upload&gt;</span><span class="attribute">php_flagengineoff</span></span><br><span class="line"><span class="comment">#如果是php3换成php3_engineoff</span></span><br><span class="line"><span class="section">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
 <p>重启apache，upload目录的php文件就不能被apache解释了，即使上传了php文件也没有问题，只能直接显示源码。</p>
-<h3 id="3-5-5-命令执行"><a href="#3-5-5-命令执行" class="headerlink" title="3.5.5.命令执行"></a>3.5.5.命令执行</h3><p>解决方法：<br><br>要求程序员使用<code>escapeshellcmd()</code>函数过滤用户输入的shell命令。启用<code>safe_mode</code>可以杜绝很多执行命令的问题，不过要注意PHP的版本一定要是最新的，小于<strong>PHP-4.2.2</strong>的都可能绕过<code>safe_mode</code>的限制去执行命令。<br><br>变量类型缺陷逻辑比较时注意变量类型。<br><br>必要的时候使用”===”，那么连变量类型一起比较。</p>
+<h3 id="3-5-5-命令执行"><a href="#3-5-5-命令执行" class="headerlink" title="3.5.5.命令执行"></a>3.5.5.命令执行</h3><p>解决方法：<br><br>要求程序员使用<code>escapeshellcmd()</code>函数过滤用户输入的shell命令。启用<code>safe_mode</code>可以杜绝很多执行命令的问题，不过要注意PHP的版本一定要是最新的，小于<strong>PHP-4.2.2</strong>的都可能绕过<code>safe_mode</code>的限制去执行命令。<br><br>变量类型缺陷逻辑比较时注意变量类型。<br><br>必要的时候使用”&#x3D;&#x3D;&#x3D;”，那么连变量类型一起比较。</p>
 <h3 id="3-5-6-警告及错误信息"><a href="#3-5-6-警告及错误信息" class="headerlink" title="3.5.6.警告及错误信息"></a>3.5.6.警告及错误信息</h3><p>修改<code>php.ini</code>中关于<code>Errorhandlingandlogging</code>部分内容：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error_reporting=E_ALLdisplay_errors=Offlog_errors=Onerror_log=<span class="regexp">/usr/</span>local<span class="regexp">/apache/</span>logs/php_error.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error_reporting<span class="operator">=</span>E_ALLdisplay_errors<span class="operator">=</span>Offlog_errors<span class="operator">=</span>Onerror_log<span class="operator">=/</span>usr/local/apache/logs/php_error.log</span><br></pre></td></tr></table></figure>
 <p>然后重启apache，注意文件<code>/usr/local/apache/logs/php_error.log</code>，必需可<br>以让nobody用户可写。</p>
 <h3 id="3-5-7-PHP与MySQL组合的SQL注入"><a href="#3-5-7-PHP与MySQL组合的SQL注入" class="headerlink" title="3.5.7.PHP与MySQL组合的SQL注入"></a>3.5.7.PHP与MySQL组合的SQL注入</h3><p>解决方法：<br><br>要求程序员对所有用户提交的要放到SQL语句的变量进行过滤。<br><br>即使是数字类型的字段，变量也要用单引号扩起来，MySQL自己会把字串处理成数字。<br><br>在MySQL里不能给PHP程序高级别权限的用户，只允许对自己的库进行操作。</p>
 <h3 id="3-5-8-跨站脚本"><a href="#3-5-8-跨站脚本" class="headerlink" title="3.5.8.跨站脚本"></a>3.5.8.跨站脚本</h3><p>解决方法：<br><br>确认输入</p>
@@ -877,9 +875,10 @@ function showBtn(){
 </ul>
 <ol start="3">
 <li>保持运行环境干净。</li>
-<li>不能在Web目录放测试文件。 </li>
+<li>不能在Web目录放测试文件。</li>
 </ol>
-<h2 id="3-6-C-C-安全开发要求"><a href="#3-6-C-C-安全开发要求" class="headerlink" title="3.6.C/C++安全开发要求"></a>3.6.C/C++安全开发要求</h2><p>C本质上是不安全的编程语言。例如如果不谨慎使用的话，其大多数标准的字符串库函数有可能被用来进行缓冲区攻击或者格式字符串攻击。但是，由于其<br>灵活性、快速和相对容易掌握，它是一个广泛使用的编程语言。<br><br>下面是针对开发安全的C语言程序的一些规范。</p>
+<p> </p>
+<h2 id="3-6-C-C-安全开发要求"><a href="#3-6-C-C-安全开发要求" class="headerlink" title="3.6.C&#x2F;C++安全开发要求"></a>3.6.C&#x2F;C++安全开发要求</h2><p>C本质上是不安全的编程语言。例如如果不谨慎使用的话，其大多数标准的字符串库函数有可能被用来进行缓冲区攻击或者格式字符串攻击。但是，由于其<br>灵活性、快速和相对容易掌握，它是一个广泛使用的编程语言。<br><br>下面是针对开发安全的C语言程序的一些规范。</p>
 <h3 id="3-6-1-缓冲区溢出"><a href="#3-6-1-缓冲区溢出" class="headerlink" title="3.6.1.缓冲区溢出"></a>3.6.1.缓冲区溢出</h3><p>避免使用不执行边界检查的字符串函数，因为它们可能被用来进行缓冲<br>区溢出攻击。下面是应该避免使用的函数。同时，也列出了每个函数相应的比较安全的替换方式。</p>
 <ul>
 <li>不使用strcpy()，使用strncpy()；</li>
@@ -889,11 +888,11 @@ function showBtn(){
 </ul>
 <p>在上面的前三个中函数中，每个替代函数的“n”表示了使用的缓冲区的<br>大小。最后一个函数的“f”，表示格式，它允许用户指定期望的输入的格式。<br><br>这些替换方程强制程序员定义使用的缓冲区的尺寸以及确定输入的类型。</p>
 <h3 id="3-6-2-格式化字符串攻击"><a href="#3-6-2-格式化字符串攻击" class="headerlink" title="3.6.2.格式化字符串攻击"></a>3.6.2.格式化字符串攻击</h3><p>该类攻击往往与缓冲区溢出相关，因为它们主要利用了某些函数的假<br>设，例如<code>sprintf()</code>和<code>vsprintf()</code>假设缓冲区的长度是无限的。然而即使使用<code>snprintf()</code>替换<code>sprintf()</code>也无法完全保护程序不受格式化字符串的攻击。这些攻击通过直接将格式说明符<code>（formatspecifiers）(%d，%s，%n等)</code>传递到输出函数接收缓冲区来进行。<br><br>例如，以下的代码就是不安全的：<code>snprintf(buffer,sizeof(buffer),string)</code>这种情况下，可以在字符串中插入格式说明符来操纵内存的栈，来写入<br>攻击者的数据（这些数据中包含小的程序代码，并可由处理器接着执行）。<br><br>对以上的例子建议使用下面的代码。<br></p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in"><span class="keyword">sizeof</span></span>(buffer),“%s”,string)</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in">sizeof</span>(buffer),“%s”,string)</span><br></pre></td></tr></table></figure>
 <p>进行格式字符串攻击不太容易。首先攻击者必须能获得内存栈的内容情<br>况（或者从应用导出或者使用调试器），然后必须知道如何精确访问特定的内存空间来操纵栈中的变量。<br><br>执行外部程序推荐使用<code>exec()</code>函数而不是<code>system()</code>函数来执行外部程序。这是因为<code>system()</code>接收整个命令行的随机的缓冲区来执行程序。</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in"><span class="keyword">sizeof</span></span>(buffer),<span class="string">&quot;emacs%s&quot;</span>,filename);</span><br><span class="line"><span class="built_in">system</span>(buffer);</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in">sizeof</span>(buffer),<span class="string">&quot;emacs%s&quot;</span>,filename);</span><br><span class="line"><span class="built_in">system</span>(buffer);</span><br></pre></td></tr></table></figure>
 <p>在以上的例子中，可以通过使用分号利用文件名变量在sehll中插入额<br>外的命令（例如文件名可以是<code>/etc/hosts;rm*</code>，这将在显示<code>/etc/hosts</code>目录文件<br>的同时，删除目录中的所有文件）。<br>而exec()函数只保证第一个参数被执行：</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execl(<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="meta">filename</span>,<span class="meta">NULL</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execl(<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="keyword">filename</span>,<span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
 <p>上面的例子保证文件名仅仅作为一个参数输入Emacs工具，同样它在Emacs命令中使用完全的路径而不是使用可以被攻击者利用的PATH环境变量。</p>
 <h3 id="3-6-3-竞争条件"><a href="#3-6-3-竞争条件" class="headerlink" title="3.6.3.竞争条件"></a>3.6.3.竞争条件</h3><p>进程需要访问资源时（无论是磁盘、内存或是文件）通常需要执行两个步骤：</p>
 <ol>
@@ -926,7 +925,7 @@ function showBtn(){
 <h2 id="4-2-测试方法及内容要求"><a href="#4-2-测试方法及内容要求" class="headerlink" title="4.2.测试方法及内容要求"></a>4.2.测试方法及内容要求</h2><ol>
 <li><p>应根据应用系统的具体情况，设计安全性测试的具体方法和内容，通常<br>主要的测试方法和内容分为<strong>功能性测试、压力测试、渗透性测试、审核性测试</strong>。</p>
 <ul>
-<li>功能性测试<br><br>对应用系统的安全功能点进行测试，确保安全功能的有效性、正确性。<ul>
+<li>功能性测试<br><br> 对应用系统的安全功能点进行测试，确保安全功能的有效性、正确性。<ul>
 <li>这些功能点应全部包含在测试大纲中，在大纲的测试用例中体现具体的测    试方    法。测试大纲中的这些内容应当覆盖了需求说明书中安全功能部分的要    求。</li>
 <li>测试的具体内容主要涉及以下几个方面：<ul>
 <li>安全审计</li>
@@ -938,19 +937,26 @@ function showBtn(){
 </li>
 </ul>
 </li>
-<li>压力测试<br><br>对应用系统的安全功能进行压力测试，确保安全功能可以满足设计的需要。<ul>
+<li>压力测试<br><br> 对应用系统的安全功能进行压力测试，确保安全功能可以满足设计的需要。<ul>
 <li><pre><code>压力测试的具体应全部包含在测试大纲中，在大纲的测试用例中体现具    体的测    试方法。
 </code></pre>
 </li>
-<li>测试大纲中的这些要求应当参照设计说明书中所描述的设计目标进<br>行测试用例的设计，包括但不限于：      - 应用系统服务器端和单个终端进行安全数据传输的最大容量。      - 应用系统服务器端能够与多少终端同时进行安全数据传输。      - 服务器承受的最大并发连接数。</li>
-</ul>
+<li><pre><code>测试大纲中的这些要求应当参照设计说明书中所描述的设计目标进
+</code></pre>
 </li>
-<li>渗透性测试<br><br>模拟攻击手段，对应用系统抵抗攻击的能力进行测试。主要测试应用程序及应用系统配置上的安全漏洞。<ul>
+</ul>
+<p>  行测试用例的设计，包括但不限于：<br>      - 应用系统服务器端和单个终端进行安全数据传输的最大容量。<br>      - 应用系统服务器端能够与多少终端同时进行安全数据传输。<br>      - 服务器承受的最大并发连接数。</p>
+</li>
+<li>渗透性测试<br><br> 模拟攻击手段，对应用系统抵抗攻击的能力进行测试。主要测试应用程序及应用系统配置上的安全漏洞。<ul>
 <li><pre><code>渗透测试的具体应全部包含在测试大纲中，在大纲的测试用例中体现具    体的测    试方法。
 </code></pre>
 </li>
-<li><pre><code>测试大纲中渗透测试方法的选择需要依据设计说明书中描述的应用系统    采用的    开发工具及应用系统安装所需要的基础应用平台，如iis、apached    等，来设计不    同的测试方法，包括但不限于：      - 对webserver的渗透攻击测试或者工具扫描性测试。      - SQL注入、跨栈攻击。
+<li><pre><code>测试大纲中渗透测试方法的选择需要依据设计说明书中描述的应用系统    采用的    开发工具及应用系统安装所需要的基础应用平台，如iis、apached    等，来设计不    同的测试方法，包括但不限于：
 </code></pre>
+<ul>
+<li>对webserver的渗透攻击测试或者工具扫描性测试。</li>
+<li>SQL注入、跨栈攻击。</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -976,7 +982,12 @@ function showBtn(){
 <li>   测试环境的物理、硬软件环境要求应当可以模拟真实环境。</li>
 <li>   为确保测试环境的安全，应将测试环境与开发环境、生产环境相隔离，避免测试工作对业务的影响。</li>
 <li>   测试数据如果选择是真实数据，应限定使用该数据的测试人员的数量，并在测试完成后全部删除。</li>
-<li>   系统测试和验收通常需要大量的（真实数据）尽可能靠近实际运行数据的测试数据。应避免使用含有个人信息的业务数据库。如果要使用其中<br>信息，在用之前应使其失去个性化。当把运行数据用于测试目的时，应采取以下措施保护运行数据。    - 如果该数据由测试人员使用，则需要相关授权业务人员参与，或者监督。    - 每次把运行信息复制到测试应用系统都应有单独的授权。    - 应记录运行信息的复制和使用，以提供一种检查追踪。</li>
+<li>   系统测试和验收通常需要大量的（真实数据）尽可能靠近实际运行数据的测试数据。应避免使用含有个人信息的业务数据库。如果要使用其中<br>信息，在用之前应使其失去个性化。当把运行数据用于测试目的时，应采取以下措施保护运行数据。<ul>
+<li>如果该数据由测试人员使用，则需要相关授权业务人员参与，或者监督。</li>
+<li>每次把运行信息复制到测试应用系统都应有单独的授权。</li>
+<li>应记录运行信息的复制和使用，以提供一种检查追踪。</li>
+</ul>
+</li>
 <li>   在与其他系统的互操作性测试中，应充分考虑对其他系统的影响，选择适当的时间、方法。</li>
 </ol>
 <h2 id="4-4-测试后的要求"><a href="#4-4-测试后的要求" class="headerlink" title="4.4.测试后的要求"></a>4.4.测试后的要求</h2><p>测试完成后，在正式上线前，应进行安全检查，消除测试用的一切后门、用户名及口令等，包括但不限于：</p>
@@ -986,6 +997,7 @@ function showBtn(){
 <li>测试用时临时开通的系统服务、防火墙端口及策略。</li>
 <li>与外系统测试时，要求外系统上临时开启的服务、账号等。</li>
 </ol>
+<p> <a href="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/">http://www.pa55w0rd.online/应用开发安全指南/</a> </p>
 
         
 <!--
@@ -1000,18 +1012,36 @@ function showBtn(){
 <h2 id="1-2-适用范围"><a href="#1-2-适用范围" class="headerlink" title="1.2.适用范围"></a>1.2.适用范围</h2><p>本指南适用于xxxx系统代码开发项目，作为xxxx在IT系统开发、设计环节中所遵照执行的依据。</p>
 <h2 id="1-3-适用对象"><a href="#1-3-适用对象" class="headerlink" title="1.3.适用对象"></a>1.3.适用对象</h2><p>本配置指南的适用人员包括：xxxx系统应用开发人员及安全检查管理人员。</p>
 <hr>
-<h1 id="2-应用系统设计安全"><a href="#2-应用系统设计安全" class="headerlink" title="2.应用系统设计安全"></a>2.应用系统设计安全</h1><h2 id="2-1-应用系统架构安全设计要求"><a href="#2-1-应用系统架构安全设计要求" class="headerlink" title="2.1.应用系统架构安全设计要求"></a>2.1.应用系统架构安全设计要求</h2><p>在应用系统设计阶段，应充分考虑该架构的安全性,包括B/S、C/S等形式的安全，主要体现在应用数据和用户会话的安全，还应当考虑应用系统自身体系架构内部的安全，以及与外系统接口的安全。针对某些特殊应用，还需考虑复、抗攻击等安全机制。</p>
+<h1 id="2-应用系统设计安全"><a href="#2-应用系统设计安全" class="headerlink" title="2.应用系统设计安全"></a>2.应用系统设计安全</h1><h2 id="2-1-应用系统架构安全设计要求"><a href="#2-1-应用系统架构安全设计要求" class="headerlink" title="2.1.应用系统架构安全设计要求"></a>2.1.应用系统架构安全设计要求</h2><p>在应用系统设计阶段，应充分考虑该架构的安全性,包括B&#x2F;S、C&#x2F;S等形式的安全，主要体现在应用数据和用户会话的安全，还应当考虑应用系统自身体系架构内部的安全，以及与外系统接口的安全。针对某些特殊应用，还需考虑复、抗攻击等安全机制。</p>
 <h3 id="2-1-1-应用系统自身架构安全"><a href="#2-1-1-应用系统自身架构安全" class="headerlink" title="2.1.1.应用系统自身架构安全"></a>2.1.1.应用系统自身架构安全</h3><ol>
-<li><p>自身结构中各组件之间通讯过程的安全机制<br><br> 组件之间的通讯包括命令级的和数据级的，应充分考虑：    - 传输命令和数据所采用的协议的安全性。应根据组件之间通讯内容安全性要求程度的不同选择不同安全性要求的协议；    - 考虑程序的模块之间的安全通讯机制；    - 不应使用标准的服务端口或者常见病毒、蠕虫等使用的服务端口。</p>
+<li><p>   自身结构中各组件之间通讯过程的安全机制<br><br>  组件之间的通讯包括命令级的和数据级的，应充分考虑：</p>
+<ul>
+<li>传输命令和数据所采用的协议的安全性。应根据组件之间通讯内容安全性要求程度的不同选择不同安全性要求的协议；</li>
+<li>考虑程序的模块之间的安全通讯机制；</li>
+<li>不应使用标准的服务端口或者常见病毒、蠕虫等使用的服务端口。</li>
+</ul>
 </li>
-<li><p>   认证与访问控制机制，应考虑：    - 组件之间的信任机制；    - 用户的身份认证机制；    - 对于组件资源的访问控制机制；    - 不通用户对资源的权限控制机制。</p>
+<li><p>   认证与访问控制机制，应考虑：</p>
+<ul>
+<li>组件之间的信任机制；</li>
+<li>用户的身份认证机制；</li>
+<li>对于组件资源的访问控制机制；</li>
+<li>不通用户对资源的权限控制机制。</li>
+</ul>
 </li>
-<li><p>组件内重要文件和数据的安全防护机制：<br><br> 存在于组件内部的重要数据资源应当考虑其相应的安全防护机制，这些重要的数据资源包括：    - 配置文件；    - 用户数据，包括文件数据及数据库中的数据；    - 临时文件和数据；    - 与外系统或者系统内部其他组件接口用的数据文件。</p>
+<li><p>   组件内重要文件和数据的安全防护机制：<br><br>  存在于组件内部的重要数据资源应当考虑其相应的安全防护机制，这些重要的数据资源包括：</p>
+<ul>
+<li>配置文件；</li>
+<li>用户数据，包括文件数据及数据库中的数据；</li>
+<li>临时文件和数据；</li>
+<li>与外系统或者系统内部其他组件接口用的数据文件。</li>
+</ul>
+<p>  对这些重要数据的存取安全性设计，包括:</p>
+<ul>
+<li>文件和数据存放是否加密及采用的加密方式。</li>
+</ul>
 </li>
 </ol>
-<pre><code>对这些重要数据的存取安全性设计，包括:
-- 文件和数据存放是否加密及采用的加密方式。
-</code></pre>
 <h3 id="2-1-2-应用系统与外系统接口的安全"><a href="#2-1-2-应用系统与外系统接口的安全" class="headerlink" title="2.1.2.应用系统与外系统接口的安全"></a>2.1.2.应用系统与外系统接口的安全</h3><p>应用系统与外系统的接口安全设计，主要应考虑以下几个要素：</p>
 <ol>
 <li>与外系统的之间通讯中的安全机制。应充分考虑：</li>
@@ -1060,7 +1090,7 @@ function showBtn(){
 <li><pre><code>认证与授权；
 </code></pre>
 </li>
-<li>  最小权限；</li>
+<li>最小权限；</li>
 <li><pre><code>资源保障。
 </code></pre>
 </li>
@@ -1112,7 +1142,7 @@ function showBtn(){
 <li><pre><code>数据访问范围的权限设计；
 </code></pre>
 </li>
-<li>  针对不同用户的数据库表权限隔离</li>
+<li>针对不同用户的数据库表权限隔离</li>
 <li><pre><code>应用功能模块使用权限的设计。
 </code></pre>
 </li>
@@ -1174,13 +1204,7 @@ function showBtn(){
 <li>对于应用系统的交易数据，应采用高性能、高可靠的存储介质，如磁盘、磁盘阵列等进行存储；</li>
 <li>对于应用系统的历史数据，应采用可靠、稳定的存储介质，如磁带、光盘等进行存储。</li>
 </ol>
-<h3 id="2-3-3-应用系统存储备份对象"><a href="#2-3-3-应用系统存储备份对象" class="headerlink" title="2.3.3.应用系统存储备份对象"></a>2.3.3.应用系统存储备份对象</h3><p>应用系统对于其储存备份的对象设计，应包括如下内容：</p>
-<ol>
-<li>   系统数据的备份：应包括Web服务器的网站内容、Mail服务器的邮件实时备份、数据库、文件服务器中的文件以及其他数据；</li>
-<li>   系统的完全备份：应包括关键的、需要快速恢复的设备，通过磁带机的完全备份，应实现快速的灾难恢复；</li>
-<li>   系统的冗余主机备份：对于关键并且不能停止的服务设备（如计费服务、Web、Mail服务器），应考虑使用多台主机进行冗余备份，以保证当任何一台主机发生故障时，服务器仍可提供服务；</li>
-<li>   系统配置的备份：应包括关键路由器的配置、防火墙的配置、各类服务器操作系统的安全配置以及各类服务器（如Web、Mail、文件服务器等）中服务器软件（如Apache、tomcat等）的配置。</li>
-</ol>
+<h3 id="2-3-3-应用系统存储备份对象"><a href="#2-3-3-应用系统存储备份对象" class="headerlink" title="2.3.3.应用系统存储备份对象"></a>2.3.3.应用系统存储备份对象</h3><p>应用系统对于其储存备份的对象设计，应包括如下内容：<br>1.	系统数据的备份：应包括Web服务器的网站内容、Mail服务器的邮件实时备份、数据库、文件服务器中的文件以及其他数据；<br>2.	系统的完全备份：应包括关键的、需要快速恢复的设备，通过磁带机的完全备份，应实现快速的灾难恢复；<br>3.	系统的冗余主机备份：对于关键并且不能停止的服务设备（如计费服务、Web、Mail服务器），应考虑使用多台主机进行冗余备份，以保证当任何一台主机发生故障时，服务器仍可提供服务；<br>4.	系统配置的备份：应包括关键路由器的配置、防火墙的配置、各类服务器操作系统的安全配置以及各类服务器（如Web、Mail、文件服务器等）中服务器软件（如Apache、tomcat等）的配置。</p>
 <h3 id="2-3-4-应用系统存储备份方式"><a href="#2-3-4-应用系统存储备份方式" class="headerlink" title="2.3.4.应用系统存储备份方式"></a>2.3.4.应用系统存储备份方式</h3><p>应用系统应当根据不同的阶段，系统数据不同的重要程度，对数据采取不同的备份方式：</p>
 <ol>
 <li>完全备份<br><br>使用备份介质对整个系统进行完全备份，包括系统和数据。这种备份方<br>式的优点是直观，容易被人理解，而且当数据丢失时，可以快速恢复丢失的数据。它也有不足之处，即：</li>
@@ -1216,7 +1240,7 @@ function showBtn(){
 <li>存储设备应有简便的、功能强大的管理工具，做到对整个存储系统的监视与控制。</li>
 </ol>
 <h2 id="2-4-应用系统通讯安全设计要求"><a href="#2-4-应用系统通讯安全设计要求" class="headerlink" title="2.4.应用系统通讯安全设计要求"></a>2.4.应用系统通讯安全设计要求</h2><ol>
-<li>应采用安全通信协议对重要数据进行安全传输（尤其是账号、口令信息），如使用SSL/TLS、HTTPS、SFTP和IPSec等安全协议进行通信：</li>
+<li>应采用安全通信协议对重要数据进行安全传输（尤其是账号、口令信息），如使用SSL&#x2F;TLS、HTTPS、SFTP和IPSec等安全协议进行通信：</li>
 </ol>
 <ul>
 <li>终端与服务器端之间的WWW服务，建议使用HTTPS安全通信协议；</li>
@@ -1255,12 +1279,12 @@ function showBtn(){
 <li>应按照数据的类型、数据的重要程度、网络的安全状况等综合因素，对<br>数据的传输采取不同的安全保护，包括但不限于防火墙、IDS、VPN、病毒防护等安全措施。</li>
 <li>应了解数据传输存在安全隐患的网络或设备，对存在安全隐患的网络采取必要的安全技术，包括但不限于安全通信协议、加密算法、完整性检查算法以及抗抵赖攻击方法等。</li>
 <li>应制定数据传输安全的检查方式，包括但不限于数据传输安全抗主动攻击能力检查、被动抗攻击的能力检查。</li>
-<li>应保障“数据传输安全”有关的重要配置参数安全，包括但不限于口令、加/解密算法、加/解密密钥等。</li>
-<li>应采用安全通信协议对数据进行安全传输，如使用SSL/TLS、HTTPS、<br>SFTP和IPSec等安全协议进行通信。</li>
+<li>应保障“数据传输安全”有关的重要配置参数安全，包括但不限于口令、加&#x2F;解密算法、加&#x2F;解密密钥等。</li>
+<li>应采用安全通信协议对数据进行安全传输，如使用SSL&#x2F;TLS、HTTPS、<br>SFTP和IPSec等安全协议进行通信。</li>
 <li>对传输的信息进行不同等级的加密保护，即根据网络或设备的风险、传输内容安全要求的不同，选择不同安全强度的加密算法对信息进行加密传输。建议使用RSA等高强度的密码算法对非常重要的信息（如口令、加密密钥）进行加密传输；对于普通数据的传输，可以采用DES、3DES等加密算法进行加密传输。</li>
 <li>应防止对所传输数据进行未经授权的任何形式的修改，即对业务的重要数据或敏感数据，建议使用MD5、SHA等算法对数据完整性进行保护。</li>
 <li>对重要的交互信息，建议采取抗抵赖技术，包括但不限于数字签名技术。</li>
-<li>为了配合网络其它安全设备，建议采用基于用户名/口令的认证技术、<br>VLAN技术、MPLS技术等安全技术手段。</li>
+<li>为了配合网络其它安全设备，建议采用基于用户名&#x2F;口令的认证技术、<br>VLAN技术、MPLS技术等安全技术手段。</li>
 </ol>
 <h3 id="2-6-3-数据处理安全"><a href="#2-6-3-数据处理安全" class="headerlink" title="2.6.3.数据处理安全"></a>2.6.3.数据处理安全</h3><ol>
 <li>应根据数据的类型、数据的处理方式、数据的安全性要求、与其它接口<br>有关的敏感等级、数据相关业务应用的重要性程度来进行数据处理过程的安全性设计。</li>
@@ -1273,14 +1297,14 @@ function showBtn(){
 <hr>
 <h1 id="3-应用系统编码安全"><a href="#3-应用系统编码安全" class="headerlink" title="3.应用系统编码安全"></a>3.应用系统编码安全</h1><h2 id="3-1-基本代码安全要求"><a href="#3-1-基本代码安全要求" class="headerlink" title="3.1.基本代码安全要求"></a>3.1.基本代码安全要求</h2><h3 id="3-1-1-输入验证"><a href="#3-1-1-输入验证" class="headerlink" title="3.1.1.输入验证"></a>3.1.1.输入验证</h3><p>对函数入口参数的合法性和准确性进行检查，具体如下：<br></p>
 <ul>
-<li>在B/S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“man-in-the-middle”攻击类似）。</li>
+<li>在B&#x2F;S环境下，应进行服务端的验证而不仅仅是客户端的验证（例如基于Javascript的验证）。通过在客户端和服务器之间放置一个代理服务器，可以很容易绕过客户端验证。有了代理服务器，攻击者可以在数据被客户端“验证”后修改数据（与“man-in-the-middle”攻击类似）。</li>
 <li>在实际的校验中，输入校验首先定义一个有效（可接受）的字符集，然后检<br>查每个数据的字符是否在有效范围内。如果输入中包含无效的字符，应用程序应<br>该返回错误页面并说明输入中包含无效字符。这样进行验证的原因是定义无效的字符集比较困难，并且一些不应该有效的字符通常不会被指出。</li>
 <li>另外，边界检查（例如字符串的最大长度）应该在字符有效性检查以前进行，边界分析可以防止大多数缓冲区溢出漏洞。</li>
 <li>从环境变量获得的数据也需要进行验证，同时避免在环境变量中存放敏感数据（例如密码）。</li>
 </ul>
 <h3 id="3-1-2-SQL语句"><a href="#3-1-2-SQL语句" class="headerlink" title="3.1.2.SQL语句"></a>3.1.2.SQL语句</h3><p>如果应用程序需要连接后端数据库，使用存储过程而不能在代码中使用SQL<br>语句，使用程序以外的嵌入在代码中的SQL语句调用特别危险，难以防止攻击<br>者使用输入域或者配置文件（由应用程序载入）来执行嵌入式的SQL攻击。当然，输入验证有助于缓解这种风险。</p>
 <h3 id="3-1-3-注释代码"><a href="#3-1-3-注释代码" class="headerlink" title="3.1.3.注释代码"></a>3.1.3.注释代码</h3><p>当应用程序在实际环境中开始应用时，应该删除所有的注释代码。<br><br>注释代码是用来调试或者测试的，它们不是最终应用程序的一部分。无论如何应该在实际的环境中删除它们以避免意外的执行（一般注释标识被删除后就无法激活休眠的代码，但还是存在可能性的，所以强烈建议执行这项工作）。</p>
-<h3 id="3-1-4-错误消息"><a href="#3-1-4-错误消息" class="headerlink" title="3.1.4.错误消息"></a>3.1.4.错误消息</h3><p>所有为用户显示的错误信息都不应该暴露任何关于系统、网络或应用程序的<br>敏感信息。如果可能，应使用包含编号的一般的错误信息，这种信息只有开发者和/或支持小组才能理解，如“发生了错误（代码1234），请您与系统维护部门联系。</p>
+<h3 id="3-1-4-错误消息"><a href="#3-1-4-错误消息" class="headerlink" title="3.1.4.错误消息"></a>3.1.4.错误消息</h3><p>所有为用户显示的错误信息都不应该暴露任何关于系统、网络或应用程序的<br>敏感信息。如果可能，应使用包含编号的一般的错误信息，这种信息只有开发者和&#x2F;或支持小组才能理解，如“发生了错误（代码1234），请您与系统维护部门联系。</p>
 <h3 id="3-1-5-URL内容"><a href="#3-1-5-URL内容" class="headerlink" title="3.1.5.URL内容"></a>3.1.5.URL内容</h3><p>对于Web应用，不能在URL上暴露任何重要信息，例如密码、服务器名称、<br>IP地址或者文件系统路径（暴露了Web服务器的目录结构），这些信息可以在攻击时被使用。</p>
 <h3 id="3-1-6-设置PATH变量"><a href="#3-1-6-设置PATH变量" class="headerlink" title="3.1.6.设置PATH变量"></a>3.1.6.设置PATH变量</h3><p>设置PATH为一个已知的值，而不是仅仅使用启动时的缺省值。攻击者可<br>以在攻击应用程序时使用PATH变量，例如试图执行一个任意的程序，这些可<br>以应用于大多数其他的语言。</p>
 <h3 id="3-1-7-其他要求"><a href="#3-1-7-其他要求" class="headerlink" title="3.1.7.其他要求"></a>3.1.7.其他要求</h3><ol>
@@ -1309,7 +1333,7 @@ function showBtn(){
 <li>采取会话控制或批次控制，确保更新前后数据文件的一致性，例如：检查操作前后文件打开和关闭的数目是否一致。</li>
 <li>检查执行操作前后对象的差额是否正常，如：句柄处理，堆栈等系统资源的占用与释放等。</li>
 <li>严格验证系统生成的数据。</li>
-<li>在网络传输过程中检查下载/上传的数据或软件的完整性。</li>
+<li>在网络传输过程中检查下载&#x2F;上传的数据或软件的完整性。</li>
 <li>检查文件与记录是否被篡改。例如通过计算哈希值（HASH）进行对比。</li>
 <li>禁止私自将代码上传到互联网，如github等</li>
 </ol>
@@ -1383,7 +1407,7 @@ function showBtn(){
 <h3 id="3-2-10-保护网络流量的代码安全"><a href="#3-2-10-保护网络流量的代码安全" class="headerlink" title="3.2.10.保护网络流量的代码安全"></a>3.2.10.保护网络流量的代码安全</h3><ol>
 <li>要使用强大的初始认证机制。</li>
 <li>对应用程序所产生的所有网络流量都要执行过程中消息认证。</li>
-<li>尽可能使用SSL/TLS进行网络加密传输。</li>
+<li>尽可能使用SSL&#x2F;TLS进行网络加密传输。</li>
 </ol>
 <h3 id="3-2-11-应用中的弱口令代码安全"><a href="#3-2-11-应用中的弱口令代码安全" class="headerlink" title="3.2.11.应用中的弱口令代码安全"></a>3.2.11.应用中的弱口令代码安全</h3><ol>
 <li>确保口令在网络上认证时不被窃听。</li>
@@ -1416,8 +1440,8 @@ function showBtn(){
 <h3 id="3-4-3-防范恶意文件执行"><a href="#3-4-3-防范恶意文件执行" class="headerlink" title="3.4.3.防范恶意文件执行"></a>3.4.3.防范恶意文件执行</h3><p>恶意文件执行是一种能够威胁任何网站形式的漏洞，只要攻击者在具有<br>引入（include）功能程式的参数中修改参数内容，Web服务器便会引入恶意程序从而受到恶意文件执行漏洞攻击。<br><br>攻击者可利用恶意文件执行漏洞进行攻击取得Web服务器控制权，进<br>行不法利益或获取经济利益。</p>
 <h3 id="3-4-4-不安全的直接对象引用"><a href="#3-4-4-不安全的直接对象引用" class="headerlink" title="3.4.4.不安全的直接对象引用"></a>3.4.4.不安全的直接对象引用</h3><p>所谓“不安全的对象直接引用”，即Insecuredirectobjectreferences，意<br>指一个已经授权的用户，通过更改访问时的一个参数，从而访问到原本其<br>并没有得到授权的对象。Web应用往往在生成Web页面时会用它的真实名<br>字，且并不会对所有的目标对象访问时检查用户权限，所以这就造成了不安全的对象直接引用的漏洞。<br><br>以下是不安全的对象直接引用示例：</p>
 <ul>
-<li>攻击者发现他自己的参数是6065，即?acct=6065；</li>
-<li>他可以直接更改参数为6066，即?acct=6066；</li>
+<li>攻击者发现他自己的参数是6065，即?acct&#x3D;6065；</li>
+<li>他可以直接更改参数为6066，即?acct&#x3D;6066；</li>
 <li>这样他就可以直接看到6066用户的账户信息了。<br><br>这种漏洞能损害参数所引用的所有数据。除非名字空间很稀疏，否则攻击者很容易访问该类型的所有数据。</li>
 </ul>
 <h3 id="3-4-5-防范跨站请求伪造"><a href="#3-4-5-防范跨站请求伪造" class="headerlink" title="3.4.5.防范跨站请求伪造"></a>3.4.5.防范跨站请求伪造</h3><p>跨站请求伪造，也被称成为“oneclickattack”或者sessionriding，通常<br>缩写为CSRF或者XSRF，是一种对网站的恶意利用。它与XSS非常不同，<br>并且攻击方式几乎相左。XSS利用站点内的信任用户，而CSRF则通过伪装<br>来自受信任用户的请求来利用受信任的网站。与XSS攻击相比，CSRF攻击<br>往往不太流行（因此对其进行防范的资源也相当稀少）和难以防范，所以被认为比XSS更具危险性。<br><br>攻击者能让受害用户修改可以修改的任何数据，或者是执行允许使用的任何功能。</p>
@@ -1582,11 +1606,11 @@ function showBtn(){
 <p>使用<code>safe_mode</code>模式也能避免这种问题，前面已经讨论过。</p>
 <h3 id="3-5-3-文件包含"><a href="#3-5-3-文件包含" class="headerlink" title="3.5.3.文件包含"></a>3.5.3.文件包含</h3><p>要求程序员包含文件里的参数尽量不能使用变量，如果使用变量，就一<br>定要严格检查要包含的文件名，绝对不能由用户任意指定。如前面文件打开中限制PHP操作路径是一个必要的选项。<br>另外，如非特<br>殊需要，一定要关闭PHP的远程文件打开功能。修改php.ini文件：<code>allow_url_fopen=Off</code><br>重启apache。</p>
 <h3 id="3-5-4-文件上传"><a href="#3-5-4-文件上传" class="headerlink" title="3.5.4.文件上传"></a>3.5.4.文件上传</h3><p><strong>PHP-4.0.3</strong>以后提供了<code>is_uploaded_file</code>和<code>move_uploaded_file</code>函数，可以<br>检查操作的文件是否是用户上传的文件，从而避免把系统文件拷贝到Web目录。<br><br>使用<code>$HTTP_POST_FILES</code>或<code>$_FILES</code>数组来读取用户上传的文件变量。严格检查上传变量。比如不允许是php脚本文件。<br>把PHP脚本操作限制在Web目录可以避免程序员使用<code>copy函数</code>把系统<br>文件拷贝到Web目录。<code>move_uploaded_file</code>不受<code>open_basedir</code>的限制，所以不必修改<code>php.ini</code>里<code>upload_tmp_dir</code>的值。<br>把PHP脚本用<code>phpencode</code>进行加密，避免由于copy操作泄漏源码。严格配置文件和目录的权限，只允许上传的目录能够让nobody用户可写。<br><br>对于上传目录去掉PHP解释功能，可以通过修改<code>httpd.conf</code>实现：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory<span class="regexp">/usr/</span>local<span class="regexp">/apache/</span>htdocs/upload&gt;php_flagengineoff</span><br><span class="line"><span class="comment">#如果是php3换成php3_engineoff</span></span><br><span class="line">&lt;/Directory&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;Directory/usr/local/apache/htdocs/upload&gt;</span><span class="attribute">php_flagengineoff</span></span><br><span class="line"><span class="comment">#如果是php3换成php3_engineoff</span></span><br><span class="line"><span class="section">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
 <p>重启apache，upload目录的php文件就不能被apache解释了，即使上传了php文件也没有问题，只能直接显示源码。</p>
-<h3 id="3-5-5-命令执行"><a href="#3-5-5-命令执行" class="headerlink" title="3.5.5.命令执行"></a>3.5.5.命令执行</h3><p>解决方法：<br><br>要求程序员使用<code>escapeshellcmd()</code>函数过滤用户输入的shell命令。启用<code>safe_mode</code>可以杜绝很多执行命令的问题，不过要注意PHP的版本一定要是最新的，小于<strong>PHP-4.2.2</strong>的都可能绕过<code>safe_mode</code>的限制去执行命令。<br><br>变量类型缺陷逻辑比较时注意变量类型。<br><br>必要的时候使用”===”，那么连变量类型一起比较。</p>
+<h3 id="3-5-5-命令执行"><a href="#3-5-5-命令执行" class="headerlink" title="3.5.5.命令执行"></a>3.5.5.命令执行</h3><p>解决方法：<br><br>要求程序员使用<code>escapeshellcmd()</code>函数过滤用户输入的shell命令。启用<code>safe_mode</code>可以杜绝很多执行命令的问题，不过要注意PHP的版本一定要是最新的，小于<strong>PHP-4.2.2</strong>的都可能绕过<code>safe_mode</code>的限制去执行命令。<br><br>变量类型缺陷逻辑比较时注意变量类型。<br><br>必要的时候使用”&#x3D;&#x3D;&#x3D;”，那么连变量类型一起比较。</p>
 <h3 id="3-5-6-警告及错误信息"><a href="#3-5-6-警告及错误信息" class="headerlink" title="3.5.6.警告及错误信息"></a>3.5.6.警告及错误信息</h3><p>修改<code>php.ini</code>中关于<code>Errorhandlingandlogging</code>部分内容：</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error_reporting=E_ALLdisplay_errors=Offlog_errors=Onerror_log=<span class="regexp">/usr/</span>local<span class="regexp">/apache/</span>logs/php_error.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error_reporting<span class="operator">=</span>E_ALLdisplay_errors<span class="operator">=</span>Offlog_errors<span class="operator">=</span>Onerror_log<span class="operator">=/</span>usr/local/apache/logs/php_error.log</span><br></pre></td></tr></table></figure>
 <p>然后重启apache，注意文件<code>/usr/local/apache/logs/php_error.log</code>，必需可<br>以让nobody用户可写。</p>
 <h3 id="3-5-7-PHP与MySQL组合的SQL注入"><a href="#3-5-7-PHP与MySQL组合的SQL注入" class="headerlink" title="3.5.7.PHP与MySQL组合的SQL注入"></a>3.5.7.PHP与MySQL组合的SQL注入</h3><p>解决方法：<br><br>要求程序员对所有用户提交的要放到SQL语句的变量进行过滤。<br><br>即使是数字类型的字段，变量也要用单引号扩起来，MySQL自己会把字串处理成数字。<br><br>在MySQL里不能给PHP程序高级别权限的用户，只允许对自己的库进行操作。</p>
 <h3 id="3-5-8-跨站脚本"><a href="#3-5-8-跨站脚本" class="headerlink" title="3.5.8.跨站脚本"></a>3.5.8.跨站脚本</h3><p>解决方法：<br><br>确认输入</p>
@@ -1612,9 +1636,10 @@ function showBtn(){
 </ul>
 <ol start="3">
 <li>保持运行环境干净。</li>
-<li>不能在Web目录放测试文件。 </li>
+<li>不能在Web目录放测试文件。</li>
 </ol>
-<h2 id="3-6-C-C-安全开发要求"><a href="#3-6-C-C-安全开发要求" class="headerlink" title="3.6.C/C++安全开发要求"></a>3.6.C/C++安全开发要求</h2><p>C本质上是不安全的编程语言。例如如果不谨慎使用的话，其大多数标准的字符串库函数有可能被用来进行缓冲区攻击或者格式字符串攻击。但是，由于其<br>灵活性、快速和相对容易掌握，它是一个广泛使用的编程语言。<br><br>下面是针对开发安全的C语言程序的一些规范。</p>
+<p> </p>
+<h2 id="3-6-C-C-安全开发要求"><a href="#3-6-C-C-安全开发要求" class="headerlink" title="3.6.C&#x2F;C++安全开发要求"></a>3.6.C&#x2F;C++安全开发要求</h2><p>C本质上是不安全的编程语言。例如如果不谨慎使用的话，其大多数标准的字符串库函数有可能被用来进行缓冲区攻击或者格式字符串攻击。但是，由于其<br>灵活性、快速和相对容易掌握，它是一个广泛使用的编程语言。<br><br>下面是针对开发安全的C语言程序的一些规范。</p>
 <h3 id="3-6-1-缓冲区溢出"><a href="#3-6-1-缓冲区溢出" class="headerlink" title="3.6.1.缓冲区溢出"></a>3.6.1.缓冲区溢出</h3><p>避免使用不执行边界检查的字符串函数，因为它们可能被用来进行缓冲<br>区溢出攻击。下面是应该避免使用的函数。同时，也列出了每个函数相应的比较安全的替换方式。</p>
 <ul>
 <li>不使用strcpy()，使用strncpy()；</li>
@@ -1624,11 +1649,11 @@ function showBtn(){
 </ul>
 <p>在上面的前三个中函数中，每个替代函数的“n”表示了使用的缓冲区的<br>大小。最后一个函数的“f”，表示格式，它允许用户指定期望的输入的格式。<br><br>这些替换方程强制程序员定义使用的缓冲区的尺寸以及确定输入的类型。</p>
 <h3 id="3-6-2-格式化字符串攻击"><a href="#3-6-2-格式化字符串攻击" class="headerlink" title="3.6.2.格式化字符串攻击"></a>3.6.2.格式化字符串攻击</h3><p>该类攻击往往与缓冲区溢出相关，因为它们主要利用了某些函数的假<br>设，例如<code>sprintf()</code>和<code>vsprintf()</code>假设缓冲区的长度是无限的。然而即使使用<code>snprintf()</code>替换<code>sprintf()</code>也无法完全保护程序不受格式化字符串的攻击。这些攻击通过直接将格式说明符<code>（formatspecifiers）(%d，%s，%n等)</code>传递到输出函数接收缓冲区来进行。<br><br>例如，以下的代码就是不安全的：<code>snprintf(buffer,sizeof(buffer),string)</code>这种情况下，可以在字符串中插入格式说明符来操纵内存的栈，来写入<br>攻击者的数据（这些数据中包含小的程序代码，并可由处理器接着执行）。<br><br>对以上的例子建议使用下面的代码。<br></p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in"><span class="keyword">sizeof</span></span>(buffer),“%s”,string)</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in">sizeof</span>(buffer),“%s”,string)</span><br></pre></td></tr></table></figure>
 <p>进行格式字符串攻击不太容易。首先攻击者必须能获得内存栈的内容情<br>况（或者从应用导出或者使用调试器），然后必须知道如何精确访问特定的内存空间来操纵栈中的变量。<br><br>执行外部程序推荐使用<code>exec()</code>函数而不是<code>system()</code>函数来执行外部程序。这是因为<code>system()</code>接收整个命令行的随机的缓冲区来执行程序。</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in"><span class="keyword">sizeof</span></span>(buffer),<span class="string">&quot;emacs%s&quot;</span>,filename);</span><br><span class="line"><span class="built_in">system</span>(buffer);</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">snprintf</span>(buffer,<span class="built_in">sizeof</span>(buffer),<span class="string">&quot;emacs%s&quot;</span>,filename);</span><br><span class="line"><span class="built_in">system</span>(buffer);</span><br></pre></td></tr></table></figure>
 <p>在以上的例子中，可以通过使用分号利用文件名变量在sehll中插入额<br>外的命令（例如文件名可以是<code>/etc/hosts;rm*</code>，这将在显示<code>/etc/hosts</code>目录文件<br>的同时，删除目录中的所有文件）。<br>而exec()函数只保证第一个参数被执行：</p>
-<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execl(<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="meta">filename</span>,<span class="meta">NULL</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execl(<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="string">&quot;usr/bin/emacs&quot;</span>,<span class="keyword">filename</span>,<span class="keyword">NULL</span>);</span><br></pre></td></tr></table></figure>
 <p>上面的例子保证文件名仅仅作为一个参数输入Emacs工具，同样它在Emacs命令中使用完全的路径而不是使用可以被攻击者利用的PATH环境变量。</p>
 <h3 id="3-6-3-竞争条件"><a href="#3-6-3-竞争条件" class="headerlink" title="3.6.3.竞争条件"></a>3.6.3.竞争条件</h3><p>进程需要访问资源时（无论是磁盘、内存或是文件）通常需要执行两个步骤：</p>
 <ol>
@@ -1661,7 +1686,7 @@ function showBtn(){
 <h2 id="4-2-测试方法及内容要求"><a href="#4-2-测试方法及内容要求" class="headerlink" title="4.2.测试方法及内容要求"></a>4.2.测试方法及内容要求</h2><ol>
 <li><p>应根据应用系统的具体情况，设计安全性测试的具体方法和内容，通常<br>主要的测试方法和内容分为<strong>功能性测试、压力测试、渗透性测试、审核性测试</strong>。</p>
 <ul>
-<li>功能性测试<br><br>对应用系统的安全功能点进行测试，确保安全功能的有效性、正确性。<ul>
+<li>功能性测试<br><br> 对应用系统的安全功能点进行测试，确保安全功能的有效性、正确性。<ul>
 <li>这些功能点应全部包含在测试大纲中，在大纲的测试用例中体现具体的测    试方    法。测试大纲中的这些内容应当覆盖了需求说明书中安全功能部分的要    求。</li>
 <li>测试的具体内容主要涉及以下几个方面：<ul>
 <li>安全审计</li>
@@ -1673,19 +1698,26 @@ function showBtn(){
 </li>
 </ul>
 </li>
-<li>压力测试<br><br>对应用系统的安全功能进行压力测试，确保安全功能可以满足设计的需要。<ul>
+<li>压力测试<br><br> 对应用系统的安全功能进行压力测试，确保安全功能可以满足设计的需要。<ul>
 <li><pre><code>压力测试的具体应全部包含在测试大纲中，在大纲的测试用例中体现具    体的测    试方法。
 </code></pre>
 </li>
-<li>测试大纲中的这些要求应当参照设计说明书中所描述的设计目标进<br>行测试用例的设计，包括但不限于：      - 应用系统服务器端和单个终端进行安全数据传输的最大容量。      - 应用系统服务器端能够与多少终端同时进行安全数据传输。      - 服务器承受的最大并发连接数。</li>
-</ul>
+<li><pre><code>测试大纲中的这些要求应当参照设计说明书中所描述的设计目标进
+</code></pre>
 </li>
-<li>渗透性测试<br><br>模拟攻击手段，对应用系统抵抗攻击的能力进行测试。主要测试应用程序及应用系统配置上的安全漏洞。<ul>
+</ul>
+<p>  行测试用例的设计，包括但不限于：<br>      - 应用系统服务器端和单个终端进行安全数据传输的最大容量。<br>      - 应用系统服务器端能够与多少终端同时进行安全数据传输。<br>      - 服务器承受的最大并发连接数。</p>
+</li>
+<li>渗透性测试<br><br> 模拟攻击手段，对应用系统抵抗攻击的能力进行测试。主要测试应用程序及应用系统配置上的安全漏洞。<ul>
 <li><pre><code>渗透测试的具体应全部包含在测试大纲中，在大纲的测试用例中体现具    体的测    试方法。
 </code></pre>
 </li>
-<li><pre><code>测试大纲中渗透测试方法的选择需要依据设计说明书中描述的应用系统    采用的    开发工具及应用系统安装所需要的基础应用平台，如iis、apached    等，来设计不    同的测试方法，包括但不限于：      - 对webserver的渗透攻击测试或者工具扫描性测试。      - SQL注入、跨栈攻击。
+<li><pre><code>测试大纲中渗透测试方法的选择需要依据设计说明书中描述的应用系统    采用的    开发工具及应用系统安装所需要的基础应用平台，如iis、apached    等，来设计不    同的测试方法，包括但不限于：
 </code></pre>
+<ul>
+<li>对webserver的渗透攻击测试或者工具扫描性测试。</li>
+<li>SQL注入、跨栈攻击。</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -1711,7 +1743,12 @@ function showBtn(){
 <li>   测试环境的物理、硬软件环境要求应当可以模拟真实环境。</li>
 <li>   为确保测试环境的安全，应将测试环境与开发环境、生产环境相隔离，避免测试工作对业务的影响。</li>
 <li>   测试数据如果选择是真实数据，应限定使用该数据的测试人员的数量，并在测试完成后全部删除。</li>
-<li>   系统测试和验收通常需要大量的（真实数据）尽可能靠近实际运行数据的测试数据。应避免使用含有个人信息的业务数据库。如果要使用其中<br>信息，在用之前应使其失去个性化。当把运行数据用于测试目的时，应采取以下措施保护运行数据。    - 如果该数据由测试人员使用，则需要相关授权业务人员参与，或者监督。    - 每次把运行信息复制到测试应用系统都应有单独的授权。    - 应记录运行信息的复制和使用，以提供一种检查追踪。</li>
+<li>   系统测试和验收通常需要大量的（真实数据）尽可能靠近实际运行数据的测试数据。应避免使用含有个人信息的业务数据库。如果要使用其中<br>信息，在用之前应使其失去个性化。当把运行数据用于测试目的时，应采取以下措施保护运行数据。<ul>
+<li>如果该数据由测试人员使用，则需要相关授权业务人员参与，或者监督。</li>
+<li>每次把运行信息复制到测试应用系统都应有单独的授权。</li>
+<li>应记录运行信息的复制和使用，以提供一种检查追踪。</li>
+</ul>
+</li>
 <li>   在与其他系统的互操作性测试中，应充分考虑对其他系统的影响，选择适当的时间、方法。</li>
 </ol>
 <h2 id="4-4-测试后的要求"><a href="#4-4-测试后的要求" class="headerlink" title="4.4.测试后的要求"></a>4.4.测试后的要求</h2><p>测试完成后，在正式上线前，应进行安全检查，消除测试用的一切后门、用户名及口令等，包括但不限于：</p>
@@ -1721,19 +1758,15 @@ function showBtn(){
 <li>测试用时临时开通的系统服务、防火墙端口及策略。</li>
 <li>与外系统测试时，要求外系统上临时开启的服务、账号等。</li>
 </ol>
+<p> <a href="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/">http://www.pa55w0rd.online/应用开发安全指南/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/" data-id="ckxh6t4to007ndgsw928sdh01" class="article-share-link" data-share="baidu" data-title="应用开发安全指南">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/" data-id="cmn8a4dk2008l6oho9govbfhz" class="article-share-link" data-share="baidu" data-title="应用开发安全指南">分享到</a>
       
 
       
@@ -1744,6 +1777,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" rel="tag">安全开发</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/" rel="bookmark">http://www.pa55w0rd.online/%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -1802,23 +1848,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -1831,7 +1877,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1847,7 +1893,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -1857,8 +1903,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -2123,7 +2169,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -2166,12 +2212,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -2182,9 +2254,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Fri Sep 28 2018 18:37:59 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Fri Sep 28 2018 18:37:59 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -2215,14 +2286,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -2235,7 +2315,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -2269,44 +2349,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

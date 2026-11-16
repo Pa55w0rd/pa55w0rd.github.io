@@ -37,7 +37,6 @@ $(document).ready(function () {
       hitsPerPage: algoliaSettings.hits.per_page || 10,
       templates: {
         item: function (data) {
-          console.log(data)
           return (
             // '<a href="' + CONFIG.root + data.path + '" class="algolia-hit-item-link">' +
             '<a href="' + CONFIG.root + data.slug + '" class="algolia-hit-item-link">' +

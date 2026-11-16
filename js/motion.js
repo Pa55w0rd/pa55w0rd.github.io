@@ -168,14 +168,6 @@ $(document).ready(function () {
 
       this.sidebarEl.removeClass('sidebar-active');
       this.sidebarEl.trigger('sidebar.isHiding');
-
-      //在 post 页面下按下隐藏 sidebar 时如果当前选中的是“站点概览”，将 toc 去除 motion 效果
-      //防止再次打开时会出现在“站点概览”下的 bug
-      if (!!$('.post-toc-wrap')) {
-        if ($('.site-overview').css('display') === 'block') {
-          $('.post-toc-wrap').removeClass('motion-element');
-        }
-      }
     }
   };
   sidebarToggleMotion.init();

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,11 +10,26 @@
 
   <title>Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/page/17/">
+
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pa55w0rd 's Blog","description":"信息安全","url":"http://www.pa55w0rd.online/","inLanguage":"zh-CN"}</script>
+
+
+
+  
   <meta name="description" content="信息安全">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.online/page/17/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/page/17/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="信息安全">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +53,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -50,25 +65,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -88,31 +114,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -125,7 +126,7 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
@@ -189,21 +190,27 @@ ga('send', 'pageview');
     <div class="outer">
       <section id="main">
   
-    <article   id="post-快速定位前端加密方法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-19T09:23:03.000Z" itemprop="datePublished">2018-10-19</time>
+    <article id="post-git_edit_remoteurl" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/git_edit_remoteurl/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-11-06T09:04:11.000Z" itemprop="datePublished">2018-11-06</time>
 </a>
 
-    
+
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a>
+    <a class="article-category-link" href="/categories/note/">note</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -212,8 +219,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>快速定位前端加密方法（转发）</a>
+      <a class="article-title" href="/git_edit_remoteurl/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>Git修改远程URL</a>
     </h1>
   
 
@@ -221,48 +228,283 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>转自 <a target="_blank" rel="noopener" href="http://gv7.me/articles/2018/fast-locate-the-front-end-encryption-method/">http://gv7.me/articles/2018/fast-locate-the-front-end-encryption-method/</a></p>
-</blockquote>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>相信用过我jsEncrypter这个插件的朋友，都会碰到一个问题。 <strong>那就是一些大型网站前端太复杂，以至于无法定位到前端数据加密函数所在的位置</strong>。无法定位到加密方法所在，自然就无法编写jsEncrypter的phantomJS脚本了。k哥在今晚给了我很多灵感，让我对这个问题有一个完美的解决方案。以至于现在已是12号的凌晨3点，我仍不舍得搁浅内心零散的想法。窗外稍许的车辆略过的轰鸣，在夜深人静时显得格外刺耳。不过还好，没破坏我静静码字感觉。下面让我慢慢将这简单弱智有点零散，但细细思考，却有点意思的想法，串成一个流程。</p>
+        <p>Github 设置使用了ssh key，每次提交代码还是需要输入用户名？？？</p>
         
           <p class="article-more-link ">
-            <a href="/%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/git_edit_remoteurl/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/git_edit_remoteurl/" data-id="cmn8a4dih001k6ohobfcn6vr8" class="article-share-link" data-share="baidu" data-title="Git修改远程URL">分享到</a>
+      
 
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      
+        <a href="http://www.pa55w0rd.online/git_edit_remoteurl/#gitalk-container" class="article-comment-link">留言</a>
+      
 
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">解决方法</a></li></ul>
+
+
+
+      
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-linux_firefox_error" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/linux_firefox_error/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-11-06T09:03:11.000Z" itemprop="datePublished">2018-11-06</time>
+</a>
+
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/linux_firefox_error/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>Centos 7 运行firefox出错</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Centos 7 在firefox官网下载了最新的安装包，运行后提示</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># firefox</span><br><span class="line">XPCOMGlueLoad <span class="keyword">error</span> <span class="keyword">for</span> <span class="keyword">file</span> /root/fuzzingbox/firefox/libmozgtk.<span class="keyword">so</span>:</span><br><span class="line">libgtk-3.<span class="keyword">so</span>.0: cannot <span class="keyword">open</span> shared object <span class="keyword">file</span>: <span class="keyword">No</span> such <span class="keyword">file</span> or directory</span><br><span class="line">Couldn&#x27;t load XPCOM.</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link ">
+            <a href="/linux_firefox_error/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
+      
+
+    </div>
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95/" data-id="ckxh6t4tq007udgswdodg3pt8" class="article-share-link" data-share="baidu" data-title="快速定位前端加密方法（转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/linux_firefox_error/" data-id="cmn8a4diy00396ohobplpah1k" class="article-share-link" data-share="baidu" data-title="Centos 7 运行firefox出错">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/linux_firefox_error/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">解决方法</a></li></ul>
+
+
+
+      
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-mongodb_auth" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/mongodb_auth/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-11-01T05:35:11.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/mongodb_auth/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>mongodb开启认证</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>修改配置文件，开启认证</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vi /etc/mongod.conf</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link ">
+            <a href="/mongodb_auth/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
+      
+
+    </div>
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/mongodb_auth/" data-id="cmn8a4dj0003k6oho8pdb7cxt" class="article-share-link" data-share="baidu" data-title="mongodb开启认证">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/mongodb_auth/#gitalk-container" class="article-comment-link">留言</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mongodb/" rel="tag">mongodb</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+
+
+      
+    </footer>
+  </div>
+  
+</article>
+<!--
+<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+-->
+
+
+
+
+
+
+
+  
+    <article id="post-旁路监控" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/%E6%97%81%E8%B7%AF%E7%9B%91%E6%8E%A7/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-11-01T05:33:11.000Z" itemprop="datePublished">2018-11-01</time>
+</a>
+
+
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/note/">note</a>
+  </div>
+
+
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
+    
+    
+
+      <header class="article-header">
+
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/%E6%97%81%E8%B7%AF%E7%9B%91%E6%8E%A7/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>旁路监控</a>
+    </h1>
+  
+
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>常见的网络监控模式可以分为两种：一种是旁路监控模式，另一种是串联监控模式。</p>
+<p>“旁路监控模式”一般是指通过交换机等网络设备的“端口镜像”功能来实现监控，在此模式下，监控设备只需要连接到交换机的指定镜像端口，所以形象的称之为“旁路监控”。</p>
+<p>而串联模式一般是通过网关、网桥或者代理服务器的模式来进行监控，由于监控设备做为网关或者网桥串联在网络中，所以称之为“串联监控模式”。</p>
+        
+          <p class="article-more-link ">
+            <a href="/%E6%97%81%E8%B7%AF%E7%9B%91%E6%8E%A7/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+          </p>
+        
+      
+
+    </div>
+
+    <footer class="article-footer">
+      
+        <a data-url="http://www.pa55w0rd.online/%E6%97%81%E8%B7%AF%E7%9B%91%E6%8E%A7/" data-id="cmn8a4dk3008o6oho3y8l6m59" class="article-share-link" data-share="baidu" data-title="旁路监控">分享到</a>
+      
+
+      
+        <a href="http://www.pa55w0rd.online/%E6%97%81%E8%B7%AF%E7%9B%91%E6%8E%A7/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
 
 
+
+      
     </footer>
   </div>
   
@@ -280,212 +522,27 @@ ga('send', 'pageview');
 
 
   
-    <article   id="post-渗透测试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-19T03:14:56.000Z" itemprop="datePublished">2018-10-19</time>
+    <article id="post-基线加固" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-11-01T05:32:11.000Z" itemprop="datePublished">2018-11-01</time>
 </a>
 
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner"  >
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>渗透测试流程</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p><strong>总结，持续更新</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>渗透千万条，安全第一条。渗透不授权，亲人泪两行！</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong></p>
-</blockquote>
-<blockquote>
-<p><strong>是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！</strong></p>
-</blockquote>
-<h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络所有者根据渗透人员提供的渗透测试报告，可以清晰知晓系统中存在的安全隐患和问题。</p>
-<p>但是注意任何没有明确授意 授权的渗透测试都可能存在法律风险，授权最好是纸质文档形式，有你授权人的姓名身份证号甲方盖章和单位名称等。</p>
-<p>渗透测试不同于入侵，入侵是不择手段的，甚至是居右破坏性的拿到系统权限</p>
-        
-          <p class="article-more-link ">
-            <a href="/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" data-id="ckxh6t4tt0084dgswdqh60pdk" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
-      
 
       
-        <a href="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article   id="post-centos7_install_docker" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/centos7_install_docker/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-18T02:40:11.000Z" itemprop="datePublished">2018-10-18</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner"  >
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/centos7_install_docker/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>centos7 安装使用docker</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口。</p>
-<p>Docker从1.13版本之后采用时间线的方式作为版本号，分为社区版CE和企业版EE。</p>
-        
-          <p class="article-more-link ">
-            <a href="/centos7_install_docker/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.online/centos7_install_docker/" data-id="ckxh6t4rh000ydgsw6rwa8cis" class="article-share-link" data-share="baidu" data-title="centos7 安装使用docker">分享到</a>
-      
-
-      
-        <a href="http://www.pa55w0rd.online/centos7_install_docker/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article   id="post-从无到有通过ISO27001认证" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-17T06:27:13.000Z" itemprop="datePublished">2018-10-17</time>
-</a>
-
-    
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -494,8 +551,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>从无到有通过ISO27001认证（转）</a>
+      <a class="article-title" href="/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>基线加固文档</a>
     </h1>
   
 
@@ -503,159 +560,35 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p>转自：<a target="_blank" rel="noopener" href="http://ksowo.com/2018/01/19/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81-%E5%BB%BA%E8%AE%BE%E7%AF%87/">从无到有通过ISO27001认证-建设篇</a></p>
-</blockquote>
-<blockquote>
-<p>转自：<a target="_blank" rel="noopener" href="http://ksowo.com/2017/12/18/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81-%E5%AE%A1%E6%A0%B8%E7%AF%87/">从无到有通过ISO27001认证-审核篇</a></p>
-</blockquote>
-<h1 id="建设篇"><a href="#建设篇" class="headerlink" title="建设篇"></a><strong>建设篇</strong></h1><p>安全是一个不断的持续的过程，每个环节都不可缺少，在安全的路上懂的越多发现自己不懂的越多。</p>
-<h2 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 <strong>概述</strong></h2><p>我在某做WL的公司负责公司整体安全，保护公司业务系统的安全（这个系统会有大部分看官的个人信息）。公司业务发展很快，但是信息化基础建设很落后，管理不规范，人员技术水平参差不齐，对网络和安全没有认识。领导对安全概念模糊，无法落实；因为是新来的，领导对提出的解决方案有选择的进行，但是有个好的地方就是公司发展太快，出现过不少安全问题，给我们安全部带来了外部推动力（虽然不想出事，但是出事了可以加快安全建设的脚步）。</p>
-<p>一年的时间从什么都没到现在的逐渐成型、各种安全流程的建立和落地，建了ISO27001安全体系（通过了认证），此篇文章进行了一个总结，期间也碰到了的很多坑和挫折，自己也在这个过程中学习了成长了，这里再次感谢帮助过我的朋友们，感谢安全部另外一位X大牛。</p>
+        <p><a target="_blank" rel="noopener" href="https://github.com/re4lity/Benchmarks">https://github.com/re4lity/Benchmarks</a></p>
+<p><a target="_blank" rel="noopener" href="https://learn.cisecurity.org/benchmarks">https://learn.cisecurity.org/benchmarks</a></p>
+<p><a target="_blank" rel="noopener" href="https://nvd.nist.gov/ncp/repository">https://nvd.nist.gov/ncp/repository</a></p>
         
           <p class="article-more-link ">
-            <a href="/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81/" data-id="ckxh6t4tf006pdgsw4cf25fu7" class="article-share-link" data-share="baidu" data-title="从无到有通过ISO27001认证（转）">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/" data-id="cmn8a4djx007t6oho2uoch8ky" class="article-share-link" data-share="baidu" data-title="基线加固文档">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/%E4%BB%8E%E6%97%A0%E5%88%B0%E6%9C%89%E9%80%9A%E8%BF%87ISO27001%E8%AE%A4%E8%AF%81/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/%E5%9F%BA%E7%BA%BF%E5%8A%A0%E5%9B%BA/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" rel="tag">安全建设</a></li></ul>
 
 
-    </footer>
-  </div>
-  
-</article>
-<!--
-<div class="share-component" data-disabled="" data-description="Share.js - 一键分享到微博，QQ空间，腾讯微博，人人，豆瓣">一键分享</div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
--->
-
-
-
-
-
-
-
-  
-    <article   id="post-刷短信接口" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E5%88%B7%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-17T06:27:13.000Z" itemprop="datePublished">2018-10-17</time>
-</a>
-
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner"  >
-    
-    
-
-      <header class="article-header">
-
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/%E5%88%B7%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>短信验证码安全</a>
-    </h1>
-  
-
-
-
-      </header>
-    
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0x00-事件"><a href="#0x00-事件" class="headerlink" title="0x00 事件"></a>0x00 事件</h2><p>短信验证码常被用于网站用户注册、账户安全登录以及忘记密码、确认下单等应用场景，特别是一些涉及到用户个人敏感行为时候，为了确认操作是用户本人执行的通常会使用短信验证码进行二次认证。</p>
-<p>接口来源</p>
-<ul>
-<li><p>注册登录</p>
-<ul>
-<li>注册</li>
-<li>注册成功欢迎语</li>
-<li>登录</li>
-<li>找回密码</li>
-</ul>
-</li>
-<li><p>操作提醒类</p>
-<ul>
-<li>操作提醒</li>
-<li>确定下单</li>
-<li>开通xx服务</li>
-</ul>
-</li>
-</ul>
-        
-          <p class="article-more-link ">
-            <a href="/%E5%88%B7%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
-          </p>
-        
-      
-
-    </div>
-
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
-    <footer class="article-footer">
-      
-        <a data-url="http://www.pa55w0rd.online/%E5%88%B7%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3/" data-id="ckxh6t4ti0072dgsw4chw7tak" class="article-share-link" data-share="baidu" data-title="短信验证码安全">分享到</a>
-      
 
       
-        <a href="http://www.pa55w0rd.online/%E5%88%B7%E7%9F%AD%E4%BF%A1%E6%8E%A5%E5%8F%A3/#gitalk-container" class="article-comment-link">留言</a>
-      
-
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" rel="tag">安全漏洞</a></li></ul>
-
-
     </footer>
   </div>
   
@@ -675,7 +608,7 @@ ga('send', 'pageview');
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/16/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/18/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/16/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/18/">Next &raquo;</a>
     </nav>
   
 
@@ -691,23 +624,23 @@ ga('send', 'pageview');
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -720,7 +653,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -736,7 +669,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -746,8 +679,8 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -1012,7 +945,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -1055,6 +988,25 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
@@ -1064,20 +1016,22 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-  <script>
-    const gitalk = new Gitalk({
-      clientID: "992fba235eb173826494",
-      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
-      repo: "pa55w0rd.github.io",
-      owner: "Pa55w0rd",
-      admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-  </script>
 
+
+
+  <script>
+    var disqus_shortname = 'rapcoder';
+    if (page.permalink){
+      var disqus_url = '';
+     }
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
 
 
 
@@ -1104,14 +1058,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -1124,7 +1087,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -1158,44 +1121,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

@@ -1,0 +1,265 @@
+/* 目录：宽屏放入 #sidebar、隐藏 widget；嵌套 ol + counters 生成 1. / 1.1. */
+
+.toc-container {
+  position: relative;
+  z-index: 18;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  border-left: 3px solid #ce8450;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* sticky 与 overflow:hidden 不能同元素共存，侧栏目录必须 visible 才能吸顶滚动 */
+.toc-container.toc-container--sidebar {
+  overflow: visible;
+}
+
+/* 宽屏：目录在 #sidebar 内，随侧栏列排版，sticky 吸顶 */
+.toc-container.toc-container--sidebar {
+  margin-bottom: 0;
+}
+
+@media screen and (min-width: 1080px) {
+  /* top / max-height 由 JS 写入 --toc-sticky-top，与页眉对齐；滚动时 sticky 随视口跟随 */
+  #sidebar .toc-container.toc-container--sidebar {
+    position: sticky;
+    top: var(--toc-sticky-top, 96px);
+    max-height: calc(100vh - var(--toc-sticky-top, 96px) - 24px);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 侧栏在含目录的文章页勿裁切 sticky（部分主题 .outer 会 overflow:hidden） */
+  body.post-toc-sidebar #sidebar {
+    overflow: visible;
+  }
+
+  body.post-toc-sidebar .outer {
+    overflow: visible;
+  }
+
+  /* 避免绝对定位的 #wrap 形成截断层，保证 sticky 相对视口滚动 */
+  body.post-toc-sidebar #wrap {
+    overflow: visible !important;
+  }
+
+  /* 由 JS 控制显示；无目录文章见 .post-toc-show-widgets */
+  body.post-toc-sidebar #sidebar .widget-wrap {
+    display: none !important;
+  }
+}
+
+/*
+ * 可生成目录的文章（data-toc=on）：首屏即不占位的隐藏 widget，避免「近期文章」闪现（CSS 在 head 中已加载）。
+ * 无标题时由 JS 添加 body.post-toc-show-widgets 恢复侧栏小工具。
+ */
+body[data-toc="on"]:not(.post-toc-show-widgets) #sidebar .widget-wrap {
+  display: none !important;
+}
+
+body.post-toc-show-widgets #sidebar .widget-wrap {
+  display: block !important;
+}
+
+.toc-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 0;
+  max-height: 100%;
+  background: linear-gradient(180deg, #ce8450, #e8a060);
+  border-radius: 0 2px 2px 0;
+  transition: height 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.toc-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 10px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  background: #fff;
+  border: none;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.toc-container--sidebar .toc-title {
+  cursor: default;
+  pointer-events: none;
+}
+
+.toc-container--sidebar .toc-title-toggle {
+  display: none;
+}
+
+.toc-title:hover {
+  color: #ce8450;
+}
+
+.toc-container--sidebar .toc-title:hover {
+  color: #333;
+}
+
+.toc-title-text::before {
+  content: "\f0cb";
+  font-family: FontAwesome;
+  margin-right: 8px;
+  font-weight: normal;
+  color: #ce8450;
+}
+
+.toc-title-toggle::after {
+  content: "\f107";
+  font-family: FontAwesome;
+  font-size: 18px;
+  color: #999;
+  transition: transform 0.2s ease;
+}
+
+.toc-title-collapsed .toc-title-toggle::after {
+  transform: rotate(-90deg);
+}
+
+/* 多级编号 1. / 1.1. / 1.1.1（每层 ol 新开计数器作用域） */
+ol.toc-numbered {
+  counter-reset: item;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ol.toc-numbered > li {
+  counter-increment: item;
+}
+
+ol.toc-numbered > li > a::before {
+  content: counters(item, ".") ". ";
+  color: #888;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-right: 0.35em;
+}
+
+.toc-root {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 8px 10px 12px 12px;
+  scrollbar-width: thin;
+  border-radius: 0 0 7px 7px;
+  background: #fafafa;
+}
+
+.toc-root::-webkit-scrollbar {
+  width: 5px;
+}
+
+.toc-root::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.toc-item {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* 多级缩进：每层嵌套 ol 累加左内边距 + 左边线（树形目录常见做法） */
+.toc-container ol.toc-nested {
+  margin: 4px 0 6px 0;
+  padding: 2px 0 4px 0;
+  margin-left: 0;
+  padding-left: 14px;
+  border-left: 2px solid #e8e8e8;
+}
+
+.toc-item a {
+  display: block;
+  padding: 4px 6px;
+  margin: 1px 0;
+  font-size: 13px;
+  color: #444;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.toc-depth-1 a { font-size: 13px; font-weight: 600; }
+.toc-depth-2 a { font-size: 12.5px; font-weight: 500; color: #444; }
+.toc-depth-3 a { font-size: 12px; color: #555; }
+.toc-depth-4 a { font-size: 12px; color: #666; }
+.toc-depth-5 a,
+.toc-depth-6 a { font-size: 11.5px; color: #777; }
+
+.toc-item a:hover {
+  background: rgba(206, 132, 80, 0.1);
+  color: #ce8450;
+}
+
+.toc-item a.toc-link-active {
+  background: rgba(206, 132, 80, 0.16);
+  color: #b06d30;
+  font-weight: 600;
+}
+
+.toc-expanded {
+  max-height: 9999px;
+  opacity: 1;
+}
+
+.toc-collapsed {
+  max-height: 0 !important;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+@media (min-width: 768px) {
+  .toc-container:not(.toc-container--sidebar) .toc-title-toggle {
+    display: none;
+  }
+  .toc-container:not(.toc-container--sidebar) .toc-title {
+    pointer-events: none;
+    cursor: default;
+  }
+  .toc-container:not(.toc-container--sidebar) .toc-title:hover {
+    color: #333;
+  }
+}
+
+@media (max-width: 767px) {
+  .toc-container:not(.toc-container--sidebar) {
+    max-height: none;
+  }
+  .toc-root.toc-expanded {
+    max-height: 55vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toc-progress,
+  .toc-item a,
+  .toc-title-toggle::after {
+    transition: none;
+  }
+}
+

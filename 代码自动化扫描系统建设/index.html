@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,48 +10,65 @@
 
   <title>代码自动化扫描系统的建设（转发） | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转自 代码自动化扫描系统的建设- 唯品会安全应急响应中心  0x00 背景为什么需要自动化扫描？互联网的快速发展，程序员是功不可没的。从软件开发的瀑布模型到现在的敏捷开发, 软件的开发周期从数年到数月、从数月到数天，时间不断变换缩减。传统的代码扫描方式已经不能跟进新时代的软件开发流程中，这就需要改变我们的代码扫描方式，它应该在有限的时间内尽量发现足够多的安全问题，并能够结合 [CI (持续集成)">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/">
+
+
+  <meta name="keywords" content="安全开发,安全建设">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"代码自动化扫描系统的建设（转发）","description":"转自 代码自动化扫描系统的建设 唯品会安全应急响应中心","url":"http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/","datePublished":"2018-10-22T06:58:04.000Z","dateModified":"2026-03-24T07:59:41.325Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/"},"inLanguage":"zh-CN"}</script>
+
+
+  
+  <meta name="description" content="转自 代码自动化扫描系统的建设 唯品会安全应急响应中心">
 <meta property="og:type" content="article">
 <meta property="og:title" content="代码自动化扫描系统的建设（转发）">
-<meta property="og:url" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="转自 代码自动化扫描系统的建设- 唯品会安全应急响应中心  0x00 背景为什么需要自动化扫描？互联网的快速发展，程序员是功不可没的。从软件开发的瀑布模型到现在的敏捷开发, 软件的开发周期从数年到数月、从数月到数天，时间不断变换缩减。传统的代码扫描方式已经不能跟进新时代的软件开发流程中，这就需要改变我们的代码扫描方式，它应该在有限的时间内尽量发现足够多的安全问题，并能够结合 [CI (持续集成)">
+<meta property="og:description" content="转自 代码自动化扫描系统的建设 唯品会安全应急响应中心">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C1.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C2.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C3.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C4.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C5.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C6.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C7.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C8.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C9.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C10.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C11.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C12.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C13.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C14.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C15.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C16.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C17.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C18.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C19.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C20.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C21.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C22.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C23.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C24.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C25.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C26.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C27.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C1.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C2.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C3.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C4.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C5.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C6.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C7.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C8.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C9.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C10.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C11.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C12.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C13.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C14.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C15.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C16.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C17.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C18.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C19.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C20.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C21.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C22.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C23.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C24.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C25.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C26.png">
+<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C27.png">
 <meta property="article:published_time" content="2018-10-22T06:58:04.000Z">
-<meta property="article:modified_time" content="2022-03-10T09:18:04.968Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.325Z">
 <meta property="article:author" content="Pa55w0rd">
-<meta property="article:tag" content="安全建设">
 <meta property="article:tag" content="安全开发">
+<meta property="article:tag" content="安全建设">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/%5Cassets%5Cimg%5Cauto_scan%5C1.png">
+<meta name="twitter:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cauto_scan%5C1.png">
 
   
 
@@ -70,7 +87,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -82,25 +99,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -120,31 +148,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -157,11 +160,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -219,21 +222,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-代码自动化扫描系统建设" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-22T06:58:04.000Z" itemprop="datePublished">2018-10-22</time>
-</a>
+      <section id="main"><article id="post-代码自动化扫描系统建设" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-10-22T06:58:04.000Z" itemprop="datePublished">2018-10-22</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 6.2k 字</span>
+      <span class="article-reading-time">约 22 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.325Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -250,39 +269,6 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">0x00 背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">为什么需要自动化扫描？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E6%97%B6%E6%89%AB%E6%8F%8F%E5%BC%95%E6%93%8E%E7%94%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">自动化扫描时扫描引擎用什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E8%A7%A6%E5%8F%91%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%EF%BC%9F"><span class="toc-number">1.3.</span> <span class="toc-text">怎么触发自动化扫描？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%BC%8F%E6%8A%A5%E5%92%8C%E8%AF%AF%E6%8A%A5%EF%BC%9F"><span class="toc-number">1.4.</span> <span class="toc-text">如何解决漏报和误报？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%8A%A5%E7%8E%87%E5%92%8C%E8%AF%AF%E6%8A%A5%E7%8E%87%E6%80%8E%E4%B9%88%E6%A0%B7%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">漏报率和误报率怎么样？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-%E9%80%9A%E7%94%A8%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%8F%AF%E4%BB%A5%E9%83%BD%E8%A6%86%E7%9B%96%E4%B9%88%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">Web 通用型漏洞可以都覆盖么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%AB%E6%8F%8F%E5%87%BA%E6%9D%A5%E7%9A%84%E6%BC%8F%E6%B4%9E%E5%A6%82%E4%BD%95%E5%BD%A2%E6%88%90%E9%97%AD%E5%90%88%EF%BC%9F"><span class="toc-number">1.7.</span> <span class="toc-text">扫描出来的漏洞如何形成闭合？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E8%AE%BE%E8%AE%A1%E8%A6%81%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">0x01 设计要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87"><span class="toc-number">2.1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">2.2.</span> <span class="toc-text">要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.3.</span> <span class="toc-text">模块设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">0x02 系统设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E5%87%86%E5%A4%87"><span class="toc-number">3.1.</span> <span class="toc-text">1 基础准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8A%80%E6%9C%AF%E8%AF%B4%E6%98%8E"><span class="toc-number">3.2.</span> <span class="toc-text">2 技术说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.3.</span> <span class="toc-text">3 模块设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E7%B3%BB%E7%BB%9F%E5%8A%9F%E8%83%BD"><span class="toc-number">4.</span> <span class="toc-text">0x03 系统功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1"><span class="toc-number">4.1.</span> <span class="toc-text">1 数据库设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-UI%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.2.</span> <span class="toc-text">2 UI系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.1.</span> <span class="toc-text">2.1 项目管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E8%A7%84%E5%88%99%E6%8F%92%E4%BB%B6"><span class="toc-number">4.2.2.</span> <span class="toc-text">2.2 规则插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="toc-number">4.2.3.</span> <span class="toc-text">2.3 漏洞知识库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E6%8A%A5%E8%A1%A8%E7%AE%A1%E7%90%86"><span class="toc-number">4.2.4.</span> <span class="toc-text">2.4 报表管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-API%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.3.</span> <span class="toc-text">3 API接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E6%8E%A5%E5%8F%A3%E8%AE%A4%E8%AF%81"><span class="toc-number">4.3.1.</span> <span class="toc-text">3.1 接口认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E9%A1%B9%E7%9B%AE%E4%BF%A1%E6%81%AF%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.3.2.</span> <span class="toc-text">3.2 项目信息接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E4%BB%BB%E5%8A%A1%E4%BF%A1%E6%81%AF%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.3.3.</span> <span class="toc-text">3.3 任务信息接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E6%BC%8F%E6%B4%9E%E8%A7%84%E5%88%99%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.3.4.</span> <span class="toc-text">3.4 漏洞规则接口</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.4.</span> <span class="toc-text">4 后台服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-gitlab-%E7%9A%84%E4%BF%A1%E6%81%AF%E5%90%8C%E6%AD%A5"><span class="toc-number">4.4.1.</span> <span class="toc-text">4.1 gitlab 的信息同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E6%8A%A5%E8%A1%A8%E7%94%9F%E6%88%90%E6%9C%8D%E5%8A%A1"><span class="toc-number">4.4.2.</span> <span class="toc-text">4.2 报表生成服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E6%89%AB%E6%8F%8F%E8%BF%9B%E7%A8%8B%E7%9B%91%E6%8E%A7"><span class="toc-number">4.4.3.</span> <span class="toc-text">4.3 扫描进程监控</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-SonarQube-%E6%90%AD%E5%BB%BA"><span class="toc-number">4.5.</span> <span class="toc-text">5 SonarQube 搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA"><span class="toc-number">4.5.1.</span> <span class="toc-text">5.1 服务搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E6%8F%92%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">4.5.2.</span> <span class="toc-text">5.2 插件管理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%BC%95%E6%93%8E%E8%B0%83%E5%BA%A6"><span class="toc-number">4.6.</span> <span class="toc-text">6 引擎调度</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-%E4%BB%A3%E7%A0%81%E5%90%8C%E6%AD%A5"><span class="toc-number">4.6.1.</span> <span class="toc-text">6.1 代码同步</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-2-sonar-scanner-%E6%89%AB%E6%8F%8F"><span class="toc-number">4.6.2.</span> <span class="toc-text">6.2 sonar-scanner 扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-3-%E4%BB%A3%E7%A0%81%E7%BB%9F%E8%AE%A1"><span class="toc-number">4.6.3.</span> <span class="toc-text">6.3 代码统计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4-%E9%A1%B9%E7%9B%AE%E7%BB%84%E4%BB%B6%E5%88%86%E6%9E%90"><span class="toc-number">4.6.4.</span> <span class="toc-text">6.4 项目组件分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-5-%E6%BC%8F%E6%8A%A5%E5%A4%84%E7%90%86"><span class="toc-number">4.6.5.</span> <span class="toc-text">6.5 漏报处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-6-%E8%AF%AF%E6%8A%A5%E5%A4%84%E7%90%86"><span class="toc-number">4.6.6.</span> <span class="toc-text">6.6 误报处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-7-%E6%BC%8F%E6%B4%9E%E9%97%AD%E7%8E%AF"><span class="toc-number">4.6.7.</span> <span class="toc-text">6.7 漏洞闭环</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-GitLab-CI-%E8%A7%A6%E5%8F%91"><span class="toc-number">4.7.</span> <span class="toc-text">7 GitLab CI 触发</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.7.1.</span> <span class="toc-text">7.1 配置项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-%E6%89%AB%E6%8F%8F%E8%84%9A%E6%9C%AC"><span class="toc-number">4.7.2.</span> <span class="toc-text">7.2 扫描脚本</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">0x04 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">6.</span> <span class="toc-text">0x05 参考链接</span></a></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
@@ -297,7 +283,7 @@ function showBtn(){
 <h3 id="怎么触发自动化扫描？"><a href="#怎么触发自动化扫描？" class="headerlink" title="怎么触发自动化扫描？"></a>怎么触发自动化扫描？</h3><p>两种方式：</p>
 <ul>
 <li>管理后台手动触发</li>
-<li>CI(持续集成)/[CD(持续交付)]系统中触发</li>
+<li>CI(持续集成)&#x2F;[CD(持续交付)]系统中触发</li>
 </ul>
 <h3 id="如何解决漏报和误报？"><a href="#如何解决漏报和误报？" class="headerlink" title="如何解决漏报和误报？"></a>如何解决漏报和误报？</h3><p>两种方式：</p>
 <p>“<code>基于规则</code>”和“<code>基于插件</code>”，这里使用白名单表示误报、使用黑名单表示漏报。</p>
@@ -352,7 +338,7 @@ function showBtn(){
 <li>支持 API 接口</li>
 <li>支持分布式部署, 方便扩展来提升扫描能力</li>
 </ul>
-<p>时间控制是为了保证 CI/CD 过程不会太长，避免影响项目发布。调度节点监控，这里存在两种情况：一种是调度进程的心跳监控；一种为扫描任务的超时监控。漏洞知识库主要为了与组件分析模块分析出的依赖组件进行漏洞匹配。API 接口是为了方便第三方(代指CI/CD)调用来下发扫描任务或查询结果。分布式部署方式，可以水平扩展来提高调度节点和API节点的处理速度与能力。</p>
+<p>时间控制是为了保证 CI&#x2F;CD 过程不会太长，避免影响项目发布。调度节点监控，这里存在两种情况：一种是调度进程的心跳监控；一种为扫描任务的超时监控。漏洞知识库主要为了与组件分析模块分析出的依赖组件进行漏洞匹配。API 接口是为了方便第三方(代指CI&#x2F;CD)调用来下发扫描任务或查询结果。分布式部署方式，可以水平扩展来提高调度节点和API节点的处理速度与能力。</p>
 <h3 id="模块设计"><a href="#模块设计" class="headerlink" title="模块设计"></a>模块设计</h3><p><strong>主要系统：</strong></p>
 <ul>
 <li>代码托管子系统</li>
@@ -360,9 +346,29 @@ function showBtn(){
 <li>第三方扫描子引擎</li>
 </ul>
 <p>这里从整体角度来观察，大致分为三个子系统，<code>自动化扫描子系统</code>依赖<code>代码托管子系统</code>，但不依赖<code>扫描引擎(泛指第三方商业或开源审计产品)子系统</code>，这是由于<code>自动化扫描子系统</code>内部集成了组件漏洞识别、黑白名单规则、黑白名单插件等功能，最后我们用一张图来说明。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C1.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C1.png"></p>
 <p>这里主要介绍了自动扫描系统的背景和要实现的目标，下面我们将会详细介绍各个层与模块的设计。</p>
-<h2 id="0x02-系统设计"><a href="#0x02-系统设计" class="headerlink" title="0x02 系统设计"></a>0x02 系统设计</h2><h3 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1 基础准备"></a>1 基础准备</h3><p>这里我们主要使用 Linux 来搭建我们的自动化扫描系统，按照设计的角色划分，我们这里需要三台 CentOS 7 的服务器，当然服务器可以是物理设备也可以是虚拟机，如果公司内部的扫描项目较多或为以后扩展考虑意见使用物理机。<br>服务器数量|操作系统|扫描引擎|数据库|开发语言|角色<br>–|–|–|–|–|–|<br>3台|CentOS 7| SonarQube | MySQL| Python| - UI+MySQL+MQ<br>- 扫描节点<br>- 第三方引擎（SonarQube）</p>
+<h2 id="0x02-系统设计"><a href="#0x02-系统设计" class="headerlink" title="0x02 系统设计"></a>0x02 系统设计</h2><h3 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1 基础准备"></a>1 基础准备</h3><p>这里我们主要使用 Linux 来搭建我们的自动化扫描系统，按照设计的角色划分，我们这里需要三台 CentOS 7 的服务器，当然服务器可以是物理设备也可以是虚拟机，如果公司内部的扫描项目较多或为以后扩展考虑意见使用物理机。</p>
+<table>
+<thead>
+<tr>
+<th>服务器数量</th>
+<th>操作系统</th>
+<th>扫描引擎</th>
+<th>数据库</th>
+<th>开发语言</th>
+<th>角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3台</td>
+<td>CentOS 7</td>
+<td>SonarQube</td>
+<td>MySQL</td>
+<td>Python</td>
+<td>- UI+MySQL+MQ<br>- 扫描节点<br>- 第三方引擎（SonarQube）</td>
+</tr>
+</tbody></table>
 <p><strong>服务器划分:</strong></p>
 <p>这里我们假定一个 codeaudit 域, 三台服务器的主机名称分别为：</p>
 <ul>
@@ -373,12 +379,12 @@ function showBtn(){
 <h3 id="2-技术说明"><a href="#2-技术说明" class="headerlink" title="2 技术说明"></a>2 技术说明</h3><p>这里会讨论到所需的具体技术点，有些技术或方法可能不是最佳的方案，但是已经过我们测试检验是可行的。</p>
 <p>以下为实际开发中用到的一些技能：</p>
 <ul>
-<li>Python/Django/Jquery/Celery</li>
-<li>Gitlab API/Sonar API</li>
-<li>Git/Gitlab CI/Jenkins</li>
-<li>Centos 7/Shell</li>
-<li>NFS/Nginx/uWSGI</li>
-<li>MySQL/RabbitMQ/Redis</li>
+<li>Python&#x2F;Django&#x2F;Jquery&#x2F;Celery</li>
+<li>Gitlab API&#x2F;Sonar API</li>
+<li>Git&#x2F;Gitlab CI&#x2F;Jenkins</li>
+<li>Centos 7&#x2F;Shell</li>
+<li>NFS&#x2F;Nginx&#x2F;uWSGI</li>
+<li>MySQL&#x2F;RabbitMQ&#x2F;Redis</li>
 <li>安全漏洞知识</li>
 </ul>
 <p><strong>CentOS 7</strong></p>
@@ -389,10 +395,10 @@ function showBtn(){
 <ul>
 <li>使用git for-each-ref来得到当前分支的最后一次 commit id；</li>
 <li>使用git ls-files来判断项目中是否存在sonar-project.properties配置文件；</li>
-<li>使用git log -n1 /path/file来获取文件最后一次 commit 的作者。</li>
+<li>使用git log -n1 &#x2F;path&#x2F;file来获取文件最后一次 commit 的作者。</li>
 </ul>
-<p><strong>CI/CD</strong></p>
-<p>不论是集成到 Gitlab CI 或是Jenkins, 我们都需要先了解项目上线的基本流程，如：开发的代码规范、测试环节（单元测试/功能测试）、发布部署环节等。一般我们会将代码扫描环节放在在测试环节后，发布部署前。</p>
+<p><strong>CI&#x2F;CD</strong></p>
+<p>不论是集成到 Gitlab CI 或是Jenkins, 我们都需要先了解项目上线的基本流程，如：开发的代码规范、测试环节（单元测试&#x2F;功能测试）、发布部署环节等。一般我们会将代码扫描环节放在在测试环节后，发布部署前。</p>
 <p><strong>Python</strong></p>
 <p>这里我们使用Python进行后台的服务端开发，使用Django进行前台 UI 的开发，使用django-rest-swagger来开发 API 接口，使用Celery作为扫描任务的调度框架。</p>
 <p><strong>数据库与中间件</strong></p>
@@ -404,10 +410,10 @@ function showBtn(){
 <li>了解公司主流的开发语言。</li>
 </ul>
 <h3 id="3-模块设计"><a href="#3-模块设计" class="headerlink" title="3 模块设计"></a>3 模块设计</h3><p>下图中我们自上而下按照逻辑大致划分了”四”层：UI层、存储层、服务层、任务调度扫描引擎层（由于任务调度与服务同在后台运行，所以又统称为服务层）。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C2.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C2.png"></p>
 <ul>
 <li><p>UI 层</p>
-<p>  提供扫描系统的后台管理、API接口、漏洞知识库等一系列的交互功能入口，不同的人员或系统可以根据各自的需求通过不同的交互接口来满足自己需求。如：CI/CD系统可通过 API 接口创建扫描任务并获取扫描结果；安全审计人员可通过后台进行规则或插件的添加；开发人员可通过漏洞知识库来获取相关语言或技术的漏洞信息。</p>
+<p>  提供扫描系统的后台管理、API接口、漏洞知识库等一系列的交互功能入口，不同的人员或系统可以根据各自的需求通过不同的交互接口来满足自己需求。如：CI&#x2F;CD系统可通过 API 接口创建扫描任务并获取扫描结果；安全审计人员可通过后台进行规则或插件的添加；开发人员可通过漏洞知识库来获取相关语言或技术的漏洞信息。</p>
 </li>
 <li><p>存储层</p>
 <p>  主要包括关系型数据库、消息中间件(指MQ)、NFS(网络文件系统)，这里我们使用了 MySQL 5.7 的数据库； RabbitMQ 是作为 Celery 调度框架的消息中间件；NFS担当网络共享存储，用于存储代码与扫描日志。</p>
@@ -438,25 +444,25 @@ function showBtn(){
 <li>auth_user_groups</li>
 <li>auth_user_user_permissions</li>
 </ul>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C3.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C3.png"></p>
 <p><strong>项目相关</strong></p>
 <p>项目表主要包括：项目组、项目、分支与TAG、统计信息、依赖组件、插件规则、扫描任务等相关表。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C4.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C4.png"></p>
 <p><strong>漏洞知识库</strong></p>
 <p>漏洞知识库，这里主要存储漏洞类型、漏洞知识等内容。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C5.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C5.png"></p>
 <p><strong>系统相关</strong></p>
 <p>系统表主要包括系统的安全周报、节点监控、系统日志等信息。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C6.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C6.png"></p>
 <h3 id="2-UI系统"><a href="#2-UI系统" class="headerlink" title="2 UI系统"></a>2 UI系统</h3><p>扫描系统的后台，方便安全审计人员管理项目和系统。</p>
 <h4 id="2-1-项目管理"><a href="#2-1-项目管理" class="headerlink" title="2.1 项目管理"></a>2.1 项目管理</h4><p><strong>2.1.1 项目组</strong></p>
 <p>项目组我们通过 GitLab 的 API 同步所有项目组信息到我们的扫描系统，项目组的信息包括：<code>项目组名称、项目组描述、创建时间、URL地址、项目成员</code>等。</p>
 <p><strong>2.1.2 项目</strong></p>
 <p>项目是从分组中获取得到，需要注意的是可能会存在项目名相同但分组不同的情况。项目基本信息应包括：项目名称、项目描述、所属分组、默认分支、Git地址、项目成员、代码统计、依赖组件、分支管理、TAG管理等。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C7.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C7.png"></p>
 <p><strong>2.1.3 扫描任务</strong></p>
 <p>扫描任务会有四种状态：等待调度、正在扫描、扫描完成、扫描失败。每一次创建扫描任务时，都会查询是否存在等待调度或正在扫描的任务，如果存在则提示创建失败。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C8.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C8.png"></p>
 <h4 id="2-2-规则插件"><a href="#2-2-规则插件" class="headerlink" title="2.2 规则插件"></a>2.2 规则插件</h4><p><strong>2.2.1 规则</strong></p>
 <p>这里使用正则表达式来做特征匹配，并可通过限定文件的后缀来提高精准度。</p>
 <p>正则表达式标志位：</p>
@@ -464,19 +470,19 @@ function showBtn(){
 <li>忽略大小写</li>
 <li>支持多行匹配</li>
 </ul>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C9.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C9.png"></p>
 <p><strong>2.2.2 插件</strong></p>
 <p>这里使用了 Python 的反射机制，任务初始化时会优先初始化插件，当扫描完成时，扫描引擎会使用插件批量进行检测。插件入口函数为run()，漏洞详情对象会作为**kwargs参数的上下文传到该函数中。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C10.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C10.png"></p>
 <p><strong>2.2.3 规则知识库</strong></p>
 <p>规则知识库是区别与漏洞知识库的，往往规则知识库的内容要比漏洞知识库的内容简单，但是结构清晰。如：漏洞示例代码、漏洞说明、解决办法、参考链接等信息。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C11.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C11.png"></p>
 <h4 id="2-3-漏洞知识库"><a href="#2-3-漏洞知识库" class="headerlink" title="2.3 漏洞知识库"></a>2.3 漏洞知识库</h4><p><strong>2.3.1 漏洞类型</strong></p>
 <p>这里建议使用 CWE 的漏洞标准，可参考这个文档：<a target="_blank" rel="noopener" href="https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf">文档1</a></p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C12.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C12.png"></p>
 <p><strong>2.3.2 漏洞管理</strong></p>
-<p>主要包括添加漏洞和管理漏洞，漏洞的信息应该包括：CVE/CNVD/CNNVD编号、漏洞标题、风险等级、漏洞来源、发现时间、受影响范围、漏洞详情、漏洞类型、解决版本等基本信息。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C13.png"></p>
+<p>主要包括添加漏洞和管理漏洞，漏洞的信息应该包括：CVE&#x2F;CNVD&#x2F;CNNVD编号、漏洞标题、风险等级、漏洞来源、发现时间、受影响范围、漏洞详情、漏洞类型、解决版本等基本信息。</p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C13.png"></p>
 <p>这里我们要实现漏洞知识库与识别出的组件联动功能，主要通过两个属性：</p>
 <ul>
 <li><p>组件标签</p>
@@ -484,31 +490,31 @@ function showBtn(){
 </li>
 <li><p>版本规则</p>
 <p>  使用正则表达式来进行匹配，如：CVE-2018-1270 中受影响的 Spring Framework 版本为：5.0.x-5.0.5 和 4.3.x-4.3.16，那么我们的规则可以写成如下：</p>
-<p>  <img src="%5Cassets%5Cimg%5Cauto_scan%5C14.png"></p>
+<p>  <img src="/%5Cassets%5Cimg%5Cauto_scan%5C14.png"></p>
 </li>
 </ul>
 <h4 id="2-4-报表管理"><a href="#2-4-报表管理" class="headerlink" title="2.4 报表管理"></a>2.4 报表管理</h4><p><strong>2.4.1 语言与项目统计</strong></p>
 <p>按照年份进行项目的语言统计</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C15.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C15.png"></p>
 <p><strong>2.4.2 周期性漏洞统计</strong></p>
 <blockquote>
 <p>每季度漏洞数对比</p>
 </blockquote>
 <p>季度统计是为了对比同一段时期的漏洞数。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C16.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C16.png"></p>
 <blockquote>
 <p>高危漏洞趋势图</p>
 </blockquote>
 <p>高危漏洞环比，今年实施的安全政策是否合乎预期，可以大概分析出来。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C17.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C17.png"></p>
 <h3 id="3-API接口"><a href="#3-API接口" class="headerlink" title="3 API接口"></a>3 API接口</h3><h4 id="3-1-接口认证"><a href="#3-1-接口认证" class="headerlink" title="3.1 接口认证"></a>3.1 接口认证</h4><p>使用 rest_framework 的 API 来做验证，首先根据登陆的用户 id 生成一个 Token。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C18.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C18.png"></p>
 <p>验证接口使用说明，添加 Authorization 的认证 Token。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C19.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C19.png"></p>
 <h4 id="3-2-项目信息接口"><a href="#3-2-项目信息接口" class="headerlink" title="3.2 项目信息接口"></a>3.2 项目信息接口</h4><p><strong>信息同步</strong></p>
 <p>为什么需要信息同步？这是因为 GitLab 中的项目名称可能不是最终上线的 APP 名称(这里有些绕)。拿一个 Java 的项目举例，该项目的 GitLab 地址为：<a target="_blank" rel="noopener" href="http://git.companyname.com/A/cloud%EF%BC%8C%E9%82%A3%E4%B9%88%E8%BF%99%E4%B8%AAJava%E7%9A%84%E5%8C%85%E5%90%8D%E6%9C%89%E5%8F%AF%E8%83%BD%E6%98%AF">http://git.companyname.com/A/cloud，那么这个Java的包名有可能是</a> com.companyname.cloud。</p>
-<p>我们使用项目的 git 地址来同步信息，建议把 git 地址全部转换为小写。APP 的名称(包名)可以 CI/CD 系统获取或是通过配置文件的硬编码方式来定义。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C20.png"></p>
+<p>我们使用项目的 git 地址来同步信息，建议把 git 地址全部转换为小写。APP 的名称(包名)可以 CI&#x2F;CD 系统获取或是通过配置文件的硬编码方式来定义。</p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C20.png"></p>
 <p><strong>创建扫描</strong></p>
 <p>信息同步完成后，我们就可以根据 APP 名称和 git 地址来创建一个扫描任务，请求参数参考如下：</p>
 <ul>
@@ -523,7 +529,7 @@ function showBtn(){
 <p>  根据项目的 git 地址、分支来查询扫描任务，你也可以根据上一步创建扫描任务的 ID 来查询扫描结果。</p>
 </li>
 <li><p>查询任务漏洞列表</p>
-<p>  当扫描任务状态为扫描完成/扫描失败时，就可以根据任务 ID 来查询扫描出的安全漏洞信息。</p>
+<p>  当扫描任务状态为扫描完成&#x2F;扫描失败时，就可以根据任务 ID 来查询扫描出的安全漏洞信息。</p>
 </li>
 </ul>
 <h4 id="3-4-漏洞规则接口"><a href="#3-4-漏洞规则接口" class="headerlink" title="3.4 漏洞规则接口"></a>3.4 漏洞规则接口</h4><ul>
@@ -532,13 +538,13 @@ function showBtn(){
 </li>
 </ul>
 <h3 id="4-后台服务"><a href="#4-后台服务" class="headerlink" title="4 后台服务"></a>4 后台服务</h3><h4 id="4-1-gitlab-的信息同步"><a href="#4-1-gitlab-的信息同步" class="headerlink" title="4.1 gitlab 的信息同步"></a>4.1 gitlab 的信息同步</h4><p>使用 crontab 每两个小时遍历一遍 GitLab 上的所有项目，并同步项目信息到扫描系统中。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C21.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C21.png"></p>
 <h4 id="4-2-报表生成服务"><a href="#4-2-报表生成服务" class="headerlink" title="4.2 报表生成服务"></a>4.2 报表生成服务</h4><p>使用 crontab 每日凌晨12点生成，季度对比和年度的安全统计数据。</p>
 <h4 id="4-3-扫描进程监控"><a href="#4-3-扫描进程监控" class="headerlink" title="4.3 扫描进程监控"></a>4.3 扫描进程监控</h4><p>使用ps aux| grep codescan来查看进程是否存活，当然这种暴力方式不能检测到进程的业务健康度的(比如：扫描任务卡死，状态一直为：正在扫描)。</p>
-<h3 id="5-SonarQube-搭建"><a href="#5-SonarQube-搭建" class="headerlink" title="5 SonarQube 搭建"></a>5 SonarQube 搭建</h3><h4 id="5-1-服务搭建"><a href="#5-1-服务搭建" class="headerlink" title="5.1 服务搭建"></a>5.1 服务搭建</h4><p>下载最新版本<a target="_blank" rel="noopener" href="https://www.sonarqube.org/downloads/%E4%B8%8A%E4%BC%A0%E5%88%B0sonarqube.codeauit%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%B9%B6%E8%A7%A3%E5%8E%8B%E3%80%82%E8%BF%9B%E5%85%A5%E5%88%B0bin/linux-x86-64/%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E6%89%A7%E8%A1%8C">https://www.sonarqube.org/downloads/上传到sonarqube.codeauit服务器上并解压。进入到bin/linux-x86-64/目录下，执行</a> sh ./sonar.sh start。 SonarQube 启动成功后，使用浏览器打开<a target="_blank" rel="noopener" href="http://192.168.10.3:9000/">http://192.168.10.3:9000</a>, 输入 admin/admin 即可正常访问。</p>
+<h3 id="5-SonarQube-搭建"><a href="#5-SonarQube-搭建" class="headerlink" title="5 SonarQube 搭建"></a>5 SonarQube 搭建</h3><h4 id="5-1-服务搭建"><a href="#5-1-服务搭建" class="headerlink" title="5.1 服务搭建"></a>5.1 服务搭建</h4><p>下载最新版本<a target="_blank" rel="noopener" href="https://www.sonarqube.org/downloads/%E4%B8%8A%E4%BC%A0%E5%88%B0sonarqube.codeauit%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%B9%B6%E8%A7%A3%E5%8E%8B%E3%80%82%E8%BF%9B%E5%85%A5%E5%88%B0bin/linux-x86-64/%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E6%89%A7%E8%A1%8C">https://www.sonarqube.org/downloads/上传到sonarqube.codeauit服务器上并解压。进入到bin/linux-x86-64/目录下，执行</a> sh .&#x2F;sonar.sh start。 SonarQube 启动成功后，使用浏览器打开<a target="_blank" rel="noopener" href="http://192.168.10.3:9000/">http://192.168.10.3:9000</a>, 输入 admin&#x2F;admin 即可正常访问。</p>
 <h4 id="5-2-插件管理"><a href="#5-2-插件管理" class="headerlink" title="5.2 插件管理"></a>5.2 插件管理</h4><p>SonarQube 6.4 版本登陆的后台管理系统，选择 “配置” -&gt; “系统” -&gt; “更新中心” ， 选择对应插件点击 “Install” 进行安装。</p>
 <p>SonarQube 7.3 版本， “Administration” -&gt; “Marketplace”， 选择对应插件点击 “Install” 进行安装。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C22.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C22.png"></p>
 <h3 id="6-引擎调度"><a href="#6-引擎调度" class="headerlink" title="6 引擎调度"></a>6 引擎调度</h3><p>程序部署在 “task.codeaudit” 服务器上，服务需要安装 cloc 与 sonar-scanner 工具。</p>
 <h4 id="6-1-代码同步"><a href="#6-1-代码同步" class="headerlink" title="6.1 代码同步"></a>6.1 代码同步</h4><p>同步代码分为以下几个步骤：</p>
 <ul>
@@ -552,17 +558,17 @@ function showBtn(){
 <p>  针对已经克隆的项目进行 pull 操作，来同步 GitLab 上的项目更新代码。</p>
 </li>
 </ul>
-<h4 id="6-2-sonar-scanner-扫描"><a href="#6-2-sonar-scanner-扫描" class="headerlink" title="6.2 sonar-scanner 扫描"></a>6.2 sonar-scanner 扫描</h4><p>ssh 登录到task.codeaudit服务器上，执行cd opt &amp;&amp; wget <a target="_blank" rel="noopener" href="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip">https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip</a> &amp;&amp; unzip sonar-scanner-cli-3.2.0.1227-linux.zip来下载并解压，执行成功后使用ln -s /opt/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner /usr/bin/sonar-scanner命令创建一个sonar-scanner 的软连接。这里我们会使用sonar-scanner命令来进行项目的代码扫描。</p>
+<h4 id="6-2-sonar-scanner-扫描"><a href="#6-2-sonar-scanner-扫描" class="headerlink" title="6.2 sonar-scanner 扫描"></a>6.2 sonar-scanner 扫描</h4><p>ssh 登录到task.codeaudit服务器上，执行cd opt &amp;&amp; wget <a target="_blank" rel="noopener" href="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip">https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip</a> &amp;&amp; unzip sonar-scanner-cli-3.2.0.1227-linux.zip来下载并解压，执行成功后使用ln -s &#x2F;opt&#x2F;sonar-scanner-3.2.0.1227-linux&#x2F;bin&#x2F;sonar-scanner &#x2F;usr&#x2F;bin&#x2F;sonar-scanner命令创建一个sonar-scanner 的软连接。这里我们会使用sonar-scanner命令来进行项目的代码扫描。</p>
 <p>你也可以通过<a target="_blank" rel="noopener" href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner%E6%9D%A5%E4%B8%8B%E8%BD%BD%E4%B8%8D%E5%90%8C%E5%B9%B3%E5%8F%B0%E7%9A%84sonar-scanner-cli-3.2.0.1227-linux.zip%E3%80%82">https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner来下载不同平台的sonar-scanner-cli-3.2.0.1227-linux.zip。</a></p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C23.png"></p>
-<h4 id="6-3-代码统计"><a href="#6-3-代码统计" class="headerlink" title="6.3 代码统计"></a>6.3 代码统计</h4><p>使用cloc工具进行文件与代码行数的统计, 这里你可能需要通过–exclude-ext、–exclude-dir参数来过滤一些无意义的文件，比如：字体、图片、声音、视频等。举个例子，过滤所有图片后统计：cloc ./目标路径 –exclude-ext=.jpg,.jpeg,.png,.bmp,.gif,.ico。</p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C23.png"></p>
+<h4 id="6-3-代码统计"><a href="#6-3-代码统计" class="headerlink" title="6.3 代码统计"></a>6.3 代码统计</h4><p>使用cloc工具进行文件与代码行数的统计, 这里你可能需要通过–exclude-ext、–exclude-dir参数来过滤一些无意义的文件，比如：字体、图片、声音、视频等。举个例子，过滤所有图片后统计：cloc .&#x2F;目标路径 –exclude-ext&#x3D;.jpg,.jpeg,.png,.bmp,.gif,.ico。</p>
 <h4 id="6-4-项目组件分析"><a href="#6-4-项目组件分析" class="headerlink" title="6.4 项目组件分析"></a>6.4 项目组件分析</h4><p>组件分析主要是针对如使用 Java 语言开发项目时使用 Maven 管理的 pom.xml 配置文件; Python 中的 requirements.txt 文件；JS 项目中的package.json文件做解析。这里我写了一个clocwalk 工具可以分析项目的依赖组件，这个项目目前已经开源，你可以通过<a target="_blank" rel="noopener" href="https://github.com/MyKings/clocwalk%E5%9C%B0%E5%9D%80%E6%9D%A5%E8%8E%B7%E5%8F%96%E8%BF%99%E4%B8%AA%E5%B7%A5%E5%85%B7%E3%80%82">https://github.com/MyKings/clocwalk地址来获取这个工具。</a></p>
 <h4 id="6-5-漏报处理"><a href="#6-5-漏报处理" class="headerlink" title="6.5 漏报处理"></a>6.5 漏报处理</h4><p>关于漏报问题，你可以根据自己企业 SRC 中的漏洞，总结出一套适合自己企业的黑名单规则；或者你可以添加一些 CWE 的漏洞规则，关于 CWE 的信息你可以访问这个地址 <a target="_blank" rel="noopener" href="https://cwe.mitre.org/data/index.html%E3%80%82">https://cwe.mitre.org/data/index.html。</a></p>
-<h4 id="6-6-误报处理"><a href="#6-6-误报处理" class="headerlink" title="6.6 误报处理"></a>6.6 误报处理</h4><p>关于误报问题可能会较多，比如扫描出单元测试或功能测试的硬编码问题；比如变量参数String PARAM_NAME_PASSWORD=”passwd_txt”;问题。 以上的问题我们可以通过白名单插件处理，比如插件中对文件路径和方法判断是否存在 test 关键字，如果存在我们就认为这个是误报。另外针对某些特殊类型的误报，比如在 A 项目下才是误报，其他项目就是漏洞的情况，我们可以设置这个项目的白名单漏洞 Case，其匹配规则条件为：项目名称、漏洞文件、漏洞类型、漏洞所在行，当所有条件都同时满足时，那么这个漏洞就会可以判断为误报。</p>
-<h4 id="6-7-漏洞闭环"><a href="#6-7-漏洞闭环" class="headerlink" title="6.7 漏洞闭环"></a>6.7 漏洞闭环</h4><p>当一个高/中危漏洞被发现并确认时，我们应该如何跟踪这个漏洞的生命周期？往往安全人员会将一个漏洞提交到内部的 SOC 系统中，由于 SOC 系统没有和项目开发的流程控制系统（如：Jira）没有直接联系，开发人员可能会忽视或忘记修复这个高危漏洞，如何避免这种情况？我们这里以 GitLab 举例，当扫描系统扫描出高危漏洞时，系统会通过 GitLab 的 POST /projects/:id/issues API接口来自动创建一条 issue 并指派给当前项目的 master，项目负责人同时会收到一条邮件提醒，那么项目负责人可根据漏洞严重程度来安排项目的迭代计划，这样我们就把审计系统扫描出的漏洞与项目开发流程很好的结合起来了。</p>
-<h3 id="7-GitLab-CI-触发"><a href="#7-GitLab-CI-触发" class="headerlink" title="7 GitLab CI 触发"></a>7 GitLab CI 触发</h3><p>当然也可以使用 Jenkins 来做 CI/CD 系统。我们这里开发了一个.code-audit.py触发脚本, Jenkins 你也可以使用 Python 脚本或是开发 Jenkins 插件来达到触发目的。</p>
+<h4 id="6-6-误报处理"><a href="#6-6-误报处理" class="headerlink" title="6.6 误报处理"></a>6.6 误报处理</h4><p>关于误报问题可能会较多，比如扫描出单元测试或功能测试的硬编码问题；比如变量参数String PARAM_NAME_PASSWORD&#x3D;”passwd_txt”;问题。 以上的问题我们可以通过白名单插件处理，比如插件中对文件路径和方法判断是否存在 test 关键字，如果存在我们就认为这个是误报。另外针对某些特殊类型的误报，比如在 A 项目下才是误报，其他项目就是漏洞的情况，我们可以设置这个项目的白名单漏洞 Case，其匹配规则条件为：项目名称、漏洞文件、漏洞类型、漏洞所在行，当所有条件都同时满足时，那么这个漏洞就会可以判断为误报。</p>
+<h4 id="6-7-漏洞闭环"><a href="#6-7-漏洞闭环" class="headerlink" title="6.7 漏洞闭环"></a>6.7 漏洞闭环</h4><p>当一个高&#x2F;中危漏洞被发现并确认时，我们应该如何跟踪这个漏洞的生命周期？往往安全人员会将一个漏洞提交到内部的 SOC 系统中，由于 SOC 系统没有和项目开发的流程控制系统（如：Jira）没有直接联系，开发人员可能会忽视或忘记修复这个高危漏洞，如何避免这种情况？我们这里以 GitLab 举例，当扫描系统扫描出高危漏洞时，系统会通过 GitLab 的 POST &#x2F;projects&#x2F;:id&#x2F;issues API接口来自动创建一条 issue 并指派给当前项目的 master，项目负责人同时会收到一条邮件提醒，那么项目负责人可根据漏洞严重程度来安排项目的迭代计划，这样我们就把审计系统扫描出的漏洞与项目开发流程很好的结合起来了。</p>
+<h3 id="7-GitLab-CI-触发"><a href="#7-GitLab-CI-触发" class="headerlink" title="7 GitLab CI 触发"></a>7 GitLab CI 触发</h3><p>当然也可以使用 Jenkins 来做 CI&#x2F;CD 系统。我们这里开发了一个.code-audit.py触发脚本, Jenkins 你也可以使用 Python 脚本或是开发 Jenkins 插件来达到触发目的。</p>
 <h4 id="7-1-配置项目"><a href="#7-1-配置项目" class="headerlink" title="7.1 配置项目"></a>7.1 配置项目</h4><p>这里需要了解 .gitlab-ci.yml 文件格式的编写，下面是一个 Python 项目的配置。可以看出整个 CI 过程分为 4 个阶段：build、test、codeaudit、deploy。 其中codeaudit是我们的代码扫描阶段，这里我们限制了只有 develop 的动作才会触发扫描。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C24.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C24.png"></p>
 <h4 id="7-2-扫描脚本"><a href="#7-2-扫描脚本" class="headerlink" title="7.2 扫描脚本"></a>7.2 扫描脚本</h4><p>触发扫描脚本如下图，其大体的执行流程如下：</p>
 <ul>
 <li>获取 GitLab CI 中关于项目的环境变量信息；</li>
@@ -572,11 +578,11 @@ function showBtn(){
 <li>异步查询扫描结果，超时时间10分钟，如果超时扫描代码不通过；</li>
 <li>扫描结果完成，统计是否存在预定义级别的漏洞，如果存在扫描代码不通过。</li>
 </ul>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C25.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C25.png"></p>
 <p>下图为整个 CI 过程的截图。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C26.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C26.png"></p>
 <p>下图为代码扫描失败的反馈结果，图中可以看出发现了一个漏洞。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C27.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C27.png"></p>
 <h2 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h2><p>代码扫描固然重要，但是它不会解决所有项目的安全问题。项目安全应该从多个维度、多角度的来进行。如：项目立项时开始SDL；开发迭代过程中的代码扫描；项目上线前的黑盒测试。</p>
 <h2 id="0x05-参考链接"><a href="#0x05-参考链接" class="headerlink" title="0x05 参考链接"></a>0x05 参考链接</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tSbWhBh9RQQ5Wduoo18MEg">代码自动化扫描系统的建设（上）</a></li>
@@ -599,6 +605,7 @@ function showBtn(){
 <li><a target="_blank" rel="noopener" href="https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf">https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/MyKings/clocwalk">https://github.com/MyKings/clocwalk</a></li>
 </ul>
+<p> <a href="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/">http://www.pa55w0rd.online/代码自动化扫描系统建设/</a> </p>
 
         
 <!--
@@ -616,7 +623,7 @@ function showBtn(){
 <h3 id="怎么触发自动化扫描？"><a href="#怎么触发自动化扫描？" class="headerlink" title="怎么触发自动化扫描？"></a>怎么触发自动化扫描？</h3><p>两种方式：</p>
 <ul>
 <li>管理后台手动触发</li>
-<li>CI(持续集成)/[CD(持续交付)]系统中触发</li>
+<li>CI(持续集成)&#x2F;[CD(持续交付)]系统中触发</li>
 </ul>
 <h3 id="如何解决漏报和误报？"><a href="#如何解决漏报和误报？" class="headerlink" title="如何解决漏报和误报？"></a>如何解决漏报和误报？</h3><p>两种方式：</p>
 <p>“<code>基于规则</code>”和“<code>基于插件</code>”，这里使用白名单表示误报、使用黑名单表示漏报。</p>
@@ -671,7 +678,7 @@ function showBtn(){
 <li>支持 API 接口</li>
 <li>支持分布式部署, 方便扩展来提升扫描能力</li>
 </ul>
-<p>时间控制是为了保证 CI/CD 过程不会太长，避免影响项目发布。调度节点监控，这里存在两种情况：一种是调度进程的心跳监控；一种为扫描任务的超时监控。漏洞知识库主要为了与组件分析模块分析出的依赖组件进行漏洞匹配。API 接口是为了方便第三方(代指CI/CD)调用来下发扫描任务或查询结果。分布式部署方式，可以水平扩展来提高调度节点和API节点的处理速度与能力。</p>
+<p>时间控制是为了保证 CI&#x2F;CD 过程不会太长，避免影响项目发布。调度节点监控，这里存在两种情况：一种是调度进程的心跳监控；一种为扫描任务的超时监控。漏洞知识库主要为了与组件分析模块分析出的依赖组件进行漏洞匹配。API 接口是为了方便第三方(代指CI&#x2F;CD)调用来下发扫描任务或查询结果。分布式部署方式，可以水平扩展来提高调度节点和API节点的处理速度与能力。</p>
 <h3 id="模块设计"><a href="#模块设计" class="headerlink" title="模块设计"></a>模块设计</h3><p><strong>主要系统：</strong></p>
 <ul>
 <li>代码托管子系统</li>
@@ -679,9 +686,29 @@ function showBtn(){
 <li>第三方扫描子引擎</li>
 </ul>
 <p>这里从整体角度来观察，大致分为三个子系统，<code>自动化扫描子系统</code>依赖<code>代码托管子系统</code>，但不依赖<code>扫描引擎(泛指第三方商业或开源审计产品)子系统</code>，这是由于<code>自动化扫描子系统</code>内部集成了组件漏洞识别、黑白名单规则、黑白名单插件等功能，最后我们用一张图来说明。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C1.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C1.png"></p>
 <p>这里主要介绍了自动扫描系统的背景和要实现的目标，下面我们将会详细介绍各个层与模块的设计。</p>
-<h2 id="0x02-系统设计"><a href="#0x02-系统设计" class="headerlink" title="0x02 系统设计"></a>0x02 系统设计</h2><h3 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1 基础准备"></a>1 基础准备</h3><p>这里我们主要使用 Linux 来搭建我们的自动化扫描系统，按照设计的角色划分，我们这里需要三台 CentOS 7 的服务器，当然服务器可以是物理设备也可以是虚拟机，如果公司内部的扫描项目较多或为以后扩展考虑意见使用物理机。<br>服务器数量|操作系统|扫描引擎|数据库|开发语言|角色<br>–|–|–|–|–|–|<br>3台|CentOS 7| SonarQube | MySQL| Python| - UI+MySQL+MQ<br>- 扫描节点<br>- 第三方引擎（SonarQube）</p>
+<h2 id="0x02-系统设计"><a href="#0x02-系统设计" class="headerlink" title="0x02 系统设计"></a>0x02 系统设计</h2><h3 id="1-基础准备"><a href="#1-基础准备" class="headerlink" title="1 基础准备"></a>1 基础准备</h3><p>这里我们主要使用 Linux 来搭建我们的自动化扫描系统，按照设计的角色划分，我们这里需要三台 CentOS 7 的服务器，当然服务器可以是物理设备也可以是虚拟机，如果公司内部的扫描项目较多或为以后扩展考虑意见使用物理机。</p>
+<table>
+<thead>
+<tr>
+<th>服务器数量</th>
+<th>操作系统</th>
+<th>扫描引擎</th>
+<th>数据库</th>
+<th>开发语言</th>
+<th>角色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3台</td>
+<td>CentOS 7</td>
+<td>SonarQube</td>
+<td>MySQL</td>
+<td>Python</td>
+<td>- UI+MySQL+MQ<br>- 扫描节点<br>- 第三方引擎（SonarQube）</td>
+</tr>
+</tbody></table>
 <p><strong>服务器划分:</strong></p>
 <p>这里我们假定一个 codeaudit 域, 三台服务器的主机名称分别为：</p>
 <ul>
@@ -692,12 +719,12 @@ function showBtn(){
 <h3 id="2-技术说明"><a href="#2-技术说明" class="headerlink" title="2 技术说明"></a>2 技术说明</h3><p>这里会讨论到所需的具体技术点，有些技术或方法可能不是最佳的方案，但是已经过我们测试检验是可行的。</p>
 <p>以下为实际开发中用到的一些技能：</p>
 <ul>
-<li>Python/Django/Jquery/Celery</li>
-<li>Gitlab API/Sonar API</li>
-<li>Git/Gitlab CI/Jenkins</li>
-<li>Centos 7/Shell</li>
-<li>NFS/Nginx/uWSGI</li>
-<li>MySQL/RabbitMQ/Redis</li>
+<li>Python&#x2F;Django&#x2F;Jquery&#x2F;Celery</li>
+<li>Gitlab API&#x2F;Sonar API</li>
+<li>Git&#x2F;Gitlab CI&#x2F;Jenkins</li>
+<li>Centos 7&#x2F;Shell</li>
+<li>NFS&#x2F;Nginx&#x2F;uWSGI</li>
+<li>MySQL&#x2F;RabbitMQ&#x2F;Redis</li>
 <li>安全漏洞知识</li>
 </ul>
 <p><strong>CentOS 7</strong></p>
@@ -708,10 +735,10 @@ function showBtn(){
 <ul>
 <li>使用git for-each-ref来得到当前分支的最后一次 commit id；</li>
 <li>使用git ls-files来判断项目中是否存在sonar-project.properties配置文件；</li>
-<li>使用git log -n1 /path/file来获取文件最后一次 commit 的作者。</li>
+<li>使用git log -n1 &#x2F;path&#x2F;file来获取文件最后一次 commit 的作者。</li>
 </ul>
-<p><strong>CI/CD</strong></p>
-<p>不论是集成到 Gitlab CI 或是Jenkins, 我们都需要先了解项目上线的基本流程，如：开发的代码规范、测试环节（单元测试/功能测试）、发布部署环节等。一般我们会将代码扫描环节放在在测试环节后，发布部署前。</p>
+<p><strong>CI&#x2F;CD</strong></p>
+<p>不论是集成到 Gitlab CI 或是Jenkins, 我们都需要先了解项目上线的基本流程，如：开发的代码规范、测试环节（单元测试&#x2F;功能测试）、发布部署环节等。一般我们会将代码扫描环节放在在测试环节后，发布部署前。</p>
 <p><strong>Python</strong></p>
 <p>这里我们使用Python进行后台的服务端开发，使用Django进行前台 UI 的开发，使用django-rest-swagger来开发 API 接口，使用Celery作为扫描任务的调度框架。</p>
 <p><strong>数据库与中间件</strong></p>
@@ -723,10 +750,10 @@ function showBtn(){
 <li>了解公司主流的开发语言。</li>
 </ul>
 <h3 id="3-模块设计"><a href="#3-模块设计" class="headerlink" title="3 模块设计"></a>3 模块设计</h3><p>下图中我们自上而下按照逻辑大致划分了”四”层：UI层、存储层、服务层、任务调度扫描引擎层（由于任务调度与服务同在后台运行，所以又统称为服务层）。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C2.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C2.png"></p>
 <ul>
 <li><p>UI 层</p>
-<p>  提供扫描系统的后台管理、API接口、漏洞知识库等一系列的交互功能入口，不同的人员或系统可以根据各自的需求通过不同的交互接口来满足自己需求。如：CI/CD系统可通过 API 接口创建扫描任务并获取扫描结果；安全审计人员可通过后台进行规则或插件的添加；开发人员可通过漏洞知识库来获取相关语言或技术的漏洞信息。</p>
+<p>  提供扫描系统的后台管理、API接口、漏洞知识库等一系列的交互功能入口，不同的人员或系统可以根据各自的需求通过不同的交互接口来满足自己需求。如：CI&#x2F;CD系统可通过 API 接口创建扫描任务并获取扫描结果；安全审计人员可通过后台进行规则或插件的添加；开发人员可通过漏洞知识库来获取相关语言或技术的漏洞信息。</p>
 </li>
 <li><p>存储层</p>
 <p>  主要包括关系型数据库、消息中间件(指MQ)、NFS(网络文件系统)，这里我们使用了 MySQL 5.7 的数据库； RabbitMQ 是作为 Celery 调度框架的消息中间件；NFS担当网络共享存储，用于存储代码与扫描日志。</p>
@@ -757,25 +784,25 @@ function showBtn(){
 <li>auth_user_groups</li>
 <li>auth_user_user_permissions</li>
 </ul>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C3.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C3.png"></p>
 <p><strong>项目相关</strong></p>
 <p>项目表主要包括：项目组、项目、分支与TAG、统计信息、依赖组件、插件规则、扫描任务等相关表。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C4.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C4.png"></p>
 <p><strong>漏洞知识库</strong></p>
 <p>漏洞知识库，这里主要存储漏洞类型、漏洞知识等内容。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C5.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C5.png"></p>
 <p><strong>系统相关</strong></p>
 <p>系统表主要包括系统的安全周报、节点监控、系统日志等信息。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C6.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C6.png"></p>
 <h3 id="2-UI系统"><a href="#2-UI系统" class="headerlink" title="2 UI系统"></a>2 UI系统</h3><p>扫描系统的后台，方便安全审计人员管理项目和系统。</p>
 <h4 id="2-1-项目管理"><a href="#2-1-项目管理" class="headerlink" title="2.1 项目管理"></a>2.1 项目管理</h4><p><strong>2.1.1 项目组</strong></p>
 <p>项目组我们通过 GitLab 的 API 同步所有项目组信息到我们的扫描系统，项目组的信息包括：<code>项目组名称、项目组描述、创建时间、URL地址、项目成员</code>等。</p>
 <p><strong>2.1.2 项目</strong></p>
 <p>项目是从分组中获取得到，需要注意的是可能会存在项目名相同但分组不同的情况。项目基本信息应包括：项目名称、项目描述、所属分组、默认分支、Git地址、项目成员、代码统计、依赖组件、分支管理、TAG管理等。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C7.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C7.png"></p>
 <p><strong>2.1.3 扫描任务</strong></p>
 <p>扫描任务会有四种状态：等待调度、正在扫描、扫描完成、扫描失败。每一次创建扫描任务时，都会查询是否存在等待调度或正在扫描的任务，如果存在则提示创建失败。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C8.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C8.png"></p>
 <h4 id="2-2-规则插件"><a href="#2-2-规则插件" class="headerlink" title="2.2 规则插件"></a>2.2 规则插件</h4><p><strong>2.2.1 规则</strong></p>
 <p>这里使用正则表达式来做特征匹配，并可通过限定文件的后缀来提高精准度。</p>
 <p>正则表达式标志位：</p>
@@ -783,19 +810,19 @@ function showBtn(){
 <li>忽略大小写</li>
 <li>支持多行匹配</li>
 </ul>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C9.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C9.png"></p>
 <p><strong>2.2.2 插件</strong></p>
 <p>这里使用了 Python 的反射机制，任务初始化时会优先初始化插件，当扫描完成时，扫描引擎会使用插件批量进行检测。插件入口函数为run()，漏洞详情对象会作为**kwargs参数的上下文传到该函数中。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C10.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C10.png"></p>
 <p><strong>2.2.3 规则知识库</strong></p>
 <p>规则知识库是区别与漏洞知识库的，往往规则知识库的内容要比漏洞知识库的内容简单，但是结构清晰。如：漏洞示例代码、漏洞说明、解决办法、参考链接等信息。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C11.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C11.png"></p>
 <h4 id="2-3-漏洞知识库"><a href="#2-3-漏洞知识库" class="headerlink" title="2.3 漏洞知识库"></a>2.3 漏洞知识库</h4><p><strong>2.3.1 漏洞类型</strong></p>
 <p>这里建议使用 CWE 的漏洞标准，可参考这个文档：<a target="_blank" rel="noopener" href="https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf">文档1</a></p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C12.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C12.png"></p>
 <p><strong>2.3.2 漏洞管理</strong></p>
-<p>主要包括添加漏洞和管理漏洞，漏洞的信息应该包括：CVE/CNVD/CNNVD编号、漏洞标题、风险等级、漏洞来源、发现时间、受影响范围、漏洞详情、漏洞类型、解决版本等基本信息。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C13.png"></p>
+<p>主要包括添加漏洞和管理漏洞，漏洞的信息应该包括：CVE&#x2F;CNVD&#x2F;CNNVD编号、漏洞标题、风险等级、漏洞来源、发现时间、受影响范围、漏洞详情、漏洞类型、解决版本等基本信息。</p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C13.png"></p>
 <p>这里我们要实现漏洞知识库与识别出的组件联动功能，主要通过两个属性：</p>
 <ul>
 <li><p>组件标签</p>
@@ -803,31 +830,31 @@ function showBtn(){
 </li>
 <li><p>版本规则</p>
 <p>  使用正则表达式来进行匹配，如：CVE-2018-1270 中受影响的 Spring Framework 版本为：5.0.x-5.0.5 和 4.3.x-4.3.16，那么我们的规则可以写成如下：</p>
-<p>  <img src="%5Cassets%5Cimg%5Cauto_scan%5C14.png"></p>
+<p>  <img src="/%5Cassets%5Cimg%5Cauto_scan%5C14.png"></p>
 </li>
 </ul>
 <h4 id="2-4-报表管理"><a href="#2-4-报表管理" class="headerlink" title="2.4 报表管理"></a>2.4 报表管理</h4><p><strong>2.4.1 语言与项目统计</strong></p>
 <p>按照年份进行项目的语言统计</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C15.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C15.png"></p>
 <p><strong>2.4.2 周期性漏洞统计</strong></p>
 <blockquote>
 <p>每季度漏洞数对比</p>
 </blockquote>
 <p>季度统计是为了对比同一段时期的漏洞数。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C16.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C16.png"></p>
 <blockquote>
 <p>高危漏洞趋势图</p>
 </blockquote>
 <p>高危漏洞环比，今年实施的安全政策是否合乎预期，可以大概分析出来。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C17.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C17.png"></p>
 <h3 id="3-API接口"><a href="#3-API接口" class="headerlink" title="3 API接口"></a>3 API接口</h3><h4 id="3-1-接口认证"><a href="#3-1-接口认证" class="headerlink" title="3.1 接口认证"></a>3.1 接口认证</h4><p>使用 rest_framework 的 API 来做验证，首先根据登陆的用户 id 生成一个 Token。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C18.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C18.png"></p>
 <p>验证接口使用说明，添加 Authorization 的认证 Token。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C19.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C19.png"></p>
 <h4 id="3-2-项目信息接口"><a href="#3-2-项目信息接口" class="headerlink" title="3.2 项目信息接口"></a>3.2 项目信息接口</h4><p><strong>信息同步</strong></p>
 <p>为什么需要信息同步？这是因为 GitLab 中的项目名称可能不是最终上线的 APP 名称(这里有些绕)。拿一个 Java 的项目举例，该项目的 GitLab 地址为：<a target="_blank" rel="noopener" href="http://git.companyname.com/A/cloud%EF%BC%8C%E9%82%A3%E4%B9%88%E8%BF%99%E4%B8%AAJava%E7%9A%84%E5%8C%85%E5%90%8D%E6%9C%89%E5%8F%AF%E8%83%BD%E6%98%AF">http://git.companyname.com/A/cloud，那么这个Java的包名有可能是</a> com.companyname.cloud。</p>
-<p>我们使用项目的 git 地址来同步信息，建议把 git 地址全部转换为小写。APP 的名称(包名)可以 CI/CD 系统获取或是通过配置文件的硬编码方式来定义。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C20.png"></p>
+<p>我们使用项目的 git 地址来同步信息，建议把 git 地址全部转换为小写。APP 的名称(包名)可以 CI&#x2F;CD 系统获取或是通过配置文件的硬编码方式来定义。</p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C20.png"></p>
 <p><strong>创建扫描</strong></p>
 <p>信息同步完成后，我们就可以根据 APP 名称和 git 地址来创建一个扫描任务，请求参数参考如下：</p>
 <ul>
@@ -842,7 +869,7 @@ function showBtn(){
 <p>  根据项目的 git 地址、分支来查询扫描任务，你也可以根据上一步创建扫描任务的 ID 来查询扫描结果。</p>
 </li>
 <li><p>查询任务漏洞列表</p>
-<p>  当扫描任务状态为扫描完成/扫描失败时，就可以根据任务 ID 来查询扫描出的安全漏洞信息。</p>
+<p>  当扫描任务状态为扫描完成&#x2F;扫描失败时，就可以根据任务 ID 来查询扫描出的安全漏洞信息。</p>
 </li>
 </ul>
 <h4 id="3-4-漏洞规则接口"><a href="#3-4-漏洞规则接口" class="headerlink" title="3.4 漏洞规则接口"></a>3.4 漏洞规则接口</h4><ul>
@@ -851,13 +878,13 @@ function showBtn(){
 </li>
 </ul>
 <h3 id="4-后台服务"><a href="#4-后台服务" class="headerlink" title="4 后台服务"></a>4 后台服务</h3><h4 id="4-1-gitlab-的信息同步"><a href="#4-1-gitlab-的信息同步" class="headerlink" title="4.1 gitlab 的信息同步"></a>4.1 gitlab 的信息同步</h4><p>使用 crontab 每两个小时遍历一遍 GitLab 上的所有项目，并同步项目信息到扫描系统中。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C21.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C21.png"></p>
 <h4 id="4-2-报表生成服务"><a href="#4-2-报表生成服务" class="headerlink" title="4.2 报表生成服务"></a>4.2 报表生成服务</h4><p>使用 crontab 每日凌晨12点生成，季度对比和年度的安全统计数据。</p>
 <h4 id="4-3-扫描进程监控"><a href="#4-3-扫描进程监控" class="headerlink" title="4.3 扫描进程监控"></a>4.3 扫描进程监控</h4><p>使用ps aux| grep codescan来查看进程是否存活，当然这种暴力方式不能检测到进程的业务健康度的(比如：扫描任务卡死，状态一直为：正在扫描)。</p>
-<h3 id="5-SonarQube-搭建"><a href="#5-SonarQube-搭建" class="headerlink" title="5 SonarQube 搭建"></a>5 SonarQube 搭建</h3><h4 id="5-1-服务搭建"><a href="#5-1-服务搭建" class="headerlink" title="5.1 服务搭建"></a>5.1 服务搭建</h4><p>下载最新版本<a target="_blank" rel="noopener" href="https://www.sonarqube.org/downloads/%E4%B8%8A%E4%BC%A0%E5%88%B0sonarqube.codeauit%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%B9%B6%E8%A7%A3%E5%8E%8B%E3%80%82%E8%BF%9B%E5%85%A5%E5%88%B0bin/linux-x86-64/%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E6%89%A7%E8%A1%8C">https://www.sonarqube.org/downloads/上传到sonarqube.codeauit服务器上并解压。进入到bin/linux-x86-64/目录下，执行</a> sh ./sonar.sh start。 SonarQube 启动成功后，使用浏览器打开<a target="_blank" rel="noopener" href="http://192.168.10.3:9000/">http://192.168.10.3:9000</a>, 输入 admin/admin 即可正常访问。</p>
+<h3 id="5-SonarQube-搭建"><a href="#5-SonarQube-搭建" class="headerlink" title="5 SonarQube 搭建"></a>5 SonarQube 搭建</h3><h4 id="5-1-服务搭建"><a href="#5-1-服务搭建" class="headerlink" title="5.1 服务搭建"></a>5.1 服务搭建</h4><p>下载最新版本<a target="_blank" rel="noopener" href="https://www.sonarqube.org/downloads/%E4%B8%8A%E4%BC%A0%E5%88%B0sonarqube.codeauit%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%B9%B6%E8%A7%A3%E5%8E%8B%E3%80%82%E8%BF%9B%E5%85%A5%E5%88%B0bin/linux-x86-64/%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8C%E6%89%A7%E8%A1%8C">https://www.sonarqube.org/downloads/上传到sonarqube.codeauit服务器上并解压。进入到bin/linux-x86-64/目录下，执行</a> sh .&#x2F;sonar.sh start。 SonarQube 启动成功后，使用浏览器打开<a target="_blank" rel="noopener" href="http://192.168.10.3:9000/">http://192.168.10.3:9000</a>, 输入 admin&#x2F;admin 即可正常访问。</p>
 <h4 id="5-2-插件管理"><a href="#5-2-插件管理" class="headerlink" title="5.2 插件管理"></a>5.2 插件管理</h4><p>SonarQube 6.4 版本登陆的后台管理系统，选择 “配置” -&gt; “系统” -&gt; “更新中心” ， 选择对应插件点击 “Install” 进行安装。</p>
 <p>SonarQube 7.3 版本， “Administration” -&gt; “Marketplace”， 选择对应插件点击 “Install” 进行安装。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C22.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C22.png"></p>
 <h3 id="6-引擎调度"><a href="#6-引擎调度" class="headerlink" title="6 引擎调度"></a>6 引擎调度</h3><p>程序部署在 “task.codeaudit” 服务器上，服务需要安装 cloc 与 sonar-scanner 工具。</p>
 <h4 id="6-1-代码同步"><a href="#6-1-代码同步" class="headerlink" title="6.1 代码同步"></a>6.1 代码同步</h4><p>同步代码分为以下几个步骤：</p>
 <ul>
@@ -871,17 +898,17 @@ function showBtn(){
 <p>  针对已经克隆的项目进行 pull 操作，来同步 GitLab 上的项目更新代码。</p>
 </li>
 </ul>
-<h4 id="6-2-sonar-scanner-扫描"><a href="#6-2-sonar-scanner-扫描" class="headerlink" title="6.2 sonar-scanner 扫描"></a>6.2 sonar-scanner 扫描</h4><p>ssh 登录到task.codeaudit服务器上，执行cd opt &amp;&amp; wget <a target="_blank" rel="noopener" href="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip">https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip</a> &amp;&amp; unzip sonar-scanner-cli-3.2.0.1227-linux.zip来下载并解压，执行成功后使用ln -s /opt/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner /usr/bin/sonar-scanner命令创建一个sonar-scanner 的软连接。这里我们会使用sonar-scanner命令来进行项目的代码扫描。</p>
+<h4 id="6-2-sonar-scanner-扫描"><a href="#6-2-sonar-scanner-扫描" class="headerlink" title="6.2 sonar-scanner 扫描"></a>6.2 sonar-scanner 扫描</h4><p>ssh 登录到task.codeaudit服务器上，执行cd opt &amp;&amp; wget <a target="_blank" rel="noopener" href="https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip">https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.2.0.1227-linux.zip</a> &amp;&amp; unzip sonar-scanner-cli-3.2.0.1227-linux.zip来下载并解压，执行成功后使用ln -s &#x2F;opt&#x2F;sonar-scanner-3.2.0.1227-linux&#x2F;bin&#x2F;sonar-scanner &#x2F;usr&#x2F;bin&#x2F;sonar-scanner命令创建一个sonar-scanner 的软连接。这里我们会使用sonar-scanner命令来进行项目的代码扫描。</p>
 <p>你也可以通过<a target="_blank" rel="noopener" href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner%E6%9D%A5%E4%B8%8B%E8%BD%BD%E4%B8%8D%E5%90%8C%E5%B9%B3%E5%8F%B0%E7%9A%84sonar-scanner-cli-3.2.0.1227-linux.zip%E3%80%82">https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner来下载不同平台的sonar-scanner-cli-3.2.0.1227-linux.zip。</a></p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C23.png"></p>
-<h4 id="6-3-代码统计"><a href="#6-3-代码统计" class="headerlink" title="6.3 代码统计"></a>6.3 代码统计</h4><p>使用cloc工具进行文件与代码行数的统计, 这里你可能需要通过–exclude-ext、–exclude-dir参数来过滤一些无意义的文件，比如：字体、图片、声音、视频等。举个例子，过滤所有图片后统计：cloc ./目标路径 –exclude-ext=.jpg,.jpeg,.png,.bmp,.gif,.ico。</p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C23.png"></p>
+<h4 id="6-3-代码统计"><a href="#6-3-代码统计" class="headerlink" title="6.3 代码统计"></a>6.3 代码统计</h4><p>使用cloc工具进行文件与代码行数的统计, 这里你可能需要通过–exclude-ext、–exclude-dir参数来过滤一些无意义的文件，比如：字体、图片、声音、视频等。举个例子，过滤所有图片后统计：cloc .&#x2F;目标路径 –exclude-ext&#x3D;.jpg,.jpeg,.png,.bmp,.gif,.ico。</p>
 <h4 id="6-4-项目组件分析"><a href="#6-4-项目组件分析" class="headerlink" title="6.4 项目组件分析"></a>6.4 项目组件分析</h4><p>组件分析主要是针对如使用 Java 语言开发项目时使用 Maven 管理的 pom.xml 配置文件; Python 中的 requirements.txt 文件；JS 项目中的package.json文件做解析。这里我写了一个clocwalk 工具可以分析项目的依赖组件，这个项目目前已经开源，你可以通过<a target="_blank" rel="noopener" href="https://github.com/MyKings/clocwalk%E5%9C%B0%E5%9D%80%E6%9D%A5%E8%8E%B7%E5%8F%96%E8%BF%99%E4%B8%AA%E5%B7%A5%E5%85%B7%E3%80%82">https://github.com/MyKings/clocwalk地址来获取这个工具。</a></p>
 <h4 id="6-5-漏报处理"><a href="#6-5-漏报处理" class="headerlink" title="6.5 漏报处理"></a>6.5 漏报处理</h4><p>关于漏报问题，你可以根据自己企业 SRC 中的漏洞，总结出一套适合自己企业的黑名单规则；或者你可以添加一些 CWE 的漏洞规则，关于 CWE 的信息你可以访问这个地址 <a target="_blank" rel="noopener" href="https://cwe.mitre.org/data/index.html%E3%80%82">https://cwe.mitre.org/data/index.html。</a></p>
-<h4 id="6-6-误报处理"><a href="#6-6-误报处理" class="headerlink" title="6.6 误报处理"></a>6.6 误报处理</h4><p>关于误报问题可能会较多，比如扫描出单元测试或功能测试的硬编码问题；比如变量参数String PARAM_NAME_PASSWORD=”passwd_txt”;问题。 以上的问题我们可以通过白名单插件处理，比如插件中对文件路径和方法判断是否存在 test 关键字，如果存在我们就认为这个是误报。另外针对某些特殊类型的误报，比如在 A 项目下才是误报，其他项目就是漏洞的情况，我们可以设置这个项目的白名单漏洞 Case，其匹配规则条件为：项目名称、漏洞文件、漏洞类型、漏洞所在行，当所有条件都同时满足时，那么这个漏洞就会可以判断为误报。</p>
-<h4 id="6-7-漏洞闭环"><a href="#6-7-漏洞闭环" class="headerlink" title="6.7 漏洞闭环"></a>6.7 漏洞闭环</h4><p>当一个高/中危漏洞被发现并确认时，我们应该如何跟踪这个漏洞的生命周期？往往安全人员会将一个漏洞提交到内部的 SOC 系统中，由于 SOC 系统没有和项目开发的流程控制系统（如：Jira）没有直接联系，开发人员可能会忽视或忘记修复这个高危漏洞，如何避免这种情况？我们这里以 GitLab 举例，当扫描系统扫描出高危漏洞时，系统会通过 GitLab 的 POST /projects/:id/issues API接口来自动创建一条 issue 并指派给当前项目的 master，项目负责人同时会收到一条邮件提醒，那么项目负责人可根据漏洞严重程度来安排项目的迭代计划，这样我们就把审计系统扫描出的漏洞与项目开发流程很好的结合起来了。</p>
-<h3 id="7-GitLab-CI-触发"><a href="#7-GitLab-CI-触发" class="headerlink" title="7 GitLab CI 触发"></a>7 GitLab CI 触发</h3><p>当然也可以使用 Jenkins 来做 CI/CD 系统。我们这里开发了一个.code-audit.py触发脚本, Jenkins 你也可以使用 Python 脚本或是开发 Jenkins 插件来达到触发目的。</p>
+<h4 id="6-6-误报处理"><a href="#6-6-误报处理" class="headerlink" title="6.6 误报处理"></a>6.6 误报处理</h4><p>关于误报问题可能会较多，比如扫描出单元测试或功能测试的硬编码问题；比如变量参数String PARAM_NAME_PASSWORD&#x3D;”passwd_txt”;问题。 以上的问题我们可以通过白名单插件处理，比如插件中对文件路径和方法判断是否存在 test 关键字，如果存在我们就认为这个是误报。另外针对某些特殊类型的误报，比如在 A 项目下才是误报，其他项目就是漏洞的情况，我们可以设置这个项目的白名单漏洞 Case，其匹配规则条件为：项目名称、漏洞文件、漏洞类型、漏洞所在行，当所有条件都同时满足时，那么这个漏洞就会可以判断为误报。</p>
+<h4 id="6-7-漏洞闭环"><a href="#6-7-漏洞闭环" class="headerlink" title="6.7 漏洞闭环"></a>6.7 漏洞闭环</h4><p>当一个高&#x2F;中危漏洞被发现并确认时，我们应该如何跟踪这个漏洞的生命周期？往往安全人员会将一个漏洞提交到内部的 SOC 系统中，由于 SOC 系统没有和项目开发的流程控制系统（如：Jira）没有直接联系，开发人员可能会忽视或忘记修复这个高危漏洞，如何避免这种情况？我们这里以 GitLab 举例，当扫描系统扫描出高危漏洞时，系统会通过 GitLab 的 POST &#x2F;projects&#x2F;:id&#x2F;issues API接口来自动创建一条 issue 并指派给当前项目的 master，项目负责人同时会收到一条邮件提醒，那么项目负责人可根据漏洞严重程度来安排项目的迭代计划，这样我们就把审计系统扫描出的漏洞与项目开发流程很好的结合起来了。</p>
+<h3 id="7-GitLab-CI-触发"><a href="#7-GitLab-CI-触发" class="headerlink" title="7 GitLab CI 触发"></a>7 GitLab CI 触发</h3><p>当然也可以使用 Jenkins 来做 CI&#x2F;CD 系统。我们这里开发了一个.code-audit.py触发脚本, Jenkins 你也可以使用 Python 脚本或是开发 Jenkins 插件来达到触发目的。</p>
 <h4 id="7-1-配置项目"><a href="#7-1-配置项目" class="headerlink" title="7.1 配置项目"></a>7.1 配置项目</h4><p>这里需要了解 .gitlab-ci.yml 文件格式的编写，下面是一个 Python 项目的配置。可以看出整个 CI 过程分为 4 个阶段：build、test、codeaudit、deploy。 其中codeaudit是我们的代码扫描阶段，这里我们限制了只有 develop 的动作才会触发扫描。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C24.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C24.png"></p>
 <h4 id="7-2-扫描脚本"><a href="#7-2-扫描脚本" class="headerlink" title="7.2 扫描脚本"></a>7.2 扫描脚本</h4><p>触发扫描脚本如下图，其大体的执行流程如下：</p>
 <ul>
 <li>获取 GitLab CI 中关于项目的环境变量信息；</li>
@@ -891,11 +918,11 @@ function showBtn(){
 <li>异步查询扫描结果，超时时间10分钟，如果超时扫描代码不通过；</li>
 <li>扫描结果完成，统计是否存在预定义级别的漏洞，如果存在扫描代码不通过。</li>
 </ul>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C25.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C25.png"></p>
 <p>下图为整个 CI 过程的截图。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C26.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C26.png"></p>
 <p>下图为代码扫描失败的反馈结果，图中可以看出发现了一个漏洞。</p>
-<p><img src="%5Cassets%5Cimg%5Cauto_scan%5C27.png"></p>
+<p><img src="/%5Cassets%5Cimg%5Cauto_scan%5C27.png"></p>
 <h2 id="0x04-总结"><a href="#0x04-总结" class="headerlink" title="0x04 总结"></a>0x04 总结</h2><p>代码扫描固然重要，但是它不会解决所有项目的安全问题。项目安全应该从多个维度、多角度的来进行。如：项目立项时开始SDL；开发迭代过程中的代码扫描；项目上线前的黑盒测试。</p>
 <h2 id="0x05-参考链接"><a href="#0x05-参考链接" class="headerlink" title="0x05 参考链接"></a>0x05 参考链接</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tSbWhBh9RQQ5Wduoo18MEg">代码自动化扫描系统的建设（上）</a></li>
@@ -918,19 +945,15 @@ function showBtn(){
 <li><a target="_blank" rel="noopener" href="https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf">https://www.hackerone.com/sites/default/files/2017-03/WeaknessAndLegacyVulnerabilityTypeRelationship.pdf</a></li>
 <li><a target="_blank" rel="noopener" href="https://github.com/MyKings/clocwalk">https://github.com/MyKings/clocwalk</a></li>
 </ul>
+<p> <a href="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/">http://www.pa55w0rd.online/代码自动化扫描系统建设/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/" data-id="ckxh6t4th006zdgswfcfhdh5l" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/" data-id="cmn8a4djv007f6oho51dbe6bi" class="article-share-link" data-share="baidu" data-title="代码自动化扫描系统的建设（转发）">分享到</a>
       
 
       
@@ -941,6 +964,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" rel="tag">安全建设</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" rel="tag">安全开发</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/" rel="bookmark">http://www.pa55w0rd.online/%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E5%8C%96%E6%89%AB%E6%8F%8F%E7%B3%BB%E7%BB%9F%E5%BB%BA%E8%AE%BE/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -999,23 +1035,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -1028,7 +1064,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -1044,7 +1080,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -1054,8 +1090,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -1320,7 +1356,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -1363,12 +1399,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -1379,9 +1441,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Mon Oct 22 2018 14:58:04 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Mon Oct 22 2018 14:58:04 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -1412,14 +1473,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -1432,7 +1502,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -1466,44 +1536,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

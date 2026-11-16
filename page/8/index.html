@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,11 +10,26 @@
 
   <title>Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/page/8/">
+
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pa55w0rd 's Blog","description":"信息安全","url":"http://www.pa55w0rd.online/","inLanguage":"zh-CN"}</script>
+
+
+
+  
   <meta name="description" content="信息安全">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Pa55w0rd &#39;s Blog">
-<meta property="og:url" content="http://www.pa55w0rd.online/page/8/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/page/8/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="信息安全">
 <meta property="og:locale" content="zh_CN">
@@ -38,7 +53,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -50,25 +65,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -88,31 +114,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -125,7 +126,7 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
@@ -189,21 +190,27 @@ ga('send', 'pageview');
     <div class="outer">
       <section id="main">
   
-    <article   id="post-crontab-resume" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/crontab-resume/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2019-05-16T02:37:20.000Z" itemprop="datePublished">2019-05-16</time>
+    <article id="post-iast" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/iast/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2021-05-14T03:19:42.000Z" itemprop="datePublished">2021-05-14</time>
 </a>
 
-    
+
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -212,8 +219,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/crontab-resume/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>crontab误删除恢复</a>
+      <a class="article-title" href="/iast/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>洞态IAST落地实践</a>
     </h1>
   
 
@@ -221,46 +228,35 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="事故原因分析："><a href="#事故原因分析：" class="headerlink" title="事故原因分析："></a>事故原因分析：</h2><p>回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下：</p>
-<p>如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令“crontab”，接着在“任务管理器”中直接杀掉SecureCRT进程，再通过另外一个SSH窗口执行“crontab -l”，就会发现，所有的计划任务都不存在了。在今天事故发生的时间点上，就有人在服务器上遇到了这样的情况。</p>
+        <blockquote>
+<p>IAST作为开展sdl中黑白盒测试的有效补充，还是很有必要去了解使用的。笔者为了完善公司的SDL流程，调研了开源的IAST产品进行测试和内部推广</p>
+</blockquote>
         
           <p class="article-more-link ">
-            <a href="/crontab-resume/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/iast/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/crontab-resume/" data-id="ckxh6t4rf000vdgsw681w5vn5" class="article-share-link" data-share="baidu" data-title="crontab误删除恢复">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/iast/" data-id="cmn8a4dio00296ohogf2j99i9" class="article-share-link" data-share="baidu" data-title="洞态IAST落地实践">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/crontab-resume/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/iast/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/" rel="tag">note</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DevSecOps/" rel="tag">DevSecOps</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDL/" rel="tag">SDL</a></li></ul>
 
 
+
+      
     </footer>
   </div>
   
@@ -278,21 +274,27 @@ ga('send', 'pageview');
 
 
   
-    <article   id="post-php-mfenc-decompiler" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/php-mfenc-decompiler/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2019-05-08T06:50:36.000Z" itemprop="datePublished">2019-05-08</time>
+    <article id="post-netsparker-iast" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/netsparker-iast/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2021-05-14T02:12:37.000Z" itemprop="datePublished">2021-05-14</time>
 </a>
 
-    
+
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -301,8 +303,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/php-mfenc-decompiler/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>PHP 魔方加密二代 解密</a>
+      <a class="article-title" href="/netsparker-iast/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>Netsparker扫描器IAST使用</a>
     </h1>
   
 
@@ -310,46 +312,34 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。</p>
-<p>从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程</p>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>之前测试了AWVS扫描器的IAST功能，使用上不是很方便，需要对每个服务启动一个扫描任务才可以进行扫描，比较主动，无法作为独立的被动式扫描器使用，脏数据也是比较多</p>
+<p>对比awvs和netsparker，在前后端分离场景下，awvs扫描器可以分析swagger文件进行全接口自动化安全扫描，开发人员可以使用该功能增加后端系统的安全测试效率。在多人协作的测试场景下，netsparker扫描器可以开启代理端口，充分导入有效流量进行自动化安全测试，发现隐蔽的安全漏洞</p>
         
           <p class="article-more-link ">
-            <a href="/php-mfenc-decompiler/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/netsparker-iast/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/php-mfenc-decompiler/" data-id="ckxh6t4sm004hdgsw3o4u282e" class="article-share-link" data-share="baidu" data-title="PHP 魔方加密二代 解密">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/netsparker-iast/" data-id="cmn8a4dj3003x6oho11vv8fjz" class="article-share-link" data-share="baidu" data-title="Netsparker扫描器IAST使用">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/php-mfenc-decompiler/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/netsparker-iast/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" rel="tag">代码审计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag">工具使用</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDL/" rel="tag">SDL</a></li></ul>
 
 
+
+      
     </footer>
   </div>
   
@@ -367,21 +357,27 @@ ga('send', 'pageview');
 
 
   
-    <article   id="post-php-study" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/php-study/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2019-05-05T08:14:49.000Z" itemprop="datePublished">2019-05-05</time>
+    <article id="post-awvs-iast" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/awvs-iast/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2021-05-14T02:12:17.000Z" itemprop="datePublished">2021-05-14</time>
 </a>
 
-    
+
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -390,8 +386,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/php-study/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>PHP编程基础学习记录</a>
+      <a class="article-title" href="/awvs-iast/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>AWVS扫描器IAST使用</a>
     </h1>
   
 
@@ -399,47 +395,33 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <p>印象笔记中躺着一篇当时学PHP的一篇笔记，贴出来，从慕课网上学的</p>
-<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/">PHP官方手册</a></p>
-<p>看代码还是直接查手册吧</p>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>很久没有更新blog了，这次把几个笔记分享一下，AWVS自带的IAST功能，很多人都不知道，这里记录一下IAST如何使用</p>
         
           <p class="article-more-link ">
-            <a href="/php-study/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/awvs-iast/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/php-study/" data-id="ckxh6t4sn004kdgsw1qby9vjx" class="article-share-link" data-share="baidu" data-title="PHP编程基础学习记录">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/awvs-iast/" data-id="cmn8a4di4000h6oho0wh07wyc" class="article-share-link" data-share="baidu" data-title="AWVS扫描器IAST使用">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/php-study/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/awvs-iast/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" rel="tag">编程基础</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDL/" rel="tag">SDL</a></li></ul>
 
 
+
+      
     </footer>
   </div>
   
@@ -457,21 +439,27 @@ ga('send', 'pageview');
 
 
   
-    <article   id="post-win-eventvwr" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/win-eventvwr/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2019-04-17T09:38:58.000Z" itemprop="datePublished">2019-04-17</time>
+    <article id="post-openrasp-iast" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/openrasp-iast/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2021-05-14T02:00:30.000Z" itemprop="datePublished">2021-05-14</time>
 </a>
 
-    
+
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/note/">note</a>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -480,8 +468,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/win-eventvwr/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>Windows日志事件ID说明</a>
+      <a class="article-title" href="/openrasp-iast/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>百度开源OpenRASP - IAST使用</a>
     </h1>
   
 
@@ -489,46 +477,35 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <p>日志路径：C:\Windows\System32\winevt\Logs<br>查看日志：Security.evtx、System.evtx、Application.evtx<br>如何查看：右键我的电脑-管理-系统工具-事件查看器，或者eventvwr查看事件查看器</p>
-<p>打开Windows系统的事件查看器，右键单击系统或安全日志，选择筛选当前日志，在筛选器中输入下列事件ID即可。</p>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>相对于awvs和netsparker的IAST，百度iast为主动型插桩技术，无需人工配置任务及代理等，由agent采集请求及hook点信息，自动选择扫描漏洞类型，极大的增加覆盖率和效率，减少脏数据产生</p>
+<p>主动型扫描，不适用于参数加密、编码、防重放等场景</p>
+<p>管理后台部署参考 <a href="https://www.pa55w0rd.online/openrasp-web/">OpenRASP 部署</a></p>
         
           <p class="article-more-link ">
-            <a href="/win-eventvwr/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/openrasp-iast/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/win-eventvwr/" data-id="ckxh6t4t6005ydgswdz80epqa" class="article-share-link" data-share="baidu" data-title="Windows日志事件ID说明">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/openrasp-iast/" data-id="cmn8a4dj400476oho1hzjfszx" class="article-share-link" data-share="baidu" data-title="百度开源OpenRASP - IAST使用">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/win-eventvwr/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/openrasp-iast/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/" rel="tag">note</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDL/" rel="tag">SDL</a></li></ul>
 
 
+
+      
     </footer>
   </div>
   
@@ -546,21 +523,27 @@ ga('send', 'pageview');
 
 
   
-    <article   id="post-kunpeng" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/kunpeng/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2019-03-22T10:03:41.000Z" itemprop="datePublished">2019-03-22</time>
+    <article id="post-iast-test" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<a href="/iast-test/" class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2021-05-14T00:53:09.000Z" itemprop="datePublished">2021-05-14</time>
 </a>
 
-    
+
+      
   <div class="article-category">
-    <a class="article-category-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a>
+    <a class="article-category-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -569,8 +552,8 @@ ga('send', 'pageview');
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/kunpeng/">
-        <i class="fa fa-pencil-square-o  article-title-icon"></i>开源POC检测框架Kunpeng使用</a>
+      <a class="article-title" href="/iast-test/">
+        <i class="fa fa-pencil-square-o  article-title-icon"></i>IAST测试靶场搭建</a>
     </h1>
   
 
@@ -578,46 +561,33 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0x00-简介"><a href="#0x00-简介" class="headerlink" title="0x00 简介"></a>0x00 简介</h2><p>项目地址：<a target="_blank" rel="noopener" href="https://github.com/opensec-cn/kunpeng">https://github.com/opensec-cn/kunpeng</a></p>
-<p>Kunpeng是一个Golang编写的开源POC检测框架，集成了包括数据库、中间件、web组件、cms等等的漏洞POC（查看已收录POC列表），可检测弱口令、SQL注入、XSS、RCE等漏洞类型，以动态链接库的形式提供调用，通过此项目可快速对目标进行安全漏洞检测，比攻击者快一步发现风险漏洞。</p>
+        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>测试用例的选择尽量贴近真实业务使用的场景，覆盖常见的高危漏洞，以及各类请求形式。用于测试IAST产品支持检测漏洞类型、检出率、脏数据插入等等</p>
         
           <p class="article-more-link ">
-            <a href="/kunpeng/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
+            <a href="/iast-test/#more"><i class="fa fa-coffee" style="padding-right: 2px"></i>Read More</a>
           </p>
         
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/kunpeng/" data-id="ckxh6t4s1002mdgsw01pk74rk" class="article-share-link" data-share="baidu" data-title="开源POC检测框架Kunpeng使用">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/iast-test/" data-id="cmn8a4din00266ohoexjwhk9y" class="article-share-link" data-share="baidu" data-title="IAST测试靶场搭建">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/kunpeng/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="http://www.pa55w0rd.online/iast-test/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" rel="tag">工具使用</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SDL/" rel="tag">SDL</a></li></ul>
 
 
+
+      
     </footer>
   </div>
   
@@ -637,7 +607,7 @@ ga('send', 'pageview');
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -653,23 +623,23 @@ ga('send', 'pageview');
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -682,7 +652,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -698,7 +668,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -708,8 +678,8 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -974,7 +944,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -1017,6 +987,25 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
@@ -1026,20 +1015,22 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-  <script>
-    const gitalk = new Gitalk({
-      clientID: "992fba235eb173826494",
-      clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
-      repo: "pa55w0rd.github.io",
-      owner: "Pa55w0rd",
-      admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
-    })
-    gitalk.render('gitalk-container')
-  </script>
 
+
+
+  <script>
+    var disqus_shortname = 'rapcoder';
+    if (page.permalink){
+      var disqus_url = '';
+     }
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
 
 
 
@@ -1066,14 +1057,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -1086,7 +1086,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -1120,44 +1120,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

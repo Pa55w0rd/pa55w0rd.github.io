@@ -1,19 +1,6 @@
-# hexo robots.txt
+# 允许抓取站点内容；静态资源由 CDN/浏览器缓存即可，无需禁止（禁止 /js /css 可能影响爬虫理解页面）
 User-agent: *
 Allow: /
-Allow: /archives/
-Allow: /tags/
-Allow: /categories/
 
-
-Disallow: /vendors/
-Disallow: /js/
-Disallow: /css/
-Disallow: /fonts/
-Disallow: /vendors/
-Disallow: /fancybox/
-Disallow: /about/
-Disallow: /images/
-
-Sitemap: /sitemap.xml
-Sitemap: /baidusitemap.xml
+# Sitemap 须为绝对地址，与 _config.yml 中 url 保持一致（换域名时请同步修改）
+Sitemap: http://www.pa55w0rd.online/sitemap.xml

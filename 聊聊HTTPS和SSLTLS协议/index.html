@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,16 +10,33 @@
 
   <title>聊聊HTTPS和SSLTLS协议（转） | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="转自：http:&#x2F;&#x2F;www.techug.com&#x2F;post&#x2F;https-ssl-tls.html  0x00 几个基本术语含义——HTTPS、SSL、TLS “HTTP”是干嘛用滴？  首先，HTTP 是一个网络协议，是专门用来帮你传输 Web 内容滴。关于这个协议，就算你不了解，至少也听说过吧？比如你访问俺的博客的主页，浏览器地址栏会出现如下的网址  http:&#x2F;&#x2F;www.techug.com">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/">
+
+
+  <meta name="keywords" content="基础知识,note">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"聊聊HTTPS和SSLTLS协议（转）","description":"转自：http://www.techug.com/post/https ssl tls.html","url":"http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/","datePublished":"2018-10-17T06:27:13.000Z","dateModified":"2026-03-24T07:59:41.342Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/"},"inLanguage":"zh-CN"}</script>
+
+
+  
+  <meta name="description" content="转自：http:&#x2F;&#x2F;www.techug.com&#x2F;post&#x2F;https ssl tls.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="聊聊HTTPS和SSLTLS协议（转）">
-<meta property="og:url" content="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="转自：http:&#x2F;&#x2F;www.techug.com&#x2F;post&#x2F;https-ssl-tls.html  0x00 几个基本术语含义——HTTPS、SSL、TLS “HTTP”是干嘛用滴？  首先，HTTP 是一个网络协议，是专门用来帮你传输 Web 内容滴。关于这个协议，就算你不了解，至少也听说过吧？比如你访问俺的博客的主页，浏览器地址栏会出现如下的网址  http:&#x2F;&#x2F;www.techug.com">
+<meta property="og:description" content="转自：http:&#x2F;&#x2F;www.techug.com&#x2F;post&#x2F;https ssl tls.html">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-10-17T06:27:13.000Z">
-<meta property="article:modified_time" content="2018-11-21T08:59:10.237Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.342Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary">
@@ -41,7 +58,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -53,25 +70,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -91,31 +119,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -128,11 +131,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -190,21 +193,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-聊聊HTTPS和SSLTLS协议" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-17T06:27:13.000Z" itemprop="datePublished">2018-10-17</time>
-</a>
+      <section id="main"><article id="post-聊聊HTTPS和SSLTLS协议" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-10-17T06:27:13.000Z" itemprop="datePublished">2018-10-17</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/note/">note</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 3.3k 字</span>
+      <span class="article-reading-time">约 11 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.342Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -221,39 +240,6 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%9C%AF%E8%AF%AD%E5%90%AB%E4%B9%89%E2%80%94%E2%80%94HTTPS%E3%80%81SSL%E3%80%81TLS"><span class="toc-number">1.</span> <span class="toc-text">0x00 几个基本术语含义——HTTPS、SSL、TLS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-HTTP-%E5%8D%8F%E8%AE%AE%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">0x01 HTTP 协议的特点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">3.</span> <span class="toc-text">0x02 加密算法的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-CA-%E8%AF%81%E4%B9%A6%E7%9A%84%E5%8E%9F%E7%90%86%E5%8F%8A%E7%94%A8%E9%80%94"><span class="toc-number">4.</span> <span class="toc-text">0x03 CA 证书的原理及用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-HTTPS-%E5%8D%8F%E8%AE%AE%E7%9A%84%E9%9C%80%E6%B1%82%E6%98%AF%E5%95%A5"><span class="toc-number">5.</span> <span class="toc-text">0x04 HTTPS 协议的需求是啥</span></a></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
@@ -268,14 +254,14 @@ function showBtn(){
 <p> 俺加了粗体的部分就是指 HTTP 协议。大部分网站都是通过 HTTP 协议来传输 Web 页面、以及 Web 页面上包含的各种东东（图片、CSS 样式、JS 脚本）。</p>
  <span id="more"></span>
 </li>
-<li><p>“SSL/TLS”是干嘛用滴？</p>
+<li><p>“SSL&#x2F;TLS”是干嘛用滴？</p>
 <p> SSL 是洋文“Secure Sockets Layer”的缩写，中文叫做“安全套接层”。它是在上世纪90年代中期，由网景公司设计的。（顺便插一句，网景公司不光发明了 SSL，还发明了很多 Web 的基础设施——比如“CSS 样式表”和“JS 脚本”）</p>
 <p> 为啥要发明 SSL 这个协议捏？因为原先互联网上使用的 HTTP 协议是明文的，存在很多缺点——比如传输内容会被偷窥（嗅探）和篡改。发明 SSL 协议，就是为了解决这些问题。</p>
 <p> 到了1999年，SSL 因为应用广泛，已经成为互联网上的事实标准。IETF 就在那年把 SSL 标准化。标准化之后的名称改为 TLS（是“Transport Layer Security”的缩写），中文叫做“传输层安全协议”。</p>
-<p> 很多相关的文章都把这两者并列称呼（SSL/TLS），因为这两者可以视作同一个东西的不同阶段。</p>
+<p> 很多相关的文章都把这两者并列称呼（SSL&#x2F;TLS），因为这两者可以视作同一个东西的不同阶段。</p>
 </li>
 <li><p>“HTTPS”是啥意思？</p>
-<p> 解释完 HTTP 和 SSL/TLS，现在就可以来解释 HTTPS 啦。咱们通常所说的 HTTPS 协议，说白了就是“HTTP 协议”和“SSL/TLS 协议”的组合。你可以把 HTTPS 大致理解为——“HTTP over SSL”或“HTTP over TLS”（反正 SSL 和 TLS 差不多）。</p>
+<p> 解释完 HTTP 和 SSL&#x2F;TLS，现在就可以来解释 HTTPS 啦。咱们通常所说的 HTTPS 协议，说白了就是“HTTP 协议”和“SSL&#x2F;TLS 协议”的组合。你可以把 HTTPS 大致理解为——“HTTP over SSL”或“HTTP over TLS”（反正 SSL 和 TLS 差不多）。</p>
 </li>
 </ol>
 <h2 id="0x01-HTTP-协议的特点"><a href="#0x01-HTTP-协议的特点" class="headerlink" title="0x01 HTTP 协议的特点"></a>0x01 HTTP 协议的特点</h2><p>作为背景知识介绍，还需要再稍微谈一下 HTTP 协议本身的特点。HTTP 本身有很多特点，考虑到篇幅有限，俺只谈那些和 HTTPS 相关的特点。</p>
@@ -307,7 +293,7 @@ function showBtn(){
 <p> “加密”的过程，就是把“明文”变成“密文”的过程；反之，“解密”的过程，就是把“密文”变为“明文”。在这两个过程中，都需要一个关键的东东——叫做“密钥”——来参与数学运算。</p>
 </li>
 <li><p>啥是“对称加密”？</p>
-<p> 所谓的“对称加密技术”，意思就是说：“加密”和“解密”使用【相同的】密钥。这个比较好理解。就好比你用 7zip 或 WinRAR 创建一个带密码（口令）的加密压缩包。当你下次要把这个压缩文件解开的时候，你需要输入【同样的】密码。在这个例子中，密码/口令就如同刚才说的“密钥”。</p>
+<p> 所谓的“对称加密技术”，意思就是说：“加密”和“解密”使用【相同的】密钥。这个比较好理解。就好比你用 7zip 或 WinRAR 创建一个带密码（口令）的加密压缩包。当你下次要把这个压缩文件解开的时候，你需要输入【同样的】密码。在这个例子中，密码&#x2F;口令就如同刚才说的“密钥”。</p>
 </li>
 <li><p>啥是“非对称加密”？</p>
 <p> 所谓的“非对称加密技术”，意思就是说：“加密”和“解密”使用【不同的】密钥。这玩意儿比较难理解，也比较难想到。当年“非对称加密”的发明，还被誉为“密码学”历史上的一次革命。</p>
@@ -341,8 +327,8 @@ function showBtn(){
 </ul>
 <p>前面说了，HTTPS 相当于是“HTTP over SSL”。</p>
 <p>如果 SSL 这个协议在“可扩展性”方面的设计足够牛逼，那么它除了能跟 HTTP 搭配，还能够跟其它的应用层协议搭配。岂不美哉？</p>
-<p>现在看来，当初设计 SSL 的人确实比较牛。如今的 SSL/TLS 可以跟很多常用的应用层协议（比如：FTP、SMTP、POP、Telnet）搭配，来强化这些应用层协议的安全性。</p>
-<p>接着刚才打的比方：如果把 SSL/TLS 视作一根用来加固的金属管，它不仅可以用来加固输水的管道，还可以用来加固输煤气的管道。</p>
+<p>现在看来，当初设计 SSL 的人确实比较牛。如今的 SSL&#x2F;TLS 可以跟很多常用的应用层协议（比如：FTP、SMTP、POP、Telnet）搭配，来强化这些应用层协议的安全性。</p>
+<p>接着刚才打的比方：如果把 SSL&#x2F;TLS 视作一根用来加固的金属管，它不仅可以用来加固输水的管道，还可以用来加固输煤气的管道。</p>
 <ul>
 <li>保密性（防泄密）</li>
 </ul>
@@ -363,7 +349,7 @@ function showBtn(){
 <p>举个例子：</p>
 <p>你因为使用网银，需要访问该网银的 Web 站点。那么，你如何确保你访问的网站确实是你想访问的网站？（这话有点绕口令）</p>
 <p>有些天真的同学会说：通过看网址里面的域名，来确保。为啥说这样的同学是“天真的”？因为 DNS 系统本身是不可靠的（尤其是在设计 SSL 的那个年代，连 DNSSEC 都还没发明）。由于 DNS 的不可靠（存在“域名欺骗”和“域名劫持”），你看到的网址里面的域名【未必】是真实滴！</p>
-<p>（不了解“域名欺骗”和“域名劫持”的同学，可以参见俺之前写的《扫盲 DNS 原理，兼谈“域名劫持”和“域名欺骗/域名污染”》）</p>
+<p>（不了解“域名欺骗”和“域名劫持”的同学，可以参见俺之前写的《扫盲 DNS 原理，兼谈“域名劫持”和“域名欺骗&#x2F;域名污染”》）</p>
 <p>所以，HTTPS 协议必须有某种机制来确保“真实性”的需求（至于如何确保，后面会细聊）。</p>
 <ul>
 <li>性能</li>
@@ -375,6 +361,7 @@ function showBtn(){
 <li>如何选择加密算法<br>（“对称”or“非对称”）？</li>
 <li>如何兼顾 HTTP 采用的“短连接”TCP 方式？<br><br>（SSL 是在1995年之前开始设计的，那时候的 HTTP 版本还是 1.0，默认使用的是“短连接”的 TCP 方式——默认不启用 Keep-Alive）</li>
 </ol>
+<p> <a href="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/">http://www.pa55w0rd.online/聊聊HTTPS和SSLTLS协议/</a> </p>
 
         
 <!--
@@ -392,14 +379,14 @@ function showBtn(){
 <p> 俺加了粗体的部分就是指 HTTP 协议。大部分网站都是通过 HTTP 协议来传输 Web 页面、以及 Web 页面上包含的各种东东（图片、CSS 样式、JS 脚本）。</p>
  <span id="more"></span>
 </li>
-<li><p>“SSL/TLS”是干嘛用滴？</p>
+<li><p>“SSL&#x2F;TLS”是干嘛用滴？</p>
 <p> SSL 是洋文“Secure Sockets Layer”的缩写，中文叫做“安全套接层”。它是在上世纪90年代中期，由网景公司设计的。（顺便插一句，网景公司不光发明了 SSL，还发明了很多 Web 的基础设施——比如“CSS 样式表”和“JS 脚本”）</p>
 <p> 为啥要发明 SSL 这个协议捏？因为原先互联网上使用的 HTTP 协议是明文的，存在很多缺点——比如传输内容会被偷窥（嗅探）和篡改。发明 SSL 协议，就是为了解决这些问题。</p>
 <p> 到了1999年，SSL 因为应用广泛，已经成为互联网上的事实标准。IETF 就在那年把 SSL 标准化。标准化之后的名称改为 TLS（是“Transport Layer Security”的缩写），中文叫做“传输层安全协议”。</p>
-<p> 很多相关的文章都把这两者并列称呼（SSL/TLS），因为这两者可以视作同一个东西的不同阶段。</p>
+<p> 很多相关的文章都把这两者并列称呼（SSL&#x2F;TLS），因为这两者可以视作同一个东西的不同阶段。</p>
 </li>
 <li><p>“HTTPS”是啥意思？</p>
-<p> 解释完 HTTP 和 SSL/TLS，现在就可以来解释 HTTPS 啦。咱们通常所说的 HTTPS 协议，说白了就是“HTTP 协议”和“SSL/TLS 协议”的组合。你可以把 HTTPS 大致理解为——“HTTP over SSL”或“HTTP over TLS”（反正 SSL 和 TLS 差不多）。</p>
+<p> 解释完 HTTP 和 SSL&#x2F;TLS，现在就可以来解释 HTTPS 啦。咱们通常所说的 HTTPS 协议，说白了就是“HTTP 协议”和“SSL&#x2F;TLS 协议”的组合。你可以把 HTTPS 大致理解为——“HTTP over SSL”或“HTTP over TLS”（反正 SSL 和 TLS 差不多）。</p>
 </li>
 </ol>
 <h2 id="0x01-HTTP-协议的特点"><a href="#0x01-HTTP-协议的特点" class="headerlink" title="0x01 HTTP 协议的特点"></a>0x01 HTTP 协议的特点</h2><p>作为背景知识介绍，还需要再稍微谈一下 HTTP 协议本身的特点。HTTP 本身有很多特点，考虑到篇幅有限，俺只谈那些和 HTTPS 相关的特点。</p>
@@ -431,7 +418,7 @@ function showBtn(){
 <p> “加密”的过程，就是把“明文”变成“密文”的过程；反之，“解密”的过程，就是把“密文”变为“明文”。在这两个过程中，都需要一个关键的东东——叫做“密钥”——来参与数学运算。</p>
 </li>
 <li><p>啥是“对称加密”？</p>
-<p> 所谓的“对称加密技术”，意思就是说：“加密”和“解密”使用【相同的】密钥。这个比较好理解。就好比你用 7zip 或 WinRAR 创建一个带密码（口令）的加密压缩包。当你下次要把这个压缩文件解开的时候，你需要输入【同样的】密码。在这个例子中，密码/口令就如同刚才说的“密钥”。</p>
+<p> 所谓的“对称加密技术”，意思就是说：“加密”和“解密”使用【相同的】密钥。这个比较好理解。就好比你用 7zip 或 WinRAR 创建一个带密码（口令）的加密压缩包。当你下次要把这个压缩文件解开的时候，你需要输入【同样的】密码。在这个例子中，密码&#x2F;口令就如同刚才说的“密钥”。</p>
 </li>
 <li><p>啥是“非对称加密”？</p>
 <p> 所谓的“非对称加密技术”，意思就是说：“加密”和“解密”使用【不同的】密钥。这玩意儿比较难理解，也比较难想到。当年“非对称加密”的发明，还被誉为“密码学”历史上的一次革命。</p>
@@ -465,8 +452,8 @@ function showBtn(){
 </ul>
 <p>前面说了，HTTPS 相当于是“HTTP over SSL”。</p>
 <p>如果 SSL 这个协议在“可扩展性”方面的设计足够牛逼，那么它除了能跟 HTTP 搭配，还能够跟其它的应用层协议搭配。岂不美哉？</p>
-<p>现在看来，当初设计 SSL 的人确实比较牛。如今的 SSL/TLS 可以跟很多常用的应用层协议（比如：FTP、SMTP、POP、Telnet）搭配，来强化这些应用层协议的安全性。</p>
-<p>接着刚才打的比方：如果把 SSL/TLS 视作一根用来加固的金属管，它不仅可以用来加固输水的管道，还可以用来加固输煤气的管道。</p>
+<p>现在看来，当初设计 SSL 的人确实比较牛。如今的 SSL&#x2F;TLS 可以跟很多常用的应用层协议（比如：FTP、SMTP、POP、Telnet）搭配，来强化这些应用层协议的安全性。</p>
+<p>接着刚才打的比方：如果把 SSL&#x2F;TLS 视作一根用来加固的金属管，它不仅可以用来加固输水的管道，还可以用来加固输煤气的管道。</p>
 <ul>
 <li>保密性（防泄密）</li>
 </ul>
@@ -487,7 +474,7 @@ function showBtn(){
 <p>举个例子：</p>
 <p>你因为使用网银，需要访问该网银的 Web 站点。那么，你如何确保你访问的网站确实是你想访问的网站？（这话有点绕口令）</p>
 <p>有些天真的同学会说：通过看网址里面的域名，来确保。为啥说这样的同学是“天真的”？因为 DNS 系统本身是不可靠的（尤其是在设计 SSL 的那个年代，连 DNSSEC 都还没发明）。由于 DNS 的不可靠（存在“域名欺骗”和“域名劫持”），你看到的网址里面的域名【未必】是真实滴！</p>
-<p>（不了解“域名欺骗”和“域名劫持”的同学，可以参见俺之前写的《扫盲 DNS 原理，兼谈“域名劫持”和“域名欺骗/域名污染”》）</p>
+<p>（不了解“域名欺骗”和“域名劫持”的同学，可以参见俺之前写的《扫盲 DNS 原理，兼谈“域名劫持”和“域名欺骗&#x2F;域名污染”》）</p>
 <p>所以，HTTPS 协议必须有某种机制来确保“真实性”的需求（至于如何确保，后面会细聊）。</p>
 <ul>
 <li>性能</li>
@@ -499,19 +486,15 @@ function showBtn(){
 <li>如何选择加密算法<br>（“对称”or“非对称”）？</li>
 <li>如何兼顾 HTTP 采用的“短连接”TCP 方式？<br><br>（SSL 是在1995年之前开始设计的，那时候的 HTTP 版本还是 1.0，默认使用的是“短连接”的 TCP 方式——默认不启用 Keep-Alive）</li>
 </ol>
+<p> <a href="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/">http://www.pa55w0rd.online/聊聊HTTPS和SSLTLS协议/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/" data-id="ckxh6t4u0008gdgsw3acdb8xn" class="article-share-link" data-share="baidu" data-title="聊聊HTTPS和SSLTLS协议（转）">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/" data-id="cmn8a4dkf00c46oho0zo50v18" class="article-share-link" data-share="baidu" data-title="聊聊HTTPS和SSLTLS协议（转）">分享到</a>
       
 
       
@@ -522,6 +505,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/" rel="bookmark">http://www.pa55w0rd.online/%E8%81%8A%E8%81%8AHTTPS%E5%92%8CSSLTLS%E5%8D%8F%E8%AE%AE/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -580,23 +576,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -609,7 +605,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -625,7 +621,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -635,8 +631,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -901,7 +897,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -944,12 +940,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -960,9 +982,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Wed Oct 17 2018 14:27:13 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Wed Oct 17 2018 14:27:13 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -993,14 +1014,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -1013,7 +1043,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -1047,44 +1077,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

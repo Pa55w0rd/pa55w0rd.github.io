@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,23 +10,40 @@
 
   <title>在微信公众号中接入ChatGPT（支持GPT-4) | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="引言ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入微信公众号，让用户可以通过私信与ChatGPT进行交流。">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/wechatmp-chatgpt/">
+
+
+  <meta name="keywords" content="ChatGPT,微信公众号,GPT-4,私信互动,note">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"在微信公众号中接入ChatGPT（支持GPT-4)","description":"ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入...","url":"http://www.pa55w0rd.online/wechatmp-chatgpt/","datePublished":"2023-08-24T09:17:33.000Z","dateModified":"2026-03-24T07:59:41.314Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/wechatmp-chatgpt/"},"inLanguage":"zh-CN"}</script>
+
+
+  
+  <meta name="description" content="ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在微信公众号中接入ChatGPT（支持GPT-4)">
-<meta property="og:url" content="http://www.pa55w0rd.online/wechatmp-chatgpt/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/wechatmp-chatgpt/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="引言ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入微信公众号，让用户可以通过私信与ChatGPT进行交流。">
+<meta property="og:description" content="ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入...">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png">
 <meta property="og:image" content="https://yanxuan.nosdn.127.net/fb5789d744eaf842c142163776434331.png">
 <meta property="article:published_time" content="2023-08-24T09:17:33.000Z">
-<meta property="article:modified_time" content="2023-08-24T10:10:32.747Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.314Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="ChatGPT">
 <meta property="article:tag" content="微信公众号">
-<meta property="article:tag" content="私信互动">
 <meta property="article:tag" content="GPT-4">
+<meta property="article:tag" content="私信互动">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png">
 
@@ -47,7 +64,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -59,25 +76,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -97,31 +125,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -134,11 +137,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -196,21 +199,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-wechatmp-chatgpt" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/wechatmp-chatgpt/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2023-08-24T09:17:33.000Z" itemprop="datePublished">2023-08-24</time>
-</a>
+      <section id="main"><article id="post-wechatmp-chatgpt" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2023-08-24T09:17:33.000Z" itemprop="datePublished">2023-08-24</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/note/">note</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 2.8k 字</span>
+      <span class="article-reading-time">约 10 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.314Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -227,56 +246,287 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%B0%86ChatGPT%E6%8E%A5%E5%85%A5%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7%E7%A7%81%E4%BF%A1%E5%91%A2"><span class="toc-number">2.</span> <span class="toc-text">为什么要将ChatGPT接入微信公众号私信呢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">如何使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5%E7%9A%84"><span class="toc-number">4.</span> <span class="toc-text">我是如何接入的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="toc-number">5.</span> <span class="toc-text">总结一下</span></a></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
         
           <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入微信公众号，让用户可以通过私信与ChatGPT进行交流。</p>
 <span id="more"></span>
+
 <h2 id="为什么要将ChatGPT接入微信公众号私信呢"><a href="#为什么要将ChatGPT接入微信公众号私信呢" class="headerlink" title="为什么要将ChatGPT接入微信公众号私信呢"></a>为什么要将ChatGPT接入微信公众号私信呢</h2><p>首先，这可以为你的公众号增加一个全新的互动方式。你可以让ChatGPT回答读者的问题，提供更个性化的答案和建议。这样，你的读者不再只是被动地阅读你的文章，而是真正与你的公众号进行互动。</p>
 <p>接入ChatGPT也能够为你的公众号带来更多的亮点。想象一下，你的读者可以发送私信给ChatGPT，询问各种问题，不仅限于你之前发布的内容。无论是技术问题、生活琐事还是搞笑段子，ChatGPT都可以给出非常有趣的回答。这样一来，你的公众号将成为读者心中的好玩伙伴，增加用户粘性和留存率。</p>
 <p>不过，我们也要注意一点。虽然ChatGPT可以提供智能的回答，但它毕竟是一个机器学习模型，在某些情况下可能会给出不准确或不合理的回答。所以，在使用ChatGPT的同时，你也要进行一定的监控和过滤，确保回答的质量和可靠性。</p>
-<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><ol>
-<li>关注公众号<code>Pa55w0rd</code><br><img src="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png" alt="1692869717320.png"></li>
-<li>直接给公众号发送消息即可<br>默认使用<code>gpt-3.5-turbo-0613</code>模型，可以通过<code>#set_gpt_model gpt-4-0613</code>命令切换gpt-4-0613模型（GPT-4比较慢，也不保证可用），通过<code>#reset_gpt_model</code>重置默认模型，通过<code>#gpt_model</code>查看当前模型，通过<code>#reset</code>重置会话</li>
-<li>由于受订阅号限制，回复内容较短的情况下 (15s内)，可以立即完成回复，但耗时较长的回复则会先回复一句 “正在思考中”，后续需要用户输入任意文字主动获取答案<br><img src="https://yanxuan.nosdn.127.net/fb5789d744eaf842c142163776434331.png" alt="1692869926985.png"></li>
+<h3 id="商业价值分析"><a href="#商业价值分析" class="headerlink" title="商业价值分析"></a>商业价值分析</h3><p>接入ChatGPT不仅能提升用户体验，还能带来实际的商业价值：</p>
+<ol>
+<li><strong>提升用户粘性</strong>：智能对话增加了用户停留时间，提高了公众号的活跃度</li>
+<li><strong>降低客服成本</strong>：自动回答常见问题，减少人工客服工作量</li>
+<li><strong>24&#x2F;7服务</strong>：全天候响应用户询问，不受时间限制</li>
+<li><strong>数据收集</strong>：通过用户问题了解需求，为产品改进提供依据</li>
+<li><strong>个性化服务</strong>：根据用户历史对话提供定制化建议</li>
 </ol>
-<h2 id="我是如何接入的"><a href="#我是如何接入的" class="headerlink" title="我是如何接入的"></a>我是如何接入的</h2><p>使用<a target="_blank" rel="noopener" href="https://github.com/zhayujie/chatgpt-on-wechat">chatgpt-on-wechat</a>项目，按照接入文档操作，写的很详细，我是3月21日接入微信，因为微信平均一周掉线一次，到6月16号选择接入公众号，运行很稳定，微信小号也是老号，未发现封号、限制添加好友问题</p>
-<p>项目介绍<br><code>Wechat robot based on ChatGPT, which using OpenAI api and itchat library. 使用ChatGPT搭建微信聊天机器人，基于 GPT3.5/GPT4.0/文心一言 模型，支持个人微信、公众号、企业微信部署，能处理文本、语音和图片，访问操作系统和互联网，支持基于知识库定制专属机器人。</code></p>
-<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>通过将ChatGPT接入微信公众号私信，你可以为你的读者带来更加生动、有趣的互动体验。这不仅能够增加用户的参与度，还能够提高用户粘性和留存率。当然，合理使用ChatGPT的同时，也要注意回答质量和准确性的监控。让我们一起探索，为微信公众号注入无限可能吧！</p>
+<h2 id="技术架构解析"><a href="#技术架构解析" class="headerlink" title="技术架构解析"></a>技术架构解析</h2><h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户微信 → 微信公众号 → 开发者服务器 → OpenAI API → ChatGPT模型</span><br><span class="line">                ↓                    ↓</span><br><span class="line">            消息推送           API调用<span class="meta">&amp;响应处理</span></span><br><span class="line">                ↓                    ↓</span><br><span class="line">            自动回复 ← 消息处理 ← 结果返回</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><ol>
+<li><strong>微信公众号接口</strong>：接收用户消息，发送回复</li>
+<li><strong>消息处理中间件</strong>：解析消息内容，路由到不同处理器</li>
+<li><strong>OpenAI API客户端</strong>：调用ChatGPT接口</li>
+<li><strong>会话管理</strong>：维护用户对话上下文</li>
+<li><strong>内容过滤</strong>：敏感词检测和内容审核</li>
+</ol>
+<h2 id="详细部署指南"><a href="#详细部署指南" class="headerlink" title="详细部署指南"></a>详细部署指南</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><ol>
+<li><p><strong>微信公众号</strong></p>
+<ul>
+<li>已认证的服务号或订阅号</li>
+<li>开启开发者模式</li>
+<li>配置服务器URL和Token</li>
+</ul>
+</li>
+<li><p><strong>OpenAI账号</strong></p>
+<ul>
+<li>注册OpenAI账号</li>
+<li>获取API Key</li>
+<li>充值API使用费用</li>
+</ul>
+</li>
+<li><p><strong>服务器环境</strong></p>
+<ul>
+<li>Linux服务器（推荐Ubuntu 20.04+）</li>
+<li>Python 3.8+</li>
+<li>公网IP和域名</li>
+<li>SSL证书（HTTPS）</li>
+</ul>
+</li>
+</ol>
+<h3 id="环境搭建步骤"><a href="#环境搭建步骤" class="headerlink" title="环境搭建步骤"></a>环境搭建步骤</h3><h4 id="1-服务器基础配置"><a href="#1-服务器基础配置" class="headerlink" title="1. 服务器基础配置"></a>1. 服务器基础配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新系统</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装必要软件</span></span><br><span class="line"><span class="built_in">sudo</span> apt install -y python3 python3-pip git nginx certbot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建项目目录</span></span><br><span class="line"><span class="built_in">mkdir</span> /opt/chatgpt-wechat</span><br><span class="line"><span class="built_in">cd</span> /opt/chatgpt-wechat</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装项目依赖"><a href="#2-安装项目依赖" class="headerlink" title="2. 安装项目依赖"></a>2. 安装项目依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zhayujie/chatgpt-on-wechat.git</span><br><span class="line"><span class="built_in">cd</span> chatgpt-on-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Python依赖</span></span><br><span class="line">pip3 install -r requirements.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制配置文件</span></span><br><span class="line"><span class="built_in">cp</span> config-template.json config.json</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-配置文件设置"><a href="#3-配置文件设置" class="headerlink" title="3. 配置文件设置"></a>3. 配置文件设置</h4><p>编辑 <code>config.json</code> 文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;open_ai_api_key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的OpenAI_API_Key&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gpt-3.5-turbo&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;proxy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;single_chat_prefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;single_chat_reply_prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;group_chat_prefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;@bot&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;group_name_white_list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ALL_GROUP&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_create_prefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;画&quot;</span><span class="punctuation">,</span> <span class="string">&quot;draw&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Draw&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;conversation_max_tokens&quot;</span><span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;character_desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你是ChatGPT，一个聪明的AI助手。&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;channel_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;wechat_mp&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_app_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的公众号AppID&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_app_secret&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的公众号AppSecret&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的微信Token&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_aes_key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-Nginx反向代理配置"><a href="#4-Nginx反向代理配置" class="headerlink" title="4. Nginx反向代理配置"></a>4. Nginx反向代理配置</h4><p>创建 <code>/etc/nginx/sites-available/chatgpt-wechat</code>：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> your-domain.com;</span><br><span class="line">    </span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9898;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-SSL证书配置"><a href="#5-SSL证书配置" class="headerlink" title="5. SSL证书配置"></a>5. SSL证书配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用站点</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /etc/nginx/sites-available/chatgpt-wechat /etc/nginx/sites-enabled/</span><br><span class="line"><span class="built_in">sudo</span> nginx -t &amp;&amp; <span class="built_in">sudo</span> systemctl reload nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 申请SSL证书</span></span><br><span class="line"><span class="built_in">sudo</span> certbot --nginx -d your-domain.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-启动服务"><a href="#6-启动服务" class="headerlink" title="6. 启动服务"></a>6. 启动服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建systemd服务文件</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/systemd/system/chatgpt-wechat.service &gt; /dev/null &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">[Unit]</span></span><br><span class="line"><span class="string">Description=ChatGPT WeChat Bot</span></span><br><span class="line"><span class="string">After=network.target</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">Type=simple</span></span><br><span class="line"><span class="string">User=root</span></span><br><span class="line"><span class="string">WorkingDirectory=/opt/chatgpt-wechat/chatgpt-on-wechat</span></span><br><span class="line"><span class="string">ExecStart=/usr/bin/python3 app.py</span></span><br><span class="line"><span class="string">Restart=always</span></span><br><span class="line"><span class="string">RestartSec=10</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy=multi-user.target</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> chatgpt-wechat</span><br><span class="line"><span class="built_in">sudo</span> systemctl start chatgpt-wechat</span><br></pre></td></tr></table></figure>
+
+<h2 id="微信公众号配置"><a href="#微信公众号配置" class="headerlink" title="微信公众号配置"></a>微信公众号配置</h2><h3 id="开发者模式设置"><a href="#开发者模式设置" class="headerlink" title="开发者模式设置"></a>开发者模式设置</h3><ol>
+<li>登录微信公众平台</li>
+<li>进入”开发” → “基本配置”</li>
+<li>配置服务器地址：<code>https://your-domain.com/wx</code></li>
+<li>设置Token（与config.json中一致）</li>
+<li>选择消息加解密方式（推荐安全模式）</li>
+</ol>
+<h3 id="消息与事件配置"><a href="#消息与事件配置" class="headerlink" title="消息与事件配置"></a>消息与事件配置</h3><p>在”开发” → “接口权限”中启用：</p>
+<ul>
+<li>接收消息</li>
+<li>发送客服消息</li>
+<li>菜单管理（可选）</li>
+</ul>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="基本对话"><a href="#基本对话" class="headerlink" title="基本对话"></a>基本对话</h3><ol>
+<li><p>关注公众号<code>Pa55w0rd</code><br><img src="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png" alt="1692869717320.png"></p>
+</li>
+<li><p>直接给公众号发送消息即可<br>默认使用<code>gpt-3.5-turbo-0613</code>模型，可以通过以下命令管理：</p>
+<ul>
+<li><code>#set_gpt_model gpt-4-0613</code>：切换到GPT-4模型</li>
+<li><code>#reset_gpt_model</code>：重置为默认模型</li>
+<li><code>#gpt_model</code>：查看当前使用的模型</li>
+<li><code>#reset</code>：重置会话上下文</li>
+</ul>
+</li>
+<li><p>由于受订阅号限制，回复内容较短的情况下 (15s内)，可以立即完成回复，但耗时较长的回复则会先回复一句 “正在思考中”，后续需要用户输入任意文字主动获取答案<br><img src="https://yanxuan.nosdn.127.net/fb5789d744eaf842c142163776434331.png" alt="1692869926985.png"></p>
+</li>
+</ol>
+<h3 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h3><h4 id="角色设定"><a href="#角色设定" class="headerlink" title="角色设定"></a>角色设定</h4><p>通过特定命令可以设置ChatGPT的角色：</p>
+<ul>
+<li><code>#设定角色 你是一个专业的技术顾问</code></li>
+<li><code>#重置角色</code>：恢复默认设定</li>
+</ul>
+<h4 id="对话模式"><a href="#对话模式" class="headerlink" title="对话模式"></a>对话模式</h4><ul>
+<li><strong>单轮对话</strong>：每次提问都是独立的</li>
+<li><strong>连续对话</strong>：保持上下文，支持多轮对话</li>
+<li><strong>切换模式</strong>：<code>#单轮模式</code> 或 <code>#连续模式</code></li>
+</ul>
+<h4 id="内容限制"><a href="#内容限制" class="headerlink" title="内容限制"></a>内容限制</h4><ul>
+<li>自动过滤敏感内容</li>
+<li>字数限制（微信消息限制）</li>
+<li>图片生成功能（需配置DALL-E）</li>
+</ul>
+<h2 id="我是如何接入的"><a href="#我是如何接入的" class="headerlink" title="我是如何接入的"></a>我是如何接入的</h2><p>使用<a target="_blank" rel="noopener" href="https://github.com/zhayujie/chatgpt-on-wechat">chatgpt-on-wechat</a>项目，按照接入文档操作，写的很详细。我是3月21日接入微信，因为微信平均一周掉线一次，到6月16号选择接入公众号，运行很稳定，微信小号也是老号，未发现封号、限制添加好友问题。</p>
+<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Wechat robot based <span class="keyword">on</span> ChatGPT, which <span class="keyword">using</span> OpenAI api <span class="keyword">and</span> itchat <span class="keyword">library</span>. </span><br><span class="line">使用ChatGPT搭建微信聊天机器人，基于 GPT3.<span class="number">5</span>/GPT4.<span class="number">0</span>/文心一言 模型，</span><br><span class="line">支持个人微信、公众号、企业微信部署，能处理文本、语音和图片，</span><br><span class="line">访问操作系统和互联网，支持基于知识库定制专属机器人。</span><br></pre></td></tr></table></figure>
+
+<h3 id="实际部署经验"><a href="#实际部署经验" class="headerlink" title="实际部署经验"></a>实际部署经验</h3><h4 id="服务器选择"><a href="#服务器选择" class="headerlink" title="服务器选择"></a>服务器选择</h4><ul>
+<li><strong>配置要求</strong>：2核4G内存起步，推荐4核8G</li>
+<li><strong>网络要求</strong>：稳定的网络连接，建议使用海外服务器</li>
+<li><strong>系统推荐</strong>：Ubuntu 20.04 LTS或CentOS 8</li>
+</ul>
+<h4 id="成本分析"><a href="#成本分析" class="headerlink" title="成本分析"></a>成本分析</h4><ul>
+<li><strong>服务器费用</strong>：月费用约100-300元（根据配置）</li>
+<li><strong>OpenAI API费用</strong>：根据使用量，大约每1000次对话消耗$0.002-$0.06</li>
+<li><strong>域名和SSL证书</strong>：年费用约100-200元</li>
+</ul>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><ol>
+<li><p><strong>API调用优化</strong></p>
+<ul>
+<li>设置合理的超时时间</li>
+<li>实现请求重试机制</li>
+<li>使用连接池减少连接开销</li>
+</ul>
+</li>
+<li><p><strong>缓存策略</strong></p>
+<ul>
+<li>常见问题答案缓存</li>
+<li>会话状态持久化</li>
+<li>Redis缓存提升响应速度</li>
+</ul>
+</li>
+<li><p><strong>并发处理</strong></p>
+<ul>
+<li>异步处理用户请求</li>
+<li>队列管理防止API限流</li>
+<li>负载均衡提升服务能力</li>
+</ul>
+</li>
+</ol>
+<h2 id="常见问题解决方案"><a href="#常见问题解决方案" class="headerlink" title="常见问题解决方案"></a>常见问题解决方案</h2><h3 id="技术问题"><a href="#技术问题" class="headerlink" title="技术问题"></a>技术问题</h3><h4 id="1-消息接收不到"><a href="#1-消息接收不到" class="headerlink" title="1. 消息接收不到"></a>1. 消息接收不到</h4><p><strong>可能原因：</strong></p>
+<ul>
+<li>服务器URL配置错误</li>
+<li>Token验证失败</li>
+<li>服务未启动</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查服务状态</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status chatgpt-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line"><span class="built_in">sudo</span> journalctl -u chatgpt-wechat -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试URL连通性</span></span><br><span class="line">curl -X GET <span class="string">&quot;https://your-domain.com/wx?signature=xxx&amp;timestamp=xxx&amp;nonce=xxx&amp;echostr=xxx&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-OpenAI-API调用失败"><a href="#2-OpenAI-API调用失败" class="headerlink" title="2. OpenAI API调用失败"></a>2. OpenAI API调用失败</h4><p><strong>可能原因：</strong></p>
+<ul>
+<li>API Key无效或额度不足</li>
+<li>网络连接问题</li>
+<li>API限流</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查API Key</span></span><br><span class="line"><span class="keyword">import</span> openai</span><br><span class="line">openai.api_key = <span class="string">&quot;your-api-key&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="string">&quot;gpt-3.5-turbo&quot;</span>,</span><br><span class="line">        messages=[&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Hello&quot;</span>&#125;]</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;API正常&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;API错误: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-响应超时"><a href="#3-响应超时" class="headerlink" title="3. 响应超时"></a>3. 响应超时</h4><p><strong>优化策略：</strong></p>
+<ul>
+<li>减少单次请求的Token数量</li>
+<li>设置合理的超时时间</li>
+<li>实现异步处理机制</li>
+</ul>
+<h3 id="运营问题"><a href="#运营问题" class="headerlink" title="运营问题"></a>运营问题</h3><h4 id="1-用户投诉回复不准确"><a href="#1-用户投诉回复不准确" class="headerlink" title="1. 用户投诉回复不准确"></a>1. 用户投诉回复不准确</h4><p><strong>解决方案：</strong></p>
+<ul>
+<li>完善prompt设计</li>
+<li>增加内容过滤机制</li>
+<li>提供人工客服介入</li>
+</ul>
+<h4 id="2-API费用过高"><a href="#2-API费用过高" class="headerlink" title="2. API费用过高"></a>2. API费用过高</h4><p><strong>节省成本方法：</strong></p>
+<ul>
+<li>使用GPT-3.5替代GPT-4</li>
+<li>设置单用户每日使用限制</li>
+<li>缓存常见问题答案</li>
+</ul>
+<h4 id="3-服务稳定性"><a href="#3-服务稳定性" class="headerlink" title="3. 服务稳定性"></a>3. 服务稳定性</h4><p><strong>保障措施：</strong></p>
+<ul>
+<li>服务器监控告警</li>
+<li>自动重启机制</li>
+<li>数据备份策略</li>
+</ul>
+<h2 id="安全注意事项"><a href="#安全注意事项" class="headerlink" title="安全注意事项"></a>安全注意事项</h2><h3 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h3><ol>
+<li><p><strong>用户隐私保护</strong></p>
+<ul>
+<li>不记录敏感个人信息</li>
+<li>定期清理聊天记录</li>
+<li>数据传输加密</li>
+</ul>
+</li>
+<li><p><strong>API安全</strong></p>
+<ul>
+<li>API Key定期轮换</li>
+<li>访问频率限制</li>
+<li>异常访问监控</li>
+</ul>
+</li>
+<li><p><strong>服务器安全</strong></p>
+<ul>
+<li>定期更新系统补丁</li>
+<li>配置防火墙规则</li>
+<li>使用强密码策略</li>
+</ul>
+</li>
+</ol>
+<h3 id="合规要求"><a href="#合规要求" class="headerlink" title="合规要求"></a>合规要求</h3><ol>
+<li><p><strong>内容审核</strong></p>
+<ul>
+<li>敏感词过滤</li>
+<li>违法内容检测</li>
+<li>人工审核机制</li>
+</ul>
+</li>
+<li><p><strong>数据合规</strong></p>
+<ul>
+<li>遵守数据保护法规</li>
+<li>用户数据最小化收集</li>
+<li>数据删除机制</li>
+</ul>
+</li>
+</ol>
+<h2 id="未来发展方向"><a href="#未来发展方向" class="headerlink" title="未来发展方向"></a>未来发展方向</h2><h3 id="功能扩展"><a href="#功能扩展" class="headerlink" title="功能扩展"></a>功能扩展</h3><ol>
+<li><p><strong>多模态支持</strong></p>
+<ul>
+<li>语音识别和合成</li>
+<li>图片理解和生成</li>
+<li>视频内容处理</li>
+</ul>
+</li>
+<li><p><strong>个性化服务</strong></p>
+<ul>
+<li>用户画像分析</li>
+<li>个性化推荐</li>
+<li>学习偏好记忆</li>
+</ul>
+</li>
+<li><p><strong>业务集成</strong></p>
+<ul>
+<li>CRM系统对接</li>
+<li>订单查询功能</li>
+<li>客服工单系统</li>
+</ul>
+</li>
+</ol>
+<h3 id="技术优化"><a href="#技术优化" class="headerlink" title="技术优化"></a>技术优化</h3><ol>
+<li><p><strong>性能提升</strong></p>
+<ul>
+<li>模型本地化部署</li>
+<li>边缘计算优化</li>
+<li>响应速度改进</li>
+</ul>
+</li>
+<li><p><strong>智能化升级</strong></p>
+<ul>
+<li>意图识别优化</li>
+<li>上下文理解增强</li>
+<li>多轮对话改进</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>通过将ChatGPT接入微信公众号私信，你可以为你的读者带来更加生动、有趣的互动体验。这不仅能够增加用户的参与度，还能够提高用户粘性和留存率。当然，合理使用ChatGPT的同时，也要注意回答质量和准确性的监控。</p>
+<p><strong>关键成功因素：</strong></p>
+<ol>
+<li><strong>技术可靠性</strong>：确保服务稳定运行，快速响应用户请求</li>
+<li><strong>内容质量</strong>：通过优化prompt和过滤机制提供高质量回复</li>
+<li><strong>用户体验</strong>：简化操作流程，提供清晰的使用指引</li>
+<li><strong>成本控制</strong>：合理配置API使用策略，控制运营成本</li>
+<li><strong>持续优化</strong>：根据用户反馈不断改进功能和体验</li>
+</ol>
+<p>通过详细的部署指南和实践经验分享，希望能帮助更多开发者成功实现ChatGPT与微信公众号的集成，为用户提供更好的智能对话服务。让我们一起探索，为微信公众号注入无限可能吧！</p>
+<hr>
+<p><strong>相关资源：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhayujie/chatgpt-on-wechat">项目GitHub地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://platform.openai.com/docs">OpenAI官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/">微信公众平台开发文档</a></li>
+</ul>
+<p> <a href="http://www.pa55w0rd.online/wechatmp-chatgpt/">http://www.pa55w0rd.online/wechatmp-chatgpt/</a> </p>
 
         
 <!--
@@ -286,30 +536,289 @@ function showBtn(){
         </span>
         <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>ChatGPT是由OpenAI开发的一种基于大型语言模型的对话系统。它可以回答各种问题并进行交流，为用户提供实时的帮助与解答。而微信公众号是一个非常受欢迎的社交媒体平台，许多企业和个人在其中运营和提供服务。本文将介绍如何将ChatGPT接入微信公众号，让用户可以通过私信与ChatGPT进行交流。</p>
 <span id="more"></span>
+
 <h2 id="为什么要将ChatGPT接入微信公众号私信呢"><a href="#为什么要将ChatGPT接入微信公众号私信呢" class="headerlink" title="为什么要将ChatGPT接入微信公众号私信呢"></a>为什么要将ChatGPT接入微信公众号私信呢</h2><p>首先，这可以为你的公众号增加一个全新的互动方式。你可以让ChatGPT回答读者的问题，提供更个性化的答案和建议。这样，你的读者不再只是被动地阅读你的文章，而是真正与你的公众号进行互动。</p>
 <p>接入ChatGPT也能够为你的公众号带来更多的亮点。想象一下，你的读者可以发送私信给ChatGPT，询问各种问题，不仅限于你之前发布的内容。无论是技术问题、生活琐事还是搞笑段子，ChatGPT都可以给出非常有趣的回答。这样一来，你的公众号将成为读者心中的好玩伙伴，增加用户粘性和留存率。</p>
 <p>不过，我们也要注意一点。虽然ChatGPT可以提供智能的回答，但它毕竟是一个机器学习模型，在某些情况下可能会给出不准确或不合理的回答。所以，在使用ChatGPT的同时，你也要进行一定的监控和过滤，确保回答的质量和可靠性。</p>
-<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><ol>
-<li>关注公众号<code>Pa55w0rd</code><br><img src="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png" alt="1692869717320.png"></li>
-<li>直接给公众号发送消息即可<br>默认使用<code>gpt-3.5-turbo-0613</code>模型，可以通过<code>#set_gpt_model gpt-4-0613</code>命令切换gpt-4-0613模型（GPT-4比较慢，也不保证可用），通过<code>#reset_gpt_model</code>重置默认模型，通过<code>#gpt_model</code>查看当前模型，通过<code>#reset</code>重置会话</li>
-<li>由于受订阅号限制，回复内容较短的情况下 (15s内)，可以立即完成回复，但耗时较长的回复则会先回复一句 “正在思考中”，后续需要用户输入任意文字主动获取答案<br><img src="https://yanxuan.nosdn.127.net/fb5789d744eaf842c142163776434331.png" alt="1692869926985.png"></li>
+<h3 id="商业价值分析"><a href="#商业价值分析" class="headerlink" title="商业价值分析"></a>商业价值分析</h3><p>接入ChatGPT不仅能提升用户体验，还能带来实际的商业价值：</p>
+<ol>
+<li><strong>提升用户粘性</strong>：智能对话增加了用户停留时间，提高了公众号的活跃度</li>
+<li><strong>降低客服成本</strong>：自动回答常见问题，减少人工客服工作量</li>
+<li><strong>24&#x2F;7服务</strong>：全天候响应用户询问，不受时间限制</li>
+<li><strong>数据收集</strong>：通过用户问题了解需求，为产品改进提供依据</li>
+<li><strong>个性化服务</strong>：根据用户历史对话提供定制化建议</li>
 </ol>
-<h2 id="我是如何接入的"><a href="#我是如何接入的" class="headerlink" title="我是如何接入的"></a>我是如何接入的</h2><p>使用<a target="_blank" rel="noopener" href="https://github.com/zhayujie/chatgpt-on-wechat">chatgpt-on-wechat</a>项目，按照接入文档操作，写的很详细，我是3月21日接入微信，因为微信平均一周掉线一次，到6月16号选择接入公众号，运行很稳定，微信小号也是老号，未发现封号、限制添加好友问题</p>
-<p>项目介绍<br><code>Wechat robot based on ChatGPT, which using OpenAI api and itchat library. 使用ChatGPT搭建微信聊天机器人，基于 GPT3.5/GPT4.0/文心一言 模型，支持个人微信、公众号、企业微信部署，能处理文本、语音和图片，访问操作系统和互联网，支持基于知识库定制专属机器人。</code></p>
-<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>通过将ChatGPT接入微信公众号私信，你可以为你的读者带来更加生动、有趣的互动体验。这不仅能够增加用户的参与度，还能够提高用户粘性和留存率。当然，合理使用ChatGPT的同时，也要注意回答质量和准确性的监控。让我们一起探索，为微信公众号注入无限可能吧！</p>
+<h2 id="技术架构解析"><a href="#技术架构解析" class="headerlink" title="技术架构解析"></a>技术架构解析</h2><h3 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户微信 → 微信公众号 → 开发者服务器 → OpenAI API → ChatGPT模型</span><br><span class="line">                ↓                    ↓</span><br><span class="line">            消息推送           API调用<span class="meta">&amp;响应处理</span></span><br><span class="line">                ↓                    ↓</span><br><span class="line">            自动回复 ← 消息处理 ← 结果返回</span><br></pre></td></tr></table></figure>
+
+<h3 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h3><ol>
+<li><strong>微信公众号接口</strong>：接收用户消息，发送回复</li>
+<li><strong>消息处理中间件</strong>：解析消息内容，路由到不同处理器</li>
+<li><strong>OpenAI API客户端</strong>：调用ChatGPT接口</li>
+<li><strong>会话管理</strong>：维护用户对话上下文</li>
+<li><strong>内容过滤</strong>：敏感词检测和内容审核</li>
+</ol>
+<h2 id="详细部署指南"><a href="#详细部署指南" class="headerlink" title="详细部署指南"></a>详细部署指南</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><ol>
+<li><p><strong>微信公众号</strong></p>
+<ul>
+<li>已认证的服务号或订阅号</li>
+<li>开启开发者模式</li>
+<li>配置服务器URL和Token</li>
+</ul>
+</li>
+<li><p><strong>OpenAI账号</strong></p>
+<ul>
+<li>注册OpenAI账号</li>
+<li>获取API Key</li>
+<li>充值API使用费用</li>
+</ul>
+</li>
+<li><p><strong>服务器环境</strong></p>
+<ul>
+<li>Linux服务器（推荐Ubuntu 20.04+）</li>
+<li>Python 3.8+</li>
+<li>公网IP和域名</li>
+<li>SSL证书（HTTPS）</li>
+</ul>
+</li>
+</ol>
+<h3 id="环境搭建步骤"><a href="#环境搭建步骤" class="headerlink" title="环境搭建步骤"></a>环境搭建步骤</h3><h4 id="1-服务器基础配置"><a href="#1-服务器基础配置" class="headerlink" title="1. 服务器基础配置"></a>1. 服务器基础配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新系统</span></span><br><span class="line"><span class="built_in">sudo</span> apt update &amp;&amp; <span class="built_in">sudo</span> apt upgrade -y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装必要软件</span></span><br><span class="line"><span class="built_in">sudo</span> apt install -y python3 python3-pip git nginx certbot</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建项目目录</span></span><br><span class="line"><span class="built_in">mkdir</span> /opt/chatgpt-wechat</span><br><span class="line"><span class="built_in">cd</span> /opt/chatgpt-wechat</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-安装项目依赖"><a href="#2-安装项目依赖" class="headerlink" title="2. 安装项目依赖"></a>2. 安装项目依赖</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/zhayujie/chatgpt-on-wechat.git</span><br><span class="line"><span class="built_in">cd</span> chatgpt-on-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Python依赖</span></span><br><span class="line">pip3 install -r requirements.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 复制配置文件</span></span><br><span class="line"><span class="built_in">cp</span> config-template.json config.json</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-配置文件设置"><a href="#3-配置文件设置" class="headerlink" title="3. 配置文件设置"></a>3. 配置文件设置</h4><p>编辑 <code>config.json</code> 文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;open_ai_api_key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的OpenAI_API_Key&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;model&quot;</span><span class="punctuation">:</span> <span class="string">&quot;gpt-3.5-turbo&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;proxy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;single_chat_prefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;single_chat_reply_prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;group_chat_prefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;@bot&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;group_name_white_list&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;ALL_GROUP&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;image_create_prefix&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;画&quot;</span><span class="punctuation">,</span> <span class="string">&quot;draw&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Draw&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;conversation_max_tokens&quot;</span><span class="punctuation">:</span> <span class="number">1000</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;character_desc&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你是ChatGPT，一个聪明的AI助手。&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;channel_type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;wechat_mp&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_app_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的公众号AppID&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_app_secret&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的公众号AppSecret&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_token&quot;</span><span class="punctuation">:</span> <span class="string">&quot;你的微信Token&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;wechat_mp_aes_key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-Nginx反向代理配置"><a href="#4-Nginx反向代理配置" class="headerlink" title="4. Nginx反向代理配置"></a>4. Nginx反向代理配置</h4><p>创建 <code>/etc/nginx/sites-available/chatgpt-wechat</code>：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> your-domain.com;</span><br><span class="line">    </span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://127.0.0.1:9898;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-SSL证书配置"><a href="#5-SSL证书配置" class="headerlink" title="5. SSL证书配置"></a>5. SSL证书配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用站点</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">ln</span> -s /etc/nginx/sites-available/chatgpt-wechat /etc/nginx/sites-enabled/</span><br><span class="line"><span class="built_in">sudo</span> nginx -t &amp;&amp; <span class="built_in">sudo</span> systemctl reload nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 申请SSL证书</span></span><br><span class="line"><span class="built_in">sudo</span> certbot --nginx -d your-domain.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-启动服务"><a href="#6-启动服务" class="headerlink" title="6. 启动服务"></a>6. 启动服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建systemd服务文件</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/systemd/system/chatgpt-wechat.service &gt; /dev/null &lt;&lt;<span class="string">EOF</span></span><br><span class="line"><span class="string">[Unit]</span></span><br><span class="line"><span class="string">Description=ChatGPT WeChat Bot</span></span><br><span class="line"><span class="string">After=network.target</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Service]</span></span><br><span class="line"><span class="string">Type=simple</span></span><br><span class="line"><span class="string">User=root</span></span><br><span class="line"><span class="string">WorkingDirectory=/opt/chatgpt-wechat/chatgpt-on-wechat</span></span><br><span class="line"><span class="string">ExecStart=/usr/bin/python3 app.py</span></span><br><span class="line"><span class="string">Restart=always</span></span><br><span class="line"><span class="string">RestartSec=10</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[Install]</span></span><br><span class="line"><span class="string">WantedBy=multi-user.target</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> chatgpt-wechat</span><br><span class="line"><span class="built_in">sudo</span> systemctl start chatgpt-wechat</span><br></pre></td></tr></table></figure>
+
+<h2 id="微信公众号配置"><a href="#微信公众号配置" class="headerlink" title="微信公众号配置"></a>微信公众号配置</h2><h3 id="开发者模式设置"><a href="#开发者模式设置" class="headerlink" title="开发者模式设置"></a>开发者模式设置</h3><ol>
+<li>登录微信公众平台</li>
+<li>进入”开发” → “基本配置”</li>
+<li>配置服务器地址：<code>https://your-domain.com/wx</code></li>
+<li>设置Token（与config.json中一致）</li>
+<li>选择消息加解密方式（推荐安全模式）</li>
+</ol>
+<h3 id="消息与事件配置"><a href="#消息与事件配置" class="headerlink" title="消息与事件配置"></a>消息与事件配置</h3><p>在”开发” → “接口权限”中启用：</p>
+<ul>
+<li>接收消息</li>
+<li>发送客服消息</li>
+<li>菜单管理（可选）</li>
+</ul>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="基本对话"><a href="#基本对话" class="headerlink" title="基本对话"></a>基本对话</h3><ol>
+<li><p>关注公众号<code>Pa55w0rd</code><br><img src="https://yanxuan.nosdn.127.net/4548872160382ce121f6bac7287b6076.png" alt="1692869717320.png"></p>
+</li>
+<li><p>直接给公众号发送消息即可<br>默认使用<code>gpt-3.5-turbo-0613</code>模型，可以通过以下命令管理：</p>
+<ul>
+<li><code>#set_gpt_model gpt-4-0613</code>：切换到GPT-4模型</li>
+<li><code>#reset_gpt_model</code>：重置为默认模型</li>
+<li><code>#gpt_model</code>：查看当前使用的模型</li>
+<li><code>#reset</code>：重置会话上下文</li>
+</ul>
+</li>
+<li><p>由于受订阅号限制，回复内容较短的情况下 (15s内)，可以立即完成回复，但耗时较长的回复则会先回复一句 “正在思考中”，后续需要用户输入任意文字主动获取答案<br><img src="https://yanxuan.nosdn.127.net/fb5789d744eaf842c142163776434331.png" alt="1692869926985.png"></p>
+</li>
+</ol>
+<h3 id="高级功能"><a href="#高级功能" class="headerlink" title="高级功能"></a>高级功能</h3><h4 id="角色设定"><a href="#角色设定" class="headerlink" title="角色设定"></a>角色设定</h4><p>通过特定命令可以设置ChatGPT的角色：</p>
+<ul>
+<li><code>#设定角色 你是一个专业的技术顾问</code></li>
+<li><code>#重置角色</code>：恢复默认设定</li>
+</ul>
+<h4 id="对话模式"><a href="#对话模式" class="headerlink" title="对话模式"></a>对话模式</h4><ul>
+<li><strong>单轮对话</strong>：每次提问都是独立的</li>
+<li><strong>连续对话</strong>：保持上下文，支持多轮对话</li>
+<li><strong>切换模式</strong>：<code>#单轮模式</code> 或 <code>#连续模式</code></li>
+</ul>
+<h4 id="内容限制"><a href="#内容限制" class="headerlink" title="内容限制"></a>内容限制</h4><ul>
+<li>自动过滤敏感内容</li>
+<li>字数限制（微信消息限制）</li>
+<li>图片生成功能（需配置DALL-E）</li>
+</ul>
+<h2 id="我是如何接入的"><a href="#我是如何接入的" class="headerlink" title="我是如何接入的"></a>我是如何接入的</h2><p>使用<a target="_blank" rel="noopener" href="https://github.com/zhayujie/chatgpt-on-wechat">chatgpt-on-wechat</a>项目，按照接入文档操作，写的很详细。我是3月21日接入微信，因为微信平均一周掉线一次，到6月16号选择接入公众号，运行很稳定，微信小号也是老号，未发现封号、限制添加好友问题。</p>
+<h3 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h3><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Wechat robot based <span class="keyword">on</span> ChatGPT, which <span class="keyword">using</span> OpenAI api <span class="keyword">and</span> itchat <span class="keyword">library</span>. </span><br><span class="line">使用ChatGPT搭建微信聊天机器人，基于 GPT3.<span class="number">5</span>/GPT4.<span class="number">0</span>/文心一言 模型，</span><br><span class="line">支持个人微信、公众号、企业微信部署，能处理文本、语音和图片，</span><br><span class="line">访问操作系统和互联网，支持基于知识库定制专属机器人。</span><br></pre></td></tr></table></figure>
+
+<h3 id="实际部署经验"><a href="#实际部署经验" class="headerlink" title="实际部署经验"></a>实际部署经验</h3><h4 id="服务器选择"><a href="#服务器选择" class="headerlink" title="服务器选择"></a>服务器选择</h4><ul>
+<li><strong>配置要求</strong>：2核4G内存起步，推荐4核8G</li>
+<li><strong>网络要求</strong>：稳定的网络连接，建议使用海外服务器</li>
+<li><strong>系统推荐</strong>：Ubuntu 20.04 LTS或CentOS 8</li>
+</ul>
+<h4 id="成本分析"><a href="#成本分析" class="headerlink" title="成本分析"></a>成本分析</h4><ul>
+<li><strong>服务器费用</strong>：月费用约100-300元（根据配置）</li>
+<li><strong>OpenAI API费用</strong>：根据使用量，大约每1000次对话消耗$0.002-$0.06</li>
+<li><strong>域名和SSL证书</strong>：年费用约100-200元</li>
+</ul>
+<h4 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h4><ol>
+<li><p><strong>API调用优化</strong></p>
+<ul>
+<li>设置合理的超时时间</li>
+<li>实现请求重试机制</li>
+<li>使用连接池减少连接开销</li>
+</ul>
+</li>
+<li><p><strong>缓存策略</strong></p>
+<ul>
+<li>常见问题答案缓存</li>
+<li>会话状态持久化</li>
+<li>Redis缓存提升响应速度</li>
+</ul>
+</li>
+<li><p><strong>并发处理</strong></p>
+<ul>
+<li>异步处理用户请求</li>
+<li>队列管理防止API限流</li>
+<li>负载均衡提升服务能力</li>
+</ul>
+</li>
+</ol>
+<h2 id="常见问题解决方案"><a href="#常见问题解决方案" class="headerlink" title="常见问题解决方案"></a>常见问题解决方案</h2><h3 id="技术问题"><a href="#技术问题" class="headerlink" title="技术问题"></a>技术问题</h3><h4 id="1-消息接收不到"><a href="#1-消息接收不到" class="headerlink" title="1. 消息接收不到"></a>1. 消息接收不到</h4><p><strong>可能原因：</strong></p>
+<ul>
+<li>服务器URL配置错误</li>
+<li>Token验证失败</li>
+<li>服务未启动</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查服务状态</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl status chatgpt-wechat</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看日志</span></span><br><span class="line"><span class="built_in">sudo</span> journalctl -u chatgpt-wechat -f</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试URL连通性</span></span><br><span class="line">curl -X GET <span class="string">&quot;https://your-domain.com/wx?signature=xxx&amp;timestamp=xxx&amp;nonce=xxx&amp;echostr=xxx&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-OpenAI-API调用失败"><a href="#2-OpenAI-API调用失败" class="headerlink" title="2. OpenAI API调用失败"></a>2. OpenAI API调用失败</h4><p><strong>可能原因：</strong></p>
+<ul>
+<li>API Key无效或额度不足</li>
+<li>网络连接问题</li>
+<li>API限流</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 检查API Key</span></span><br><span class="line"><span class="keyword">import</span> openai</span><br><span class="line">openai.api_key = <span class="string">&quot;your-api-key&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    response = openai.ChatCompletion.create(</span><br><span class="line">        model=<span class="string">&quot;gpt-3.5-turbo&quot;</span>,</span><br><span class="line">        messages=[&#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;user&quot;</span>, <span class="string">&quot;content&quot;</span>: <span class="string">&quot;Hello&quot;</span>&#125;]</span><br><span class="line">    )</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;API正常&quot;</span>)</span><br><span class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;API错误: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-响应超时"><a href="#3-响应超时" class="headerlink" title="3. 响应超时"></a>3. 响应超时</h4><p><strong>优化策略：</strong></p>
+<ul>
+<li>减少单次请求的Token数量</li>
+<li>设置合理的超时时间</li>
+<li>实现异步处理机制</li>
+</ul>
+<h3 id="运营问题"><a href="#运营问题" class="headerlink" title="运营问题"></a>运营问题</h3><h4 id="1-用户投诉回复不准确"><a href="#1-用户投诉回复不准确" class="headerlink" title="1. 用户投诉回复不准确"></a>1. 用户投诉回复不准确</h4><p><strong>解决方案：</strong></p>
+<ul>
+<li>完善prompt设计</li>
+<li>增加内容过滤机制</li>
+<li>提供人工客服介入</li>
+</ul>
+<h4 id="2-API费用过高"><a href="#2-API费用过高" class="headerlink" title="2. API费用过高"></a>2. API费用过高</h4><p><strong>节省成本方法：</strong></p>
+<ul>
+<li>使用GPT-3.5替代GPT-4</li>
+<li>设置单用户每日使用限制</li>
+<li>缓存常见问题答案</li>
+</ul>
+<h4 id="3-服务稳定性"><a href="#3-服务稳定性" class="headerlink" title="3. 服务稳定性"></a>3. 服务稳定性</h4><p><strong>保障措施：</strong></p>
+<ul>
+<li>服务器监控告警</li>
+<li>自动重启机制</li>
+<li>数据备份策略</li>
+</ul>
+<h2 id="安全注意事项"><a href="#安全注意事项" class="headerlink" title="安全注意事项"></a>安全注意事项</h2><h3 id="数据安全"><a href="#数据安全" class="headerlink" title="数据安全"></a>数据安全</h3><ol>
+<li><p><strong>用户隐私保护</strong></p>
+<ul>
+<li>不记录敏感个人信息</li>
+<li>定期清理聊天记录</li>
+<li>数据传输加密</li>
+</ul>
+</li>
+<li><p><strong>API安全</strong></p>
+<ul>
+<li>API Key定期轮换</li>
+<li>访问频率限制</li>
+<li>异常访问监控</li>
+</ul>
+</li>
+<li><p><strong>服务器安全</strong></p>
+<ul>
+<li>定期更新系统补丁</li>
+<li>配置防火墙规则</li>
+<li>使用强密码策略</li>
+</ul>
+</li>
+</ol>
+<h3 id="合规要求"><a href="#合规要求" class="headerlink" title="合规要求"></a>合规要求</h3><ol>
+<li><p><strong>内容审核</strong></p>
+<ul>
+<li>敏感词过滤</li>
+<li>违法内容检测</li>
+<li>人工审核机制</li>
+</ul>
+</li>
+<li><p><strong>数据合规</strong></p>
+<ul>
+<li>遵守数据保护法规</li>
+<li>用户数据最小化收集</li>
+<li>数据删除机制</li>
+</ul>
+</li>
+</ol>
+<h2 id="未来发展方向"><a href="#未来发展方向" class="headerlink" title="未来发展方向"></a>未来发展方向</h2><h3 id="功能扩展"><a href="#功能扩展" class="headerlink" title="功能扩展"></a>功能扩展</h3><ol>
+<li><p><strong>多模态支持</strong></p>
+<ul>
+<li>语音识别和合成</li>
+<li>图片理解和生成</li>
+<li>视频内容处理</li>
+</ul>
+</li>
+<li><p><strong>个性化服务</strong></p>
+<ul>
+<li>用户画像分析</li>
+<li>个性化推荐</li>
+<li>学习偏好记忆</li>
+</ul>
+</li>
+<li><p><strong>业务集成</strong></p>
+<ul>
+<li>CRM系统对接</li>
+<li>订单查询功能</li>
+<li>客服工单系统</li>
+</ul>
+</li>
+</ol>
+<h3 id="技术优化"><a href="#技术优化" class="headerlink" title="技术优化"></a>技术优化</h3><ol>
+<li><p><strong>性能提升</strong></p>
+<ul>
+<li>模型本地化部署</li>
+<li>边缘计算优化</li>
+<li>响应速度改进</li>
+</ul>
+</li>
+<li><p><strong>智能化升级</strong></p>
+<ul>
+<li>意图识别优化</li>
+<li>上下文理解增强</li>
+<li>多轮对话改进</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>通过将ChatGPT接入微信公众号私信，你可以为你的读者带来更加生动、有趣的互动体验。这不仅能够增加用户的参与度，还能够提高用户粘性和留存率。当然，合理使用ChatGPT的同时，也要注意回答质量和准确性的监控。</p>
+<p><strong>关键成功因素：</strong></p>
+<ol>
+<li><strong>技术可靠性</strong>：确保服务稳定运行，快速响应用户请求</li>
+<li><strong>内容质量</strong>：通过优化prompt和过滤机制提供高质量回复</li>
+<li><strong>用户体验</strong>：简化操作流程，提供清晰的使用指引</li>
+<li><strong>成本控制</strong>：合理配置API使用策略，控制运营成本</li>
+<li><strong>持续优化</strong>：根据用户反馈不断改进功能和体验</li>
+</ol>
+<p>通过详细的部署指南和实践经验分享，希望能帮助更多开发者成功实现ChatGPT与微信公众号的集成，为用户提供更好的智能对话服务。让我们一起探索，为微信公众号注入无限可能吧！</p>
+<hr>
+<p><strong>相关资源：</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhayujie/chatgpt-on-wechat">项目GitHub地址</a></li>
+<li><a target="_blank" rel="noopener" href="https://platform.openai.com/docs">OpenAI官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/">微信公众平台开发文档</a></li>
+</ul>
+<p> <a href="http://www.pa55w0rd.online/wechatmp-chatgpt/">http://www.pa55w0rd.online/wechatmp-chatgpt/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/wechatmp-chatgpt/" data-id="cllozf5zz00001ssw4qe69woz" class="article-share-link" data-share="baidu" data-title="在微信公众号中接入ChatGPT（支持GPT-4)">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/wechatmp-chatgpt/" data-id="cmn8a4djq006n6ohobtyp38na" class="article-share-link" data-share="baidu" data-title="在微信公众号中接入ChatGPT（支持GPT-4)">分享到</a>
       
 
       
@@ -320,6 +829,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ChatGPT/" rel="tag">ChatGPT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GPT-4/" rel="tag">GPT-4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" rel="tag">私信互动</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/wechatmp-chatgpt/" rel="bookmark">http://www.pa55w0rd.online/wechatmp-chatgpt/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -331,6 +853,15 @@ function showBtn(){
       <div class="article-nav-title">通过宜搭流程表单完成JumpServer自动化授权</div>
     </a>
   
+  
+    <a href="/wechat-chatgpt-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇 →</strong>
+      <div class="article-nav-title">
+        
+          接上篇：我是怎么把ChatGPT接入微信和微信公众号的
+        
+      </div>
+    </a>
   
 </nav>
 
@@ -369,23 +900,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -398,7 +929,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -414,7 +945,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -424,8 +955,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -690,7 +1221,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -733,12 +1264,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -749,9 +1306,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Thu Aug 24 2023 17:17:33 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Thu Aug 24 2023 17:17:33 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -782,14 +1338,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -802,7 +1367,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -836,44 +1401,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

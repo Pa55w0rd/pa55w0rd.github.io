@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -10,16 +10,33 @@
 
   <title>Linux基础 | Pa55w0rd &#39;s Blog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+
+  <link rel="canonical" href="http://www.pa55w0rd.online/linux/">
+
+
+  <meta name="keywords" content="基础,note">
+
+
+
+
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="renderer" content="webkit">
+
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Linux基础","description":"看到什么记什么，没有顺序","url":"http://www.pa55w0rd.online/linux/","datePublished":"2018-09-20T08:33:09.000Z","dateModified":"2026-03-24T07:59:41.279Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/linux/"},"inLanguage":"zh-CN"}</script>
+
+
+  
   <meta name="description" content="看到什么记什么，没有顺序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux基础">
-<meta property="og:url" content="http://www.pa55w0rd.online/linux/index.html">
+<meta property="og:url" content="http://www.pa55w0rd.online/linux/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="看到什么记什么，没有顺序">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-09-20T08:33:09.000Z">
-<meta property="article:modified_time" content="2019-11-01T11:16:29.211Z">
+<meta property="article:modified_time" content="2026-03-24T07:59:41.279Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="基础">
 <meta name="twitter:card" content="summary">
@@ -41,7 +58,7 @@
 
 
   
-    <link rel="alternative" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pa55w0rd &#39;s Blog" type="application/atom+xml">
   
 
 
@@ -53,25 +70,36 @@
   
 <link rel="stylesheet" href="/css/style.css">
 
+  
+  <!-- 自定义目录样式 -->
+  
+<link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
-  <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <!--[if lt IE 9]><script src="//cdn.bootcss.com/html5shiv/r29/html5.min.js"></script><![endif]-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
+  <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
   <!-- <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
 
   <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="/js/ua-parser.min.js" type="text/javascript"></script>
-  <script src="/js/jquery.js" type="text/javascript"></script>
-  <script src="/js/jquery.min.js" type="text/javascript"></script>
-  <script src="/js/scrollReveal.js" type="text/javascript"></script>
-  <script src="http://cdn.bootcss.com/instantsearch.js/1.5.1/instantsearch.js"></script>
-  <script src="/js/algolia-search.js" type="text/javascript"></script>
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script> -->
-  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
   
+  <script>
+   var CONFIG = {
+    root: '/',
+    algolia: {
+          applicationID: "W1CAX1W2FZ",
+          apiKey: "0a71809a146dcea950631aea9ef44f9c",
+          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
+          indexName: "Blog",
+          hits: {"per_page":10},
+          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+  </script>
+  
+
   
 <!-- Google Analytics -->
 <script type="text/javascript">
@@ -91,31 +119,6 @@ ga('send', 'pageview');
 
 
 
-
-  
-  
-  <!-- 
-  
-  
-  
-  
-  
-   -->
-
-
-  <script>
-   var CONFIG = {
-    root: '/',
-    algolia: {
-          applicationID: "W1CAX1W2FZ",
-          apiKey: "0a71809a146dcea950631aea9ef44f9c",
-          adminApiKey: "432573b0a0ab3afd374bd04484251a9b",
-          indexName: "Blog",
-          hits: {"per_page":10},
-          labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
-        }
-  };
-  </script>
 <!--
 <script>
     (function(){
@@ -128,11 +131,11 @@ ga('send', 'pageview');
     })();
   </script>
 -->
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 
-<body>
+<body data-toc="on">
 <div id="container">
   <div id="wrap">
     <header id="header">
@@ -190,21 +193,37 @@ ga('send', 'pageview');
 </header>
 
     <div class="outer">
-      <section id="main"><article   id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
-  <div data-scroll-reveal="enter top and over 0.7s"  class="article-meta">
-    <a  href="/linux/" class="article-date">
-  <i class="fa fa-calendar"></i>
-  <time  datetime="2018-09-20T08:33:09.000Z" itemprop="datePublished">2018-09-20</time>
-</a>
+      <section id="main"><article id="post-linux" class="article article-type-post" itemscope itemtype="https://schema.org/BlogPosting">
+  <header data-scroll-reveal="enter top and over 0.7s" class="article-meta">
+    <div class="article-meta-primary">
+      
+<span class="article-date">
+  <i class="fa fa-calendar" aria-hidden="true"></i>
+  <time datetime="2018-09-20T08:33:09.000Z" itemprop="datePublished">2018-09-20</time>
+</span>
 
-    
+
+      
   <div class="article-category">
     <a class="article-category-link" href="/categories/note/">note</a>
   </div>
 
 
-  </div>
-  <div class="article-inner"  >
+    </div>
+    
+    <div class="article-reading-aside" aria-label="字数与阅读时长">
+      <i class="fa fa-file-text-o" aria-hidden="true"></i>
+      <span class="article-wordcount">约 1.9k 字</span>
+      <span class="article-reading-time">约 7 分钟读完</span>
+    </div>
+    
+    
+    <span class="article-meta-sronly">
+      <time datetime="2026-03-24T07:59:41.279Z" itemprop="dateModified">2026-03-24</time>
+    </span>
+    
+  </header>
+  <div class="article-inner">
     
     
 
@@ -221,39 +240,6 @@ ga('send', 'pageview');
 
       </header>
     
-    <!-- <span title="{{ __('post.wordcount') }}">
-      字数统计：{{ wordcount(post.content) }} 字
-     </span>
-     <span title="{{ __('post.min2read') }}">
-      阅读时长：预计{{ min2read(post.content) }} 分钟
-    </span> -->
-    <!-- 目录内容 -->
-
-  <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-        </p>
-<div id="toc-article" class="toc-article">
-    <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-  <strong class="toc-title">文章目录</strong>
-         <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%90%84%E4%B8%AA%E7%9B%AE%E5%BD%95%E7%9A%84%E4%BD%9C%E7%94%A8%E5%8F%8A%E5%86%85%E5%AE%B9"><span class="toc-number">1.</span> <span class="toc-text">Linux各个目录的作用及内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%88%E7%AB%AF%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.</span> <span class="toc-text">终端快捷键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number">3.</span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#firewall"><span class="toc-number">4.</span> <span class="toc-text">firewall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongodb"><span class="toc-number">5.</span> <span class="toc-text">mongodb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx"><span class="toc-number">6.</span> <span class="toc-text">nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#grep"><span class="toc-number">7.</span> <span class="toc-text">grep</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA-%E5%A4%8D%E5%88%B6-%E7%A7%BB%E5%8A%A8-%E5%88%A0%E9%99%A4"><span class="toc-number">8.</span> <span class="toc-text">新建&#x2F;复制&#x2F;移动&#x2F;删除</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="toc-number">9.</span> <span class="toc-text">磁盘管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3%E8%BF%9B%E7%A8%8B%E5%8D%A0%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">查看端口进程占用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D"><span class="toc-number">11.</span> <span class="toc-text">mysql 备份恢复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">12.</span> <span class="toc-text">其他</span></a></li></ol>
-       </div>
- <script type="text/javascript">
-function showToc(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:block");
-  show_toc_btn.setAttribute("style","display:none");
-  };
-function showBtn(){
-  var toc_article = document.getElementById("toc-article");
-  var show_toc_btn = document.getElementById("show-toc-btn");
-  toc_article.setAttribute("style","display:none");
-  show_toc_btn.setAttribute("style","display:block");
-  };
- </script>
-    		
-<!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         
@@ -261,19 +247,19 @@ function showBtn(){
           <p>看到什么记什么，没有顺序</p>
 <span id="more"></span>
 <h2 id="Linux各个目录的作用及内容"><a href="#Linux各个目录的作用及内容" class="headerlink" title="Linux各个目录的作用及内容"></a>Linux各个目录的作用及内容</h2><p><code>/</code></p>
-<p>/处于Linux文件系统树形结构的最顶端，它是Linux文件系统的入口，所有的目录、文件、设备都在/之下。</p>
+<p>&#x2F;处于Linux文件系统树形结构的最顶端，它是Linux文件系统的入口，所有的目录、文件、设备都在&#x2F;之下。</p>
 <p><code>/bin</code></p>
 <p>该目录存放着系统最常用的最重要的命令，相当于DOS下的内部命令，只不过它们是以独立的文件形式存在。比如：ls、cp、mkdir等命令。这个目录中的文件都是可执行的并且是普通用户都可以使用的命令。作为系统最基础的命令都放在这里。</p>
 <p><code>/usr</code></p>
-<p>该目录是系统存放程序的地方，比如普通命令、帮助文件、安装的软件等。这个目录下有很多的文件和目录。当我们安装一个Linux发行版官方提供的软件包时，大多安装在这里。当有涉及服务器的配置文件时，会把配置文件安装在/etc目录中。/usr目录下包括涉及字体目录/usr/share/fonts、帮助目录/usr/share/man或/usr/share/doc等。</p>
+<p>该目录是系统存放程序的地方，比如普通命令、帮助文件、安装的软件等。这个目录下有很多的文件和目录。当我们安装一个Linux发行版官方提供的软件包时，大多安装在这里。当有涉及服务器的配置文件时，会把配置文件安装在&#x2F;etc目录中。&#x2F;usr目录下包括涉及字体目录&#x2F;usr&#x2F;share&#x2F;fonts、帮助目录&#x2F;usr&#x2F;share&#x2F;man或&#x2F;usr&#x2F;share&#x2F;doc等。</p>
 <p><code>/var</code></p>
-<p>该目录的内容是经常变动的，/var下有/var/log目录用来存放系统日志的目录。/var/www目录用来定义Apache服务器站点存放目录。/var/lib用来存放一些库文件。</p>
+<p>该目录的内容是经常变动的，&#x2F;var下有&#x2F;var&#x2F;log目录用来存放系统日志的目录。&#x2F;var&#x2F;www目录用来定义Apache服务器站点存放目录。&#x2F;var&#x2F;lib用来存放一些库文件。</p>
 <p><code>/sbin</code></p>
 <p>大多数涉及系统管理的命令都存放在该目录中，它是超级权限用户root的可执行命令存放地，普通用户无权限执行这个目录下的命令，凡是目录sbin中包含的命令都是root权限才能执行的。</p>
 <p><code>/root</code></p>
 <p>Linux超级权限用户(系统管理员)root的主目录。</p>
 <p><code>/home</code></p>
-<p>普通用户的主目录都默认存放在该目录中，比如：有个用户叫wang，那它的主目录就是/home/wang，也可以用~wang表示。</p>
+<p>普通用户的主目录都默认存放在该目录中，比如：有个用户叫wang，那它的主目录就是&#x2F;home&#x2F;wang，也可以用~wang表示。</p>
 <p><code>/etc</code></p>
 <p>该目录是系统配置文件的所在地，一些服务器的配置文件也在这里，比如：用户帐号及密码配置文件等。</p>
 <p><code>/boot</code></p>
@@ -281,7 +267,7 @@ function showBtn(){
 <p><code>/opt</code></p>
 <p>该目录是可选的软件包安装目录，有些软件包我们可以将它安装在该目录中。</p>
 <p><code>/tmp</code></p>
-<p>该目录用于存放临时文件，有时用户运行程序的时候，会产生一些临时文件。/tmp就是用来存放临时文件的。/var/tmp目录和该目录的作用是相似的。</p>
+<p>该目录用于存放临时文件，有时用户运行程序的时候，会产生一些临时文件。&#x2F;tmp就是用来存放临时文件的。&#x2F;var&#x2F;tmp目录和该目录的作用是相似的。</p>
 <p><code>/lost+found</code></p>
 <p>在ext2或ext3文件系统中，当系统意外崩溃或机器意外关机，而产生的一些文件碎片就存放在该目录中。当系统启动在过程中fsck工具会检查这里，并修复已经损坏的文件系统。 有时系统发生问题，有很多的文件被移到这个目录中，可能要用手工的方式来修复，或移到文件原来的位置上。</p>
 <p><code>/lib</code></p>
@@ -289,7 +275,7 @@ function showBtn(){
 <p><code>/mnt</code></p>
 <p>该目录是用于存放挂载储存设备的挂载目录的，系统提供这个目录是让用户临时挂载别的文件系统，比如有cdrom等目录。</p>
 <p><code>/proc</code></p>
-<p>操作系统运行时，进程（正在运行中的程序）信息及内核信息（比如cpu、硬盘分区、内存信息等）存放在这里。/proc目录是伪装的文件系统proc的挂载目录，proc并不是真正的文件系统。因此，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。也就是说，这个目录的内容不在硬盘上而是在内存里。</p>
+<p>操作系统运行时，进程（正在运行中的程序）信息及内核信息（比如cpu、硬盘分区、内存信息等）存放在这里。&#x2F;proc目录是伪装的文件系统proc的挂载目录，proc并不是真正的文件系统。因此，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。也就是说，这个目录的内容不在硬盘上而是在内存里。</p>
 <ul>
 <li>cpuinfo 主机CPU 信息</li>
 <li>filesystems 文件系统信息</li>
@@ -300,10 +286,10 @@ function showBtn(){
 <p><code>/misc</code></p>
 <p>该目录可以用来存放杂项文件或目录，即那些用途或含义不明确的文件或目录可以存放在该目录下。</p>
 <p><code>/media</code></p>
-<p>即插即用型存储设备的挂载点自动在该目录下创建。比如USB盘系统自动挂载后，会在这个目录下产生一个目录；CDROM/DVD自动挂载后，也会在这个目录中创建一个目录，类似于cdrom这个目录。该目录只有在最新的发行套件上才有。</p>
+<p>即插即用型存储设备的挂载点自动在该目录下创建。比如USB盘系统自动挂载后，会在这个目录下产生一个目录；CDROM&#x2F;DVD自动挂载后，也会在这个目录中创建一个目录，类似于cdrom这个目录。该目录只有在最新的发行套件上才有。</p>
 <h2 id="终端快捷键"><a href="#终端快捷键" class="headerlink" title="终端快捷键"></a>终端快捷键</h2><p>Ctrl + s    暂定当前程序，暂停后按下任意键恢复运行<br>Ctrl + z    将当前程序放到后台运行，恢复到前台为命令fg</p>
 <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><ul>
-<li><p>搜索    /admin    通过n或N进行上一个或下一个匹配</p>
+<li><p>搜索    &#x2F;admin    通过n或N进行上一个或下一个匹配</p>
 </li>
 <li><p>G移动到末尾，gg移动到开头</p>
 </li>
@@ -314,44 +300,41 @@ function showBtn(){
 </ul>
 <hr>
 <h2 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h2><ul>
-<li><p>添加<br><br>firewall-cmd –zone=public –add-port=27017/tcp –permanent    （–permanent永久生效，没有此参数重启后失效）</p>
+<li><p>添加<br><br>firewall-cmd –zone&#x3D;public –add-port&#x3D;27017&#x2F;tcp –permanent    （–permanent永久生效，没有此参数重启后失效）</p>
 </li>
-<li><p>删除<br>firewall-cmd –zone=public –remove-port=80/tcp –permanent</p>
+<li><p>删除<br>firewall-cmd –zone&#x3D;public –remove-port&#x3D;80&#x2F;tcp –permanent</p>
 </li>
 <li><p>重新载入<br><br>firewall-cmd –reload</p>
 </li>
-<li><p>查看所有打开的端口<br> firewall-cmd –zone=public –list-ports</p>
+<li><p>查看所有打开的端口<br> firewall-cmd –zone&#x3D;public –list-ports</p>
 </li>
-<li><p>添加防火墙规则（对指定IP开放指定端口）<br>firewall-cmd –permanent –add-rich-rule=”rule family=”ipv4” source address=”192.168.142.166” port protocol=”tcp” port=”27017” accept/drop/reject”</p>
+<li><p>添加防火墙规则（对指定IP开放指定端口）<br>firewall-cmd –permanent –add-rich-rule&#x3D;”rule family&#x3D;”ipv4” source address&#x3D;”192.168.142.166” port protocol&#x3D;”tcp” port&#x3D;”27017” accept&#x2F;drop&#x2F;reject”</p>
 </li>
 <li><p>查看配置结果，验证配置<br>firewall-cmd –list-all</p>
 </li>
-<li><p>删除规则<br>firewall-cmd –permanent –remove-rich-rule=”rule family=”ipv4” source address=”192.168.142.166” port protocol=”tcp” port=”27017” accept”</p>
+<li><p>删除规则<br>firewall-cmd –permanent –remove-rich-rule&#x3D;”rule family&#x3D;”ipv4” source address&#x3D;”192.168.142.166” port protocol&#x3D;”tcp” port&#x3D;”27017” accept”</p>
 </li>
 </ul>
 <h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><ul>
-<li><p><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</p>
-</li>
-<li><p><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的</p>
-<ul>
+<li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
+<li><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的<ul>
 <li><p>管理员账户的 role是 userAdminAnyDatabase，‘userAdmin’代表用户管理身份，’AnyDatabase’ 代表可以管理任何数据库。</p>
 </li>
 <li><p>dbOwner 代表数据库所有者角色，拥有最高该数据库最高权限。比如新建索引等</p>
 </li>
 <li><p>readWrite 该用户用于该数据的读写，只拥有读写权限。</p>
-  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="meta-keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><ul>
 <li><strong>nginx -s reload</strong>  <br>nginx 平滑重启</li>
-<li><strong>nginx -t -c /etc/nginx/conf/nginx.conf</strong> <br>判断nginx配置是否正确</li>
+<li><strong>nginx -t -c &#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</strong> <br>判断nginx配置是否正确</li>
 </ul>
 <h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><ul>
-<li><strong>grep -r “关键字” /root/</strong><br><br>查找root下所有的关键字</li>
-<li>n 显示行号</li>
+<li><strong>grep -r “关键字” &#x2F;root&#x2F;</strong><br><br>查找root下所有的关键字<br>-n 显示行号</li>
 </ul>
-<h2 id="新建-复制-移动-删除"><a href="#新建-复制-移动-删除" class="headerlink" title="新建/复制/移动/删除"></a>新建/复制/移动/删除</h2><ul>
+<h2 id="新建-复制-移动-删除"><a href="#新建-复制-移动-删除" class="headerlink" title="新建&#x2F;复制&#x2F;移动&#x2F;删除"></a>新建&#x2F;复制&#x2F;移动&#x2F;删除</h2><ul>
 <li><p>新建空白文件</p>
 <ul>
 <li>touch test</li>
@@ -360,12 +343,12 @@ function showBtn(){
 <li><p>新建目录</p>
 <ul>
 <li>mkdir dir</li>
-<li>mkdir -p test/test/dir -p参数，同时创建一个多级目录</li>
+<li>mkdir -p test&#x2F;test&#x2F;dir -p参数，同时创建一个多级目录</li>
 </ul>
 </li>
 <li><p>复制文件</p>
 <ul>
-<li>cp test xxx/test</li>
+<li>cp test xxx&#x2F;test</li>
 <li>cp -r test xxx 加上-r或者-R参数，表示递归复制</li>
 </ul>
 </li>
@@ -395,10 +378,17 @@ function showBtn(){
 <li>ps -aux | grep python</li>
 </ul>
 <h2 id="mysql-备份恢复"><a href="#mysql-备份恢复" class="headerlink" title="mysql 备份恢复"></a>mysql 备份恢复</h2><ul>
-<li>备份<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> --databases dbname1 dbname2 &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -all-databases &gt; backup.sql</span><br></pre></td></tr></table></figure></li>
-<li>恢复<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure></li>
+<li>备份</li>
 </ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat /proc/self/root/etc/passwd</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> <span class="attr">--databases</span> dbname1 dbname2 &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -<span class="attribute">all</span>-databases &gt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>恢复</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat &#x2F;proc&#x2F;self&#x2F;root&#x2F;etc&#x2F;passwd</p>
+<p> <a href="http://www.pa55w0rd.online/linux/">http://www.pa55w0rd.online/linux/</a> </p>
 
         
 <!--
@@ -409,19 +399,19 @@ function showBtn(){
         <p>看到什么记什么，没有顺序</p>
 <span id="more"></span>
 <h2 id="Linux各个目录的作用及内容"><a href="#Linux各个目录的作用及内容" class="headerlink" title="Linux各个目录的作用及内容"></a>Linux各个目录的作用及内容</h2><p><code>/</code></p>
-<p>/处于Linux文件系统树形结构的最顶端，它是Linux文件系统的入口，所有的目录、文件、设备都在/之下。</p>
+<p>&#x2F;处于Linux文件系统树形结构的最顶端，它是Linux文件系统的入口，所有的目录、文件、设备都在&#x2F;之下。</p>
 <p><code>/bin</code></p>
 <p>该目录存放着系统最常用的最重要的命令，相当于DOS下的内部命令，只不过它们是以独立的文件形式存在。比如：ls、cp、mkdir等命令。这个目录中的文件都是可执行的并且是普通用户都可以使用的命令。作为系统最基础的命令都放在这里。</p>
 <p><code>/usr</code></p>
-<p>该目录是系统存放程序的地方，比如普通命令、帮助文件、安装的软件等。这个目录下有很多的文件和目录。当我们安装一个Linux发行版官方提供的软件包时，大多安装在这里。当有涉及服务器的配置文件时，会把配置文件安装在/etc目录中。/usr目录下包括涉及字体目录/usr/share/fonts、帮助目录/usr/share/man或/usr/share/doc等。</p>
+<p>该目录是系统存放程序的地方，比如普通命令、帮助文件、安装的软件等。这个目录下有很多的文件和目录。当我们安装一个Linux发行版官方提供的软件包时，大多安装在这里。当有涉及服务器的配置文件时，会把配置文件安装在&#x2F;etc目录中。&#x2F;usr目录下包括涉及字体目录&#x2F;usr&#x2F;share&#x2F;fonts、帮助目录&#x2F;usr&#x2F;share&#x2F;man或&#x2F;usr&#x2F;share&#x2F;doc等。</p>
 <p><code>/var</code></p>
-<p>该目录的内容是经常变动的，/var下有/var/log目录用来存放系统日志的目录。/var/www目录用来定义Apache服务器站点存放目录。/var/lib用来存放一些库文件。</p>
+<p>该目录的内容是经常变动的，&#x2F;var下有&#x2F;var&#x2F;log目录用来存放系统日志的目录。&#x2F;var&#x2F;www目录用来定义Apache服务器站点存放目录。&#x2F;var&#x2F;lib用来存放一些库文件。</p>
 <p><code>/sbin</code></p>
 <p>大多数涉及系统管理的命令都存放在该目录中，它是超级权限用户root的可执行命令存放地，普通用户无权限执行这个目录下的命令，凡是目录sbin中包含的命令都是root权限才能执行的。</p>
 <p><code>/root</code></p>
 <p>Linux超级权限用户(系统管理员)root的主目录。</p>
 <p><code>/home</code></p>
-<p>普通用户的主目录都默认存放在该目录中，比如：有个用户叫wang，那它的主目录就是/home/wang，也可以用~wang表示。</p>
+<p>普通用户的主目录都默认存放在该目录中，比如：有个用户叫wang，那它的主目录就是&#x2F;home&#x2F;wang，也可以用~wang表示。</p>
 <p><code>/etc</code></p>
 <p>该目录是系统配置文件的所在地，一些服务器的配置文件也在这里，比如：用户帐号及密码配置文件等。</p>
 <p><code>/boot</code></p>
@@ -429,7 +419,7 @@ function showBtn(){
 <p><code>/opt</code></p>
 <p>该目录是可选的软件包安装目录，有些软件包我们可以将它安装在该目录中。</p>
 <p><code>/tmp</code></p>
-<p>该目录用于存放临时文件，有时用户运行程序的时候，会产生一些临时文件。/tmp就是用来存放临时文件的。/var/tmp目录和该目录的作用是相似的。</p>
+<p>该目录用于存放临时文件，有时用户运行程序的时候，会产生一些临时文件。&#x2F;tmp就是用来存放临时文件的。&#x2F;var&#x2F;tmp目录和该目录的作用是相似的。</p>
 <p><code>/lost+found</code></p>
 <p>在ext2或ext3文件系统中，当系统意外崩溃或机器意外关机，而产生的一些文件碎片就存放在该目录中。当系统启动在过程中fsck工具会检查这里，并修复已经损坏的文件系统。 有时系统发生问题，有很多的文件被移到这个目录中，可能要用手工的方式来修复，或移到文件原来的位置上。</p>
 <p><code>/lib</code></p>
@@ -437,7 +427,7 @@ function showBtn(){
 <p><code>/mnt</code></p>
 <p>该目录是用于存放挂载储存设备的挂载目录的，系统提供这个目录是让用户临时挂载别的文件系统，比如有cdrom等目录。</p>
 <p><code>/proc</code></p>
-<p>操作系统运行时，进程（正在运行中的程序）信息及内核信息（比如cpu、硬盘分区、内存信息等）存放在这里。/proc目录是伪装的文件系统proc的挂载目录，proc并不是真正的文件系统。因此，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。也就是说，这个目录的内容不在硬盘上而是在内存里。</p>
+<p>操作系统运行时，进程（正在运行中的程序）信息及内核信息（比如cpu、硬盘分区、内存信息等）存放在这里。&#x2F;proc目录是伪装的文件系统proc的挂载目录，proc并不是真正的文件系统。因此，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。也就是说，这个目录的内容不在硬盘上而是在内存里。</p>
 <ul>
 <li>cpuinfo 主机CPU 信息</li>
 <li>filesystems 文件系统信息</li>
@@ -448,10 +438,10 @@ function showBtn(){
 <p><code>/misc</code></p>
 <p>该目录可以用来存放杂项文件或目录，即那些用途或含义不明确的文件或目录可以存放在该目录下。</p>
 <p><code>/media</code></p>
-<p>即插即用型存储设备的挂载点自动在该目录下创建。比如USB盘系统自动挂载后，会在这个目录下产生一个目录；CDROM/DVD自动挂载后，也会在这个目录中创建一个目录，类似于cdrom这个目录。该目录只有在最新的发行套件上才有。</p>
+<p>即插即用型存储设备的挂载点自动在该目录下创建。比如USB盘系统自动挂载后，会在这个目录下产生一个目录；CDROM&#x2F;DVD自动挂载后，也会在这个目录中创建一个目录，类似于cdrom这个目录。该目录只有在最新的发行套件上才有。</p>
 <h2 id="终端快捷键"><a href="#终端快捷键" class="headerlink" title="终端快捷键"></a>终端快捷键</h2><p>Ctrl + s    暂定当前程序，暂停后按下任意键恢复运行<br>Ctrl + z    将当前程序放到后台运行，恢复到前台为命令fg</p>
 <h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><ul>
-<li><p>搜索    /admin    通过n或N进行上一个或下一个匹配</p>
+<li><p>搜索    &#x2F;admin    通过n或N进行上一个或下一个匹配</p>
 </li>
 <li><p>G移动到末尾，gg移动到开头</p>
 </li>
@@ -462,44 +452,41 @@ function showBtn(){
 </ul>
 <hr>
 <h2 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h2><ul>
-<li><p>添加<br><br>firewall-cmd –zone=public –add-port=27017/tcp –permanent    （–permanent永久生效，没有此参数重启后失效）</p>
+<li><p>添加<br><br>firewall-cmd –zone&#x3D;public –add-port&#x3D;27017&#x2F;tcp –permanent    （–permanent永久生效，没有此参数重启后失效）</p>
 </li>
-<li><p>删除<br>firewall-cmd –zone=public –remove-port=80/tcp –permanent</p>
+<li><p>删除<br>firewall-cmd –zone&#x3D;public –remove-port&#x3D;80&#x2F;tcp –permanent</p>
 </li>
 <li><p>重新载入<br><br>firewall-cmd –reload</p>
 </li>
-<li><p>查看所有打开的端口<br> firewall-cmd –zone=public –list-ports</p>
+<li><p>查看所有打开的端口<br> firewall-cmd –zone&#x3D;public –list-ports</p>
 </li>
-<li><p>添加防火墙规则（对指定IP开放指定端口）<br>firewall-cmd –permanent –add-rich-rule=”rule family=”ipv4” source address=”192.168.142.166” port protocol=”tcp” port=”27017” accept/drop/reject”</p>
+<li><p>添加防火墙规则（对指定IP开放指定端口）<br>firewall-cmd –permanent –add-rich-rule&#x3D;”rule family&#x3D;”ipv4” source address&#x3D;”192.168.142.166” port protocol&#x3D;”tcp” port&#x3D;”27017” accept&#x2F;drop&#x2F;reject”</p>
 </li>
 <li><p>查看配置结果，验证配置<br>firewall-cmd –list-all</p>
 </li>
-<li><p>删除规则<br>firewall-cmd –permanent –remove-rich-rule=”rule family=”ipv4” source address=”192.168.142.166” port protocol=”tcp” port=”27017” accept”</p>
+<li><p>删除规则<br>firewall-cmd –permanent –remove-rich-rule&#x3D;”rule family&#x3D;”ipv4” source address&#x3D;”192.168.142.166” port protocol&#x3D;”tcp” port&#x3D;”27017” accept”</p>
 </li>
 </ul>
 <h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><ul>
-<li><p><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</p>
-</li>
-<li><p><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的</p>
-<ul>
+<li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
+<li><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的<ul>
 <li><p>管理员账户的 role是 userAdminAnyDatabase，‘userAdmin’代表用户管理身份，’AnyDatabase’ 代表可以管理任何数据库。</p>
 </li>
 <li><p>dbOwner 代表数据库所有者角色，拥有最高该数据库最高权限。比如新建索引等</p>
 </li>
 <li><p>readWrite 该用户用于该数据的读写，只拥有读写权限。</p>
-  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="meta-keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure></li>
+  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ul>
 <h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><ul>
 <li><strong>nginx -s reload</strong>  <br>nginx 平滑重启</li>
-<li><strong>nginx -t -c /etc/nginx/conf/nginx.conf</strong> <br>判断nginx配置是否正确</li>
+<li><strong>nginx -t -c &#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</strong> <br>判断nginx配置是否正确</li>
 </ul>
 <h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><ul>
-<li><strong>grep -r “关键字” /root/</strong><br><br>查找root下所有的关键字</li>
-<li>n 显示行号</li>
+<li><strong>grep -r “关键字” &#x2F;root&#x2F;</strong><br><br>查找root下所有的关键字<br>-n 显示行号</li>
 </ul>
-<h2 id="新建-复制-移动-删除"><a href="#新建-复制-移动-删除" class="headerlink" title="新建/复制/移动/删除"></a>新建/复制/移动/删除</h2><ul>
+<h2 id="新建-复制-移动-删除"><a href="#新建-复制-移动-删除" class="headerlink" title="新建&#x2F;复制&#x2F;移动&#x2F;删除"></a>新建&#x2F;复制&#x2F;移动&#x2F;删除</h2><ul>
 <li><p>新建空白文件</p>
 <ul>
 <li>touch test</li>
@@ -508,12 +495,12 @@ function showBtn(){
 <li><p>新建目录</p>
 <ul>
 <li>mkdir dir</li>
-<li>mkdir -p test/test/dir -p参数，同时创建一个多级目录</li>
+<li>mkdir -p test&#x2F;test&#x2F;dir -p参数，同时创建一个多级目录</li>
 </ul>
 </li>
 <li><p>复制文件</p>
 <ul>
-<li>cp test xxx/test</li>
+<li>cp test xxx&#x2F;test</li>
 <li>cp -r test xxx 加上-r或者-R参数，表示递归复制</li>
 </ul>
 </li>
@@ -543,23 +530,25 @@ function showBtn(){
 <li>ps -aux | grep python</li>
 </ul>
 <h2 id="mysql-备份恢复"><a href="#mysql-备份恢复" class="headerlink" title="mysql 备份恢复"></a>mysql 备份恢复</h2><ul>
-<li>备份<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> --databases dbname1 dbname2 &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -all-databases &gt; backup.sql</span><br></pre></td></tr></table></figure></li>
-<li>恢复<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure></li>
+<li>备份</li>
 </ul>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat /proc/self/root/etc/passwd</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> <span class="attr">--databases</span> dbname1 dbname2 &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -<span class="attribute">all</span>-databases &gt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>恢复</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat &#x2F;proc&#x2F;self&#x2F;root&#x2F;etc&#x2F;passwd</p>
+<p> <a href="http://www.pa55w0rd.online/linux/">http://www.pa55w0rd.online/linux/</a> </p>
 -->
       
 
     </div>
 
-
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/linux/" data-id="ckxh6t4s3002sdgswdufjf7gi" class="article-share-link" data-share="baidu" data-title="Linux基础">分享到</a>
+        <a data-url="http://www.pa55w0rd.online/linux/" data-id="cmn8a4dix00366ohoc77hds1f" class="article-share-link" data-share="baidu" data-title="Linux基础">分享到</a>
       
 
       
@@ -570,6 +559,19 @@ function showBtn(){
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80/" rel="tag">基础</a></li></ul>
 
 
+
+      
+      
+      <div class="post-copyright post-copyright--butterfly" role="note">
+        
+        <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/linux/" rel="bookmark">http://www.pa55w0rd.online/linux/</a></p>
+        
+        <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
+        
+        
+      </div>
+      
     </footer>
   </div>
   
@@ -628,23 +630,23 @@ function showBtn(){
       <ul>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>
+            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver-yida/">通过宜搭流程表单完成JumpServer自动化授权</a>
+            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jumpserver/">JumpServer堡垒机部署与运营</a>
+            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/jetbrains-use/">jetbrains产品免费食用方法-_-</a>
+            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
           <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/zer-trust-security-model/">SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</a>
+            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -657,7 +659,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-tasks"></i>分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">45</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/note/">note</a><span class="category-list-count">46</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/">开发安全</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/">CodeScan实战</a><span class="category-list-count">18</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/">移动安全</a><span class="category-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -673,7 +675,7 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-cloud"></i>标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/ChatGPT/" style="font-size: 10px;">ChatGPT</a> <a href="/tags/DevSecOps/" style="font-size: 11.25px;">DevSecOps</a> <a href="/tags/GPT-4/" style="font-size: 10px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">代码审计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 18.75px;">基础知识</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 18.75px;">工具使用</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 10px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
+      <a href="/tags/Android-%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 10px;">Android - 安全测试 - 工具使用</a> <a href="/tags/CI-CD/" style="font-size: 10px;">CI-CD</a> <a href="/tags/ChatGPT/" style="font-size: 11.25px;">ChatGPT</a> <a href="/tags/CodeScan-Artex/" style="font-size: 18.75px;">CodeScan-Artex</a> <a href="/tags/DevSecOps/" style="font-size: 12.5px;">DevSecOps</a> <a href="/tags/Docker/" style="font-size: 11.25px;">Docker</a> <a href="/tags/GPT-4/" style="font-size: 11.25px;">GPT-4</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Mantis/" style="font-size: 10px;">Mantis</a> <a href="/tags/PHPstudy/" style="font-size: 10px;">PHPstudy</a> <a href="/tags/Planner/" style="font-size: 10px;">Planner</a> <a href="/tags/SDL/" style="font-size: 17.5px;">SDL</a> <a href="/tags/SSE/" style="font-size: 10px;">SSE</a> <a href="/tags/STRIDE/" style="font-size: 10px;">STRIDE</a> <a href="/tags/TRS/" style="font-size: 10px;">TRS</a> <a href="/tags/TTFT/" style="font-size: 10px;">TTFT</a> <a href="/tags/algolia/" style="font-size: 10px;">algolia</a> <a href="/tags/checklist/" style="font-size: 10px;">checklist</a> <a href="/tags/docker/" style="font-size: 11.25px;">docker</a> <a href="/tags/hexo/" style="font-size: 12.5px;">hexo</a> <a href="/tags/iam/" style="font-size: 10px;">iam</a> <a href="/tags/jsonp%E5%8A%AB%E6%8C%81/" style="font-size: 10px;">jsonp劫持</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/note/" style="font-size: 20px;">note</a> <a href="/tags/sql/" style="font-size: 10px;">sql</a> <a href="/tags/sql%E6%B3%A8%E5%85%A5/" style="font-size: 10px;">sql注入</a> <a href="/tags/web%E5%AE%89%E5%85%A8/" style="font-size: 12.5px;">web安全</a> <a href="/tags/windows-%E5%AE%A1%E8%AE%A1%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">windows 审计工具</a> <a href="/tags/xunfeng/" style="font-size: 10px;">xunfeng</a> <a href="/tags/zero-trust/" style="font-size: 10px;">zero-trust</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 11.25px;">代码审计</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/" style="font-size: 10px;">任务模板</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/" style="font-size: 10px;">任务状态</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/" style="font-size: 10px;">任务编排</a> <a href="/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/" style="font-size: 10px;">任务设计</a> <a href="/tags/%E5%88%86%E6%9E%90/" style="font-size: 10px;">分析</a> <a href="/tags/%E5%8F%8D%E8%AF%81/" style="font-size: 10px;">反证</a> <a href="/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/" style="font-size: 11.25px;">可观测性</a> <a href="/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/" style="font-size: 10px;">可靠性</a> <a href="/tags/%E5%9F%BA%E7%A1%80/" style="font-size: 11.25px;">基础</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 17.5px;">基础知识</a> <a href="/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/" style="font-size: 10px;">增量保存</a> <a href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" style="font-size: 10px;">备忘录</a> <a href="/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/" style="font-size: 12.5px;">威胁建模</a> <a href="/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/" style="font-size: 10px;">威胁情报</a> <a href="/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/" style="font-size: 10px;">存储清理</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/" style="font-size: 20px;">安全建设</a> <a href="/tags/%E5%AE%89%E5%85%A8%E5%BC%80%E5%8F%91/" style="font-size: 16.25px;">安全开发</a> <a href="/tags/%E5%AE%89%E5%85%A8%E6%BC%8F%E6%B4%9E/" style="font-size: 12.5px;">安全漏洞</a> <a href="/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/" style="font-size: 13.75px;">安全防护</a> <a href="/tags/%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" style="font-size: 11.25px;">安装使用</a> <a href="/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/" style="font-size: 10px;">完整审计</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/" style="font-size: 10px;">审计覆盖</a> <a href="/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/" style="font-size: 10px;">审计评测</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">工具</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" style="font-size: 17.5px;">工具使用</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/" style="font-size: 11.25px;">工具调用</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" style="font-size: 10px;">工程实践</a> <a href="/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">工程维护</a> <a href="/tags/%E5%B9%B3%E5%8F%B0%E5%BB%BA%E8%AE%BE/" style="font-size: 10px;">平台建设</a> <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/" style="font-size: 13.75px;">应急响应</a> <a href="/tags/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/" style="font-size: 10px;">开发安全</a> <a href="/tags/%E5%BC%80%E6%BA%90/" style="font-size: 13.75px;">开源</a> <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/" style="font-size: 10px;">开源工具</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" style="font-size: 11.25px;">微信公众号</a> <a href="/tags/%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">技巧</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">操作记录</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/" style="font-size: 11.25px;">故障恢复</a> <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/" style="font-size: 11.25px;">故障排查</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8/" style="font-size: 10px;">数据安全</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/" style="font-size: 10px;">未授权访问</a> <a href="/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/" style="font-size: 10px;">本地部署</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/" style="font-size: 10px;">模型性能</a> <a href="/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/" style="font-size: 10px;">模型计量</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" style="font-size: 10px;">漏洞利用</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%AE%A1%E7%90%86/" style="font-size: 10px;">漏洞管理</a> <a href="/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/" style="font-size: 10px;">私信互动</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E5%AE%89%E5%85%A8/" style="font-size: 10px;">移动安全</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">编程基础</a> <a href="/tags/%E8%9C%9C%E7%BD%90/" style="font-size: 13.75px;">蜜罐</a> <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" style="font-size: 15px;">解决方法</a> <a href="/tags/%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">记录</a> <a href="/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/" style="font-size: 10px;">证据链</a> <a href="/tags/%E8%B5%84%E4%BA%A7%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">资产扫描</a> <a href="/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/" style="font-size: 10px;">身份认证</a> <a href="/tags/%E8%BF%81%E7%A7%BB/" style="font-size: 10px;">迁移</a> <a href="/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/" style="font-size: 11.25px;">运维安全</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/" style="font-size: 10px;">运行复盘</a> <a href="/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/" style="font-size: 11.25px;">运行预算</a> <a href="/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/" style="font-size: 10px;">速查表</a> <a href="/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/" style="font-size: 10px;">长上下文</a> <a href="/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/" style="font-size: 10px;">长程任务</a> <a href="/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/" style="font-size: 10px;">零信任</a>
     </div>
   </div>
 
@@ -683,8 +685,8 @@ function showBtn(){
   <div class="widget-wrap">
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s" ><i class="fa fa-archive"></i>归档</h3>
     <div class="widget">
-      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
+      <!-- <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">十一月 2026</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">八月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">八月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">七月 2019</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">15</span></li></ul> -->
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/11/">2026年11月</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">2023年08月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">2022年03月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">2021年12月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">2021年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">2021年08月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">2021年07月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">2021年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">2021年05月</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">2019年11月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">2019年10月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">2019年09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">2019年08月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">2019年07月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">2019年06月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">2019年05月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">2019年04月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">2019年03月</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">2019年01月</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">2018年12月</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">2018年11月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">2018年10月</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">2018年09月</a><span class="archive-list-count">15</span></li></ul>
     </div>
   </div>
 
@@ -949,7 +951,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
   <div  data-scroll-reveal="enter bottom"  class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2023 Pa55w0rd<br>
+      &copy; 2026 Pa55w0rd<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       .
       Theme by <a href="https://github.com/HipHopCoderS/Landscape-x" target="_blank">Landscape-x</a>
@@ -992,12 +994,38 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
 </nav>
 
+  <div class="site-search">
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+</div>
+
   <!-- totop start -->
 <div id="totop">
 <a title="返回顶部"><img src="/img/betop.png"/></a>
 </div>
 
 <!-- totop end -->
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk@1/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.19.0/js/md5.min.js"></script>
 
 
 
@@ -1008,9 +1036,8 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
       admin: "Pa55w0rd",
-      // id: location.pathname,      // Ensure uniqueness and length less than 50
-      id: "Thu Sep 20 2018 16:33:09 GMT+0800",      // Ensure uniqueness and length less than 50
-      distractionFreeMode: false  // Facebook-like distraction free mode
+      id: "Thu Sep 20 2018 16:33:09 GMT+0800",
+      distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
   </script>
@@ -1041,14 +1068,23 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     "common":{onBeforeClick: SetShareData},
     "share":{"bdCustomStyle":"/css/bdshare.css"}
   };
-  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
 
 
 <!-- 百度分享 end -->
 
-<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script src="https://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+
+<script src="/vendors/jquery/jquery-3.1.1.min.js"></script>
+
+
+<script src="/js/scrollReveal.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@1.5.1/dist/instantsearch.js"></script>
+
+<script src="/js/algolia-search.js"></script>
+
 
 
 
@@ -1061,7 +1097,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
 
-<! -- mathjax config similar to math.stackexchange -->
+<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -1095,44 +1131,28 @@ MathJax.Hub.Queue(function() {
         });
 </script>
 
-<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 
 <script src="/js/script.js"></script>
 
 
+<!-- 自定义目录交互功能 -->
+
+<script src="/assets/js/custom-toc.js"></script>
+
+
+<script>
+$(document).ready(function () {
+  if (typeof scrollReveal !== 'undefined') {
+    window.scrollReveal = new scrollReveal({ reset: true });
+  }
+});
+</script>
+
 
 </div>
 </body>
 </html>
 
-
-
-<div class="site-search">
-  <div class="algolia-popup popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-  </div>
-</div>
-
-
-<script>
-$(document).ready(function(){
-window.scrollReveal = new scrollReveal({ reset: true});
-//
-})
-</script>

@@ -153,6 +153,17 @@
     $('.fancybox').fancybox();
   }
 
+  // 正文图片：懒加载与异步解码，减轻首屏与带宽压力（首图若需优先 LCP 可在文中用 HTML 写 loading="eager"）
+  $('.article-entry img').each(function () {
+    var el = this;
+    if (!el.getAttribute('loading')) {
+      el.setAttribute('loading', 'lazy');
+    }
+    if (!el.getAttribute('decoding')) {
+      el.setAttribute('decoding', 'async');
+    }
+  });
+
   // Mobile nav
   var $container = $('#container'),
     isMobileNavAnim = false,

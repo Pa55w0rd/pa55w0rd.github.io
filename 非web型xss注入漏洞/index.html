@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   
 
@@ -12,7 +12,7 @@
 
   
 
-  <link rel="canonical" href="http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/">
+  <link rel="canonical" href="https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/">
 
 
   <meta name="keywords" content="安全漏洞,web安全">
@@ -24,29 +24,30 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"看！这里有三种非Web型的XSS注入漏洞 （转发）","description":"原文：https://websec.ca/publication/Blog/Three Non Web based XSS Injections","url":"http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/","datePublished":"2018-10-29T03:36:20.000Z","dateModified":"2026-03-24T07:59:41.344Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/#article","headline":"看！这里有三种非Web型的XSS注入漏洞 （转发）","description":"原文：https://websec.ca/publication/Blog/Three Non Web based XSS Injections","url":"https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/","datePublished":"2018-10-29T03:36:20.000Z","dateModified":"2026-03-24T07:59:41.344Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C1.png"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"web安全","item":"https://www.pa55w0rd.online/categories/web%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"看！这里有三种非Web型的XSS注入漏洞 （转发）","item":"https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/"}]}</script>
 
 
   
   <meta name="description" content="原文：https:&#x2F;&#x2F;websec.ca&#x2F;publication&#x2F;Blog&#x2F;Three Non Web based XSS Injections">
 <meta property="og:type" content="article">
 <meta property="og:title" content="看！这里有三种非Web型的XSS注入漏洞 （转发）">
-<meta property="og:url" content="http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/">
+<meta property="og:url" content="https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="原文：https:&#x2F;&#x2F;websec.ca&#x2F;publication&#x2F;Blog&#x2F;Three Non Web based XSS Injections">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C1.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C2.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C3.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C4.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C5.png">
-<meta property="og:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C6.png">
+<meta property="og:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C1.png">
+<meta property="og:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C2.png">
+<meta property="og:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C3.png">
+<meta property="og:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C4.png">
+<meta property="og:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C5.png">
+<meta property="og:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C6.png">
 <meta property="article:published_time" content="2018-10-29T03:36:20.000Z">
 <meta property="article:modified_time" content="2026-03-24T07:59:41.344Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="安全漏洞">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C1.png">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/%5Cassets%5Cimg%5Cxss%5C1.png">
 
   
 
@@ -58,8 +59,6 @@
   
 
 
-  
-    <meta name="google-site-verification" content="google4b1aaf5aa71b9f3c.html" />
   
 
 
@@ -153,7 +152,7 @@ ga('send', 'pageview');
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">记录</a>
+          <a href="/" id="subtitle">代码审计、威胁建模与企业安全实践</a>
         </h2>
       
     </div>
@@ -234,6 +233,32 @@ ga('send', 'pageview');
     
 
       <header class="article-header">
+
+        
+        <nav class="article-breadcrumb" aria-label="当前位置">
+          <ol>
+          
+            <li>
+              
+              <a href="/">首页</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/categories/web%E5%AE%89%E5%85%A8/">web安全</a>
+              
+            </li>
+          
+            <li>
+              
+              <span aria-current="page">看！这里有三种非Web型的XSS注入漏洞 （转发）</span>
+              
+            </li>
+          
+          </ol>
+        </nav>
+        
 
         
   
@@ -334,11 +359,11 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" data-id="cmn8a4dkg00c56ohobs1p75o7" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
+        <a data-url="https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" data-id="cmn8a4dkg00c56ohobs1p75o7" class="article-share-link" data-share="baidu" data-title="看！这里有三种非Web型的XSS注入漏洞 （转发）">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
@@ -351,7 +376,7 @@ ga('send', 'pageview');
       <div class="post-copyright post-copyright--butterfly" role="note">
         
         <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
-        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" rel="bookmark">http://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</a></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/" rel="bookmark">https://www.pa55w0rd.online/%E9%9D%9Eweb%E5%9E%8Bxss%E6%B3%A8%E5%85%A5%E6%BC%8F%E6%B4%9E/</a></p>
         
         <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
         

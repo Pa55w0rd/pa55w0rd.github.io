@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap 须为绝对地址，与 _config.yml 中 url 保持一致（换域名时请同步修改）
-Sitemap: http://www.pa55w0rd.online/sitemap.xml
+Sitemap: https://www.pa55w0rd.online/sitemap.xml

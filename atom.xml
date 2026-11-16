@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Pa55w0rd &#39;s Blog</title>
   
-  <subtitle>记录</subtitle>
-  <link href="http://www.pa55w0rd.online/atom.xml" rel="self"/>
+  <subtitle>代码审计、威胁建模与企业安全实践</subtitle>
+  <link href="https://www.pa55w0rd.online/atom.xml" rel="self"/>
   
-  <link href="http://www.pa55w0rd.online/"/>
+  <link href="https://www.pa55w0rd.online/"/>
   <updated>2026-11-16T07:59:10.861Z</updated>
-  <id>http://www.pa55w0rd.online/</id>
+  <id>https://www.pa55w0rd.online/</id>
   
   <author>
     <name>Pa55w0rd</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</title>
-    <link href="http://www.pa55w0rd.online/codescan-00/"/>
-    <id>http://www.pa55w0rd.online/codescan-00/</id>
+    <link href="https://www.pa55w0rd.online/codescan-00/"/>
+    <id>https://www.pa55w0rd.online/codescan-00/</id>
     <published>2026-11-16T04:00:00.000Z</published>
     <updated>2026-11-16T07:59:10.861Z</updated>
     
@@ -30,23 +30,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="代码审计" scheme="http://www.pa55w0rd.online/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    <category term="代码审计" scheme="https://www.pa55w0rd.online/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="工程实践" scheme="http://www.pa55w0rd.online/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
+    <category term="工程实践" scheme="https://www.pa55w0rd.online/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</title>
-    <link href="http://www.pa55w0rd.online/codescan-01/"/>
-    <id>http://www.pa55w0rd.online/codescan-01/</id>
+    <link href="https://www.pa55w0rd.online/codescan-01/"/>
+    <id>https://www.pa55w0rd.online/codescan-01/</id>
     <published>2026-11-16T03:59:00.000Z</published>
     <updated>2026-11-16T07:30:26.850Z</updated>
     
@@ -57,23 +57,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="Docker" scheme="http://www.pa55w0rd.online/tags/Docker/"/>
+    <category term="Docker" scheme="https://www.pa55w0rd.online/tags/Docker/"/>
     
-    <category term="本地部署" scheme="http://www.pa55w0rd.online/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/"/>
+    <category term="本地部署" scheme="https://www.pa55w0rd.online/tags/%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</title>
-    <link href="http://www.pa55w0rd.online/codescan-02/"/>
-    <id>http://www.pa55w0rd.online/codescan-02/</id>
+    <link href="https://www.pa55w0rd.online/codescan-02/"/>
+    <id>https://www.pa55w0rd.online/codescan-02/</id>
     <published>2026-11-16T03:58:00.000Z</published>
     <updated>2026-11-16T08:06:21.694Z</updated>
     
@@ -84,23 +84,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="威胁建模" scheme="http://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/"/>
+    <category term="威胁建模" scheme="https://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/"/>
     
-    <category term="证据链" scheme="http://www.pa55w0rd.online/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/"/>
+    <category term="证据链" scheme="https://www.pa55w0rd.online/tags/%E8%AF%81%E6%8D%AE%E9%93%BE/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</title>
-    <link href="http://www.pa55w0rd.online/codescan-03/"/>
-    <id>http://www.pa55w0rd.online/codescan-03/</id>
+    <link href="https://www.pa55w0rd.online/codescan-03/"/>
+    <id>https://www.pa55w0rd.online/codescan-03/</id>
     <published>2026-11-16T03:57:00.000Z</published>
     <updated>2026-11-16T08:08:42.100Z</updated>
     
@@ -111,23 +111,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="审计覆盖" scheme="http://www.pa55w0rd.online/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/"/>
+    <category term="审计覆盖" scheme="https://www.pa55w0rd.online/tags/%E5%AE%A1%E8%AE%A1%E8%A6%86%E7%9B%96/"/>
     
-    <category term="反证" scheme="http://www.pa55w0rd.online/tags/%E5%8F%8D%E8%AF%81/"/>
+    <category term="反证" scheme="https://www.pa55w0rd.online/tags/%E5%8F%8D%E8%AF%81/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</title>
-    <link href="http://www.pa55w0rd.online/codescan-04/"/>
-    <id>http://www.pa55w0rd.online/codescan-04/</id>
+    <link href="https://www.pa55w0rd.online/codescan-04/"/>
+    <id>https://www.pa55w0rd.online/codescan-04/</id>
     <published>2026-11-16T03:56:00.000Z</published>
     <updated>2026-11-16T08:10:11.890Z</updated>
     
@@ -138,23 +138,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="威胁建模" scheme="http://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/"/>
+    <category term="威胁建模" scheme="https://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/"/>
     
-    <category term="STRIDE" scheme="http://www.pa55w0rd.online/tags/STRIDE/"/>
+    <category term="STRIDE" scheme="https://www.pa55w0rd.online/tags/STRIDE/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（05）：save_threat_model 为什么会收到空参数</title>
-    <link href="http://www.pa55w0rd.online/codescan-05/"/>
-    <id>http://www.pa55w0rd.online/codescan-05/</id>
+    <link href="https://www.pa55w0rd.online/codescan-05/"/>
+    <id>https://www.pa55w0rd.online/codescan-05/</id>
     <published>2026-11-16T03:55:00.000Z</published>
     <updated>2026-11-16T08:12:51.402Z</updated>
     
@@ -165,23 +165,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="工具调用" scheme="http://www.pa55w0rd.online/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/"/>
+    <category term="工具调用" scheme="https://www.pa55w0rd.online/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/"/>
     
-    <category term="故障排查" scheme="http://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
+    <category term="故障排查" scheme="https://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（06）：模型恢复了，目标拆解也要继续</title>
-    <link href="http://www.pa55w0rd.online/codescan-06/"/>
-    <id>http://www.pa55w0rd.online/codescan-06/</id>
+    <link href="https://www.pa55w0rd.online/codescan-06/"/>
+    <id>https://www.pa55w0rd.online/codescan-06/</id>
     <published>2026-11-16T03:54:00.000Z</published>
     <updated>2026-11-16T08:12:41.607Z</updated>
     
@@ -192,23 +192,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="任务编排" scheme="http://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/"/>
+    <category term="任务编排" scheme="https://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E7%BC%96%E6%8E%92/"/>
     
-    <category term="故障恢复" scheme="http://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/"/>
+    <category term="故障恢复" scheme="https://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（07）：给每次模型请求补上时间与计量账本</title>
-    <link href="http://www.pa55w0rd.online/codescan-07/"/>
-    <id>http://www.pa55w0rd.online/codescan-07/</id>
+    <link href="https://www.pa55w0rd.online/codescan-07/"/>
+    <id>https://www.pa55w0rd.online/codescan-07/</id>
     <published>2026-11-16T03:53:00.000Z</published>
     <updated>2026-11-16T08:13:54.704Z</updated>
     
@@ -219,23 +219,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="可观测性" scheme="http://www.pa55w0rd.online/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/"/>
+    <category term="可观测性" scheme="https://www.pa55w0rd.online/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/"/>
     
-    <category term="模型计量" scheme="http://www.pa55w0rd.online/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/"/>
+    <category term="模型计量" scheme="https://www.pa55w0rd.online/tags/%E6%A8%A1%E5%9E%8B%E8%AE%A1%E9%87%8F/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（08）：拆开任务类型，收窄长上下文工作单元</title>
-    <link href="http://www.pa55w0rd.online/codescan-08/"/>
-    <id>http://www.pa55w0rd.online/codescan-08/</id>
+    <link href="https://www.pa55w0rd.online/codescan-08/"/>
+    <id>https://www.pa55w0rd.online/codescan-08/</id>
     <published>2026-11-16T03:52:00.000Z</published>
     <updated>2026-11-16T08:15:01.672Z</updated>
     
@@ -246,23 +246,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CodeScan-Artex" scheme="http://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
+    <category term="CodeScan-Artex" scheme="https://www.pa55w0rd.online/tags/CodeScan-Artex/"/>
     
-    <category term="长上下文" scheme="http://www.pa55w0rd.online/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
+    <category term="长上下文" scheme="https://www.pa55w0rd.online/tags/%E9%95%BF%E4%B8%8A%E4%B8%8B%E6%96%87/"/>
     
-    <category term="任务设计" scheme="http://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/"/>
+    <category term="任务设计" scheme="https://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（09）：TTFT、Prefill 和 Decode 到底测到了什么</title>
-    <link href="http://www.pa55w0rd.online/codescan-09/"/>
-    <id>http://www.pa55w0rd.online/codescan-09/</id>
+    <link href="https://www.pa55w0rd.online/codescan-09/"/>
+    <id>https://www.pa55w0rd.online/codescan-09/</id>
     <published>2026-11-16T03:51:00.000Z</published>
     <updated>2026-11-16T08:15:46.064Z</updated>
     
@@ -273,23 +273,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="可观测性" scheme="http://www.pa55w0rd.online/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/"/>
+    <category term="可观测性" scheme="https://www.pa55w0rd.online/tags/%E5%8F%AF%E8%A7%82%E6%B5%8B%E6%80%A7/"/>
     
-    <category term="TTFT" scheme="http://www.pa55w0rd.online/tags/TTFT/"/>
+    <category term="TTFT" scheme="https://www.pa55w0rd.online/tags/TTFT/"/>
     
-    <category term="模型性能" scheme="http://www.pa55w0rd.online/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/"/>
+    <category term="模型性能" scheme="https://www.pa55w0rd.online/tags/%E6%A8%A1%E5%9E%8B%E6%80%A7%E8%83%BD/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（10）：从二选一，走到同一任务内的完整审计</title>
-    <link href="http://www.pa55w0rd.online/codescan-10/"/>
-    <id>http://www.pa55w0rd.online/codescan-10/</id>
+    <link href="https://www.pa55w0rd.online/codescan-10/"/>
+    <id>https://www.pa55w0rd.online/codescan-10/</id>
     <published>2026-11-16T03:50:00.000Z</published>
     <updated>2026-11-16T08:16:26.134Z</updated>
     
@@ -300,23 +300,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="威胁建模" scheme="http://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/"/>
+    <category term="威胁建模" scheme="https://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E5%BB%BA%E6%A8%A1/"/>
     
-    <category term="完整审计" scheme="http://www.pa55w0rd.online/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/"/>
+    <category term="完整审计" scheme="https://www.pa55w0rd.online/tags/%E5%AE%8C%E6%95%B4%E5%AE%A1%E8%AE%A1/"/>
     
-    <category term="任务模板" scheme="http://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/"/>
+    <category term="任务模板" scheme="https://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E6%A8%A1%E6%9D%BF/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（11）：一直重连，最后查到了端口之外的登录冲突</title>
-    <link href="http://www.pa55w0rd.online/codescan-11/"/>
-    <id>http://www.pa55w0rd.online/codescan-11/</id>
+    <link href="https://www.pa55w0rd.online/codescan-11/"/>
+    <id>https://www.pa55w0rd.online/codescan-11/</id>
     <published>2026-11-16T03:49:00.000Z</published>
     <updated>2026-11-16T08:17:04.504Z</updated>
     
@@ -327,23 +327,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="故障排查" scheme="http://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
+    <category term="故障排查" scheme="https://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5/"/>
     
-    <category term="SSE" scheme="http://www.pa55w0rd.online/tags/SSE/"/>
+    <category term="SSE" scheme="https://www.pa55w0rd.online/tags/SSE/"/>
     
-    <category term="身份认证" scheme="http://www.pa55w0rd.online/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/"/>
+    <category term="身份认证" scheme="https://www.pa55w0rd.online/tags/%E8%BA%AB%E4%BB%BD%E8%AE%A4%E8%AF%81/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（12）：79 轮仍然超时：给循环、收尾与断点设边界</title>
-    <link href="http://www.pa55w0rd.online/codescan-12/"/>
-    <id>http://www.pa55w0rd.online/codescan-12/</id>
+    <link href="https://www.pa55w0rd.online/codescan-12/"/>
+    <id>https://www.pa55w0rd.online/codescan-12/</id>
     <published>2026-11-16T03:48:00.000Z</published>
     <updated>2026-11-16T08:17:44.600Z</updated>
     
@@ -354,23 +354,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="故障恢复" scheme="http://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/"/>
+    <category term="故障恢复" scheme="https://www.pa55w0rd.online/tags/%E6%95%85%E9%9A%9C%E6%81%A2%E5%A4%8D/"/>
     
-    <category term="运行预算" scheme="http://www.pa55w0rd.online/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/"/>
+    <category term="运行预算" scheme="https://www.pa55w0rd.online/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/"/>
     
-    <category term="长程任务" scheme="http://www.pa55w0rd.online/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/"/>
+    <category term="长程任务" scheme="https://www.pa55w0rd.online/tags/%E9%95%BF%E7%A8%8B%E4%BB%BB%E5%8A%A1/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（13）：模型说已经派发，程序必须看到实际动作</title>
-    <link href="http://www.pa55w0rd.online/codescan-13/"/>
-    <id>http://www.pa55w0rd.online/codescan-13/</id>
+    <link href="https://www.pa55w0rd.online/codescan-13/"/>
+    <id>https://www.pa55w0rd.online/codescan-13/</id>
     <published>2026-11-16T03:47:00.000Z</published>
     <updated>2026-11-16T08:18:05.170Z</updated>
     
@@ -381,23 +381,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="工具调用" scheme="http://www.pa55w0rd.online/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/"/>
+    <category term="工具调用" scheme="https://www.pa55w0rd.online/tags/%E5%B7%A5%E5%85%B7%E8%B0%83%E7%94%A8/"/>
     
-    <category term="Planner" scheme="http://www.pa55w0rd.online/tags/Planner/"/>
+    <category term="Planner" scheme="https://www.pa55w0rd.online/tags/Planner/"/>
     
-    <category term="任务状态" scheme="http://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/"/>
+    <category term="任务状态" scheme="https://www.pa55w0rd.online/tags/%E4%BB%BB%E5%8A%A1%E7%8A%B6%E6%80%81/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（14）：四个真实任务复盘：预算、失败保护与增量保存</title>
-    <link href="http://www.pa55w0rd.online/codescan-14/"/>
-    <id>http://www.pa55w0rd.online/codescan-14/</id>
+    <link href="https://www.pa55w0rd.online/codescan-14/"/>
+    <id>https://www.pa55w0rd.online/codescan-14/</id>
     <published>2026-11-16T03:46:00.000Z</published>
     <updated>2026-11-16T08:18:28.417Z</updated>
     
@@ -408,23 +408,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="运行复盘" scheme="http://www.pa55w0rd.online/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/"/>
+    <category term="运行复盘" scheme="https://www.pa55w0rd.online/tags/%E8%BF%90%E8%A1%8C%E5%A4%8D%E7%9B%98/"/>
     
-    <category term="增量保存" scheme="http://www.pa55w0rd.online/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/"/>
+    <category term="增量保存" scheme="https://www.pa55w0rd.online/tags/%E5%A2%9E%E9%87%8F%E4%BF%9D%E5%AD%98/"/>
     
-    <category term="可靠性" scheme="http://www.pa55w0rd.online/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
+    <category term="可靠性" scheme="https://www.pa55w0rd.online/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（15）：借鉴 Mantis：版本化批次、累计预算和导航</title>
-    <link href="http://www.pa55w0rd.online/codescan-15/"/>
-    <id>http://www.pa55w0rd.online/codescan-15/</id>
+    <link href="https://www.pa55w0rd.online/codescan-15/"/>
+    <id>https://www.pa55w0rd.online/codescan-15/</id>
     <published>2026-11-16T03:45:00.000Z</published>
     <updated>2026-11-16T08:19:23.520Z</updated>
     
@@ -435,23 +435,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="运行预算" scheme="http://www.pa55w0rd.online/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/"/>
+    <category term="运行预算" scheme="https://www.pa55w0rd.online/tags/%E8%BF%90%E8%A1%8C%E9%A2%84%E7%AE%97/"/>
     
-    <category term="Mantis" scheme="http://www.pa55w0rd.online/tags/Mantis/"/>
+    <category term="Mantis" scheme="https://www.pa55w0rd.online/tags/Mantis/"/>
     
-    <category term="审计评测" scheme="http://www.pa55w0rd.online/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/"/>
+    <category term="审计评测" scheme="https://www.pa55w0rd.online/tags/%E5%AE%A1%E8%AE%A1%E8%AF%84%E6%B5%8B/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（16）：清理 5 GB 中间产物，保住运行状态和证据</title>
-    <link href="http://www.pa55w0rd.online/codescan-16/"/>
-    <id>http://www.pa55w0rd.online/codescan-16/</id>
+    <link href="https://www.pa55w0rd.online/codescan-16/"/>
+    <id>https://www.pa55w0rd.online/codescan-16/</id>
     <published>2026-11-16T03:44:00.000Z</published>
     <updated>2026-11-16T08:20:24.723Z</updated>
     
@@ -462,23 +462,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="Docker" scheme="http://www.pa55w0rd.online/tags/Docker/"/>
+    <category term="Docker" scheme="https://www.pa55w0rd.online/tags/Docker/"/>
     
-    <category term="存储清理" scheme="http://www.pa55w0rd.online/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/"/>
+    <category term="存储清理" scheme="https://www.pa55w0rd.online/tags/%E5%AD%98%E5%82%A8%E6%B8%85%E7%90%86/"/>
     
-    <category term="工程维护" scheme="http://www.pa55w0rd.online/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/"/>
+    <category term="工程维护" scheme="https://www.pa55w0rd.online/tags/%E5%B7%A5%E7%A8%8B%E7%BB%B4%E6%8A%A4/"/>
     
   </entry>
   
   <entry>
     <title>CodeScan 实战（17）：下一步接入 SDL：从旁路 Hook 到可审计门禁</title>
-    <link href="http://www.pa55w0rd.online/codescan-17/"/>
-    <id>http://www.pa55w0rd.online/codescan-17/</id>
+    <link href="https://www.pa55w0rd.online/codescan-17/"/>
+    <id>https://www.pa55w0rd.online/codescan-17/</id>
     <published>2026-11-16T03:43:00.000Z</published>
     <updated>2026-11-16T08:21:22.498Z</updated>
     
@@ -489,23 +489,23 @@
     
     
     
-    <category term="开发安全" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
+    <category term="开发安全" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CodeScan实战" scheme="http://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
+    <category term="CodeScan实战" scheme="https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="SDL" scheme="http://www.pa55w0rd.online/tags/SDL/"/>
+    <category term="SDL" scheme="https://www.pa55w0rd.online/tags/SDL/"/>
     
-    <category term="DevSecOps" scheme="http://www.pa55w0rd.online/tags/DevSecOps/"/>
+    <category term="DevSecOps" scheme="https://www.pa55w0rd.online/tags/DevSecOps/"/>
     
-    <category term="CI-CD" scheme="http://www.pa55w0rd.online/tags/CI-CD/"/>
+    <category term="CI-CD" scheme="https://www.pa55w0rd.online/tags/CI-CD/"/>
     
   </entry>
   
   <entry>
     <title>接上篇：我是怎么把ChatGPT接入微信和微信公众号的</title>
-    <link href="http://www.pa55w0rd.online/wechat-chatgpt-2/"/>
-    <id>http://www.pa55w0rd.online/wechat-chatgpt-2/</id>
+    <link href="https://www.pa55w0rd.online/wechat-chatgpt-2/"/>
+    <id>https://www.pa55w0rd.online/wechat-chatgpt-2/</id>
     <published>2023-08-25T09:33:23.000Z</published>
     <updated>2026-03-24T07:59:41.313Z</updated>
     
@@ -516,21 +516,21 @@
     
     
     
-    <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
+    <category term="note" scheme="https://www.pa55w0rd.online/categories/note/"/>
     
     
-    <category term="ChatGPT" scheme="http://www.pa55w0rd.online/tags/ChatGPT/"/>
+    <category term="ChatGPT" scheme="https://www.pa55w0rd.online/tags/ChatGPT/"/>
     
-    <category term="微信公众号" scheme="http://www.pa55w0rd.online/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+    <category term="微信公众号" scheme="https://www.pa55w0rd.online/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
     
-    <category term="GPT-4" scheme="http://www.pa55w0rd.online/tags/GPT-4/"/>
+    <category term="GPT-4" scheme="https://www.pa55w0rd.online/tags/GPT-4/"/>
     
   </entry>
   
   <entry>
     <title>在微信公众号中接入ChatGPT（支持GPT-4)</title>
-    <link href="http://www.pa55w0rd.online/wechatmp-chatgpt/"/>
-    <id>http://www.pa55w0rd.online/wechatmp-chatgpt/</id>
+    <link href="https://www.pa55w0rd.online/wechatmp-chatgpt/"/>
+    <id>https://www.pa55w0rd.online/wechatmp-chatgpt/</id>
     <published>2023-08-24T09:17:33.000Z</published>
     <updated>2026-03-24T07:59:41.314Z</updated>
     
@@ -541,23 +541,23 @@
     
     
     
-    <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
+    <category term="note" scheme="https://www.pa55w0rd.online/categories/note/"/>
     
     
-    <category term="ChatGPT" scheme="http://www.pa55w0rd.online/tags/ChatGPT/"/>
+    <category term="ChatGPT" scheme="https://www.pa55w0rd.online/tags/ChatGPT/"/>
     
-    <category term="微信公众号" scheme="http://www.pa55w0rd.online/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
+    <category term="微信公众号" scheme="https://www.pa55w0rd.online/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/"/>
     
-    <category term="GPT-4" scheme="http://www.pa55w0rd.online/tags/GPT-4/"/>
+    <category term="GPT-4" scheme="https://www.pa55w0rd.online/tags/GPT-4/"/>
     
-    <category term="私信互动" scheme="http://www.pa55w0rd.online/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/"/>
+    <category term="私信互动" scheme="https://www.pa55w0rd.online/tags/%E7%A7%81%E4%BF%A1%E4%BA%92%E5%8A%A8/"/>
     
   </entry>
   
   <entry>
     <title>通过宜搭流程表单完成JumpServer自动化授权</title>
-    <link href="http://www.pa55w0rd.online/jumpserver-yida/"/>
-    <id>http://www.pa55w0rd.online/jumpserver-yida/</id>
+    <link href="https://www.pa55w0rd.online/jumpserver-yida/"/>
+    <id>https://www.pa55w0rd.online/jumpserver-yida/</id>
     <published>2022-03-24T05:52:35.000Z</published>
     <updated>2026-03-24T07:59:41.274Z</updated>
     
@@ -568,17 +568,17 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="运维安全" scheme="http://www.pa55w0rd.online/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/"/>
+    <category term="运维安全" scheme="https://www.pa55w0rd.online/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
   <entry>
     <title>JumpServer堡垒机部署与运营</title>
-    <link href="http://www.pa55w0rd.online/jumpserver/"/>
-    <id>http://www.pa55w0rd.online/jumpserver/</id>
+    <link href="https://www.pa55w0rd.online/jumpserver/"/>
+    <id>https://www.pa55w0rd.online/jumpserver/</id>
     <published>2022-03-24T05:52:20.000Z</published>
     <updated>2026-03-24T07:59:41.274Z</updated>
     
@@ -589,17 +589,17 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="运维安全" scheme="http://www.pa55w0rd.online/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/"/>
+    <category term="运维安全" scheme="https://www.pa55w0rd.online/tags/%E8%BF%90%E7%BB%B4%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
   <entry>
     <title>jetbrains产品免费食用方法-_-</title>
-    <link href="http://www.pa55w0rd.online/jetbrains-use/"/>
-    <id>http://www.pa55w0rd.online/jetbrains-use/</id>
+    <link href="https://www.pa55w0rd.online/jetbrains-use/"/>
+    <id>https://www.pa55w0rd.online/jetbrains-use/</id>
     <published>2022-03-17T02:35:30.000Z</published>
     <updated>2026-03-24T07:59:41.272Z</updated>
     
@@ -610,17 +610,17 @@
     
     
     
-    <category term="note" scheme="http://www.pa55w0rd.online/categories/note/"/>
+    <category term="note" scheme="https://www.pa55w0rd.online/categories/note/"/>
     
     
-    <category term="工具使用" scheme="http://www.pa55w0rd.online/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    <category term="工具使用" scheme="https://www.pa55w0rd.online/tags/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
     
   </entry>
   
   <entry>
     <title>SPA &amp; fwknop &amp; SDP &amp; Pomerium &amp; IAP &amp; Traefik &amp; KeyCloak &amp; Casbin &amp; ORY Oathkeeper</title>
-    <link href="http://www.pa55w0rd.online/zer-trust-security-model/"/>
-    <id>http://www.pa55w0rd.online/zer-trust-security-model/</id>
+    <link href="https://www.pa55w0rd.online/zer-trust-security-model/"/>
+    <id>https://www.pa55w0rd.online/zer-trust-security-model/</id>
     <published>2022-03-10T05:49:02.000Z</published>
     <updated>2026-03-24T07:59:41.321Z</updated>
     
@@ -631,21 +631,21 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="零信任" scheme="http://www.pa55w0rd.online/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/"/>
+    <category term="零信任" scheme="https://www.pa55w0rd.online/tags/%E9%9B%B6%E4%BF%A1%E4%BB%BB/"/>
     
-    <category term="zero-trust" scheme="http://www.pa55w0rd.online/tags/zero-trust/"/>
+    <category term="zero-trust" scheme="https://www.pa55w0rd.online/tags/zero-trust/"/>
     
-    <category term="iam" scheme="http://www.pa55w0rd.online/tags/iam/"/>
+    <category term="iam" scheme="https://www.pa55w0rd.online/tags/iam/"/>
     
   </entry>
   
   <entry>
     <title>OpenVPN + Ldap + OTP</title>
-    <link href="http://www.pa55w0rd.online/openvpn/"/>
-    <id>http://www.pa55w0rd.online/openvpn/</id>
+    <link href="https://www.pa55w0rd.online/openvpn/"/>
+    <id>https://www.pa55w0rd.online/openvpn/</id>
     <published>2022-03-03T09:55:02.000Z</published>
     <updated>2026-03-24T07:59:41.292Z</updated>
     
@@ -656,17 +656,17 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="安全防护" scheme="http://www.pa55w0rd.online/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/"/>
+    <category term="安全防护" scheme="https://www.pa55w0rd.online/tags/%E5%AE%89%E5%85%A8%E9%98%B2%E6%8A%A4/"/>
     
   </entry>
   
   <entry>
     <title>博客添加威胁情报播报模块</title>
-    <link href="http://www.pa55w0rd.online/threat-broadcast-post/"/>
-    <id>http://www.pa55w0rd.online/threat-broadcast-post/</id>
+    <link href="https://www.pa55w0rd.online/threat-broadcast-post/"/>
+    <id>https://www.pa55w0rd.online/threat-broadcast-post/</id>
     <published>2021-12-24T05:47:09.000Z</published>
     <updated>2026-03-24T07:59:41.306Z</updated>
     
@@ -677,17 +677,17 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="威胁情报" scheme="http://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/"/>
+    <category term="威胁情报" scheme="https://www.pa55w0rd.online/tags/%E5%A8%81%E8%83%81%E6%83%85%E6%8A%A5/"/>
     
   </entry>
   
   <entry>
     <title>Log4j CVE-2021-45046 复现</title>
-    <link href="http://www.pa55w0rd.online/log4j/"/>
-    <id>http://www.pa55w0rd.online/log4j/</id>
+    <link href="https://www.pa55w0rd.online/log4j/"/>
+    <id>https://www.pa55w0rd.online/log4j/</id>
     <published>2021-12-17T08:33:07.000Z</published>
     <updated>2026-03-24T07:59:41.280Z</updated>
     
@@ -698,17 +698,17 @@
     
     
     
-    <category term="应急响应" scheme="http://www.pa55w0rd.online/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
+    <category term="应急响应" scheme="https://www.pa55w0rd.online/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
     
     
-    <category term="应急响应" scheme="http://www.pa55w0rd.online/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
+    <category term="应急响应" scheme="https://www.pa55w0rd.online/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
     
   </entry>
   
   <entry>
     <title>CVE-2021-40444 复现</title>
-    <link href="http://www.pa55w0rd.online/CVE-2021-40444/"/>
-    <id>http://www.pa55w0rd.online/CVE-2021-40444/</id>
+    <link href="https://www.pa55w0rd.online/CVE-2021-40444/"/>
+    <id>https://www.pa55w0rd.online/CVE-2021-40444/</id>
     <published>2021-09-13T08:38:27.000Z</published>
     <updated>2026-03-24T07:59:41.255Z</updated>
     
@@ -719,17 +719,17 @@
     
     
     
-    <category term="应急响应" scheme="http://www.pa55w0rd.online/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
+    <category term="应急响应" scheme="https://www.pa55w0rd.online/categories/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
     
     
-    <category term="应急响应" scheme="http://www.pa55w0rd.online/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
+    <category term="应急响应" scheme="https://www.pa55w0rd.online/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/"/>
     
   </entry>
   
   <entry>
     <title>开源蜜罐HFish使用心得4 - 溯源2 fingerprintjs</title>
-    <link href="http://www.pa55w0rd.online/hfish-fingerprintjs/"/>
-    <id>http://www.pa55w0rd.online/hfish-fingerprintjs/</id>
+    <link href="https://www.pa55w0rd.online/hfish-fingerprintjs/"/>
+    <id>https://www.pa55w0rd.online/hfish-fingerprintjs/</id>
     <published>2021-08-30T10:11:26.000Z</published>
     <updated>2026-03-24T07:59:41.261Z</updated>
     
@@ -740,19 +740,19 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="蜜罐" scheme="http://www.pa55w0rd.online/tags/%E8%9C%9C%E7%BD%90/"/>
+    <category term="蜜罐" scheme="https://www.pa55w0rd.online/tags/%E8%9C%9C%E7%BD%90/"/>
     
-    <category term="开源" scheme="http://www.pa55w0rd.online/tags/%E5%BC%80%E6%BA%90/"/>
+    <category term="开源" scheme="https://www.pa55w0rd.online/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   
   <entry>
     <title>开源蜜罐HFish使用心得2 - 高交互Web蜜罐</title>
-    <link href="http://www.pa55w0rd.online/hfish-web/"/>
-    <id>http://www.pa55w0rd.online/hfish-web/</id>
+    <link href="https://www.pa55w0rd.online/hfish-web/"/>
+    <id>https://www.pa55w0rd.online/hfish-web/</id>
     <published>2021-08-19T01:57:14.000Z</published>
     <updated>2026-03-24T07:59:41.263Z</updated>
     
@@ -763,12 +763,12 @@
     
     
     
-    <category term="安全建设" scheme="http://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
+    <category term="安全建设" scheme="https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"/>
     
     
-    <category term="蜜罐" scheme="http://www.pa55w0rd.online/tags/%E8%9C%9C%E7%BD%90/"/>
+    <category term="蜜罐" scheme="https://www.pa55w0rd.online/tags/%E8%9C%9C%E7%BD%90/"/>
     
-    <category term="开源" scheme="http://www.pa55w0rd.online/tags/%E5%BC%80%E6%BA%90/"/>
+    <category term="开源" scheme="https://www.pa55w0rd.online/tags/%E5%BC%80%E6%BA%90/"/>
     
   </entry>
   

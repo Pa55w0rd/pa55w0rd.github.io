@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
   
 
@@ -12,7 +12,7 @@
 
   
 
-  <link rel="canonical" href="http://www.pa55w0rd.online/jumpserver/">
+  <link rel="canonical" href="https://www.pa55w0rd.online/jumpserver/">
 
 
   <meta name="keywords" content="运维安全,安全建设">
@@ -24,14 +24,15 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"JumpServer堡垒机部署与运营","description":"从应用安全，做成运维安全了，把最近做的东西总结一下。为啥需要堡垒机就不用多说了，服务器管理存在风险（ 多云导致服务器分散、账号混乱定位不明、权限粗放资源滥用、误操作、审计不严取证困难、等保合规要求等），访问服务器存在安全隐患（直接对公网开放...","url":"http://www.pa55w0rd.online/jumpserver/","datePublished":"2022-03-24T05:52:20.000Z","dateModified":"2026-03-24T07:59:41.274Z","author":{"@type":"Person","name":"Pa55w0rd"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"http://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"http://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"http://www.pa55w0rd.online/jumpserver/"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/jumpserver/#article","headline":"JumpServer堡垒机部署与运营","description":"从应用安全，做成运维安全了，把最近做的东西总结一下。为啥需要堡垒机就不用多说了，服务器管理存在风险（ 多云导致服务器分散、账号混乱定位不明、权限粗放资源滥用、误操作、审计不严取证困难、等保合规要求等），访问服务器存在安全隐患（直接对公网开放...","url":"https://www.pa55w0rd.online/jumpserver/","datePublished":"2022-03-24T05:52:20.000Z","dateModified":"2026-03-24T07:59:41.274Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/jumpserver/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"安全建设","item":"https://www.pa55w0rd.online/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/"},{"@type":"ListItem","position":3,"name":"JumpServer堡垒机部署与运营","item":"https://www.pa55w0rd.online/jumpserver/"}]}</script>
 
 
   
   <meta name="description" content="从应用安全，做成运维安全了，把最近做的东西总结一下。为啥需要堡垒机就不用多说了，服务器管理存在风险（ 多云导致服务器分散、账号混乱定位不明、权限粗放资源滥用、误操作、审计不严取证困难、等保合规要求等），访问服务器存在安全隐患（直接对公网开放...">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JumpServer堡垒机部署与运营">
-<meta property="og:url" content="http://www.pa55w0rd.online/jumpserver/">
+<meta property="og:url" content="https://www.pa55w0rd.online/jumpserver/">
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="从应用安全，做成运维安全了，把最近做的东西总结一下。为啥需要堡垒机就不用多说了，服务器管理存在风险（ 多云导致服务器分散、账号混乱定位不明、权限粗放资源滥用、误操作、审计不严取证困难、等保合规要求等），访问服务器存在安全隐患（直接对公网开放...">
 <meta property="og:locale" content="zh_CN">
@@ -51,8 +52,6 @@
   
 
 
-  
-    <meta name="google-site-verification" content="google4b1aaf5aa71b9f3c.html" />
   
 
 
@@ -146,7 +145,7 @@ ga('send', 'pageview');
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">记录</a>
+          <a href="/" id="subtitle">代码审计、威胁建模与企业安全实践</a>
         </h2>
       
     </div>
@@ -229,6 +228,32 @@ ga('send', 'pageview');
       <header class="article-header">
 
         
+        <nav class="article-breadcrumb" aria-label="当前位置">
+          <ol>
+          
+            <li>
+              
+              <a href="/">首页</a>
+              
+            </li>
+          
+            <li>
+              
+              <a href="/categories/%E5%AE%89%E5%85%A8%E5%BB%BA%E8%AE%BE/">安全建设</a>
+              
+            </li>
+          
+            <li>
+              
+              <span aria-current="page">JumpServer堡垒机部署与运营</span>
+              
+            </li>
+          
+          </ol>
+        </nav>
+        
+
+        
   
     <h1 class="article-title" itemprop="name">
       <i class="fa fa-pencil-square-o  article-title-icon"></i>JumpServer堡垒机部署与运营
@@ -307,11 +332,11 @@ ga('send', 'pageview');
 
     <footer class="article-footer">
       
-        <a data-url="http://www.pa55w0rd.online/jumpserver/" data-id="cmn8a4diu002s6oho1gmrc03d" class="article-share-link" data-share="baidu" data-title="JumpServer堡垒机部署与运营">分享到</a>
+        <a data-url="https://www.pa55w0rd.online/jumpserver/" data-id="cmn8a4diu002s6oho1gmrc03d" class="article-share-link" data-share="baidu" data-title="JumpServer堡垒机部署与运营">分享到</a>
       
 
       
-        <a href="http://www.pa55w0rd.online/jumpserver/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="https://www.pa55w0rd.online/jumpserver/#gitalk-container" class="article-comment-link">留言</a>
       
 
       
@@ -324,7 +349,7 @@ ga('send', 'pageview');
       <div class="post-copyright post-copyright--butterfly" role="note">
         
         <p><span class="post-copyright__label">文章作者：</span><span class="post-copyright__val">Pa55w0rd</span></p>
-        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="http://www.pa55w0rd.online/jumpserver/" rel="bookmark">http://www.pa55w0rd.online/jumpserver/</a></p>
+        <p><span class="post-copyright__label">文章链接：</span><a class="post-copyright__link" href="https://www.pa55w0rd.online/jumpserver/" rel="bookmark">https://www.pa55w0rd.online/jumpserver/</a></p>
         
         <p class="post-copyright__license"><span class="post-copyright__label">版权声明：</span><span class="post-copyright__lic">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 Pa55w0rd！</span></p>
         

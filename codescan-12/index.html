@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-12/#article","headline":"CodeScan 实战（12）：79 轮仍然超时：给循环、收尾与断点设边界","description":"79 轮、26 分 44 秒后仍然 timeout，为什么？拆开宿主运行预算、重复工具错误、有限收尾和持久化断点，避免只靠延长超时解决问题。","url":"https://www.pa55w0rd.online/codescan-12/","datePublished":"2026-11-16T03:48:00.000Z","dateModified":"2026-11-16T08:17:44.600Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-12/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-12/#article","headline":"CodeScan 实战（12）：79 轮仍然超时：给循环、收尾与断点设边界","description":"79 轮、26 分 44 秒后仍然 timeout，为什么？拆开宿主运行预算、重复工具错误、有限收尾和持久化断点，避免只靠延长超时解决问题。","url":"https://www.pa55w0rd.online/codescan-12/","datePublished":"2026-11-16T03:48:00.000Z","dateModified":"2026-11-17T03:21:10.419Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-12/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/12-budget-checkpoint-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（12）：79 轮仍然超时：给循环、收尾与断点设边界","item":"https://www.pa55w0rd.online/codescan-12/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="79 轮、26 分 44 秒后仍然 timeout，为什么？拆开宿主运行预算、重复工具错误、有限收尾和持久化断点，避免只靠延长超时解决问题。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/12-budget-checkpoint-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:48:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:17:44.600Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.419Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="故障恢复">
 <meta property="article:tag" content="运行预算">
 <meta property="article:tag" content="长程任务">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/12-budget-checkpoint-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -213,13 +218,13 @@ ga('send', 'pageview');
     
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span class="article-wordcount">约 1.1k 字</span>
-      <span class="article-reading-time">约 3 分钟读完</span>
+      <span class="article-wordcount">约 1.2k 字</span>
+      <span class="article-reading-time">约 4 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:17:44.600Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.419Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -325,11 +330,20 @@ ga('send', 'pageview');
 </tr>
 </tbody></table>
 <p>恢复沿用意图会话，但必须先读持久化断点。<code>exhausted</code> 不是 <code>completed</code>；如果阻塞没有修正，就不该用相同输入再跑一轮。</p>
+<!-- codescan-figure:12:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/12-budget-checkpoint-v1.svg" data-fancybox-type="image" title="运行预算耗尽后，先留下可恢复的交接">
+    <img src="/assets/codescan/12-budget-checkpoint-v1.webp" alt="Worker达到宿主预算后停止探索，有限收尾并保存证据和断点，意图耗尽后读取断点再恢复；耗尽不是完成。" width="1200" height="880" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 12｜预算耗尽、有限收尾、断点与后续恢复之间的关系。 <a href="/assets/codescan/12-budget-checkpoint-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:12:end -->
+
 <h2 id="0x06-累计输入不能简单当成独立源码体积"><a href="#0x06-累计输入不能简单当成独立源码体积" class="headerlink" title="0x06 累计输入不能简单当成独立源码体积"></a>0x06 累计输入不能简单当成独立源码体积</h2><p>多轮调用会反复携带相同上下文，累计输入因此可能达到数百万 token。缓存读取较高，说明其中有可复用部分，但缓存命中仍可能伴随排队、网络和调度成本。</p>
 <p>应结合第 07、09 篇的逐次记录，定位哪些调用又长又没有产生持久化进展。只提高 MaxDuration，可能只是让循环持续得更久。</p>
 <p>本轮使用模拟 Provider、实际 SDK 和隔离 PostgreSQL 验证重复错误、事实去重及断点流程，没有进行同一真实业务 79 轮的前后成本对照。因此不报告一个未经实测的“节省 token 百分比”。</p>
 <p><a href="/codescan-11/">上一篇：实时连接恢复</a> · <a href="/codescan-13/">下一篇：Planner 实际进展</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-12/">http://www.pa55w0rd.online/codescan-12/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-12/">https://www.pa55w0rd.online/codescan-12/</a> </p>
 
         
 <!--
@@ -337,61 +351,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 12 篇 </p>
-<p>一次 Worker 运行结束时，页面给出如下信息：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">终态：timeout</span><br><span class="line">已执行：79 轮</span><br><span class="line">运行耗时：26m44s</span><br><span class="line">输入 token：6,663,707</span><br><span class="line">输出 token：56,830</span><br><span class="line">缓存读取：5,491,703</span><br><span class="line">中断前最后一个工具：TodoWrite</span><br></pre></td></tr></table></figure>
-
-<p>这不是模型供应商宣布“审计完成”。<code>timeout</code> 来自宿主的单次运行预算：到达墙钟上限后中断探索，进入有限收尾，意图按耗尽处理。</p>
-<span id="more"></span>
-
-<h2 id="0x01-时间用完，和工作完成是两回事"><a href="#0x01-时间用完，和工作完成是两回事" class="headerlink" title="0x01 时间用完，和工作完成是两回事"></a>0x01 时间用完，和工作完成是两回事</h2><p>一次执行可以先有主要探索，再有正在退出的请求或工具，最后进入收尾。因此页面总耗时可能略大于配置的主预算。</p>
-<p>“已写回事实”说明部分持久化操作已经成功，不代表所有工具都有结果，也不代表已形成最终报告。反过来，“无文字总结”也不等于数据库里什么都没保存。</p>
-<p>恢复前应该先看 Worker 输出、事实和断点，确认上次到底留下了什么，而不是把整段原始目标原封不动再派一次。</p>
-<h2 id="0x02-高轮数里面有多少是在空转"><a href="#0x02-高轮数里面有多少是在空转" class="headerlink" title="0x02 高轮数里面有多少是在空转"></a>0x02 高轮数里面有多少是在空转</h2><p>这一轮排查发现，相关运行里 <code>save_finding_audit</code> 被调用 47 次，全部失败：46 次属于使用范围错误，另一次被中断。还出现同一份事实摘要反复保存的情况。</p>
-<p>这类问题不是简单的“模型推理需要更久”。工具本来就不适合承接那份材料，重复调用只会消耗上下文与时间。</p>
-<p>例如没有覆盖账本保存权限的 Worker，应该通过 <code>record_fact</code> 交接已检查范围、草稿路径和剩余项，由 Planner 合并。用漏洞保存工具承载任意 TODO 或覆盖清单，会持续被契约拒绝。</p>
-<h2 id="0x03-对重复错误设停止条件"><a href="#0x03-对重复错误设停止条件" class="headerlink" title="0x03 对重复错误设停止条件"></a>0x03 对重复错误设停止条件</h2><p>Worker 增加了重复工具错误保护：相同工具、相同参数、相同错误累计达到 3 次，下一次模型请求前停止本轮，保留 <code>repeated_tool_error</code> 原因。</p>
-<p>这里不能只看“工具失败三次”。修改参数后有意义地重试、随后成功，和原样循环需要区分。把所有失败一律累计，会过早终止正常排查。</p>
-<p>同一意图、相同证据内容的事实保存也做幂等处理；不同意图或新增证据仍然保留，不能为了压缩数量把有价值的关联删掉。</p>
-<h2 id="0x04-收尾不该变成第二轮探索"><a href="#0x04-收尾不该变成第二轮探索" class="headerlink" title="0x04 收尾不该变成第二轮探索"></a>0x04 收尾不该变成第二轮探索</h2><p>原先默认收尾最多还有 10 轮，这一轮收紧到 4 轮。明确管理员正数配置继续尊重，不悄悄覆盖。</p>
-<p>收尾阶段禁用 <code>TodoWrite</code> 以及 <code>Read</code>、<code>Grep</code>、<code>Glob</code>、<code>LS</code> 等继续探索的入口，让剩余预算用于保存已经知道的事实、证据和交接信息。</p>
-<p>这不表示所有工具都被粗暴打断后立刻丢弃结果，而是给“继续找新东西”和“保存已经找到的东西”划清预算边界。</p>
-<h2 id="0x05-断点要让下一次知道怎么继续"><a href="#0x05-断点要让下一次知道怎么继续" class="headerlink" title="0x05 断点要让下一次知道怎么继续"></a>0x05 断点要让下一次知道怎么继续</h2><p>有用的断点至少回答：</p>
-<table>
-<thead>
-<tr>
-<th>内容</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>已用预算、轮数与耗时</td>
-<td>判断是否需要缩小下一批范围</td>
-</tr>
-<tr>
-<td>有限的 TODO 摘要</td>
-<td>保存下一步，不复制整段对话</td>
-</tr>
-<tr>
-<td>持久化写入计数</td>
-<td>核对材料有没有真正落库</td>
-</tr>
-<tr>
-<td>最后工具与错误</td>
-<td>避免再次撞上同一契约问题</td>
-</tr>
-<tr>
-<td>已保存事实和证据引用</td>
-<td>让恢复基于实际材料继续</td>
-</tr>
-</tbody></table>
-<p>恢复沿用意图会话，但必须先读持久化断点。<code>exhausted</code> 不是 <code>completed</code>；如果阻塞没有修正，就不该用相同输入再跑一轮。</p>
-<h2 id="0x06-累计输入不能简单当成独立源码体积"><a href="#0x06-累计输入不能简单当成独立源码体积" class="headerlink" title="0x06 累计输入不能简单当成独立源码体积"></a>0x06 累计输入不能简单当成独立源码体积</h2><p>多轮调用会反复携带相同上下文，累计输入因此可能达到数百万 token。缓存读取较高，说明其中有可复用部分，但缓存命中仍可能伴随排队、网络和调度成本。</p>
-<p>应结合第 07、09 篇的逐次记录，定位哪些调用又长又没有产生持久化进展。只提高 MaxDuration，可能只是让循环持续得更久。</p>
-<p>本轮使用模拟 Provider、实际 SDK 和隔离 PostgreSQL 验证重复错误、事实去重及断点流程，没有进行同一真实业务 79 轮的前后成本对照。因此不报告一个未经实测的“节省 token 百分比”。</p>
-<p><a href="/codescan-11/">上一篇：实时连接恢复</a> · <a href="/codescan-13/">下一篇：Planner 实际进展</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-12/">http://www.pa55w0rd.online/codescan-12/</a> </p>
--->
+        -->
       
 
     </div>

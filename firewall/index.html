@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -381,113 +384,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <ul>
-<li>启动一个服务：</li>
-</ul>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="literal">start</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>关闭一个服务：</li>
-</ul>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重启一个服务：</li>
-</ul>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">restart</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>显示一个服务的状态：</li>
-</ul>
-<figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">status</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-<ul>
-<li>在开机时启用一个服务：</li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在开机时禁用一个服务：</li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看服务是否开机启动：</li>
-</ul>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="keyword">is</span>-enabled firewalld.service</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看已启动的服务列表：</li>
-</ul>
-<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">systemctl</span> <span class="built_in">list-unit-files|grep</span> <span class="string">enabled</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看启动失败的服务列表：</li>
-</ul>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="comment">--failed</span></span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>查看所有打开的端口：</li>
-</ul>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">firewall</span><span class="literal">-</span><span class="comment">cmd</span> <span class="literal">--</span><span class="comment">zone=public</span> <span class="literal">--</span><span class="comment">list</span><span class="literal">-</span><span class="comment">ports</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>更新防火墙规则：</li>
-</ul>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="comment">--reload</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看区域信息:</li>
-</ul>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --<span class="keyword">get</span>-active-zones</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>添加</li>
-</ul>
-<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">firewall</span><span class="literal">-</span><span class="comment">cmd</span> <span class="literal">--</span><span class="comment">zone=public</span> <span class="literal">--</span><span class="comment">add</span><span class="literal">-</span><span class="comment">port=8081/tcp</span> <span class="literal">--</span><span class="comment">permanent    	（</span><span class="literal">--</span><span class="comment">permanent永久生效，没有此参数重启后失效）</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>重新载入</li>
-</ul>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="comment">--reload</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看</li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="attribute">--zone</span>=public <span class="attribute">--query-port</span>=80/tcp</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除</li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="attribute">--zone</span>=public <span class="attribute">--remove-port</span>=80/tcp --permanent</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>添加防火墙规则（对指定IP开放指定端口）</li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent <span class="attribute">--add-rich-rule</span>=<span class="string">&quot;rule family=&quot;</span>ipv4&quot; source <span class="attribute">address</span>=<span class="string">&quot;192.168.142.166&quot;</span><span class="built_in"> port </span><span class="attribute">protocol</span>=<span class="string">&quot;tcp&quot;</span> <span class="attribute">port</span>=<span class="string">&quot;27017&quot;</span> accept/drop/reject<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>查看配置结果，验证配置</li>
-</ul>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="comment">--list-all</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>删除规则</li>
-</ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent <span class="attribute">--remove-rich-rule</span>=<span class="string">&quot;rule family=&quot;</span>ipv4&quot; source <span class="attribute">address</span>=<span class="string">&quot;192.168.142.166&quot;</span><span class="built_in"> port </span><span class="attribute">protocol</span>=<span class="string">&quot;tcp&quot;</span> <span class="attribute">port</span>=<span class="string">&quot;27017&quot;</span> accept<span class="string">&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-<p> <a href="http://www.pa55w0rd.online/firewall/">http://www.pa55w0rd.online/firewall/</a> </p>
--->
+        -->
       
 
     </div>

@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -303,35 +306,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="Centos-7-安装nmap-7-8"><a href="#Centos-7-安装nmap-7-8" class="headerlink" title="Centos 7 安装nmap 7.8"></a>Centos 7 安装nmap 7.8</h2><p>yum直接安装nmap为6.40版本，新版nmap为7.8</p>
-<p>yum info nmap</p>
-<p>直接使用rpm包安装最新版</p>
-<p><a target="_blank" rel="noopener" href="https://nmap.org/dist/">https://nmap.org/dist/</a> 下载</p>
-<p>rpm -vhU <a target="_blank" rel="noopener" href="https://nmap.org/dist/nmap-7.80-1.x86_64.rpm">https://nmap.org/dist/nmap-7.80-1.x86_64.rpm</a></p>
-<h2 id="centos-7-安装-mysql-8"><a href="#centos-7-安装-mysql-8" class="headerlink" title="centos 7 安装 mysql 8"></a>centos 7 安装 mysql 8</h2><p>下载mysql repo源并安装</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh http:<span class="regexp">//</span>dev.mysql.com<span class="regexp">/get/my</span>sql57-community-release-el7-<span class="number">9</span>.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>查看可用的mysql版本</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist <span class="keyword">all</span> | <span class="keyword">grep</span> mysql</span><br></pre></td></tr></table></figure>
-<p>修改源文件,禁用5.7,启用8.0</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vi <span class="regexp">/etc/yum</span>.repos.d/mysql-community.repo</span><br></pre></td></tr></table></figure>
-<p>把里面的8.0enabled改为1就可以了，其他的版本改为0</p>
-<p>修改完之后查看可用版本</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum repolist enabled | grep mysql </span></span><br><span class="line"><span class="attribute">mysql</span>-connectors-community/x86_64 MySQL Connectors Community                 <span class="number">131</span></span><br><span class="line"><span class="attribute">mysql</span>-tools-community/x86_64      MySQL Tools Community                      <span class="number">100</span></span><br><span class="line"><span class="attribute">mysql80</span>-community/x86_64          MySQL <span class="number">8</span>.<span class="number">0</span> Community Server                 <span class="number">145</span></span><br></pre></td></tr></table></figure>
-<p>8.0版本启用后,安装Mysql</p>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y mysql-community-<span class="keyword">server</span></span><br></pre></td></tr></table></figure>
-<p>启动，开机启动</p>
-<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">system</span>ctl start mysqld</span><br><span class="line"><span class="params">system</span>ctl enable mysqld</span><br><span class="line"><span class="params">system</span>ctl daemon-reload</span><br></pre></td></tr></table></figure>
-<p>查看随机生成的密码,注意记住密码</p>
-<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&#x27;temporary password&#x27;</span> /<span class="keyword">var</span>/<span class="built_in">log</span>/mysqld.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
-
-<p>修改root密码</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">USER</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p> <a href="http://www.pa55w0rd.online/note/">http://www.pa55w0rd.online/note/</a> </p>
--->
+        -->
       
 
     </div>

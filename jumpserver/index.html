@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -300,32 +303,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>从应用安全，做成运维安全了，把最近做的东西总结一下。为啥需要堡垒机就不用多说了，服务器管理存在风险（ 多云导致服务器分散、账号混乱定位不明、权限粗放资源滥用、误操作、审计不严取证困难、等保合规要求等），访问服务器存在安全隐患（直接对公网开放22和3389端口、办公网直连、服务器互联等），因此，部署实施堡垒机，利用堡垒机的4A能力（身份鉴别、授权控制、账号管理、安全审计）对特权账号及访问方式进行安全管控。未来所有运维人员需通过堡垒机访问被管控的服务器</p>
-<span id="more"></span>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官方文档比较完善，参考官方文档就可以了 <a target="_blank" rel="noopener" href="https://docs.jumpserver.org/zh/master/install/setup_by_fast/">https://docs.jumpserver.org/zh/master/install/setup_by_fast/</a></p>
-<h2 id="高可用"><a href="#高可用" class="headerlink" title="高可用"></a>高可用</h2><p>参考官方文档，负载均衡配置 <a target="_blank" rel="noopener" href="https://docs.jumpserver.org/zh/master/install/setup_by_lb/">https://docs.jumpserver.org/zh/master/install/setup_by_lb/</a></p>
-<p>我这里mysql&#x2F;redis使用了云rds和redis</p>
-<p>录像存储使用了云OSS，修改路径在会话管理 - 终端管理  - 存储配置  - 录像存储 - 添加 OSS配置，配置完成，更新全部</p>
-<p>负载均衡也使用了云SLB，后端部署了2个节点，节点的SECRET_KEY 和 BOOTSTRAP_TOKEN要保持一致，https也是在SLB上做的</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 记录 SECRET_KEY 和 BOOTSTRAP_TOKEN</span></span><br><span class="line">cat <span class="regexp">/opt/</span>jumpserver<span class="regexp">/config/</span>config.txt | egrep <span class="string">&quot;SECRET_KEY|BOOTSTRAP_TOKEN&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考迁移文档 <a target="_blank" rel="noopener" href="https://docs.jumpserver.org/zh/master/install/migration/%EF%BC%8C%E5%AE%9A%E6%9C%9F%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE%E5%BA%93">https://docs.jumpserver.org/zh/master/install/migration/，定期备份数据库</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt/jumpserver-installer-vx/</span><br><span class="line">./jmsctl.sh backup_db</span><br></pre></td></tr></table></figure>
-<h2 id="运营"><a href="#运营" class="headerlink" title="运营"></a>运营</h2><p>管理文档也很详细 <a target="_blank" rel="noopener" href="https://docs.jumpserver.org/zh/master/admin-guide/quick_start/">https://docs.jumpserver.org/zh/master/admin-guide/quick_start/</a></p>
-<p>这里记录一下使用技巧</p>
-<h3 id="身份认证源接入"><a href="#身份认证源接入" class="headerlink" title="身份认证源接入"></a>身份认证源接入</h3><p>这里通过AD做认证，做LDAP配置，也可以通过标准的OIDC&#x2F;SAML协议对接SSO</p>
-<h3 id="安全设置"><a href="#安全设置" class="headerlink" title="安全设置"></a>安全设置</h3><p>配置连接超时、水印、MFA、登陆验证码、异地登陆保护，如果启用钉钉认证&#x2F;配置邮箱，异地登陆提醒会发送到钉钉工作通知&#x2F;邮箱</p>
-<h3 id="资产管理"><a href="#资产管理" class="headerlink" title="资产管理"></a>资产管理</h3><p>我们的资产比较混乱了，包括某个公有云上的多个账号，本地机房。资产列表没有细分，根据云账号去创建资产节点</p>
-<p>其中多个云账号可通过创建对等连接打通网络，本地机房通过网域网关的方式打通（SSH代理）</p>
-<p>因为没有cmdb系统，公有云资产可以通过jms接口自动同步，本地机房资产只能手动维护了，本地机房资产维护还是有点乱，没有单一来源，之前开发自维护，根据业务需求添加</p>
-<p>危险命令关联资产或者系统用户</p>
-<h3 id="授权（前期手工）"><a href="#授权（前期手工）" class="headerlink" title="授权（前期手工）"></a>授权（前期手工）</h3><p>通过宜搭设计审批表单，因为第一次使用，没有考虑自动化</p>
-<p>首先通过LDAP同步用户，根据业务线去创建用户组，然后对用户组进行资产授权</p>
-<h3 id="授权（自动化）"><a href="#授权（自动化）" class="headerlink" title="授权（自动化）"></a>授权（自动化）</h3><p>翻翻宜搭手册，翻翻jms接口文档</p>
-<h3 id="22和3389端口收敛"><a href="#22和3389端口收敛" class="headerlink" title="22和3389端口收敛"></a>22和3389端口收敛</h3><p>本地机房和办公网隔离，只允许堡垒机跳板机（网域网关）访问</p>
-<p>公有云只允许堡垒机和devops系统访问，禁止服务器之间互联</p>
-<p> <a href="http://www.pa55w0rd.online/jumpserver/">http://www.pa55w0rd.online/jumpserver/</a> </p>
--->
+        -->
       
 
     </div>

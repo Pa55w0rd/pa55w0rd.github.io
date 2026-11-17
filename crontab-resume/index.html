@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -294,26 +297,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="事故原因分析："><a href="#事故原因分析：" class="headerlink" title="事故原因分析："></a>事故原因分析：</h2><p>回忆自己操作过程中，未进行crontab的清空，网上查了下原因，并且复现了下。可能原因如下：</p>
-<p>如果在SSH远程终端中敲下“crontab”命令之后，远程连接被一些原因（比如 糟糕的网络，程序异常）意外终止了，那么Crontab计划任务就会被操作系统所清空。听起来很不可思议，但是经过在虚拟机上的多次测试，它确确实实的发生了。测试方式为 用SecureCRT开一个SSH窗口，然后敲下命令“crontab”，接着在“任务管理器”中直接杀掉SecureCRT进程，再通过另外一个SSH窗口执行“crontab -l”，就会发现，所有的计划任务都不存在了。在今天事故发生的时间点上，就有人在服务器上遇到了这样的情况。</p>
-<span id="more"></span>
-
-<h2 id="恢复操作"><a href="#恢复操作" class="headerlink" title="恢复操作"></a>恢复操作</h2><ol>
-<li>获取完整日志和cmd日志。<br>从日志中恢复出一份最近几天的完整crontab 运行日志和cmd日志，并存储，用于之后完善和核准例行时间。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/cron | grep -i <span class="string">&quot;`which cron`&quot;</span> &gt; ./all_temp</span><br><span class="line"><span class="built_in">cat</span>  ./all_temp | grep -v <span class="string">&quot;&lt;command&gt;” &gt; ./cmd_temp</span></span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>获取所有crontab指令。<br>从日志中恢复一份去重的crontab log。【相当于所有的crontab命令】</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F<span class="string">&#x27;(&#x27;</span> <span class="string">&#x27;/crond/&#123;a[$3]=$0&#125;END&#123;for(i in a)print a[i]&#125;&#x27;</span> /var/log/cron* &gt;crontab.txt</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>手工恢复：<br>从crontab.txt 中找出每一条指令，然后在cmd_temp 中匹配运行次数，重新编辑crontab 添加</li>
-</ol>
-<h2 id="反思工作"><a href="#反思工作" class="headerlink" title="反思工作"></a>反思工作</h2><p>防止类似事件再次发生，写个简单shell脚本，每天对crontab进行备份，备份最近15天的数据。过期清除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># 每天对crontab 进行备份 ，同时删除最近15天的数据</span></span><br><span class="line">DATE=$(<span class="built_in">date</span> +%Y%m%d)</span><br><span class="line"></span><br><span class="line">crontab -l &gt; /home/work/bak/crontab_<span class="variable">$DATE</span>.bak</span><br><span class="line">find /home/work/bak/ -mtime +15 -name <span class="string">&#x27;*.bak&#x27;</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="http://www.pa55w0rd.online/crontab-resume/">http://www.pa55w0rd.online/crontab-resume/</a> </p>
--->
+        -->
       
 
     </div>

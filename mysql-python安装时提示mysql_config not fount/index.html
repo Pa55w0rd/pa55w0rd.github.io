@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -284,16 +287,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>mysql-python安装时提示mysql_config not found</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># pip install MySQL-<span class="keyword">python</span></span><br><span class="line">Collecting MySQL-<span class="keyword">python</span></span><br><span class="line">  Using cached https://<span class="keyword">files</span>.pythonhosted.org/packages/a5/e9/<span class="number">51</span>b544da85a36a68debe7a7091f068d802fc515a3a202652828c73453cad/MySQL-<span class="keyword">python</span>-<span class="number">1.2</span>.<span class="number">5</span>.zip</span><br><span class="line">    Complete output from <span class="keyword">command</span> <span class="keyword">python</span> setup.<span class="keyword">py</span> egg_info:</span><br><span class="line">    <span class="keyword">sh</span>: <span class="number">1</span>: mysql_config: not found</span><br><span class="line">    Traceback (most recent <span class="keyword">call</span> <span class="keyword">last</span>):</span><br><span class="line">      File <span class="string">&quot;&lt;string&gt;&quot;</span>, <span class="built_in">line</span> <span class="number">1</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">      File <span class="string">&quot;/tmp/pip-build-QORDfG/MySQL-python/setup.py&quot;</span>, <span class="built_in">line</span> <span class="number">17</span>, in <span class="symbol">&lt;module&gt;</span></span><br><span class="line">        metadata, <span class="keyword">options</span> = get_config()</span><br><span class="line">      File <span class="string">&quot;setup_posix.py&quot;</span>, <span class="built_in">line</span> <span class="number">43</span>, in get_config</span><br><span class="line">        libs = mysql_config(<span class="string">&quot;libs_r&quot;</span>)</span><br><span class="line">      File <span class="string">&quot;setup_posix.py&quot;</span>, <span class="built_in">line</span> <span class="number">25</span>, in mysql_config</span><br><span class="line">        raise EnvironmentError(<span class="string">&quot;%s not found&quot;</span> % (mysql_config.path,))</span><br><span class="line">    EnvironmentError: mysql_config not found</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<h2 id="0x01-解决方法"><a href="#0x01-解决方法" class="headerlink" title="0x01 解决方法"></a>0x01 解决方法</h2><p>报错的原因是没有安装</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">centos <span class="number">7</span></span><br><span class="line">yum <span class="keyword">install</span> mysql-devel</span><br><span class="line">ubuntu</span><br><span class="line">apt-get <span class="keyword">install</span> libmysqlclient-dev</span><br></pre></td></tr></table></figure>
-<p>再执行pip install MySQL-python 安装成功</p>
-<p> [<a href="http://www.pa55w0rd.online/mysql-python%E5%AE%89%E8%A3%85%E6%97%B6%E6%8F%90%E7%A4%BAmysql_config">http://www.pa55w0rd.online/mysql-python安装时提示mysql_config</a> not fount&#x2F;](<a href="http://www.pa55w0rd.online/mysql-python%E5%AE%89%E8%A3%85%E6%97%B6%E6%8F%90%E7%A4%BAmysql_config">http://www.pa55w0rd.online/mysql-python安装时提示mysql_config</a> not fount&#x2F;) </p>
--->
+        -->
       
 
     </div>

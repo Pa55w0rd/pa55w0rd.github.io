@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -361,93 +364,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>相对于awvs和netsparker的IAST，百度iast为主动型插桩技术，无需人工配置任务及代理等，由agent采集请求及hook点信息，自动选择扫描漏洞类型，极大的增加覆盖率和效率，减少脏数据产生</p>
-<p>主动型扫描，不适用于参数加密、编码、防重放等场景</p>
-<p>管理后台部署参考 <a href="https://www.pa55w0rd.online/openrasp-web/">OpenRASP 部署</a></p>
-<span id="more"></span>
-
-<h2 id="0x01-开启灰盒扫描"><a href="#0x01-开启灰盒扫描" class="headerlink" title="0x01 开启灰盒扫描"></a>0x01 开启灰盒扫描</h2><p>参考 <a target="_blank" rel="noopener" href="https://rasp.baidu.com/doc/install/iast.html">安装灰盒扫描工具</a></p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>IAST</th>
-<th>SAST</th>
-<th>DAST</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>测试覆盖度</td>
-<td>高，由功能测试覆盖度保障</td>
-<td>高</td>
-<td>低</td>
-</tr>
-<tr>
-<td>检出率</td>
-<td>高</td>
-<td>高</td>
-<td>中</td>
-</tr>
-<tr>
-<td>误报率</td>
-<td>低</td>
-<td>高，需要编写规则</td>
-<td>低</td>
-</tr>
-<tr>
-<td>扫描效率</td>
-<td>准实时检测</td>
-<td>非实时，与程序复杂度、代码量相关</td>
-<td>非实时，程序越复杂，安全测试用例就越多</td>
-</tr>
-<tr>
-<td>扫描报告</td>
-<td>包含动态数据流、请求响应、应用代码信息</td>
-<td>只有静态代码信息</td>
-<td>只有请求和响应信息</td>
-</tr>
-<tr>
-<td>并发检测</td>
-<td>资源消耗分布端上，可支持上百个任务</td>
-<td>CPU 消耗较大</td>
-<td>网络资源消耗</td>
-</tr>
-<tr>
-<td>语言支持</td>
-<td>区分不同语</td>
-<td>区分不同语</td>
-<td>不区分语言</td>
-</tr>
-<tr>
-<td>框架支持</td>
-<td>一定程度区分</td>
-<td>一定程度区分</td>
-<td>不区分框架</td>
-</tr>
-<tr>
-<td>使用风险</td>
-<td>无</td>
-<td>无</td>
-<td>脏数据、大流量</td>
-</tr>
-<tr>
-<td>使用成本</td>
-<td>低，基本没有误报</td>
-<td>高，人工排查误报</td>
-<td>低</td>
-</tr>
-<tr>
-<td>开发流程集成度</td>
-<td>无缝集成开发和测试阶段，零成本完成</td>
-<td>安全测试</td>
-<td>开发阶段，成本较高	测试阶段，成本较高</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>通过综合对比，IAST 不仅解决了传统 DAST 无法精确定位漏洞位置的问题，还有着比传统 SAST 技术低得多的误报率。在脏数据处理、对系统稳定性影响更小，这里对IAST产品做调研</p>
-</blockquote>
-<p> <a href="http://www.pa55w0rd.online/openrasp-iast/">http://www.pa55w0rd.online/openrasp-iast/</a> </p>
--->
+        -->
       
 
     </div>

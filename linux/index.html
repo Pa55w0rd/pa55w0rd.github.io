@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -420,152 +423,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>看到什么记什么，没有顺序</p>
-<span id="more"></span>
-<h2 id="Linux各个目录的作用及内容"><a href="#Linux各个目录的作用及内容" class="headerlink" title="Linux各个目录的作用及内容"></a>Linux各个目录的作用及内容</h2><p><code>/</code></p>
-<p>&#x2F;处于Linux文件系统树形结构的最顶端，它是Linux文件系统的入口，所有的目录、文件、设备都在&#x2F;之下。</p>
-<p><code>/bin</code></p>
-<p>该目录存放着系统最常用的最重要的命令，相当于DOS下的内部命令，只不过它们是以独立的文件形式存在。比如：ls、cp、mkdir等命令。这个目录中的文件都是可执行的并且是普通用户都可以使用的命令。作为系统最基础的命令都放在这里。</p>
-<p><code>/usr</code></p>
-<p>该目录是系统存放程序的地方，比如普通命令、帮助文件、安装的软件等。这个目录下有很多的文件和目录。当我们安装一个Linux发行版官方提供的软件包时，大多安装在这里。当有涉及服务器的配置文件时，会把配置文件安装在&#x2F;etc目录中。&#x2F;usr目录下包括涉及字体目录&#x2F;usr&#x2F;share&#x2F;fonts、帮助目录&#x2F;usr&#x2F;share&#x2F;man或&#x2F;usr&#x2F;share&#x2F;doc等。</p>
-<p><code>/var</code></p>
-<p>该目录的内容是经常变动的，&#x2F;var下有&#x2F;var&#x2F;log目录用来存放系统日志的目录。&#x2F;var&#x2F;www目录用来定义Apache服务器站点存放目录。&#x2F;var&#x2F;lib用来存放一些库文件。</p>
-<p><code>/sbin</code></p>
-<p>大多数涉及系统管理的命令都存放在该目录中，它是超级权限用户root的可执行命令存放地，普通用户无权限执行这个目录下的命令，凡是目录sbin中包含的命令都是root权限才能执行的。</p>
-<p><code>/root</code></p>
-<p>Linux超级权限用户(系统管理员)root的主目录。</p>
-<p><code>/home</code></p>
-<p>普通用户的主目录都默认存放在该目录中，比如：有个用户叫wang，那它的主目录就是&#x2F;home&#x2F;wang，也可以用~wang表示。</p>
-<p><code>/etc</code></p>
-<p>该目录是系统配置文件的所在地，一些服务器的配置文件也在这里，比如：用户帐号及密码配置文件等。</p>
-<p><code>/boot</code></p>
-<p>Linux的内核及引导系统的程序所需要的文件都存放在该目录中，比如vmlinuz、initrd.img等文件都位于这个目录中。在一般情况下，GRUB或LILO系统引导管理器在这个目录中。</p>
-<p><code>/opt</code></p>
-<p>该目录是可选的软件包安装目录，有些软件包我们可以将它安装在该目录中。</p>
-<p><code>/tmp</code></p>
-<p>该目录用于存放临时文件，有时用户运行程序的时候，会产生一些临时文件。&#x2F;tmp就是用来存放临时文件的。&#x2F;var&#x2F;tmp目录和该目录的作用是相似的。</p>
-<p><code>/lost+found</code></p>
-<p>在ext2或ext3文件系统中，当系统意外崩溃或机器意外关机，而产生的一些文件碎片就存放在该目录中。当系统启动在过程中fsck工具会检查这里，并修复已经损坏的文件系统。 有时系统发生问题，有很多的文件被移到这个目录中，可能要用手工的方式来修复，或移到文件原来的位置上。</p>
-<p><code>/lib</code></p>
-<p>该目录用于存放库文件，这个目录里存放着系统最基本的共享库，其作用类似于Windows里的.dll文件。几乎所有的应用程序都须要用到这些共享库。</p>
-<p><code>/mnt</code></p>
-<p>该目录是用于存放挂载储存设备的挂载目录的，系统提供这个目录是让用户临时挂载别的文件系统，比如有cdrom等目录。</p>
-<p><code>/proc</code></p>
-<p>操作系统运行时，进程（正在运行中的程序）信息及内核信息（比如cpu、硬盘分区、内存信息等）存放在这里。&#x2F;proc目录是伪装的文件系统proc的挂载目录，proc并不是真正的文件系统。因此，这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。也就是说，这个目录的内容不在硬盘上而是在内存里。</p>
-<ul>
-<li>cpuinfo 主机CPU 信息</li>
-<li>filesystems 文件系统信息</li>
-<li>meninfo 主机内存信息</li>
-<li>version Linux 内存版本信息</li>
-<li>diskstatus 磁盘负载情况</li>
-</ul>
-<p><code>/misc</code></p>
-<p>该目录可以用来存放杂项文件或目录，即那些用途或含义不明确的文件或目录可以存放在该目录下。</p>
-<p><code>/media</code></p>
-<p>即插即用型存储设备的挂载点自动在该目录下创建。比如USB盘系统自动挂载后，会在这个目录下产生一个目录；CDROM&#x2F;DVD自动挂载后，也会在这个目录中创建一个目录，类似于cdrom这个目录。该目录只有在最新的发行套件上才有。</p>
-<h2 id="终端快捷键"><a href="#终端快捷键" class="headerlink" title="终端快捷键"></a>终端快捷键</h2><p>Ctrl + s    暂定当前程序，暂停后按下任意键恢复运行<br>Ctrl + z    将当前程序放到后台运行，恢复到前台为命令fg</p>
-<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><ul>
-<li><p>搜索    &#x2F;admin    通过n或N进行上一个或下一个匹配</p>
-</li>
-<li><p>G移动到末尾，gg移动到开头</p>
-</li>
-<li><p>多行操作 ctrl+v进入vb模式<br />通过移动光标选择要注释的行，按大写的I，进入insert模式进行操作 <br />最后按两次esc ，如果取消按d</p>
-</li>
-<li><p>多行操作，删除空格，ctrl+v进入vb模式，通过光标选择，按x删除</p>
-</li>
-</ul>
-<hr>
-<h2 id="firewall"><a href="#firewall" class="headerlink" title="firewall"></a>firewall</h2><ul>
-<li><p>添加<br><br>firewall-cmd –zone&#x3D;public –add-port&#x3D;27017&#x2F;tcp –permanent    （–permanent永久生效，没有此参数重启后失效）</p>
-</li>
-<li><p>删除<br>firewall-cmd –zone&#x3D;public –remove-port&#x3D;80&#x2F;tcp –permanent</p>
-</li>
-<li><p>重新载入<br><br>firewall-cmd –reload</p>
-</li>
-<li><p>查看所有打开的端口<br> firewall-cmd –zone&#x3D;public –list-ports</p>
-</li>
-<li><p>添加防火墙规则（对指定IP开放指定端口）<br>firewall-cmd –permanent –add-rich-rule&#x3D;”rule family&#x3D;”ipv4” source address&#x3D;”192.168.142.166” port protocol&#x3D;”tcp” port&#x3D;”27017” accept&#x2F;drop&#x2F;reject”</p>
-</li>
-<li><p>查看配置结果，验证配置<br>firewall-cmd –list-all</p>
-</li>
-<li><p>删除规则<br>firewall-cmd –permanent –remove-rich-rule&#x3D;”rule family&#x3D;”ipv4” source address&#x3D;”192.168.142.166” port protocol&#x3D;”tcp” port&#x3D;”27017” accept”</p>
-</li>
-</ul>
-<h2 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h2><ul>
-<li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
-<li><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的<ul>
-<li><p>管理员账户的 role是 userAdminAnyDatabase，‘userAdmin’代表用户管理身份，’AnyDatabase’ 代表可以管理任何数据库。</p>
-</li>
-<li><p>dbOwner 代表数据库所有者角色，拥有最高该数据库最高权限。比如新建索引等</p>
-</li>
-<li><p>readWrite 该用户用于该数据的读写，只拥有读写权限。</p>
-  <figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi <span class="keyword">/etc/</span>mongod.conf</span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><ul>
-<li><strong>nginx -s reload</strong>  <br>nginx 平滑重启</li>
-<li><strong>nginx -t -c &#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf</strong> <br>判断nginx配置是否正确</li>
-</ul>
-<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><ul>
-<li><strong>grep -r “关键字” &#x2F;root&#x2F;</strong><br><br>查找root下所有的关键字<br>-n 显示行号</li>
-</ul>
-<h2 id="新建-复制-移动-删除"><a href="#新建-复制-移动-删除" class="headerlink" title="新建&#x2F;复制&#x2F;移动&#x2F;删除"></a>新建&#x2F;复制&#x2F;移动&#x2F;删除</h2><ul>
-<li><p>新建空白文件</p>
-<ul>
-<li>touch test</li>
-</ul>
-</li>
-<li><p>新建目录</p>
-<ul>
-<li>mkdir dir</li>
-<li>mkdir -p test&#x2F;test&#x2F;dir -p参数，同时创建一个多级目录</li>
-</ul>
-</li>
-<li><p>复制文件</p>
-<ul>
-<li>cp test xxx&#x2F;test</li>
-<li>cp -r test xxx 加上-r或者-R参数，表示递归复制</li>
-</ul>
-</li>
-<li><p>移动文件</p>
-<ul>
-<li>mv test xxx 将test移动到xxx目录下</li>
-<li>mv test test1 将test重命名test1</li>
-</ul>
-</li>
-<li><p>删除</p>
-<ul>
-<li>rm test 删除文件 -f参数强制删除</li>
-<li>rm -rf dir 删除目录</li>
-</ul>
-</li>
-</ul>
-<h2 id="磁盘管理"><a href="#磁盘管理" class="headerlink" title="磁盘管理"></a>磁盘管理</h2><ul>
-<li>查看磁盘的容量<ul>
-<li>df -h 查看主机磁盘使用情况</li>
-</ul>
-</li>
-</ul>
-<h2 id="查看端口进程占用"><a href="#查看端口进程占用" class="headerlink" title="查看端口进程占用"></a>查看端口进程占用</h2><ul>
-<li>netstat -anp 8080</li>
-<li>netstat -antulp | grep 8080</li>
-<li>lsof -i:8080</li>
-<li>ps -aux | grep python</li>
-</ul>
-<h2 id="mysql-备份恢复"><a href="#mysql-备份恢复" class="headerlink" title="mysql 备份恢复"></a>mysql 备份恢复</h2><ul>
-<li>备份</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u username -<span class="selector-tag">p</span> dbname &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> <span class="attr">--databases</span> dbname1 dbname2 &gt; backup<span class="selector-class">.sql</span></span><br><span class="line"></span><br><span class="line">mysqldump -u username -<span class="selector-tag">p</span> -<span class="attribute">all</span>-databases &gt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>恢复</li>
-</ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -<span class="selector-tag">p</span> dbname &lt; backup<span class="selector-class">.sql</span></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>cat &#x2F;proc&#x2F;self&#x2F;root&#x2F;etc&#x2F;passwd</p>
-<p> <a href="http://www.pa55w0rd.online/linux/">http://www.pa55w0rd.online/linux/</a> </p>
--->
+        -->
       
 
     </div>

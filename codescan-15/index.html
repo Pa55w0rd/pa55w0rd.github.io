@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-15/#article","headline":"CodeScan 实战（15）：借鉴 Mantis：版本化批次、累计预算和导航","description":"基于固定提交研究 Google Mantis，独立实现版本化批次、跨重启累计预算、有边界的源码导航与正负样例评测，并记录未部署和待补验项。","url":"https://www.pa55w0rd.online/codescan-15/","datePublished":"2026-11-16T03:45:00.000Z","dateModified":"2026-11-16T08:19:23.520Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-15/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-15/#article","headline":"CodeScan 实战（15）：借鉴 Mantis：版本化批次、累计预算和导航","description":"基于固定提交研究 Google Mantis，独立实现版本化批次、跨重启累计预算、有边界的源码导航与正负样例评测，并记录未部署和待补验项。","url":"https://www.pa55w0rd.online/codescan-15/","datePublished":"2026-11-16T03:45:00.000Z","dateModified":"2026-11-17T03:21:10.421Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-15/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/15-mantis-mechanisms-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（15）：借鉴 Mantis：版本化批次、累计预算和导航","item":"https://www.pa55w0rd.online/codescan-15/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="基于固定提交研究 Google Mantis，独立实现版本化批次、跨重启累计预算、有边界的源码导航与正负样例评测，并记录未部署和待补验项。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/15-mantis-mechanisms-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:45:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:19:23.520Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.421Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="运行预算">
 <meta property="article:tag" content="Mantis">
 <meta property="article:tag" content="审计评测">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/15-mantis-mechanisms-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -219,7 +224,7 @@ ga('send', 'pageview');
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:19:23.520Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.421Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -302,12 +307,21 @@ ga('send', 'pageview');
 <p>独立复核者依据结果标为 <code>vulnerable</code>、<code>safe</code> 或 <code>unknown</code>。这里的 safe 仅表示指定不变式被保护，不代表整个样例或项目没有其他风险。</p>
 <p>评分器统计精确率、召回率、负例误报率、未知比例，以及有效发现的 token 和耗时。未审正例不能当成正确发现；未知负例不能当成正确排除。没有阳性预测时精确率为未知，不写成 100%。</p>
 <p>公开样例只是回归起点，不能用计分器自检代替真实模型效果评测，也不能排除答案泄漏和训练污染。Mantis 的<a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/reference/evals/README.md">分层评测说明</a>提供了区分工程检查与端到端效果的参考。</p>
+<!-- codescan-figure:15:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/15-mantis-mechanisms-v1.svg" data-fancybox-type="image" title="借鉴 Mantis：四项候选机制">
+    <img src="/assets/codescan/15-mantis-mechanisms-v1.webp" alt="Mantis借鉴形成版本化批次、累计预算、有限源码导航和六个正负样例评测，候选构建、部署与实际效果分别验收。" width="1200" height="860" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 15｜四项候选机制及各自验证边界，图示不代表已部署。 <a href="/assets/codescan/15-mantis-mechanisms-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:15:end -->
+
 <h2 id="0x05-哪些内容没有直接照搬"><a href="#0x05-哪些内容没有直接照搬" class="headerlink" title="0x05 哪些内容没有直接照搬"></a>0x05 哪些内容没有直接照搬</h2><p><a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/skills/mantis-patch/SKILL.md">补丁技能</a>中的独立复现、阴性对照和再攻击值得继续做，但写在技能里的要求，不自动成为宿主能验证的硬约束。</p>
 <p>当时固定版本的 <a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/reference/docs/github-action.md">GitHub Action 文档</a>也保留真实项目端到端验证限制，因此本项目没有据此新增自动合并阻断、自动修复或生产利用流程。</p>
 <h2 id="0x06-候选版验收与未完成项"><a href="#0x06-候选版验收与未完成项" class="headerlink" title="0x06 候选版验收与未完成项"></a>0x06 候选版验收与未完成项</h2><p>该轮完成七个 Go 包编译、两项导航测试、七项 Python 计分器测试、前端类型检查、33 页静态导出和 Linux 候选构建。旧静态资源摘要和新页面引用也做了核对。</p>
 <p>最终 PostgreSQL 并发预算、部分用量处理和归档恢复集成回归尚未补齐；没有进行真实模型效果评测、浏览器交互或漏洞复现。</p>
 <p><a href="/codescan-14/">上一篇：四任务复盘</a> · <a href="/codescan-16/">下一篇：中间产物清理</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-15/">http://www.pa55w0rd.online/codescan-15/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-15/">https://www.pa55w0rd.online/codescan-15/</a> </p>
 
         
 <!--
@@ -315,39 +329,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 15 篇 </p>
-<p>Google Mantis 有参考价值，但直接搬进另一套智能体框架，并不能自动修复本项目的长程任务问题。这一轮选择借鉴机制：工作批次绑定、累计预算、源码导航和分层评测，继续使用现有 Go 架构。</p>
-<p>研究基于固定提交 <code>b51f9ced3590d0a640134374772f7eb8e06e976f</code>。本文记录的是该轮候选状态，不代表 Mantis 当前最新版本，也不代表本轮改造已经部署。</p>
-<span id="more"></span>
-
-<h2 id="0x01-一个批次到底审的是哪份代码"><a href="#0x01-一个批次到底审的是哪份代码" class="headerlink" title="0x01 一个批次到底审的是哪份代码"></a>0x01 一个批次到底审的是哪份代码</h2><p>之前保存了断点，但如果源码、模型、意图或工具配置变化，直接复用旧会话可能把两个上下文混在一起。</p>
-<p>新增宿主批次记录，将源码清单、威胁模型材料、意图和配置摘要绑定，并记录尝试次数、状态和写回计数。绑定一致才能续跑；绑定变化则隔离旧对话和断点，旧证据保留。</p>
-<p>执行结束还要检查源码与配置是否改变，不能只在启动时检查一次。批次 <code>finished</code> 只说明这次执行结束，不自动代表对应接口、文件或语义已经审完。</p>
-<p>这部分借鉴了 Mantis 的<a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/reference/core/budget.py">预算与批次设计</a>，实现没有引入其 ADK 或 Python 工作流。</p>
-<h2 id="0x02-预算不能重启一次就重新计算"><a href="#0x02-预算不能重启一次就重新计算" class="headerlink" title="0x02 预算不能重启一次就重新计算"></a>0x02 预算不能重启一次就重新计算</h2><p>单轮限制可以防空转，但任务反复重启仍可能持续消耗。于是增加可选的任务级请求数和 token 总额度，规划、审计、对话与压缩共用持久化账本。</p>
-<p>并发调用先在 PostgreSQL 中原子预占，再进入 Provider。旧任务默认保持原策略；需要启用时，在暂停且没有在途调用的状态下显式设置，并进行版本比较。</p>
-<p>这里有几个需要说明的口径：</p>
-<ul>
-<li>外层重新调用会增加请求数；SDK 内部重试仍包含在一次 Provider 调用中。</li>
-<li>token 预占依据请求字节量与最大输出预算估计，不是精确 tokenizer。</li>
-<li>完整用量返回后，按输入与输出结算，不把输入中的缓存读取再重复相加。</li>
-<li>用量缺失时保守保留预占，不把失败请求当作零成本退款。</li>
-</ul>
-<p>因此它是任务准入和止损机制，不是账单系统，也不能承诺预估值永远等于实际 token。预算耗尽使用独立原因，不伪装成模型服务错误。</p>
-<h2 id="0x03-导航工具先承认自己的能力范围"><a href="#0x03-导航工具先承认自己的能力范围" class="headerlink" title="0x03 导航工具先承认自己的能力范围"></a>0x03 导航工具先承认自己的能力范围</h2><p><code>navigate_source</code> 每次最多 32 个文件、单文件 2 MiB、每页最多 100 项，只读，不执行目标、不安装依赖。</p>
-<p>Go 使用原生 AST 定位函数声明、边界和语法调用位置；其他支持的语言先返回文本候选，明确提示注释、字符串、动态调用和未解析关系造成的误差。</p>
-<p>这不是已经完成的跨语言语义调用图。借鉴<a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/reference/core/structural_index.py">结构索引</a>的价值，在于让模型更快定位、让工具说明缺口，而不是给所有文本命中贴上“可达调用链”的标签。</p>
-<h2 id="0x04-先建立能失败的效果基线"><a href="#0x04-先建立能失败的效果基线" class="headerlink" title="0x04 先建立能失败的效果基线"></a>0x04 先建立能失败的效果基线</h2><p>新增六个缩小样例，组成三组正负对照：Python 文件路径、Go SQL、TypeScript 跨文件租户授权。答案放在上传源码之外，审计执行与评分分开。</p>
-<p>独立复核者依据结果标为 <code>vulnerable</code>、<code>safe</code> 或 <code>unknown</code>。这里的 safe 仅表示指定不变式被保护，不代表整个样例或项目没有其他风险。</p>
-<p>评分器统计精确率、召回率、负例误报率、未知比例，以及有效发现的 token 和耗时。未审正例不能当成正确发现；未知负例不能当成正确排除。没有阳性预测时精确率为未知，不写成 100%。</p>
-<p>公开样例只是回归起点，不能用计分器自检代替真实模型效果评测，也不能排除答案泄漏和训练污染。Mantis 的<a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/reference/evals/README.md">分层评测说明</a>提供了区分工程检查与端到端效果的参考。</p>
-<h2 id="0x05-哪些内容没有直接照搬"><a href="#0x05-哪些内容没有直接照搬" class="headerlink" title="0x05 哪些内容没有直接照搬"></a>0x05 哪些内容没有直接照搬</h2><p><a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/skills/mantis-patch/SKILL.md">补丁技能</a>中的独立复现、阴性对照和再攻击值得继续做，但写在技能里的要求，不自动成为宿主能验证的硬约束。</p>
-<p>当时固定版本的 <a target="_blank" rel="noopener" href="https://github.com/google/mantis/blob/b51f9ced3590d0a640134374772f7eb8e06e976f/reference/docs/github-action.md">GitHub Action 文档</a>也保留真实项目端到端验证限制，因此本项目没有据此新增自动合并阻断、自动修复或生产利用流程。</p>
-<h2 id="0x06-候选版验收与未完成项"><a href="#0x06-候选版验收与未完成项" class="headerlink" title="0x06 候选版验收与未完成项"></a>0x06 候选版验收与未完成项</h2><p>该轮完成七个 Go 包编译、两项导航测试、七项 Python 计分器测试、前端类型检查、33 页静态导出和 Linux 候选构建。旧静态资源摘要和新页面引用也做了核对。</p>
-<p>最终 PostgreSQL 并发预算、部分用量处理和归档恢复集成回归尚未补齐；没有进行真实模型效果评测、浏览器交互或漏洞复现。</p>
-<p><a href="/codescan-14/">上一篇：四任务复盘</a> · <a href="/codescan-16/">下一篇：中间产物清理</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-15/">http://www.pa55w0rd.online/codescan-15/</a> </p>
--->
+        -->
       
 
     </div>

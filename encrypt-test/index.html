@@ -74,6 +74,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -313,46 +316,7 @@ doDecrypt(passwd, onError);
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <script src=/js/crypto-js.js></script>
-<script>
-function doDecrypt (pwd, onError) {
-	console.log('in doDecrypt');
-	const txt = document.getElementById('enc_content').innerHTML;
-	let plantext;
-	try {
-		const bytes = CryptoJS.AES.decrypt(txt, pwd);
-		var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-	} catch(err) {
-		if(onError) {
-			onError(err);
-		}
-		return;
-	}
-	document.getElementById('enc_content').innerHTML = plaintext;
-	document.getElementById('enc_content').style.display = 'block';
-	document.getElementById('enc_passwd').style.display = 'none';
-	if(typeof MathJax !== 'undefined') {
-		MathJax.Hub.Queue(
-			['resetEquationNumbers', MathJax.InputJax.TeX],
-			['PreProcess', MathJax.Hub],
-			['Reprocess', MathJax.Hub]
-		);
-	}
-}
-</script>
-<div id="enc_content" style="display:none">U2FsdGVkX1+pS93oS/VzW7a9GR/5AosPhk3VC2zy9MoFHME7Z707KtEkPZC2ZAOQOR3yIVsUOvjV/9s/1+bYx2n54o6sV2wNF5ClWrhWtJ1pdEvIe4LSVgcQ6C99BPywJjzjMW77cseMLerhWWLO67ycWXds4f7N8tf8hhCLiPKBMCy3x0wN56i1f9S7+L33i3o5CPce66sRomtAzDkLb6/uy+dSqAa81ataSbxuaQNodZaUE3znlC+2rwl1bJkuGRsFSCYPMD3vXDdpBgEwbIK0kLQXuIclTcBIJjLndAVu1zA8NUjR4wBNAEm3ICgBgZUJDe/2P8c6NweQNsk9w5llXCm3KuceEv4ZpEhrQttqvZ0YbelGUn/WJxIs5Io2KXaSGdrfoYSiEHdPrL/UK1RbGRFI9B3qpfx3VvFJle+MLCcAftcueRR8JbRHg/Vf8wPjJ2jvCfz0keXsLRzp/wgBmcr9d663r5TzzlyakbkQvLCXHpHkztc7nz3WsrsZqeR0S3qsGv/BCVPikPuO4pufZaWrOqWCn1AE1h5y7VHBSNFOkjgO1Y4WUsiyKz6lPeEPpi8A/HP2P/BrPoDgEm74iscngvc6jz6zetDNnFeM7CqiTnFxbf1493TUcZfb9WI4qYVKd85JSEQOH70dorvV8ZrGn5Y7C/svL57FS/fWFfZHz5rEokrFIJsy8bisUQYQ2eBuLEtnLgeKxovD642L5lu4r94FMsig5U/4/y+JM/tKeDtFCv0x0UBDxBzy2LtgduGFELFmAPwKEDknHulHHR2kYTZBhQVb+QYJDDcYsTdUqugIUizLuL///mXLvVk5G4bhWsTVgvx7SrGDCXVPYpTOTuKYXhUDMSlnPcniiz5uTrb7hF/iQKkLY1NFUt19sVfGcxjncx9Qu5UDvpL0StmdZeNHFn4aziTeCo5uOOr81GSG7vdsn8zwXX/b6AQKifnR+hLwbSa4MXhPytEpNV2LJQpmPCgcK0Mf2PS0KydmOars6iwOOzc8sMDTLB+Ul2tNEvUgHCt0jUaSqhDvT/S/ES25/yMeqctuuPDe0EEl9DKMVmSt7xft7K/44lFCmFt4j1fWfoGbmshhvzmlXIOtcYGDcm8nbP5ar1JH+1oID83Ji4kO49GM040u9B2ipqMXoIhUzs+ev2jpN33R5azueiwY11+j29nK5Loj2R4P7QnuAyZQTmjPt+8MqgwDuPmUHLiTrWHFMRTcxKn8sjCsem+bEHlb+1h4UC6MH9OzcpHzf1qYlIc40zr9pPvr19wDtiiaFJUZREAzWfZshidEV7P69U4sGE3n+5WgHzB2wDsr4KXrtyBd+VQyW0dQxatllTII4X4dJLAFPdVoYsh8PLcP59tmTsFl9TcqmzP2yPvLLjC+By0NG37do0WHgJSBb4mYH6CBj2DJ5HLp13DZ8gNZ/VJwlWF1hdw5FJfUfrunQ3mQgXiQrk2GHpyM1sGbNiTKp1yfNF3dqxxBy1j+uhepHYKCgpEZEn3XJG45XKJ4GcI9VSr7Lx0oeu+LvbuVn1GV376npec2z6jujNTVjgP53CI4VZD6ewcITCH8EthZZCLn3IWNtqjbvDz1QpYYLnGbBQ8Hb5MTs0HqoAAYc8qicbbRkZEYv+6q+Kj7cdeqnuY+mO74CSgGVshPzraPInLekx9FAD4Pc139vFO+TG9aLSBDhsxi2R9lPU/ojZrUEAdrwVC3cTkgDkv1bkZkN6p0juJWWfQ2gvkDnVfxEf6mKeSgrucipxeGKAClHJoO4/AqGME251n2XuAdmnRQHH/OHu7ZCKvXgrRzq4eSbf/R8mZ9+gxggJd+p/eOYgtC7uI2Rqi3mdIbvhAGxtGQUsxsT+Yqk9hCLGutAZc0//7D2AQzu+9WO4IjPzx57S3Y7drPmcneKsimGQVeHH0EywzvSpsgAZ/+QQ==</div>
-<div id="enc_passwd"> <input id="enc_pwd_input" type="password" style="border-radius: 5px;border-style: groove;height: 30px;width: 50%;cursor: auto;font-size: 102%;color: currentColor;outline: none;text-overflow: initial;padding-left: 5px;" onkeydown="if (event.keyCode == 13) { decrypt(); return false;}"> <input type="submit" value="解&nbsp;密" onclick="decrypt()" style="width: 58px;height: 34px;border-radius: 5px;background-color: white;border-style: solid;color: currentColor;"><div id="enc_error" style="display: inline-block;color: #d84527;margin-left: 10px"></div>
-<script>
-var onError = function(error) {
-	document.getElementById("enc_error").innerHTML = "password error!"
-};
-function decrypt() {
-var passwd = document.getElementById("enc_pwd_input").value;
-console.log(passwd);
-doDecrypt(passwd, onError);
-}
-</script>
-</div>-->
+        -->
       
 
     </div>

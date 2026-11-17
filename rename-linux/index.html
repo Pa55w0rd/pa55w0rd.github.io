@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -311,43 +314,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>操作系统：Ubuntu</p>
-<h2 id="安装rename"><a href="#安装rename" class="headerlink" title="安装rename"></a>安装rename</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install rename -y</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<ul>
-<li><p>-n：打印效果但不执行</p>
-</li>
-<li><p>-v：执行修改并打印结果</p>
-</li>
-<li><p>s：替换，支持正则表达式</p>
-</li>
-</ul>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
-<li><p>替换文件名中的字符串，将test1替换为test2</p>
-<p> renema -v ‘s&#x2F;test1&#x2F;test2’ *.md</p>
-</li>
-<li><p>去掉文件名中的日期，格式2018-10-10</p>
-<p> rename -v ‘s&#x2F;\d{4}-\d{2}-\d{2}&#x2F;&#x2F;‘ *.md  </p>
-</li>
-<li><p>去掉文件后缀名.bak</p>
-<p> rename ‘s&#x2F;.bak$&#x2F;&#x2F;‘ *.bak</p>
-</li>
-<li><p>去掉文件名中的空格</p>
-<p> rename ‘s&#x2F;[ ]+&#x2F;&#x2F;g’ *</p>
-</li>
-<li><p>在文件开头加入字符串test1</p>
-<p> rename ‘s&#x2F;^&#x2F;test1&#x2F;‘ *</p>
-</li>
-<li><p>在文件结尾加入字符串</p>
-<p> rename ‘s&#x2F;$&#x2F;test1&#x2F;‘ *</p>
-</li>
-<li><p>替换文件名中的大小写</p>
-<p> rename -v ‘y&#x2F;A-Z&#x2F;a-z&#x2F;‘ *</p>
-</li>
-</ol>
-<p><strong><a target="_blank" rel="noopener" href="http://tool.oschina.net/regex/#">在线正则表达式测试</a></strong></p>
-<p> <a href="http://www.pa55w0rd.online/rename-linux/">http://www.pa55w0rd.online/rename-linux/</a> </p>
--->
+        -->
       
 
     </div>

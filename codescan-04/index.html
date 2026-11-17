@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-04/#article","headline":"CodeScan 实战（04）：把威胁建模接进真正的任务生命周期","description":"把源码驱动的威胁建模落入任务生命周期，核验入口、权限、数据流和模型版本，并说明后续独立与组合任务的演进。","url":"https://www.pa55w0rd.online/codescan-04/","datePublished":"2026-11-16T03:56:00.000Z","dateModified":"2026-11-16T08:10:11.890Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-04/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-04/#article","headline":"CodeScan 实战（04）：把威胁建模接进真正的任务生命周期","description":"把源码驱动的威胁建模落入任务生命周期，核验入口、权限、数据流和模型版本，并说明后续独立与组合任务的演进。","url":"https://www.pa55w0rd.online/codescan-04/","datePublished":"2026-11-16T03:56:00.000Z","dateModified":"2026-11-17T03:21:10.412Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-04/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/04-model-lifecycle-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（04）：把威胁建模接进真正的任务生命周期","item":"https://www.pa55w0rd.online/codescan-04/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="把源码驱动的威胁建模落入任务生命周期，核验入口、权限、数据流和模型版本，并说明后续独立与组合任务的演进。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/04-model-lifecycle-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:56:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:10:11.890Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.412Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="威胁建模">
 <meta property="article:tag" content="STRIDE">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/04-model-lifecycle-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -213,13 +218,13 @@ ga('send', 'pageview');
     
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span class="article-wordcount">约 1k 字</span>
+      <span class="article-wordcount">约 1.1k 字</span>
       <span class="article-reading-time">约 3 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:10:11.890Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.412Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -318,6 +323,15 @@ ga('send', 'pageview');
 <h2 id="0x03-程序阶段怎样接起来"><a href="#0x03-程序阶段怎样接起来" class="headerlink" title="0x03 程序阶段怎样接起来"></a>0x03 程序阶段怎样接起来</h2><p>这一轮的自动前置流程由宿主登记建模任务，Planner 分批读取源码、补模型并保存。基础模型未就绪时，后续审计派发会受到约束。</p>
 <p>关键点是把“创建页面”和“开始执行”分开。查看一个尚未启动的任务，不应偷偷触发模型请求；用户启动后，阶段状态才按实际流程推进。</p>
 <p>模型保存仍使用当前修订号、源码清单和内容摘要。草稿可以保存，但材料缺口必须可见。</p>
+<!-- codescan-figure:04:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/04-model-lifecycle-v1.svg" data-fancybox-type="image" title="建模前置：由启动推进的任务生命周期">
+    <img src="/assets/codescan/04-model-lifecycle-v1.webp" alt="创建任务与显式启动分开，启动后建模并复核真实入口权限，基础模型就绪后进入审计；源码或模型变化需要复核。" width="1200" height="820" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 04｜建模前置流程及源码变化后的复核关系。 <a href="/assets/codescan/04-model-lifecycle-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:04:end -->
+
 <h2 id="0x04-模型变化后怎样处理"><a href="#0x04-模型变化后怎样处理" class="headerlink" title="0x04 模型变化后怎样处理"></a>0x04 模型变化后怎样处理</h2><p>威胁模型需要对应本次源码。代码、入口或控制条件变化时，旧假设应重新核对；不能继续拿旧摘要当作新版本的结论。</p>
 <p>同样，保存成功只说明结构与引用检查通过，无法自动证明所有架构元素都已穷尽。对动态路由、运行时中间件和缺失依赖，应保留明确未知项。</p>
 <h2 id="0x05-后来为什么还要拆分任务类型"><a href="#0x05-后来为什么还要拆分任务类型" class="headerlink" title="0x05 后来为什么还要拆分任务类型"></a>0x05 后来为什么还要拆分任务类型</h2><p>自动前置适合完整审计，却不适合所有场景。用户可能只想交付威胁模型，也可能已有可信模型，只需要审计指定接口。</p>
@@ -326,7 +340,7 @@ ga('send', 'pageview');
 <p>它没有给真实业务仓库做一次完整的模型驱动安全验收，也没有证明威胁模型覆盖了所有未知部署行为。</p>
 <p>源码入口：<code>db/audit_phase.go</code>、<code>agent/planner.go</code>、<code>server/engine.go</code>。</p>
 <p><a href="/codescan-03/">上一篇：覆盖与收官门禁</a> · <a href="/codescan-05/">下一篇：工具空参数</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-04/">http://www.pa55w0rd.online/codescan-04/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-04/">https://www.pa55w0rd.online/codescan-04/</a> </p>
 
         
 <!--
@@ -334,58 +348,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 04 篇</p>
-<p>当时提出的问题是：创建代码审计任务后，会不会自动做威胁建模？</p>
-<p>只在任务目标里加一句“先建模”，不能回答谁来做、做完保存在哪里，以及什么时候允许后续审计启动。这一轮把建模变成了实际阶段。</p>
-<span id="more"></span>
-
-<h2 id="0x01-建模从源码和系统目的开始"><a href="#0x01-建模从源码和系统目的开始" class="headerlink" title="0x01 建模从源码和系统目的开始"></a>0x01 建模从源码和系统目的开始</h2><p>模型需要说明系统保护什么、如何部署、哪些主体能够进入、数据在哪些组件之间流动，以及哪些位置跨越信任边界。</p>
-<p>我希望入口清单至少回答下面这些问题：</p>
-<table>
-<thead>
-<tr>
-<th>事项</th>
-<th>需要保留的内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>路由真实性</td>
-<td>方法、完整 URI 或操作符号、挂载位置及动态注册条件</td>
-</tr>
-<tr>
-<td>身份与权限</td>
-<td>认证链、角色、对象归属和租户授权</td>
-</tr>
-<tr>
-<td>输入</td>
-<td>攻击者能够控制哪些字段，经过了什么转换</td>
-</tr>
-<tr>
-<td>数据流</td>
-<td>组件间调用、存储、消息及第三方依赖</td>
-</tr>
-<tr>
-<td>依据</td>
-<td>当前源码片段、配置事实和无法确认的条件</td>
-</tr>
-</tbody></table>
-<p>HTTP 之外，RPC、WebSocket、消息、定时任务、CLI 和管理入口也需要按项目实际情况检查。</p>
-<h2 id="0x02-STRIDE-覆盖到具体元素"><a href="#0x02-STRIDE-覆盖到具体元素" class="headerlink" title="0x02 STRIDE 覆盖到具体元素"></a>0x02 STRIDE 覆盖到具体元素</h2><p>如果只写六段 STRIDE 介绍，很容易形成一份通用模板。更有用的方式是把威胁假设落到组件、数据流、信任边界和入口上。</p>
-<p>每个假设需要对应资产、攻击者能力、安全控制和核验计划。源码已经能证明的事实与部署条件未知的部分，要分开记录。</p>
-<p>只有被测系统实际使用 AI、Agent、MCP、工具或记忆时，才补充这些风险。审计平台自身使用大模型，不会让每个被测项目都自动具有相同的 AI 风险面。</p>
-<h2 id="0x03-程序阶段怎样接起来"><a href="#0x03-程序阶段怎样接起来" class="headerlink" title="0x03 程序阶段怎样接起来"></a>0x03 程序阶段怎样接起来</h2><p>这一轮的自动前置流程由宿主登记建模任务，Planner 分批读取源码、补模型并保存。基础模型未就绪时，后续审计派发会受到约束。</p>
-<p>关键点是把“创建页面”和“开始执行”分开。查看一个尚未启动的任务，不应偷偷触发模型请求；用户启动后，阶段状态才按实际流程推进。</p>
-<p>模型保存仍使用当前修订号、源码清单和内容摘要。草稿可以保存，但材料缺口必须可见。</p>
-<h2 id="0x04-模型变化后怎样处理"><a href="#0x04-模型变化后怎样处理" class="headerlink" title="0x04 模型变化后怎样处理"></a>0x04 模型变化后怎样处理</h2><p>威胁模型需要对应本次源码。代码、入口或控制条件变化时，旧假设应重新核对；不能继续拿旧摘要当作新版本的结论。</p>
-<p>同样，保存成功只说明结构与引用检查通过，无法自动证明所有架构元素都已穷尽。对动态路由、运行时中间件和缺失依赖，应保留明确未知项。</p>
-<h2 id="0x05-后来为什么还要拆分任务类型"><a href="#0x05-后来为什么还要拆分任务类型" class="headerlink" title="0x05 后来为什么还要拆分任务类型"></a>0x05 后来为什么还要拆分任务类型</h2><p>自动前置适合完整审计，却不适合所有场景。用户可能只想交付威胁模型，也可能已有可信模型，只需要审计指定接口。</p>
-<p>所以这一轮是阶段治理的起点，后续第 08 篇引入独立类型，第 10 篇再提供同一任务内的完整审计。阅读历史记录时，需要留意对应版本，避免把早期的强制前置套用到后来的独立代码审计。</p>
-<h2 id="0x06-验收与剩余边界"><a href="#0x06-验收与剩余边界" class="headerlink" title="0x06 验收与剩余边界"></a>0x06 验收与剩余边界</h2><p>本轮通过受控模型、数据库和源码检查路径验证阶段约束，并形成了本地部署记录。测试关注草稿保存、引用校验、源码变化后的失效、派发条件和目标交付。</p>
-<p>它没有给真实业务仓库做一次完整的模型驱动安全验收，也没有证明威胁模型覆盖了所有未知部署行为。</p>
-<p>源码入口：<code>db/audit_phase.go</code>、<code>agent/planner.go</code>、<code>server/engine.go</code>。</p>
-<p><a href="/codescan-03/">上一篇：覆盖与收官门禁</a> · <a href="/codescan-05/">下一篇：工具空参数</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-04/">http://www.pa55w0rd.online/codescan-04/</a> </p>
--->
+        -->
       
 
     </div>

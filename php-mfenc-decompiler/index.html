@@ -79,6 +79,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -345,73 +348,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>洪哥给我一个加密的PHP代码，问我有没有办法搞出来，没有接触过PHP混淆加密，百度了一下加密特征，使用的是魔方二代加密方法。</p>
-<p>从52破解上找了一个魔方二代加密反编译代码对加密的PHP代码进行解密，记录一下过程</p>
-<span id="more"></span>
-<p><a target="_blank" rel="noopener" href="https://www.52pojie.cn/forum.php?mod=viewthread&tid=770762">[调试逆向] PHP解密：魔方加密2代 全自动反编译器</a></p>
-<p>汇编这块看不懂，直接拉到最下面，大佬给出了反编译代码</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ganlvtech/php-mfenc-decompiler">PHP mfenc Decompiler</a></p>
-<h2 id="0x01-常用的加密类型及特征"><a href="#0x01-常用的加密类型及特征" class="headerlink" title="0x01 常用的加密类型及特征"></a>0x01 常用的加密类型及特征</h2><table>
-<thead>
-<tr>
-<th>加密类型</th>
-<th>加密特征</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Zend&#x2F;PHP5.3&#x2F;5.4<br>Zend&#x2F;PHP5.5&#x2F;5.6</td>
-<td>文件头部 &lt;?php @Zend或Zend<br>PHP 5.3 2004072201 65540<br>PHP 5.4 2004072201 65541<br>PHP 5.5 2004072201 65542<br>PHP 5.6 2004072201 65543</td>
-</tr>
-<tr>
-<td>微擎加密</td>
-<td>主要使用goto语法打乱代码顺序</td>
-</tr>
-<tr>
-<td>魔方一代加密</td>
-<td>function 开头包含很多function</td>
-</tr>
-<tr>
-<td>魔方二代加密</td>
-<td><code>if(isset($乱码)&#123;array_push$乱码... 开头</code></td>
-</tr>
-<tr>
-<td>ionCube</td>
-<td>文件头部 &lt;?php &#x2F;&#x2F;00xxx(16进制数字) 或 HR+c</td>
-</tr>
-<tr>
-<td>php-screw</td>
-<td>文件头部 PM9SCREW等一般是定制版本, 文件特征各不相同</td>
-</tr>
-<tr>
-<td>php-beast</td>
-<td>文件头部 二进制数据 “\xe8\x16\xa4\x0c”一般是定制版本, 文件特征各不相同</td>
-</tr>
-<tr>
-<td>ZoeeyGuard</td>
-<td>调用函数 zoeey_run等一般是定制版本, 文件特征各不相同</td>
-</tr>
-</tbody></table>
-<h2 id="0x02-解密"><a href="#0x02-解密" class="headerlink" title="0x02 解密"></a>0x02 解密</h2><img src="/php-mfenc-decompiler/1.png" class="" title="描述">
-
-<p>对比一下加密特征，符合魔方二代加密</p>
-<h3 id="下载PHP-mfenc反编译器代码"><a href="#下载PHP-mfenc反编译器代码" class="headerlink" title="下载PHP mfenc反编译器代码"></a>下载PHP mfenc反编译器代码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">git <span class="built_in">clone</span> https://github.com/ganlvtech/php-mfenc-decompiler.git</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="删除composer-lock"><a href="#删除composer-lock" class="headerlink" title="删除composer.lock"></a>删除composer.lock</h3><h3 id="使用composer安装依赖的库文件"><a href="#使用composer安装依赖的库文件" class="headerlink" title="使用composer安装依赖的库文件"></a>使用composer安装依赖的库文件</h3><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># composer install</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意PHP版本 &gt; 7.0</p>
-</blockquote>
-<h3 id="通过rebuild对member-php进行解密"><a href="#通过rebuild对member-php进行解密" class="headerlink" title="通过rebuild对member.php进行解密"></a>通过rebuild对member.php进行解密</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">php bin/rebuild.php member.php</span></span><br></pre></td></tr></table></figure>
-<p>会在当前目录下生成member.rebuilt.php文件</p>
-<h3 id="解密结果"><a href="#解密结果" class="headerlink" title="解密结果"></a>解密结果</h3><img src="/php-mfenc-decompiler/2.png" class="" title="描述">
-
-<h2 id="Centos7-安装PHP-7"><a href="#Centos7-安装PHP-7" class="headerlink" title="Centos7 安装PHP 7"></a>Centos7 安装PHP 7</h2><p>我的PHP版本是PHP 5.4，在使用composer安装依赖报错提示需要 PHP &gt; 7.0</p>
-<p>通过yum安装报错，只能通过源码编译安装，速度比较慢</p>
-<p>可以使用remi源</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/">https://mirrors.tuna.tsinghua.edu.cn/remi/enterprise/</a></p>
-<h2 id="安装compoeser"><a href="#安装compoeser" class="headerlink" title="安装compoeser"></a>安装compoeser</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">下载安装脚本 － composer-setup.php － 到当前目录。</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">php -r <span class="string">&quot;copy(&#x27;https://install.phpcomposer.com/installer&#x27;, &#x27;composer-setup.php&#x27;);&quot;</span></span></span><br><span class="line"></span><br><span class="line">执行安装过程</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">php composer-setup.php</span></span><br><span class="line"></span><br><span class="line">删除安装脚本</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">php -r <span class="string">&quot;unlink(&#x27;composer-setup.php&#x27;);&quot;</span></span></span><br><span class="line"></span><br><span class="line">全局安装</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">mv</span> composer.phar /usr/local/bin/composer</span></span><br><span class="line"></span><br><span class="line">切换为国内镜像</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">composer config -g repo.packagist composer https://packagist.phpcomposer.com</span></span><br><span class="line"></span><br><span class="line">更新 composer</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">composer selfupdate</span></span><br><span class="line"></span><br><span class="line">安装依赖</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">composer install</span></span><br></pre></td></tr></table></figure>
-<p>更多请参考<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/composer-install-and-usage.html">Composer 安装与使用</a></p>
-<p> <a href="http://www.pa55w0rd.online/php-mfenc-decompiler/">http://www.pa55w0rd.online/php-mfenc-decompiler/</a> </p>
--->
+        -->
       
 
     </div>

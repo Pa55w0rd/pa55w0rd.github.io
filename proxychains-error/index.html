@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -288,20 +291,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>在使用proxychains代理时，报了个错误</p>
-<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ProxyChains<span class="string">-3</span>.1 (http://proxychains.sf.net)</span><br><span class="line"><span class="keyword">ERROR: </span>ld.so: object &#x27;libproxychains.so.3&#x27; from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<p>看来proxychains无法加载libproxychains.so.3库，查到的资料是修改&#x2F;usr&#x2F;bin&#x2F;proxychains文件的export</p>
-<p>通过find命令查找这个库</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">find</span> <span class="regexp">/usr/</span> -name libproxychains.so.<span class="number">3</span> -<span class="keyword">print</span></span><br><span class="line"><span class="regexp">/usr/</span>lib<span class="regexp">/x86_64-linux-gnu/</span>libproxychains.so.<span class="number">3</span></span><br></pre></td></tr></table></figure>
-
-<p>将vi &#x2F;usr&#x2F;bin&#x2F;proxychains的export修改为&#x2F;usr&#x2F;lib&#x2F;x86_64-linux-gnu&#x2F;libproxychains.so.3</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;ProxyChains-3.1 (http://proxychains.sf.net)&quot;</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> = 0 ] ; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;  usage:&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;          proxychains &lt;prog&gt; [args]&quot;</span></span><br><span class="line">        <span class="built_in">exit</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">export</span> LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libproxychains.so.3</span><br><span class="line"><span class="built_in">exec</span> <span class="string">&quot;<span class="variable">$@</span>&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p> <a href="http://www.pa55w0rd.online/proxychains-error/">http://www.pa55w0rd.online/proxychains-error/</a> </p>
--->
+        -->
       
 
     </div>

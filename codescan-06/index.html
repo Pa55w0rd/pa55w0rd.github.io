@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-06/#article","headline":"CodeScan 实战（06）：模型恢复了，目标拆解也要继续","description":"模型前两轮不可用，第三轮恢复后是否补做目标拆解？用持久化状态、原子提交和重试退避避免阶段被悄悄跳过。","url":"https://www.pa55w0rd.online/codescan-06/","datePublished":"2026-11-16T03:54:00.000Z","dateModified":"2026-11-16T08:12:41.607Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-06/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-06/#article","headline":"CodeScan 实战（06）：模型恢复了，目标拆解也要继续","description":"模型前两轮不可用，第三轮恢复后是否补做目标拆解？用持久化状态、原子提交和重试退避避免阶段被悄悄跳过。","url":"https://www.pa55w0rd.online/codescan-06/","datePublished":"2026-11-16T03:54:00.000Z","dateModified":"2026-11-17T03:21:10.414Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-06/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/06-goal-recovery-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（06）：模型恢复了，目标拆解也要继续","item":"https://www.pa55w0rd.online/codescan-06/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="模型前两轮不可用，第三轮恢复后是否补做目标拆解？用持久化状态、原子提交和重试退避避免阶段被悄悄跳过。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/06-goal-recovery-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:54:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:12:41.607Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.414Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="任务编排">
 <meta property="article:tag" content="故障恢复">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/06-goal-recovery-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -213,13 +218,13 @@ ga('send', 'pageview');
     
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span class="article-wordcount">约 1.3k 字</span>
+      <span class="article-wordcount">约 1.2k 字</span>
       <span class="article-reading-time">约 4 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:12:41.607Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.414Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -285,7 +290,14 @@ ga('send', 'pageview');
 <p>这两种内容应分别保留。系统预置了几个目标，不代表用户原始要求已经完成拆解；模型输出一段计划，也不代表这些计划已经成为任务可执行、可判定的目标。</p>
 <p>因此先保存用户原文，再保存拆解状态与拆解结果。页面显示、后续调度和恢复逻辑都读取这个状态，不能通过“现在不是第零轮”推断前置阶段已经成功。</p>
 <h2 id="0x02-失败的阶段要留在待办里"><a href="#0x02-失败的阶段要留在待办里" class="headerlink" title="0x02 失败的阶段要留在待办里"></a>0x02 失败的阶段要留在待办里</h2><p>这一轮改造的核心，是把目标拆解从一次临时调用，改成有持久化状态的步骤：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">保存原始目标</span><br><span class="line">    ↓</span><br><span class="line">检查是否仍需拆解</span><br><span class="line">    ↓</span><br><span class="line">调用模型生成结构化结果</span><br><span class="line">    ├─ 连接、解码或校验失败 → 保存失败状态，稍后补做</span><br><span class="line">    └─ 结果有效 → 在事务中提交目标与成功状态</span><br><span class="line">    ↓</span><br><span class="line">进入后续建模或审计阶段</span><br></pre></td></tr></table></figure>
+<!-- codescan-figure:06:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/06-goal-recovery-v1.svg" data-fancybox-type="image" title="失败阶段留在待办中，恢复后先补做">
+    <img src="/assets/codescan/06-goal-recovery-v1.webp" alt="原始目标进入拆解，失败保留待办并退避，恢复后补做；有效目标与成功状态原子提交，再进入后续建模或审计。" width="1200" height="840" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 06｜目标拆解的持久化、退避重试与恢复示意。 <a href="/assets/codescan/06-goal-recovery-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:06:end -->
 
 <p>模型暂时不可用时，不写“拆解成功”。模型恢复后，调度先检查仍缺失的拆解，再推进后续阶段。</p>
 <p>成功状态与目标写入需要保持一致。否则进程在两次写入之间退出，会出现“状态成功但没有目标”，或者“目标已经插入但下一次又重复插入”。</p>
@@ -321,7 +333,7 @@ ga('send', 'pageview');
 <p>这些检查没有使远端模型服务自动获得高可用能力，也没有保证每次自然语言目标都能被拆成最佳粒度。它们解决的是：故障不会被当成完成，恢复后有明确补做入口，结果能被程序和用户共同核对。</p>
 <p>下一步还需要把每一次实际模型调用的时间和消耗记下来，才能解释“卡在拆解”究竟是在排队、生成还是反复失败。</p>
 <p><a href="/codescan-05/">上一篇：空参数排查</a> · <a href="/codescan-07/">下一篇：逐次请求账本</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-06/">http://www.pa55w0rd.online/codescan-06/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-06/">https://www.pa55w0rd.online/codescan-06/</a> </p>
 
         
 <!--
@@ -329,53 +341,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 06 篇 </p>
-<p>一次任务的前两轮都因模型服务连接失败结束。第三轮恢复后，Planner 开始读取源码、准备威胁建模。新的问题随之出现：最前面的目标拆解到底做过没有，是页面没显示，还是程序已经跳过去了？</p>
-<p>这不能靠模型补一句“已经理解目标”来解释。任务调度需要知道，一个阶段是否真正产生了可恢复的结果。</p>
-<span id="more"></span>
-
-<h2 id="0x01-原始要求和系统目标不能混在一起"><a href="#0x01-原始要求和系统目标不能混在一起" class="headerlink" title="0x01 原始要求和系统目标不能混在一起"></a>0x01 原始要求和系统目标不能混在一起</h2><p>创建任务时，用户可能提交很长的要求：接口枚举、权限复核、依赖审计、逐漏洞 PoC、报告归档。程序为了维持工作流，也会补充最低交付要求。</p>
-<p>这两种内容应分别保留。系统预置了几个目标，不代表用户原始要求已经完成拆解；模型输出一段计划，也不代表这些计划已经成为任务可执行、可判定的目标。</p>
-<p>因此先保存用户原文，再保存拆解状态与拆解结果。页面显示、后续调度和恢复逻辑都读取这个状态，不能通过“现在不是第零轮”推断前置阶段已经成功。</p>
-<h2 id="0x02-失败的阶段要留在待办里"><a href="#0x02-失败的阶段要留在待办里" class="headerlink" title="0x02 失败的阶段要留在待办里"></a>0x02 失败的阶段要留在待办里</h2><p>这一轮改造的核心，是把目标拆解从一次临时调用，改成有持久化状态的步骤：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">保存原始目标</span><br><span class="line">    ↓</span><br><span class="line">检查是否仍需拆解</span><br><span class="line">    ↓</span><br><span class="line">调用模型生成结构化结果</span><br><span class="line">    ├─ 连接、解码或校验失败 → 保存失败状态，稍后补做</span><br><span class="line">    └─ 结果有效 → 在事务中提交目标与成功状态</span><br><span class="line">    ↓</span><br><span class="line">进入后续建模或审计阶段</span><br></pre></td></tr></table></figure>
-
-<p>模型暂时不可用时，不写“拆解成功”。模型恢复后，调度先检查仍缺失的拆解，再推进后续阶段。</p>
-<p>成功状态与目标写入需要保持一致。否则进程在两次写入之间退出，会出现“状态成功但没有目标”，或者“目标已经插入但下一次又重复插入”。</p>
-<h2 id="0x03-恢复时不能删掉已经有用的东西"><a href="#0x03-恢复时不能删掉已经有用的东西" class="headerlink" title="0x03 恢复时不能删掉已经有用的东西"></a>0x03 恢复时不能删掉已经有用的东西</h2><p>恢复并不等于重建整个任务。可能已经有人工补充目标，也可能有意图与现有目标关联。一次自动重试不能把它们清空。</p>
-<p>处理原则是：失败结果不作为正式目标集；成功结果去重并原子落库；保留人工目标和已有关系。已有事实、源码、漏洞材料也不因前置阶段补做而被删除。</p>
-<p>这使“补齐遗漏阶段”和“推倒重跑”成为两件不同的操作。长期任务尤其需要前者，否则每次短暂故障都会变成一次昂贵的全量重跑。</p>
-<h2 id="0x04-重试要给模型服务恢复时间"><a href="#0x04-重试要给模型服务恢复时间" class="headerlink" title="0x04 重试要给模型服务恢复时间"></a>0x04 重试要给模型服务恢复时间</h2><p>连接被拒绝通常意味着目标地址上没有可接受连接的服务，或者路径中的转发不可用。它不是“已经审过一次源码但没找到漏洞”。</p>
-<p>当时为拆解失败加入了退避：30 秒、1 分钟、2 分钟、4 分钟，之后最长 5 分钟。这个间隔属于该轮实现记录，部署时仍应核对当前配置。</p>
-<p>用户暂停任务时不继续调用；服务未恢复时，也不应靠高频空转制造更多失败轮次。页面需要区分“等待重试”“用户暂停”和“已完成”，让操作者知道下一步是等待服务恢复，还是修改任务材料。</p>
-<h2 id="0x05-如何判断第三轮有没有补做"><a href="#0x05-如何判断第三轮有没有补做" class="headerlink" title="0x05 如何判断第三轮有没有补做"></a>0x05 如何判断第三轮有没有补做</h2><p>比起只看规划文字，更可靠的是一起看三类记录：</p>
-<table>
-<thead>
-<tr>
-<th>记录</th>
-<th>要回答的问题</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>拆解状态</td>
-<td>上次失败后，是否出现后续成功提交</td>
-</tr>
-<tr>
-<td>持久化目标</td>
-<td>用户要求是否落成真实目标，有没有重复或遗漏</td>
-</tr>
-<tr>
-<td>调度与工具轨迹</td>
-<td>后续阶段依据了哪些目标，实际调用了什么</td>
-</tr>
-</tbody></table>
-<p>只看到模型开始 <code>LS</code>、<code>Read</code>，最多能说明它开始探索，不能证明此前拆解已经完成。修复后的验证应包含“前几次失败、后一次成功”的受控序列，并检查数据库最终状态。</p>
-<h2 id="0x06-验收和仍然存在的限制"><a href="#0x06-验收和仍然存在的限制" class="headerlink" title="0x06 验收和仍然存在的限制"></a>0x06 验收和仍然存在的限制</h2><p>该轮进行了针对性的 Go、数据库与前端构建检查，验证重试、去重、旧目标保留及显示状态，并留下历史部署记录。</p>
-<p>这些检查没有使远端模型服务自动获得高可用能力，也没有保证每次自然语言目标都能被拆成最佳粒度。它们解决的是：故障不会被当成完成，恢复后有明确补做入口，结果能被程序和用户共同核对。</p>
-<p>下一步还需要把每一次实际模型调用的时间和消耗记下来，才能解释“卡在拆解”究竟是在排队、生成还是反复失败。</p>
-<p><a href="/codescan-05/">上一篇：空参数排查</a> · <a href="/codescan-07/">下一篇：逐次请求账本</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-06/">http://www.pa55w0rd.online/codescan-06/</a> </p>
--->
+        -->
       
 
     </div>

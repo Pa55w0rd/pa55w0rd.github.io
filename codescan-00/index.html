@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-00/#article","headline":"CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践","description":"从本地部署、项目集成到每轮运行问题复盘，记录 CodeScan-Artex 如何逐步建立威胁建模、代码审计和可追溯证据流程。","url":"https://www.pa55w0rd.online/codescan-00/","datePublished":"2026-11-16T04:00:00.000Z","dateModified":"2026-11-16T07:59:10.861Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-00/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-00/#article","headline":"CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践","description":"从本地部署、项目集成到每轮运行问题复盘，记录 CodeScan-Artex 如何逐步建立威胁建模、代码审计和可追溯证据流程。","url":"https://www.pa55w0rd.online/codescan-00/","datePublished":"2026-11-16T04:00:00.000Z","dateModified":"2026-11-17T03:21:10.408Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-00/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/00-series-cover-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践","item":"https://www.pa55w0rd.online/codescan-00/"}]}</script>
 
 
@@ -36,13 +36,16 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="从本地部署、项目集成到每轮运行问题复盘，记录 CodeScan-Artex 如何逐步建立威胁建模、代码审计和可追溯证据流程。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/00-series-cover-v1.webp">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/00-audit-overview-v1.webp">
 <meta property="article:published_time" content="2026-11-16T04:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T07:59:10.861Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.408Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="代码审计">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="工程实践">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/00-series-cover-v1.webp">
 
   
 
@@ -75,6 +78,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -213,13 +219,13 @@ ga('send', 'pageview');
     
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span class="article-wordcount">约 756 字</span>
+      <span class="article-wordcount">约 759 字</span>
       <span class="article-reading-time">约 2 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T07:59:10.861Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.408Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -279,11 +285,27 @@ ga('send', 'pageview');
           <p>最初的需求很直接：从GitHub上发现<a target="_blank" rel="noopener" href="https://github.com/Ernket/CodeScan-Artex">CodeScan-Artex</a>，以及自己收集、改写的其他代码审计Skills、威胁建模Skills、代码审计智能体等等，希望以 CodeScan-Artex 为主，把其余项目中有用的威胁建模、漏洞分析、PoC 和证据管理机制接进来。</p>
 <p>真正开始运行后，问题很快从“怎么让模型多找漏洞”，变成了另一组更具体的问题：任务是否真的被拆解？接口和权限有没有源码依据？模型说已经派发，数据库里为什么没有意图？一轮结束时，哪些事实实际保存了？</p>
 <p>这个系列按改造过程逐篇记录。它既包含部署步骤，也保留那些没有完成、不能确认和需要继续验证的部分。</p>
+<!-- codescan-figure:cover:start -->
+<figure class="codescan-figure codescan-figure--cover">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/00-series-cover-v1.webp" data-fancybox-type="image" title="CodeScan 实战系列封面">
+    <img src="/assets/codescan/00-series-cover-v1.webp" alt="CodeScan实战系列封面：源码、建模分析与可追溯证据档案的概念插画。" width="1672" height="941" loading="eager" decoding="async" fetchpriority="high">
+  </a>
+  <figcaption>系列封面为概念插画，用于表达源码、建模与证据之间的联系。 <a href="/assets/codescan/00-series-cover-v1.webp" target="_blank" rel="noopener noreferrer">打开封面大图</a></figcaption>
+</figure>
+<!-- codescan-figure:cover:end -->
+
 <span id="more"></span>
 
 <h2 id="0x01-系列范围"><a href="#0x01-系列范围" class="headerlink" title="0x01 系列范围"></a>0x01 系列范围</h2><p>文章标题里的序号表示阅读顺序。</p>
 <p>系列记录的主线是：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">取得对应源码</span><br><span class="line">    → 独立部署与配置</span><br><span class="line">    → 建模、入口和权限复核</span><br><span class="line">    → 按入口与边界分批审计</span><br><span class="line">    → 保存源码链、反证、PoC 和未知项</span><br><span class="line">    → 独立复核、报告与版本校验</span><br></pre></td></tr></table></figure>
+<!-- codescan-figure:00:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/00-audit-overview-v1.svg" data-fancybox-type="image" title="从源码到交付：完整审计主线">
+    <img src="/assets/codescan/00-audit-overview-v1.webp" alt="完整审计从源码范围、建模和入口复核，经过分批审计、证据与PoC、独立复核，形成报告与归档。" width="1200" height="790" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 00｜完整审计主线示意；独立任务采用各自的交付条件。 <a href="/assets/codescan/00-audit-overview-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:00:end -->
 
 <p>其中，“独立威胁建模”“独立代码审计”“完整审计”是三个不同工作流。</p>
 <h2 id="0x02-全系列目录"><a href="#0x02-全系列目录" class="headerlink" title="0x02 全系列目录"></a>0x02 全系列目录</h2><table>
@@ -364,7 +386,7 @@ ga('send', 'pageview');
 </tbody></table>
 <p>每篇都可以单独阅读；遇到术语和状态不清楚时，建议先看第 02、03 篇。</p>
 <p><strong>下一篇：<a href="/codescan-01/">用 Docker Compose 部署，与原 Artex 共存</a>。</strong></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-00/">http://www.pa55w0rd.online/codescan-00/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-00/">https://www.pa55w0rd.online/codescan-00/</a> </p>
 
         
 <!--
@@ -372,96 +394,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>最初的需求很直接：从GitHub上发现<a target="_blank" rel="noopener" href="https://github.com/Ernket/CodeScan-Artex">CodeScan-Artex</a>，以及自己收集、改写的其他代码审计Skills、威胁建模Skills、代码审计智能体等等，希望以 CodeScan-Artex 为主，把其余项目中有用的威胁建模、漏洞分析、PoC 和证据管理机制接进来。</p>
-<p>真正开始运行后，问题很快从“怎么让模型多找漏洞”，变成了另一组更具体的问题：任务是否真的被拆解？接口和权限有没有源码依据？模型说已经派发，数据库里为什么没有意图？一轮结束时，哪些事实实际保存了？</p>
-<p>这个系列按改造过程逐篇记录。它既包含部署步骤，也保留那些没有完成、不能确认和需要继续验证的部分。</p>
-<span id="more"></span>
-
-<h2 id="0x01-系列范围"><a href="#0x01-系列范围" class="headerlink" title="0x01 系列范围"></a>0x01 系列范围</h2><p>文章标题里的序号表示阅读顺序。</p>
-<p>系列记录的主线是：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">取得对应源码</span><br><span class="line">    → 独立部署与配置</span><br><span class="line">    → 建模、入口和权限复核</span><br><span class="line">    → 按入口与边界分批审计</span><br><span class="line">    → 保存源码链、反证、PoC 和未知项</span><br><span class="line">    → 独立复核、报告与版本校验</span><br></pre></td></tr></table></figure>
-
-<p>其中，“独立威胁建模”“独立代码审计”“完整审计”是三个不同工作流。</p>
-<h2 id="0x02-全系列目录"><a href="#0x02-全系列目录" class="headerlink" title="0x02 全系列目录"></a>0x02 全系列目录</h2><table>
-<thead>
-<tr>
-<th>篇目</th>
-<th>要解决的问题</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><a href="/codescan-01/">01｜本地部署</a></td>
-<td>Compose 如何与原 Artex 共存，更新时怎样保住状态</td>
-</tr>
-<tr>
-<td><a href="/codescan-02/">02｜项目集成</a></td>
-<td>如何把其他项目优势统一成主项目里的材料契约</td>
-</tr>
-<tr>
-<td><a href="/codescan-03/">03｜审计方法与覆盖</a></td>
-<td>怎样知道审了什么，还有哪些没审</td>
-</tr>
-<tr>
-<td><a href="/codescan-04/">04｜建模生命周期</a></td>
-<td>创建任务后，谁来建模，何时允许进入审计</td>
-</tr>
-<tr>
-<td><a href="/codescan-05/">05｜工具空参数</a></td>
-<td><code>save_threat_model(&#123;&#125;)</code> 到底在哪一层失败</td>
-</tr>
-<tr>
-<td><a href="/codescan-06/">06｜目标拆解恢复</a></td>
-<td>前两轮模型失败后，拆解会不会被跳过</td>
-</tr>
-<tr>
-<td><a href="/codescan-07/">07｜逐次请求时间</a></td>
-<td>怎样把耗时、用量和具体请求对起来</td>
-</tr>
-<tr>
-<td><a href="/codescan-08/">08｜任务类型与长上下文</a></td>
-<td>如何缩小一轮工作的范围，并改善模型页面</td>
-</tr>
-<tr>
-<td><a href="/codescan-09/">09｜模型性能指标</a></td>
-<td>TTFT、Prefill、Decode 的采集边界是什么</td>
-</tr>
-<tr>
-<td><a href="/codescan-10/">10｜完整审计模式</a></td>
-<td>同一个任务里如何先建模、再审计</td>
-</tr>
-<tr>
-<td><a href="/codescan-11/">11｜SSE 重连</a></td>
-<td>两个端口同时登录，为什么实时列表仍然失败</td>
-</tr>
-<tr>
-<td><a href="/codescan-12/">12｜超时、循环与断点</a></td>
-<td>79 轮之后，程序应该如何停止并交接</td>
-</tr>
-<tr>
-<td><a href="/codescan-13/">13｜Planner 实际进展</a></td>
-<td>怎样识别“说已经做了”，却没有执行动作</td>
-</tr>
-<tr>
-<td><a href="/codescan-14/">14｜四任务复盘</a></td>
-<td>怎样限制长时间空转，并避免保存时丢材料</td>
-</tr>
-<tr>
-<td><a href="/codescan-15/">15｜借鉴 Mantis</a></td>
-<td>如何接入版本化批次、累计预算和代码导航</td>
-</tr>
-<tr>
-<td><a href="/codescan-16/">16｜资源清理</a></td>
-<td>如何清理测试产物，同时保留状态和证据</td>
-</tr>
-<tr>
-<td><a href="/codescan-17/">17｜SDL 路线图</a></td>
-<td>怎样通过旁路 Hook 接入研发流程</td>
-</tr>
-</tbody></table>
-<p>每篇都可以单独阅读；遇到术语和状态不清楚时，建议先看第 02、03 篇。</p>
-<p><strong>下一篇：<a href="/codescan-01/">用 Docker Compose 部署，与原 Artex 共存</a>。</strong></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-00/">http://www.pa55w0rd.online/codescan-00/</a> </p>
--->
+        -->
       
 
     </div>

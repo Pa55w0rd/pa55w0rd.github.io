@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -287,19 +290,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>拿到一份APP渗透测试报告，里面有一个运行日志残留（中危），该日志中保留大量运行日志，其中包含了一些敏感信息，攻击者可以根据该日志获取应用运行的信息，为进一步攻击做准备</p>
-<p>我对APP客户端测试比较初级，残留日志我一般会使用adb logcat打印一下或者在程序目录下翻一翻。并没有发现日志中存在敏感信息，问了下测试的工程师，是通过源代码分析找到相关日志类，hook这个类打印日志</p>
-<p>因为编程能力有限，之前从未分析过APK反编译之后的源码，找到该日志类后（java层），从52上看了一番hook文章，了解了两个工具Xposed和Frida</p>
-<p>使用Xposed比较麻烦，需要Android ide等进行模块开发，电脑比较渣，没有继续研究</p>
-<p>使用Frida比较方便，轻量级，使用python和js进行hook模块开发</p>
-<span id="more"></span>
-
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h1 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h1>
-
-
-
-<p> <a href="http://www.pa55w0rd.online/frida/">http://www.pa55w0rd.online/frida/</a> </p>
--->
+        -->
       
 
     </div>

@@ -1,0 +1,39 @@
+.article-entry .codescan-figure {
+  clear: both;
+  margin: 1.8em 0;
+}
+
+.article-entry .codescan-figure > a {
+  display: block;
+  border: 0;
+}
+
+.article-entry .codescan-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 1px solid #d9e3e9;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: none;
+}
+
+.article-entry .codescan-figure figcaption {
+  margin-top: 10px;
+  padding: 0 3px;
+  color: #536a7c;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.article-entry .codescan-figure figcaption a {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .article-entry .codescan-figure {
+    margin: 1.3em 0;
+  }
+}

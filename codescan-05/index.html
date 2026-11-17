@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-05/#article","headline":"CodeScan 实战（05）：save_threat_model 为什么会收到空参数","description":"从 expected_revision 缺失错误入手，区分模型输出、流式参数组装、工具契约与数据库保存，并保留尚未查明的因果边界。","url":"https://www.pa55w0rd.online/codescan-05/","datePublished":"2026-11-16T03:55:00.000Z","dateModified":"2026-11-16T08:12:51.402Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-05/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-05/#article","headline":"CodeScan 实战（05）：save_threat_model 为什么会收到空参数","description":"从 expected_revision 缺失错误入手，区分模型输出、流式参数组装、工具契约与数据库保存，并保留尚未查明的因果边界。","url":"https://www.pa55w0rd.online/codescan-05/","datePublished":"2026-11-16T03:55:00.000Z","dateModified":"2026-11-17T03:21:10.413Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-05/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/05-tool-input-chain-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（05）：save_threat_model 为什么会收到空参数","item":"https://www.pa55w0rd.online/codescan-05/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="从 expected_revision 缺失错误入手，区分模型输出、流式参数组装、工具契约与数据库保存，并保留尚未查明的因果边界。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/05-tool-input-chain-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:55:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:12:51.402Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.413Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="工具调用">
 <meta property="article:tag" content="故障排查">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/05-tool-input-chain-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -213,13 +218,13 @@ ga('send', 'pageview');
     
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span class="article-wordcount">约 1.3k 字</span>
+      <span class="article-wordcount">约 1.2k 字</span>
       <span class="article-reading-time">约 4 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:12:51.402Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.413Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -284,7 +289,14 @@ ga('send', 'pageview');
 <span id="more"></span>
 
 <h2 id="0x01-一次保存经过了哪些环节"><a href="#0x01-一次保存经过了哪些环节" class="headerlink" title="0x01 一次保存经过了哪些环节"></a>0x01 一次保存经过了哪些环节</h2><p>保存威胁模型并不是把一段模型文字直接写入数据库。实际链路至少包含：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">工具定义与 required 字段</span><br><span class="line">        ↓</span><br><span class="line">模型响应中的 tool call</span><br><span class="line">        ↓</span><br><span class="line">流式事件、参数分片与 SDK 累积</span><br><span class="line">        ↓</span><br><span class="line">JSON 解码与输入契约校验</span><br><span class="line">        ↓</span><br><span class="line">版本比较、源码引用与模型结构校验</span><br><span class="line">        ↓</span><br><span class="line">事务保存与小型回执</span><br></pre></td></tr></table></figure>
+<!-- codescan-figure:05:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/05-tool-input-chain-v1.svg" data-fancybox-type="image" title="空参数报错：先定位失败发生在哪一层">
+    <img src="/assets/codescan/05-tool-input-chain-v1.webp" alt="从工具定义、模型响应、流式组装到输入校验、业务核验和事务保存；空对象缺少expected_revision时在输入校验层拒绝。" width="1200" height="880" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 05｜工具参数经过的处理链路，以及空对象被拒绝的位置。 <a href="/assets/codescan/05-tool-input-chain-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:05:end -->
 
 <p>报错发生在哪一层，决定了该查哪里。缺少 <code>expected_revision</code> 属于输入契约错误；证据引用不存在，属于业务校验错误；<code>connect: connection refused</code> 则是在连接模型服务时就失败。这三类故障不应该都显示成一个笼统的“模型错误”。</p>
 <h2 id="0x02-为什么不能删掉-expected-revision"><a href="#0x02-为什么不能删掉-expected-revision" class="headerlink" title="0x02 为什么不能删掉 expected_revision"></a>0x02 为什么不能删掉 expected_revision</h2><p>这个字段负责并发版本比较。假设 Planner 读到模型版本 7，操作员随后补了一条信任边界，数据库已到版本 8。Planner 再提交基于版本 7 的整份模型，直接覆盖会把人工修改抹掉。</p>
@@ -335,7 +347,7 @@ ga('send', 'pageview');
 <p>本轮验收覆盖了针对性的 Go 测试、工具 schema、流式分片和大模型保存路径。它证明这些受控输入按预期处理，没有证明所有供应商、模型模板和代理转换路径都正常。</p>
 <p>工具注册与参数解码实现，以及后续空参数排查记录。遇到同类错误，先保存请求关联标识和发生层次，再决定重试或修复哪一段链路。</p>
 <p><a href="/codescan-04/">上一篇：任务生命周期</a> · <a href="/codescan-06/">下一篇：目标拆解恢复</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-05/">http://www.pa55w0rd.online/codescan-05/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-05/">https://www.pa55w0rd.online/codescan-05/</a> </p>
 
         
 <!--
@@ -343,67 +355,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 05 篇 </p>
-<p>有一类错误很容易误判成“模型不会调用工具”：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save_threat_model &#123;&#125;</span><br><span class="line">Error: invalid tool input:</span><br><span class="line">input: missing required property &quot;expected_revision&quot;</span><br></pre></td></tr></table></figure>
-
-<p>这个回执能确认的是：工具校验层收到的参数没有必填版本号。仅凭它，还不能确定参数在哪一层丢失，也不能确定所有类似错误具有同一个根因。</p>
-<span id="more"></span>
-
-<h2 id="0x01-一次保存经过了哪些环节"><a href="#0x01-一次保存经过了哪些环节" class="headerlink" title="0x01 一次保存经过了哪些环节"></a>0x01 一次保存经过了哪些环节</h2><p>保存威胁模型并不是把一段模型文字直接写入数据库。实际链路至少包含：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">工具定义与 required 字段</span><br><span class="line">        ↓</span><br><span class="line">模型响应中的 tool call</span><br><span class="line">        ↓</span><br><span class="line">流式事件、参数分片与 SDK 累积</span><br><span class="line">        ↓</span><br><span class="line">JSON 解码与输入契约校验</span><br><span class="line">        ↓</span><br><span class="line">版本比较、源码引用与模型结构校验</span><br><span class="line">        ↓</span><br><span class="line">事务保存与小型回执</span><br></pre></td></tr></table></figure>
-
-<p>报错发生在哪一层，决定了该查哪里。缺少 <code>expected_revision</code> 属于输入契约错误；证据引用不存在，属于业务校验错误；<code>connect: connection refused</code> 则是在连接模型服务时就失败。这三类故障不应该都显示成一个笼统的“模型错误”。</p>
-<h2 id="0x02-为什么不能删掉-expected-revision"><a href="#0x02-为什么不能删掉-expected-revision" class="headerlink" title="0x02 为什么不能删掉 expected_revision"></a>0x02 为什么不能删掉 expected_revision</h2><p>这个字段负责并发版本比较。假设 Planner 读到模型版本 7，操作员随后补了一条信任边界，数据库已到版本 8。Planner 再提交基于版本 7 的整份模型，直接覆盖会把人工修改抹掉。</p>
-<p>正确行为是拒绝旧版本提交，重新读取上下文后再合并。把必填字段去掉，或者由宿主一律补成当前版本，会掩盖冲突，让一次看似成功的保存变成数据丢失。</p>
-<p>调用前应先读取 <code>get_audit_context</code>，使用其实际版本。支持文件提交的版本，可以在任务目录写好完整模型，再提交以下结构的参数：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;expected_revision&quot;: &lt;刚读取的真实版本号&gt;,</span><br><span class="line">  &quot;model_path&quot;: &quot;&lt;任务目录内的模型 JSON 相对路径&gt;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里是参数结构说明，尖括号需要替换。具体字段仍以当前部署实例暴露的工具 schema 为准，不能把旧版本样例直接当成接口规范。</p>
-<h2 id="0x03-修了什么"><a href="#0x03-修了什么" class="headerlink" title="0x03 修了什么"></a>0x03 修了什么</h2><p>当时排查发现，大参数保存还会受到流式参数组装和回执体积的影响。围绕这条链路做了几件事：</p>
-<table>
-<thead>
-<tr>
-<th>位置</th>
-<th>改造</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>参数接收</td>
-<td>累积参数分片，处理文本、用量事件与参数事件交错</td>
-</tr>
-<tr>
-<td>解码失败</td>
-<td>保留参数长度、摘要和截断诊断，拒绝执行保存</td>
-</tr>
-<tr>
-<td>工具定义</td>
-<td>保留 required、数组结构和版本比较约束</td>
-</tr>
-<tr>
-<td>大模型提交</td>
-<td>支持任务目录内的 <code>model_path</code>，限制路径边界与 4 MiB 大小</td>
-</tr>
-<tr>
-<td>业务校验</td>
-<td>把缺失引用、非法状态定位到具体字段</td>
-</tr>
-<tr>
-<td>工具返回</td>
-<td>返回版本、摘要及有限缺口，避免整份模型再次灌回上下文</td>
-</tr>
-</tbody></table>
-<p>小回执解决的是下一轮上下文膨胀，文件提交解决的是超长参数传输。两者都不能替代模型结构和证据校验。</p>
-<p>当次历史快照统计过 43 次保存调用，其中 27 次是空对象。这是排查时点的统计，不是永久累计值，也不能据此把每一次空对象都归因于截断。</p>
-<h2 id="0x04-后续复查没有支持“已经彻底解决”"><a href="#0x04-后续复查没有支持“已经彻底解决”" class="headerlink" title="0x04 后续复查没有支持“已经彻底解决”"></a>0x04 后续复查没有支持“已经彻底解决”</h2><p>复查时，仍观察到字面两字节 <code>&#123;&#125;</code> 到达工具层，并在执行保存前被 schema 拦下。说明早期补丁覆盖了可复现的组装问题，但没有消灭所有空参数来源。</p>
-<p>要继续定位，需要关联同一请求的工具定义、原始请求、原始响应、分片事件和最终解码参数。当时缺少能够一一对应的完整原始报文，因此不能断言是模型直接生成了空对象、协议转换丢了内容，还是后续累积过程出错。</p>
-<p>并发运行两个任务也只提供了排查线索，不能单凭时间相关性认定“并发把参数串了”。</p>
-<h2 id="0x05-这一轮留下的工程规则"><a href="#0x05-这一轮留下的工程规则" class="headerlink" title="0x05 这一轮留下的工程规则"></a>0x05 这一轮留下的工程规则</h2><p>保存失败必须保留失败，不伪造成功回执；版本冲突必须重读，不静默覆盖；日志可以帮助定位参数状态，但不应默认复制整份源码、模型正文或凭据。</p>
-<p>本轮验收覆盖了针对性的 Go 测试、工具 schema、流式分片和大模型保存路径。它证明这些受控输入按预期处理，没有证明所有供应商、模型模板和代理转换路径都正常。</p>
-<p>工具注册与参数解码实现，以及后续空参数排查记录。遇到同类错误，先保存请求关联标识和发生层次，再决定重试或修复哪一段链路。</p>
-<p><a href="/codescan-04/">上一篇：任务生命周期</a> · <a href="/codescan-06/">下一篇：目标拆解恢复</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-05/">http://www.pa55w0rd.online/codescan-05/</a> </p>
--->
+        -->
       
 
     </div>

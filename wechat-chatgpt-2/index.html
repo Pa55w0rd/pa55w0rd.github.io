@@ -77,6 +77,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -289,19 +292,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>昨天发了一篇”<a href="https://www.pa55w0rd.online/wechatmp-chatgpt/">在微信公众号中接入ChatGPT（支持GPT-4)</a>“，有些朋友私信是怎么接入的，下面就来说说我是怎么把ChatGPT接入微信和微信公众号的。</p>
-<span id="more"></span>
-
-<p>我使用的是开源项目接入，总的来说，接入微信或者微信公众号体验上来说不是很好。已接入的公众号，如服务器未到期、OpenAI还有额度就一直免费开放使用</p>
-<p><code>开源项目地址：https://github.com/zhayujie/chatgpt-on-wechat</code></p>
-<ol>
-<li>微信回复消息或者微信公众号回复私信时，不支持流式响应，导致从感官上响应很慢，因为需要从OpenAI接口获取完整响应后，再返回给用户，官方接口GPT-3.5要不GPT-4响应要快一些，修改为GPT-4模型后，体验更差</li>
-<li>微信回复消息或者微信公众号回复私信时，会有长度限制，程序已做好拆分</li>
-<li>个人微信号接入可能存在封号风险，基于Python的wechaty模块，扫码登录，我使用的是一个实名制老号，运行3个月未提示封号，平均一周掉线一次</li>
-<li>个人微信公众号只能被动回复，最多只有15秒的自动回复时间窗口，如果问题比较复杂或者我们的服务器比较忙，ChatGPT的回答就没办法及时回复给用户。为了解决这个问题，这里做了回答缓存，它需要你在回复超时后，再次主动发送任意文字（例如1）来尝试拿到回答缓存。为了优化使用体验，目前设置了两分钟（120秒）的timeout，用户在至多两分钟后即可得到查询到回复或者错误原因。</li>
-</ol>
-<p> <a href="http://www.pa55w0rd.online/wechat-chatgpt-2/">http://www.pa55w0rd.online/wechat-chatgpt-2/</a> </p>
--->
+        -->
       
 
     </div>

@@ -76,6 +76,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -292,23 +295,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>修改配置文件，开启认证</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># vi /etc/mongod.conf</span></span><br><span class="line"><span class="symbol"></span></span><br><span class="line"><span class="symbol">    security:</span></span><br><span class="line"><span class="symbol">    authorization:</span>enablesd</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>创建密码</p>
-<ul>
-<li><strong>db.createUser({ user: “w11scan”, pwd: “w11scan”, roles: [{ role: “dbOwner”, db: “w11scan_config” }] })</strong>  <br>mongo创建db密码</li>
-<li><strong>db.auth(“useradmin”, “adminpassword”)</strong> <br>验证，1表示成功<br>mongodb中的用户是基于身份role的<ul>
-<li>管理员账户的 role是 userAdminAnyDatabase，‘userAdmin’代表用户管理身份，’AnyDatabase’ 代表可以管理任何数据库。</li>
-<li>dbOwner 代表数据库所有者角色，拥有最高该数据库最高权限。比如新建索引等</li>
-<li>readWrite 该用户用于该数据的读写，只拥有读写权限。</li>
-</ul>
-</li>
-</ul>
-<p> <a href="http://www.pa55w0rd.online/mongodb_auth/">http://www.pa55w0rd.online/mongodb_auth&#x2F;</a> </p>
--->
+        -->
       
 
     </div>

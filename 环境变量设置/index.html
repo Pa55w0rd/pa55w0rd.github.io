@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -314,46 +317,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-查看环境变量"><a href="#0x00-查看环境变量" class="headerlink" title="0x00 查看环境变量"></a>0x00 查看环境变量</h2><p>查看环境变量有三个命令：</p>
-<ul>
-<li>env：env命令是environment的缩写，用于列出所有的环境变量</li>
-<li>export：单独使用export命令也可以像env列出所有的环境变量，不过export命令还有其他额外的功能</li>
-<li><code>echo $PATH</code>：<code>echo $PATH</code>用于列出变量PATH的值，里面包含了已添加的目录</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="0x01-设置环境变量"><a href="#0x01-设置环境变量" class="headerlink" title="0x01 设置环境变量"></a>0x01 设置环境变量</h2><h3 id="1-1-将路径加入到PATH"><a href="#1-1-将路径加入到PATH" class="headerlink" title="1.1 将路径加入到PATH"></a>1.1 将路径加入到PATH</h3><p>可以直接添加到环境变量PATH中。$PATH表示变量PATH的值，包含已有的目录。</p>
-<p>这种方法需要注意路径的顺序，如果遇到有同名的命令，那么PATH里面哪个目录先被查询，则那个目录下的命令就会被先执行，如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加到PATH末尾</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/path/to/your/dir</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加到PATH开头</span></span><br><span class="line"><span class="built_in">export</span> PATH=/path/to/your/dir:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-命名一个新的环境变量"><a href="#1-2-命名一个新的环境变量" class="headerlink" title="1.2 命名一个新的环境变量"></a>1.2 命名一个新的环境变量</h3><p>也可以直接命名一个新的环境变量，用于其它程序引用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> VAR_NAME=value</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02-作用域"><a href="#0x02-作用域" class="headerlink" title="0x02 作用域"></a>0x02 作用域</h2><h3 id="2-1-作用于当前终端"><a href="#2-1-作用于当前终端" class="headerlink" title="2.1 作用于当前终端"></a>2.1 作用于当前终端</h3><p>打开一个终端，输入添加环境变量的语句：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure>
-<p>终端所添加的环境变量是临时的，只适用于当前终端，关闭当前终端或在另一个终端中，添加的环境变量无效。</p>
-<h3 id="2-2-作用于当前用户"><a href="#2-2-作用于当前用户" class="headerlink" title="2.2 作用于当前用户"></a>2.2 作用于当前用户</h3><p>如果只需要添加的环境变量对当前用户有效，可以写入用户主目录下的.bashrc文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure>
-<p>添加语句：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure>
-<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-3-作用于所有用户"><a href="#2-3-作用于所有用户" class="headerlink" title="2.3 作用于所有用户"></a>2.3 作用于所有用户</h3><p>要使环境变量对所有用户有效，可以修改profile文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> vim /etc/profile </span><br></pre></td></tr></table></figure>
-<p>添加语句：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLASS_PATH=./JAVA_HOME/lib:<span class="variable">$JAVA_HOME</span>/jre/lib</span><br></pre></td></tr></table></figure>
-<p>注销或者重启可以使修改生效，如果要使添加的环境变量马上生效：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p><strong>说明：</strong></p>
-<p>bash首先执行&#x2F;etc&#x2F;profile脚本,&#x2F;etc&#x2F;profile脚本先依次执行&#x2F;etc&#x2F;profile.d&#x2F;*.sh </p>
-<p>随后bash会执行用户主目录下的.bash_profile脚本,.bash_profile脚本会执行用户主目录下的.bashrc脚本,<br>而.bashrc脚本会执行&#x2F;etc&#x2F;bashrc脚本</p>
-<p>至此,所有的环境变量和初始化设定都已经加载完成</p>
-<p>bash随后调用terminfo和inputrc，完成终端属性和键盘映射的设定</p>
-<p> <a href="http://www.pa55w0rd.online/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/">http://www.pa55w0rd.online/环境变量设置/</a> </p>
--->
+        -->
       
 
     </div>

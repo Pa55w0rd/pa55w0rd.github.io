@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -282,14 +285,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p>CentOS7下mysql5.7忘记root密码</p>
-<h2 id="步骤一-配置文件中添加skip-grant-tables"><a href="#步骤一-配置文件中添加skip-grant-tables" class="headerlink" title="步骤一 配置文件中添加skip-grant-tables"></a>步骤一 配置文件中添加skip-grant-tables</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 在[mysqld]中添加skip-grant-tables</span></span><br><span class="line">    [mysqld]</span><br><span class="line">    skip-grant-tables</span><br><span class="line">    datadir=/var/lib/mysql</span><br><span class="line">    socket=/var/lib/mysql/mysql.sock</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="步骤二-重启mysql"><a href="#步骤二-重启mysql" class="headerlink" title="步骤二 重启mysql"></a>步骤二 重启mysql</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">systemctl restart mysqld</span></span><br></pre></td></tr></table></figure>
-<h2 id="步骤三-空密码登录"><a href="#步骤三-空密码登录" class="headerlink" title="步骤三 空密码登录"></a>步骤三 空密码登录</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -<span class="selector-tag">p</span> (直接点击回车，密码为空)</span><br></pre></td></tr></table></figure>
-<h2 id="步骤四-修改root密码"><a href="#步骤四-修改root密码" class="headerlink" title="步骤四 修改root密码"></a>步骤四 修改root密码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 选择数据库</span></span><br><span class="line">use mysql;</span><br><span class="line"><span class="comment"># 修改root密码</span></span><br><span class="line">update user <span class="built_in">set</span> authentication_string=password(<span class="string">&#x27;root&#x27;</span>) <span class="built_in">where</span> user=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">flush privileges;</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line"><span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="步骤五-删除-skip-grant-tables，并重启mysql服务"><a href="#步骤五-删除-skip-grant-tables，并重启mysql服务" class="headerlink" title="步骤五 删除 skip-grant-tables，并重启mysql服务"></a>步骤五 删除 skip-grant-tables，并重启mysql服务</h2><p> <a href="http://www.pa55w0rd.online/mysql-forget-passwd/">http://www.pa55w0rd.online/mysql-forget-passwd/</a> </p>
--->
+        -->
       
 
     </div>

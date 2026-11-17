@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-11/#article","headline":"CodeScan 实战（11）：一直重连，最后查到了端口之外的登录冲突","description":"两套实例端口不同，为什么会话列表仍一直重连？从普通 API 与 SSE 的鉴权差异，追到同主机 Cookie 的登录冲突。","url":"https://www.pa55w0rd.online/codescan-11/","datePublished":"2026-11-16T03:49:00.000Z","dateModified":"2026-11-16T08:17:04.504Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-11/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-11/#article","headline":"CodeScan 实战（11）：一直重连，最后查到了端口之外的登录冲突","description":"两套实例端口不同，为什么会话列表仍一直重连？从普通 API 与 SSE 的鉴权差异，追到同主机 Cookie 的登录冲突。","url":"https://www.pa55w0rd.online/codescan-11/","datePublished":"2026-11-16T03:49:00.000Z","dateModified":"2026-11-17T03:21:10.418Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-11/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/11-sse-auth-paths-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（11）：一直重连，最后查到了端口之外的登录冲突","item":"https://www.pa55w0rd.online/codescan-11/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="两套实例端口不同，为什么会话列表仍一直重连？从普通 API 与 SSE 的鉴权差异，追到同主机 Cookie 的登录冲突。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/11-sse-auth-paths-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:49:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:17:04.504Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.418Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="故障排查">
 <meta property="article:tag" content="SSE">
 <meta property="article:tag" content="身份认证">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/11-sse-auth-paths-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -219,7 +224,7 @@ ga('send', 'pageview');
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:17:04.504Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.418Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -286,7 +291,14 @@ ga('send', 'pageview');
 <p>如果两套实例使用不同的密钥和用户数据，一边签发的令牌到了另一边，校验失败是正常的。真正需要修的是令牌选择、存储与迁移逻辑，而不是让两边共享密钥来绕过错误。</p>
 <h2 id="0x02-为什么普通-API-能用，SSE-却重连"><a href="#0x02-为什么普通-API-能用，SSE-却重连" class="headerlink" title="0x02 为什么普通 API 能用，SSE 却重连"></a>0x02 为什么普通 API 能用，SSE 却重连</h2><p>普通 API 请求可以携带明确的 <code>Authorization: Bearer ...</code>。实时通道采用 SSE，在旧路径没有显式查询令牌时，会落到 Cookie 兼容逻辑。</p>
 <p>于是出现了两条不同的链：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">普通 API → 明确 Bearer → 本实例令牌 → 可以成功</span><br><span class="line">SSE      → 旧 Cookie   → 另一实例令牌 → 401 → 重连</span><br></pre></td></tr></table></figure>
+<!-- codescan-figure:11:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/11-sse-auth-paths-v1.svg" data-fancybox-type="image" title="同一主机名：端口不同仍可能共享旧 Cookie">
+    <img src="/assets/codescan/11-sse-auth-paths-v1.webp" alt="同主机名不同端口可共享旧Cookie，普通API明确Bearer成功，旧SSE使用另一实例Cookie导致401重连；修复身份选择及迁移逻辑。" width="1200" height="900" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 11｜API 与 SSE 使用不同身份来源时，可能产生“能查数据但一直重连”的现象。 <a href="/assets/codescan/11-sse-auth-paths-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:11:end -->
 
 <p>自动重连解决的是暂时断线，解决不了持续无效的身份。若页面只显示“重连中”，用户就看不到它其实在反复收到鉴权失败。</p>
 <p>这也解释了为什么不能只检查服务端端口是否监听。网络连通和身份有效，是两项不同检查。</p>
@@ -307,7 +319,7 @@ ga('send', 'pageview');
 <p>这条反馈是当时真实浏览器恢复的依据，应与自动化测试分开记录；不能把后端测试通过写成已经自动登录并观察过真实页面。</p>
 <p>如果后续再次重连，应重新检查响应码和身份来源，不默认还是同一个原因。代理超时、服务器重启、网络中断也会产生相似表象。</p>
 <p><a href="/codescan-10/">上一篇：完整审计模式</a> · <a href="/codescan-12/">下一篇：运行预算与断点</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-11/">http://www.pa55w0rd.online/codescan-11/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-11/">https://www.pa55w0rd.online/codescan-11/</a> </p>
 
         
 <!--
@@ -315,39 +327,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 11 篇</p>
-<p>任务列表一直显示“重连中”，刷新也没有恢复。与此同时，页面上的部分普通接口还能正常读取数据，很像是实时推送服务坏了。</p>
-<p>最后确认的关键条件是：浏览器同时登录了原 Artex 的 8787 和本项目的 17878，两者使用同一个主机名。</p>
-<span id="more"></span>
-
-<h2 id="0x01-端口不同，不代表所有浏览器状态都隔离"><a href="#0x01-端口不同，不代表所有浏览器状态都隔离" class="headerlink" title="0x01 端口不同，不代表所有浏览器状态都隔离"></a>0x01 端口不同，不代表所有浏览器状态都隔离</h2><p>前端存储和 Cookie 的隔离方式不同。浏览器源包含协议、主机和端口；Cookie 的匹配主要看域、路径及相关属性，不以端口作为隔离边界。</p>
-<p>因此两个 <code>http://127.0.0.1:&lt;不同端口&gt;</code> 页面，可以有各自的 localStorage，却仍收到同名旧 Cookie。这次涉及的兼容字段是 <code>artex_token</code>。</p>
-<p>如果两套实例使用不同的密钥和用户数据，一边签发的令牌到了另一边，校验失败是正常的。真正需要修的是令牌选择、存储与迁移逻辑，而不是让两边共享密钥来绕过错误。</p>
-<h2 id="0x02-为什么普通-API-能用，SSE-却重连"><a href="#0x02-为什么普通-API-能用，SSE-却重连" class="headerlink" title="0x02 为什么普通 API 能用，SSE 却重连"></a>0x02 为什么普通 API 能用，SSE 却重连</h2><p>普通 API 请求可以携带明确的 <code>Authorization: Bearer ...</code>。实时通道采用 SSE，在旧路径没有显式查询令牌时，会落到 Cookie 兼容逻辑。</p>
-<p>于是出现了两条不同的链：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">普通 API → 明确 Bearer → 本实例令牌 → 可以成功</span><br><span class="line">SSE      → 旧 Cookie   → 另一实例令牌 → 401 → 重连</span><br></pre></td></tr></table></figure>
-
-<p>自动重连解决的是暂时断线，解决不了持续无效的身份。若页面只显示“重连中”，用户就看不到它其实在反复收到鉴权失败。</p>
-<p>这也解释了为什么不能只检查服务端端口是否监听。网络连通和身份有效，是两项不同检查。</p>
-<h2 id="0x03-这轮修复放在哪里"><a href="#0x03-这轮修复放在哪里" class="headerlink" title="0x03 这轮修复放在哪里"></a>0x03 这轮修复放在哪里</h2><p>修复包含端口对应的令牌存储与迁移、旧 Cookie 清理，以及 SSE 显式查询令牌和 Bearer 的选择顺序。已经提供有效显式身份时，不应再被另一实例留下的旧 Cookie 遮蔽。</p>
-<p>后端还保留数据库用户有效性检查。签名通过但用户已失效，也不能继续开放实时数据。</p>
-<p>本轮没有通过复制另一实例密钥、伪造登录态来“验证可用”，也没有为排查重连删除任务或重建数据卷。鉴权问题与任务数据丢失要分别取证。</p>
-<h2 id="0x04-重连不等于任务被删除"><a href="#0x04-重连不等于任务被删除" class="headerlink" title="0x04 重连不等于任务被删除"></a>0x04 重连不等于任务被删除</h2><p>列表加载失败时，首先应该确认任务 API、实时连接和数据库记录各自的状态。前端没有收到列表，不等于数据库执行了删除。</p>
-<p>可以按以下顺序缩小范围：</p>
-<ol>
-<li>普通任务查询是否返回 200，响应是否包含目标任务。</li>
-<li>SSE 建连是 200、401，还是网络错误。</li>
-<li>当前浏览器选中的身份是否属于本实例。</li>
-<li>服务端日志是否记录鉴权失败，任务归属是否一致。</li>
-<li>有明确删除记录或数据库证据后，再讨论删除时间与主体。</li>
-</ol>
-<p>“页面打不开”本身不够推断谁删了任务，更不应通过重置数据库验证猜测。</p>
-<h2 id="0x05-恢复是怎样确认的"><a href="#0x05-恢复是怎样确认的" class="headerlink" title="0x05 恢复是怎样确认的"></a>0x05 恢复是怎样确认的</h2><p>工程检查覆盖鉴权优先级、失效用户、迁移逻辑和前端状态。部署后，用户按提示强制刷新，实际反馈“实时，已恢复”。</p>
-<p>这条反馈是当时真实浏览器恢复的依据，应与自动化测试分开记录；不能把后端测试通过写成已经自动登录并观察过真实页面。</p>
-<p>如果后续再次重连，应重新检查响应码和身份来源，不默认还是同一个原因。代理超时、服务器重启、网络中断也会产生相似表象。</p>
-<p><a href="/codescan-10/">上一篇：完整审计模式</a> · <a href="/codescan-12/">下一篇：运行预算与断点</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-11/">http://www.pa55w0rd.online/codescan-11/</a> </p>
--->
+        -->
       
 
     </div>

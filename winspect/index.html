@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -313,45 +316,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <blockquote>
-<p><a target="_blank" rel="noopener" href="https://github.com/A-mIn3/WINspect">项目地址</a></p>
-</blockquote>
-<h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>WINSpect是一款基于Powershell的Windows安全审计工具，可用于枚举和识别Windows平台的安全漏洞，以进一步的优化和加固平台的安全防护策略。</p>
-<h2 id="0x01-功能"><a href="#0x01-功能" class="headerlink" title="0x01 功能"></a>0x01 功能</h2><p>WINSpect将为我们提供审计检查和枚举：</p>
-<ul>
-<li>检查已安装的安全产品</li>
-<li>检查DLL劫持</li>
-<li>检查用户账户控制设置</li>
-</ul>
-<span id="more"></span>
-<ul>
-<li>本地文件系统共享</li>
-<li>具有本地组成员身份的域用户和组</li>
-<li>注册表autoruns</li>
-<li>可由Authenticated Users组成员配置的本地服务</li>
-<li>Authenticated Users组成员可以写入相应二进制文件的本地服务</li>
-<li>非system32 Windows托管服务及其相关的DLL</li>
-<li>非引用服务路径漏洞</li>
-<li>非系统计划任务DLL劫持</li>
-<li>自动安装</li>
-</ul>
-<h2 id="0x02-使用"><a href="#0x02-使用" class="headerlink" title="0x02 使用"></a>0x02 使用</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:A<span class="literal">-mIn3</span>/WINspect.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用管理员权限打开powershell，并运行WINSpect脚本</span></span><br><span class="line">.\WINspect.ps1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-排错"><a href="#0x03-排错" class="headerlink" title="0x03 排错"></a>0x03 排错</h2><p>Win10系统使用过程中报错</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.\WINspect.ps1 : 无法加载文件 E:\WINspect\WINspect.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 http</span><br><span class="line">s:/go.microsoft.com/fwlink/?LinkID=<span class="number">135170</span> 中的 about_Execution_Policies。</span><br><span class="line">所在位置 行:<span class="number">1</span> 字符: <span class="number">1</span></span><br><span class="line">+ .\WINspect.ps1</span><br><span class="line">+ ~~~~~~~~~~~~~~</span><br><span class="line">    + CategoryInfo          : SecurityError: (:) []，PSSecurityException</span><br><span class="line">    + FullyQualifiedErrorId : UnauthorizedAccess</span><br></pre></td></tr></table></figure>
-
-<p>是因为Windows PowerShell 执行策略限制你确定 Windows PowerShell 加载配置文件并运行脚本的条件。</p>
-<p>通过<code>Get-ExecutionPolicy</code>命令获取挡前执行策略，默认执行策略为<code>Restricted</code></p>
-<ul>
-<li>允许单独的命令，但不会运行脚本。</li>
-<li>阻止所有脚本文件的运行，包括格式设置文件和配置文件 (.ps1xml)、模块脚本文件 (.psm1) 和 Windows PowerShell 配置文件 (.ps1)。</li>
-</ul>
-<p>更改执行策略</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> <span class="literal">-ExecutionPolicy</span> RemoteSigned</span><br><span class="line"></span><br><span class="line">执行策略更改</span><br><span class="line">执行策略可帮助你防止执行不信任的脚本。更改执行策略可能会产生安全风险，如 https:/go.microsoft.com/fwlink/?LinkID=<span class="number">135170</span></span><br><span class="line">中的 about_Execution_Policies 帮助主题所述。是否要更改执行策略?</span><br><span class="line">[<span class="type">Y</span>] 是(Y)  [<span class="type">A</span>] 全是(A)  [<span class="type">N</span>] 否(N)  [<span class="type">L</span>] 全否(L)  [<span class="type">S</span>] 暂停(S)  [?] 帮助 (默认值为“N”): y</span><br></pre></td></tr></table></figure>
-
-<p>详细内容参考<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/previous-versions/windows/powershell-scripting/hh847748(v=wps.640)">about_Execution_Policies</a></p>
-<p> <a href="http://www.pa55w0rd.online/winspect/">http://www.pa55w0rd.online/winspect/</a> </p>
--->
+        -->
       
 
     </div>

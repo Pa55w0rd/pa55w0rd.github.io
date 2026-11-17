@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -312,44 +315,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>jekyll是一个静态网站生成工具，可以通过markdown编写文档，使用模板自定义网站结构，通过sass或css自定义格式。jekyll是用ruby编写的工具，因此在安装jekyll之前需要安装ruby环境，由于官方源访问问题，需要切换国内源。</p>
-<span id="more"></span>
-
-<h2 id="0x01-安装ruby"><a href="#0x01-安装ruby" class="headerlink" title="0x01 安装ruby"></a>0x01 安装ruby</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install ruby</span><br><span class="line">apt-<span class="built_in">get</span> install ruby-dev (ubuntu)</span><br><span class="line">apt-<span class="built_in">get</span> install ruby-devel (centos)</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x02-切换ruby源"><a href="#0x02-切换ruby源" class="headerlink" title="0x02 切换ruby源"></a>0x02 切换ruby源</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gem sources -l   <span class="comment"># 查看当前已经添加的源</span></span><br><span class="line">gem sources -r <span class="keyword">https</span>://rubygems.org/  <span class="comment"># 移除官方源</span></span><br><span class="line">gem sources -<span class="keyword">a</span> <span class="keyword">http</span>://gems.ruby-china.com   <span class="comment"># 添加ruby china源，HTTP\HTTPs</span></span><br><span class="line">gem sources -u    <span class="comment">#刷新</span></span><br><span class="line">gem sources -l   <span class="comment"># 查看是否添加成功</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如果使用bundler，需要</span><br><span class="line">bundle config mirror.https:<span class="comment">//rubygems.org https://gems.ruby-china.com</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x03-安装jekyll"><a href="#0x03-安装jekyll" class="headerlink" title="0x03 安装jekyll"></a>0x03 安装jekyll</h2><h3 id="先安装依赖包管理工具bundler"><a href="#先安装依赖包管理工具bundler" class="headerlink" title="先安装依赖包管理工具bundler"></a>先安装依赖包管理工具bundler</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> bundler</span><br></pre></td></tr></table></figure>
-<h3 id="安装jekyll"><a href="#安装jekyll" class="headerlink" title="安装jekyll"></a>安装jekyll</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem <span class="keyword">install</span> jekyll</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x04-jekyll使用"><a href="#0x04-jekyll使用" class="headerlink" title="0x04 jekyll使用"></a>0x04 jekyll使用</h2><p><a target="_blank" rel="noopener" href="http://jekyllthemes.org/">jekyll主题</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jekyll.com.cn/docs/home/">jekyll使用文档</a></p>
-<hr>
-<h2 id="0x05-其他方式-rvm安装ruby"><a href="#0x05-其他方式-rvm安装ruby" class="headerlink" title="0x05 其他方式 rvm安装ruby"></a>0x05 其他方式 rvm安装ruby</h2><ol>
-<li>安装rvm</li>
-</ol>
-<p><code>curl -sSL https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer | bash</code></p>
-<p><code>source /usr/local/rvm/scripts/rvm</code></p>
-<ol start="2">
-<li>查看rvm库中已知的ruby版本</li>
-</ol>
-<p><code>rvm list known</code></p>
-<ol start="3">
-<li>安装一个ruby</li>
-</ol>
-<p><code>rvm install 2.5.1</code></p>
-<ol start="4">
-<li>使用一个ruby版本</li>
-</ol>
-<p><code>rvm use 2.5.1</code></p>
-<p><code>ruby --version</code></p>
-<ol start="5">
-<li>安装jekyll</li>
-</ol>
-<p><code>gem install jekyll</code></p>
-<p> <a href="http://www.pa55w0rd.online/ruby%E6%8D%A2%E6%BA%90/">http://www.pa55w0rd.online/ruby换源/</a> </p>
--->
+        -->
       
 
     </div>

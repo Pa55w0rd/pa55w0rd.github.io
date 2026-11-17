@@ -78,6 +78,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -325,54 +328,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>测试用例的选择尽量贴近真实业务使用的场景，覆盖常见的高危漏洞，以及各类请求形式。用于测试IAST产品支持检测漏洞类型、检出率、脏数据插入等等</p>
-<span id="more"></span>
-
-<h2 id="0x01-靶场选择"><a href="#0x01-靶场选择" class="headerlink" title="0x01 靶场选择"></a>0x01 靶场选择</h2><table>
-<thead>
-<tr>
-<th>靶场</th>
-<th>DVWA</th>
-<th>Openrasp-testcases</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>技术栈</td>
-<td>PHP&#x2F;MYSQL</td>
-<td>JAVA&#x2F;PHP&#x2F;MYSQL</td>
-</tr>
-<tr>
-<td>支持漏洞类型</td>
-<td><a target="_blank" rel="noopener" href="https://github.com/digininja/DVWA">https://github.com/digininja/DVWA</a></td>
-<td><a target="_blank" rel="noopener" href="https://github.com/baidu-security/openrasp-testcases">https://github.com/baidu-security/openrasp-testcases</a></td>
-</tr>
-</tbody></table>
-<p>考虑到公司使用的技术栈，这里选择了openrasp-testcases用于测试靶场</p>
-<h2 id="0x02-靶场搭建"><a href="#0x02-靶场搭建" class="headerlink" title="0x02 靶场搭建"></a>0x02 靶场搭建</h2><p>环境：</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Centos7</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">PHP7</span>.<span class="number">3</span></span><br><span class="line"><span class="attribute">JDK1</span>.<span class="number">8</span></span><br><span class="line"><span class="attribute">MYSQL5</span>.<span class="number">6</span></span><br><span class="line"><span class="attribute">APACHE2</span>.<span class="number">4</span></span><br><span class="line"><span class="attribute">TOMCAT8</span>.<span class="number">5</span></span><br><span class="line"><span class="attribute">MAVEN3</span>.<span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h3 id="2-1-JAVA-测试靶场"><a href="#2-1-JAVA-测试靶场" class="headerlink" title="2.1 JAVA 测试靶场"></a>2.1 JAVA 测试靶场</h3><p>mvn编译</p>
-<p>启动tomcat</p>
-<p>启动mysql</p>
-<p>本地靶场：<a target="_blank" rel="noopener" href="http://192.168.244.129:8080/manager/html">http://192.168.244.129:8080/manager/html</a></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/7fecbe8550249e2d807eaadd547fcddb.png" alt="image.png"></p>
-<h3 id="2-2-PHP测试靶场"><a href="#2-2-PHP测试靶场" class="headerlink" title="2.2 PHP测试靶场"></a>2.2 PHP测试靶场</h3><p>启动apache</p>
-<p>启动php</p>
-<p>启动mysql</p>
-<p>本地靶场</p>
-<p><a target="_blank" rel="noopener" href="http://192.168.244.129/">http://192.168.244.129/</a><br><img src="https://pic.rmb.bdstatic.com/bjh/65b814f3f7c7ad8e621fd3d8e3b4e174.png" alt="image.png"></p>
-<h3 id="2-3-脏数据测试"><a href="#2-3-脏数据测试" class="headerlink" title="2.3 脏数据测试"></a>2.3 脏数据测试</h3><p>产生脏数据的原因大多是执行了 数据库的insert语句，这里使用java简单写一个demo用于测试脏数据</p>
-<p>创建数据库</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">DATABASE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> test;</span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> test;         </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> test.* <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> <span class="keyword">privileges</span> <span class="keyword">on</span> test.* <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> vuln (</span><br><span class="line">-&gt; `id` <span class="type">INT</span> UNSIGNED AUTO_INCREMENT,</span><br><span class="line">-&gt; `<span class="type">name</span>` <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">-&gt; <span class="keyword">primary key</span>(`id`)</span><br><span class="line">-&gt; )ENGINE=InnoDB <span class="keyword">DEFAULT</span> CHARSET=utf8;</span><br></pre></td></tr></table></figure>
-
-<p>清空数据，重置ID</p>
-<p>truncate table vuln;</p>
-<p>MySQL服务器执行SQL记录实时监控，或者直接查询数据库</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/cw1997/MySQL-Monitor">https://github.com/cw1997/MySQL-Monitor</a></p>
-<p>执行sql语句</p>
-<p>stmt.executeUpdate(“INSERT INTO vuln(name) VALUES (‘“+id+”‘)”);</p>
-<p> <a href="http://www.pa55w0rd.online/iast-test/">http://www.pa55w0rd.online/iast-test/</a> </p>
--->
+        -->
       
 
     </div>

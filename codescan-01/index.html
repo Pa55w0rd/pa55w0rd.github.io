@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-01/#article","headline":"CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存","description":"使用独立 Compose 项目、端口与数据卷部署 CodeScan-Artex，并说明源码构建、模型接入和已有实例更新时的状态保护。","url":"https://www.pa55w0rd.online/codescan-01/","datePublished":"2026-11-16T03:59:00.000Z","dateModified":"2026-11-16T07:30:26.850Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-01/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-01/#article","headline":"CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存","description":"使用独立 Compose 项目、端口与数据卷部署 CodeScan-Artex，并说明源码构建、模型接入和已有实例更新时的状态保护。","url":"https://www.pa55w0rd.online/codescan-01/","datePublished":"2026-11-16T03:59:00.000Z","dateModified":"2026-11-17T03:21:10.410Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-01/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/01-deployment-boundaries-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存","item":"https://www.pa55w0rd.online/codescan-01/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="使用独立 Compose 项目、端口与数据卷部署 CodeScan-Artex，并说明源码构建、模型接入和已有实例更新时的状态保护。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/01-deployment-boundaries-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:59:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T07:30:26.850Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.410Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="本地部署">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/01-deployment-boundaries-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -219,7 +224,7 @@ ga('send', 'pageview');
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T07:30:26.850Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.410Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -329,6 +334,15 @@ ga('send', 'pageview');
 
 <p>这里的端口和模型名称都是示例，应替换成实际服务配置。还需要确认协议格式、鉴权、模型标识、上下文窗口和输出上限。</p>
 <p>连接测试成功只能证明一条最小调用路径可用。长上下文排队、流式响应和工具调用，应在后续测试中逐项核对。</p>
+<!-- codescan-figure:01:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/01-deployment-boundaries-v1.svg" data-fancybox-type="image" title="本地部署：同机共存与访问边界">
+    <img src="/assets/codescan/01-deployment-boundaries-v1.webp" alt="原Artex的8787入口与CodeScan的17878入口使用各自应用、数据库和状态卷，CodeScan容器通过host.docker.internal访问主机模型。" width="1200" height="920" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 01｜本地共存与网络访问示意，模型端口以实际配置为准。 <a href="/assets/codescan/01-deployment-boundaries-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:01:end -->
+
 <h2 id="0x05-已有实例更新，要先保护状态"><a href="#0x05-已有实例更新，要先保护状态" class="headerlink" title="0x05 已有实例更新，要先保护状态"></a>0x05 已有实例更新，要先保护状态</h2><p>首次部署和带数据更新的检查重点不同。已有任务时，我先记录容器、卷、任务状态及模型配置，再备份数据库、现有构建产物和登录签名密钥。</p>
 <p>本次环境中特别需要注意 <code>/app/jwt.key</code>：它位于应用容器文件系统，不能仅凭业务数据卷还在，就认定重建后登录也会保留。</p>
 <p>可以先导出密钥到受控的本地备份目录：</p>
@@ -339,7 +353,7 @@ ga('send', 'pageview');
 <h2 id="0x06-这一篇的验收边界"><a href="#0x06-这一篇的验收边界" class="headerlink" title="0x06 这一篇的验收边界"></a>0x06 这一篇的验收边界</h2><p>本系列后续的部署记录会给出各轮版本和测试范围。部署方法本身不证明审计能力，也不能替代一次恢复演练。</p>
 <p>源码入口是 <code>deploy-local.ps1</code>、<code>compose.local.yml</code>、<code>Dockerfile.local-runtime</code> 和 <code>server/auth.go</code>。常规更新前还应核对这些文件有没有变化，尤其是密钥路径、卷挂载和构建方式。</p>
 <p><a href="/codescan-00/">上一篇：系列导读</a> · <a href="/codescan-02/">下一篇：三个项目怎样集成</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-01/">http://www.pa55w0rd.online/codescan-01/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-01/">https://www.pa55w0rd.online/codescan-01/</a> </p>
 
         
 <!--
@@ -347,71 +361,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 01 篇 · 部署与更新</p>
-<p>本地已经运行原 Artex 时，新项目最先要解决的是共存：端口、数据库、卷和登录状态都需要核对。只换一个访问端口，隔离工作还没有结束。</p>
-<p>这一篇记录 CodeScan-Artex 的本地部署方式。命令以 PowerShell 7 和 Docker Desktop 的 Linux 容器模式为例，示例路径需要替换成自己的源码位置。</p>
-<span id="more"></span>
-
-<h2 id="0x01-先确认拿到的是哪份程序"><a href="#0x01-先确认拿到的是哪份程序" class="headerlink" title="0x01 先确认拿到的是哪份程序"></a>0x01 先确认拿到的是哪份程序</h2><p>本地配置使用上游运行镜像提供基础环境，再把当前工作树构建出来的后端、审计工具和内嵌前端放进去。</p>
-<p>这意味着，直接拉取上游镜像，不能据此认定已经得到本系列全部改造。部署前需要取得包含对应修改的源码，并核对 <code>dist/local/build-manifest.json</code> 中的版本与摘要。</p>
-<p>主要文件如下：</p>
-<table>
-<thead>
-<tr>
-<th>文件</th>
-<th>职责</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>deploy-local.ps1</code></td>
-<td>检查环境、选择端口、生成本机配置、构建与启动</td>
-</tr>
-<tr>
-<td><code>compose.local.yml</code></td>
-<td>独立应用、PostgreSQL、网络和数据卷</td>
-</tr>
-<tr>
-<td><code>Dockerfile.local-runtime</code></td>
-<td>把当前构建产物放入运行镜像</td>
-</tr>
-<tr>
-<td><code>dist/local/build-manifest.json</code></td>
-<td>记录构建版本及程序摘要</td>
-</tr>
-</tbody></table>
-<h2 id="0x02-首次部署"><a href="#0x02-首次部署" class="headerlink" title="0x02 首次部署"></a>0x02 首次部署</h2><p>先准备 Docker Compose、Go 和 Node.js&#x2F;npm。Go 版本以工作树里的 <code>go.mod</code> 为准；前端依赖按锁文件安装。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-Location</span> <span class="literal">-LiteralPath</span> <span class="string">&#x27;D:\projects\code-audit\CodeScan-Artex&#x27;</span></span><br><span class="line">.\<span class="built_in">deploy-local</span>.ps1 <span class="literal">-Port</span> <span class="number">17878</span></span><br></pre></td></tr></table></figure>
-
-<p>本地约定使用 <code>codescan-artex-local</code> 作为 Compose 项目名，对外只绑定 <code>127.0.0.1:17878</code>。原实例使用的 <code>8787</code> 保留。</p>
-<p>要改成另一个空闲端口，可以显式传入 <code>-Port 17879</code>。显式端口被占用时应先处理冲突，避免把别的服务误认为本次部署结果。</p>
-<p>脚本生成的 <code>.env.local</code> 属于本机私有配置，保存数据库口令和本地执行记录签名密钥。文章不提供固定口令，也不把实际配置文件放进示例。</p>
-<h2 id="0x03-启动后核对什么"><a href="#0x03-启动后核对什么" class="headerlink" title="0x03 启动后核对什么"></a>0x03 启动后核对什么</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker compose <span class="literal">--project-name</span> codescan<span class="literal">-artex-local</span> <span class="literal">--env-file</span> .env.local <span class="operator">-f</span> compose.local.yml <span class="built_in">ps</span></span><br><span class="line">docker compose <span class="literal">--project-name</span> codescan<span class="literal">-artex-local</span> <span class="literal">--env-file</span> .env.local <span class="operator">-f</span> compose.local.yml logs <span class="literal">--tail</span>=<span class="number">100</span> app</span><br></pre></td></tr></table></figure>
-
-<p>浏览器打开 <code>http://127.0.0.1:17878</code>，完成管理员设置，再配置模型服务。一次验收至少需要回答：</p>
-<ol>
-<li>应用与数据库是否就绪，访问到的版本是否对应本次构建？</li>
-<li>前端是否为真实后端模式，静态文件是否能正常加载？</li>
-<li>应用和数据库分别挂载了哪些卷？</li>
-<li>原实例的容器标识、端口和卷是否保持预期？</li>
-</ol>
-<p>主进程健康只说明服务可响应。模型可用性和一次完整审计，需要后续分别验证。</p>
-<h2 id="0x04-模型地址要从容器视角理解"><a href="#0x04-模型地址要从容器视角理解" class="headerlink" title="0x04 模型地址要从容器视角理解"></a>0x04 模型地址要从容器视角理解</h2><p>模型服务运行在 Windows 主机上时，容器内的 <code>127.0.0.1</code> 指向容器自己。开发环境可以使用下列地址形式：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://host.docker.internal:8000/v1</span><br></pre></td></tr></table></figure>
-
-<p>这里的端口和模型名称都是示例，应替换成实际服务配置。还需要确认协议格式、鉴权、模型标识、上下文窗口和输出上限。</p>
-<p>连接测试成功只能证明一条最小调用路径可用。长上下文排队、流式响应和工具调用，应在后续测试中逐项核对。</p>
-<h2 id="0x05-已有实例更新，要先保护状态"><a href="#0x05-已有实例更新，要先保护状态" class="headerlink" title="0x05 已有实例更新，要先保护状态"></a>0x05 已有实例更新，要先保护状态</h2><p>首次部署和带数据更新的检查重点不同。已有任务时，我先记录容器、卷、任务状态及模型配置，再备份数据库、现有构建产物和登录签名密钥。</p>
-<p>本次环境中特别需要注意 <code>/app/jwt.key</code>：它位于应用容器文件系统，不能仅凭业务数据卷还在，就认定重建后登录也会保留。</p>
-<p>可以先导出密钥到受控的本地备份目录：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> codescan<span class="literal">-artex-local-app-1</span>:/app/jwt.key .\data\maintenance\jwt.key</span><br></pre></td></tr></table></figure>
-
-<p>执行前先创建备份目录；密钥应按私有文件保护。真正替换应用时，还要保存它原有的权限与归属，在新容器启动前恢复，并核对摘要。数据库备份则应使用与当前版本匹配的 <code>pg_dump</code> 流程，核验导出结果。</p>
-<p>更新计划通常只需要重建本项目的应用容器。数据库容器、状态卷及其他项目都不应顺手重建。对于暂停或失败的任务，也应保留原状态，避免升级顺带恢复模型请求。</p>
-<h2 id="0x06-这一篇的验收边界"><a href="#0x06-这一篇的验收边界" class="headerlink" title="0x06 这一篇的验收边界"></a>0x06 这一篇的验收边界</h2><p>本系列后续的部署记录会给出各轮版本和测试范围。部署方法本身不证明审计能力，也不能替代一次恢复演练。</p>
-<p>源码入口是 <code>deploy-local.ps1</code>、<code>compose.local.yml</code>、<code>Dockerfile.local-runtime</code> 和 <code>server/auth.go</code>。常规更新前还应核对这些文件有没有变化，尤其是密钥路径、卷挂载和构建方式。</p>
-<p><a href="/codescan-00/">上一篇：系列导读</a> · <a href="/codescan-02/">下一篇：三个项目怎样集成</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-01/">http://www.pa55w0rd.online/codescan-01/</a> </p>
--->
+        -->
       
 
     </div>

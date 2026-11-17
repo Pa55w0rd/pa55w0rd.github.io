@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-10/#article","headline":"CodeScan 实战（10）：从二选一，走到同一任务内的完整审计","description":"在独立建模和独立审计之外增加 full_audit，同一任务先建模、复核真实入口和权限，再进行漏洞审计；附跨语言任务目标模板。","url":"https://www.pa55w0rd.online/codescan-10/","datePublished":"2026-11-16T03:50:00.000Z","dateModified":"2026-11-16T08:16:26.134Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-10/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-10/#article","headline":"CodeScan 实战（10）：从二选一，走到同一任务内的完整审计","description":"在独立建模和独立审计之外增加 full_audit，同一任务先建模、复核真实入口和权限，再进行漏洞审计；附跨语言任务目标模板。","url":"https://www.pa55w0rd.online/codescan-10/","datePublished":"2026-11-16T03:50:00.000Z","dateModified":"2026-11-17T03:21:10.417Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-10/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/10-task-modes-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（10）：从二选一，走到同一任务内的完整审计","item":"https://www.pa55w0rd.online/codescan-10/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="在独立建模和独立审计之外增加 full_audit，同一任务先建模、复核真实入口和权限，再进行漏洞审计；附跨语言任务目标模板。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/10-task-modes-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:50:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:16:26.134Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.417Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="威胁建模">
 <meta property="article:tag" content="完整审计">
 <meta property="article:tag" content="任务模板">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/10-task-modes-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -213,13 +218,13 @@ ga('send', 'pageview');
     
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-      <span class="article-wordcount">约 1.4k 字</span>
-      <span class="article-reading-time">约 4 分钟读完</span>
+      <span class="article-wordcount">约 1.5k 字</span>
+      <span class="article-reading-time">约 5 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:16:26.134Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.417Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -310,6 +315,15 @@ ga('send', 'pageview');
 <h2 id="0x02-先后顺序要靠程序控制"><a href="#0x02-先后顺序要靠程序控制" class="headerlink" title="0x02 先后顺序要靠程序控制"></a>0x02 先后顺序要靠程序控制</h2><p>只把“请先建模”写进提示词，无法保证执行顺序。完整审计需要宿主检查：源码是否上传，当前模型是否基础就绪，模型依据的源码是否仍与任务一致。</p>
 <p>模型尚未就绪或源码发生变化时，相关审计意图不能被提前领取。模型就绪后，任务仍保留审计工具和开放的审计目标，不把“模型已保存”当作整个任务完成。</p>
 <p>这同样要求界面显示当前阶段和待补项。用户应能看出卡在入口完整性、权限未知，还是正在分析具体漏洞，而不是只看到一个总进度圈。</p>
+<!-- codescan-figure:10:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/10-task-modes-v1.svg" data-fancybox-type="image" title="三种任务类型，三套完成条件">
+    <img src="/assets/codescan/10-task-modes-v1.webp" alt="独立建模交付模型，独立审计不强制先建立完整模型，完整审计先建模和入口权限复核再审计，并统一检查证据与报告。" width="1200" height="900" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 10｜三种模式的工作路径和交付范围，不把建模完成当作完整审计完成。 <a href="/assets/codescan/10-task-modes-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:10:end -->
+
 <h2 id="0x03-可复用的完整任务目标"><a href="#0x03-可复用的完整任务目标" class="headerlink" title="0x03 可复用的完整任务目标"></a>0x03 可复用的完整任务目标</h2><p>下面这份目标不绑定 Java，可以按项目范围删减：</p>
 <blockquote>
 <ol>
@@ -333,7 +347,7 @@ ga('send', 'pageview');
 <h2 id="0x05-这一轮验证到了哪里"><a href="#0x05-这一轮验证到了哪里" class="headerlink" title="0x05 这一轮验证到了哪里"></a>0x05 这一轮验证到了哪里</h2><p>验收覆盖类型迁移、源码上传、模型就绪前后的意图流转，以及建模完成后审计目标继续保留。受控测试使用隔离 PostgreSQL 和本地模拟 Provider。</p>
 <p>前端检查了三种模式、默认选择、切换保留草稿和窄屏布局。这些是工程行为验证，没有据此声称已对真实业务完成完整审计。</p>
 <p><a href="/codescan-09/">上一篇：性能指标</a> · <a href="/codescan-11/">下一篇：实时连接与登录冲突</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-10/">http://www.pa55w0rd.online/codescan-10/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-10/">https://www.pa55w0rd.online/codescan-10/</a> </p>
 
         
 <!--
@@ -341,65 +355,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 10 篇 </p>
-<p>两种独立任务解决了范围不清的问题，接着又出现一个自然需求：“我想两者都做，选哪一个？”</p>
-<p>答案是增加明确的完整审计模式。同一个任务先建立和复核模型，再开展漏洞审计，所有阶段沿用同一套源码身份、目标、覆盖与证据。</p>
-<span id="more"></span>
-
-<h2 id="0x01-三种模式各自有边界"><a href="#0x01-三种模式各自有边界" class="headerlink" title="0x01 三种模式各自有边界"></a>0x01 三种模式各自有边界</h2><table>
-<thead>
-<tr>
-<th>模式</th>
-<th>适用需求</th>
-<th>流程</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>独立威胁建模</td>
-<td>架构评审、审计前准备</td>
-<td>建模、查漏、模型交付</td>
-</tr>
-<tr>
-<td>独立代码审计</td>
-<td>已有范围，希望直接分析代码</td>
-<td>入口复核、漏洞审计、证据交付</td>
-</tr>
-<tr>
-<td>完整审计 <code>full_audit</code></td>
-<td>在同一任务中完成两者</td>
-<td>建模 → 入口权限复核 → 审计 → 收官</td>
-</tr>
-</tbody></table>
-<p>前端新建任务默认推荐完整审计，明确发送 <code>full_audit</code>。为了兼容旧调用方，原始 HTTP 请求不传 <code>task_mode</code> 时仍保留 <code>code_audit</code> 默认值。界面默认和接口兼容默认需要分别说明。</p>
-<p>旧任务的类型、目标、源码和证据不在迁移中重写；用户也不必为一次更新重新上传全部材料。</p>
-<h2 id="0x02-先后顺序要靠程序控制"><a href="#0x02-先后顺序要靠程序控制" class="headerlink" title="0x02 先后顺序要靠程序控制"></a>0x02 先后顺序要靠程序控制</h2><p>只把“请先建模”写进提示词，无法保证执行顺序。完整审计需要宿主检查：源码是否上传，当前模型是否基础就绪，模型依据的源码是否仍与任务一致。</p>
-<p>模型尚未就绪或源码发生变化时，相关审计意图不能被提前领取。模型就绪后，任务仍保留审计工具和开放的审计目标，不把“模型已保存”当作整个任务完成。</p>
-<p>这同样要求界面显示当前阶段和待补项。用户应能看出卡在入口完整性、权限未知，还是正在分析具体漏洞，而不是只看到一个总进度圈。</p>
-<h2 id="0x03-可复用的完整任务目标"><a href="#0x03-可复用的完整任务目标" class="headerlink" title="0x03 可复用的完整任务目标"></a>0x03 可复用的完整任务目标</h2><p>下面这份目标不绑定 Java，可以按项目范围删减：</p>
-<blockquote>
-<ol>
-<li><p>理解系统目的、技术栈、部署形态与保护资产。基于源码建立组件、调用与数据流、信任边界、安全控制，以及 STRIDE 威胁假设和核验计划。区分源码事实、假设、未知条件和范围排除；只有系统实际使用 AI、Agent、工具或记忆时才补充对应风险。</p>
-</li>
-<li><p>梳理全部暴露面和触发点，包括 HTTP、RPC、GraphQL、WebSocket、消息事件、定时任务、CLI、库调用、管理及调试入口。逐项记录完整方法与 URI 或操作符号、处理函数、输入、认证链、角色、对象和租户授权，以及网关、配置、动态注册条件和源码证据。</p>
-</li>
-<li><p>沿路由挂载、前缀拼接、中间件、代理重写和调用链交叉复核清单。分别确认入口真实存在、部署条件满足、权限实际生效；无法确认的保留未知及验证计划。基础模型就绪后，按入口、边界、子系统与生命周期拆分审计批次。</p>
-</li>
-<li><p>逐项追踪攻击者可控输入、转换与校验、安全控制和敏感操作，核对可达性、利用前提及反证，检查同根因变体。每个候选漏洞提交原样源码、逐跳证据、影响、修复和可复现 PoC，说明环境依赖、准备步骤、专属成功判据、阴性对照与清理。</p>
-</li>
-<li><p>汇总威胁处置、接口、文件和语义覆盖及剩余缺口。分别标明假设、静态确认、PoC 已生成、实际执行观察和独立复核。报告必须对应当前源码、模型及证据版本，不能用零发现或关键词零命中证明安全。</p>
-</li>
-</ol>
-<p>依赖审计：依据锁文件、构建清单、缓存和运行版本检查第三方框架、鉴权、解析、序列化及插件代码。按技术栈使用 Maven、Gradle、npm、pnpm、yarn、Python、Go、NuGet、Composer、Cargo 等依赖来源；必要且工具可用时读取源码、符号或反编译产物，保留来源和版本。缺少依赖、运行环境或工具时明确阻塞，不臆测实现，不把拟定 PoC 写成复现成功。</p>
-</blockquote>
-<p>这份模板约束了交付内容，不意味着一次任务就能自动访问所有依赖缓存、启动所有运行环境。权限和工具仍以当前平台实际能力为准。</p>
-<h2 id="0x04-依赖审计不等于只看版本号"><a href="#0x04-依赖审计不等于只看版本号" class="headerlink" title="0x04 依赖审计不等于只看版本号"></a>0x04 依赖审计不等于只看版本号</h2><p>例如鉴权由第三方中间件完成，仅阅读业务控制器无法判断拒绝逻辑是否生效。需要确认实际加载版本、配置、调用路径和默认行为。</p>
-<p>有源码先看源码；只有二进制时再评估符号或反编译。Java 本地 Maven 仓库只是其中一种来源，不能把 <code>.m2</code> 当作所有语言的固定步骤。</p>
-<p>反编译结果还需要标记产物身份和局限，不能把看似相同的网上版本当作部署实例的真实代码。</p>
-<h2 id="0x05-这一轮验证到了哪里"><a href="#0x05-这一轮验证到了哪里" class="headerlink" title="0x05 这一轮验证到了哪里"></a>0x05 这一轮验证到了哪里</h2><p>验收覆盖类型迁移、源码上传、模型就绪前后的意图流转，以及建模完成后审计目标继续保留。受控测试使用隔离 PostgreSQL 和本地模拟 Provider。</p>
-<p>前端检查了三种模式、默认选择、切换保留草稿和窄屏布局。这些是工程行为验证，没有据此声称已对真实业务完成完整审计。</p>
-<p><a href="/codescan-09/">上一篇：性能指标</a> · <a href="/codescan-11/">下一篇：实时连接与登录冲突</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-10/">http://www.pa55w0rd.online/codescan-10/</a> </p>
--->
+        -->
       
 
     </div>

@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-17/#article","headline":"CodeScan 实战（17）：下一步接入 SDL：从旁路 Hook 到可审计门禁","description":"基于已有审计与证据能力，规划以 Webhook 旁路接入 CI/CD、异步反馈、人工复核和逐步门禁的 SDL 路线；明确这些集成尚未实现。","url":"https://www.pa55w0rd.online/codescan-17/","datePublished":"2026-11-16T03:43:00.000Z","dateModified":"2026-11-16T08:21:22.498Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-17/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-17/#article","headline":"CodeScan 实战（17）：下一步接入 SDL：从旁路 Hook 到可审计门禁","description":"基于已有审计与证据能力，规划以 Webhook 旁路接入 CI/CD、异步反馈、人工复核和逐步门禁的 SDL 路线；明确这些集成尚未实现。","url":"https://www.pa55w0rd.online/codescan-17/","datePublished":"2026-11-16T03:43:00.000Z","dateModified":"2026-11-17T03:21:10.422Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-17/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/17-sdl-roadmap-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（17）：下一步接入 SDL：从旁路 Hook 到可审计门禁","item":"https://www.pa55w0rd.online/codescan-17/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="基于已有审计与证据能力，规划以 Webhook 旁路接入 CI&#x2F;CD、异步反馈、人工复核和逐步门禁的 SDL 路线；明确这些集成尚未实现。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/17-sdl-roadmap-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:43:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:21:22.498Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.422Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="SDL">
 <meta property="article:tag" content="DevSecOps">
 <meta property="article:tag" content="CI-CD">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/17-sdl-roadmap-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -214,12 +219,12 @@ ga('send', 'pageview');
     <div class="article-reading-aside" aria-label="字数与阅读时长">
       <i class="fa fa-file-text-o" aria-hidden="true"></i>
       <span class="article-wordcount">约 1.4k 字</span>
-      <span class="article-reading-time">约 5 分钟读完</span>
+      <span class="article-reading-time">约 4 分钟读完</span>
     </div>
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:21:22.498Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.422Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -282,7 +287,14 @@ ga('send', 'pageview');
 <span id="more"></span>
 
 <h2 id="0x01-先接入开发过程，再考虑阻断"><a href="#0x01-先接入开发过程，再考虑阻断" class="headerlink" title="0x01 先接入开发过程，再考虑阻断"></a>0x01 先接入开发过程，再考虑阻断</h2><p>初期不替换运维已有流水线。现有 CI 继续负责构建、测试与发布，CodeScan 接收变更身份和最小必要材料，产生带证据的安全建议。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">代码平台 / 现有 CI</span><br><span class="line">    │  提交或合并请求事件</span><br><span class="line">    ↓</span><br><span class="line">事件接入：签名、时间、幂等、权限</span><br><span class="line">    ↓</span><br><span class="line">只读变更快照：仓库 / base / head / 构建身份</span><br><span class="line">    ↓</span><br><span class="line">范围判断与排队</span><br><span class="line">    ↓</span><br><span class="line">增量建模 / 入口权限复核 / 代码审计</span><br><span class="line">    ↓</span><br><span class="line">证据与独立复核</span><br><span class="line">    ↓</span><br><span class="line">异步回写状态、报告链接与修复建议</span><br></pre></td></tr></table></figure>
+<!-- codescan-figure:17:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/17-sdl-roadmap-v1.svg" data-fancybox-type="image" title="SDL 旁路接入：从事件到可追溯建议">
+    <img src="/assets/codescan/17-sdl-roadmap-v1.webp" alt="代码平台事件经过验签、权限和幂等处理，绑定只读变更快照，排队审计后复核证据并异步反馈，再按真实效果逐步引入闭环和门禁。" width="1200" height="980" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 17｜SDL 路线图，全部表示后续设计与待验收的集成。 <a href="/assets/codescan/17-sdl-roadmap-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:17:end -->
 
 <p>这条链路的第一目标是可解释、可追踪、能退出。没有效果基线就直接阻断合并，很容易把模型不可用变成开发流程不可用。</p>
 <h2 id="0x02-Hook-接进来的首先是身份问题"><a href="#0x02-Hook-接进来的首先是身份问题" class="headerlink" title="0x02 Hook 接进来的首先是身份问题"></a>0x02 Hook 接进来的首先是身份问题</h2><p>事件接入需要验签、时间窗口与重放防护，使用稳定事件 ID 幂等去重。不能仅相信 JSON 里自报的仓库地址、分支名和操作者。</p>
@@ -330,7 +342,7 @@ ga('send', 'pageview');
 <p>第三阶段只对已经验证稳定的风险和范围启用门禁，明确超时、故障和例外策略；保留人工接管与回退能力。</p>
 <p>这些步骤仍有工作要做：Webhook、SARIF 导入、CI 状态回写、自动修复与合并拦截，本系列没有将其写成已实现模块。当前最先要补的，仍是上一轮候选版的集成回归和真实任务效果基线。</p>
 <p><a href="/codescan-16/">上一篇：中间产物清理</a> · <a href="/codescan-00/">返回系列目录</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-17/">http://www.pa55w0rd.online/codescan-17/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-17/">https://www.pa55w0rd.online/codescan-17/</a> </p>
 
         
 <!--
@@ -338,62 +350,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 17 篇 </p>
-<p>前面的改造围绕单个审计任务展开。下一步，如果要扩展为 SDL 平台，入口就不该只有人工上传压缩包：代码提交、合并请求和构建事件，都可以成为审计触发点。</p>
-<p>我的倾向是先旁路挂靠现有 CI&#x2F;CD，通过 Hook 接收事件，异步运行并反馈建议。本文是后续设计，不是已交付功能；当前不能据此调用一个假定存在的 Webhook 或合并门禁接口。</p>
-<span id="more"></span>
-
-<h2 id="0x01-先接入开发过程，再考虑阻断"><a href="#0x01-先接入开发过程，再考虑阻断" class="headerlink" title="0x01 先接入开发过程，再考虑阻断"></a>0x01 先接入开发过程，再考虑阻断</h2><p>初期不替换运维已有流水线。现有 CI 继续负责构建、测试与发布，CodeScan 接收变更身份和最小必要材料，产生带证据的安全建议。</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">代码平台 / 现有 CI</span><br><span class="line">    │  提交或合并请求事件</span><br><span class="line">    ↓</span><br><span class="line">事件接入：签名、时间、幂等、权限</span><br><span class="line">    ↓</span><br><span class="line">只读变更快照：仓库 / base / head / 构建身份</span><br><span class="line">    ↓</span><br><span class="line">范围判断与排队</span><br><span class="line">    ↓</span><br><span class="line">增量建模 / 入口权限复核 / 代码审计</span><br><span class="line">    ↓</span><br><span class="line">证据与独立复核</span><br><span class="line">    ↓</span><br><span class="line">异步回写状态、报告链接与修复建议</span><br></pre></td></tr></table></figure>
-
-<p>这条链路的第一目标是可解释、可追踪、能退出。没有效果基线就直接阻断合并，很容易把模型不可用变成开发流程不可用。</p>
-<h2 id="0x02-Hook-接进来的首先是身份问题"><a href="#0x02-Hook-接进来的首先是身份问题" class="headerlink" title="0x02 Hook 接进来的首先是身份问题"></a>0x02 Hook 接进来的首先是身份问题</h2><p>事件接入需要验签、时间窗口与重放防护，使用稳定事件 ID 幂等去重。不能仅相信 JSON 里自报的仓库地址、分支名和操作者。</p>
-<p>真正创建任务前，应确认仓库授权、触发者权限、base&#x2F;head 提交及材料摘要。报告绑定具体提交，避免变更更新之后，旧报告仍被展示成当前结果。</p>
-<p>下面只是概念载荷，不是现有接口协议：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;event_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;example-event-001&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;repository_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;example-repository&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;base_commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;base-sha&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;head_commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;head-sha&gt;&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;pipeline_run_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;example-run-001&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;requested_profile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;changed-code-review&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>凭据通过平台受控配置提供，不放进事件正文、源码包或模型上下文。</p>
-<h2 id="0x03-增量审计不能只看-diff"><a href="#0x03-增量审计不能只看-diff" class="headerlink" title="0x03 增量审计不能只看 diff"></a>0x03 增量审计不能只看 diff</h2><p>diff 适合决定优先级，却不总是足够判断漏洞。一个控制器删除了权限校验，需要读上游认证链；一个公共函数变更，可能影响多个没有出现在 diff 里的调用方。</p>
-<p>可以先从变更函数扩展到调用关系、路由、权限、配置和依赖，再把读过的范围记入覆盖账本。无法解析动态调用时明确标记缺口，不把“diff 已审”显示成“全仓已审”。</p>
-<p>架构、部署、依赖或信任边界变化时，应触发相关模型复核。普通局部修复则优先复用仍然匹配的模型与证据，避免每个提交都重新跑全仓。</p>
-<p>SAST、SCA、密钥扫描和 SARIF 可以作为候选输入，但来源工具的告警不是本项目已经独立确认的漏洞。</p>
-<h2 id="0x04-CI-状态要区分质量与运行故障"><a href="#0x04-CI-状态要区分质量与运行故障" class="headerlink" title="0x04 CI 状态要区分质量与运行故障"></a>0x04 CI 状态要区分质量与运行故障</h2><p>建议将审计质量结果和运行状态分开表达：</p>
-<table>
-<thead>
-<tr>
-<th>情况</th>
-<th>对开发者的含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>发现且完成复核</td>
-<td>展示证据、影响、修复与对应提交</td>
-</tr>
-<tr>
-<td>有候选但材料不足</td>
-<td>需要人工验证，列明缺口</td>
-</tr>
-<tr>
-<td>模型服务故障、预算耗尽、依赖缺失</td>
-<td>未完成评估，不能标“安全通过”</td>
-</tr>
-<tr>
-<td>当前范围未发现问题</td>
-<td>只对本次已检查范围负责</td>
-</tr>
-</tbody></table>
-<p>是否允许合并，由组织选择的策略处理。基础设施故障可以按明确策略放行并留痕，也可以要求人工审批，但不能在审计结果里伪装成零风险。</p>
-<p>如果采用知识库快速查询，“未匹配已知风险”也只能说明查询结果，不能证明本次变更没有新漏洞。</p>
-<h2 id="0x05-复现和修复要放到独立权限域"><a href="#0x05-复现和修复要放到独立权限域" class="headerlink" title="0x05 复现和修复要放到独立权限域"></a>0x05 复现和修复要放到独立权限域</h2><p>源码、注释、README 和依赖内容都是不可信输入。接入 CI 后，它们不能因为来自仓库，就有权指挥智能体读取 CI 密钥、发送请求或修改流水线。</p>
-<p>默认审计保持静态。后续若增加执行型验证，应使用隔离环境、固定镜像、最小网络与凭据权限，绑定漏洞版和修复版，并保留成功判据、阴性对照、原始记录与清理结果。</p>
-<p>当前的本地操作员执行记录不能自动推广为生产可达性证明；给报告签名，也不能代替目标版本和部署身份核验。</p>
-<h2 id="0x06-建议按三个阶段推进"><a href="#0x06-建议按三个阶段推进" class="headerlink" title="0x06 建议按三个阶段推进"></a>0x06 建议按三个阶段推进</h2><p>第一阶段完成旁路事件接入、提交归属、排队预算、异步报告和审计日志，只输出建议。先用真实项目统计有效发现、误报、未知比例、耗时和成本。</p>
-<p>第二阶段增加人工确认、责任人、修复时限、例外审批与复测。基于同根因变体、正负样例和漏洞版&#x2F;修复版验证，校准可信度。</p>
-<p>第三阶段只对已经验证稳定的风险和范围启用门禁，明确超时、故障和例外策略；保留人工接管与回退能力。</p>
-<p>这些步骤仍有工作要做：Webhook、SARIF 导入、CI 状态回写、自动修复与合并拦截，本系列没有将其写成已实现模块。当前最先要补的，仍是上一轮候选版的集成回归和真实任务效果基线。</p>
-<p><a href="/codescan-16/">上一篇：中间产物清理</a> · <a href="/codescan-00/">返回系列目录</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-17/">http://www.pa55w0rd.online/codescan-17/</a> </p>
--->
+        -->
       
 
     </div>

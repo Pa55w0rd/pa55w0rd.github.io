@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-03/#article","headline":"CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁","description":"对照开源审计方法，补齐宿主源码清单、语义覆盖、逐跳反证、同根因变体和最终交付检查。","url":"https://www.pa55w0rd.online/codescan-03/","datePublished":"2026-11-16T03:57:00.000Z","dateModified":"2026-11-16T08:08:42.100Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-03/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-03/#article","headline":"CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁","description":"对照开源审计方法，补齐宿主源码清单、语义覆盖、逐跳反证、同根因变体和最终交付检查。","url":"https://www.pa55w0rd.online/codescan-03/","datePublished":"2026-11-16T03:57:00.000Z","dateModified":"2026-11-17T03:21:10.412Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-03/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/03-coverage-gate-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁","item":"https://www.pa55w0rd.online/codescan-03/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="对照开源审计方法，补齐宿主源码清单、语义覆盖、逐跳反证、同根因变体和最终交付检查。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/03-coverage-gate-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:57:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:08:42.100Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.412Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="审计覆盖">
 <meta property="article:tag" content="反证">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/03-coverage-gate-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -219,7 +224,7 @@ ga('send', 'pageview');
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:08:42.100Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.412Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -314,6 +319,15 @@ ga('send', 'pageview');
 
 <p>例如，“租户对象读取”这一项，要说明入口如何确定、身份从哪里来、对象归属在哪里检查、跨文件查询是否保留租户条件，以及哪些未知事实会改变结论。</p>
 <p>一项检查可以保持 <code>planned</code>、<code>blocked</code> 或 <code>not_applicable</code>。这些状态都有用途，尤其是在依赖源码或部署条件缺失时。</p>
+<!-- codescan-figure:03:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/03-coverage-gate-v1.svg" data-fancybox-type="image" title="覆盖的分母与收官门禁">
+    <img src="/assets/codescan/03-coverage-gate-v1.webp" alt="完整源码清单的待审、已核验和排除状态，与入口、边界、子系统、攻击类别、生命周期五维语义覆盖共同进入收官检查。" width="1200" height="850" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 03｜文件覆盖与语义覆盖相互补充，由当前材料接受收官检查。 <a href="/assets/codescan/03-coverage-gate-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:03:end -->
+
 <h2 id="0x04-证据链要解释每一跳"><a href="#0x04-证据链要解释每一跳" class="headerlink" title="0x04 证据链要解释每一跳"></a>0x04 证据链要解释每一跳</h2><p>这轮给 <code>audit_case.reasoning</code> 加入逐跳传播说明。相邻两个引用之间，需要解释调用、赋值、参数或权限上下文如何延续。</p>
 <p>接着检查可能推翻判断的因素：</p>
 <ul>
@@ -335,7 +349,7 @@ ga('send', 'pageview');
 <h2 id="0x07-这一轮怎么验收"><a href="#0x07-这一轮怎么验收" class="headerlink" title="0x07 这一轮怎么验收"></a>0x07 这一轮怎么验收</h2><p>回归关注清单变化、并发版本比较、任务归属、报告过期、归档恢复和最后目标门禁。它们验证工程约束，没有测量真实仓库的检出率或误报率。</p>
 <p>源码入口：<code>audit/coverage.go</code>、<code>audit/delivery.go</code>、<code>agent/audit_coverage.go</code>。</p>
 <p><a href="/codescan-02/">上一篇：三个项目的集成</a> · <a href="/codescan-04/">下一篇：建模生命周期</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-03/">http://www.pa55w0rd.online/codescan-03/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-03/">https://www.pa55w0rd.online/codescan-03/</a> </p>
 
         
 <!--
@@ -343,67 +357,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 03 篇 </p>
-<p>漏洞列表能展示已经发现的问题，却没有说明未出现的部分发生了什么：是审过没有发现，还是根本没有检查？</p>
-<p>这一轮我把重点放到覆盖账本和收官条件上。规划者可以继续派发任务，但最后一句“目标已完成”需要有可检查的依据。</p>
-<span id="more"></span>
-
-<h2 id="0x01-外部方法怎么用"><a href="#0x01-外部方法怎么用" class="headerlink" title="0x01 外部方法怎么用"></a>0x01 外部方法怎么用</h2><p>当次定向研究了 Cloudflare security-audit-skill、Trail of Bits skills、Anthropic security review、Shannon、Vulnhuntr 和 CyberGym。</p>
-<p>它们带来的共同启发是：先理解上下文与约束，明确检查范围，主动寻找反证，并把运行观测和模型判断分开。</p>
-<p>我没有把它们的默认规则整体照搬。例如，按文本模式忽略某些资源耗尽问题，可能会漏掉当前系统真正关心的风险。迁移方法前，先看目标项目的业务边界。</p>
-<h2 id="0x02-先给覆盖建立分母"><a href="#0x02-先给覆盖建立分母" class="headerlink" title="0x02 先给覆盖建立分母"></a>0x02 先给覆盖建立分母</h2><p><code>audit/coverage.go</code> 在宿主侧枚举上传源码，生成包含相对路径、长度、类型和摘要的清单。</p>
-<p>隐藏配置、CI 文件和实际的构建产物同样可能影响安全。是否排除，需要给出范围依据；不能仅看见 <code>dist</code>、<code>test</code> 或 <code>vendor</code> 目录名就跳过。</p>
-<p>文件状态区分：</p>
-<table>
-<thead>
-<tr>
-<th>状态</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>pending</code></td>
-<td>尚未获得足够检查记录</td>
-</tr>
-<tr>
-<td><code>reviewed</code></td>
-<td>有已完成的语义检查及核验引用支持</td>
-</tr>
-<tr>
-<td><code>excluded</code></td>
-<td>明确排除，并保留原因</td>
-</tr>
-</tbody></table>
-<p>遗漏的文件仍保持待审。排除项单列，也不会被加进“已审文件数”。</p>
-<h2 id="0x03-文件覆盖还不够"><a href="#0x03-文件覆盖还不够" class="headerlink" title="0x03 文件覆盖还不够"></a>0x03 文件覆盖还不够</h2><p>一个授权函数可能影响读取、删除、恢复和后台补偿等多条路径。读完文件，只能说明拿到了内容；需要检查的安全不变式还没有自动完成。</p>
-<p>因此，账本进一步记录：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">真实入口 × 信任边界 × 子系统 × 攻击类别 × 生命周期</span><br></pre></td></tr></table></figure>
-
-<p>例如，“租户对象读取”这一项，要说明入口如何确定、身份从哪里来、对象归属在哪里检查、跨文件查询是否保留租户条件，以及哪些未知事实会改变结论。</p>
-<p>一项检查可以保持 <code>planned</code>、<code>blocked</code> 或 <code>not_applicable</code>。这些状态都有用途，尤其是在依赖源码或部署条件缺失时。</p>
-<h2 id="0x04-证据链要解释每一跳"><a href="#0x04-证据链要解释每一跳" class="headerlink" title="0x04 证据链要解释每一跳"></a>0x04 证据链要解释每一跳</h2><p>这轮给 <code>audit_case.reasoning</code> 加入逐跳传播说明。相邻两个引用之间，需要解释调用、赋值、参数或权限上下文如何延续。</p>
-<p>接着检查可能推翻判断的因素：</p>
-<ul>
-<li>路由之外是否还有统一鉴权或网关约束？</li>
-<li>参数转换是否改变了攻击者可控范围？</li>
-<li>ORM、序列化器、拦截器或依赖代码里是否有关键保护？</li>
-<li>当前假设的角色、资源或租户条件是否真实？</li>
-</ul>
-<p>反证没有找到，不代表已经证明不存在。缺少上游源码时，应把问题留在未知项里，并给出下一步核验计划。</p>
-<p>同根因变体检查也要记录实际范围和逐项结果，避免把几个相似关键词当成全仓审计。</p>
-<h2 id="0x05-收官由当前材料决定"><a href="#0x05-收官由当前材料决定" class="headerlink" title="0x05 收官由当前材料决定"></a>0x05 收官由当前材料决定</h2><p>最后一个目标准备完成时，程序核对源码清单、模型绑定、覆盖单元、漏洞材料和报告版本。</p>
-<p>Agent 可以用 <code>get_audit_gate</code> 查看缺口。材料仍允许保存和导出，但未清除的必需缺口会阻止“全部完成”的判定。</p>
-<p><code>ready_for_review</code> 表示材料达到交付复核条件。漏洞是否成立、PoC 是否实际执行，以及生产入口是否可达，仍需要对应证据。</p>
-<h2 id="0x06-给-PoC-一个更具体的判据"><a href="#0x06-给-PoC-一个更具体的判据" class="headerlink" title="0x06 给 PoC 一个更具体的判据"></a>0x06 给 PoC 一个更具体的判据</h2><p>普通正文标记有时会被接口原样反射。这轮增加 JSON Pointer 判据，例如：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;oracle&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;kind&quot;</span><span class="punctuation">:</span> <span class="string">&quot;json_value&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;pointer&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/owner/id&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;equals&quot;</span><span class="punctuation">:</span> <span class="string">&quot;fixture-victim&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>只有指定位置的值满足条件才算命中。解析失败、重复键、截断，以及阴性对照同样命中，都不能升级为有效观测。</p>
-<p>即便命中了字段值，还要解释主体和资源关系。判据负责描述观测，漏洞语义由独立复核判断。</p>
-<h2 id="0x07-这一轮怎么验收"><a href="#0x07-这一轮怎么验收" class="headerlink" title="0x07 这一轮怎么验收"></a>0x07 这一轮怎么验收</h2><p>回归关注清单变化、并发版本比较、任务归属、报告过期、归档恢复和最后目标门禁。它们验证工程约束，没有测量真实仓库的检出率或误报率。</p>
-<p>源码入口：<code>audit/coverage.go</code>、<code>audit/delivery.go</code>、<code>agent/audit_coverage.go</code>。</p>
-<p><a href="/codescan-02/">上一篇：三个项目的集成</a> · <a href="/codescan-04/">下一篇：建模生命周期</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-03/">http://www.pa55w0rd.online/codescan-03/</a> </p>
--->
+        -->
       
 
     </div>

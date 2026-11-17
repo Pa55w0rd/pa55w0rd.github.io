@@ -89,6 +89,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -343,61 +346,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>之前测试了AWVS扫描器的IAST功能，使用上不是很方便，需要对每个服务启动一个扫描任务才可以进行扫描，比较主动，无法作为独立的被动式扫描器使用，脏数据也是比较多</p>
-<p>对比awvs和netsparker，在前后端分离场景下，awvs扫描器可以分析swagger文件进行全接口自动化安全扫描，开发人员可以使用该功能增加后端系统的安全测试效率。在多人协作的测试场景下，netsparker扫描器可以开启代理端口，充分导入有效流量进行自动化安全测试，发现隐蔽的安全漏洞</p>
-<span id="more"></span>
-
-<h2 id="0x01-扫描器安装"><a href="#0x01-扫描器安装" class="headerlink" title="0x01 扫描器安装"></a>0x01 扫描器安装</h2><p>破解版下载<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/18lY8xIXoQDcfLRqKFah9kQ">https://pan.baidu.com/s/18lY8xIXoQDcfLRqKFah9kQ</a> 提取码：6cvp</p>
-<p>Netsparker Professional Edition v6.0.0.29750 [ Licensed ] </p>
-<p>Windows双击安装，打开</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/74f608277827a8eeb974596449b132d1.png" alt="image.png"></p>
-<h2 id="0x02-IAST使用"><a href="#0x02-IAST使用" class="headerlink" title="0x02 IAST使用"></a>0x02 IAST使用</h2><p><code>Netsparker Shark</code>使您可以在Web应用程序中进行<code>交互式安全测试（IAST）</code>，以确认更多漏洞并进一步减少误报。为了使<code>Netsparker Shark</code>能够运行，您需要下载一个代理并将其部署在您的服务器上。请注意，出于安全原因，该代理是为每个目标网站唯一生成的。</p>
-<p>参考官方文档进行安装 <a target="_blank" rel="noopener" href="https://www.netsparker.com/support/deploying-netsparker-shark-for-java-windows/">https://www.netsparker.com/support/deploying-netsparker-shark-for-java-windows/</a></p>
-<h3 id="2-1-生成iast-agent"><a href="#2-1-生成iast-agent" class="headerlink" title="2.1 生成iast agent"></a>2.1 生成iast agent</h3><p>添加扫描目标 - <a target="_blank" rel="noopener" href="http://192.168.244.129:8080/">http://192.168.244.129:8080/</a></p>
-<p>选择扫描设置 - Shark - 勾上enable shark，选择服务平台 java，保存为shark.jar </p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/25109d6ed07f2432ed53ad7dad632ad0.png" alt="image.png"></p>
-<h3 id="2-2-使用iast"><a href="#2-2-使用iast" class="headerlink" title="2.2 使用iast"></a>2.2 使用iast</h3><p>这里使用和awvs类似</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">1</span>. Deploying AspectJWeaver into your web application</span><br><span class="line"></span><br><span class="line"><span class="attribute">Download</span> AspectJWeaver: https://repo1.maven.org/maven2/org/aspectj/aspectjweaver/<span class="number">1</span>.<span class="number">9</span>.<span class="number">5</span>/aspectjweaver-<span class="number">1</span>.<span class="number">9</span>.<span class="number">5</span>.jar</span><br><span class="line"><span class="attribute">From</span> the download folder, select aspectjweaver-<span class="number">1</span>.<span class="number">9</span>.<span class="number">5</span>.jar and rename it aspectjweaver.jar</span><br><span class="line"><span class="attribute">Copy</span> aspectjweaver and paste it intoC:\Program Files (x86)\Apache Software Foundation\Tomcat <span class="number">9</span>.<span class="number">0</span>/lib</span><br><span class="line"><span class="attribute">2</span>. Deploying Shark into your web server</span><br><span class="line"></span><br><span class="line"><span class="attribute">Download</span> the Netsparker Shark JAVA from Netsparker</span><br><span class="line"><span class="attribute">Copy</span> the Netsparker Shark JAVA (Shark.jar) to %TOMCAT-HOME%\lib</span><br><span class="line"><span class="attribute">If</span> installing <span class="literal">on</span> Windows where Tomcat <span class="number">9</span> was installed using the official <span class="string">&quot;32-bit/64-bit Windows Service Installer&quot;</span>, copy the Shark.jar file to C:\Program Files (x86)\Apache Software Foundation\Tomcat <span class="number">9</span>.<span class="number">0</span>\lib  </span><br></pre></td></tr></table></figure>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/84ae6b186f82be98819cae4525abb30f.png" alt="image.png"></p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.</span> Configuring Tomcat <span class="keyword">to</span> use AspectJWeaver <span class="keyword">and</span> Shark</span><br><span class="line"></span><br><span class="line">Launch Tomcat <span class="keyword">with</span> <span class="keyword">Load</span> <span class="type">Time</span> Weaving enabled. This can be done <span class="keyword">by</span> adding a -javaagent parameter <span class="keyword">with</span> the <span class="type">path</span> <span class="keyword">to</span> aspectjweaver.jar <span class="keyword">when</span> launching Tomcat, <span class="keyword">and</span> optionally a parameter <span class="keyword">to</span> <span class="keyword">enable</span> the Shark <span class="keyword">debug</span> logging.</span><br><span class="line"><span class="keyword">Add</span> two parameters <span class="keyword">into</span> the Apache Tomcat <span class="keyword">Configuration</span> &gt; Java <span class="keyword">options</span> tab</span><br><span class="line">-javaagent: C:\Program Files (x86)\Apache Software Foundation\Tomcat <span class="number">9.0</span>\lib\aspectjweaver.jar (mandatory; adjust <span class="type">path</span> depending <span class="keyword">on</span> <span class="keyword">where</span> you deployed the aspectjweaver.jar file)</span><br><span class="line">-Dacusensor.<span class="keyword">debug</span>.<span class="keyword">log</span>=<span class="keyword">ON</span> (optional; enables <span class="keyword">debug</span> logging)</span><br></pre></td></tr></table></figure>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/4cc0ba3610fe44ea609e6ab91587b553.png" alt="image.png"></p>
-<p>这里也在配置awvs时配置过了，跳过</p>
-<p><code>Restart the Tomcat service</code></p>
-<blockquote>
-<p>The parameter “-Dacusensor.debug.log&#x3D;ON” is optional and can be omitted. If this parameter is retained, this will output the Shark logging as additional lines in the Tomcat logs starting with “[Netsparker-debug]”.</p>
-</blockquote>
-<h3 id="2-3-删除agent"><a href="#2-3-删除agent" class="headerlink" title="2.3 删除agent"></a>2.3 删除agent</h3><p>Disabling and Removing Netsparker Shark for Java</p>
-<p>To remove and disable the sensor from your website, you need to revert the changes done during the deployment of the Agent.</p>
-<ul>
-<li>Remove the Netsparker Shark (Shark.jar) from the folder where it was deployed</li>
-<li>Remove aspectjweaver.jar from the folder where it was copied to</li>
-<li>Reconfigure Tomcat with Load Time Weaving disabled, as follows:<ul>
-<li>Remove the -javaagent and -Dacusensor.debug.log parameters in the Apache Tomcat Configuration &gt; Java options tab</li>
-<li>Restart the Tomcat service<blockquote>
-<p>Although the Netsparker Shark agent is secured with a strong password, it is recommended that the Shark client files are uninstalled and removed from the web application if they are no longer in use.</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="0x03-测试"><a href="#0x03-测试" class="headerlink" title="0x03 测试"></a>0x03 测试</h2><p><img src="https://pic.rmb.bdstatic.com/bjh/44e7754f0eabea70e0c678072e938ffd.png" alt="image.png"></p>
-<p>配置完成之后如果直接点击<code>start scan</code> ，会类似AWVS的iast一样，先通过dast，然后再通过iast增加漏洞的准确性，这里依然会产生大量请求和脏数据</p>
-<p>这里有一个<strong>代理模式</strong>，选择</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/1937f78c4aa267dad7870488a4d36bd4.png" alt="image.png"></p>
-<p>首次打开会弹出安装证书</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/3459f2f6f0887b1855c25afa67902fa4.png" alt="image.png"></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/7bae47bbd0df8d377f951e489474558a.png" alt="image.png"></p>
-<p>打开浏览器，设置代理， 10010端口，访问待测系统</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/8c08345d2e4980a127f42e21d8555a4a.png" alt="image.png"></p>
-<p>流量抓取完成，开始扫描</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/4f398d507beedd723aa6d4c89e28768a.png" alt="image.png"></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/c67fbf0b426720f54a29481ee4c44f40.png" alt="image.png"></p>
-<p>这里单独使用iast的sql注入规则，产生8条脏数据</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/c7bc57ee86deea9a5f9df71fcee80ccb.png" alt="image.png"></p>
-<p>IAST相关规则</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/bb00fa48b60cf38beab883d434832811.png" alt="image.png"></p>
-<p> <a href="http://www.pa55w0rd.online/netsparker-iast/">http://www.pa55w0rd.online/netsparker-iast/</a> </p>
--->
+        -->
       
 
     </div>

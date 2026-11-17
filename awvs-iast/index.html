@@ -88,6 +88,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -406,125 +409,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>很久没有更新blog了，这次把几个笔记分享一下，AWVS自带的IAST功能，很多人都不知道，这里记录一下IAST如何使用</p>
-<span id="more"></span>
-
-<h2 id="0x01-扫描器部署"><a href="#0x01-扫描器部署" class="headerlink" title="0x01 扫描器部署"></a>0x01 扫描器部署</h2><p>这里笔记写的较早，版本还是awvs13</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">pull 拉取下载镜像</span></span><br><span class="line">docker pull secfa/docker-awvs</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将Docker的3443端口映射到物理机的 13443端口</span></span><br><span class="line">docker run -it -d -p 13443:3443 secfa/docker-awvs</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">容器的相关信息</span></span><br><span class="line">awvs13 username: admin@admin.com</span><br><span class="line">awvs13 password: Admin123</span><br><span class="line">AWVS版本：13.0.201006145</span><br></pre></td></tr></table></figure>
-<p>浏览器访问</p>
-<p><a target="_blank" rel="noopener" href="https://192.168.244.130:13443/#/login">https://192.168.244.130:13443/#/login</a></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/8c9714c2e8c1c31f9285e8490a784641.png" alt="image.png"></p>
-<h2 id="0x02-开启IAST插装模式"><a href="#0x02-开启IAST插装模式" class="headerlink" title="0x02 开启IAST插装模式"></a>0x02 开启IAST插装模式</h2><h3 id="2-1-新建目标"><a href="#2-1-新建目标" class="headerlink" title="2.1 新建目标"></a>2.1 新建目标</h3><p><img src="https://pic.rmb.bdstatic.com/bjh/42a953e902464cb9c846984760d44fad.png" alt="image.png"></p>
-<h3 id="2-2-开启AcuSensor"><a href="#2-2-开启AcuSensor" class="headerlink" title="2.2 开启AcuSensor"></a>2.2 开启AcuSensor</h3><p>AcuSensor 允许扫描程序从您的 PHP、.NET 或 Java web 应用程序收集更多信息，用于改善扫描结果，并减少误报。请于运行 Web 扫描前，下载并安装与目标对应的 AcuSensor。</p>
-<p>注意：避免在生产系统中使用 AcuSensor。</p>
-<p>使用介绍：<code>https://www.acunetix.com/support/docs/installing-acusensor/</code></p>
-<p>针对JAVA程序使用：<code>https://www.acunetix.com/support/docs/installing-acusensor-java/</code></p>
-<p>传感器是针对每个网站唯一生成的</p>
-<p>Acunetix JAVA Acusensor需要Tomcat（7+）和Java（1.7+）</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/de790e1ae062fe4ffafd994a6795f5c7.png" alt="image.png"></p>
-<h3 id="2-3-安装切面和传感器"><a href="#2-3-安装切面和传感器" class="headerlink" title="2.3 安装切面和传感器"></a>2.3 安装切面和传感器</h3><p>Java AcuSensor要求：</p>
-<p>将<code>Aspectjweaver.jar</code>部署到您的Web服务器中-提供<code>AcuSensor</code>与您的应用程序一起使用所需的集成<br>将<code>Acunetix Java AcuSensor</code>部署到Web服务器中-这对于每个Target都是唯一的，可以使用“<code>下载JAVA AcuSensor</code>”按钮进行下载<br>配置您的Web服务器以使用加载时间编织（<code>AspectJWeaver</code>）</p>
-<p><a target="_blank" rel="noopener" href="https://www.acunetix.com/support/docs/wvs/deploying-acusensor-java-centos-rhel/">https://www.acunetix.com/support/docs/wvs/deploying-acusensor-java-centos-rhel/</a></p>
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.3</span><span class="number">.1</span> Deploying AspectJWeaver <span class="keyword">into</span> your web application</span><br><span class="line"></span><br><span class="line">To download <span class="keyword">and</span> deploy AspectJWeaver, run <span class="keyword">the</span> following commands:</span><br><span class="line"></span><br><span class="line">wget -c <span class="keyword">https</span>://repo1.maven.org/maven2/org/aspectj/aspectjweaver/<span class="number">1.9</span><span class="number">.5</span>/aspectjweaver<span class="number">-1.9</span><span class="number">.5</span>.jar</span><br><span class="line">sudo mv aspectjweaver<span class="number">-1.9</span><span class="number">.5</span>.jar /opt/tomcat9/lib</span><br><span class="line">sudo <span class="built_in">ln</span> -s /opt/tomcat9/lib/aspectjweaver<span class="number">-1.9</span><span class="number">.5</span>.jar /opt/tomcat9/lib/aspectjweaver.jar</span><br><span class="line"><span class="number">2.3</span><span class="number">.2</span>  Deploying AcuSensor <span class="keyword">into</span> your web application</span><br><span class="line"></span><br><span class="line">Download <span class="keyword">the</span> Acunetix JAVA AcuSensor <span class="built_in">from</span> <span class="keyword">the</span> Acunetix UI</span><br><span class="line">Copy <span class="keyword">the</span> Acunetix JAVA AcuSensor (AcuSensor.jar) <span class="built_in">to</span> %TOMCAT-HOME%\lib - based <span class="keyword">on</span> <span class="title">the</span> <span class="title">assumptions</span> <span class="title">above</span>, <span class="title">you</span> <span class="title">would</span> <span class="title">copy</span> <span class="title">the</span> <span class="title">AcuSensor</span>.<span class="title">jar</span> <span class="title">file</span> <span class="title">to</span> /<span class="title">opt</span>/<span class="title">tomcat9</span>/<span class="title">lib</span></span><br><span class="line"><span class="number">2.3</span><span class="number">.3</span> Configure Tomcat <span class="built_in">to</span> use AspectJWeaver <span class="keyword">and</span> AcuSensor</span><br><span class="line"></span><br><span class="line">Launch Tomcat <span class="keyword">with</span> Load Time Weaving enabled. This can be done <span class="keyword">by</span> adding <span class="keyword">a</span> -javaagent parameter <span class="keyword">with</span> <span class="keyword">the</span> path <span class="built_in">to</span> aspectjweaver.jar when launching Tomcat, <span class="keyword">and</span> optionally <span class="keyword">a</span> parameter <span class="built_in">to</span> enable AcuSensor debug logging</span><br><span class="line">For Centos <span class="number">8.1</span> <span class="keyword">and</span> RHEL <span class="number">8.1</span>, you will need <span class="built_in">to</span> <span class="built_in">add</span> <span class="number">2</span> parameters <span class="keyword">into</span> <span class="keyword">the</span> Tomcat setenv.sh script (normally you will be creating <span class="keyword">a</span> <span class="built_in">new</span> <span class="built_in">file</span>):</span><br><span class="line">run <span class="keyword">the</span> <span class="keyword">command</span>: <span class="title">sudo</span> <span class="title">nano</span> /<span class="title">opt</span>/<span class="title">tomcat9</span>/<span class="title">bin</span>/<span class="title">setenv</span>.<span class="title">sh</span></span><br><span class="line"><span class="keyword">at</span> <span class="keyword">the</span> <span class="function"><span class="keyword">end</span> <span class="title">of</span> <span class="title">the</span> <span class="title">file</span>, <span class="title">add</span> <span class="title">the</span> <span class="title">line</span>: <span class="title">JAVA_OPTS</span>=&quot;$<span class="title">JAVA_OPTS</span> -<span class="title">javaagent</span>:$<span class="title">CATALINA_HOME</span>/<span class="title">lib</span>/<span class="title">aspectjweaver</span>.<span class="title">jar</span> -<span class="title">Dacusensor</span>.<span class="title">debug</span>.<span class="title">log</span>=<span class="title">ON</span>&quot;</span></span><br><span class="line">save <span class="keyword">the</span> <span class="built_in">file</span></span><br><span class="line">run <span class="keyword">the</span> <span class="keyword">command</span>: <span class="title">sudo</span> <span class="title">systemctl</span> <span class="title">restart</span> <span class="title">tomcat9</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Note: The parameter <span class="string">&quot;-Dacusensor.debug.log=ON&quot;</span> is optional, <span class="keyword">and</span> can be omitted. If this parameter is retained, this will output AcuSensor logging <span class="keyword">as</span> additional <span class="keyword">lines</span> <span class="keyword">in</span> <span class="keyword">the</span> Tomcat logs starting <span class="keyword">with</span> <span class="string">&quot;[Acunetix-debug]&quot;</span>.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">2.3</span><span class="number">.4</span> Disabling <span class="keyword">and</span> Removing AcuSensor <span class="keyword">for</span> JAVA</span><br><span class="line"></span><br><span class="line">To remove <span class="keyword">and</span> disable <span class="keyword">the</span> sensor <span class="built_in">from</span> your website you need <span class="built_in">to</span> revert <span class="keyword">the</span> changes done during <span class="keyword">the</span> deployment <span class="keyword">of</span> <span class="keyword">the</span> Agent. Based <span class="keyword">on</span> <span class="title">the</span> <span class="title">assumptions</span> <span class="title">above</span>:</span><br><span class="line"></span><br><span class="line">Remove <span class="keyword">the</span> Acunetix JAVA AcuSensor (AcuSensor.jar) <span class="built_in">from</span> <span class="keyword">the</span> <span class="built_in">folder</span> where <span class="keyword">it</span> was deployed <span class="keyword">with</span>:</span><br><span class="line">rm /opt/tomcat9/lib/AcuSensor.jar</span><br><span class="line">Remove aspectjweaver.jar <span class="keyword">with</span>:</span><br><span class="line">sudo rm /opt/tomcat9/lib/aspectjweaver.jar</span><br><span class="line">sudo rm /opt/tomcat9/lib/aspectjweaver<span class="number">-1.9</span><span class="number">.5</span>.jar</span><br><span class="line">Reconfigure Tomcat <span class="keyword">with</span> Load Time Weaving disabled:</span><br><span class="line">remove <span class="keyword">the</span> <span class="string">&quot;JAVA_OPTS&quot;</span> <span class="built_in">line</span> added earlier <span class="keyword">in</span> <span class="keyword">the</span> setenv.sh <span class="built_in">file</span></span><br><span class="line">run <span class="keyword">the</span> <span class="keyword">command</span>: <span class="title">sudo</span> <span class="title">systemctl</span> <span class="title">restart</span> <span class="title">tomcat9</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Note: Although <span class="keyword">the</span> Acunetix AcuSensor agent is secured <span class="keyword">with</span> <span class="keyword">a</span> strong password, <span class="keyword">it</span> is recommended that <span class="keyword">the</span> AcuSensor client <span class="built_in">files</span> are uninstalled <span class="keyword">and</span> removed <span class="built_in">from</span> <span class="keyword">the</span> web application <span class="keyword">if</span> they are no longer <span class="keyword">in</span> use.</span><br></pre></td></tr></table></figure>
-
-<p>注：官方案例中使用tomcat9 ，本地tomcat8中未找到改sh文件</p>
-<p>这里在catalina.sh中cygwin&#x3D;false这行上面加入以下代码</p>
-<p><code>JAVA_OPTS=&quot;$JAVA_OPTS -javaagent:/www/server/tomcat/lib/aspectjweaver.jar -Dacusensor.debug.log=ON&quot;</code></p>
-<p>这里重启tomcat即可开始iast插装扫描</p>
-<h2 id="0x03-测试"><a href="#0x03-测试" class="headerlink" title="0x03 测试"></a>0x03 测试</h2><p>对比awvs扫描，开启AcuSensor，开启后扫描目标会有<code>AcuSensor</code>图标</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/cf34afa5fd88b0d931bf7160ddf23887.png" alt="image.png"></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/53e2bc0b2e7e33b6d9eb2c7ef5003da4.png" alt="image.png"></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/11c045db00fdb26ff3bdbd5b4d1c9ee9.png" alt="image.png"></p>
-<p>为了确保漏洞覆盖，这里使用<code>BURP</code>录制一份测试靶场的流量，导入到AWVS中</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/77066693b682cc7a368444a91c3a1672.png" alt="image.png"></p>
-<p>新建目标，导入文件</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/92a7c4bf7e362b603109cf1a100bd4ba.png" alt="image.png"></p>
-<h2 id="0x04-测试结果"><a href="#0x04-测试结果" class="headerlink" title="0x04 测试结果"></a>0x04 测试结果</h2><h3 id="4-1-常规漏洞项测试"><a href="#4-1-常规漏洞项测试" class="headerlink" title="4.1 常规漏洞项测试"></a>4.1 常规漏洞项测试</h3><blockquote>
-<p>默认配置，结果不准确</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th>常规漏洞测试项</th>
-<th>扫描结果</th>
-<th>IAST检测</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>目录遍历</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>任意文件读取</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>命令执行</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr>
-<td>XXE</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr>
-<td>文件上传</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>反序列化漏洞</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr>
-<td>ssrf</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr>
-<td>sql注入</td>
-<td>√</td>
-<td>√</td>
-</tr>
-<tr>
-<td>xss</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>struts命令执行</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>fastjson反序列化</td>
-<td>×</td>
-<td>×</td>
-</tr>
-<tr>
-<td>逻辑漏洞（越权）</td>
-<td>×</td>
-<td>×</td>
-</tr>
-</tbody></table>
-<h3 id="4-2-脏数据测试"><a href="#4-2-脏数据测试" class="headerlink" title="4.2 脏数据测试"></a>4.2 脏数据测试</h3><p>根据openrasp靶场修改一下，进行insert操作</p>
-<p><a target="_blank" rel="noopener" href="http://192.168.244.129:8080/vulns/insert.jsp">http://192.168.244.129:8080/vulns/insert.jsp</a></p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/dce7355d473b9fe072f3715184461a62.png" alt="image.png"></p>
-<p>查询数据库，可以看到表内有3条数据</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/cdaa6d8beb56333840c10e2524421dd2.png" alt="image.png"></p>
-<p>开启IAST扫描</p>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/67ed97d4628fe548ced691984652939b.png" alt="image.png"></p>
-<p>依赖awvs主动扫描，这里插入了340条脏数据</p>
-<blockquote>
-<p>这里测试时，扫描规则为默认，实际脏数据可能会少些</p>
-</blockquote>
-<p><img src="https://pic.rmb.bdstatic.com/bjh/82376b7e97194b438590f6fa28457033.png" alt="image.png"></p>
-<p> <a href="http://www.pa55w0rd.online/awvs-iast/">http://www.pa55w0rd.online/awvs-iast/</a> </p>
--->
+        -->
       
 
     </div>

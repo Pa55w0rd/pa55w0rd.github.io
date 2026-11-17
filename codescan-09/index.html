@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-09/#article","headline":"CodeScan 实战（09）：TTFT、Prefill 和 Decode 到底测到了什么","description":"解释 CodeScan 逐次请求记录中的 TTFT、Prefill tok/s、Decode tok/s 和总耗时，说明客户端观测、缓存与缺失数据的计算规则。","url":"https://www.pa55w0rd.online/codescan-09/","datePublished":"2026-11-16T03:51:00.000Z","dateModified":"2026-11-16T08:15:46.064Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-09/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-09/#article","headline":"CodeScan 实战（09）：TTFT、Prefill 和 Decode 到底测到了什么","description":"解释 CodeScan 逐次请求记录中的 TTFT、Prefill tok/s、Decode tok/s 和总耗时，说明客户端观测、缓存与缺失数据的计算规则。","url":"https://www.pa55w0rd.online/codescan-09/","datePublished":"2026-11-16T03:51:00.000Z","dateModified":"2026-11-17T03:21:10.416Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-09/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/09-client-timing-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（09）：TTFT、Prefill 和 Decode 到底测到了什么","item":"https://www.pa55w0rd.online/codescan-09/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="解释 CodeScan 逐次请求记录中的 TTFT、Prefill tok&#x2F;s、Decode tok&#x2F;s 和总耗时，说明客户端观测、缓存与缺失数据的计算规则。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/09-client-timing-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:51:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:15:46.064Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.416Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="可观测性">
 <meta property="article:tag" content="TTFT">
 <meta property="article:tag" content="模型性能">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/09-client-timing-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -219,7 +224,7 @@ ga('send', 'pageview');
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:15:46.064Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.416Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -295,6 +300,15 @@ ga('send', 'pageview');
 
 <p>输入 token 在 SDK 中已归一化为包含缓存读取子集，因此估算预填充时减去缓存读取；缓存写入仍需要处理输入，不能一起减掉。</p>
 <p>Decode 分子减去首个输出 token，但分母仍包含网络、缓冲、消费者延迟和流结束尾部。这个比值用于客户端侧比较，不等同于引擎内部逐 token 解码速度。</p>
+<!-- codescan-figure:09:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/09-client-timing-v1.svg" data-fancybox-type="image" title="TTFT 与吞吐：客户端究竟观测到什么">
+    <img src="/assets/codescan/09-client-timing-v1.webp" alt="请求开始到首个有效输出为TTFT，之后到调用结束为Decode区间；Prefill和Decode速率按客户端可观测时间及完整用量估算。" width="1200" height="900" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 09｜客户端时序与计算口径，图中未绘制任何实测吞吐数据。 <a href="/assets/codescan/09-client-timing-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:09:end -->
+
 <h2 id="0x03-为什么-Prefill-必须写“估算”"><a href="#0x03-为什么-Prefill-必须写“估算”" class="headerlink" title="0x03 为什么 Prefill 必须写“估算”"></a>0x03 为什么 Prefill 必须写“估算”</h2><p>假设输入 10000 token，其中缓存读取 6000 token，TTFT 为 4 秒，那么按当前口径，Prefill 估算为：</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(10000 - 6000) / 4 = 1000 tok/s</span><br></pre></td></tr></table></figure>
 
@@ -312,7 +326,7 @@ ga('send', 'pageview');
 <p>历史部署时还有一个运维教训：当次恢复 Docker 环境曾影响同机原实例。后续不能把“端口不同”写成“共享运行时完全隔离”，也不能为了更新本项目顺手重启整个 Docker Desktop。</p>
 <p>性能表提供排查依据，不替代模型服务压测与生产容量评估。</p>
 <p><a href="/codescan-08/">上一篇：任务类型与上下文</a> · <a href="/codescan-10/">下一篇：完整审计模式</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-09/">http://www.pa55w0rd.online/codescan-09/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-09/">https://www.pa55w0rd.online/codescan-09/</a> </p>
 
         
 <!--
@@ -320,44 +334,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 09 篇 </p>
-<p>补上时间戳后，用户进一步要求查看 TTFT、Prefill tok&#x2F;s、Decode tok&#x2F;s 和总耗时。这些字段能帮助发现排队和生成瓶颈，但名字相同，不代表测量口径相同。</p>
-<p>本项目能直接观测的是客户端收到事件的时间。服务端 GPU 何时开始计算、队列等待多久，需要模型服务另行提供数据。</p>
-<span id="more"></span>
-
-<h2 id="0x01-首个事件不一定是首个输出"><a href="#0x01-首个事件不一定是首个输出" class="headerlink" title="0x01 首个事件不一定是首个输出"></a>0x01 首个事件不一定是首个输出</h2><p>流式连接可能先收到角色声明、空 delta、用量、心跳或签名。把这些事件算作首 token，会得到一个很好看、却没有回答用户等待时间的数值。</p>
-<p><code>llmrec/performance.go</code> 只把以下内容当作有效输出：</p>
-<ul>
-<li>非空正文片段。</li>
-<li>非空推理片段。</li>
-<li>非空工具调用名称。</li>
-<li>非空工具参数 JSON 片段。</li>
-</ul>
-<p>因此这里的 TTFT 更准确地说，是“到首个有效输出事件的时间”。一个事件可能包含多个 token，并不等于客户端看见了引擎生成的第一个 token。</p>
-<h2 id="0x02-当前计算公式"><a href="#0x02-当前计算公式" class="headerlink" title="0x02 当前计算公式"></a>0x02 当前计算公式</h2><p>设请求开始为 <code>t0</code>，首个有效输出到达为 <code>t1</code>，调用结束为 <code>t2</code>：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">TTFT              = t1 - t0</span><br><span class="line">Decode 区间        = t2 - t1</span><br><span class="line">总耗时             = t2 - t0</span><br><span class="line"></span><br><span class="line">Prefill tok/s 估算 = (输入 token - 缓存读取 token) / TTFT秒</span><br><span class="line">Decode tok/s 估算  = (输出 token - 1) / Decode区间秒</span><br></pre></td></tr></table></figure>
-
-<p>输入 token 在 SDK 中已归一化为包含缓存读取子集，因此估算预填充时减去缓存读取；缓存写入仍需要处理输入，不能一起减掉。</p>
-<p>Decode 分子减去首个输出 token，但分母仍包含网络、缓冲、消费者延迟和流结束尾部。这个比值用于客户端侧比较，不等同于引擎内部逐 token 解码速度。</p>
-<h2 id="0x03-为什么-Prefill-必须写“估算”"><a href="#0x03-为什么-Prefill-必须写“估算”" class="headerlink" title="0x03 为什么 Prefill 必须写“估算”"></a>0x03 为什么 Prefill 必须写“估算”</h2><p>假设输入 10000 token，其中缓存读取 6000 token，TTFT 为 4 秒，那么按当前口径，Prefill 估算为：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(10000 - 6000) / 4 = 1000 tok/s</span><br></pre></td></tr></table></figure>
-
-<p>但这 4 秒可能含有排队、网络传输和服务端调度。没有队列时长与引擎时序，无法从中分离纯预填充计算耗时。</p>
-<p>两个任务争用单并发模型服务时，后到请求即使预填充很快，客户端也可能看到很长 TTFT。这应作为排队线索，不能直接归因于 GPU 算得慢。</p>
-<p>若要定位服务端瓶颈，应把请求关联到模型服务日志、队列指标和 GPU 指标，再分析具体阶段。</p>
-<h2 id="0x04-哪些情况下不计算速率"><a href="#0x04-哪些情况下不计算速率" class="headerlink" title="0x04 哪些情况下不计算速率"></a>0x04 哪些情况下不计算速率</h2><p>只有一块输出一次性交付时，客户端无法观察生成节奏，不给 Decode 速率。输出 token 不足、区间为零或用量不合法时，同样保留未知。</p>
-<p>调用失败或被截断，返回的 usage 可能只是一部分。这时如果已经看到首个有效输出，可以保留 TTFT，但不把不完整用量换算为吞吐。</p>
-<p>非流式调用只能确定调用开始与结束，不能伪造中间的首输出时间。历史记录未采集的字段也保持空值，页面用破折号提示，不填 0 tok&#x2F;s。</p>
-<p>这些规则会让表里出现空白。空白表示测不到，不是系统确认了“性能为零”。</p>
-<h2 id="0x05-页面怎么帮助排查"><a href="#0x05-页面怎么帮助排查" class="headerlink" title="0x05 页面怎么帮助排查"></a>0x05 页面怎么帮助排查</h2><p>请求明细同时显示时间、模型、角色、输入输出、缓存、TTFT、分段速率与总耗时；移动端允许表格横向滚动，不把所有列压缩成难以辨认的数字。</p>
-<p>实际查看时，先看失败和超长请求，再看 TTFT 与输出区间的占比。若多数时间都在 TTFT，优先核对排队、长输入和连接；若输出区间很长，结合输出量和预算分析。</p>
-<p>不能拿几条调用就宣布 P95，也不能跨模型、上下文长度和缓存状态直接比较一个 tok&#x2F;s 数字。</p>
-<h2 id="0x06-验收与维护复盘"><a href="#0x06-验收与维护复盘" class="headerlink" title="0x06 验收与维护复盘"></a>0x06 验收与维护复盘</h2><p>本轮针对空事件、工具输出、缓存、单块输出、失败用量等情况进行了后端回归，并检查前端类型、静态导出和 Mock 页面；390 像素宽度下核验过表格布局。</p>
-<p>历史部署时还有一个运维教训：当次恢复 Docker 环境曾影响同机原实例。后续不能把“端口不同”写成“共享运行时完全隔离”，也不能为了更新本项目顺手重启整个 Docker Desktop。</p>
-<p>性能表提供排查依据，不替代模型服务压测与生产容量评估。</p>
-<p><a href="/codescan-08/">上一篇：任务类型与上下文</a> · <a href="/codescan-10/">下一篇：完整审计模式</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-09/">http://www.pa55w0rd.online/codescan-09/</a> </p>
--->
+        -->
       
 
     </div>

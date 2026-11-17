@@ -70,6 +70,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -310,92 +313,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h1 id="文章目录模块优化说明"><a href="#文章目录模块优化说明" class="headerlink" title="文章目录模块优化说明"></a>文章目录模块优化说明</h1><h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><h3 id="1-智能页面识别"><a href="#1-智能页面识别" class="headerlink" title="1. 智能页面识别"></a>1. 智能页面识别</h3><ul>
-<li><strong>只在文章页面显示</strong>：自动识别文章页面，排除首页、分类页、标签页、归档页等</li>
-<li><strong>多重判断机制</strong>：通过URL路径、页面元素、文章元数据多重验证</li>
-<li><strong>避免干扰</strong>：确保目录只在需要的地方出现</li>
-</ul>
-<h3 id="2-现代化卡片风格"><a href="#2-现代化卡片风格" class="headerlink" title="2. 现代化卡片风格"></a>2. 现代化卡片风格</h3><ul>
-<li>圆角边框和阴影效果</li>
-<li>悬停动画和过渡效果</li>
-<li>支持深色模式自动适配</li>
-<li>响应式设计，适配各种屏幕尺寸</li>
-</ul>
-<h3 id="3-智能交互"><a href="#3-智能交互" class="headerlink" title="3. 智能交互"></a>3. 智能交互</h3><ul>
-<li>点击标题可展开&#x2F;收起目录</li>
-<li>移动端默认收起，桌面端默认展开</li>
-<li>平滑滚动到对应标题位置</li>
-<li>自动高亮当前阅读位置</li>
-</ul>
-<h3 id="4-阅读进度指示"><a href="#4-阅读进度指示" class="headerlink" title="4. 阅读进度指示"></a>4. 阅读进度指示</h3><ul>
-<li>左侧进度条显示阅读进度</li>
-<li>滚动时实时更新</li>
-<li>视觉化阅读体验</li>
-</ul>
-<h3 id="5-响应式布局"><a href="#5-响应式布局" class="headerlink" title="5. 响应式布局"></a>5. 响应式布局</h3><ul>
-<li><strong>桌面端 (≥1200px)</strong>: 右侧悬浮固定</li>
-<li><strong>平板端 (768px-1199px)</strong>: 文章内容区域内嵌</li>
-<li><strong>移动端 (&lt;768px)</strong>: 优化间距，默认收起</li>
-</ul>
-<h2 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h2><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">source<span class="operator">/</span>assets<span class="symbol">/</span></span><br><span class="line">├── css<span class="symbol">/</span></span><br><span class="line">│   └── custom-toc.css     <span class="comment"># 目录样式文件</span></span><br><span class="line">├── js<span class="symbol">/</span></span><br><span class="line">│   └── custom-toc.js      <span class="comment"># 目录交互功能</span></span><br><span class="line">└── README-TOC.md          <span class="comment"># 本说明文件</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="自动启用"><a href="#自动启用" class="headerlink" title="自动启用"></a>自动启用</h3><p>目录功能会自动检测文章页面和标题：</p>
-<ul>
-<li><strong>页面识别</strong>：只在文章页面显示，自动排除首页、分类页、标签页、归档页、关于页等</li>
-<li><strong>标题检测</strong>：如果文章中存在标题（h1-h6），会自动生成目录</li>
-</ul>
-<h3 id="页面识别逻辑"><a href="#页面识别逻辑" class="headerlink" title="页面识别逻辑"></a>页面识别逻辑</h3><p>系统通过以下方式判断是否为文章页面：</p>
-<ol>
-<li><strong>URL路径检查</strong>：排除 <code>/categories/</code>、<code>/tags/</code>、<code>/archives/</code>、<code>/</code> 等特殊路径</li>
-<li><strong>页面元素识别</strong>：检查是否存在文章特有的DOM元素</li>
-<li><strong>元数据验证</strong>：确认存在文章日期、分类等元数据</li>
-</ol>
-<h3 id="手动控制"><a href="#手动控制" class="headerlink" title="手动控制"></a>手动控制</h3><ul>
-<li><strong>展开&#x2F;收起</strong>: 点击目录标题</li>
-<li><strong>跳转</strong>: 点击目录项会平滑滚动到对应位置</li>
-<li><strong>移动端</strong>: 目录默认收起，点击可展开</li>
-</ul>
-<h2 id="自定义配置"><a href="#自定义配置" class="headerlink" title="自定义配置"></a>自定义配置</h2><h3 id="修改样式"><a href="#修改样式" class="headerlink" title="修改样式"></a>修改样式</h3><p>编辑 <code>source/assets/css/custom-toc.css</code> 文件，可以自定义：</p>
-<ul>
-<li>颜色主题</li>
-<li>字体大小</li>
-<li>间距布局</li>
-<li>动画效果</li>
-</ul>
-<h3 id="修改行为"><a href="#修改行为" class="headerlink" title="修改行为"></a>修改行为</h3><p>编辑 <code>source/assets/js/custom-toc.js</code> 文件，可以调整：</p>
-<ul>
-<li>滚动偏移量（默认80px）</li>
-<li>展开&#x2F;收起行为</li>
-<li>响应式断点</li>
-</ul>
-<h2 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h2><ul>
-<li>支持所有现代浏览器</li>
-<li>兼容 IE11+</li>
-<li>移动端Safari、Chrome、Firefox测试通过</li>
-<li>适配Landscape-x主题</li>
-</ul>
-<h2 id="故障排除"><a href="#故障排除" class="headerlink" title="故障排除"></a>故障排除</h2><h3 id="目录不显示"><a href="#目录不显示" class="headerlink" title="目录不显示"></a>目录不显示</h3><ol>
-<li>检查文章是否包含h1-h6标题</li>
-<li>确认CSS和JS文件已正确引入</li>
-<li>查看浏览器控制台是否有错误</li>
-</ol>
-<h3 id="样式异常"><a href="#样式异常" class="headerlink" title="样式异常"></a>样式异常</h3><ol>
-<li>检查主题CSS是否与自定义样式冲突</li>
-<li>确认浏览器缓存已清除</li>
-<li>验证CSS文件路径是否正确</li>
-</ol>
-<h3 id="功能失效"><a href="#功能失效" class="headerlink" title="功能失效"></a>功能失效</h3><ol>
-<li>检查JavaScript文件是否正确加载</li>
-<li>确认没有JS错误阻止执行</li>
-<li>验证文章内容区域选择器是否匹配</li>
-</ol>
-<h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><ul>
-<li><strong>v1.0.0</strong>: 初始版本，包含基础目录功能</li>
-<li>现代化卡片风格设计</li>
-<li>响应式布局适配</li>
-<li>智能交互和进度显示</li>
-</ul>
--->
+        -->
       
 
     </div>

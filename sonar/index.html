@@ -74,6 +74,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -298,31 +301,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-前言"><a href="#0x00-前言" class="headerlink" title="0x00 前言"></a>0x00 前言</h2><p>Sonar是一个用于代码质量管理的开源平台，用于管理源代码的质量，可以从七个维度检测代码质量。通过插件形式，可以支持包括java,C#,C&#x2F;C++,PL&#x2F;SQL,Cobol,JavaScrip,Groovy等等二十几种编程语言的代码质量管理与检测。</p>
-<span id="more"></span>
-<h2 id="0x01-安装"><a href="#0x01-安装" class="headerlink" title="0x01 安装"></a>0x01 安装</h2><ol>
-<li>获取 postgresql 的镜像</li>
-</ol>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>docker pull postgres</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>启动 postgresql</li>
-</ol>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker <span class="built_in">run</span> --name postgresql -p 5432:5432 -e <span class="attribute">POSTGRES_USER</span>=sonar -e <span class="attribute">POSTGRES_PASSWORD</span>=sonar -e <span class="attribute">POSTGRE_DB</span>=sonar -v /opt/sonarqube/data/postgresql/data:/var/lib/postgresql/data -d postgres</span><br></pre></td></tr></table></figure>
-<p>其中 postgresql为容器名称  POSTGRES_USER POSTGRES_PASSWORD POSTGRE_DB指定postgresql的用户名密码和数据库名，&#x2F;opt&#x2F;sonarqube&#x2F;data&#x2F;postgresql&#x2F;data为pg数据库文件挂载到宿主机路径</p>
-<ol start="3">
-<li>获取 sonarqube 的镜像</li>
-</ol>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>docker pull sonarqube</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>启动 sonarqube</li>
-</ol>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --name sonarqube --link postgresql -e SONARQUBE_JDBC_URL=jdbc:postgresql:<span class="regexp">//</span>postgresql:<span class="number">5432</span><span class="regexp">/sonar -p 9001:9000 -v /</span>opt<span class="regexp">/sonarqube/</span>data<span class="regexp">/sonarqube/</span>data:<span class="regexp">/opt/</span>sonarqube<span class="regexp">/data -v /</span>opt<span class="regexp">/sonarqube/</span>data<span class="regexp">/sonarqube/</span>extensions<span class="regexp">/plugins:/</span>opt<span class="regexp">/sonarqube/</span>extensions/plugins -d sonarqube</span><br></pre></td></tr></table></figure>
-<p>其中–link postgresql 是指和 postgresql 容器连接通讯， 用网关的方式也可以 </p>
-<p>创建&#x2F;opt&#x2F;sonarqube&#x2F;data&#x2F;sonarqube&#x2F;data作为sonarqube的数据文件，<code>权限设置为777</code><br>创建&#x2F;opt&#x2F;sonarqube&#x2F;data&#x2F;sonarqube&#x2F;extensions&#x2F;plugins作为sonarqube的插件目录</p>
-<h2 id="0x02-使用"><a href="#0x02-使用" class="headerlink" title="0x02 使用"></a>0x02 使用</h2><p>sonar使用中需要和CI工具进行配合使用进行自动化代码分析<br>与jenkins联动…</p>
-<p>参考官方文档：<a target="_blank" rel="noopener" href="https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Jenkins">https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner+for+Jenkins</a></p>
-<p> <a href="http://www.pa55w0rd.online/sonar/">http://www.pa55w0rd.online/sonar/</a> </p>
--->
+        -->
       
 
     </div>

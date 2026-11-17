@@ -75,6 +75,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -301,33 +304,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="宜搭表单构建"><a href="#宜搭表单构建" class="headerlink" title="宜搭表单构建"></a>宜搭表单构建</h2><p>根据jms 资产授权规则的表单设计宜搭流程表单，因为是自动化，只需要资产对单个用户授权，需要字段 – 规则名称，用户，资产，系统用户，权限，失效日期，备注</p>
-<span id="more"></span>
-
-<ul>
-<li>规则名称 – &gt; 单行文本，标题</li>
-<li>用户 –&gt; 提交人，这个自动获取就可以了</li>
-<li>资产 –&gt; 下拉复选，通过jms接口获取，赋值给下拉多选组件，参考宜搭文档 <a target="_blank" rel="noopener" href="https://www.yuque.com/yida/subject/mei4lg">获取数据源给下拉单选组件赋值</a>, <a target="_blank" rel="noopener" href="https://www.yuque.com/yida/support/stbfik#MAhwk">远程数据源调用自定义连接器</a>。这里为了在宜搭端简单的进行数据处理，封装了一下jms接口，返回更简单的json，宜搭端通过远程数据源获取数据时，https包含http请求会报错，后续发现连接器也可以实现相同的功能</li>
-<li>系统用户 –&gt; 下拉复选，这个需要优化一下，有人乱选，后续会通过资产判断系统类型进行添加</li>
-<li>权限 –&gt;  复选，就是连接、上传下载、复制粘贴</li>
-<li>授权时间  –&gt; 单选，给一个范围，30天、90天、180天、360天</li>
-<li>失效时间  –&gt; 日期，设置只读，根据上面单选组件自动获取日期，这个就是在授权时间的单选组件绑定OnChange，数值变化后计算日期，赋值给日期组件</li>
-<li>备注  –&gt; 多行文本</li>
-</ul>
-<h2 id="宜搭审批流构建"><a href="#宜搭审批流构建" class="headerlink" title="宜搭审批流构建"></a>宜搭审批流构建</h2><p>审批需要维护一下资产归属人，用户发起申请，由上级主管、资产归属人、运维、安全审批</p>
-<h2 id="审批流结束后进行jms授权"><a href="#审批流结束后进行jms授权" class="headerlink" title="审批流结束后进行jms授权"></a>审批流结束后进行jms授权</h2><h3 id="宜搭端"><a href="#宜搭端" class="headerlink" title="宜搭端"></a>宜搭端</h3><p>参考<a target="_blank" rel="noopener" href="https://www.yuque.com/yida/support/sxuye8#rBufQ">提交表单数据时发起新的流程</a>，将第三方接口进行服务注册，流程设计 - 全局设置 - 节点提交规则 - 关联第三方接口，文档中也有将多个组件处理成formdatajson，方便第三方接口使用</p>
-<h3 id="jms端"><a href="#jms端" class="headerlink" title="jms端"></a>jms端</h3><p>通过从宜搭获取表单自动进行处理，jms提供了接口，用户、资产、资产的系统用户都是通过ID就进行授权的，都是有相关的接口获取，参考<a target="_blank" rel="noopener" href="https://docs.jumpserver.org/zh/master/dev/rest_api/">jms API 文档</a>，使用管理员的Access Key进行认证</p>
-<p>根据用户名获取用户ID </p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>base_url<span class="punctuation">&#125;</span><span class="keyword">/users/</span>users/?fields_<span class="attr">size</span><span class="operator">=</span>mini<span class="variable">&amp;search</span>=<span class="punctuation">&#123;</span>username<span class="punctuation">&#125;</span><span class="variable">&amp;offset</span>=<span class="number">0</span><span class="variable">&amp;limit</span>=<span class="number">10</span>   </span><br></pre></td></tr></table></figure>
-<p>根据IP地址获取资产ID &amp; Platform  </p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>base_url<span class="punctuation">&#125;</span><span class="keyword">/assets/</span>assets/?fields_<span class="attr">size</span><span class="operator">=</span>mini<span class="variable">&amp;search</span>=<span class="punctuation">&#123;</span>ip<span class="punctuation">&#125;</span><span class="variable">&amp;offset</span>=<span class="number">0</span><span class="variable">&amp;limit</span>=<span class="number">10</span> </span><br></pre></td></tr></table></figure>
-<p>根据平台获取系统用户ID     </p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>base_url<span class="punctuation">&#125;</span><span class="keyword">/assets/</span>system-users/?protocol__<span class="attr">in</span><span class="operator">=</span>rdp,ssh,vnc,telnet<span class="variable">&amp;search</span>=<span class="punctuation">&#123;</span>Platform<span class="punctuation">&#125;</span><span class="variable">&amp;offset</span>=<span class="number">0</span><span class="variable">&amp;limit</span>=<span class="number">10</span></span><br></pre></td></tr></table></figure>
-<p>提交授权 POST</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;base_url&#125;/perms/asset-permissions/</span><br><span class="line"><span class="title class_">Content</span>-<span class="symbol">Type:</span> application/json;charset=<span class="title class_">UTF</span><span class="number">-8</span></span><br><span class="line"></span><br><span class="line">&#123;<span class="string">&quot;assets&quot;</span><span class="symbol">:assetid</span>,<span class="string">&quot;nodes&quot;</span><span class="symbol">:[]</span>,<span class="string">&quot;actions&quot;</span><span class="symbol">:actions</span>,<span class="string">&quot;is_active&quot;</span><span class="symbol">:true</span>,<span class="string">&quot;date_start&quot;</span><span class="symbol">:<span class="string">&quot;2022-03-24T03:33:42.114Z&quot;</span></span>,<span class="string">&quot;date_expired&quot;</span><span class="symbol">:date_expired</span>,<span class="string">&quot;name&quot;</span><span class="symbol">:name</span>,<span class="string">&quot;users&quot;</span><span class="symbol">:userid</span>,<span class="string">&quot;system_users&quot;</span><span class="symbol">:system_usersid</span>,<span class="string">&quot;comment&quot;</span><span class="symbol">:comment</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="http://www.pa55w0rd.online/jumpserver-yida/">http://www.pa55w0rd.online/jumpserver-yida/</a> </p>
--->
+        -->
       
 
     </div>

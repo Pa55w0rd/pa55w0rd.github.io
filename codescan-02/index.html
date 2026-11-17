@@ -24,7 +24,7 @@
   <meta name="renderer" content="webkit">
 
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-02/#article","headline":"CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据","description":"以 CodeScan-Artex 为主项目，将威云、VeriAudit 和知弈 AgentOS 的方法统一为可保存、校验、复核和导出的证据契约。","url":"https://www.pa55w0rd.online/codescan-02/","datePublished":"2026-11-16T03:58:00.000Z","dateModified":"2026-11-16T08:06:21.694Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-02/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://www.pa55w0rd.online/codescan-02/#article","headline":"CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据","description":"以 CodeScan-Artex 为主项目，将威云、VeriAudit 和知弈 AgentOS 的方法统一为可保存、校验、复核和导出的证据契约。","url":"https://www.pa55w0rd.online/codescan-02/","datePublished":"2026-11-16T03:58:00.000Z","dateModified":"2026-11-17T03:21:10.411Z","author":{"@type":"Person","name":"Pa55w0rd","url":"https://www.pa55w0rd.online/about/"},"publisher":{"@type":"Organization","name":"Pa55w0rd 's Blog","url":"https://www.pa55w0rd.online/","logo":{"@type":"ImageObject","url":"https://www.pa55w0rd.online/img/favicon.ico"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.pa55w0rd.online/codescan-02/"},"isPartOf":{"@id":"https://www.pa55w0rd.online/#website"},"inLanguage":"zh-CN","image":["https://www.pa55w0rd.online/assets/codescan/02-evidence-contract-v1.webp"]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"首页","item":"https://www.pa55w0rd.online/"},{"@type":"ListItem","position":2,"name":"开发安全","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/"},{"@type":"ListItem","position":3,"name":"CodeScan实战","item":"https://www.pa55w0rd.online/categories/%E5%BC%80%E5%8F%91%E5%AE%89%E5%85%A8/CodeScan%E5%AE%9E%E6%88%98/"},{"@type":"ListItem","position":4,"name":"CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据","item":"https://www.pa55w0rd.online/codescan-02/"}]}</script>
 
 
@@ -36,13 +36,15 @@
 <meta property="og:site_name" content="Pa55w0rd &#39;s Blog">
 <meta property="og:description" content="以 CodeScan-Artex 为主项目，将威云、VeriAudit 和知弈 AgentOS 的方法统一为可保存、校验、复核和导出的证据契约。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.pa55w0rd.online/assets/codescan/02-evidence-contract-v1.webp">
 <meta property="article:published_time" content="2026-11-16T03:58:00.000Z">
-<meta property="article:modified_time" content="2026-11-16T08:06:21.694Z">
+<meta property="article:modified_time" content="2026-11-17T03:21:10.411Z">
 <meta property="article:author" content="Pa55w0rd">
 <meta property="article:tag" content="CodeScan-Artex">
 <meta property="article:tag" content="威胁建模">
 <meta property="article:tag" content="证据链">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.pa55w0rd.online/assets/codescan/02-evidence-contract-v1.webp">
 
   
 
@@ -75,6 +77,9 @@
   <!-- 自定义目录样式 -->
   
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
+
+  
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
 
   
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
@@ -219,7 +224,7 @@ ga('send', 'pageview');
     
     
     <span class="article-meta-sronly">
-      <time datetime="2026-11-16T08:06:21.694Z" itemprop="dateModified">2026-11-16</time>
+      <time datetime="2026-11-17T03:21:10.411Z" itemprop="dateModified">2026-11-17</time>
     </span>
     
   </header>
@@ -330,10 +335,19 @@ ga('send', 'pageview');
 <h2 id="0x06-版本链和报告如何联动"><a href="#0x06-版本链和报告如何联动" class="headerlink" title="0x06 版本链和报告如何联动"></a>0x06 版本链和报告如何联动</h2><p>模型、漏洞契约和执行记录采用追加版本，保留前序摘要。写入带当前读取的 <code>expected_revision</code>，并发冲突时重新读取，避免后保存的草稿覆盖别人已经补好的内容。</p>
 <p>还有一个容易混淆的字段：<code>evidence_version</code> 表示报告所依据的整体证据版本，审计材料链的 <code>revision</code> 表示对应记录链的修订。两者用途不同。</p>
 <p>材料变化后，旧报告应显示待更新。归档恢复和 ZIP 导出也要保留这些版本关系，使复核者知道报告依据的是哪一批材料。</p>
+<!-- codescan-figure:02:start -->
+<figure class="codescan-figure">
+  <a class="fancybox codescan-figure-link" href="/assets/codescan/02-evidence-contract-v1.svg" data-fancybox-type="image" title="不同方法，汇入同一份漏洞材料">
+    <img src="/assets/codescan/02-evidence-contract-v1.webp" alt="威胁建模、Source到Sink审计与版本溯源机制汇入audit.Case，再由源码核验、观测复核和报告归档组成证据闭环。" width="1200" height="840" loading="lazy" decoding="async">
+  </a>
+  <figcaption>图 02｜方法、材料契约与交付之间的关系示意。 <a href="/assets/codescan/02-evidence-contract-v1.svg" target="_blank" rel="noopener noreferrer">打开 SVG 原图</a></figcaption>
+</figure>
+<!-- codescan-figure:02:end -->
+
 <h2 id="0x07-这一轮留下的基础"><a href="#0x07-这一轮留下的基础" class="headerlink" title="0x07 这一轮留下的基础"></a>0x07 这一轮留下的基础</h2><p>这一轮把“能够写出分析”推进到“材料可以保存、展示、复核、导出”。接下来还需要解决覆盖范围：即使每条漏洞材料都完整，也无法据此回答整个仓库审到了哪里。</p>
 <p>源码入口：<code>audit/model.go</code>、<code>audit/source.go</code>、<code>db/audit.go</code>、<code>agent/audit_tools.go</code>。</p>
 <p><a href="/codescan-01/">上一篇：本地部署</a> · <a href="/codescan-03/">下一篇：覆盖与收官门禁</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-02/">http://www.pa55w0rd.online/codescan-02/</a> </p>
+<p> <a href="https://www.pa55w0rd.online/codescan-02/">https://www.pa55w0rd.online/codescan-02/</a> </p>
 
         
 <!--
@@ -341,65 +355,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <p><a href="/codescan-00/">系列目录</a> · 第 02 篇 </p>
-<p>改造保留了 CodeScan-Artex 的 Go 后端、任务编排、双图和 PostgreSQL，把其他项目中有价值的机制落到已有执行路径里。</p>
-<p>我首先关注的是材料能否在系统里流转：模型提到的威胁、接口、源码、漏洞和 PoC，怎样对应到同一个版本？</p>
-<span id="more"></span>
-
-<h2 id="0x01-分别吸收了什么"><a href="#0x01-分别吸收了什么" class="headerlink" title="0x01 分别吸收了什么"></a>0x01 分别吸收了什么</h2><p>| 来源 | 借鉴重点 | 主项目落点 |<br>| — | — | — | — |<br>| 威胁建模项目 | STRIDE、组件、数据流、信任边界和源码引用校验 | 模型契约、源码校验与威胁模型工作区 |<br>| VeriAudit | Source→Sink、传播关系、安全控制、PoC 和验证分工 | <code>audit.Case</code>、<code>audit.PoC</code> 与独立复核 |<br>| 知弈 AgentOS  | 内容摘要、追加版本、前序哈希、归属校验和幂等 | 审计记录链、归档恢复与证据包校验 |</p>
-<p>当次记录还保留了各仓库的许可核对结果，因此没有直接搬入大段实现或提示词。</p>
-<h2 id="0x02-用一份漏洞契约串起材料"><a href="#0x02-用一份漏洞契约串起材料" class="headerlink" title="0x02 用一份漏洞契约串起材料"></a>0x02 用一份漏洞契约串起材料</h2><p><code>audit.Case</code> 保存一条候选漏洞的关键内容：</p>
-<ul>
-<li>审计时的源码版本与文件摘要。</li>
-<li>Source、Sink、逐跳传播证据及安全控制。</li>
-<li>攻击者能力、成立前提、影响和修复建议。</li>
-<li>PoC 环境、准备步骤、载荷、成功判据、阴性对照和清理。</li>
-<li>威胁模型关联与保存时的模型快照。</li>
-</ul>
-<p>这份结构要能被 Agent 提交、后端读取、页面展示和报告导出。只在提示词里要求“给出完整证据链”，无法保证后面的系统接得到这些材料。</p>
-<h2 id="0x03-源码证据由宿主重新读取"><a href="#0x03-源码证据由宿主重新读取" class="headerlink" title="0x03 源码证据由宿主重新读取"></a>0x03 源码证据由宿主重新读取</h2><p>源码引用包含相对路径、精确行范围、原样片段和 SHA-256。保存时，服务端从本任务源码根目录重新读取并核对。</p>
-<p>这样可以发现路径越界、文件变化、片段不匹配和引用缺失。重复代码片段也不能通过“随便找一个相似位置”来通过检查。</p>
-<p>但引用匹配只回答“这段内容是否在这个版本中”。从公开入口是否可达、上游有没有鉴权、攻击者能否控制这个值，仍需要沿调用与数据流检查。</p>
-<h2 id="0x04-把几种状态分清楚"><a href="#0x04-把几种状态分清楚" class="headerlink" title="0x04 把几种状态分清楚"></a>0x04 把几种状态分清楚</h2><table>
-<thead>
-<tr>
-<th>状态</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>needs_validation</code></td>
-<td>材料存在缺口，返回具体待补项</td>
-</tr>
-<tr>
-<td><code>poc_generated</code></td>
-<td>结构化材料和引用检查满足要求，PoC 已生成</td>
-</tr>
-<tr>
-<td><code>oracle_matched</code></td>
-<td>本地观测满足所配置的判据，阴性对照未命中</td>
-</tr>
-<tr>
-<td><code>not_reproduced</code></td>
-<td>本次运行没有观察到判据</td>
-</tr>
-<tr>
-<td><code>blocked</code></td>
-<td>运行失败、响应不完整或缺少条件</td>
-</tr>
-</tbody></table>
-<p>独立复核另有 <code>confirmed / refuted / inconclusive</code>。这两套状态分别表达材料及观测质量、漏洞判断，不能用一个布尔字段把它们合并。</p>
-<h2 id="0x05-PoC-分为材料和实际观测"><a href="#0x05-PoC-分为材料和实际观测" class="headerlink" title="0x05 PoC 分为材料和实际观测"></a>0x05 PoC 分为材料和实际观测</h2><p>Agent 继续保持静态分析边界。它生成复现步骤和载荷，操作员再在明确的本地环境运行。</p>
-<p>新增的 HTTP 运行器只接受显式回环 IP，不跟随重定向，也不启动任意目标进程。请求参数、HTTP 解析后的响应头、原始正文和摘要都会保留。响应截断或解析失败时，应保持受阻状态。</p>
-<p>平台导入执行记录时还会核验签名、Case&#x2F;PoC 摘要和当前证据版本。签名表达的是持有密钥的操作员提交了这份记录；目标的构建来源和漏洞语义仍要另外证明。</p>
-<h2 id="0x06-版本链和报告如何联动"><a href="#0x06-版本链和报告如何联动" class="headerlink" title="0x06 版本链和报告如何联动"></a>0x06 版本链和报告如何联动</h2><p>模型、漏洞契约和执行记录采用追加版本，保留前序摘要。写入带当前读取的 <code>expected_revision</code>，并发冲突时重新读取，避免后保存的草稿覆盖别人已经补好的内容。</p>
-<p>还有一个容易混淆的字段：<code>evidence_version</code> 表示报告所依据的整体证据版本，审计材料链的 <code>revision</code> 表示对应记录链的修订。两者用途不同。</p>
-<p>材料变化后，旧报告应显示待更新。归档恢复和 ZIP 导出也要保留这些版本关系，使复核者知道报告依据的是哪一批材料。</p>
-<h2 id="0x07-这一轮留下的基础"><a href="#0x07-这一轮留下的基础" class="headerlink" title="0x07 这一轮留下的基础"></a>0x07 这一轮留下的基础</h2><p>这一轮把“能够写出分析”推进到“材料可以保存、展示、复核、导出”。接下来还需要解决覆盖范围：即使每条漏洞材料都完整，也无法据此回答整个仓库审到了哪里。</p>
-<p>源码入口：<code>audit/model.go</code>、<code>audit/source.go</code>、<code>db/audit.go</code>、<code>agent/audit_tools.go</code>。</p>
-<p><a href="/codescan-01/">上一篇：本地部署</a> · <a href="/codescan-03/">下一篇：覆盖与收官门禁</a></p>
-<p> <a href="http://www.pa55w0rd.online/codescan-02/">http://www.pa55w0rd.online/codescan-02/</a> </p>
--->
+        -->
       
 
     </div>

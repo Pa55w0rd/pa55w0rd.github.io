@@ -76,6 +76,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -305,36 +308,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <blockquote>
-<p>转发：<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/599168">https://www.v2ex.com/t/599168</a></p>
-</blockquote>
-<h2 id="HFish-插件是什么？"><a href="#HFish-插件是什么？" class="headerlink" title="HFish 插件是什么？"></a>HFish 插件是什么？</h2><blockquote>
-<p>通过插件可以 100% 的让任意 WEB 服务成为蜜罐</p>
-</blockquote>
-<p><code>HFish</code> 插件是基于 <code>Nginx + Lua</code> 进行实现的 <code>任意站点，皆可蜜罐</code> 的牛逼思路！</p>
-<p>目前已经打包好了 <code>Docker</code> 镜像，通过 <code>hfishs/hub</code> 可以快速让任意站点当成自己蜜罐。</p>
-<span id="more"></span>
-<h2 id="有哪些使用场景？"><a href="#有哪些使用场景？" class="headerlink" title="有哪些使用场景？"></a>有哪些使用场景？</h2><blockquote>
-<p>只提供三种使用场景，更多场景自行思考</p>
-</blockquote>
-<p>搭建<code>开源 CMS </code>程序，获取最新的 <code>0Day</code></p>
-<p>快速集成企业内部 WEB 服务，搭建 <code>密网环境</code></p>
-<p>通过一些技术手段，实现主动攻击型 <code>蜜罐</code></p>
-<h2 id="有哪些部署方案？"><a href="#有哪些部署方案？" class="headerlink" title="有哪些部署方案？"></a>有哪些部署方案？</h2><blockquote>
-<p>只提供三种部署方案，更多部署根据实际情况进行搭建</p>
-</blockquote>
-<p>直接 <code>反代域名</code>，让互联网站点成为蜜罐</p>
-<p>通过 <code>域名解析</code> 物理机 WEB 服务，成为蜜罐 (不安全)</p>
-<p>搭建 <code>Docker 集群</code>， 通过 hfishs&#x2F;hub 插件成为蜜罐 (安全)</p>
-<p>Docker 镜像地址：<a target="_blank" rel="noopener" href="https://hub.docker.com/r/hfishs/hub">https://hub.docker.com/r/hfishs/hub</a></p>
-<h2 id="nginx-配置镜像站"><a href="#nginx-配置镜像站" class="headerlink" title="nginx 配置镜像站"></a>nginx 配置镜像站</h2><blockquote>
-<p>因为现在网站大多都做了防盗链机制，这种方式不采用了</p>
-</blockquote>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 8083;   # WEB 服务的端口，此次拿 8083 端口演示</span><br><span class="line">    server_name localhost;   # 填写自己的域名，测试可以使用 localhost</span><br><span class="line">    </span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass https://hfish.io/;  # 反代的站点，此处使用 HFish 官网 做演示</span><br><span class="line">                </span><br><span class="line">        sub_filter https://hfish.io/ http://localhost:8083/;  # 因为是反代域名 需要替换</span><br><span class="line">        sub_filter_once off;</span><br><span class="line"></span><br><span class="line">        proxy_set_header Host hfish.io;  # 反代站点 Host</span><br><span class="line">        proxy_set_header Referer https://hfish.io;  # 反代站点地址</span><br><span class="line"></span><br><span class="line">        proxy_cache_key &quot;$scheme://$host$request_uri&quot;;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header Accept-Encoding &quot;&quot;;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        # 以下内容 不可删除</span><br><span class="line">        set $hfish_name &#x27;HFish 蜜罐&#x27;;  # 插件名称 </span><br><span class="line">        set $hfish_sec_key &#x27;9cbf8a4dcb8e30682b927f352d6559a0&#x27;;  # 接口安全密钥</span><br><span class="line">        set $hfish_api &#x27;http://192.168.65.2:8989/api/v1/post/plug_report&#x27;;    # 插件接口</span><br><span class="line">                </span><br><span class="line">        # HFish 插件核心模块</span><br><span class="line">        access_by_lua_file &#x27;/home/lua/hfish.lua&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p> <a href="http://www.pa55w0rd.online/hfish-plug/">http://www.pa55w0rd.online/hfish-plug/</a> </p>
--->
+        -->
       
 
     </div>

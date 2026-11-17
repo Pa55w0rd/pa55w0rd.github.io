@@ -79,6 +79,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -295,23 +298,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="0x00-描述"><a href="#0x00-描述" class="headerlink" title="0x00 描述"></a>0x00 描述</h2><p>在做android app测试，使用安卓模拟器导入burp证书时，发现证书文件是灰色的</p>
-<span id="more"></span>
-
-<p><img src="/%5Cassets%5Cimg%5C%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6%5C1.png" alt="1"></p>
-<p>尝试了各种方法都失败了，知道看到一篇文章<a target="_blank" rel="noopener" href="http://blog.csdn.net/unklhe/article/details/51159509">http://blog.csdn.net/unklhe/article/details/51159509</a>终于弄好了。</p>
-<pre><code>从burp导出证书PortSwiggerCA.crt
-</code></pre>
-<h2 id="0x01-在linux上使用openssl生成cert文件"><a href="#0x01-在linux上使用openssl生成cert文件" class="headerlink" title="0x01 在linux上使用openssl生成cert文件"></a>0x01 在linux上使用openssl生成cert文件</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">filename=`openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> <span class="attr">--hash</span> -noout`</span><br><span class="line">openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> &gt;&gt; <span class="variable">$filename</span>.<span class="number">0</span></span><br><span class="line">openssl x509 -<span class="keyword">in</span> PortSwiggerCA<span class="selector-class">.crt</span> -<span class="selector-tag">text</span> -fingerprint -noout &gt;&gt; <span class="variable">$filename</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/%5Cassets%5Cimg%5C%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6%5C2.png" alt="2"></p>
-<h2 id="0x02-将生成的文件push到设备中"><a href="#0x02-将生成的文件push到设备中" class="headerlink" title="0x02 将生成的文件push到设备中"></a>0x02 将生成的文件push到设备中</h2><p>生成系统证书</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb <span class="built_in">shell</span> mount -o remount,rw /<span class="keyword">system</span></span><br><span class="line">adb <span class="keyword">push</span> D:\user\桌面\<span class="number">7</span>bf17d07<span class="number">.0</span> /<span class="keyword">system</span>/etc/security/cacerts</span><br></pre></td></tr></table></figure>
-<p>生成用户级证书</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb shell mkdir <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br><span class="line">adb <span class="keyword">push</span> D:\user\桌面\<span class="number">7</span>bf17d07.<span class="number">0</span> <span class="regexp">/data/mi</span>sc<span class="regexp">/keychain/</span>cacerts-added</span><br></pre></td></tr></table></figure>
-<h2 id="0x03-安装成功"><a href="#0x03-安装成功" class="headerlink" title="0x03 安装成功"></a>0x03 安装成功</h2><p><img src="/%5Cassets%5Cimg%5C%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6%5C3.png" alt="3"></p>
-<p> <a href="http://www.pa55w0rd.online/%E5%AE%89%E5%8D%93%E6%A8%A1%E6%8B%9F%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6/">http://www.pa55w0rd.online/安卓模拟器安装证书/</a> </p>
--->
+        -->
       
 
     </div>

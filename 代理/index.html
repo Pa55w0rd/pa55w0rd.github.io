@@ -78,6 +78,9 @@
 <link rel="stylesheet" href="/assets/css/custom-toc.css">
 
   
+<link rel="stylesheet" href="/assets/css/codescan-figures.css">
+
+  
   <!-- <link href="/css/show.ua.css" rel="stylesheet" type="text/css" > -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap" rel="stylesheet">
@@ -302,31 +305,7 @@ ga('send', 'pageview');
         <span id="busuanzi_container_page_pv">
           阅读次数<span id="busuanzi_value_page_pv"></span>
         </span>
-        <h2 id="正向代理-ForwardProxy"><a href="#正向代理-ForwardProxy" class="headerlink" title="正向代理 [ ForwardProxy ]"></a>正向代理 [ ForwardProxy ]</h2><p>大家默认所说的代理其实都是指正向代理,不管是正向还是反向,理解数据的流向很重要,要理解这种比较抽象的东西最好的方式就是画图,比如下图就是一个正向代理的简易工作流程图,要表达的意思,已经很清晰了,就是说 <strong>当客户端要去请求远程server上的资源时,并非直接通过本地路由网关到达远程server,而是先经过代理服务器,由代理服务器去帮我们请求,之后远程服务器会把请求的结果返回给代理服务器再由代理服务器返回给客户端</strong> ,这么一个过程就叫正向代理,其实你还可以理解的更简单粗暴一点,它有点儿类似我们常说的 ‘翻墙’,正常情况我自己是不能直接上谷歌的,但我找了一个能上谷歌的代理,然后我们请求谷歌的时候可以让代理服务器去帮我们请求,最后,再通过代理服务器把响应的数据返回到我本地,就这么一个过程,不过现在正向代理可能用的比较少了,以前用代理服务器只是为了提高访问速度[因为缓存的原因],可以节省带宽,也可以在代理服务器上做些访问控制……</p>
-<span id="more"></span>
-
-<p><img src="/%5Cassets%5Cimg%5Cproxy%5C1.png"></p>
-<h2 id="反向代理-reverseproxy"><a href="#反向代理-reverseproxy" class="headerlink" title="反向代理 [ reverseproxy ]"></a>反向代理 [ reverseproxy ]</h2><p>服务器端使用反向代理服务器统一接收客户端访问，然后再按即定规则将数据包重定向到真正的服务器的场景,数据流向完全相反,还是看这张图,来自客户端的请求会首先到达代理服务器而非真实的server,至于客户端的请求最终会被送到哪个后端服务器上去处理,客户端是完全看不到的,这也在一定程度上隐藏了后端的真实server</p>
-<p><img src="/%5Cassets%5Cimg%5Cproxy%5C2.png"></p>
-<h2 id="透明代理"><a href="#透明代理" class="headerlink" title="透明代理"></a>透明代理</h2><p>很显然,透明的意思就是你感受不到代理服务器的存在,但流量却又真正被代理服务器所左右,也就是说,我们并不需要知道代理服务器,比如,我可以用这种方式来限制你访问某些资源等等……它跟正向代理非常的像,其实也属于正向代理的一种,只不过正向代理能看见,但这个看不到</p>
-<h2 id="匿名代理"><a href="#匿名代理" class="headerlink" title="匿名代理"></a>匿名代理</h2><ul>
-<li><p>高度匿名代理<br>  这样的服务器会把你的数据包原封不动的来转发,就好像自己的一样,这样对目标站来讲,根本就不会以为是代理服务器在访问它而不是你</p>
-</li>
-<li><p>普通匿名代理<br>  相对于高度匿名代理来讲,这样的服务器会被目标站认出来是代理服务器,从而很有可能还是会追踪到你的真实IP</p>
-</li>
-</ul>
-<h2 id="负载均衡-Loadbalancing"><a href="#负载均衡-Loadbalancing" class="headerlink" title="负载均衡 [ Loadbalancing ]"></a>负载均衡 [ Loadbalancing ]</h2><p>负载均衡主要用在高并发的场景中,也就是代理服务器可能有很多台,有可能是个代理服务器集群,来自四面八方的请求会被代理服务器分发到后端各个服务器上去处理,至于具体要被分发到后端哪一台服务器上去处理,则由其内部的负载均衡算法决定</p>
-<p>**软负载：**就是通过软件来实现负载均衡功能；Nginx和httpd等http服务器都能实现软负载功能。</p>
-<p>**硬负载：**又叫硬件负载，就是把实现负载均衡功能的软件搬到一台专门的计算机上；比如F5等设备。</p>
-<p>网站的负载均衡可以从DNS和HTTP两个环节进行实施</p>
-<p>Kali Linux提供工具 <strong>lbd</strong>来获取网站的负载均衡信息。该工具可以根据DNS域名解析、HTTP服务的header和响应差异，来识别均衡方式。由于用户所使用的线路不同，获取的输出结果不同。大家可以把运行结果和其他人的做比较，以发现目标网站的更多服务器。</p>
-<h3 id="负载均衡与会话同步："><a href="#负载均衡与会话同步：" class="headerlink" title="负载均衡与会话同步："></a>负载均衡与会话同步：</h3><p>在负载均衡中可以将来自同一个IP的访问通过IP_HASH等方式全定向到一台机器上。这样一来所有会话（session）就全在一台机器上，就不必使用会话同步了。</p>
-<p>但IP_HASH的问题是如果某台服务器故障而请求一样被发送过去，那么这些访问请求被发送到故障机的IP将无法得到服务，我的服务器分明还有多台正常而我的用户却只因一台故障即不能访问，这并不能最大化多台服务器的效益。</p>
-<p>会话中保存着用户的登录状态，而如果请求是按即定算法被分配到不确定的服务器上那么就得保证会话同步，以确保在S1上登录过的用户其请求被重定向到S2时其状态也是登录的（而不是又让用户再次登录这样的网站没人愿意用）。</p>
-<p>会话同步实现的思路是无论哪台服务器的session都存放到一台服务器上，请求无论被分配到S1还是S2都是到那台服务器上取session。</p>
-<p>而在session服务器的存储又有两种方案，一是使用oracle等传统数据库存储，二是使 用memcache等内存数据库存储；后者方案是更加推荐的。</p>
-<p> <a href="http://www.pa55w0rd.online/%E4%BB%A3%E7%90%86/">http://www.pa55w0rd.online/代理/</a> </p>
--->
+        -->
       
 
     </div>

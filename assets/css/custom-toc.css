@@ -29,8 +29,8 @@
   /* top / max-height 由 JS 写入 --toc-sticky-top，与页眉对齐；滚动时 sticky 随视口跟随 */
   #sidebar .toc-container.toc-container--sidebar {
     position: sticky;
-    top: var(--toc-sticky-top, 96px);
-    max-height: calc(100vh - var(--toc-sticky-top, 96px) - 24px);
+    top: var(--toc-sticky-top, 24px);
+    max-height: calc(100vh - var(--toc-sticky-top, 24px) - 24px);
     width: 100%;
     box-sizing: border-box;
   }

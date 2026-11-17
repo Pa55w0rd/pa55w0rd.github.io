@@ -247,9 +247,10 @@
     }
 
     var header = document.getElementById('header');
-    var stickyTop = 96;
-    if (header) {
-      stickyTop = Math.round(header.getBoundingClientRect().height) + 10;
+    var stickyTop = 24;
+    // 只有固定页眉需要避让；普通横幅滚出视口后不应继续占据目录顶部空间。
+    if (header && /^(fixed|sticky)$/.test(window.getComputedStyle(header).position)) {
+      stickyTop = Math.max(24, Math.round(header.getBoundingClientRect().bottom) + 16);
     }
     document.documentElement.style.setProperty('--toc-sticky-top', stickyTop + 'px');
   };

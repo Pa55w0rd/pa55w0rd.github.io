@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.pa55w0rd.online/codescan-15/</loc>
+    <loc>https://www.pa55w0rd.online/codescan-16/</loc>
     
     <lastmod>2026-11-17</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.pa55w0rd.online/codescan-16/</loc>
+    <loc>https://www.pa55w0rd.online/codescan-15/</loc>
     
     <lastmod>2026-11-17</lastmod>
     
@@ -56,6 +56,15 @@
   </url>
   
   <url>
+    <loc>https://www.pa55w0rd.online/codescan-10/</loc>
+    
+    <lastmod>2026-11-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.pa55w0rd.online/codescan-11/</loc>
     
     <lastmod>2026-11-17</lastmod>
@@ -65,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://www.pa55w0rd.online/codescan-10/</loc>
+    <loc>https://www.pa55w0rd.online/codescan-07/</loc>
     
     <lastmod>2026-11-17</lastmod>
     
@@ -92,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://www.pa55w0rd.online/codescan-07/</loc>
+    <loc>https://www.pa55w0rd.online/codescan-05/</loc>
     
     <lastmod>2026-11-17</lastmod>
     
@@ -102,15 +111,6 @@
   
   <url>
     <loc>https://www.pa55w0rd.online/codescan-06/</loc>
-    
-    <lastmod>2026-11-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pa55w0rd.online/codescan-05/</loc>
     
     <lastmod>2026-11-17</lastmod>
     
@@ -156,6 +156,15 @@
   
   <url>
     <loc>https://www.pa55w0rd.online/codescan-00/</loc>
+    
+    <lastmod>2026-11-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.pa55w0rd.online/comments/index.html</loc>
     
     <lastmod>2026-11-17</lastmod>
     
@@ -1121,15 +1130,6 @@
     <loc>https://www.pa55w0rd.online/assets/README-TOC.html</loc>
     
     <lastmod>2025-06-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.pa55w0rd.online/comments/index.html</loc>
-    
-    <lastmod>2021-08-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

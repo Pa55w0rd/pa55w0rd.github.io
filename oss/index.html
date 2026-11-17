@@ -255,7 +255,7 @@ ga('send', 'pageview');
           
             <li>
               
-              <span aria-current="page">阿里云OSS Bucket 劫持</span>
+              <span aria-current="page" title="阿里云OSS Bucket 劫持">阿里云OSS Bucket 劫持</span>
               
             </li>
           
@@ -325,7 +325,7 @@ ga('send', 'pageview');
       
 
       
-        <a href="https://www.pa55w0rd.online/oss/#gitalk-container" class="article-comment-link">留言</a>
+        <a href="/oss/#comments" class="article-comment-link">留言</a>
       
 
       
@@ -378,17 +378,16 @@ ga('send', 'pageview');
 -->
 
 
-  <section class="comments">
-    <div id="disqus_thread">
-      <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-  </section> 
-
 
 
 
   <script type="text/javascript">document.write(unescape("%3Cdiv id='reward' %3E%3C/div%3E%3Cscript src='/js/reward.min.js' type='text/javascript'%3E%3C/script%3E"));</script>
-  <div id="gitalk-container"></div>
+  <section id="comments" class="comments" aria-labelledby="comments-title">
+    <h2 id="comments-title">留言</h2>
+    <p class="comments-note">欢迎补充、纠错或交流；发表评论需使用 GitHub 账号登录。</p>
+    <div id="gitalk-container"><p>正在加载留言…</p></div>
+    <noscript>请启用 JavaScript 以查看留言。</noscript>
+  </section>
 
 
 </section>
@@ -400,26 +399,26 @@ ga('send', 'pageview');
 
     <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-file-text-o"></i>近期文章</h3>
     <div class="widget">
-      <ul>
+      <ul class="widget-link-list">
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
+          <li>
+            <a href="/codescan-00/">CodeScan 实战（00）：从一次代码审计需求，到一套可追溯的工程实践</a>
           </li>
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
+          <li>
+            <a href="/codescan-01/">CodeScan 实战（01）：用 Docker Compose 部署，与原 Artex 共存</a>
           </li>
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
+          <li>
+            <a href="/codescan-02/">CodeScan 实战（02）：吸收其他项目的优势，统一威胁、漏洞与证据</a>
           </li>
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
+          <li>
+            <a href="/codescan-03/">CodeScan 实战（03）：补齐审计覆盖、反证和收官门禁</a>
           </li>
         
-          <li onclick="javascript:document.getElementById('recentpost_item').click();">
-            <a id="recentpost_item" href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
+          <li>
+            <a href="/codescan-04/">CodeScan 实战（04）：把威胁建模接进真正的任务生命周期</a>
           </li>
         
       </ul>
@@ -437,11 +436,6 @@ ga('send', 'pageview');
   </div>
 
 
-  <script>
-  $(document).on("click", "ul.category-list li.category-list-item", function () {
-    window.location.href = $(this).find('a').attr('href')
-  })
-  </script>
 
   
     
@@ -464,11 +458,6 @@ ga('send', 'pageview');
   </div>
 
 
-<script>
-$(document).on("click", "ul.archive-list li.archive-list-item", function () {
-  window.location.href = $(this).find('a').attr('href')
-})
-</script>
 
   
     
@@ -634,9 +623,11 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
   <script>
+  document.addEventListener('DOMContentLoaded', function () {
   $.fn.extend({
     hoverTips : function (){
       var self = $(this);
+      if (!self.length) return;
       var sw = self.get(0).switch;
       if( !sw ) {
         sw = true;
@@ -668,6 +659,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
   $("#weixin-icon-color").hoverTips();
   $("#qq-icon-color").hoverTips();
+  });
   </script>
 
 
@@ -678,35 +670,35 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
   
       <h3 class="widget-title" data-scroll-reveal="enter top and over 0.7s"><i class="fa fa-group"></i>友情链接『不分先后』</h3>
       <div class="widget">
-        <ul>
+        <ul class="widget-link-list">
         
-            <li onclick="javascript:document.getElementById('friend_links_item').click();">
-              <a id="friend_links_item" target="_blank" rel="noopener" href="https://firexun.github.io"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>firexun</a>
+            <li>
+              <a target="_blank" rel="noopener" href="https://firexun.github.io"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>firexun</a>
             </li>
 
         
-            <li onclick="javascript:document.getElementById('friend_links_item').click();">
-              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.weiho.xyz"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
+            <li>
+              <a target="_blank" rel="noopener" href="http://www.weiho.xyz"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Weiho</a>
             </li>
 
         
-            <li onclick="javascript:document.getElementById('friend_links_item').click();">
-              <a id="friend_links_item" target="_blank" rel="noopener" href="http://pirogue.org"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
+            <li>
+              <a target="_blank" rel="noopener" href="http://pirogue.org"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>pirogue</a>
             </li>
 
         
-            <li onclick="javascript:document.getElementById('friend_links_item').click();">
-              <a id="friend_links_item" target="_blank" rel="noopener" href="http://www.mianhuage.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Cotton&#39;s Blog</a>
+            <li>
+              <a target="_blank" rel="noopener" href="http://www.mianhuage.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>Cotton&#39;s Blog</a>
             </li>
 
         
-            <li onclick="javascript:document.getElementById('friend_links_item').click();">
-              <a id="friend_links_item" target="_blank" rel="noopener" href="https://www.lovesec.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级菜鸟</a>
+            <li>
+              <a target="_blank" rel="noopener" href="https://www.lovesec.com"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级菜鸟</a>
             </li>
 
         
-            <li onclick="javascript:document.getElementById('friend_links_item').click();">
-              <a id="friend_links_item" target="_blank" rel="noopener" href="https://my.oschina.net/9199771"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级大熊猫</a>
+            <li>
+              <a target="_blank" rel="noopener" href="https://my.oschina.net/9199771"><i class="fa  fa-arrow-circle-right" style="margin-right:7px"></i>超级大熊猫</a>
             </li>
 
         
@@ -715,6 +707,7 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
     </div>
   
   
+
   
 </aside>
 
@@ -803,16 +796,25 @@ $(document).on("click", "ul.archive-list li.archive-list-item", function () {
 
 
   <script>
+  (function () {
+    var container = document.getElementById('gitalk-container');
+    if (!container) return;
+    if (typeof Gitalk !== 'function') {
+      container.textContent = '留言组件暂时无法加载，请刷新后重试。';
+      return;
+    }
     const gitalk = new Gitalk({
       clientID: "992fba235eb173826494",
       clientSecret: "d133f6427763be2cf4048e4d146a22043e745f22",
       repo: "pa55w0rd.github.io",
       owner: "Pa55w0rd",
-      admin: "Pa55w0rd",
+      admin: ["Pa55w0rd"],
       id: "Thu Jul 15 2021 10:25:25 GMT+0800",
+      language: 'zh-CN',
       distractionFreeMode: false
     })
     gitalk.render('gitalk-container')
+  }());
   </script>
 
 
@@ -918,8 +920,9 @@ MathJax.Hub.Queue(function() {
 
 <script>
 $(document).ready(function () {
-  if (typeof scrollReveal !== 'undefined') {
-    window.scrollReveal = new scrollReveal({ reset: true });
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (typeof scrollReveal !== 'undefined' && !reduceMotion) {
+    window.scrollReveal = new scrollReveal({ reset: false });
   }
 });
 </script>

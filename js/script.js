@@ -164,6 +164,13 @@
     }
   });
 
+  // 普通表格独立横向滚动，不改变代码高亮表格的结构。
+  $('.article-entry table').each(function () {
+    var table = $(this);
+    if (table.closest('.highlight, .gist, .table-scroll').length) return;
+    table.wrap('<div class="table-scroll" tabindex="0" role="region" aria-label="文章表格，可横向滚动"></div>');
+  });
+
   // Mobile nav
   var $container = $('#container'),
     isMobileNavAnim = false,

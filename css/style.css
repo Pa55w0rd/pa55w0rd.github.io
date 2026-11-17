@@ -810,13 +810,101 @@ a.article-category-link:hover {
 }
 .article-header {
   padding: 20px 20px 0;
+  margin-bottom: 20px;
+}
+.article-breadcrumb {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  color: #666;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.article-breadcrumb ol {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: baseline;
+  -moz-box-align: baseline;
+  -o-box-align: baseline;
+  -ms-flex-align: baseline;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+  gap: 4px 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.article-breadcrumb li {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: baseline;
+  -moz-box-align: baseline;
+  -o-box-align: baseline;
+  -ms-flex-align: baseline;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+  min-width: 0;
+  max-width: 100%;
+}
+.article-breadcrumb li:not(:first-child):before {
+  content: "›";
+  -webkit-box-flex: 0;
+  -moz-box-flex: 0;
+  -o-box-flex: 0;
+  box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  margin: 0 9px;
+  color: #999;
+}
+.article-breadcrumb li:last-child {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1 1 220px;
+  -ms-flex: 1 1 220px;
+  flex: 1 1 220px;
+}
+.article-breadcrumb li span {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.article-breadcrumb a {
+  color: #ae6531;
+  text-decoration: none;
+}
+.article-breadcrumb a:hover {
+  text-decoration: underline;
+}
+.article-breadcrumb a:focus-visible {
+  outline: 2px solid #ce8450;
+  outline-offset: 3px;
 }
 .article-title {
   text-decoration: none;
   font-size: 1.5em;
   font-weight: bold;
   color: #000;
-  line-height: 1.1em;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
@@ -843,6 +931,7 @@ a.article-title:hover {
   zoom: 1;
   color: #000;
   padding: 0 20px;
+  overflow-wrap: anywhere;
 }
 .article-entry:before,
 .article-entry:after {
@@ -851,6 +940,22 @@ a.article-title:hover {
 }
 .article-entry:after {
   clear: both;
+}
+.article-entry > :first-child {
+  margin-top: 0;
+}
+.article-entry .table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  margin: 0.7em 0;
+}
+.article-entry .table-scroll table {
+  margin: 0;
+}
+.article-entry .table-scroll:focus-visible {
+  outline: 2px solid #ce8450;
+  outline-offset: 3px;
 }
 .article-entry p,
 .article-entry table {
@@ -1384,6 +1489,60 @@ a.article-title:hover {
 }
 #comments a {
   color: #ce8450;
+}
+#comments h2 {
+  margin: 0 0 10px;
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+#comments .comments-note {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+  line-height: 1.7;
+}
+#comments #gitalk-container {
+  min-height: 80px;
+  overflow-wrap: anywhere;
+}
+#comments .gt-container .gt-header-textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "微软雅黑", "Microsoft Yahei", "Droid Sans", Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+#comments .gt-container .gt-header-controls {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  gap: 8px;
+}
+#comments .gt-container .gt-header-controls-tip {
+  margin-right: auto;
+}
+#comments .gt-container .gt-btn {
+  margin: 0;
+}
+@media screen and (max-width: 479px) {
+  #comments {
+    padding: 16px;
+  }
 }
 .archives-wrap {
   margin: 27px 0;
@@ -2302,25 +2461,84 @@ a.search-result {
   background: #49be38;
   font-size: 0.85em;
 }
+.widget .category-list,
+.widget .category-list-child {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.widget .category-list-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-column-gap: 8px;
+  -moz-column-gap: 8px;
+  column-gap: 8px;
+  margin: 0;
+  padding: 0;
+  border-left: 0;
+  overflow: visible;
+  white-space: normal;
+  background: transparent;
+}
+.widget .category-list-item:hover {
+  margin: 0;
+  padding: 0;
+  border-left: 0;
+  background: transparent;
+}
+.widget .category-list-link {
+  float: none;
+  min-width: 0;
+  padding: 4px 0;
+  color: #555;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+.widget .category-list-link:hover {
+  color: #ae6531;
+}
+.widget .category-list-link:focus-visible {
+  outline: 2px solid #ce8450;
+  outline-offset: 2px;
+}
+.widget .category-list-count {
+  float: none;
+  justify-self: end;
+}
+.widget .category-list-child {
+  grid-column: 1/-1;
+  margin: 2px 0 4px 8px;
+  padding-left: 12px;
+  border-left: 1px solid #ddd;
+}
+.widget .widget-link-list a {
+  display: block;
+  overflow-wrap: anywhere;
+}
 .tagcloud a {
-  word-break: keep-all;
-  margin-right: 5px;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
-  -moz-transition: all 0.3s /* Firefox 4 */;
-  -webkit-transition: all 0.3s;
-/* Safari and Chrome */
-  -o-transition: all 0.3s /* Opera */;
+  display: inline-block;
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.8;
+  margin: 2px 5px 2px 0;
+  padding: 0 4px;
+  border-radius: 6px;
+  -webkit-transition: color 0.2s, background-color 0.2s;
+  -moz-transition: color 0.2s, background-color 0.2s;
+  -o-transition: color 0.2s, background-color 0.2s;
+  -ms-transition: color 0.2s, background-color 0.2s;
+  transition: color 0.2s, background-color 0.2s;
 }
 .tagcloud a:hover {
-  font-size: 50px;
   color: #fff;
   background: #49be38;
-  border-radius: 6px;
-  padding: 0px 5px;
 }
 span.ua {
   margin: 0 1px !important;
